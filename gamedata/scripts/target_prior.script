@@ -25,6 +25,8 @@ local allow_event_based_transitions = true		-- allows all factions to visit leve
 local replace_respawns = true		-- set to "false" if you have some addon like ZCP that changes "function se_smart_terrain:try_respawn" from "smart_terrain.script"
 local val_ext = 1 		-- better not to touch (prior_t val's power, increases/decreases value range between lower and higher priorities)
 
+local SMART_TERRAIN_SPAWNS_BUGFIX_PATCH = false		-- set this to "true" if you want to use changes from "smart terrain spawns bugfix" addon
+
 
 local debugx = false			-- displays only targets with priority more than "debugx" value
 local debugy = false			-- displays top 5 and picked targets in console
@@ -795,8 +797,14 @@ local convert_ranks = {
 	["alpha"] = "master",
 }
 
+local s_find = string.find
 local available_sects = {}
+local BaseSmartRespawn = smart_terrain.se_smart_terrain.try_respawn
 function smart_terrain.se_smart_terrain:try_respawn()
+	if not replace_respawns then
+		return BaseSmartRespawn(self)
+	end
+
 	local flags = {
 		disabled = false
 	}
@@ -872,11 +880,27 @@ function smart_terrain.se_smart_terrain:try_respawn()
 					
 					-- Tronex
 					-- Safer check for common squads
-					if ini_sys:r_bool_ex(k,"common") then
-						if (s_find(k,"sim_squad")) then 
-							max_respawn_count = round_idp(max_respawn_count*stalker_pop_factor)
-						elseif (s_find(k,"simulation")) then
-							max_respawn_count = round_idp(max_respawn_count*monster_pop_factor)
+					-- DPH
+					if SMART_TERRAIN_SPAWNS_BUGFIX_PATCH then
+						if (v["squads"]) then
+							-- Just take the first squad section to determine type. Not correct, but accurate in almost all cases
+							local k2 = v["squads"][1]
+							if ini_sys:r_bool_ex(k2,"common") then
+								-- almost all spawn sections with "zombied" in them have mutants as other spawns
+								if (s_find(k2,"simulation") or s_find(k2,"zombied")) then
+									max_respawn_count = round_idp(max_respawn_count*monster_pop_factor)
+								elseif (s_find(k2,"sim_squad")) then 
+									max_respawn_count = round_idp(max_respawn_count*stalker_pop_factor)
+								end
+							end
+						end
+					else
+						if ini_sys:r_bool_ex(k,"common") then
+							if (s_find(k,"sim_squad")) then 
+								max_respawn_count = round_idp(max_respawn_count*stalker_pop_factor)
+							elseif (s_find(k,"simulation")) then
+								max_respawn_count = round_idp(max_respawn_count*monster_pop_factor)
+							end
 						end
 					end
 					
