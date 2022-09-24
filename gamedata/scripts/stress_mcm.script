@@ -1,0 +1,52 @@
+
+local default = {
+	regen = 26,
+	drain = 13,
+
+	campfire_enabled = true,
+	campfire_psy_regen = 40,
+	campfire_distance = 15,
+
+	controler_damage_multiplier = 50,
+	controler_damage_max_distance = 50,
+
+	hit_stress = 2.8,
+	wounded_stress = 14,
+
+	stage_1 = 75,
+	stage_2 = 50,
+	voices = 80,
+}
+
+function on_mcm_load()
+	raw_config = { id = "psy_stress", sh = true, gr = {
+		{ id = "regen", type = "track", val = 2, min = 1, max = 100, step = 1, def = 26},
+		{ id = "drain", type = "track", val = 2, min = 1, max = 50, step = 1, def = 13},
+		--
+		{ id = "controler_damage_multiplier", type = "track", val = 2, min = 25, max = 150, step = 1, def = 40},
+		{ id = "controler_damage_max_distance", type = "track", val = 2, min = 25, max = 150, step = 1, def = 50},
+		--
+		{ id = "hit_stress", type = "track", val = 2, min = 0.1, max = 10, step = 0.1, def = 2.8},
+		{ id = "wounded_stress", type = "track", val = 2, min = 0.1, max = 30, step = 0.1, def = 14},
+		--
+		{ id = "stage_1", type = "track", val = 2, min = 50, max = 90, step = 1, def = 75},
+		{ id = "stage_2", type = "track", val = 2, min = 25, max = 80, step = 1, def = 50,},
+		{ id = "voices", type = "track", val = 2, min = 1, max = 100, step = 1, def = 80},
+		--
+		{ id = "campfire_enabled", type = "check", val = 1, def = true},
+		{ id = "campfire_regen", type = "track", val = 2, min = 0.1, max = 25, step = 0.1, def = 1.8},
+		{ id = "campfire_distance", type = "track", val = 2, min = 5, max = 25, step = 1, def = 15},
+		},
+	}
+
+	return raw_config
+end
+
+
+function get_config(key)
+	if ui_mcm then
+		return ui_mcm.get("psy_stress/"..key)
+	else
+		return default[key]
+	end
+end

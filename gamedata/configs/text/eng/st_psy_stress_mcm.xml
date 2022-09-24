@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<string_table>
+	<string id="ui_mcm_menu_psy_stress">
+		<text>Psy Stress</text>
+	</string>
+	<string id="ui_mcm_psy_stress_regen">
+		<text>Basic psy regeneration (X% in 6 hours)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_drain">
+		<text>Basic psy drain (X% in 6 hours)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_campfire_enabled">
+		<text>Calming Campfires by Voland33</text>
+	</string>
+	<string id="ui_mcm_psy_stress_campfire_regen">
+		<text>Campfire psy regeneration (X% in 10 minutes)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_campfire_distance">
+		<text>Campfire calming distance (meters)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_controler_damage_multiplier">
+		<text>Multiplier for Controllery psy damage (X% of original)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_controler_damage_max_distance">
+		<text>Controller Psy attack MAX hit distance (meters)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_hit_stress">
+		<text>Psy stress on receving damage (X% of damage)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_wounded_stress">
+		<text>Psy stress from being wounded (X% in 10 minutes for 10% wound)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_stage_1">
+		<text>Stress first stage (X% of psy health)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_stage_2">
+		<text>Sress second stage (X% of psy health)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_voices">
+		<text>Voices start (X% of psy health)</text>
+	</string>
+</string_table>

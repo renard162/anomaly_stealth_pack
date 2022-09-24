@@ -1,0 +1,160 @@
+scopes = {
+	["1p29"] = true,
+	["ps01"] = true,
+	["pso1m21"] = true,
+	["acog"] = true,
+	["wpn_binoc_pu"] = true,
+	["wpn_binoc_po4x34"] = true,
+	["wpn_binoc_galil"] = true,
+	["wpn_binoc_zf4"] = true,
+	["specter"] = true,
+	["pso2"] = true,
+	["1p59"] = true,
+	["1pn93"] = true,
+	["pn23"] = true,
+	["1pn93n2_1gs"] = true,
+	["1p78gs"] = true,
+	["susat"] = true,
+	["usp1"] = true,
+	["susatov"] = true,
+}
+
+scopes_to_binocs = {
+	["wpn_addon_scope_po4x34"] = "wpn_binoc_po4x34",
+	["wpn_addon_scope_pu"] = "wpn_binoc_pu",
+	["wpn_addon_scope_galil"] = "wpn_binoc_galil",
+	["wpn_addon_scope_zf4"] = "wpn_binoc_zf4",
+}
+binocs_to_scopes = invert_table(scopes_to_binocs)
+binocs_to_scopes_items = {}
+
+enabled = true
+
+function add_to_binocs_to_scopes_items(se_obj)
+	if se_obj and binocs_to_scopes[se_obj:section_name()] then
+		printf("adding %s scope", se_obj:name())
+		binocs_to_scopes_items[se_obj:name()] = {
+			section = se_obj:section_name(),
+			id = se_obj.id,
+			name = se_obj:name(),
+		}
+	end
+end
+
+function remove_from_binocs_to_scopes_items(se_obj)
+	if se_obj then
+		binocs_to_scopes_items[se_obj:section_name()] = nil
+	end
+end
+
+function convert(obj, destination)
+	if not obj then return end
+
+	local se_obj = alife_object(obj:id())
+	if not se_obj then return end
+
+	local new_sec = binocs_to_scopes[obj:section()]
+	remove_from_binocs_to_scopes_items(se_obj)
+	alife_release(obj)
+	alife_create_item(new_sec, destination)
+end
+
+function convert_binocs_to_scope(obj)
+	if not obj then return end
+	if not binocs_to_scopes[obj:section()] then return end
+
+	local parent = obj:parent()
+	if parent then
+		return convert(obj, parent)
+	end
+
+	local pos = obj:position()
+	local lvid = obj:level_vertex_id()
+	local gvid = obj:game_vertex_id()
+	return convert(obj, {pos, lvid, gvid})
+end
+
+function check_binocs_to_scope(name, item)
+	if not binocs_to_scopes[item.section] then
+		binocs_to_scopes_items[name] = nil
+		return true
+	end
+
+	local obj = level.object_by_id(item.id)
+	if not obj then return end
+
+	local parent = obj:parent()
+	if not parent then
+		convert_binocs_to_scope(obj)
+		return true
+	end
+
+	if parent:id() ~= AC_ID then
+		convert_binocs_to_scope(obj)
+		return true
+	end
+
+	local item_in_slot = db.actor:item_in_slot(5)
+	if not item_in_slot then
+		convert_binocs_to_scope(obj)
+		return true
+	end
+
+	if item_in_slot:name() ~= name then
+		convert_binocs_to_scope(obj)
+		return true
+	end
+end
+
+function check_binocs_to_scopes()
+	for k, value in pairs(binocs_to_scopes_items) do
+		check_binocs_to_scope(k, value)
+	end
+end
+
+local tg = 0
+local tg_interval = 100
+function check_binocs_update()
+	local t = time_global()
+	if t < tg then return end
+	tg = t + tg_interval
+
+	if not enabled then return end
+
+	check_binocs_to_scopes()
+end
+
+function actor_on_update()
+	local actor = db.actor
+	local scope = db.actor:active_item()
+	if not scope then return end
+
+	local sec = scope:section()
+	if not scopes[sec] then return end
+
+	local cobj = scope:cast_Weapon()
+	if not cobj then return end
+
+	local zoom_factor = SYS_GetParam(2, sec, "scope_zoom_factor", 25)
+	if cobj:IsZoomed() then
+		cobj:SetZoomFactor(zoom_factor)
+	end
+end
+
+-- Get all binoc scope items
+function actor_on_first_update()
+	for i = 1, 65534 do
+		add_to_binocs_to_scopes_items(alife_object(i))
+	end
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+	RegisterScriptCallback("actor_on_update", check_binocs_update)
+	RegisterScriptCallback("server_entity_on_register", server_entity_on_register)
+end
+
+function server_entity_on_register(se_obj)
+	add_to_binocs_to_scopes_items(se_obj)
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+end

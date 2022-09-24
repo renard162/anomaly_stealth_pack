@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<string_table>
+	
+    <string id="npc_convert_stalker">
+		<text>Look at yourself. Aren't you tired of being a nobody, without a real group of people always backing you up? Join us, and you will have a real name and longer life.</text>
+	</string>
+	 <string id="npc_convert_bandit">
+		<text>How does it feel to be a rat at the bottom of the food chain, always picking up the scraps? Look at your shitty equipment. Look at the people around you, always ready to stab your back. Join us and you might actually have a chance.</text>
+	</string>
+	 <string id="npc_convert_csky">
+		<text>Do you really want to spend your short life on living in the swamps, among a bunch of mutated pigs and shit? Your people will never achieve anything at this rate. Join us instead.</text>
+	</string>
+	 <string id="npc_convert_army">
+		<text>Don't you see that your government gives zero shits about you? You are just a pawn in this chess game. Begin thinking for yourself, join us.</text>
+	</string>
+	 <string id="npc_convert_freedom">
+		<text>Is this the freedom you wanted? Bleeding to death, away from any friends? Your people are a bunch of incompetent druggies, barely able to save themselves. Join us and live longer.</text>
+	</string>
+	 <string id="npc_convert_dolg">
+		<text>You spent so much time trying to get rid of the zone you forgot about the biggest danger out there - humans. Join us and we'll show you the truth: the zone is nothing compared to actions of the people you are trying to save.</text>
+	</string>
+	 <string id="npc_convert_ecolog">
+		<text>You entered the most dangerous place in the world, holding just a pen and a piece of paper. Did you really expect a bunch of nerds to be able to protect your life? If you truly want to uncover secrets of the zone, join us.</text>
+	</string>
+	 <string id="npc_convert_killer">
+		<text>Look where your greed for money has led you. You would kill your own family if you got paid for it, wouldn't you? Stop acting like a robot and blindly working to get a single number higher. Begin thinking for yourself, join us.</text>
+	</string>
+	 <string id="npc_convert_monolith">
+		<text>Wake up.</text>
+	</string>
+	 <string id="npc_convert_renegade">
+		<text>How does it feel to be a rat at the bottom of the food chain, always picking up the scraps? Look at your shitty equipment. Look at the people around you, always ready to stab your back. Join us and you might actually have a chance.</text>
+	</string>
+	 <string id="npc_convert_greh">
+		<text>Wake up, you're serving under commands of a crazy fanatic. If it's not working well for monolith, do you seriously think that making another group of this kind would change anything? End the Sin, join us instead.</text>
+	</string>
+	<string id="npc_convert_isg">
+		<text>I'm not sure who you work for, but it clearly hasn't worked out for you. I'm going to give you a chance to redeem yourself. Join us and i will let you live.</text>
+	</string>
+	<string id="npc_convert_zombied">
+		<text>You're not you, when you're hungry. Here, have a snickers.</text>
+	</string>
+	<string id="npc_convert_unknown">
+		<text>Join us and you will live longer.</text>
+	</string>
+	
+	<string id="npc_convert_stalker_2">
+		<text>Look at yourself. Aren't you tired of being a nobody, without a real group of people always backing you up? Join us, and you will have a real name and longer life.</text>
+	</string>
+	 <string id="npc_convert_bandit_2">
+		<text>How does it feel to be a rat at the bottom of the food chain, always picking up the scraps? Look at your shitty equipment. Look at the people around you, always ready to stab your back. Join us and you might actually have a chance.</text>
+	</string>
+	 <string id="npc_convert_csky_2">
+		<text>Do you really want to spend your short life on living in the swamps, among a bunch of mutated pigs and shit? Your people will never achieve anything at this rate. Join us instead.</text>
+	</string>
+	 <string id="npc_convert_army_2">
+		<text>Don't you see that your government gives zero shits about you? You are just a pawn in this chess game. Begin thinking for yourself, join us.</text>
+	</string>
+	 <string id="npc_convert_freedom_2">
+		<text>Is this the freedom you wanted? Barrel of a gun at your face, no friends to help you? Your people are a bunch of incompetent druggies, barely able to save themselves. Join us and live longer.</text>
+	</string>
+	 <string id="npc_convert_dolg_2">
+		<text>You spent so much time trying to get rid of the zone you forgot about the biggest danger out there - humans. Join us and we'll show you the truth: the zone is nothing compared to actions of the people you are trying to save.</text>
+	</string>
+	 <string id="npc_convert_ecolog_2">
+		<text>You entered the most dangerous place in the world, holding just a pen and a piece of paper. Did you really expect a bunch of nerds to be able to protect your life? If you truly want to uncover secrets of the zone, join us.</text>
+	</string>
+	 <string id="npc_convert_killer_2">
+		<text>Look where your greed for money has led you. You would kill your own family if you got paid for it, wouldn't you? Stop acting like a robot and blindly working to get a single number higher. Begin thinking for yourself, join us.</text>
+	</string>
+	 <string id="npc_convert_monolith_2">
+		<text>Wake up.</text>
+	</string>
+	 <string id="npc_convert_renegade_2">
+		<text>How does it feel to be a rat at the bottom of the food chain, always picking up the scraps? Look at your shitty equipment. Look at the people around you, always ready to stab your back. Join us and you might actually have a chance.</text>
+	</string>
+	 <string id="npc_convert_greh_2">
+		<text>Wake up, you're serving under commands of a crazy fanatic. If it's not working well for monolith, do you seriously think that making another group of this kind would change anything? End the Sin, join us instead.</text>
+	</string>
+	<string id="npc_convert_isg_2">
+		<text>I'm not sure who you work for, but it clearly hasn't worked out for you. I'm going to give you a chance to redeem yourself. Join us and i will let you live.</text>
+	</string>
+	<string id="npc_convert_zombied_2">
+		<text>You're not you, when you're hungry. Here, have a snickers.</text>
+	</string>
+	<string id="npc_convert_unknown_2">
+		<text>Join us and you will live longer.</text>
+	</string>
+	
+	<string id="npc_convert_join">
+		<text>Fine. I will join you.</text>
+	</string>
+	
+	<string id="ui_mcm_menu_npc_convert">
+		<text>Convert NPCs</text>
+	</string>
+	<string id="ui_mcm_npc_convert_title">
+		<text>Convert NPCs To Your Faction</text>
+	</string>
+	<string id="ui_mcm_npc_convert_random_convert_chance_enabled">
+		<text>Enable random chance to decline your offer.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_random_convert_chance_enabled_desc">
+		<text>If turned off, all npcs will have a 100% chance to accept your offer.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_calc_descr_text">
+		<text>The formula used to calculate the chances is:\n[Player's rank intimidation] - [Enemy's rank intimidation] + [Base chance] = [Chance to convert]%\nIf your intimidation is 20, npc's intimidation is 10, and base chance is 30, the end result will be: 20 - 10 + 30 = 40% chance to convert\n \nIf you don't want to use rank chance modifiers, just set all ranks' strength to 0 and the script will use the Base chance for everything</text>
+	</string>
+	<string id="ui_mcm_npc_convert_base_chance">
+		<text>Base chance</text>
+	</string>
+	<string id="ui_mcm_npc_convert_base_chance_desc">
+		<text>This number is always added after subtracting npc intimidation from player intimidation.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_attack_chance">
+		<text>Attack chance on failure</text>
+	</string>
+	<string id="ui_mcm_npc_convert_attack_chance_desc">
+		<text>Chance of npc immediately standing up and attacking you upon failure to convert. Always the same chance. No other modifiers.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_novice_intimidation">
+		<text>Novice intimidation strength</text>
+	</string>
+	<string id="ui_mcm_npc_convert_trainee_intimidation">
+		<text>Trainee intimidation strength</text>
+	</string>
+	<string id="ui_mcm_npc_convert_experienced_intimidation">
+		<text>Experienced intimidation strength</text>
+	</string>
+	<string id="ui_mcm_npc_convert_professional_intimidation">
+		<text>Professional intimidation strength</text>
+	</string>
+	<string id="ui_mcm_npc_convert_veteran_intimidation">
+		<text>Veteran intimidation strength</text>
+	</string>
+	<string id="ui_mcm_npc_convert_expert_intimidation">
+		<text>Expert intimidation strength</text>
+	</string>
+	<string id="ui_mcm_npc_convert_master_intimidation">
+		<text>Master intimidation strength</text>
+	</string>
+	<string id="ui_mcm_npc_convert_legend_intimidation">
+		<text>Legend intimidation strength</text>
+	</string>
+	<string id="ui_mcm_npc_convert_convert_debug_msg">
+		<text>(Debugging)Show chances after conversion attempt</text>
+	</string>
+	<string id="ui_mcm_npc_convert_convert_debug_msg_desc">
+		<text>Shows debug message at the bottom of the screen. Only necessary to find possible errors.</text>
+	</string>
+	
+</string_table>

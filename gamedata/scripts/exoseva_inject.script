@@ -1,0 +1,54 @@
+
+-- supply tables
+
+local trade_table = {
+	{["supplies_5"] = {["exoseva_outfit"] = 1},},
+	{["supplies_5"] = {["dolg_exoseva_outfit"] = 1},},
+	{["supplies_5"] = {["merc_exoseva_outfit"] = 1},},
+	{["supplies_5"] = {["military_exoseva_outfit"] = 1},},
+	{["supplies_5"] = {["monolith_exoseva_outfit"] = 1},},
+	{["supplies_5"] = {["svoboda_exoseva_outfit"] = 1},},
+	{["supplies_5"] = {["ecolog_exoseva_outfit"] = 1},},
+	{["supplies_5"] = {["isg_exoseva_outfit"] = 1},}
+}
+
+-- spawning the suits
+
+function spawn_exoseva(npc)
+	local is_trader = trader_autoinject.get_trader_type(npc) == trader_autoinject.SUPPLIER
+		if not is_trader then
+			return
+		end
+	local loot_table
+		if (npc:name() == "esc_m_trader") or string.find(npc:section(),"zat_b30_owl_stalker_trader") then
+			loot_table = trade_table[1]
+		elseif string.find(npc:section(),"bar_dolg_general_petrenko_stalker") then
+			loot_table = trade_table[2]
+		elseif string.find(npc:section(),"cit_killers_merc_trader_stalker") then
+			loot_table = trade_table[3]
+		elseif string.find(npc:section(),"esc_3_16_military_trader") or string.find(npc:section(),"agr_smart_terrain_1_6_army_trader_stalker") then
+			loot_table = trade_table[4]
+		elseif string.find(npc:section(),"pri_monolith_monolith_trader_stalker") then
+			loot_table = trade_table[5]
+		elseif string.find(npc:section(),"mil_smart_terrain_7_10_freedom_trader_stalker") or string.find(npc:section(),"jup_a6_freedom_trader_ashot") then
+			loot_table = trade_table[6]
+		elseif string.find(npc:section(),"yan_stalker_sakharov") or string.find(npc:section(),"jup_b6_scientist_nuclear_physicist") then
+			loot_table = trade_table[7]
+		elseif string.find(npc:section(),"jup_depo_isg_tech") then
+			loot_table = trade_table[8]
+		else
+			return
+		end
+	local supply_level = trader_autoinject.supply_level(npc)
+	if loot_table[supply_level] then
+		trader_autoinject.spawn_items(npc, loot_table[supply_level], true)
+	end
+end
+
+
+TraderAuto = trader_autoinject.update
+function trader_autoinject.update(npc)
+    TraderAuto(npc)
+    spawn_exoseva(npc)
+end
+

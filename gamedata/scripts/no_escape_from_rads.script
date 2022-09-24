@@ -1,0 +1,77 @@
+function actor_on_before_hit(s_hit)
+	local hit_type_rad = HitTypeID["Radiation"]
+
+	--Check if damage source is radiation
+	local hit_power = s_hit.power * 0.15
+	if s_hit.type ~= hit_type_rad or hit_power <= 0 then
+		return
+	end
+
+	-- printf("hit_power %s", hit_power)
+
+	local actor = db.actor
+
+	--Calculate new power
+	local hit_additional = 0
+
+	-- Outfit protection
+	local outfit = actor:item_in_slot(7)
+	if outfit then
+		local c_obj = outfit:cast_CustomOutfit()
+		local prot = c_obj and c_obj:GetDefHitTypeProtection(hit_type_rad) or 0
+
+		hit_additional = hit_additional + prot * 100
+	end
+
+	-- Helmet protection
+	local helm = actor:item_in_slot(12)
+	if helm then
+		local c_obj = helm:cast_Helmet()
+		local prot = c_obj and c_obj:GetDefHitTypeProtection(hit_type_rad) or 0
+
+		hit_additional = hit_additional + prot * 100
+	end
+
+	-- Artefacts protection
+	actor:iterate_belt(function(owner, obj)
+		local sec = obj:section()
+		local cond = obj:condition()
+		local immunities_sec = SYS_GetParam(0, sec, "hit_absorbation_sect", sec)
+		local prot = SYS_GetParam(2, immunities_sec, "radiation_immunity", 0) * cond
+
+		hit_additional = hit_additional + prot * 100
+	end)
+
+	-- Booster protection
+	actor:cast_Actor():conditions():BoosterForEach(function(booster_type, booster_time, booster_value)
+		-- printf("%s, %s, %s", booster_type, booster_time, booster_value)
+		if booster_type == BoosterID["RadiationProtection"] then
+			-- printf("booster_value %s", booster_value)
+			hit_additional = hit_additional + booster_value * 100
+		end
+	end)
+
+	-- Final modifier
+	local hit_modifier = hit_additional >= 0 and 1 + hit_additional or 1 / (1 - hit_additional)
+	local actor_hit_power = hit_power / hit_modifier 
+
+	-- printf("rad hit %s", actor_hit_power)
+	actor:change_radiation(actor_hit_power)
+
+end
+
+enabled = true
+if arszi_radiation then
+	arszi_before_hit = arszi_radiation.actor_on_before_hit
+	arszi_radiation.actor_on_before_hit = function(s_hit)
+		arszi_before_hit(s_hit)
+		actor_on_before_hit(s_hit)
+	end
+	enabled = false
+end
+
+function on_game_start()
+	if enabled then
+		RegisterScriptCallback("actor_on_before_hit", actor_on_before_hit)
+	end
+end

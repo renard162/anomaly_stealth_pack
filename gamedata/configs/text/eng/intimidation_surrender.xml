@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<string_table>
+
+	<string id="ui_mcm_menu_intimidation_surrender">
+		<text>Intimidation Surrender</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_title">
+		<text>Intimidate Enemies Into Surrendering</text>
+	</string>
+	
+	<string id="ui_mcm_intimidation_surrender_base_chance_to_intimidate">
+		<text>Base chance to intimidate</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_base_chance_to_intimidate_desc">
+		<text>Base chance without bonuses and penalties. Used in the calculation of the final chance to intimidate.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_max_intimidation_distance">
+		<text>Max intimidation distance</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_max_intimidation_distance_desc">
+		<text>You have to be this close to your target to intimidate them.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_intimidation_surrender_bonus">
+		<text>Bonus to npc conversion</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_intimidation_surrender_bonus_desc">
+		<text>Increases chances of converting npc to your faction because you persuaded them to surrender instead of giving them a deadly injury.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_attack_chance_override">
+		<text>Attack chance if failed to convert</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_attack_chance_override_desc">
+		<text>Overrides the attack chance from the "Convert npcs to your faction" addon. Added because enemies, that never got badly wounded, should have more strength to fight back. Only overrides chance of those enemies who surrendered after intimidation.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_low_health_bonus">
+		<text>Low health bonus to intimidation</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_low_health_bonus_desc">
+		<text>Chance to surrender is increased by this value if the enemy has less than 50% health.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_sneak_bonus">
+		<text>Sneak bonus to intimidation</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_sneak_bonus_desc">
+		<text>Chance to surrender is increased by this value if the enemy can't see you.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_intimidation_voice">
+		<text>Intimidation voice</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_intimidation_voice_desc">
+		<text>The voice lines that are being played whenever you attempt to intimidate an enemy.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_intimidation_delay">
+		<text>Surrender delay(milliseconds)</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_intimidation_delay_desc">
+		<text>How many milliseconds it takes before the target reacts to you. Without delay npc surrenders before hearing you, which looks stupid</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_isolation_enabled">
+		<text>Enable isolation mechanic</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_isolation_enabled_desc">
+		<text>Isolation mechanic lowers or increases chances depending on how isolated the target is from their friends. Without it you can make a person surrender to you even while they are among hundreds of their friends.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_minimal_isolation_distance">
+		<text>Minimal isolation distance</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_minimal_isolation_distance_desc">
+		<text>Stalkers outside this range don't affect intimidation chance.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_isolation_bonus">
+		<text>Isolation bonus</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_isolation_bonus_desc">
+		<text>This value is added per each additional enemy of your target near them. So if you surround an enemy with your squad, you have a bigger chance to scare them.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_isolation_penalty">
+		<text>Isolation penalty</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_isolation_penalty_desc">
+		<text>This value is subtracted per each additional friend of your target near them. So you are less likely to intimidate someone who's around their friends.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_enemy_response_enabled">
+		<text>Enable enemy responses</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_enemy_response_enabled_desc">
+		<text>When turned on, enemies will play voice lines whenever they agree or refuse to surrender. I couldn't find a way to make them play directly from the npcs, so it's imperfect, plays together with the npc's other voice lines, and can't properly copy their voice.(Each faction only has 1 response voice, because i couldn't find a way to detect individual npc's voices.) Also it's stationary, so if the npc runs away, the sound will just play from the last place they were in.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_novice_bravery">
+		<text>Novice bravery</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_novice_bravery_desc">
+		<text>This rank's bravery. Is subtracted from the total intimidation chance. So braver npcs give smaller chance.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_trainee_bravery">
+		<text>Trainee bravery</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_trainee_bravery_desc">
+		<text>This rank's bravery. Is subtracted from the total intimidation chance. So braver npcs give smaller chance.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_experienced_bravery">
+		<text>Experienced bravery</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_experienced_bravery_desc">
+		<text>This rank's bravery. Is subtracted from the total intimidation chance. So braver npcs give smaller chance.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_professional_bravery">
+		<text>Professional bravery</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_professional_bravery_desc">
+		<text>This rank's bravery. Is subtracted from the total intimidation chance. So braver npcs give smaller chance.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_veteran_bravery">
+		<text>Veteran bravery</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_veteran_bravery_desc">
+		<text>This rank's bravery. Is subtracted from the total intimidation chance. So braver npcs give smaller chance.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_expert_bravery">
+		<text>Expert bravery</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_expert_bravery_desc">
+		<text>This rank's bravery. Is subtracted from the total intimidation chance. So braver npcs give smaller chance.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_master_bravery">
+		<text>Master bravery</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_master_bravery_desc">
+		<text>This rank's bravery. Is subtracted from the total intimidation chance. So braver npcs give smaller chance.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_legend_bravery">
+		<text>Legend bravery</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_legend_bravery_desc">
+		<text>This rank's bravery. Is subtracted from the total intimidation chance. So braver npcs give smaller chance.</text>
+	</string>
+	
+	<string id="ui_mcm_intimidation_surrender_int_calc_descr_text">
+		<text>Formula for calculating final intimidation chance:\n[base chance] + [sneak bonus](if enemy can't see you) + [low health bonus](if enemy has less than 50% hp) + [isolation bonus](per each stalker that is close and hostile to the enemy) - [isolation penalty](per each friend of the enemy that is close to them) - [enemy's rank bravery] = [final chance to intimidate]%</text>
+	</string>
+	
+	<string id="ui_mcm_intimidation_surrender_convert_descr_text">
+		<text>Interaction with "convert enemies to your faction" addon</text>
+	</string>
+
+	
+	
+	<string id="is_stalker_1">
+		<text>Stalker 1</text>
+	</string>
+	<string id="is_stalker_1_muffled">
+		<text>Stalker 1 muffled</text>
+	</string>
+	<string id="is_stalker_2">
+		<text>Stalker 2</text>
+	</string>
+	<string id="is_stalker_2_muffled">
+		<text>Stalker 2 muffled</text>
+	</string>
+	<string id="is_build">
+		<text>Stalker 3</text>
+	</string>
+	<string id="is_build_muffled">
+		<text>Stalker 3 muffled</text>
+	</string>
+	<string id="is_bandit_1">
+		<text>Bandit 1</text>
+	</string>
+	<string id="is_bandit_1_muffled">
+		<text>Bandit 1 muffled</text>
+	</string>
+	<string id="is_bandit_2">
+		<text>Bandit 2</text>
+	</string>
+	<string id="is_bandit_2_muffled">
+		<text>Bandit 2 muffled</text>
+	</string>
+	<string id="is_csky">
+		<text>Clear Sky</text>
+	</string>
+	<string id="is_csky_muffled">
+		<text>Clear Sky muffled</text>
+	</string>
+	<string id="is_dolg">
+		<text>Duty</text>
+	</string>
+	<string id="is_dolg_muffled">
+		<text>Duty muffled</text>
+	</string>
+	<string id="is_ecolog">
+		<text>Ecologist</text>
+	</string>
+	<string id="is_ecolog_muffled">
+		<text>Ecologist muffled</text>
+	</string>
+	<string id="is_freedom">
+		<text>Freedom</text>
+	</string>
+	<string id="is_freedom_muffled">
+		<text>Freedom muffled</text>
+	</string>
+	<string id="is_greh">
+		<text>Sin</text>
+	</string>
+	<string id="is_greh_muffled">
+		<text>Sin muffled</text>
+	</string>
+	<string id="is_military">
+		<text>Military</text>
+	</string>
+	<string id="is_military_muffled">
+		<text>Military muffled</text>
+	</string>
+	<string id="is_monolith_random_speeches">
+		<text>Random monolith speeches</text>
+	</string>
+	<string id="is_custom">
+		<text>Custom</text>
+	</string>
+	<string id="is_none">
+		<text>None</text>
+	</string>
+
+
+</string_table>

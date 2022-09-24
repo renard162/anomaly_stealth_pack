@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<string_table>
+	<string id="ui_mcm_menu_psy_stress">
+		<text>Пси стресс</text>
+	</string>
+	<string id="ui_mcm_psy_stress_regen">
+		<text>Базовое восстановление пси-здоровья (X% за 6 часов)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_drain">
+		<text>Базовое потеря пси-здоровья (X% за 6 часов</text>
+	</string>
+	<string id="ui_mcm_psy_stress_campfire_enabled">
+		<text>Успокаивающе костры (Calming Campfires by by Voland33)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_campfire_regen">
+		<text>Восстановление пси-здоровья у костра (X% за 10 минут)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_campfire_distance">
+		<text>Дитсанция на которой кострё действует (метры)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_controler_damage_multiplier">
+		<text>Множитель для пси-атаки Контролёра (X% изначального)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_controler_damage_max_distance">
+		<text>Максимальная дистацния пси-атаки Контролёра (метры)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_hit_stress">
+		<text>Потеря пси-здоровья при получении урона (X% полученного урона)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_wounded_stress">
+		<text>Потеря пси-здоровья за ранение (X% за 10 минут при ране в 10% здоровья)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_stage_1">
+		<text>Граница первого этапа стресса (X% пси-здоровья)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_stage_2">
+		<text>Граница второго этапа стресса (X% пси-здоровья)</text>
+	</string>
+	<string id="ui_mcm_psy_stress_voices">
+		<text>Граница на которой слышы голоса (X% пси-здоровья)</text>
+	</string>
+</string_table>

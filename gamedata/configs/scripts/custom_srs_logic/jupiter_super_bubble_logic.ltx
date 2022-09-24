@@ -1,0 +1,13 @@
+[logic]
+active = sr_particle
+
+[sr_particle]
+name = anomaly2\anomaly_spatial_bubble_idle
+path = jup_b46_particle_point
+mode = 2
+looped = false
+on_actor_inside = sr_teleport %+actor_in_super_bubble%
+
+[sr_teleport]
+timeout = 200
+on_actor_outside = sr_particle %-actor_in_super_bubble%

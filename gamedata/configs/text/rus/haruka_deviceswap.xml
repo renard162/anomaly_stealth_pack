@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	<string id="ui_mcm_menu_detector_selector">
+		<text>
+		Device Select Keys
+		</text>
+	</string>
+		<string id="ui_mcm_detector_selector_keybind_anomaly">
+		<text>
+		Кнопка переключения на детектор
+		</text>
+	</string>
+	<string id="ui_mcm_detector_selector_keybind_lights">
+		<text>
+		Кнопка переключения на фонарик
+		</text>
+	</string>
+	<string id="ui_mcm_detector_selector_keybind_radio">
+		<text>
+		Кнопка переключения на RF-ресивер
+		</text>
+	</string>
+	<string id="ui_mcm_detector_selector_keybind_geiger">
+		<text>
+		Кнопка переключения на счётчик Гейгера
+		</text>
+	</string>
+	<string id="ui_mcm_detector_selector_keybind_glowsticks">
+		<text>
+		Кнопка переключения на химический источник света
+		</text>
+	</string>
+	<string id="ui_mcm_detector_selector_keybind_detector_anomaly">
+		<text>
+		Кнопка переключения на детектор аномалий
+		</text>
+	</string>
+</string_table>

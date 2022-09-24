@@ -1,0 +1,760 @@
+--level.get_target_obj()
+--level.get_target_dist()
+
+local max_intimidation_distance = 15
+local minimal_isolation_distance = 15
+local base_chance_to_intimidate = 100
+local attack_chance_override = 50
+local sneak_bonus = 45
+local low_health_bonus = 50
+local isolation_bonus = 10
+local isolation_penalty = 10
+local isolation_enabled = true
+local enemy_response_enabled = true
+local intimidation_delay = 1000
+local intimidation_voice = 13
+local h --hit
+
+local rank_bravery = {
+	["novice"] = 10,
+	["trainee"] = 20,
+	["experienced"] = 30,
+	["professional"] = 40,
+	["veteran"] = 50,
+	["expert"] = 60,
+	["master"] = 80,
+	["legend"] = 100,
+}
+
+local ini = ini_file("ai_tweaks\\xrs_kill_wounded.ltx")
+local cause_surrender_communities = parse_list(ini,"settings","cause_surrender_communities",true)
+ini = nil
+
+
+function loadsettings()
+	if ui_mcm then -- here we test to make sure ui_mcm exists before trying to call it's get function.
+		base_chance_to_intimidate = ui_mcm.get("intimidation_surrender/base_chance_to_intimidate")
+		max_intimidation_distance = ui_mcm.get("intimidation_surrender/max_intimidation_distance")
+		low_health_bonus = ui_mcm.get("intimidation_surrender/low_health_bonus")
+		sneak_bonus = ui_mcm.get("intimidation_surrender/sneak_bonus")
+		intimidation_voice = ui_mcm.get("intimidation_surrender/intimidation_voice")
+		intimidation_delay = ui_mcm.get("intimidation_surrender/intimidation_delay")
+		isolation_enabled = ui_mcm.get("intimidation_surrender/isolation_enabled")
+		minimal_isolation_distance = ui_mcm.get("intimidation_surrender/minimal_isolation_distance")
+		isolation_bonus = ui_mcm.get("intimidation_surrender/isolation_bonus")
+		isolation_penalty = ui_mcm.get("intimidation_surrender/isolation_penalty")
+		rank_bravery["novice"] = ui_mcm.get("intimidation_surrender/novice_bravery")
+		rank_bravery["trainee"] = ui_mcm.get("intimidation_surrender/trainee_bravery")
+		rank_bravery["experienced"] = ui_mcm.get("intimidation_surrender/experienced_bravery")
+		rank_bravery["professional"] = ui_mcm.get("intimidation_surrender/professional_bravery")
+		rank_bravery["veteran"] = ui_mcm.get("intimidation_surrender/veteran_bravery")
+		rank_bravery["expert"] = ui_mcm.get("intimidation_surrender/expert_bravery")
+		rank_bravery["master"] = ui_mcm.get("intimidation_surrender/master_bravery")
+		rank_bravery["legend"] = ui_mcm.get("intimidation_surrender/legend_bravery")
+		enemy_response_enabled = ui_mcm.get("intimidation_surrender/enemy_response_enabled")
+		
+	end
+end
+
+--characters_voice\\human\\
+--too much of the exact same text being used multiple times. would extra concatenation be more or less performance intensive? does it even matter here?
+
+
+
+local intimidation_voice_lines =
+{
+
+[0] = --"stalker_1"
+	{
+	"stalker_1\\threat\\drop_weapon\\dropweapon_1",
+	"stalker_1\\threat\\drop_weapon\\dropweapon_2",
+	"stalker_1\\threat\\drop_weapon\\dropweapon_3",
+	"stalker_1\\threat\\drop_weapon\\dropweapon_4",
+	},
+[1] = --"stalker_1_muffled"
+	{
+	"stalker_3\\threat\\drop_weapon\\dropweapon_1",
+	"stalker_3\\threat\\drop_weapon\\dropweapon_2",
+	"stalker_3\\threat\\drop_weapon\\dropweapon_3",
+	"stalker_3\\threat\\drop_weapon\\dropweapon_4",
+	},
+	
+[2] = --"stalker_2"
+	{
+	"stalker_2\\threat\\drop_weapon\\dropweapon_1",
+	"stalker_2\\threat\\drop_weapon\\dropweapon_2",
+	"stalker_2\\threat\\drop_weapon\\dropweapon_4",
+	"stalker_2\\states\\meet\\meet_hide_weapon_4",
+	"stalker_2\\states\\meet\\meet_hide_weapon_6",
+	"stalker_2\\states\\meet\\meet_use_no_weapon_8",
+	},
+[3] = --"stalker_2_muffled"
+	{
+	"stalker_4\\threat\\drop_weapon\\dropweapon_1",
+	"stalker_4\\threat\\drop_weapon\\dropweapon_3",
+	"stalker_4\\threat\\drop_weapon\\dropweapon_4",
+	"stalker_4\\threat\\drop_weapon\\dropweapon_4",
+	"stalker_4\\states\\meet\\meet_hide_weapon_4",
+	"stalker_4\\states\\meet\\meet_hide_weapon_5",
+	"stalker_4\\states\\meet\\meet_use_no_weapon_8",
+	},
+	
+[4] = --"build"
+	{
+	"build_1\\threat\\drop_weapon\\dropweapon_2",
+	"build_1\\threat\\drop_weapon\\dropweapon_3",
+	"build_1\\threat\\drop_weapon\\dropweapon_4",
+	"build_1\\threat\\drop_weapon\\dropweapon_5",
+	"build_1\\threat\\drop_weapon\\dropweapon_7",
+	},
+[5] = --"build_muffled"
+	{
+	"build_3\\threat\\drop_weapon\\dropweapon_2",
+	"build_3\\threat\\drop_weapon\\dropweapon_3",
+	"build_3\\threat\\drop_weapon\\dropweapon_4",
+	"build_3\\threat\\drop_weapon\\dropweapon_5",
+	"build_3\\threat\\drop_weapon\\dropweapon_7",
+	},
+	
+[6] = --"bandit_1"
+	{
+	"bandit_1\\states\\meet\\meet_use_no_weapon_1",
+	"bandit_1\\states\\meet\\meet_use_no_weapon_2",
+	"bandit_1\\states\\meet\\meet_hide_weapon_1",
+	"bandit_1\\states\\meet\\meet_hide_weapon_2",
+	"bandit_1\\states\\meet\\meet_hide_weapon_3",
+	"bandit_1\\states\\meet\\meet_hide_weapon_4",
+	"bandit_1\\states\\meet\\meet_hide_weapon_5",
+	},
+[7] = --"bandit_1_muffled"
+	{
+	"bandit_3\\states\\meet\\meet_use_no_weapon_1",
+	"bandit_3\\states\\meet\\meet_use_no_weapon_2",
+	"bandit_3\\states\\meet\\meet_use_no_weapon_4",
+	"bandit_3\\states\\meet\\meet_hide_weapon_1",
+	"bandit_3\\states\\meet\\meet_hide_weapon_2",
+	"bandit_3\\states\\meet\\meet_hide_weapon_3",
+	"bandit_3\\states\\meet\\meet_hide_weapon_4",
+	},
+	
+[8] = --"bandit_2"
+	{
+	"bandit_2\\states\\meet\\meet_hide_weapon_1",
+	"bandit_2\\states\\meet\\meet_hide_weapon_2",
+	"bandit_2\\states\\meet\\meet_hide_weapon_3",
+	"bandit_2\\states\\meet\\meet_hide_weapon_4",
+	"bandit_2\\states\\meet\\meet_use_no_weapon_1",
+	"bandit_2\\states\\meet\\meet_use_no_weapon_2",
+	--"scenario\\jupiter\\jup_a10_bandits_warn",
+	},
+[9] = --"bandit_2_muffled"
+	{
+	"bandit_4\\states\\meet\\meet_hide_weapon_1",
+	"bandit_4\\states\\meet\\meet_hide_weapon_2",
+	"bandit_4\\states\\meet\\meet_hide_weapon_3",
+	"bandit_4\\states\\meet\\meet_hide_weapon_4",
+	"bandit_4\\states\\meet\\meet_use_no_weapon_1",
+	"bandit_4\\states\\meet\\meet_use_no_weapon_2",
+	},	
+	
+[10] = --"csky"
+	{
+	"csky_1\\states\\meet\\meet_hide_weapon_1",
+	"csky_1\\states\\meet\\meet_hide_weapon_3",
+	"csky_1\\states\\meet\\meet_hide_weapon_4",
+	"csky_1\\states\\meet\\meet_use_no_weapon_1",
+	"csky_1\\states\\meet\\meet_use_no_weapon_4",
+	},
+[11] = --"csky_muffled"
+	{
+	"csky_3\\states\\meet\\meet_hide_weapon_1",
+	"csky_3\\states\\meet\\meet_hide_weapon_3",
+	"csky_3\\states\\meet\\meet_hide_weapon_4",
+	"csky_3\\states\\meet\\meet_use_no_weapon_1",
+	"csky_3\\states\\meet\\meet_use_no_weapon_4",
+	},
+	
+[12] = --"dolg"
+	{
+	"dolg_1\\threat\\drop_weapon\\dropweapon_2",
+	"dolg_1\\threat\\drop_weapon\\dropweapon_3",
+	"dolg_1\\threat\\drop_weapon\\dropweapon_4",
+	"dolg_1\\threat\\drop_weapon\\dropweapon_5",
+	"dolg_1\\threat\\drop_weapon\\dropweapon_6",
+	"dolg_1\\states\\meet\\meet_use_no_weapon_3",
+	"dolg_1\\states\\meet\\meet_hide_weapon_2",
+	"dolg_1\\states\\meet\\meet_hide_weapon_3",
+	},
+[13] = --"dolg_muffled"
+	{
+	"dolg_3\\threat\\drop_weapon\\dropweapon_2",
+	"dolg_3\\threat\\drop_weapon\\dropweapon_3",
+	"dolg_3\\threat\\drop_weapon\\dropweapon_4",
+	"dolg_3\\threat\\drop_weapon\\dropweapon_5",
+	"dolg_3\\threat\\drop_weapon\\dropweapon_6",
+	"dolg_3\\states\\meet\\meet_use_no_weapon_4",
+	"dolg_3\\states\\meet\\meet_hide_weapon_2",
+	"dolg_3\\states\\meet\\meet_hide_weapon_3",
+	"dolg_3\\states\\meet\\meet_hide_weapon_4",
+	},
+	
+	
+[14] = --"ecolog"
+	{
+	"ecolog_1\\threat\\drop_weapon\\dropweapon_1",
+	"ecolog_1\\threat\\drop_weapon\\dropweapon_2",
+	"ecolog_1\\threat\\drop_weapon\\dropweapon_3",
+	"ecolog_1\\threat\\drop_weapon\\dropweapon_4",
+	"ecolog_1\\threat\\drop_weapon\\dropweapon_5",
+	"ecolog_1\\states\\meet\\meet_use_no_weapon_3",
+	"ecolog_1\\states\\meet\\meet_hide_weapon_1",
+	"ecolog_1\\states\\meet\\meet_hide_weapon_3",
+	},
+[15] = --"ecolog_muffled"
+	{
+	"ecolog_3\\threat\\drop_weapon\\dropweapon_1",
+	"ecolog_3\\threat\\drop_weapon\\dropweapon_2",
+	"ecolog_3\\threat\\drop_weapon\\dropweapon_3",
+	"ecolog_3\\threat\\drop_weapon\\dropweapon_4",
+	"ecolog_3\\threat\\drop_weapon\\dropweapon_5",
+	"ecolog_3\\threat\\drop_weapon\\dropweapon_6",
+	"ecolog_3\\states\\meet\\meet_use_no_weapon_3",
+	"ecolog_3\\states\\meet\\meet_hide_weapon_1",
+	"ecolog_3\\states\\meet\\meet_hide_weapon_2",
+	"ecolog_3\\states\\meet\\meet_hide_weapon_3",
+	"ecolog_3\\states\\meet\\meet_hide_weapon_5",
+	"ecolog_3\\states\\meet\\meet_hide_weapon_6",
+	},
+	
+	
+[16] = --"freedom"
+	{
+	"freedom_1\\threat\\drop_weapon\\dropweapon_1",
+	"freedom_1\\threat\\drop_weapon\\dropweapon_3",
+	"freedom_1\\threat\\drop_weapon\\dropweapon_4",
+	"freedom_1\\threat\\drop_weapon\\dropweapon_5",
+	"freedom_1\\threat\\drop_weapon\\dropweapon_6",
+	"freedom_1\\threat\\drop_weapon\\dropweapon_7",
+	"freedom_1\\states\\meet\\meet_use_no_weapon_2",
+	"freedom_1\\states\\meet\\meet_use_no_weapon_4",
+	"freedom_1\\states\\meet\\meet_hide_weapon_12",
+	"freedom_1\\states\\meet\\meet_hide_weapon_13",
+	},
+[17] = --"freedom_muffled"
+	{
+	"freedom_3\\threat\\drop_weapon\\dropweapon_1",
+	"freedom_3\\threat\\drop_weapon\\dropweapon_3",
+	"freedom_3\\threat\\drop_weapon\\dropweapon_4",
+	"freedom_3\\threat\\drop_weapon\\dropweapon_5",
+	"freedom_3\\threat\\drop_weapon\\dropweapon_6",
+	"freedom_3\\threat\\drop_weapon\\dropweapon_7",
+	"freedom_3\\states\\meet\\meet_use_no_weapon_2",
+	"freedom_3\\states\\meet\\meet_use_no_weapon_4",
+	"freedom_3\\states\\meet\\meet_hide_weapon_12",
+	"freedom_3\\states\\meet\\meet_hide_weapon_13",
+	},
+	
+[18] = --"greh"
+	{
+	"greh_1\\threat\\drop_weapon\\dropweapon_2",
+	"greh_1\\threat\\drop_weapon\\dropweapon_3",
+	"greh_1\\threat\\drop_weapon\\dropweapon_4",
+	"greh_1\\threat\\drop_weapon\\dropweapon_5",
+	"greh_1\\threat\\drop_weapon\\dropweapon_7",
+	"greh_1\\threat\\drop_weapon\\dropweapon_9",
+	},
+[19] = --"greh_muffled"
+	{
+	"greh_3\\threat\\drop_weapon\\dropweapon_2",
+	"greh_3\\threat\\drop_weapon\\dropweapon_3",
+	"greh_3\\threat\\drop_weapon\\dropweapon_4",
+	"greh_3\\threat\\drop_weapon\\dropweapon_5",
+	"greh_3\\threat\\drop_weapon\\dropweapon_7",
+	},
+	
+[20] = --"military"
+	{
+	"military_1\\states\\meet\\meet_hide_weapon_1",
+	"military_1\\states\\meet\\meet_hide_weapon_2",
+	"military_1\\states\\meet\\meet_hide_weapon_3",
+	"military_1\\states\\meet\\meet_use_no_weapon_3",
+	"military_1\\fight\\searching_enemy\\search_1",
+	},
+[21] = --"military_muffled"
+	{
+	"military_3\\states\\meet\\meet_hide_weapon_1",
+	"military_3\\states\\meet\\meet_hide_weapon_2",
+	"military_3\\states\\meet\\meet_hide_weapon_3",
+	"military_3\\states\\meet\\meet_use_no_weapon_3",
+	"military_3\\fight\\searching_enemy\\search_1",
+	},
+
+	
+[22] = --"monolith_random_speeches"
+	{
+	"monolith_3\\states\\loot\\loot_begin_2",
+	"monolith_3\\states\\loot\\loot_begin_3",
+	"monolith_3\\states\\loot\\loot_good_1",
+	"monolith_3\\states\\loot\\loot_good_2",
+	"monolith_3\\states\\loot\\loot_good_3",
+	"monolith_3\\states\\idle\\idle_1",
+	"monolith_3\\states\\idle\\idle_5",
+	"monolith_3\\states\\idle\\idle_6",
+	"monolith_3\\states\\idle\\idle_7",
+	"monolith_3\\states\\idle\\idle_9",
+	"monolith_3\\states\\idle\\idle_10",
+	"monolith_3\\states\\idle\\idle_11",
+	"monolith_3\\states\\idle\\idle_12",
+	"monolith_3\\states\\idle\\idle_14",
+	"monolith_3\\states\\idle\\idle_17",
+	"monolith_3\\states\\idle\\idle_19",
+	"monolith_3\\states\\idle\\idle_20",
+	"monolith_3\\help\\wounded\\kill_wounded_2",
+	"monolith_3\\fight\\threat\\threat_close_4",
+	"monolith_3\\fight\\threat\\threat_distant_2",
+	"monolith_3\\fight\\attack\\attack_2",
+	"monolith_3\\fight\\backup\\backup_5",
+	},
+	
+[23] = --"Custom"   Put your custom sounds paths here. The folder structure is sounds\\characters_voice\\human\\is_custom\\your_sound_name. Will need to be in the correct format to work ( .ogg 44100hz). Audacity and Google can help.
+	{
+	"is_custom\\dude_getdown",
+	"is_custom\\dude_getdownifyoudont",
+	},
+
+[24] = --"None"
+	{
+	"monolith_3\\threat\\drop_weapon\\dropweapon_1",
+	},
+	
+}
+
+
+
+local surrender_voice_lines =
+{
+ 	["stalker"] = 
+	{
+	"stalker_1\\states\\panic_human\\panic_human_3",
+	"stalker_1\\states\\panic_human\\panic_human_4",
+	"stalker_1\\states\\panic_human\\panic_human_5",
+	"stalker_1\\states\\panic_human\\panic_human_6",
+	"stalker_1\\states\\panic_human\\panic_human_7",
+	},
+	
+	["bandit"] = 
+	{
+	"bandit_1\\states\\panic_human\\panic_human_1",
+	"bandit_1\\states\\panic_human\\panic_human_3",
+	"bandit_1\\states\\panic_human\\panic_human_4",
+	"bandit_1\\states\\panic_human\\panic_human_6",
+	"bandit_1\\states\\panic_human\\panic_human_7",
+	"bandit_1\\states\\panic_human\\panic_human_8",
+	"bandit_2\\states\\panic_human\\panic_human_1",
+	"bandit_2\\states\\panic_human\\panic_human_2",
+	"bandit_2\\states\\panic_human\\panic_human_3",
+	"bandit_2\\states\\panic_human\\panic_human_4",
+	},
+	
+	["army"] = 
+	{
+	"military_1\\states\\panic_human\\panic_human_1",
+	"military_1\\states\\panic_human\\panic_human_2",
+	"military_1\\states\\panic_human\\panic_human_6",
+	},
+	
+	["csky"] = 
+	{
+	"csky_1\\states\\panic_human\\panic_human_4",
+	"csky_1\\states\\panic_human\\panic_human_5",
+	"csky_1\\states\\panic_human\\panic_human_6",
+	"csky_1\\states\\panic_human\\panic_human_7",
+	},
+	
+	["freedom"] = 
+	{
+	"freedom_1\\states\\panic_human\\panic_human_1",
+	"freedom_1\\states\\panic_human\\panic_human_2",
+	"freedom_1\\states\\panic_human\\panic_human_3",
+	"freedom_1\\states\\panic_human\\panic_human_4",
+	},
+	
+	["dolg"] = 
+	{
+	"dolg_1\\states\\panic_human\\panic_human_1",
+	"dolg_1\\states\\panic_human\\panic_human_2",
+	"dolg_1\\states\\panic_human\\panic_human_4",
+	},
+	
+	["ecolog"] = 
+	{
+	"ecolog_1\\states\\panic_human\\panic_human_1",
+	"ecolog_1\\states\\panic_human\\panic_human_2",
+	"ecolog_1\\states\\panic_human\\panic_human_3",
+	"ecolog_1\\states\\panic_human\\panic_human_4",
+	"ecolog_1\\states\\panic_human\\panic_human_5",
+	},
+	
+	["killer"] = 
+	{
+	"killer_1\\fight\\attack\\attack_9",
+	"killer_1\\fight\\friendly_fire\\friendly_fire_2",
+	"killer_1\\fight\\friendly_fire\\friendly_fire_3",
+	"killer_1\\fight\\friendly_fire\\friendly_fire_4",
+	"killer_1\\fight\\friendly_grenade\\friendly_grenade_2",
+	"killer_1\\fight\\friendly_grenade\\friendly_grenade_3",
+	},
+	
+	["renegade"] = 
+	{
+	"bandit_1\\states\\panic_human\\panic_human_1",
+	"bandit_1\\states\\panic_human\\panic_human_3",
+	"bandit_1\\states\\panic_human\\panic_human_4",
+	"bandit_1\\states\\panic_human\\panic_human_6",
+	"bandit_1\\states\\panic_human\\panic_human_7",
+	"bandit_1\\states\\panic_human\\panic_human_8",
+	"bandit_2\\states\\panic_human\\panic_human_1",
+	"bandit_2\\states\\panic_human\\panic_human_2",
+	"bandit_2\\states\\panic_human\\panic_human_3",
+	"bandit_2\\states\\panic_human\\panic_human_4",
+	},
+	
+	["greh"] = 
+	{
+	"greh_1\\states\\panic_human\\panic_human_1",
+	"greh_1\\states\\panic_human\\panic_human_2",
+	"greh_1\\states\\panic_human\\panic_human_3",
+	"greh_1\\states\\panic_human\\panic_human_4",
+	},
+	
+	["isg"] = 
+	{
+	"killer_1\\fight\\attack\\attack_9",
+	"killer_1\\fight\\friendly_fire\\friendly_fire_2",
+	"killer_1\\fight\\friendly_fire\\friendly_fire_3",
+	"killer_1\\fight\\friendly_fire\\friendly_fire_4",
+	"killer_1\\fight\\friendly_grenade\\friendly_grenade_2",
+	"killer_1\\fight\\friendly_grenade\\friendly_grenade_3",
+	},
+	
+}
+
+local refusal_voice_lines =
+{
+ 	["stalker"] = 
+	{
+	"stalker_1\\states\\panic_monster\\panic_monster_2",
+	"stalker_1\\talk\\use\\no_fight_5",
+	"stalker_1\\talk\\use\\abuse_3",
+	"stalker_1\\fight\\threat\\threat_distant_4",
+	},
+	
+	["bandit"] = 
+	{
+	"bandit_1\\states\\panic_monster\\panic_monster_1",
+	"bandit_1\\states\\meet\\meet_use_no_fight_1",
+	"bandit_2\\states\\meet\\meet_use_no_fight_1",
+	"bandit_1\\states\\meet\\meet_use_no_default_3",
+	"bandit_1\\fight\\friendly_fire\\friendly_fire_1",
+	"bandit_1\\fight\\friendly_fire\\friendly_fire_2",
+	"bandit_1\\fight\\friendly_fire\\friendly_fire_3",
+	"bandit_1\\fight\\friendly_fire\\friendly_fire_4",
+	"bandit_1\\fight\\friendly_fire\\friendly_fire_5",
+	},
+	
+	["army"] = 
+	{
+	"military_1\\states\\panic_monster\\panic_monster_2",
+	"military_1\\states\\meet\\meet_use_no_fight_2",
+	"military_1\\states\\meet\\meet_use_no_fight_3",
+	"military_1\\fight\\threat\\threat_distant_3",
+	"military_1\\fight\\threat\\threat_distant_4",
+	},
+	
+	["csky"] = 
+	{
+	"csky_1\\states\\panic_monster\\panic_monster_2",
+	"csky_1\\states\\panic_monster\\panic_monster_3",
+	"csky_1\\fight\\threat\\threat_distant_5",
+	"csky_1\\fight\\threat\\threat_close_1",
+	"csky_1\\talk\\use\\abuse_2",
+	"csky_1\\talk\\use\\abuse_3",
+	},
+	
+	["freedom"] = 
+	{
+	"freedom_1\\states\\meet\\meet_use_no_fight_1",
+	"freedom_1\\states\\meet\\meet_use_no_fight_2",
+	"freedom_1\\states\\meet\\meet_use_no_fight_4",
+	"freedom_1\\states\\meet\\meet_use_no_fight_5",
+	"freedom_1\\talk\\use\\abuse_1",
+	"freedom_1\\talk\\use\\abuse_3",
+	"freedom_1\\talk\\use\\abuse_4",
+	},
+	
+	["dolg"] = 
+	{
+	"dolg_1\\states\\panic_monster\\panic_monster_5",
+	"dolg_1\\talk\\use\\abuse_1",
+	"dolg_1\\talk\\use\\abuse_2",
+	},
+	
+	["ecolog"] = 
+	{
+	"ecolog_1\\states\\panic_monster\\panic_monster_1",
+	"ecolog_1\\states\\panic_monster\\panic_monster_4",
+	"ecolog_1\\states\\meet\\meet_use_no_fight_4",
+	"ecolog_1\\talk\\use\\abuse_2",
+	"ecolog_1\\talk\\use\\abuse_3",
+	},
+	
+	["killer"] = 
+	{
+	"killer_1\\fight\\attack\\attack_10",
+	"killer_1\\fight\\friendly_fire\\script_attack_8",
+	"killer_1\\fight\\friendly_fire\\friendly_fire_2",
+	"killer_1\\fight\\friendly_fire\\friendly_fire_3",
+	"killer_1\\fight\\friendly_grenade\\friendly_grenade_1",
+	"killer_1\\fight\\friendly_grenade\\friendly_grenade_4",
+	},
+	
+	["renegade"] = 
+	{
+	"bandit_1\\states\\panic_monster\\panic_monster_1",
+	"bandit_1\\states\\meet\\meet_use_no_fight_1",
+	"bandit_2\\states\\meet\\meet_use_no_fight_1",
+	"bandit_1\\states\\meet\\meet_use_no_default_3",
+	"bandit_1\\fight\\friendly_fire\\friendly_fire_1",
+	"bandit_1\\fight\\friendly_fire\\friendly_fire_2",
+	"bandit_1\\fight\\friendly_fire\\friendly_fire_3",
+	"bandit_1\\fight\\friendly_fire\\friendly_fire_4",
+	"bandit_1\\fight\\friendly_fire\\friendly_fire_5",
+	},
+	
+	["greh"] = 
+	{
+	"greh_1\\states\\meet\\meet_hide_weapon_6",
+	"greh_1\\states\\meet\\meet_hide_weapon_8",
+	"greh_1\\states\\meet\\meet_use_no_fight_5",
+	"greh_1\\states\\meet\\meet_use_no_talk_leader_2",
+	},
+	
+	["isg"] = 
+	{
+	"killer_1\\fight\\attack\\attack_10",
+	"killer_1\\fight\\friendly_fire\\script_attack_8",
+	"killer_1\\fight\\friendly_fire\\friendly_fire_2",
+	"killer_1\\fight\\friendly_fire\\friendly_fire_3",
+	"killer_1\\fight\\friendly_grenade\\friendly_grenade_1",
+	"killer_1\\fight\\friendly_grenade\\friendly_grenade_4",
+	},
+}
+
+
+--this is such a mess, how do i even test it properly?
+
+
+_intimidation_surrendered_npcs = {}
+
+
+		function CheckFactionRelation(npc)
+			if (game_relations.is_factions_enemies(get_actor_true_community(), npc:character_community())) then
+				return "enemy"
+			elseif (game_relations.is_factions_neutrals(get_actor_true_community(), npc:character_community())) then
+				return "neutral"
+			elseif (game_relations.is_factions_friends(get_actor_true_community(), npc:character_community())) then
+				return "friend"
+			else
+				actor_menu.set_msg(1,"Error: npc's relation to actor doesn't match friend, neutral or enemy",10)
+				return "unknown"
+			end
+		end
+		
+		function PlayIntimidationVoice()
+			local intimidationstring = "characters_voice\\human\\".. intimidation_voice_lines[intimidation_voice][math.random(1,#intimidation_voice_lines[intimidation_voice])]
+			--actor_menu.set_msg(1,intimidationstring,10) --voice lines debug
+			snd_obj = xr_sound.get_safe_sound_object(intimidationstring)
+			snd_obj:play_at_pos(db.actor, vector():set(0,0,0), 0, sound_object.s2d)
+		end
+		
+		function PlaySurrenderVoice(surrendered,npc)
+			local comm = npc:character_community()
+			if enemy_response_enabled then
+				if surrendered then
+                    local surrender_sound = surrender_voice_lines[comm][math.random(1,#surrender_voice_lines[comm])]
+                    if not surrender_sound then return nil end
+					sound_object("characters_voice\\human\\".. surrender_sound):play_no_feedback(npc, sound_object.s3d, 0, npc:position(), 1, 1)
+				else
+                    local refusal_sound = refusal_voice_lines[comm][math.random(1,#surrender_voice_lines[comm])]
+                    if not refusal_sound then return nil end
+					sound_object("characters_voice\\human\\".. refusal_sound):play_no_feedback(npc, sound_object.s3d, 0, npc:position(), 1, 1)
+				end
+			end
+		end
+		
+		function DelayedSurrender(bool,id)
+			_intimidation_surrendered_npcs[id] = {result = bool, activate_at = time_global() + intimidation_delay, timed = true}
+		end
+		
+		function SurrenderNPC(npc,bool)
+			if bool then
+				npc.health = 0.1
+				db.storage[npc:id()].victim_surrender = 0											 --65535  --AC_ID--
+				state_mgr.set_state(npc,"prisoner",nil,nil,nil,{fast_set = true})
+			end
+			PlaySurrenderVoice(bool,npc)
+		end
+		
+
+	
+--using actor_on_update for npcs because it does less updates per period of time, and i don't need high accuracy. there's probably a better callback for this, but right now the one i got is enough.
+function actor_on_update()
+	for npc_id, data in pairs(_intimidation_surrendered_npcs) do
+		if data.timed then
+			local npc = level.object_by_id(npc_id)
+			if npc and IsStalker(npc) and npc:alive() then
+				if data.activate_at < time_global() then
+					data.timed = false
+					SurrenderNPC(npc,data.result)
+				end
+			else
+				_intimidation_surrendered_npcs[npc_id] = nil
+			end
+		end
+	end
+end
+		
+
+function onkey_release(key)
+	local obj
+	local npc_r
+	local relation
+	local bind = dik_to_bind(key)
+	local rnum = 100
+	local active_item = db.actor:active_item()
+	local final_chance_to_intimidate = base_chance_to_intimidate
+	local snd_obj
+	
+	if bind == key_bindings.kUSE then
+	
+		--check if player is aiming down sights with a weapon
+		if (active_item and IsWeapon(active_item) and axr_main.weapon_is_zoomed) then
+	
+			obj = level.get_target_obj()
+			--check if object is stalker, alive, not wounded and within intimidation distance
+			if obj and IsStalker(nil,obj:clsid()) and obj:alive() and not obj:wounded() and (distance_between(db.actor,obj) <= max_intimidation_distance) then
+				
+				--check if the object is already in the list
+				if _intimidation_surrendered_npcs[obj:id()] then
+					
+					if _intimidation_surrendered_npcs[obj:id()].result == false then
+						--play intimidation and refusal voice line
+						-- PlayIntimidationVoice()
+						
+						DelayedSurrender(false,obj:id())
+					end
+				
+				--monolith\zombie check. they never surrender and check the list of surrender factions from xrs_kill_wounded.ltx
+				elseif (not (character_community(obj) == "zombied" or character_community(obj) == "monolith")) and cause_surrender_communities[character_community(obj)] then
+
+					--enemy check
+			
+					relation = CheckFactionRelation(obj)
+				
+					if relation == "enemy" then							
+					
+					
+						--drop disguise
+						if gameplay_disguise.is_actor_disguised() then
+							gameplay_disguise.expose_actor(obj, character_community(obj), true)
+						end
+						
+						--play scream
+						PlayIntimidationVoice()
+						
+						--isolation from friends check
+						--kinda important to do because it looks stupid when you can make a person surrender to you while they are among a group of like 20 of their friends.
+						--but i'm not sure if i can do it in a well optimized way. is this good enough?
+						if (isolation_enabled) then
+							for i in pairs(db.OnlineStalkers) do
+								local npcid = db.OnlineStalkers[i]
+								local npc = level.object_by_id(npcid)
+								if npc and IsStalker(npc) and npc:alive() then
+									--check if npc is in range
+									if distance_between(npc,obj) <= minimal_isolation_distance then						--if npc:see(db.actor) then   --db.actor:see(npc) --npc_in_actor_frustrum(npc) --xr_conditions
+										--check if they are of the same community
+										if character_community(npc) == character_community(obj) then
+											--remove intimidation points because target's friends are around
+											final_chance_to_intimidate = final_chance_to_intimidate - isolation_penalty
+										elseif game_relations.is_factions_enemies(npc:character_community(), obj:character_community())  then
+											--add intimidation points because target's enemies are around
+											final_chance_to_intimidate = final_chance_to_intimidate + isolation_bonus
+										end
+									end
+								end
+							end	
+						end
+					
+						
+						--see check. add bonus but drop stealth after scream
+						if not obj:see(db.actor) then
+							--if enemy couldn't see you, hit them to make them notice you (because you are fucking screaming at them and they should know about it)
+								h = hit()
+								h.type = hit.fire_wound
+								h.power = 0.0
+								h.impulse = 0.0
+								h.direction = VEC_Y
+								h.draftsman = db.actor
+								obj:hit(h)
+							
+							final_chance_to_intimidate = final_chance_to_intimidate + sneak_bonus
+						end
+						
+						
+						--health check
+						if obj.health <= 0.5 then
+							final_chance_to_intimidate = final_chance_to_intimidate + low_health_bonus
+						end
+						
+						--rank power
+							final_chance_to_intimidate = final_chance_to_intimidate - rank_bravery[ranks.get_obj_rank_name(obj)]
+						
+						
+						
+						
+						
+						--random
+						rnum = math.random(1,100)
+						
+						
+						--intimidation success
+						if rnum < final_chance_to_intimidate then
+							
+							--actor_menu.set_msg(1,rnum .. " " .. final_chance_to_intimidate,10)
+							--save_var(obj,"victim_surrender",true)
+							
+							DelayedSurrender(true,obj:id())
+							
+						--intimidation failure
+						else
+							DelayedSurrender(false,obj:id())
+							
+						end
+						
+					end
+				end
+			end
+		end
+	end
+end	
+
+function on_game_start()
+	RegisterScriptCallback("on_key_release",onkey_release)
+	RegisterScriptCallback("actor_on_update",actor_on_update)
+	RegisterScriptCallback("on_option_change", loadsettings)  --MCM sends the same callback as ui_options
+	loadsettings()
+end
+
+--maybe also make enemies stand up if you kill one of already surrendered friends near them
+--probably too much effort to be worth it.
+

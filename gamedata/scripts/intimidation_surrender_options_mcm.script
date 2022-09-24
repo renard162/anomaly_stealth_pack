@@ -1,0 +1,45 @@
+function get_config(option)
+	if ui_mcm then return ui_mcm.get("intimidation_surrender/"..option) end
+end
+
+function on_mcm_load()
+	op = { id= "intimidation_surrender",sh=true ,gr={
+			{id = "title",type= "slide",link= "ui_options_slider_player",text="ui_mcm_intimidation_surrender_title",size = {512,50}, spacing = 20 },
+			{id = "int_calc_descr", type = "desc", text = "ui_mcm_intimidation_surrender_int_calc_descr_text", val = 0},
+			{id = "line", type = "line"},
+			{id = "base_chance_to_intimidate", type = "input", val = 2, def = 100, min = 0, max = 1000},
+			{id = "max_intimidation_distance", type = "input", val = 2, def = 5, min = 0, max = 100},
+			{id = "low_health_bonus", type = "input", val = 2, def = 50, min = 0, max = 100},
+			{id = "sneak_bonus", type = "input", val = 2, def = 45, min = 0, max = 100},
+			{id = "enemy_response_enabled", type = "check", val = 1, def = true},
+			{id = "intimidation_voice", type= "list", val = 2, def = 13, content = {{0,"is_stalker_1"}, {1,"is_stalker_1_muffled"}, {2,"is_stalker_2"}, {3,"is_stalker_2_muffled"}, {4,"is_build"}, {5,"is_build_muffled"}, {6,"is_bandit_1"}, {7,"is_bandit_1_muffled"}, {8,"is_bandit_2"}, {9,"is_bandit_2_muffled"}, {10,"is_csky"}, {11,"is_csky_muffled"}, {12,"is_dolg"}, {13,"is_dolg_muffled"}, {14,"is_ecolog"}, {15,"is_ecolog_muffled"}, {16,"is_freedom"}, {17,"is_freedom_muffled"}, {18,"is_greh"}, {19,"is_greh_muffled"}, {20,"is_military"}, {21,"is_military_muffled"}, {22,"is_monolith_random_speeches"}, {23,"is_custom"}, {24,"is_none"}}, no_str= true},
+			{id = "intimidation_delay", type = "input", val = 2, def = 1000, min = 0, max = 10000},
+			{id = "line", type = "line"},
+			{id = "novice_bravery", type = "input", val = 2, def = 10, min = 0, max = 1000},
+			{id = "trainee_bravery", type = "input", val = 2, def = 20, min = 0, max = 1000},
+			{id = "experienced_bravery", type = "input", val = 2, def = 30, min = 0, max = 1000},
+			{id = "professional_bravery", type = "input", val = 2, def = 40, min = 0, max = 1000},
+			{id = "veteran_bravery", type = "input", val = 2, def = 50, min = 0, max = 1000},
+			{id = "expert_bravery", type = "input", val = 2, def = 60, min = 0, max = 1000},
+			{id = "master_bravery", type = "input", val = 2, def = 80, min = 0, max = 1000},
+			{id = "legend_bravery", type = "input", val = 2, def = 100, min = 0, max = 1000},
+			{id = "line", type = "line"},
+			{id = "isolation_enabled", type = "check", val = 1, def = true},
+			{id = "minimal_isolation_distance", type = "input", val = 2, def = 15, min = 0, max = 100},
+			{id = "isolation_bonus", type = "input", val = 2, def = 20, min = 0, max = 100},
+			{id = "isolation_penalty", type = "input", val = 2, def = 20, min = 0, max = 100},
+			{id = "line", type = "line", precondition = {npcconvert_active}}, --only show if mod is there
+			{id = "convert_descr", type = "desc", text = "ui_mcm_intimidation_surrender_convert_descr_text", val = 0, precondition = {npcconvert_active}}, --only show if mod is there
+			{id = "intimidation_surrender_bonus", type = "input", val = 2, def = 30, min = 0, max = 1000, precondition = {npcconvert_active}}, --only show if mod is there
+			{id = "attack_chance_override", type = "input", val = 2, def = 15, min = 0, max = 100, precondition = {npcconvert_active}}, --only show if mod is there
+		}
+	}
+
+	return op
+end
+
+function npcconvert_active()
+	if	npc_convert_dialog_options_mcm and npc_convert_dialog_options_mcm.intimidation_surrender_compatible then return true
+	else return false
+	end
+end

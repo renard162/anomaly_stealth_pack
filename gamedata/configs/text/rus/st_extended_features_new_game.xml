@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="st_cap_check_blackroad_mode">
+		<text>«Чёрная дорога»</text>
+	</string>
+	<string id="st_mm_ck_blackroad_mode_desc">
+		<text>
+			%c[0,150,150,150]Кто я? Где я?\n
+			\nВ данном режиме вы появитесь в случайном небезопасном месте, в тёмное время суток и без снаряжения.\n
+			\nЭту опцию хорошо дополнят режимы «Одна жизнь», «Выживание» или сюжетный режим.\n
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Несовместимо с режимом «Война группировок».
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Несовместимо с режимом «Жизнь после жизни».
+		</text>
+	</string>
+	<string id="st_cap_check_treasurehunt_mode">
+		<text>«Охота за сокровищами»</text>
+	</string>
+	<string id="st_mm_ck_treasurehunt_mode_desc">
+		<text>
+			%c[0,150,150,150]Верните мне мой...\n
+			\nВ данном режиме снаряжение и предметы в не помеченных тайниках будут отсутствовать, как в «Тени Чернобыля», но зато содержимое отмеченных тайников станет более богатым.\n
+			\n%c[d_orange]• %c[0,150,150,150]Значительно усложняет игровой процесс в начале игры!
+		</text>
+	</string>
+	<string id="st_cap_check_fortuneswheel_mode">
+		<text>«Колесо Фортуны»</text>
+	</string>
+	<string id="st_mm_ck_fortuneswheel_mode_desc">
+		<text>
+			\n%c[0,150,150,150]В данном режиме вы отдаете свою судьбу на волю случая, Богине удачи - Фортуне. Время от времени, она будет приносить вам счастье и богатство или же наоборот боль и страдания.\n
+			\n%c[d_green]• %c[0,150,150,150]Совместим с любым режимом игры!
+		</text>
+	</string>
+	<string id="st_cap_list_fortuneswheel_interval">
+		<text>Интервал</text>
+	</string>
+	<string id="st_mm_list_fortuneswheel_interval_desc">
+		<text>
+			%c[0,150,150,150]Обязательная функция для режима «Колесо Фортуны», которая устанавливает интервал времени, по истечении которого Фортуна будет, каждый раз, определять вашу судьбу.
+			\n%c[200,200,50,50]• %c[0,150,150,150]Обязательно должен быть включен режим игры «Колесо Фортуны».
+		</text>
+	</string>
+	
+	<string id="st_achievement_25_name">
+		<text>«Тот самый STALKER...»</text>
+	</string>
+	<string id="st_achievement_25_hint">
+		<text>Сквозь огонь, воду и медные трубы...</text>
+	</string>
+	<string id="st_achievement_25_descr">
+		<text>ВЫ - ИСЧАДИЕ АДА!!! Вы единственный в этом мире, кто смог бросить вызов самой смерти и не остановиться ни перед чем, даже Ваша судьба склоняется к вашим ногам, лишь бы остаться в живых! Вы почувствовали, что тяжесть спала с сердца и что отныне ничего другого не остается, как благоденствовать. Поздравляем!</text>
+	</string>
+	<string id="st_achievement_25_unlock">
+		<text>Получено достижение «Тот самый STALKER...».</text>
+	</string>
+	<string id="ui_mm_prst_gameplay_hardcore">
+		<text>Хардкор</text>
+	</string>
+	<string id="ui_mm_prst_economy_suicide">
+		<text>Смертник</text>
+	</string>
+	
+	<string id="st_af_belial_name">
+		<text>Белиал</text>
+	</string>
+	<string id="st_af_belial_descr">
+		<text>Артефакт из самой преисподней!!! Вы первый, кому сам Дьявол решил подарить бессмертие! Теперь вас ничто не остановит и никто не сравниться с вами по силе. Сам же артефакт пронизывает всю вашу душу слабым голосом, а голос этот повторяет лишь одно слово и слово это... \n \nБЕЛИАЛ... \n \n</text>
+	</string>
+	
+	<string id="st_fortuneswheel_header">
+		<text>Таймер:</text>
+	</string>
+	<string id="st_fortuneswheel_gift_1">
+		<text>%c[orange]СРАБОТАЛО КОЛЕСО ФОРТУНЫ!%c[default] \n
+		- ЗДОРОВЬЕ %c[red]СНИЖЕНО!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_2">
+		<text>%c[orange]СРАБОТАЛО КОЛЕСО ФОРТУНЫ!%c[default] \n
+		- ВЫ %c[green]ИСЦЕЛЕНЫ!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_3">
+		<text>%c[orange]СРАБОТАЛО КОЛЕСО ФОРТУНЫ!%c[default] \n
+		- ДЕНЬГИ %c[red]УКРАДЕНЫ!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_4">
+		<text>%c[orange]СРАБОТАЛО КОЛЕСО ФОРТУНЫ!%c[default] \n
+		- ДЕНЬГИ %c[green]ВЫДАНЫ!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_5">
+		<text>%c[orange]СРАБОТАЛО КОЛЕСО ФОРТУНЫ!%c[default] \n
+		- ПРЕДМЕТЫ %c[red]УКРАДЕНЫ!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_6">
+		<text>%c[orange]СРАБОТАЛО КОЛЕСО ФОРТУНЫ!%c[default] \n
+		- ПРЕДМЕТЫ %c[green]ВЫДАНЫ!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_7">
+		<text>%c[orange]СРАБОТАЛО КОЛЕСО ФОРТУНЫ!%c[default] \n
+		- НЕПОДАЛЁКУ ПОЯВИЛИСЬ %c[red]ПРОТИВНИКИ!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_71">
+		<text>%c[orange]СРАБОТАЛО КОЛЕСО ФОРТУНЫ!%c[default] \n
+		- НЕПОДАЛЁКУ ПОЯВИЛИСЬ %c[red]МУТАНТЫ!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_8">
+		<text>%c[orange]СРАБОТАЛО КОЛЕСО ФОРТУНЫ!%c[default] \n
+		%c[red]- ВЫ ПОТЕРЯЛИ СОЗНАНИЕ!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_9">
+		<text>%c[orange]СРАБОТАЛО КОЛЕСО ФОРТУНЫ!%c[default] \n
+		%c[red]- ГРЯДЁТ НЕЧТО УЖАСНОЕ...
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_10">
+		<text>%c[orange]СРАБОТАЛО КОЛЕСО ФОРТУНЫ!%c[default] \n
+		- ВЫ %c[red]ПЬЯНЫ!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_11">
+		<text>%c[orange]СРАБОТАЛО КОЛЕСО ФОРТУНЫ!%c[default] \n
+		- СОСТОЯНИЕ СНАРЯЖЕНИЯ %c[green]УЛУЧШИЛОСЬ НА:
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_111">
+		<text>%c[orange]СРАБОТАЛО КОЛЕСО ФОРТУНЫ!%c[default] \n
+		- СОСТОЯНИЕ СНАРЯЖЕНИЯ %c[red]УХУДШИЛОСЬ НА:
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_12">
+		<text>%c[orange]СРАБОТАЛО КОЛЕСО ФОРТУНЫ! \n
+		%c[green]- ВЫДАНЫ КООРДИНАТЫ ТАЙНИКОВ В КОЛИЧЕСТВЕ:
+		</text>
+	</string>
+</string_table>

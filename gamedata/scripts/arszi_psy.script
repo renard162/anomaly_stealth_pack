@@ -1,0 +1,755 @@
+--STRESSFULL ZONE MOD v0.8.2----------------------------------------------
+
+--PPE SETTINGS------------------------------------------------------------
+local c_ppe_max_intensity = 0.5 --Max intensity of the sound shock PPE effect.
+
+local c_id_ppe_blur = 5600
+local c_id_ppe_black_infinite = 5606
+local c_id_ppe_snd_shock = 5607
+local c_id_ppe_radiation = 5608
+local c_id_ppe_alcohol = 5609
+
+local c_stage_default = -1
+local c_stage_0 = 0
+local c_stage_1 = 1
+local c_stage_2 = 2
+local c_stage_3 = 3
+
+--PSY-HEALTH SETTINGS------------------------------------------------------------
+local c_psy_health_regen_per_second = ( stress_mcm.get_config("regen") or 26 ) / 2160000						--base psy health regeneration per in-game second, when something comfortrting is affecting the stalker
+local c_psy_stress_drain_per_second = ( stress_mcm.get_config("drain") or 13 ) / 2160000						--psy health drain per in-game second, when stalker is out and about in the Zone
+local c_psy_health_regen_booster_divider = 25																	--psy health regeneration divider for medicines
+local c_psy_health_regen_artefacts_divider = 100																--psy health regeneration divider for artefacts and attachments
+local safe_distance_to_base = 35
+local danger_distance_static_anomaly = 18
+local fate_of_player_zombfication = false
+
+--PSY-HEALTH REGEN AT CAMPFIRES--------------------------------------------------
+local c_psy_health_regen_campfire_enabled = stress_mcm.get_config("campfire_enabled" ) or false
+local c_psy_health_regen_campfire_bonus = ( stress_mcm.get_config("campfire_regen" ) or 40 ) / 60000			--psy health regeneration bonus for campfire bonus
+local c_psy_health_regen_dist_to_campfire = stress_mcm.get_config("campfire_distance" ) or 15					--distance at which to apply campfire regen bonus
+
+--PSY-DAMAGE---------------------------------------------------------------------
+local c_psy_controler_damage_multiplier = ( stress_mcm.get_config("controler_damage_multiplier" ) or 40) / 100		--psy damage divider, to balace out controller attacks
+local c_controler_damage_max_distance = ( stress_mcm.get_config("controler_damage_max_distance" ) or 50)			--with every X meters, controller's tube attack will do 1% less damage. 100*X for max distance.
+local c_controler_damage_min_distance = 15
+local c_psy_hit_stress_multiplier = ( stress_mcm.get_config("hit_stress") or 2.8 ) / 100							--multiplier for stress on being hit
+local c_psy_wound_stress_multiplier = ( stress_mcm.get_config("wounded_stress") or 14 ) / 600000					--multiplier for stress drain from not being at full physical health
+
+--PSY-STATE CONTROLS--------------------------------------------------------------
+local c_psy_stage_1 = ( stress_mcm.get_config("stage_1") or 75 ) / 100											--psy health at which first effects of stress are visible
+local c_psy_stage_2 = ( stress_mcm.get_config("stage_2") or 50 ) / 100											--psy health at wichi sever effects of stress are present
+local c_psy_voices = ( stress_mcm.get_config("voices") or 80 ) / 100											--psy health at which stalker starts hearing voices, first alomost silently, than louder
+--config check-- c_psy_stage_2 shouldn't be highter than c_psy_stage_1
+c_psy_stage_2 = math.min(c_psy_stage_2, (c_psy_stage_1 - 0.01))
+
+--TABLES-------------------------------------------------------------------------
+local psy_table = {}
+local safe_bases = {}
+local level_static_anomaly = {}
+local musical_instrument_bonus = {
+    ["guitar_a"] = 1.33,
+    ["harmonica_a"] = 1.00,
+}
+local difficulty_controller_multiplier = {
+    [0] = 0.500, -- Great   |#hits[%](effect): 1[80](Whisper), 2[60](Stage 1), 3[40](Stage 2), 4[20](Stage 2), 5[0](Death)
+    [1] = 0.625, -- Good    |#hits[%](effect): 1[75](Stage 1), 2[50](Stage 2), 3[25](Stage 2), 4[0](Death)
+    [2] = 0.875, -- Average |#hits[%](effect): 1[65](Satge 1), 2[30](Stage 2), 3[0](Death)
+    [3] = 1.000, -- Poor    |#hits[%](effect): 1[60](Satge 1), 2[20](Stage 2), 3[0](Death)
+}
+
+--SOUND--------------------------------------------------------------------------
+local sound_zombified = sound_object("arszi_psy\\pripyat_whispers_final")
+local sound_psy_death_scene = sound_object("arszi_psy\\zombie_die_3")
+local c_sound_zombified_volume = 20
+local c_sound_psy_death_scene_volume = 30
+
+--MISC---------------------------------------------------------------------------
+local arszi_previous_time = nil
+local arszi_zombification_time_counter = 0
+local campfire_bonus = 1.33
+local safe_area_bonus = 1.13
+
+--FLAGS--------------------------------------------------------------------------
+local anomaly_close = false
+local nearby_lit_campfire = false
+local inside_safe_area = false
+local in_combat = false
+
+--DEBUG CONTROL------------------------------------------------------------------
+local debug_time = nil
+local debug_trigger_time = 60
+local debug_triggered = false
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------INITIALIZATIONS-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function on_game_start()
+
+    RegisterScriptCallback("actor_on_update", actor_on_update)
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+    RegisterScriptCallback("actor_on_before_hit", actor_on_before_hit)
+    RegisterScriptCallback("actor_on_feeling_anomaly", actor_on_feeling_anomaly)
+    RegisterScriptCallback("actor_on_item_use", actor_on_item_use)
+    RegisterScriptCallback("actor_on_sleep", actor_on_sleep)
+    RegisterScriptCallback("actor_on_hit_callback", actor_on_hit_callback)
+
+    RegisterScriptCallback("on_game_load", on_game_load)
+    RegisterScriptCallback("save_state", save_state)
+    RegisterScriptCallback("load_state", load_state)
+
+    RegisterScriptCallback("on_enemy_eval", on_enemy_eval)
+
+    RegisterScriptCallback("on_option_change", reinitialization)
+end
+
+
+function actor_on_feeling_anomaly(obj, flags)
+    --dynamic anomaly detection
+    anomaly_close = obj and true or false
+end
+
+
+function on_game_load()
+    if (not psy_table.actor_psy_health) then
+        set_psy_health(1.0)
+    end
+    if (not psy_table.actor_zombied) then
+        psy_table.actor_zombied = false
+    end
+    if (not psy_table.current_stage) then
+        psy_table.current_stage = c_stage_default
+    end
+end
+
+
+function actor_on_first_update()
+    arszi_previous_time = nil
+    psy_table.current_stage = c_stage_default
+    arszi_zombification_time_counter = 0
+
+    init_safe_bases()
+    init_static_anomaly_zones()
+end
+
+
+function save_state(m_data)
+    m_data.psy_table = psy_table
+end
+
+
+function load_state(m_data)
+    psy_table = m_data.psy_table or {}
+end
+
+
+function reinitialization()
+    --MCM configuration change
+    if ui_mcm then
+        c_psy_health_regen_per_second = ( stress_mcm.get_config("regen") or 26) / 2160000
+        c_psy_stress_drain_per_second = ( stress_mcm.get_config("drain") or 13) / 2160000
+        c_psy_health_regen_campfire_enabled = stress_mcm.get_config("campfire_enabled") or false
+        c_psy_health_regen_campfire_bonus = ( stress_mcm.get_config("campfire_regen") or 40 ) / 60000
+        c_psy_health_regen_dist_to_campfire = stress_mcm.get_config("campfire_distance") or 15
+        c_psy_controler_damage_multiplier = ( stress_mcm.get_config("controler_damage_multiplier") or 40) / 100
+        c_controler_damage_max_distance = ( stress_mcm.get_config("controler_damage_max_distance") or 50)
+        c_psy_hit_stress_multiplier = ( stress_mcm.get_config("hit_stress") or 2.8) / 100
+        c_psy_wound_stress_multiplier = ( stress_mcm.get_config("wounded_stress") or 14) / 600000
+        c_psy_stage_1 = ( stress_mcm.get_config("stage_1") or 75) / 100
+        c_psy_stage_2 = ( stress_mcm.get_config("stage_2") or 50) / 100
+        c_psy_voices = ( stress_mcm.get_config("voices") or 80) / 100
+
+        c_psy_stage_2 = math.min(c_psy_stage_2, (c_psy_stage_1 - 0.01))
+    end
+end
+
+
+function init_safe_bases()
+    --builds table of non-hostile stalker bases on current level
+    local player_faction = gameplay_disguise.get_default_comm()
+    local safe_factions = {}
+    safe_bases = {}
+
+    printdbg("# non-hostile factions: ")
+
+    for id, faction in pairs(game_relations.factions_table) do
+        local hostile = game_relations.is_factions_enemies(player_faction, faction)
+
+        if not hostile then
+            printdbg("%s ", faction)
+
+            table.insert(safe_factions, faction)
+        end
+    end
+
+    printdbg("# caching safe camps")
+
+    for id, smart in pairs(db.smart_terrain_by_id) do
+        if smart and smart.is_on_actor_level and smart.props.base > 0 then
+            local debug_line = ""
+            if DEV_DEBUG then
+                local debug_line = ""
+                debug_line = string.format("base name %s", smart:name())
+                debug_line = string.format("%s - all: %d", debug_line, smart.props.all)
+
+                for id, faction in pairs(game_relations.factions_table) do
+                    debug_line = string.format("%s / %s: %d", debug_line, faction, smart.props[faction])
+                end
+            end
+
+            local is_safe = smart.props.all ~= 0 or false
+
+            for id, faction in pairs(safe_factions) do
+                is_safe = is_safe or smart.props[faction] ~= 0
+            end
+
+            if is_safe then
+                if DEV_DEBUG then
+                    debug_line = string.format("base %s - is safe", debug_line)
+                    printf(debug_line)
+                end
+
+                table.insert(safe_bases, smart)
+            end
+        end
+    end
+
+end
+
+
+function init_static_anomaly_zones()
+    --builds table of static anomali zones on current level
+    printdbg("# caching anomalys zones")
+
+    for id, anomaly in pairs(db.anomaly_by_name) do
+        if anomaly and anomaly.object then
+            printdbg("static anomaly zone %s ", tostring(id))
+
+            table.insert(level_static_anomaly, anomaly)
+        end
+    end
+end
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------MAIN SCRIPTS--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function actor_on_update()
+
+    local curr_time = game.get_game_time()
+    if (arszi_previous_time == nil) then arszi_previous_time = curr_time end
+
+    time_delta = curr_time:diffSec(arszi_previous_time)
+
+    --used to maintain reasonable amount of logs entries in debug mode
+    if DEV_DEBUG then
+        --nested if, because it would be faster for non-debug mode.
+        if debug_time == nil or (curr_time:diffSec(debug_time) > debug_trigger_time) then
+            debug_triggered = true
+            debug_time = curr_time
+            printf(string.format("PSY HEALTH: %.4f; PROT: %.4f CHANGE: %.4e", psy_table.actor_psy_health, get_telepatic_protection_total(), get_psy_health_change()))
+        else
+            debug_triggered = false
+        end
+    end
+
+    if (time_delta >= 1) then
+        arszi_previous_time = curr_time
+
+        set_in_combat_flag()
+        set_nearby_lit_campfire_flag()
+        set_inside_safe_area_flag()
+
+        manage_psy_health(time_delta)
+
+        manage_ppe_effects()
+        manage_sound_effects()
+        manage_zombification()
+
+        manage_psy_bar()
+
+        reset_anomaly_close_flag()
+    end
+end
+
+
+function actor_on_item_use(obj)
+    if (obj and (obj:section() == "drug_anabiotic")) then
+        set_psy_health(1.0)
+    end
+end
+
+
+function on_enemy_eval(obj, enemy, flags)
+    --Psy death scene
+    if (psy_table.psy_death_scene and enemy:id() == db.actor:id()) then
+        flags.override = true
+        flags.result = false
+        return
+    end
+end
+
+
+function actor_on_before_hit(s_hit)
+    --override for Controller PSY attack
+    if (s_hit.type ~= 4) then return end
+    if (is_actor_zombied()) then
+        s_hit.power = 0
+        return
+    end
+    if (s_hit.draftsman and is_controller(s_hit.draftsman)) then
+        s_hit.power = get_controller_tube_damage(s_hit.draftsman:position(), s_hit.power)
+    end
+    local total_damage = ( s_hit.power - get_telepatic_protection_total() ) * c_psy_controler_damage_multiplier
+    total_damage = total_damage * (difficulty_controller_multiplier[level.get_game_difficulty()] or 1.0)
+    total_damage = clamp(total_damage, 0, s_hit.power)
+    set_psy_health(psy_table.actor_psy_health - total_damage)
+    s_hit.power = 0
+end
+
+
+function actor_on_hit_callback(obj, amount, local_direction, who, bone_id)
+    --Stress resulting from physical damage--------------------------
+    local c_psy_hit_stress = amount * c_psy_hit_stress_multiplier
+    set_psy_health(psy_table.actor_psy_health - c_psy_hit_stress)
+end
+
+
+function actor_on_sleep(hours)
+    --Regenerate Psy Health while sleeping
+    --Temprorary boosts and stresses are not considered
+    local psy_health_regen_while_slept = get_psy_health_regeneration() * 60 * 60 * hours
+    if inside_safe_area then
+        --Sleep in safe areas is considerable more efficient!
+        psy_health_regen_while_slept = psy_health_regen_while_slept * safe_area_bonus^2
+    end
+    set_psy_health(psy_table.actor_psy_health + psy_health_regen_while_slept)
+    arszi_previous_time = nil
+end
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------PPE EFFECTS AND SOUND-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function manage_ppe_effects()
+    --manage psy damage state changes and resulting UI/audio effects for non-zombified actor
+    if (psy_table.actor_psy_health >= c_psy_stage_1) then
+        if (psy_table.current_stage ~= c_stage_0) then
+            -- Entering Stage 0
+            remove_all_psy_ppe_effects()
+            psy_table.current_stage = c_stage_0
+        end
+    elseif (psy_table.actor_psy_health < c_psy_stage_1 and psy_table.actor_psy_health >= c_psy_stage_2) then
+        if (psy_table.current_stage ~= c_stage_1) then
+            -- Entering Stage 1
+            remove_all_psy_ppe_effects()
+            level.add_pp_effector("blur.ppe", c_id_ppe_blur, true)
+            psy_table.current_stage = c_stage_1
+        end
+    else
+        if (psy_table.current_stage ~= c_stage_2) then
+            -- Entering Stage 2
+            remove_all_psy_ppe_effects()
+            level.add_pp_effector("blur.ppe", c_id_ppe_blur, true)
+            level.add_pp_effector("snd_shock.ppe", c_id_ppe_snd_shock, true)
+            psy_table.current_stage = c_stage_2
+        end
+        level.set_pp_effector_factor(c_id_ppe_snd_shock, get_ppe_intensity())
+    end
+end
+
+
+function manage_zombification()
+    --Original community will be restored on load game always. Temp solution.
+    if (psy_table.actor_zombied and db.actor:character_community() ~= "actor_zombied") then
+        db.actor:set_character_community("actor_zombied", 0, 0)
+    end
+
+    --Add visual effects
+    if (psy_table.actor_zombied) then
+        --Todo why is alcohol not working!?
+        level.add_pp_effector("radiation.ppe", c_id_ppe_radiation, true)
+        level.add_pp_effector("alcohol.ppe", c_id_ppe_alcohol, true)
+    end
+
+    if (psy_table.actor_psy_health <= 0) then
+        --Death or Zombification
+        if (psy_table.current_stage ~= c_stage_3) then
+            -- Entering Stage 3 (death)
+            remove_all_psy_ppe_effects()
+            level.add_pp_effector("black_infinite.ppe", c_id_ppe_black_infinite, true)
+            psy_table.psy_death_scene = true
+            level.disable_input()
+            psy_table.current_stage = c_stage_3
+        end
+
+        arszi_zombification_time_counter = arszi_zombification_time_counter + 1
+        if (arszi_zombification_time_counter == 1) then
+            sound_psy_death_scene:play(db.actor, 0, sound_object.s2d)
+            sound_psy_death_scene.volume = c_sound_psy_death_scene_volume
+        end
+
+        if (arszi_zombification_time_counter == 25) then
+            if (fate_of_player_zombfication) then
+                -- Zombification
+                set_psy_health(1.0)
+                db.actor:set_character_community("actor_zombied", 0, 0)
+                psy_table.actor_zombied = true
+                show_message(game.translate_string("st_psy_zombification_scene"))
+            else
+                -- Suicide
+                if (not level_environment.is_actor_immune()) then
+                    db.actor:kill(db.actor)
+                end
+                remove_all_psy_ppe_effects()
+                show_message(game.translate_string("st_psy_death_scene"))
+            end
+
+            level.enable_input()
+            psy_table.psy_death_scene = nil
+        end
+    end
+end
+
+
+function manage_sound_effects()
+    if (psy_table.actor_zombied) then
+        if (not sound_zombified:playing()) then
+            sound_zombified:play(db.actor, 0, sound_object.s2d)
+        end
+        sound_zombified.volume = 7.5 * c_sound_zombified_volume
+    end
+
+    if (psy_table.actor_psy_health <= c_psy_voices) then
+        if (not sound_zombified:playing()) then
+            sound_zombified:play(db.actor, 0, sound_object.s2d)
+        end
+        --gradually increasing volume
+        local whisper_volume = math.max(10*(c_psy_voices - psy_table.actor_psy_health)/c_psy_voices, 1.0) * c_sound_zombified_volume
+        sound_zombified.volume = whisper_volume
+    end
+
+    if (not psy_table.actor_zombied and psy_table.actor_psy_health > c_psy_voices) then
+        if (sound_zombified:playing()) then
+            sound_zombified:stop()
+        end
+    end
+end
+
+
+function manage_psy_bar()
+    local conditions = db.actor:cast_Actor():conditions()
+    conditions:SetPsyBar(psy_table.actor_psy_health or 0)
+end
+
+
+function remove_all_psy_ppe_effects()
+    level.remove_pp_effector(c_id_ppe_blur)
+    level.remove_pp_effector(c_id_ppe_black_infinite)
+    level.remove_pp_effector(c_id_ppe_snd_shock)
+    level.remove_pp_effector(c_id_ppe_alcohol)
+end
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------PSI HEALTH------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function manage_psy_health(time_delta)
+    local new_psy_health = psy_table.actor_psy_health + (get_psy_health_change() * time_delta) + get_playing_music_bonus()
+    set_psy_health(new_psy_health)
+end
+
+
+function get_psy_health_change()
+    local psy_heal_campfire = (not in_combat) and get_nearby_lit_campfire_bonus() or 0
+    local psy_heal_booster = get_telepatic_protection_booster() / c_psy_health_regen_booster_divider
+    local psy_heal_artefacts = get_telepatic_protection_artefacts() / c_psy_health_regen_artefacts_divider
+    local psy_damage = get_psy_wound_stress() + (c_psy_stress_drain_per_second * get_stress_multiplier())
+    --psy regenaration works only together with active boosters or nearby a calm campfire.
+    --would be better to remove it and unify calcluation, but that would require rebalancing of all
+    --psy protecting items.
+    if (psy_heal_booster == 0) and (psy_heal_campfire == 0) then
+        return psy_heal_artefacts - psy_damage
+    else
+        return c_psy_health_regen_per_second + psy_heal_booster + psy_heal_campfire + psy_heal_artefacts - psy_damage
+    end
+end
+
+
+function get_playing_music_bonus()
+    if itms_manager.playing_instrument then
+        local music_psy_heal = c_psy_health_regen_campfire_bonus * itms_manager.playing_music_length * 75
+        local instrument_factor = musical_instrument_bonus[itms_manager.playing_instrument] or 1
+        local stress_factor = clamp((db.actor.health + psy_table.actor_psy_health) / (2 * math.max(get_stress_multiplier(), 1)), 0.25, 1.00)
+        music_psy_heal = music_psy_heal * instrument_factor
+        music_psy_heal = apply_area_and_campfire_bonus(music_psy_heal) * stress_factor
+
+        itms_manager.playing_instrument = nil
+        itms_manager.playing_music_length = 0
+
+        return music_psy_heal
+    end
+    return 0
+end
+
+
+function get_psy_health_regeneration()
+    local bonus_psy_heal_booster = get_telepatic_protection_booster() / c_psy_health_regen_booster_divider
+    local bonus_psy_heal_artefacts = get_telepatic_protection_artefacts() / c_psy_health_regen_artefacts_divider
+    local bonus_psy_heal_campfire = get_nearby_lit_campfire_bonus()
+    return c_psy_health_regen_per_second + bonus_psy_heal_booster + bonus_psy_heal_artefacts + bonus_psy_heal_campfire
+end
+
+
+function get_nearby_lit_campfire_bonus()
+    if not c_psy_health_regen_campfire_enabled then return 0 end
+    if nearby_lit_campfire then return c_psy_health_regen_campfire_bonus end
+    return 0
+end
+
+
+function get_psy_wound_stress()
+    local health_factor = math.min(2 * (1 - db.actor.health)^2, 1)
+    local bleed_factor = 1 + math.max(db.actor.bleeding, 0) * 4
+    local c_psy_wound_stress = c_psy_wound_stress_multiplier * health_factor * bleed_factor
+    return math.max(c_psy_wound_stress, 0)
+end
+
+
+function get_stress_multiplier()
+    local stress_multiplier = 1
+    local state_surface = not GetEvent("underground")
+    local state_safe_camp = state_surface and inside_safe_area
+    local state_emission_cover = state_surface and GetEvent("current_safe_cover")
+    local state_surge = state_surface and ( GetEvent("surge", "state") or GetEvent("psi_storm", "state") )
+    local state_anomaly_zone_close = is_anomaly_zone_close()
+
+    ------------------------------------------------------------------------------
+    if debug_triggered then
+        printf(string.format( "current states:" ))
+        printf(string.format( "%s / %s / %s / %s / %s / %s / %s |", state_emission_cover and "surge protected" or "no surge protection", state_surge and "surge ongoing" or "clear sky", state_surface and "on surface" or "underground", state_safe_camp and "in non-hostile camp" or "no camp", state_anomaly_zone_close and "inside static anomaly zone" or "no static anomaly zone", anomaly_close and "anomaly close" or "no anomalies", in_combat and "in combat" or "not fighting"))
+    end
+    ------------------------------------------------------------------------------
+
+    --calming conditions
+    if state_emission_cover then stress_multiplier                  = stress_multiplier - 1.25 end
+    if (not in_combat) and state_safe_camp then stress_multiplier   = stress_multiplier - 0.50 end
+    --stressfull conditions
+    if state_surge then stress_multiplier                           = stress_multiplier + 1.25 end
+    if not state_surface then stress_multiplier                     = stress_multiplier + 0.33 end
+    if state_anomaly_zone_close then tress_multiplier               = stress_multiplier + 0.50 end
+    if anomaly_close then stress_multiplier                         = stress_multiplier + 0.50 end
+    if in_combat then stress_multiplier                             = stress_multiplier + 0.66 end
+    stress_multiplier = stress_multiplier + (get_bleeding_level() * 0.66)
+    stress_multiplier = stress_multiplier + ((actor_status_sleep.get_sleep_deprivation(true) or 0) * 0.50)
+    stress_multiplier = stress_multiplier + ((actor_status_thirst.get_water_deprivation(true) or 0) * 0.20)
+    stress_multiplier = stress_multiplier + ((actor_status.get_satienty(true) or 0) * 0.20)
+
+    return math.max(stress_multiplier, 0)
+end
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------TELEPATIC PROTECTION------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function get_telepatic_protection_outfit()
+    local telepatic_protection = 0
+    local outfit = db.actor:item_in_slot(7)
+    if (outfit) then
+        local c_outfit = outfit:cast_CustomOutfit()
+        if (c_outfit) then
+            telepatic_protection = c_outfit:GetDefHitTypeProtection(HitTypeID["Telepatic"]) or 0
+        end
+    end
+    return telepatic_protection
+end
+
+
+function get_telepatic_protection_helmet()
+    local telepatic_protection = 0
+    local helm = db.actor:item_in_slot(12)
+    if (helm) then
+        local c_helm = helm:cast_Helmet()
+        if (c_helm) then
+            telepatic_protection = c_helm:GetDefHitTypeProtection(HitTypeID["Telepatic"]) or 0
+        end
+    end
+    return telepatic_protection
+end
+
+
+function get_telepatic_protection_artefacts()
+    local telepatic_protection = 0
+    db.actor:iterate_belt( function(owner, obj)
+        local cond = obj:condition()
+        local immunities_sec = SYS_GetParam(0,obj:section(),"hit_absorbation_sect")
+        telepatic_protection = telepatic_protection + ( cond * SYS_GetParam(2, immunities_sec, "telepatic_immunity", 0) )
+    end)
+    return telepatic_protection
+end
+
+
+function get_telepatic_protection_booster()
+    local telepatic_protection = 0
+    local booster_type_psi = 6
+    db.actor:cast_Actor():conditions():BoosterForEach( function(booster_type, booster_time, booster_value)
+        if (booster_type == booster_type_psi) then
+            telepatic_protection = booster_value
+        end
+    end)
+    telepatic_protection = apply_area_and_campfire_bonus(telepatic_protection)
+    return telepatic_protection
+end
+
+
+function get_telepatic_protection_total()
+    local psy_prot_outfit = get_telepatic_protection_outfit()
+    local psy_prot_helmet = get_telepatic_protection_helmet()
+    local psy_prot_artefacts = get_telepatic_protection_artefacts()
+    local psy_prot_booster = get_telepatic_protection_booster()
+    return psy_prot_outfit + psy_prot_helmet + psy_prot_artefacts + psy_prot_booster
+end
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------STATE VERIFICATION-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function set_nearby_lit_campfire_flag()
+    local campfire = bind_campfire.get_nearby_campfire(c_psy_health_regen_dist_to_campfire, true)
+    if campfire and campfire:is_on() then
+        if nearby_lit_campfire then return end
+        nearby_lit_campfire = true
+        return
+    end
+    if nearby_lit_campfire then
+        nearby_lit_campfire = false
+    end
+end
+
+
+function set_inside_safe_area_flag()
+    if debug_triggered then printf(string.format("safe bases")) end
+    for id, base in pairs(safe_bases) do
+        if debug_triggered then printf(string.format("safe base: %s, distance %.2f", base:name(), base.dist_to_actor or 9999)) end
+        if base and base.dist_to_actor and base.dist_to_actor < safe_distance_to_base then
+            if debug_triggered then printf(string.format("actor inside: %s", base:name(), base.dist_to_actor)) end
+            if inside_safe_area then return end
+            inside_safe_area = true
+            return
+        end
+    end
+    if inside_safe_area then
+        inside_safe_area = false
+    end
+end
+
+
+function set_in_combat_flag()
+    in_combat = (not (is_empty(xr_combat_ignore.fighting_with_actor_npcs))) or false
+end
+
+
+function reset_anomaly_close_flag()
+    anomaly_close = false
+end
+
+
+function is_anomaly_zone_close()
+    if debug_triggered then printf(string.format("local anomalous zones")) end
+
+    local actor_position = db.actor:position()
+
+    for id, static_anomaly in pairs(level_static_anomaly) do
+
+        local zone_distance = static_anomaly.object:position() and get_distance(actor_position, static_anomaly.object:position()) or nil
+        if debug_triggered and actor_position and zone_distance then printf(string.format("static anomaly: %s, distance %.2f", static_anomaly.object:name(), zone_distance )) end
+
+        if static_anomaly and zone_distance and zone_distance < danger_distance_static_anomaly then
+            if debug_triggered then printf(string.format("actor inside static anomaly: %s, distance %.2f, anomaly_close flag: %s", static_anomaly.object:name(), zone_distance, tostring(anomaly_close) )) end
+            return true
+        end
+    end
+    return false
+end
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------UTILITY/MISC METHODS-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function apply_area_and_campfire_bonus(psy_heal)
+    -- Calming areas provides bonuses to psy health restoration
+    if not psy_heal then return 0 end
+    if nearby_lit_campfire then
+        psy_heal = psy_heal * campfire_bonus
+    end
+    if inside_safe_area then
+        psy_heal = psy_heal * safe_area_bonus
+    end
+    return psy_heal
+end
+
+
+function get_bleeding_level()
+    -- 0.01 to ignore factor if it's just a scratch
+	if db.actor.bleeding and db.actor.bleeding > 0.01 then
+		return clamp(math.ceil(db.actor.bleeding * 4) + 1, 1, 4)
+	end
+	return 0
+end
+
+
+function get_ppe_intensity()
+    local health_factor = 1 - psy_table.actor_psy_health
+    return health_factor * c_ppe_max_intensity
+end
+
+
+function get_controller_tube_damage(obj_position, power)
+    local distance = get_distance(db.actor:position(), obj_position)
+    if (distance < c_controler_damage_min_distance) then return power end
+    local damage = power * (c_controler_damage_max_distance - distance) / (0.9 * c_controler_damage_max_distance )
+    if (damage <= 0) then return 0 end
+    return math.min(damage, power)
+end
+
+
+function is_actor_zombied()
+    return db.actor:character_community() == "actor_zombied"
+end
+
+
+function is_controller(obj)
+    return obj:clsid() == clsid.controller_s
+end
+
+
+function get_distance(position_1, position_2)
+    return distance_2d(position_1, position_2) or 0.0
+end
+
+
+function set_psy_health(amount)
+    psy_table.actor_psy_health = clamp(amount, 0.0, 1.0)
+end
+
+
+function show_message(msg)
+    actor_menu.set_msg(1, tostring(msg), 4)
+end
+
+
+function show_message_news(message)
+    news_manager.send_tip(db.actor, tostring(message), nil, nil, 10000)
+end
+
+
+function dbglog(type,msg,...)
+    printdbg("- DEBUG "..tostring(type).." LOG: "..tostring(msg,...))
+end
+
+-- function trace_this(to_trace)
+--     local log_file = io.open("log_arszi_psy.txt", "a")
+--     log_file:write(to_trace.."\n")
+--     log_file:close(log_file)
+-- end

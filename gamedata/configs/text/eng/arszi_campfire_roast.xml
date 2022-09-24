@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<string id="st_arszi_campfire_roast_campfire_off">
+		<text>You can not use an unlit campfire</text>
+	</string>
+
+	<string id="st_arszi_campfire_roast_danger">
+		<text>You can not use a campfire while enemies are in the nearby</text>
+	</string>
+
+	<string id="st_arszi_campfire_roast_surge">
+		<text>You can not use a campfire during an emission</text>
+	</string>
+
+	<string id="st_arszi_campfire_roast_psi_storm">
+		<text>You can not use a campfire during a psi-storm</text>
+	</string>
+</string_table>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	
+	<string id="st_metal_water_flask">
+		<text>Stainless steel canteen</text>
+	</string>
+	<string id="st_metal_water_flask_desc">
+		<text>A single-walled stainless steel canteen for carrying and boiling water. Military flasks are intended for storing small amounts of water. First, the water is boiled at a very high temperature for purification and disinfection. Afterwards, it is cooled, to which it owes its refreshing "spark." The end result is water that is completely radiation-free. If in spite of the above, you still have doubts concerning its purity, you can always use akvatab. Due to the cost of production, military flasks are in a limited supply and are sold at a moderate price. Medics also have them in stock, but they're slightly more expensive as they include the cost of transportation.\n \n
+		%c[ui_gray_3]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] drink\n
+		%c[d_blue] • %c[ui_gray_2] clean nutrition source\n</text>
+	</string>
+	
+</string_table>

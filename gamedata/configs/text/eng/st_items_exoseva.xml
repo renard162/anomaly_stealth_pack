@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+
+
+<!-- Exoseva suits -->
+
+	<string id="exoseva_outfit_name">
+		<text>CBSE suit</text>
+	</string>
+	
+	<string id="exoseva_outfit_description">
+		<text>%c[ui_gray_1]The Closed-cycle Breathing System Exoskeleton suit is the newest result of the ever-growing demand for exoskeletons and protective outfits designed to withstand the harshest of Zone's environments. Similarly to SEVA and SSP class suits, the wearer is isolated from outside conditions by layers of anomaly-resistant coating and internal air filtration systems. The outmost shell based on heavy exosuit armor provides excellent protection from bullets, explosions and ruptures. The resulting weight is supported by a new generation of exoskeletons, allowing the user to move and run unhindered. The CBSE suit is as rare as expensive, therefore only the wealthiest and well-connected veterans of the Zone can afford to get one.\n \n
+		</text>
+	</string>
+
+	<string id="dolg_exoseva_outfit_name">
+		<text>PSZ-12b</text>
+	</string>
+	
+	<string id="dolg_exoseva_outfit_description">
+		<text>%c[ui_gray_1]A Duty-requested version of the CBSE suit. The Closed-cycle Breathing System Exoskeleton suit is the newest result of the ever-growing demand for exoskeletons and protective outfits designed to withstand the harshest of Zone's environments. Similarly to SEVA and SSP class suits, the wearer is isolated from outside conditions by layers of anomaly-resistant coating and internal air filtration systems. The outmost shell based on heavy exosuit armor provides excellent protection from bullets, explosions and ruptures. The resulting weight is supported by a new generation of exoskeletons, allowing the user to move and run unhindered. The CBSE suit is as rare as expensive, therefore only the wealthiest and well-connected veterans of the Zone can afford to get one. Duty version of the suit provides better protection from mutant attacks.\n \n
+		</text>
+	</string>
+
+	<string id="merc_exoseva_outfit_name">
+		<text>Mercenary CBSE suit</text>
+	</string>
+	
+	<string id="merc_exoseva_outfit_description">
+		<text>%c[ui_gray_1]The Closed-cycle Breathing System Exoskeleton suit is the newest result of the ever-growing demand for exoskeletons and protective outfits designed to withstand the harshest of Zone's environments. Similarly to SEVA and SSP class suits, the wearer is isolated from outside conditions by layers of anomaly-resistant coating and internal air filtration systems. The outmost shell based on heavy exosuit armor provides excellent protection from bullets, explosions and ruptures. The resulting weight is supported by a new generation of exoskeletons, allowing the user to move and run unhindered. The CBSE suit is as rare as expensive, therefore only the wealthiest and well-connected veterans of the Zone can afford to get one. \n \n
+		</text>
+	</string>
+
+	<string id="military_exoseva_outfit_name">
+		<text>Military CBSE suit</text>
+	</string>
+	
+	<string id="military_exoseva_outfit_description">
+		<text>%c[ui_gray_1]The Closed-cycle Breathing System Exoskeleton suit is the newest result of the ever-growing demand for exoskeletons and protective outfits designed to withstand the harshest of Zone's environments. Similarly to SEVA and SSP class suits, the wearer is isolated from outside conditions by layers of anomaly-resistant coating and internal air filtration systems. The outmost shell based on heavy exosuit armor provides excellent protection from bullets, explosions and ruptures. The resulting weight is supported by a new generation of exoskeletons, allowing the user to move and run unhindered. The CBSE suit is as rare as expensive, therefore only the wealthiest and well-connected veterans of the Zone can afford to get one. Very few of these were commissioned by the army for research and intel-gathering purposes in the Zone's deep center. The order prioritized bullet and shrapnel protection at the cost of some of the additional weight.\n \n
+		</text>
+	</string>
+
+	<string id="monolith_exoseva_outfit_name">
+		<text>Monolith CBSE suit</text>
+	</string>
+	
+	<string id="monolith_exoseva_outfit_description">
+		<text>%c[ui_gray_1]The Closed-cycle Breathing System Exoskeleton suit is the newest result of the ever-growing demand for exoskeletons and protective outfits designed to withstand the harshest of Zone's environments. Similarly to SEVA and SSP class suits, the wearer is isolated from outside conditions by layers of anomaly-resistant coating and internal air filtration systems. The outmost shell based on heavy exosuit armor provides excellent protection from bullets, explosions and ruptures. The resulting weight is supported by a new generation of exoskeletons, allowing the user to move and run unhindered. The CBSE suit is as rare as expensive, therefore only the wealthiest and well-connected veterans of the Zone can afford to get one. Monolith technicians using alloys unknown to modern science managed to cut down the weight of the suit significantly while also increasing the protection from the widespread radiation in the Zone's center.\n \n
+		</text>
+	</string>
+
+	<string id="svoboda_exoseva_outfit_name">
+		<text>Exemplar of Freedom</text>
+	</string>
+	
+	<string id="svoboda_exoseva_outfit_description">
+		<text>%c[ui_gray_1]A Freedom-branded CBSE suit. The Closed-cycle Breathing System Exoskeleton suit is the newest result of the ever-growing demand for exoskeletons and protective outfits designed to withstand the harshest of Zone's environments. Similarly to SEVA and SSP class suits, the wearer is isolated from outside conditions by layers of anomaly-resistant coating and internal air filtration systems. The outmost shell based on heavy exosuit armor provides excellent protection from bullets, explosions and ruptures. The resulting weight is supported by a new generation of exoskeletons, allowing the user to move and run unhindered. The CBSE suit is as rare as expensive, therefore only the wealthiest and well-connected veterans of the Zone can afford to get one. Thanks to some in-house research, Freedom technicians were able to further increase the suit's anomaly protection.\n \n
+		</text>
+	</string>
+
+	<string id="ecolog_exoseva_outfit_name">
+		<text>Ecologist CBSE suit</text>
+	</string>
+	<string id="ecolog_exoseva_outfit_description">
+		<text>%c[ui_gray_1]The Closed-cycle Breathing System Exoskeleton suit is the newest result of the ever-growing demand for exoskeletons and protective outfits designed to withstand the harshest of Zone's environments. Similarly to SEVA and SSP class suits, the wearer is isolated from outside conditions by layers of anomaly-resistant coating and internal air filtration systems. The outmost shell based on heavy exosuit armor provides excellent protection from bullets, explosions and ruptures. The resulting weight is supported by a new generation of exoskeletons, allowing the user to move and run unhindered. The CBSE suit is as rare as expensive - this model is available only to the most trusted scientific researchers often sent on dangerous expeditions near the Zone's center.\n \n
+		</text>
+	</string>
+	
+		<string id="isg_exoseva_outfit_name">
+		<text>UNISG CBSE suit</text>
+	</string>
+	<string id="isg_exoseva_outfit_description">
+		<text>%c[ui_gray_1]The Closed-cycle Breathing System Exoskeleton suit is the newest result of the ever-growing demand for exoskeletons and protective outfits designed to withstand the harshest of Zone's environments. Similarly to SEVA and SSP class suits, the wearer is isolated from outside conditions by layers of anomaly-resistant coating and internal air filtration systems. The outmost shell based on heavy exosuit armor provides excellent protection from bullets, explosions and ruptures. The resulting weight is supported by a new generation of exoskeletons, allowing the user to move and run unhindered. The UN commissioned a few of these to be made in secret for their operators within the Zone, hoping to collect as much information about the phenomenon as possible.\n \n
+		</text>
+	</string>
+	
+	
+<!-- Looted Exoseva names -->
+	
+	<string id="looted_exoseva_outfit_name">
+		<text>Looted CBSE suit</text>
+	</string>
+
+	<string id="looted_dolg_exoseva_outfit_name">
+		<text>Looted PSZ-12b</text>
+	</string>
+
+	<string id="looted_merc_exoseva_outfit_name">
+		<text>Looted Mercenary CBSE suit</text>
+	</string>
+
+	<string id="looted_military_exoseva_outfit_name">
+		<text>Looted Military CBSE suit</text>
+	</string>
+
+	<string id="looted_monolith_exoseva_outfit_name">
+		<text>Looted Monolith CBSE suit</text>
+	</string>
+
+	<string id="looted_svoboda_exoseva_outfit_name">
+		<text>Looted Exemplar of Freedom</text>
+	</string>
+
+	<string id="looted_ecolog_exoseva_outfit_name">
+		<text>Looted Ecologist CBSE suit</text>
+	</string>
+	
+	<string id="looted_isg_exoseva_outfit_name">
+		<text>Looted UNISG CBSE suit</text>
+	</string>
+
+	
+<!-- Broken servos message -->	
+	
+	<string id="looted_exoseva_warn">
+		<text>%c[ui_gray_1]Whatever ended the life of this suit's previous owner seems to have also damaged the servomotors of the frame to the point where running is no longer possible. A skilled mechanic with the right tools might be able to fix that.
+		</text>
+	</string>
+
+
+<!-- Sprint upgrade for looted Exoseva -->
+	
+	<string id="st_up_run_exoseva_name">
+		<text>Repair servomotors</text>
+	</string>
+	
+	<string id="st_up_run_exoseva_descr">
+		<text>%c[ui_gray_1]Repairs the damage done to exoframe's hydraulics, no longer preventing the user from sprinting.\n \n
+		</text>
+	</string>	
+	
+
+</string_table>

@@ -1,0 +1,677 @@
+--[[
+--------------------------------------------------
+-- Author: Orleonn
+-- Last Edit: 02/05/2022
+-- Wheel of Fortune game mode for STALKER Anomaly
+--------------------------------------------------
+--]]
+
+local gc = game.translate_string
+local random = math.random
+
+local DEBUG_MODE = false
+local function print_dbg(text,...)
+	if (DEBUG_MODE) then
+		printf(string.format("/ Wheel of Fortune mode | " .. text,...))
+	end
+end
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+-- UI Timer --------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+local TIMER_IS_ACTIVE = false
+local snd_beep1 = sound_object("fortuneswheel\\fortuneswheel_beep1")
+local snd_beep2 = sound_object("fortuneswheel\\fortuneswheel_beep2")
+
+function add_timer()
+	local hud = get_hud()
+	local custom_static = hud:GetCustomStatic("text_on_screen_center")
+	if (custom_static ~= nil) then
+		return
+	end
+	
+	if (hud) then
+		hud:AddCustomStatic("text_on_screen_center", true)
+		custom_static = hud:GetCustomStatic("text_on_screen_center")
+		custom_static:wnd():SetWndPos(vector2():set(200, 25))
+		custom_static:wnd():TextControl():SetTextST(gc("st_fortuneswheel_header"))
+		TIMER_IS_ACTIVE = true
+	end
+end
+
+function remove_timer()
+	local hud = get_hud()
+	local custom_static = hud:GetCustomStatic("text_on_screen_center")
+	if (hud and custom_static) then
+		hud:RemoveCustomStatic("text_on_screen_center")
+		TIMER_IS_ACTIVE = false
+	end
+end
+
+function update_timer(num)
+	local min,sec = 0,0
+	local timer = num
+	
+	while timer >= 60 do
+		timer = timer - 60
+		min = min + 1
+	end
+	sec = timer
+	
+	if min == 0 and sec <= 5 then
+		snd_beep1:play(db.actor,0,sound_object.s2d)
+	end
+	
+	if sec < 10 then
+		sec = "0" .. sec
+	end
+	
+	if (TIMER_IS_ACTIVE) then
+		local hud = get_hud()
+		if (hud) then
+			local custom_static = hud:GetCustomStatic("text_on_screen_center")
+			custom_static:wnd():TextControl():SetTextST(gc("st_fortuneswheel_header") .. " " .. min .. ":" .. sec)
+		end
+	end
+end
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+-- Callbacks -------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+-- Don't touch this!
+local FORTUNES_WHEEL_TIMER = nil
+local FORTUNES_WHEEL_TIMER_INTERVAL = nil
+local PAST_GIFT = 0
+local NEXT_GIFT = 0
+local CAN_GIVE_GIFT = false
+
+local function save_state(m_data)
+	m_data.fortuneswheel_mode.TIMER = FORTUNES_WHEEL_TIMER
+	m_data.fortuneswheel_mode.PAST_GIFT = PAST_GIFT
+	m_data.fortuneswheel_mode.NEXT_GIFT = NEXT_GIFT
+	m_data.fortuneswheel_mode.CAN_GIVE_GIFT = CAN_GIVE_GIFT
+end
+
+local function load_state(m_data)
+	if (m_data.fortuneswheel_mode) then
+		FORTUNES_WHEEL_TIMER = m_data.fortuneswheel_mode.TIMER
+		FORTUNES_WHEEL_TIMER_INTERVAL = m_data.fortuneswheel_mode.INTERVAL
+		if (not m_data.fortuneswheel_mode.PAST_GIFT) then
+			m_data.fortuneswheel_mode.PAST_GIFT = PAST_GIFT
+		else
+			PAST_GIFT = m_data.fortuneswheel_mode.PAST_GIFT
+		end
+		if (not m_data.fortuneswheel_mode.NEXT_GIFT) then
+			m_data.fortuneswheel_mode.NEXT_GIFT = NEXT_GIFT
+		else
+			NEXT_GIFT = m_data.fortuneswheel_mode.NEXT_GIFT
+		end
+		if (not m_data.fortuneswheel_mode.CAN_GIVE_GIFT) then
+			m_data.fortuneswheel_mode.CAN_GIVE_GIFT = CAN_GIVE_GIFT
+		else
+			CAN_GIVE_GIFT = m_data.fortuneswheel_mode.CAN_GIVE_GIFT
+		end
+		
+		load_can_spawn_items()
+		RegisterScriptCallback("save_state",save_state)
+		RegisterScriptCallback("actor_on_update",actor_on_update)
+		RegisterScriptCallback("actor_on_before_death",actor_on_before_death)
+	end
+end
+
+function actor_on_before_death()
+	if (TIMER_IS_ACTIVE) then
+		remove_timer()
+	end
+end
+
+local SHOW_HUD_TIMER_SEC = 5
+local TIME_TO_UPDATE = 1000
+function actor_on_update()
+	local tg = time_global()
+	if TIME_TO_UPDATE < tg then
+		TIME_TO_UPDATE = tg + 1000
+		
+		-- Stop update if actor is sleeping!
+		if (db.actor:has_info("actor_is_sleeping")) then
+			if (TIMER_IS_ACTIVE) then
+				remove_timer()
+			end
+			return
+		end
+		
+		FORTUNES_WHEEL_TIMER = FORTUNES_WHEEL_TIMER - 1
+		
+		-- Time to give gift!
+		if (FORTUNES_WHEEL_TIMER < 0) and CAN_GIVE_GIFT then
+			if (TIMER_IS_ACTIVE) then
+				remove_timer()
+			end
+			snd_beep2:play(db.actor,0,sound_object.s2d)
+			FORTUNES_WHEEL_TIMER = FORTUNES_WHEEL_TIMER_INTERVAL
+			CAN_GIVE_GIFT = false
+			choice_random_gift()
+		end
+		
+		-- Attempt to allow a give gift and start a countdown.
+		if (FORTUNES_WHEEL_TIMER < 0) then
+			if (random(100) < 50) then
+				FORTUNES_WHEEL_TIMER = 15
+				CAN_GIVE_GIFT = true
+				print_dbg("Attempt to allow a give gift and start a countdown was successful! | Get ready to receive a gift through: %s seconds.", FORTUNES_WHEEL_TIMER)
+			else
+				FORTUNES_WHEEL_TIMER = 20
+				print_dbg("Attempt to allow a give gift and start a countdown failed! | Timer extended by: %s seconds.", FORTUNES_WHEEL_TIMER)
+			end
+		end
+		
+		-- Time to show timer!
+		if (FORTUNES_WHEEL_TIMER <= SHOW_HUD_TIMER_SEC) and CAN_GIVE_GIFT then
+			if (not TIMER_IS_ACTIVE) then
+				add_timer()
+			end
+			update_timer(FORTUNES_WHEEL_TIMER)
+		end
+		--print_dbg("Timer = %s second", FORTUNES_WHEEL_TIMER)
+	end
+end
+
+function on_game_start()
+	RegisterScriptCallback("load_state",load_state)
+end
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+-- Gift Randomizer -------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+local Gifts = {
+-- | ID |     Name		|
+	[1] = "Reduce Health",
+	[2] = "Healing",
+	[3] = "Steal Money",
+	[4] = "Give Money",
+	[5] = "Steal Equipment",
+	[6] = "Give Equipment",
+	[7] = "Spawn Enemy",
+	[8] = "Force Sleep",
+	[9] = "Force Surge or Psi-Storm",
+	[10] = "Drunkenness",
+	[11] = "Change Equipment Condition",
+	[12] = "Create Random Stash",
+}
+
+function choice_random_gift()
+	local gift = 0
+	
+	if (NEXT_GIFT == 0) then
+		gift = random(#Gifts)
+	else
+		gift = NEXT_GIFT
+	end
+	
+	PAST_GIFT = gift
+	NEXT_GIFT = random(#Gifts)
+	
+	while (NEXT_GIFT == PAST_GIFT) do
+		NEXT_GIFT = random(#Gifts)
+	end
+	print_dbg("Current gift - ID: [%s], Name: %s | Next gift - ID: [%s], Name: %s", gift, Gifts[gift], NEXT_GIFT, Gifts[NEXT_GIFT])
+	
+	if (gift == 1) then
+		give_gift_one()
+		return
+	
+	elseif (gift == 2) then
+		give_gift_two()
+		return
+	
+	elseif (gift == 3) then
+		give_gift_three()
+		return
+	
+	elseif (gift == 4) then
+		give_gift_four()
+		return
+	
+	elseif (gift == 5) then
+		give_gift_five()
+		return
+	
+	elseif (gift == 6) then
+		give_gift_six()
+		return
+	
+	elseif (gift == 7) then
+		give_gift_seven()
+		return
+	
+	elseif (gift == 8) then
+		give_gift_eight()
+		return
+	
+	elseif (gift == 9) then
+		give_gift_nine()
+		return
+	
+	elseif (gift == 10) then
+		give_gift_ten()
+		return
+	
+	elseif (gift == 11) then
+		give_gift_eleven()
+		return
+	
+	elseif (gift == 12) then
+		give_gift_twelve()
+	end
+end
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+-- Gifts Functions -------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+-- Gifts message box
+function gift_message(number, text)
+	local icon = "death"
+	news_manager.send_tip(db.actor, gc("st_fortuneswheel_gift_" .. number) .. text, nil, icon, 10000)
+end
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Reduce Health actor
+function give_gift_one()
+	local actor = db.actor
+	local health = random(5,65) * (-0.01)
+	actor:change_health(health)
+	gift_message(1, "")
+end
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Healing actor
+function give_gift_two()
+	local actor = db.actor
+	local health = random(15,100) * 0.01
+	
+	if (advanced_stamina_system_ass) then
+		local blood_loss_limit = advanced_stamina_system_ass.blood_loss_limit
+		local curr_health = actor.health
+		local ass_health = curr_health + health
+		if ass_health > blood_loss_limit then
+			ass_health = blood_loss_limit
+		end
+		actor.health = ass_health
+		actor.bleeding = 1
+		actor.power = advanced_stamina_system_ass.satiety_power_limit
+		actor.radiation = 0
+		actor.psy_health = 1
+		arszi_psy.set_psy_health(1.0)
+		gift_message(2, "")
+		return
+	end
+	
+	actor:change_health(health)
+	actor.bleeding = 1
+	actor.power = 1
+	actor.radiation = 0
+	actor.psy_health = 1
+	arszi_psy.set_psy_health(1.0)
+	gift_message(2, "")
+end
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Stealing actor money
+function give_gift_three()
+	local actor = db.actor
+	local money = actor:money()
+	if (money <= 1) then
+		print_dbg("Stealing money failed! | Actor money = %s RUB", money)
+		choice_random_gift()	-- Gift giveaway failed, call function again
+		return
+	end
+	
+	money = money - random(money)
+	actor:give_money(-money)
+	gift_message(3, "\\n    - "..money.." RUB.")
+end
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Give actor money
+function give_gift_four()
+	local actor = db.actor
+	local money = random(1000,100000)
+	actor:give_money(money)
+	gift_message(4, "\\n    - "..money.." RUB.")
+end
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Stealing actor equipment
+local ignore_section = {
+	-- Artefact Hunters Storylines
+	["af_ah_o1"] = true,
+	["af_ah_o2"] = true,
+	["af_ah_h1"] = true,
+	["af_ah_h2"] = true,
+	["af_ah_g1"] = true,
+	["af_ah_g2"] = true,
+	["af_ah_e1"] = true,
+	["af_ah_e2"] = true,
+	["af_ah_s1"] = true,
+	["af_ah_f1"] = true,
+	["af_ah_r1"] = true,
+	["af_ah_r2"] = true,
+	["af_ah_r3"] = true,
+	["af_ah_r4"] = true,
+	["af_ah_r5"] = true,
+	-- Last Dawn Storylines
+	["cs_deshefrator"] = true,
+	["pda_dragun"] = true,
+	["cs_anom_pribor"] = true,
+	["military_escape_docs"] = true,
+}
+
+function give_gift_five()
+	local actor_items = {}
+	local function steal(actor, obj)
+		local sec = obj:section()
+		local id = obj:id()
+		local kind = ini_sys:r_string_ex(sec,"kind")
+		local quest_item = ini_sys:r_bool_ex(sec,"quest_item")
+		local is_anim = IsItem("anim", sec)
+		if (kind ~= "i_quest")
+		and (not is_anim)
+		and (not quest_item)
+		and (not ignore_section[sec])
+		then
+			actor_items[id] = sec
+		end
+	end
+	
+	db.actor:iterate_inventory(steal, db.actor)
+	local stealing = 0
+	local str = ""
+	local str_cache = {}
+	for id,sec in pairs(actor_items) do
+		if (random(100) < 25) then		-- stealing chance
+			local inv_name = gc(ini_sys:r_string_ex(sec,"inv_name"))
+			if (sec ~= str_cache[sec]) then
+				str = str .. "\\n    - " .. inv_name
+				str_cache[sec] = true
+			end
+			alife_release_id(id)
+			stealing = stealing + 1
+		end
+	end
+	if (stealing > 0) then
+		gift_message(5, str)
+	else
+		print_dbg("Stealing items failed! | No items available to steal!")
+		choice_random_gift()	-- Gift giveaway failed, call function again
+	end
+end
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Give actor equipment
+can_spawn_items = {}
+can_spawn_weapons = {}
+
+-- Called from 'load_state' function
+function load_can_spawn_items()
+	local ini = ini_file("items\\settings\\fortuneswheel.ltx")
+	local result,id,value,w_result,w_id,w_value = "","","","","",""
+	local n = ini:line_count("can_spawn_items")
+	local w_n = ini:line_count("can_spawn_weapons")
+
+	-- Iterate all available items from fortuneswheel.ltx file
+	for i=0,n-1 do
+		result, id, value = ini:r_line_ex("can_spawn_items",i,"","")
+		if ini_sys:section_exist(id) then
+			can_spawn_items[id] = true
+		end
+	end
+
+	-- for weapons
+	for i=0,w_n-1 do
+		w_result, w_id, w_value = ini:r_line_ex("can_spawn_weapons",i,"","")
+		if ini_sys:section_exist(w_id) then
+			can_spawn_weapons[w_id] = true
+		end
+	end
+	print_dbg("fortuneswheel.ltx | Loaded!")
+end
+
+function give_gift_six()
+	local str = ""
+	
+	-- spawn items
+	local items_max_spawn = random(15,30)	-- item spawn limit
+	local outfit_max_spawn = 1				-- outfit spawn limit
+	local items_count = 0
+	local outfit_count = 0
+	for sec,_ in pairs(can_spawn_items) do
+		local class = ini_sys:r_string_ex(sec,"class")
+		
+		if (random(100) <= 2) then
+			local inv_name = gc(ini_sys:r_string_ex(sec,"inv_name"))
+			if (class == "AMMO") or (class == "AMMO_S") then
+				alife_create_item(sec, db.actor, {ammo = random(10, 180)})
+				items_count = items_count + 1
+				str = str .. "\\n    - " .. inv_name
+			elseif (class == "E_STLK") or (class == "EQU_STLK") or (class == "E_HLMET") then
+				if (outfit_count ~= outfit_max_spawn) then
+					alife_create_item(sec, db.actor)
+					outfit_count = outfit_count + 1
+					str = str .. "\\n    - " .. inv_name
+				end
+			else
+				alife_create_item(sec, db.actor)
+				items_count = items_count + 1
+				str = str .. "\\n    - " .. inv_name
+			end
+		end
+		if (items_count == items_max_spawn) then break end	-- stop iterate
+	end
+	
+	-- spawn weapons
+	local weapon_max_spawn = random(2)	-- weapon spawn limit
+	local weapon_count = 0
+	for sec,_ in pairs(can_spawn_weapons) do
+		if (random(450) <= 2) then
+			local inv_name = gc(ini_sys:r_string_ex(sec,"inv_name"))
+			str = str .. "\\n    - " .. inv_name
+			alife_create_item(sec, db.actor)
+			weapon_count = weapon_count + 1
+		end
+		if (weapon_count == weapon_max_spawn) then break end	-- stop iterate
+	end
+	gift_message(6, str)
+end
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Spawn Enemy
+
+-- Unique squads from 'squad_descr_fortuneswheel.ltx'
+local stalkers_squad = {
+	["stalker_sim_squad_fw"] 	= "stalker",
+	["csky_sim_squad_fw"] 		= "csky",
+	["bandit_sim_squad_fw"] 	= "bandit",
+	["merc_sim_squad_fw"] 		= "killer",
+	["duty_sim_squad_fw"] 		= "dolg",
+	["freedom_sim_squad_fw"] 	= "freedom",
+	["army_sim_squad_fw"] 		= "army",
+	["monolith_sim_squad_fw"] 	= "monolith",
+	["isg_sim_squad_fw"] 		= "isg",
+	["greh_sim_squad_fw"] 		= "greh",
+}
+
+local mutants_squad = {
+	[1] = "mutants_dog_squad_fw",
+	[2] = "mutants_pseudodog_squad_fw",
+	[3] = "mutants_cat_squad_fw",
+	[4] = "mutants_boar_squad_fw",
+	[5] = "mutants_snork_squad_fw",
+	[6] = "mutants_bloodsucker_squad_fw",
+	[7] = "mutants_lurker_squad_fw",
+	[8] = "mutants_burer_squad_fw",
+}
+
+local function create_squad(smart, squad, type)
+	local se_obj = SIMBOARD:create_squad(smart, squad)
+	
+	-- Move to actor
+	if (se_obj) then
+		se_obj.scripted_target = "actor"
+		se_obj.rush_to_target = true
+		
+		if (type == 2) then return end	-- return, if it's a mutants squad!
+		
+		local function squad_run_to_actor()
+			local squad = alife_object(se_obj.id)
+			for k in squad:squad_members() do
+				local npc = db.storage[k.id].object
+				if (npc) then
+					npc:set_movement_type(move.run)
+				end
+			end
+			return true
+		end
+		CreateTimeEvent("stalkers_squad_fw", "stalkers_squad_fw", 5, squad_run_to_actor)
+	end
+end
+
+function give_gift_seven()
+	local squad_is_spawning = false
+	local smart = alife_object(smart_terrain.nearest_to_actor_smart.id)
+	local rand = random(2)	-- 1 - spawn stalkers, 2 - spawn mutants
+	
+	if (rand == 1) then
+		local str = ""
+		local act_comm = get_actor_true_community()
+		while (squad_is_spawning == false) do
+			for squad,faction in pairs(stalkers_squad) do
+				if (game_relations.is_factions_enemies(act_comm, faction)) then
+					if (random(100) < 20) then
+						create_squad(smart, squad, rand)
+						str = "\\n    - " .. gc(faction)
+						squad_is_spawning = true
+						break
+					end
+				end
+			end
+		end
+		gift_message(7, str)
+	else
+		while (squad_is_spawning == false) do
+			for _,squad in pairs(mutants_squad) do
+				if (random(100) < 20) then
+					create_squad(smart, squad, rand)
+					squad_is_spawning = true
+					break
+				end
+			end
+		end
+		gift_message(71, "")
+	end
+end
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Force sleep
+function give_gift_eight()
+	local die_chance = 5
+	ui_sleep_dialog.sleep_forced()
+	if random(100) < die_chance then
+		actor_menu.set_msg(1, gc("st_sleep_deprived"),5)
+		db.actor:kill(db.actor)
+	end
+	disable_info("force_slp")
+	gift_message(8, "")
+end
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Force Surge or Psi-Storm
+function give_gift_nine()
+	local rand = random(2)	-- 1 - Surge, 2 - Psi-Storm
+	
+	if (surge_manager.is_finished()) and (psi_storm_manager.is_finished()) then
+		if (rand == 1) then
+			surge_manager.start_surge()
+		else
+			psi_storm_manager.start_psi_storm()
+		end
+		gift_message(9, "")
+	else
+		print_dbg("Force Surge or Psi-Storm failed! | It is not possible to trigger an blowout during blowout!")
+		choice_random_gift()	-- Gift giveaway failed, call function again
+	end
+end
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Drunk actor
+function give_gift_ten()
+	db.actor:cast_Actor():conditions():ChangeAlcohol(0.3)
+	gift_message(10, "")
+end
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Change equipment condition
+function give_gift_eleven()
+	local actor = db.actor
+	local cond = random(100)
+	local equ_cond = 0
+	local outfit = actor:item_in_slot(7)
+	local helmet = actor:item_in_slot(12)
+	local rand = random(2)		-- 1 - increase condition, 2 - decrease condition
+	
+	if (rand == 1) then
+		equ_cond = cond * 0.01
+	else
+		equ_cond = cond * (-0.01)
+	end
+	
+	if (outfit) then
+		local outfit_cond = outfit:condition()
+		outfit:set_condition(outfit_cond + equ_cond)
+	end
+	if (helmet) then
+		local helmet_cond = helmet:condition()
+		helmet:set_condition(helmet_cond + equ_cond)
+	end
+	for i=1,3 do
+		local weapon = actor:item_in_slot(i)
+		if (weapon) then
+			local weapon_cond = weapon:condition()
+			weapon:set_condition(weapon_cond + equ_cond)
+		end
+	end
+	
+	if outfit or helmet or actor:item_in_slot(1) or actor:item_in_slot(2) or actor:item_in_slot(3) then
+		if (rand == 1) then
+			gift_message(11, " "..cond.."%.")
+		else
+			gift_message(111, " "..cond.."%.")
+		end
+	else
+		print_dbg("Change equipment condition failed! | Equipment slots is empty!")
+		choice_random_gift()	-- Gift giveaway failed, call function again
+	end
+end
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Create random stash
+function give_gift_twelve()
+	local rand = random(5)
+	for i=1, rand do
+		treasure_manager.create_random_stash()
+	end
+	gift_message(12, " "..rand..".")
+end
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,37 @@
+intimidation_surrender_compatible = true
+
+function get_config(option)
+	if ui_mcm then return ui_mcm.get("npc_convert/"..option) end
+end
+
+function on_mcm_load()
+	op = { id= "npc_convert",sh=true ,gr={
+			{id = "title",type= "slide",link= "ui_options_slider_player",text="ui_mcm_npc_convert_title",size = {512,50}, spacing = 20 },
+			{id = "random_convert_chance_enabled", type = "check", val = 1, def = true},
+			{id = "line", type = "line"},
+			{id = "calc_descr", type = "desc", text = "ui_mcm_npc_convert_calc_descr_text", val = 0},
+			{id = "line", type = "line"},
+			{id = "base_chance", type = "input", val = 2, def = 40, min = 0, max = 1000},
+			{id = "attack_chance", type = "input", val = 2, def = 15, min = 0, max = 100},
+			{id = "line", type = "line"},
+			{id = "novice_intimidation", type = "input", val = 2, def = 10, min = 0, max = 1000},
+			{id = "trainee_intimidation", type = "input", val = 2, def = 20, min = 0, max = 1000},
+			{id = "experienced_intimidation", type = "input", val = 2, def = 30, min = 0, max = 1000},
+			{id = "professional_intimidation", type = "input", val = 2, def = 40, min = 0, max = 1000},
+			{id = "veteran_intimidation", type = "input", val = 2, def = 50, min = 0, max = 1000},
+			{id = "expert_intimidation", type = "input", val = 2, def = 60, min = 0, max = 1000},
+			{id = "master_intimidation", type = "input", val = 2, def = 80, min = 0, max = 1000},
+			{id = "legend_intimidation", type = "input", val = 2, def = 100, min = 0, max = 1000},
+			{id = "line", type = "line", precondition = {debugging_active}},
+			{id = "convert_debug_msg", type = "check", val = 1, def = false, precondition = {debugging_active}},
+		}
+	}
+
+	return op
+end
+
+function debugging_active()
+	if	chool_debug then return true
+	else return false
+	end
+end

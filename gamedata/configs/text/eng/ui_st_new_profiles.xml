@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+
+	<string id="ui_mm_prst_gameplay_stealth">
+		<text>Stealth</text>
+	</string>
+	<string id="ui_mm_prst_economy_expensive">
+		<text>Rich but Expensive Zone</text>
+	</string>
+
+</string_table>

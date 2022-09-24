@@ -1,0 +1,140 @@
+local HUD = nil
+local icon_mode = stealth_mcm.get_config("icon_type") or 1
+
+function reset_hud()
+	deactivate_hud()
+	activate_hud()
+end
+
+function deactivate_hud()
+	
+	if HUD ~= nil then
+		get_hud():RemoveDialogToRender(HUD)
+		HUD = nil
+	end
+	
+	UnregisterScriptCallback("actor_on_net_destroy", deactivate_hud)
+	UnregisterScriptCallback("actor_on_before_death", deactivate_hud)
+	
+end
+
+function activate_hud()
+	
+	RegisterScriptCallback("actor_on_net_destroy", deactivate_hud)
+	RegisterScriptCallback("actor_on_before_death", deactivate_hud)
+	
+	if HUD == nil then
+		HUD = StealthIcon()
+		get_hud():AddDialogToRender(HUD)
+	end
+	
+end
+
+function upd_hud()
+	-- enable/disable icon
+	if stealth_mcm.get_config("icon") then
+		activate_hud()
+	else
+		deactivate_hud()
+	end
+
+	-- if icon enabled then update its type
+	if HUD ~= nil then
+		icon_mode = stealth_mcm.get_config("icon_type")
+		reset_hud()
+	end
+
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update", upd_hud)
+	RegisterScriptCallback("on_option_change", upd_hud)
+end
+
+---------------------------------------- HUD -------------------------------------------------------
+
+class "StealthIcon" (CUIScriptWnd)
+
+function StealthIcon:__init() super()
+	
+	self.xml	= CScriptXmlInit()
+	self.xml:ParseFile("ui_light_gem.xml")
+	
+	self:InitControls()
+	
+end
+
+function StealthIcon:InitControls()
+	
+	local xml = self.xml
+	
+	if icon_mode == 1 then
+		self.gem = xml:InitStatic("gem", self)
+	elseif icon_mode == 2 then
+		self.gem = xml:InitProgressBar("gem_bar", self)
+	end
+	
+end
+
+function StealthIcon:Update()
+	CUIScriptWnd.Update(self)
+
+	self.gem:Show(main_hud_shown())
+
+	local xx = stealth_mcm.get_config("icon_x")
+	local yy = stealth_mcm.get_config("icon_y")
+	self.gem:SetWndPos(vector2():set(xx, yy))
+	
+	if icon_mode == 1 then
+		self:StatUpd()
+	elseif icon_mode == 2 then
+		self:BarUpd()
+	end
+	
+end
+
+function StealthIcon:StatUpd()
+	local TINT_MAX = 245
+	local LUM_MULT = 1  -- multiplier applied to the luminosity value, higher generaly means lighter. too high and the gem won't get dark, to low and it won't get light. 
+	-- both of these can be set from the debug menue. f7->0 light_gem.LUM_MULT = 1.9 into the execute text box then hit execute button. (typos will crash the game)
+	local FLASHLIGHT_PENALTY = .3 --flat value to make the gem jump as a reminder that you should shut off the light.
+	
+	local gem_lum = visual_memory_manager.icon_lum()
+	local torch = db.actor:item_in_slot(10)
+	local flash = db.actor:item_in_slot(9)
+
+	if (torch and torch:torch_enabled()) then
+		gem_lum = gem_lum + FLASHLIGHT_PENALTY --flat value to make the gem jump as a reminder that you should shut off the light
+	elseif (flash and (flash:section() == "device_flashlight") and db.actor:active_detector()) then
+		gem_lum = gem_lum + FLASHLIGHT_PENALTY --flat value to make the gem jump as a reminder that you should shut off the light
+	end
+	
+	local val = TINT_MAX - clamp(TINT_MAX * LUM_MULT * gem_lum, 0, TINT_MAX)
+
+	local gem_color = GetARGB(255,255-val,255-val,255-val)
+	self.gem:SetTextureColor(gem_color)
+
+end
+
+function StealthIcon:BarUpd()
+	local gem_val = math.floor(visual_memory_manager.stealth_light_ind[1] * 100 + 0.5)
+	local in_danger = visual_memory_manager.stealth_light_ind[2]
+
+	self.gem:SetProgressPos(gem_val)
+
+	local gem_color_white = GetARGB(255, 255, 255, 255)
+	local gem_color_yellow = GetARGB(255, 255, 255, 0)
+	local gem_color_red = GetARGB(255, 255, 0, 0)
+
+	if gem_val >= 100 then
+		self.gem:SetColor(gem_color_red)
+	elseif in_danger then
+		self.gem:SetColor(gem_color_yellow)
+	else
+		self.gem:SetColor(gem_color_white)
+	end
+
+end
+
+function StealthIcon:__finalize()
+end

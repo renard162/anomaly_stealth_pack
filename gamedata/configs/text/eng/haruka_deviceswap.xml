@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	<string id="ui_mcm_menu_detector_selector">
+		<text>
+		Device Selector Keys
+		</text>
+	</string>
+		<string id="ui_mcm_detector_selector_keybind_anomaly">
+		<text>
+		Detector select key
+		</text>
+	</string>
+	<string id="ui_mcm_detector_selector_keybind_lights">
+		<text>
+		Flashlight select key
+		</text>
+	</string>
+	<string id="ui_mcm_detector_selector_keybind_radio">
+		<text>
+		RF Receiver select key
+		</text>
+	</string>
+	<string id="ui_mcm_detector_selector_keybind_geiger">
+		<text>
+		Geiger select key
+		</text>
+	</string>
+	<string id="ui_mcm_detector_selector_keybind_glowsticks">
+		<text>
+		Glowstick select key
+		</text>
+	</string>
+	<string id="ui_mcm_detector_selector_keybind_detector_anomaly">
+		<text>
+		Anomaly detector select key
+		</text>
+	</string>
+</string_table>

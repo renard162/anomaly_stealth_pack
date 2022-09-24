@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="st_exobackpack_name">
+		<text>Exoskeleton Attachment</text>
+	</string>
+	<string id="st_exobackpack_descr">
+		<text>An experimental sample of a military exoskeleton with attached storage. The production of this armor has discontinued because of extraordinarily high costs and some design flaws. Despite this, due to the possibility of significantly increasing the mobility of the carrier, it is still in demand, and therefore, secretly produced in small batches outside Ukraine. A noticeable disadvantage of the device is, due to the low quality of the electromechanical motion sensor used and the lag in actuator response, even considerably increasing the user's carrying capacity, it is extremely exhausting to use the device. Experienced technicians stalkers used this device as base of the exoskeleton made in the zone.\n \n
+              %c[ui_gray_1]PROPERTIES:\n
+              %c[d_blue] • %c[ui_gray_2] experimental item\n
+              %c[d_blue] • %c[ui_gray_2] item storage\n
+              %c[0,100,255,150] • %c[ui_gray_2] usable as stash\n
+              %c[d_red] • %c[ui_gray_2] extremely exhausting to use\n
+        </text>
+	</string>
+    <string id="st_exobackpack_up_name">
+		<text>Prototype Exoskeleton Attachment</text>
+	</string>
+	<string id="st_exobackpack_up_descr">
+		<text>A prototype of an improved exoskeleton with attached storage. This device was never mass-produced due to the high cost of production. Despite this, due to the possibility of significantly increasing the mobility of the carrier, it is still in demand and therefore secretly manufactured by experienced engineers that stolen the prototype blueprints. This improved version fixed the issues of actuators lag of initial version and reduced the weight by replacing the electromechanical sensors by more advanced electronic sensors.\n \n
+              %c[ui_gray_1]PROPERTIES:\n
+              %c[d_blue] • %c[ui_gray_2] experimental item\n
+              %c[d_blue] • %c[ui_gray_2] item storage\n
+              %c[0,100,255,150] • %c[ui_gray_2] usable as stash\n
+        </text>
+	</string>
+</string_table>

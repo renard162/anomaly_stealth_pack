@@ -1,0 +1,367 @@
+--=============================================================================================================--
+--	Скрипт спавна пространственных аномалий и телепортации игрока с их помощью
+--	для S.T.A.L.K.E.R. Anomaly версии 1.5.1
+--	от helloworlder
+--=============================================================================================================--
+
+
+local REMOVE_ADDON_MODE = false
+
+local last_original_sr_id = nil
+local total_restrictors_created = nil
+
+local destination_points_path_string = "plugins\\spatial_anomalies\\destination_points\\"
+local destination_points_file = nil
+local coords_to_bubble_file = ini_file("plugins\\spatial_anomalies\\destination_points\\coords_to_bubble.ltx")
+
+local extra_points_coord_strs = {}				
+local current_number_of_extra_points = nil
+
+local super_exit_points_coord_strs = {}
+local current_number_of_super_exit_points = nil
+
+local near_exit_points_coord_strs = {}
+local current_number_of_near_exit_points = nil
+
+
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update", first_start)
+	RegisterScriptCallback("actor_item_to_belt", compass_on_belt_counting)
+	RegisterScriptCallback("actor_item_to_ruck", compass_on_belt_counting)
+end
+
+
+
+function first_start()
+	if REMOVE_ADDON_MODE then
+		remove_all_teleports()
+		return
+	end
+	if has_alife_info("direction_adjustment_required") then
+		direction_adjustment()
+	end
+	if not has_alife_info("teleports_created") then			-- создать пространственные аномалии, если они еще не были созданы
+		find_restrictors_ids()
+		spawn_all_spatial_anomalies()
+		find_restrictors_ids()
+	end
+	local loc = level.name()
+	if loc == "jupiter" or loc == "l01_escape" or loc == "l10_limansk" or loc == "l10_radar" or loc == "l10_red_forest" or loc == "l11_hospital" or loc == "l11_pripyat" or loc == "l12_stancia_2" or loc == "pripyat" or loc == "zaton" then
+		destination_points_path_string = destination_points_path_string .. loc .. ".ltx"
+		destination_points_file = ini_file(destination_points_path_string)
+		get_exit_points()
+	end
+end
+
+
+
+function spawn_all_spatial_anomalies()
+	spawn_custom_spatial_anomalies()
+	restore_clear_sky_bubbles()				-- создаёт рестрикторы на месте неработающих аномалий(локации: Кордон, Лиманск)
+	give_info("teleports_created")
+end
+
+
+
+function spawn_custom_spatial_anomalies()
+	local spatial_anomalies_params_file = ini_file("plugins\\spatial_anomalies\\spatial_anomalies_params.ltx")
+	local custom_teleports_count = spatial_anomalies_params_file:line_count("custom_teleports")					-- узнаём, сколько телепортов нужно создать
+	for i = 1, custom_teleports_count do
+		local str = spatial_anomalies_params_file:r_string("custom_teleports", "xyzlg" .. i)
+		local par = _g.str_explode(str, ",")
+		spawn_teleport_sr(vector():set(tonumber(par[1]), tonumber(par[2]), tonumber(par[3])), tonumber(par[4]), tonumber(par[5]), tonumber(par[6]), par[7])
+		spawn_spatial_anomaly("zone_teleport_chaes", vector():set(tonumber(par[1]), tonumber(par[2]), tonumber(par[3])), tonumber(par[4]), tonumber(par[5]), tonumber(par[6]), vector():set(tonumber(par[8]), tonumber(par[9]), tonumber(par[10])))		-- РАБОТАЕТ КОРРЕКТНО
+	end
+	local custom_spatial_bubbles_count = spatial_anomalies_params_file:line_count("custom_spatial_bubbles")		-- узнаём, сколько пузырей нужно создать
+	for i = 1, custom_spatial_bubbles_count do
+		local str = spatial_anomalies_params_file:r_string("custom_spatial_bubbles", "xyzlg" .. i)
+		local par = _g.str_explode(str, ",")
+		spawn_teleport_sr(vector():set(tonumber(par[1]), tonumber(par[2]), tonumber(par[3])), tonumber(par[4]), tonumber(par[5]), tonumber(par[6]), par[7])
+		if tonumber(par[8]) == 1 then
+			spawn_spatial_anomaly("zone_spatial_bubble", vector():set(tonumber(par[1]), tonumber(par[2]), tonumber(par[3])), tonumber(par[4]), tonumber(par[5]))
+		end
+	end
+end
+
+
+
+function restore_clear_sky_bubbles()
+	local spatial_anomalies_params_file = ini_file("plugins\\spatial_anomalies\\spatial_anomalies_params.ltx")
+	local original_bubbles_count = spatial_anomalies_params_file:line_count("original_spatial_bubbles")
+	for i = 1, original_bubbles_count do
+		local str = spatial_anomalies_params_file:r_string("original_spatial_bubbles", "xyzlg" .. i)
+		local par = _g.str_explode(str, ",")
+		spawn_teleport_sr(vector():set(tonumber(par[1]), tonumber(par[2]), tonumber(par[3])), tonumber(par[4]), tonumber(par[5]), tonumber(par[6]), par[7])
+	end
+end
+
+
+
+function spawn_teleport_sr(pos, lvid, gvid, radius, custom_add)			-- Создание рестриктора телепорта(данный рестриктор отвечает за телепортацию).
+	se_obj = alife():create("space_restrictor", pos, lvid, gvid)
+	local custom_pack = "[logic]\n" .. "cfg = scripts\\custom_srs_logic\\" .. custom_add
+	sgm_packet.setup_restrictor(se_obj, custom_pack, radius, pos.x, pos.y, pos.z, lvid, gvid)
+end
+
+
+
+function spawn_spatial_anomaly(zone_type, pos, lvid, gvid, radius, ep_pos)		-- спаун аномалли-телепорта(или пространственного пузыря, в зависимости от zone_type)
+	local se_obj = alife():create(zone_type, pos, lvid, gvid)
+	local data = utils_stpk.get_anom_zone_data(se_obj)	
+	if data then
+		data.shapes[1] = {}
+		data.shapes[1].shtype = 0
+		data.shapes[1].offset = vector():set(0, 0, 0)
+		data.shapes[1].center = vector():set(0, 0, 0)
+		data.shapes[1].radius = radius
+		utils_stpk.set_anom_zone_data(data, se_obj)
+	end
+	if zone_type == "zone_teleport_chaes" then		-- задаем направление телепорта(необязательно)
+		local vec = {}
+			vec.x = ep_pos.x - pos.x
+			vec.y = ep_pos.y - pos.y
+			vec.z = ep_pos.z - pos.z
+			vec.length = (vec.x^2 + vec.z^2)^(1/2)
+		se_obj.angle = vector():set(math.atan2(vec.y, vec.length), -math.atan2(vec.x, vec.z), 0)
+	end
+end
+
+
+
+--=============================================================================================================--
+--			Функции удаления обьектов, которые добавлены этим аддоном
+--=============================================================================================================--
+function remove_all_teleports()							-- запуск функций, удаляющих все новые аномалии, и рестрикторы
+	if has_alife_info("teleports_created") then
+		remove_srs_that_added_by_this_addon()
+		remove_teleport_zones_that_added_by_this_addon()
+		disable_info("teleports_created")
+	else
+		return
+	end
+end
+
+
+
+function remove_teleport_zones_that_added_by_this_addon()	-- удаляет аномалии-телепорты
+	for i = 1, 65535 do
+		obj = alife():object(i)
+		if obj and string.find(obj:name(), "zone_teleport_chaes") then
+			alife():release(obj, true)
+		elseif obj and string.find(obj:name(), "zone_spatial_bubble") then
+			alife():release(obj, true)
+		end
+	end
+end
+
+
+
+function remove_srs_that_added_by_this_addon()		-- удаляет ВСЕ спейс_рестрикторы, созданные аддоном
+	local space_restrictors_id_file = "gamedata\\configs\\plugins\\spatial_anomalies\\srs_id.ltx"
+	local ids_table = {}
+	local n = 1
+	for line in io.lines(space_restrictors_id_file) do
+		ids_table[n] = tonumber(line)
+		n = n + 1
+	end
+	for i = 1, n - 1 do
+		local obj = alife():object(ids_table[i])
+		alife():release(obj, true)
+	end
+end
+--=============================================================================================================--
+
+
+function find_restrictors_ids()	-- при первом запуске запоминает айди последнего оригинального спейс_рестриктора, при втором вызове пишет в файл айди ресторикторов, созданных этим аддоном
+	local str = ""
+	if not has_alife_info("teleports_created") then
+		for i = 1, 65535 do
+			obj = alife():object(i)
+			if obj and string.find(obj:name(), "space_restrictor") then
+				last_original_sr_id = i
+			end
+		end
+	else
+		local space_restrictors_id_file = "gamedata\\configs\\plugins\\spatial_anomalies\\srs_id.ltx"
+		total_restrictors_created = 0
+		for i = last_original_sr_id + 1, 65535 do
+			obj = alife():object(i)
+			if obj and string.find(obj:name(), "space_restrictor") then
+				str = str .. tostring(i) .. "\n"
+				total_restrictors_created = total_restrictors_created + 1
+			end
+		end
+		io.open(space_restrictors_id_file, "w"):write(str)
+		io.close()
+		last_original_sr_id = nil
+	end
+end
+--=============================================================================================================--
+
+
+function get_exit_points()
+	current_number_of_super_exit_points = destination_points_file:line_count("exit_points_super")
+	for i = 1, current_number_of_super_exit_points do
+		super_exit_points_coord_strs[i] = destination_points_file:r_string("exit_points_super", "point" .. tostring(i))
+	end
+	current_number_of_near_exit_points = destination_points_file:line_count("exit_points_near")
+	for i = 1, current_number_of_near_exit_points do
+		near_exit_points_coord_strs[i] = destination_points_file:r_string("exit_points_near", "point" .. tostring(i))
+	end
+	current_number_of_extra_points = destination_points_file:line_count("extra_points")
+	for i = 1, current_number_of_extra_points do
+		extra_points_coord_strs[i] = destination_points_file:r_string("extra_points", "point" .. tostring(i))
+	end
+end
+
+
+
+--=============================================================================================================--
+-- Функции, телепортирующие актора
+--=============================================================================================================--
+local compass_on_belt_status = 0
+
+function compass_on_belt_counting() -- возвращает количество объектов на поясе, item_on_belt(index) - возвращает объект на поясе или nil, если индекс выходит за пределы [0, N-1] индекс считает от нуля.
+	compass_on_belt_status = 0
+	for i = 0, db.actor:belt_count() - 1 do
+		local obj = db.actor:item_on_belt(i)
+		if (obj and string.find(obj:name(), "af_compass_af_iam")) or (obj and string.find(obj:name(), "af_compass_af_aac")) or (obj and string.find(obj:name(), "af_compass_af_aam")) then
+			compass_on_belt_status = 1
+		elseif (obj and string.find(obj:name(), "af_compass")) then
+			compass_on_belt_status = 2
+		end
+	end
+end
+
+
+
+function teleport_actor_main()
+	local n = nil
+	for i = 1, 8 do
+		if has_alife_info("actor_in_teleport_n" .. i) then		-- инфопоршень показывает что актор в телепорте, и номер телепорта
+			n = i
+			break
+		end
+	end
+	if n then
+		teleport_actor_by_teleport(n)
+	else
+		teleport_actor_by_spatial_bubble()
+	end
+	local snd_obj = sound_object("affects\\tinnitus3a")
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0, 1.0)
+end
+
+
+
+function teleport_actor_by_teleport(n)
+	if compass_on_belt_status == 2 then
+		teleport_actor_to_bubble(n)				-- от номера телепорта зависит, к какому пузырю телепортировать игрока
+	elseif compass_on_belt_status == 1 then
+		teleport_actor_to_extra_point(n)		-- от номера телепорта зависит, в какую экстра-точку телепортировать игрока
+	else
+		teleport_actor_to_super_point()
+	end
+end
+
+
+
+function teleport_actor_by_spatial_bubble()
+	local actor_in_super_bubble = false
+	if has_alife_info("actor_in_super_bubble") then
+		actor_in_super_bubble = true
+	end
+	if compass_on_belt_status == 2 then
+		teleport_actor_to_extra_point("random")		-- пузырь телепортирует в случайную экстра-точку
+	elseif compass_on_belt_status == 1 then
+		teleport_actor_to_super_point()
+	else
+		teleport_actor_random(actor_in_super_bubble)
+	end
+end
+
+
+
+function teleport_actor_to_bubble(n)
+	local location = level.name()
+	if location == "l12_stancia_2" then			-- на ЧАЭС-2 телепорты 1, 3, 4 (западные) ведут к Лиманску, с 5 по 7(восточные) - к Окраинам Припяти, телепорт 2 - на Кордон, последний - к Генераторам
+		if n == 1 or n == 3 or n == 4 then location = "l10_limansk_DUGA"
+		elseif 5<= n and n <= 7 then location = "pripyat"
+		elseif n == 2 then location = "l01_escape"
+		--else location = "l01_escape" end
+		else location = "l13_generators" end
+	elseif location == "l10_radar" then location = "l10_red_forest"		-- с Радара в Рыжий Лес
+	elseif location == "zaton" then location = "jupiter"				-- с Затона на Юпитер
+	elseif location == "l11_pripyat" then location = "l10_radar"		-- с центра Припяти на Радар
+	elseif location == "pripyat" then location = "l10_radar"			-- с окраин Припяти на Радар
+	elseif location == "l11_hospital" then location = "l10_limansk"		-- с Госпиталя в Лиманск
+	else location = "l10_red_forest"
+	end
+	give_info("direction_adjustment_required")		-- этот инфопоршень значит, что после телепортации на другую локацию нужно установить взгляд актора
+	local tb = _g.str_explode(coords_to_bubble_file:r_string("all_points", location), ",")
+	ChangeLevel(vector():set(tonumber(tb[1]), tonumber(tb[2]), tonumber(tb[3])), tonumber(tb[4]), tonumber(tb[5]), VEC_ZERO)
+end
+
+
+
+function teleport_actor_to_extra_point(n)
+	if n == "random" then
+		math.randomseed(os.time())
+		n = math.random(current_number_of_extra_points)
+	end
+	local ep = _g.str_explode(extra_points_coord_strs[n], ",")
+	db.actor:set_actor_position(vector():set(tonumber(ep[1]), tonumber(ep[2]), tonumber(ep[3])), tonumber(ep[4]), tonumber(ep[5]))
+	db.actor:set_actor_direction(-vector():set(tonumber(ep[6]), tonumber(ep[7]), tonumber(ep[8])):getH())
+end
+
+
+
+function teleport_actor_random(actor_in_super_bubble)	-- есть случайные точки, которые находятся ближе к Пузырю или дальше от него; вероятность телепортации в ближние точки выше, если актор в обычном пузыре, если же актор в супер-пузыре, он с большей вероятностъю телепортируется в дальнюю точку(одну или несколько)
+	math.randomseed(os.time())
+	local super_chance = nil
+	if actor_in_super_bubble then
+		super_chance = 75
+	else
+		super_chance = 35
+	end
+	local percent = math.random(100)
+	if percent > super_chance then
+		local current_random_point = math.random(current_number_of_near_exit_points)
+		local ep = _g.str_explode(near_exit_points_coord_strs[current_random_point], ",")
+		db.actor:set_actor_position(vector():set(tonumber(ep[1]), tonumber(ep[2]), tonumber(ep[3])), tonumber(ep[4]), tonumber(ep[5]))
+		db.actor:set_actor_direction(-vector():set(tonumber(ep[6]), tonumber(ep[7]), tonumber(ep[8])):getH())
+	else
+		local current_random_point = math.random(current_number_of_super_exit_points)
+		local ep = _g.str_explode(super_exit_points_coord_strs[current_random_point], ",")
+		db.actor:set_actor_position(vector():set(tonumber(ep[1]), tonumber(ep[2]), tonumber(ep[3])), tonumber(ep[4]), tonumber(ep[5]))
+		db.actor:set_actor_direction(-vector():set(tonumber(ep[6]), tonumber(ep[7]), tonumber(ep[8])):getH())
+	end
+end
+
+
+
+function teleport_actor_to_super_point()
+	local str = destination_points_file:r_string("super_point", "point1")
+	local sp = _g.str_explode(str, ",")
+	db.actor:set_actor_position(vector():set(tonumber(sp[1]), tonumber(sp[2]), tonumber(sp[3])), tonumber(sp[4]), tonumber(sp[5]))
+	db.actor:set_actor_direction(-vector():set(tonumber(sp[6]), tonumber(sp[7]), tonumber(sp[8])):getH())
+end
+
+
+
+function direction_adjustment()										-- функция задает взгляд актора после телепортации на другую локацию
+	local location = level.name()
+	local tb = _g.str_explode(coords_to_bubble_file:r_string("all_points", location), ",")
+	local snd_obj = sound_object("affects\\tinnitus3a")
+	disable_info("direction_adjustment_required")
+	level.add_pp_effector ("teleport.ppe", 2006, false)
+	db.actor:set_actor_direction(-vector():set(tonumber(tb[6]), tonumber(tb[7]), tonumber(tb[8])):getH())
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0, 1.0)
+	for i = 1, 8 do
+		if has_alife_info("actor_in_teleport_n" .. i) then
+			disable_info("actor_in_teleport_n" .. i)
+			break
+		end
+	end
+end

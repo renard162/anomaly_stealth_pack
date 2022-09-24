@@ -1,0 +1,65 @@
+ui_workshop.UIWorkshopRepair.GetPartsCondition = function(self)
+	-- Get parts conditions first
+	self.conditions = {}
+	for i = 1, 6 do
+		if self.parts[i] and self.parts[i].sec and (self.parts[i].sec ~= "na") then
+			-- printf("condition for part %s, sec %s - %s", i, self.parts[i].sec, self.parts[i].con)
+			self.conditions[i] = self.parts[i].con
+		end
+	end
+end
+
+ui_workshop.UIWorkshopRepair.ReplaceCondition = function(self, id)
+	for i = 1, 6 do
+		if self.new_con[i] and self.new_con[i].id == id then
+			local obj = level.object_by_id(id)
+			if obj and obj ~= 0 and self.conditions[i] then
+				local new_cond = round_idp(self.conditions[i] * 0.01, 2)
+				printf("replacement found for %s, sec %s, condition of replaced part %s", i, obj:section(), new_cond)
+				obj:set_condition(new_cond)
+			end
+		end
+	end
+end
+
+-- Overrides
+og_alife_release_id = alife_release_id
+current_override = nil
+override_func = {
+	['workshop_repair'] = function(id)
+		local GUI = ui_workshop.GUI
+		if GUI then
+			GUI.dlg_repair:ReplaceCondition(id)
+		end
+	end
+}
+ui_workshop.alife_release_id = function(id)
+	printf("firing override")
+	if current_override and override_func[current_override] then
+		return override_func[current_override](id)
+	else
+		return og_alife_release_id(id)
+	end
+end
+
+function do_patches()
+	if zz_ui_workshop_keep_crafting_window_open then
+		zz_ui_workshop_keep_crafting_window_open.alife_release_id = ui_workshop.alife_release_id
+	end
+
+	og_repair = ui_workshop.UIWorkshopRepair.Repair
+	ui_workshop.UIWorkshopRepair.Repair = function(self)
+		-- Override alife_release_id at runtime
+		current_override = 'workshop_repair'
+
+		self:GetPartsCondition()
+		og_repair(self)
+
+		-- Restore global functionality
+		current_override = nil
+	end
+end
+
+function on_game_start()
+	do_patches()
+end

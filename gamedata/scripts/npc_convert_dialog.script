@@ -1,0 +1,199 @@
+local victim_community_dialogues = {
+	["stalker"] = game.translate_string("npc_convert_stalker"),
+	["bandit"] = game.translate_string("npc_convert_bandit"),
+	["csky"] = game.translate_string("npc_convert_csky"),
+	["army"] = game.translate_string("npc_convert_army"),
+	["freedom"] = game.translate_string("npc_convert_freedom"),
+	["dolg"] = game.translate_string("npc_convert_dolg"),
+	["ecolog"] = game.translate_string("npc_convert_ecolog"),
+	["killer"] = game.translate_string("npc_convert_killer"),
+	["monolith"] = game.translate_string("npc_convert_monolith"),
+	["renegade"] = game.translate_string("npc_convert_renegade"),
+	["greh"] = game.translate_string("npc_convert_greh"),
+	["isg"] = game.translate_string("npc_convert_isg"),
+	["zombied"] = game.translate_string("npc_convert_zombied"),
+	["none"] = game.translate_string("npc_convert_unknown"),
+	["target"] = game.translate_string("npc_convert_unknown"),
+}
+
+local victim_community_dialogues_intimidated = {
+	["stalker"] = game.translate_string("npc_convert_stalker_2"),
+	["bandit"] = game.translate_string("npc_convert_bandit_2"),
+	["csky"] = game.translate_string("npc_convert_csky_2"),
+	["army"] = game.translate_string("npc_convert_army_2"),
+	["freedom"] = game.translate_string("npc_convert_freedom_2"),
+	["dolg"] = game.translate_string("npc_convert_dolg_2"),
+	["ecolog"] = game.translate_string("npc_convert_ecolog_2"),
+	["killer"] = game.translate_string("npc_convert_killer_2"),
+	["monolith"] = game.translate_string("npc_convert_monolith_2"),
+	["renegade"] = game.translate_string("npc_convert_renegade_2"),
+	["greh"] = game.translate_string("npc_convert_greh_2"),
+	["isg"] = game.translate_string("npc_convert_isg_2"),
+	["zombied"] = game.translate_string("npc_convert_zombied_2"),
+	["none"] = game.translate_string("npc_convert_unknown_2"),
+	["target"] = game.translate_string("npc_convert_unknown_2"),
+}
+
+
+local base_chance = 40
+local attack_chance = 15
+local attack_chance_override = 50
+local intimidation_surrender_bonus = 30
+local _npcs_to_convert = {}
+local random_convert_chance_enabled = false
+local convert_debug_msg = false
+
+--I hate working with random chances, i had to use a goddamn excel sheet to figure out this shit, and it's probably still not intuitive enough for the average player to change on their own.
+local rank_intimidation = {
+	["novice"] = 10,
+	["trainee"] = 20,
+	["experienced"] = 30,
+	["professional"] = 40,
+	["veteran"] = 50,
+	["expert"] = 60,
+	["master"] = 80,
+	["legend"] = 100,
+}
+
+function loadsettings()
+	if ui_mcm then -- here we test to make sure ui_mcm exists before trying to call it's get function.
+		
+		random_convert_chance_enabled = ui_mcm.get("npc_convert/random_convert_chance_enabled")
+		base_chance	= ui_mcm.get("npc_convert/base_chance")
+		attack_chance = ui_mcm.get("npc_convert/attack_chance")
+		rank_intimidation["novice"] = ui_mcm.get("npc_convert/novice_intimidation")
+		rank_intimidation["trainee"] = ui_mcm.get("npc_convert/trainee_intimidation")
+		rank_intimidation["experienced"] = ui_mcm.get("npc_convert/experienced_intimidation")
+		rank_intimidation["professional"] = ui_mcm.get("npc_convert/professional_intimidation")
+		rank_intimidation["veteran"] = ui_mcm.get("npc_convert/veteran_intimidation")
+		rank_intimidation["expert"] = ui_mcm.get("npc_convert/expert_intimidation")
+		rank_intimidation["master"] = ui_mcm.get("npc_convert/master_intimidation")
+		rank_intimidation["legend"] = ui_mcm.get("npc_convert/legend_intimidation")
+		convert_debug_msg = ui_mcm.get("npc_convert/convert_debug_msg")
+		
+		if intimidation_surrender_options_mcm then
+			attack_chance_override = ui_mcm.get("intimidation_surrender/attack_chance_override")
+			intimidation_surrender_bonus = ui_mcm.get("intimidation_surrender/intimidation_surrender_bonus")
+		end
+	end
+end
+
+--later add betrayal chance and betrayal chance on peaceful convert
+
+
+	
+--[Player's rank intimidation] - [Enemy's rank intimidation] + [Base chance] + [intimidation bonus](if addon exists) = [chance to convert]%
+	
+function surrender_victim_answers_3(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	local rnum = 100
+	local chance_to_convert = 100
+	local player_intimidation = 100
+	local enemy_intimidation = 100
+	
+	if (random_convert_chance_enabled) then
+		player_intimidation = rank_intimidation[ranks.get_player_rank_name()]
+		enemy_intimidation = rank_intimidation[ranks.get_obj_rank_name(npc)]
+		rnum = math.random(1,100)
+		
+		--calculating final chance to convert + intimidation_surrender addon interaction
+		if intimidation_surrender and intimidation_surrender._intimidation_surrendered_npcs[npc:id()] and intimidation_surrender._intimidation_surrendered_npcs[npc:id()].result then
+			chance_to_convert = player_intimidation - enemy_intimidation + base_chance + intimidation_surrender_bonus
+		else
+			chance_to_convert = player_intimidation - enemy_intimidation + base_chance
+		end
+		
+		
+		if(convert_debug_msg) then
+			actor_menu.set_msg(1,"random num: " .. rnum .. " playerI: " .. player_intimidation .. " enemyI: " .. enemy_intimidation .. " final chance: " .. chance_to_convert,10)
+		end
+		
+		--do i even need this?
+		--if (chance_to_convert > 100) then chance_to_convert = 100 end  
+		--if (chance_to_convert < 0) then chance_to_convert = 0 end
+		
+		
+	
+		--decline
+		if(rnum > chance_to_convert)then
+			
+				--stand up to attack. Not sure if the random seed will immediately let me do the exact same calculation with a different result, but it shouldn't be a big deal with a low chance, and if persuasion fails, the player usually kills the enemy either way. Also, i don't want to screw around with the game's random seed. I have no clue how it works and if i could break the game by messing with it.
+				rnum = math.random(1,100)
+				if intimidation_surrender and intimidation_surrender._intimidation_surrendered_npcs[npc:id()] then
+					
+					if(rnum <= attack_chance_override) then
+						alife_create_item("medkit_script", npc)
+						xr_wounded.unlock_medkit(npc)
+					end
+				
+				elseif(rnum <= attack_chance) then
+					alife_create_item("medkit_script", npc)
+					xr_wounded.unlock_medkit(npc)
+				end
+				
+				
+				return game.translate_string("st_surrender_victim_answer_5")
+		end
+		
+	end
+	
+	--accept
+	alife_create_item("medkit_script", npc)
+	xr_wounded.unlock_medkit(npc)
+	game_statistics.increment_statistic("wounded_helped")
+	npc:set_relation(game_object.neutral,db.actor)
+	npc:set_character_community(get_actor_true_community(), 0, 0 )
+	db.storage[npc:id()].panicked_to_actor = false
+	
+	_npcs_to_convert[npc:id()] = 
+	{
+	name = npc:name(),
+	community = npc:character_community(),
+	}
+	return game.translate_string("npc_convert_join")
+	
+	
+end
+
+
+
+function surrender_query_victim_6(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	local community = npc:character_community()
+	
+	if intimidation_surrender and intimidation_surrender._intimidation_surrendered_npcs[npc:id()] then
+		return victim_community_dialogues_intimidated[community]
+	else
+		return victim_community_dialogues[community]
+	end
+end
+
+function actor_on_update()
+	for npc_id, data in pairs(_npcs_to_convert) do
+		local npc = level.object_by_id(npc_id)
+		if npc and IsStalker(npc) then
+			if npc:is_talking() == false then
+				local npcst = db.storage[npc:id()] and db.storage[npc:id()].object
+				if (npcst and npcst:alive()) then
+					local sim = alife()
+					
+					local pos = npcst:position()
+					local gvid = npcst:game_vertex_id()
+					local lvid = npcst:level_vertex_id()
+					db.spawned_vertex_by_id[npc:id()] = nil
+					sim:teleport_object(npc:id(),gvid,lvid,pos)
+					
+					_npcs_to_convert[npc_id] = nil
+				end
+			end
+		else
+			_npcs_to_convert[npc_id] = nil
+		end
+	end
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_update",actor_on_update)
+	RegisterScriptCallback("on_option_change", loadsettings)  --MCM sends the same callback as ui_options
+	loadsettings()
+end

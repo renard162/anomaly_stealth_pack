@@ -1,0 +1,240 @@
+--[[
+    Detector selector
+    Author: HarukaSai
+    Credits: RavenAscendant - for making MCM
+
+    Created: 03-03-2022
+    Last edit: 25-03-2022
+]]
+
+local mcm_id = "detector_selector"
+local mcm_key = DIK_keys.DIK_B
+
+categories = {
+    anomaly = {
+        devices = {
+            ["detector_scientific"] = 4,
+            ["detector_elite"] = 3,
+            ["detector_advanced"] = 2,
+            ["detector_simple"] = 1
+        },
+        defaults = {keybind = mcm_key, modifier = 0, second_key = 0}
+    },
+    radio = {
+        devices = {
+            ["detector_radio"] = 1
+        },
+        defaults = {keybind = mcm_key, modifier = 1, second_key = 0}
+    },
+    geiger = {
+        devices = {
+            ["detector_geiger"] = 1
+        },
+        defaults = {keybind = mcm_key, modifier = 2, second_key = 0}
+    },
+    lights = {
+        devices = {
+            ["device_flashlight"] = 1
+        },
+        defaults = {keybind = mcm_key, modifier = 0, second_key = 1}
+    },
+    detector_anomaly = {
+        devices = {
+            ["detector_anomaly"] = 1
+        },
+        defaults = {keybind = mcm_key, modifier = 1, second_key = 1}
+    }
+}
+
+local keybind_instances = {}
+local string_format = string.format
+local mcm_keybinds = ui_mcm and ui_mcm.key_hold
+
+function get_options_for_key(category)
+    local template = {
+        { id = "keybind_" .. category, type = "key_bind", val = 2, 
+            def = categories[category].defaults.keybind 
+        },
+        { id = "modifier_" .. category, type = ui_mcm.kb_mod_radio , val = 2, hint = "mcm_kb_mode",
+            def = categories[category].defaults.modifier, 
+            content = {
+                {0, "mcm_kb_mode_press"},
+                {1, "mcm_kb_mode_dtap"},
+                {2, "mcm_kb_mode_hold"} 
+            }
+        },
+        { id = "second_key_" .. category, type = ui_mcm.kb_mod_radio , val = 2, hint = "mcm_kb_modifier",
+            def = categories[category].defaults.second_key,
+            content = { 
+                {0,"mcm_kb_mod_none"} , 
+                {1,"mcm_kb_mod_shift"} , 
+                {2,"mcm_kb_mod_ctrl"},
+                {3,"mcm_kb_mod_alt"}
+            }
+        },
+        {id = "divider", type = "line" }
+    }
+    return template
+end
+
+function on_mcm_load()
+    local options = {
+        id = mcm_id, sh = true,
+        gr = {
+            { id = mcm_id, type = "slide", link = "ui_options_slider_player", text = "ui_mcm_menu_" .. mcm_id, size = {512, 50}, spacing = 20},
+            { id = "desc_mcm", type = "desc", text = "ui_mcm_" .. mcm_id .. "_mcm", clr = {255, 175 ,0 ,0}, precondition = {function() return not mcm_keybinds end} }
+        }
+    }
+    if zz_glowstick_mcm then
+        categories.glowsticks = {
+            devices = {
+                ["device_glowstick"] = 1,
+                ["device_glowstick_orange"] = 1,
+                ["device_glowstick_red"] = 1,
+                ["device_glowstick_blue"] = 1
+            },
+            defaults = {keybind = mcm_key, modifier = 0, second_key = 2}
+        }
+    end
+    for category, _ in spairs(categories) do
+        local key_options = get_options_for_key(category)
+        for key = 1, #key_options do
+            options.gr[#options.gr + 1] = key_options[key]
+        end
+    end
+    return options
+end
+
+function select_detector(category)
+    local devices = categories[category].devices
+    local actor = db.actor
+    local device_in_slot = actor:item_in_slot(9)
+    local active_device = actor:active_detector()
+    if device_in_slot and devices[device_in_slot:section()] then
+        if active_device then
+            hide_detector(device_in_slot)
+        else
+            actor:show_detector(true)
+        end
+        return
+    end
+    local devices_ruck = {}
+    actor:iterate_inventory(function(owner, obj)
+        local sec = obj and obj:section()
+        if sec and devices[sec] then
+            devices_ruck[#devices_ruck + 1] = {
+                ["object"] = obj, 
+                ["weight"] = devices[sec] + obj:condition()
+            }
+        end
+    end, actor)
+    if is_empty(devices_ruck) then
+        return
+    end
+    table.sort(devices_ruck, function(a,b) return a.weight > b.weight end)
+    if active_device then
+        cycle_detector(active_device, devices_ruck[1].object)
+        return
+    end
+    actor:move_to_slot(devices_ruck[1].object, 9)
+    CreateTimeEvent("haru_show_detector","haru_show_detector", 0.1, show_event)
+end
+
+function cycle_detector(prev, next)
+    prev:switch_state(2)
+    local det_hide_time = (prev:play_hud_motion("anm_hide_fast", true, 3, 2, 0) / 1000) + 0.25
+    CreateTimeEvent("haru_hide_detector", "haru_hide_detector", det_hide_time, function(prev, next)
+        hide_event(prev)
+        db.actor:move_to_slot(next, 9)
+        CreateTimeEvent("haru_show_detector","haru_show_detector", 0.1, show_event)
+        return true
+    end, prev, next)
+end
+
+-- cuz engine function no worky
+function hide_detector(obj)
+    obj:switch_state(2)
+    local det_hide_time = (obj:play_hud_motion("anm_hide_fast", true, 3, 2, 0) / 1000) + 0.25
+    CreateTimeEvent("haru_hide_detector", "haru_hide_detector", det_hide_time, hide_event, obj)
+end
+
+function hide_event(obj)
+    db.actor:force_hide_detector()
+    obj:switch_state(3)
+    return true
+end
+
+function show_event()
+    db.actor:show_detector(true)
+    return true
+end
+
+class "InputManager"
+
+function InputManager:__init(id, settings)
+    self.settings = settings
+    self.modes = {
+        [0] = { 
+            call = "on_key_press", 
+            action = function(key) 
+                ui_mcm.simple_press(mcm_id .. id, key, function() 
+                    select_detector(id) 
+                end) 
+            end 
+        },
+        [1] = { 
+            call = "on_key_press", 
+            action = function(key) 
+                if ui_mcm.double_tap(mcm_id .. id, key) then 
+                    select_detector(id) 
+                end 
+            end 
+        },
+        [2] = { 
+            call = "on_key_hold", 
+            action = function(key) 
+                if ui_mcm.key_hold(mcm_id .. id, key) then 
+                    select_detector(id) 
+                end 
+            end 
+        }
+    }
+    RegisterScriptCallback(self.modes[self.settings.modifier].call, self)
+end
+
+function InputManager:on_key_press(key)
+    if key ~= self.settings.keybind then return end
+    if ui_mcm.get_mod_key(self.settings.second_key) then
+        self.modes[self.settings.modifier].action(key)
+    end
+end
+
+function InputManager:on_key_hold(key)
+    if key ~= self.settings.keybind then return end
+    if ui_mcm.get_mod_key(self.settings.second_key) then
+        self.modes[self.settings.modifier].action(key)
+    end
+end
+
+function InputManager:destroy()
+    UnregisterScriptCallback(self.modes[self.settings.modifier].call, self)
+end
+
+function on_option_change()
+    for category, _ in pairs(categories) do
+        if keybind_instances[category] then
+            keybind_instances[category]:destroy()
+        end
+        keybind_instances[category] = InputManager(category, {
+                keybind = ui_mcm.get(string_format("%s/keybind_%s", mcm_id, category)),
+                modifier = ui_mcm.get(string_format("%s/modifier_%s", mcm_id, category)),
+                second_key = ui_mcm.get(string_format("%s/second_key_%s", mcm_id, category))
+            }
+        )
+    end
+end
+
+function on_game_start()
+    RegisterScriptCallback("on_option_change", on_option_change)
+    on_option_change()
+end

@@ -1,0 +1,67 @@
+exo_flag = false
+exo_footstep_sound = nil
+exo_jump_sound = nil
+exo_landing_sound = nil
+
+local function get_exo_type(outfit)
+    local exo_types = {
+        [0] = "light", [1] = "light",  [2] = "light",  [3] = "middle" , [4] = "middle"
+    }
+    local weight = SYS_GetParam(0, outfit:section(), "inv_weight")
+    return exo_types[math.floor(weight / 10)] or "heavy"
+end
+
+function actor_on_update() -- checking if player is wearing an exo
+    local outfit = db.actor:item_in_slot(7)
+    local backpack = db.actor:item_in_slot(13)
+    local is_exo_outfit = outfit and (SYS_GetParam(0, outfit:section(), "repair_type") == "outfit_exo")
+    local is_exo_backpack = backpack and (SYS_GetParam(0, backpack:section(), "repair_type") == "outfit_exo")
+    if is_exo_outfit then
+        exo_flag = true
+        local exo_type = get_exo_type(outfit)
+        local footstep_type = exo_type
+        if string.find(outfit:section(), "nosorog") then
+            footstep_type = "nosorog"
+        end
+        exo_footstep_sound = sound_object("exo-servo\\"..footstep_type.."_servo_exo_step")
+        exo_jump_sound = sound_object("exo-servo\\"..exo_type.."_servo_exo_jump")
+        exo_landing_sound = sound_object("exo-servo\\"..exo_type.."_servo_exo_landing")
+    elseif is_exo_backpack then
+        exo_flag = true
+        exo_footstep_sound = sound_object("exo-servo\\servo_exo_step")
+        exo_jump_sound = sound_object("exo-servo\\servo_exo_jump")
+        exo_landing_sound = sound_object("exo-servo\\servo_exo_landing")
+    else
+        exo_flag = false
+    end
+end
+
+function actor_on_footstep(material,power,hud_view,flags)
+    -- printf("~ power: "..tostring(power))
+    if exo_flag and exo_footstep_sound then
+        exo_footstep_sound:play(db.actor, 0, sound_object.s2d)
+        exo_footstep_sound.volume = clamp(power, 0.5, 1.3) or 1
+		exo_footstep_sound.frequency = clamp(power, 0.8, 1.1) or 1
+    end
+end
+
+function actor_on_jump()
+    if exo_flag and exo_jump_sound then
+        exo_jump_sound:play(db.actor, 0, sound_object.s2d)
+    end
+end
+
+function actor_on_land(landing_speed)
+    -- printf("~ landing_speed: "..tostring(landing_speed))
+    if exo_flag and exo_landing_sound then
+        exo_landing_sound:play(db.actor, 0, sound_object.s2d)
+        exo_landing_sound.volume = clamp(landing_speed/6, 0.3, 2.5) or 1
+    end
+end
+
+function on_game_start()
+    RegisterScriptCallback("actor_on_footstep", actor_on_footstep)
+    RegisterScriptCallback("actor_on_jump", actor_on_jump)
+    RegisterScriptCallback("actor_on_land", actor_on_land)
+    RegisterScriptCallback("actor_on_update", actor_on_update)
+end

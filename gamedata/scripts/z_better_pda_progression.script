@@ -1,0 +1,81 @@
+--Coverdrave's Better PDA Progression
+
+--spots are defined in gamedata/configs/ui .xml files
+local function switch_icon_state(id, spot, hint, turn_on)
+	if not type(turn_on) == "boolean" then
+		printe("![ERROR]! Wrong parameter 'turn_on' passed in 'z_better_pda_progression.script', function 'switch_icon_state(id, spot, hint, turn_on)'. Pass only boolean (true or false).") 
+		return
+	end
+
+	local is_spot_enabled = level.map_has_object_spot(id, spot) --returns 0 or 1, not true or false
+	if turn_on and (is_spot_enabled == 0) then
+		level.map_add_object_spot(id, spot, hint)
+		
+	elseif not turn_on and (is_spot_enabled ~= 0) then
+		level.map_remove_object_spot(id, spot)
+	end
+end
+
+local function process_companion_icons(turn_on)
+	local non_task_companions_table_size = size_table(axr_companions.non_task_companions)
+	
+	if non_task_companions_table_size > 0 then
+		for id,v in pairs(axr_companions.non_task_companions) do
+			switch_icon_state(id, "ui_pda2_companion_location", "st_ui_pda_companion", turn_on)
+		end
+	end
+	
+	--note: there's always 1 companion squad with actor in it
+	for id,squad in pairs(axr_companions.companion_squads) do
+		if squad then
+			for k in squad:squad_members() do
+				switch_icon_state(k.id, "ui_pda2_companion_location", "st_ui_pda_companion", turn_on)
+			end
+		end
+	end
+end
+
+local function process_icons(section)
+	--boolean determines whether to turn on or off the icon(s)
+	if section == "device_pda_1" then
+		switch_icon_state(0, "actor_location", "disable_hint", true) --player icon
+		switch_icon_state(0, "actor_location_p", "disable_hint", false) --player arrow (aims to direction player is facing)
+		process_companion_icons(false) --companion icons
+		
+	elseif section == "device_pda_2" then
+		switch_icon_state(0, "actor_location", "disable_hint", true)
+		switch_icon_state(0, "actor_location_p", "disable_hint", false)
+		process_companion_icons(true)
+		
+	elseif section == "device_pda_3" then
+		switch_icon_state(0, "actor_location", "disable_hint", true)
+		switch_icon_state(0, "actor_location_p", "disable_hint", true)
+		process_companion_icons(true)
+	end
+end
+
+local function actor_item_to_slot(item)
+	local sec = item:section()
+	
+	if string.find(sec, "device_pda_") then
+		process_icons(sec)
+	end
+end
+
+local function on_actor_ready()
+	local pda = db.actor:item_in_slot(8)
+	if not pda then return end
+	
+	local sec = pda:section()
+	process_icons(sec)
+	return true
+end
+
+local function actor_on_first_update()
+	RegisterScriptCallback("actor_item_to_slot", actor_item_to_slot) --register here since otherwise actor_item_to_slot is triggered while loading and breaks icons
+	CreateTimeEvent("on_actor_ready_action", "on_actor_ready_event", 1, on_actor_ready)
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+end

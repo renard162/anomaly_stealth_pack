@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="st_cap_check_blackroad_mode">
+		<text>Black road mode</text>
+	</string>
+	<string id="st_mm_ck_blackroad_mode_desc">
+		<text>
+			%c[0,150,150,150]Who am I? Where I am?\n
+			\nIn this mode, you will appear in a random unsafe place, at night and without equipment.\n
+			\nThis option is well complemented by the modes Ironman mode, Survival mode or Story mode.\n
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Warfare mode.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Azazel mode.
+		</text>
+	</string>
+	<string id="st_cap_check_treasurehunt_mode">
+		<text>Treasure hunt mode</text>
+	</string>
+	<string id="st_mm_ck_treasurehunt_mode_desc">
+		<text>
+			%c[0,150,150,150]
+			\nIn this mode, equipment and items in "unmarked" caches will be absent, as in Shadow of Chernobyl, but the contents of the "marked" caches will become richer.\n
+			\n%c[d_orange]• %c[0,150,150,150]Makes the gameplay much more difficult in the early game!
+		</text>
+	</string>
+	<string id="st_cap_check_fortuneswheel_mode">
+		<text>Wheel of Fortune mode</text>
+	</string>
+	<string id="st_mm_ck_fortuneswheel_mode_desc">
+		<text>
+			\n%c[0,150,150,150]In this mode, you give your fate to chance, the goddess of luck - The Fortuna. From time to time, it will bring you happiness and wealth, or conversely, pain and suffering.\n
+			\n%c[d_green]• %c[0,150,150,150]Compatible with any game mode!
+		</text>
+	</string>
+	<string id="st_cap_list_fortuneswheel_interval">
+		<text>Interval</text>
+	</string>
+	<string id="st_mm_list_fortuneswheel_interval_desc">
+		<text>
+			%c[0,150,150,150]A mandatory feature for the Wheel of Fortune mode, which sets the time interval after which Fortune will, each time, determine your fate.
+			\n%c[200,200,50,50]• %c[0,150,150,150]The Wheel of Fortune game mode must be enabled.
+		</text>
+	</string>
+	
+	<string id="st_achievement_25_name">
+		<text>True STALKER</text>
+	</string>
+	<string id="st_achievement_25_hint">
+		<text>Through fire, water and brass pipes...</text>
+	</string>
+	<string id="st_achievement_25_descr">
+		<text>YOU ARE A DEVIL OF HELL!!! You in this world who could defy death and stop at nothing, even your fate is inclined to your feet, just to remain the alive! Congratulations!</text>
+	</string>
+	<string id="st_achievement_25_unlock">
+		<text>You have unlocked the "True STALKER" achievement.</text>
+	</string>
+	<string id="ui_mm_prst_gameplay_hardcore">
+		<text>Hardcore</text>
+	</string>
+	<string id="ui_mm_prst_economy_suicide">
+		<text>Suicider</text>
+	</string>
+	
+	<string id="st_af_belial_name">
+		<text>Belial</text>
+	</string>
+	<string id="st_af_belial_descr">
+		<text>This artifact is straight out of hell!!! You are the first to whom the Devil himself decided to give immortality! Now nothing will stop you and no one can compare with you in strength. The artifact permeates your entire soul with a weak voice, and this voice repeats only one word and the word is... \n \nBELIAL... \n \n</text>
+	</string>
+	
+	<string id="st_fortuneswheel_header">
+		<text>Timer:</text>
+	</string>
+	<string id="st_fortuneswheel_gift_1">
+		<text>%c[orange]THE WHEEL OF FORTUNE WORKED!%c[default] \n
+		- HEALTH %c[red]REDUCED!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_2">
+		<text>%c[orange]THE WHEEL OF FORTUNE WORKED!%c[default] \n
+		- YOU ARE %c[green]HEALED!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_3">
+		<text>%c[orange]THE WHEEL OF FORTUNE WORKED!%c[default] \n
+		- MONEY IS %c[red]STOLEN!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_4">
+		<text>%c[orange]THE WHEEL OF FORTUNE WORKED! \n
+		%c[green]- GIVE OUT MONEY!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_5">
+		<text>%c[orange]THE WHEEL OF FORTUNE WORKED!%c[default] \n
+		- ITEMS IS %c[red]STOLEN!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_6">
+		<text>%c[orange]THE WHEEL OF FORTUNE WORKED!%c[default] \n
+		- YOU %c[green]RECEIVED THE ITEMS!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_7">
+		<text>%c[orange]THE WHEEL OF FORTUNE WORKED! \n
+		%c[red]- ENEMIES APPEARED NEARBY!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_71">
+		<text>%c[orange]THE WHEEL OF FORTUNE WORKED! \n
+		%c[red]- MUTANTS APPEARED NEARBY!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_8">
+		<text>%c[orange]THE WHEEL OF FORTUNE WORKED! \n
+		%c[red]- YOU LOST CONSCIOUSNESS!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_9">
+		<text>%c[orange]THE WHEEL OF FORTUNE WORKED! \n
+		%c[red]- SOMETHING TERRIBLE IS COMING...
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_10">
+		<text>%c[orange]THE WHEEL OF FORTUNE WORKED!%c[default] \n
+		- YOU ARE %c[red]DRUNK!
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_11">
+		<text>%c[orange]THE WHEEL OF FORTUNE WORKED!%c[default] \n
+		- EQUIPMENT CONDITION %c[green]INCREASED TO:
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_111">
+		<text>%c[orange]THE WHEEL OF FORTUNE WORKED!%c[default] \n
+		- EQUIPMENT CONDITION %c[red]DECREASED TO:
+		</text>
+	</string>
+	<string id="st_fortuneswheel_gift_12">
+		<text>%c[orange]THE WHEEL OF FORTUNE WORKED! \n
+		%c[green]- COORDINATES OF CACHES HAVE BEEN GIVEN IN THE NUMBER OF:
+		</text>
+	</string>
+</string_table>

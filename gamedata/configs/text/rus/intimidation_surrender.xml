@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<string_table>
+
+	<string id="ui_mcm_menu_intimidation_surrender">
+		<text>Брать пленных устрашением</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_title">
+		<text>Брать пленных устрашением</text>
+	</string>
+	
+	<string id="ui_mcm_intimidation_surrender_base_chance_to_intimidate">
+		<text>Базовый шанс устрашения</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_base_chance_to_intimidate_desc">
+		<text>Базовый шанс без бонусов и минусов. Используется в расчете конечного шанса на устрашение.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_max_intimidation_distance">
+		<text>Максимальная дальность устрашения</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_max_intimidation_distance_desc">
+		<text>Вы должны быть настолько близко к врагу для устрашения</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_intimidation_surrender_bonus">
+		<text>Бонус к переводу врага на свою сторону</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_intimidation_surrender_bonus_desc">
+		<text>Увеличивает шансы перевести врага на свою сторону, так как вы смогли уговорить его сдаться, вместо того, чтобы доводить его до полусмерти.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_attack_chance_override">
+		<text>Шанс атаки при провале перевода на свою сторону</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_attack_chance_override_desc">
+		<text>Заменяет шанс аддона "Перевод врагов на свою сторону". Добавлено в связи с тем, что враги, которые никогда не получали критическое раненеие, должны иметь больше сил, чтобы пытаться сражаться с вами.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_low_health_bonus">
+		<text>Бонус к устрашению при низком здоровье</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_low_health_bonus_desc">
+		<text>Шанс того, что враг сдастся вам, увеличивается этим значением, если у врага менее 50% здоровья.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_sneak_bonus">
+		<text>Бонус к устрашению при скрытности</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_sneak_bonus_desc">
+		<text>Шанс того, что враг сдастся вам, увеличивается этим значением, если враг не видит вас.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_intimidation_voice">
+		<text>Голос устрашения</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_intimidation_voice_desc">
+		<text>Фразы, которые звучат со стороны игрока, когда вы пытаетесь перевести врага на свою сторону.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_intimidation_delay">
+		<text>Пауза перед сдачей(милисекунды)</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_intimidation_delay_desc">
+		<text>Как много времени пройдет перед тем, как цель среагирует на ваш запрос. Без небольшой паузы, нпц начинает сдаваться еще до того, как услышит вас, что выглядит глупо.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_isolation_enabled">
+		<text>Включить механику изоляции</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_isolation_enabled_desc">
+		<text>Данная механика увеличивает или уменьшает шансы, в зависимости от того, как сильно ваша цель изолирована от её друзей. Без данной механики, враги сдаются даже если они окружены сотнями своих друзей.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_minimal_isolation_distance">
+		<text>Минимальная дистанция изоляции</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_minimal_isolation_distance_desc">
+		<text>Сталкеры вне этого радиуса не влияют на шанс сдачи врага.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_isolation_bonus">
+		<text>Бонус изоляции</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_isolation_bonus_desc">
+		<text>Это значение увеличивает шансы за каждого противника вашей цели рядом с ней. Поэтому, если вы окружите цель своим отрядом, у вас будет больше шансов заставить её сдаться.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_isolation_penalty">
+		<text>Минус изоляции</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_isolation_penalty_desc">
+		<text>Это значение уменьшает шансы за каждого друга вашей цели рядом с ней. Поэтому у вас будет меньше шансов заставить врага сдаться рядом с его отрядом.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_enemy_response_enabled">
+		<text>Включить голосовые ответы противника</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_enemy_response_enabled_desc">
+		<text>Когда включены, враги будут играть голосовые команды каждый раз когда они соглашаются или отказываются сдаться. Я не мог найти способ заставить звуки играть прямо от нпц, поэтому данная система не безупречна. Звуки играют вместе с обычными звуками нпц, плохо повторяют их голоса, а также не могут следовать за движением персонажей.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_novice_bravery">
+		<text>Храбрость новичка</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_novice_bravery_desc">
+		<text>Храбрость этого ранга. Вычитается при расчете конечного шанса на устрашение. Более храбрые нпц сдаются с меньшим шансом.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_trainee_bravery">
+		<text>Храбрость начинающего</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_trainee_bravery_desc">
+		<text>Храбрость этого ранга. Вычитается при расчете конечного шанса на устрашение. Более храбрые нпц сдаются с меньшим шансом.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_experienced_bravery">
+		<text>Храбрость опытного</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_experienced_bravery_desc">
+		<text>Храбрость этого ранга. Вычитается при расчете конечного шанса на устрашение. Более храбрые нпц сдаются с меньшим шансом.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_professional_bravery">
+		<text>Храбрость профессионала</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_professional_bravery_desc">
+		<text>Храбрость этого ранга. Вычитается при расчете конечного шанса на устрашение. Более храбрые нпц сдаются с меньшим шансом.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_veteran_bravery">
+		<text>Храбрость ветерана</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_veteran_bravery_desc">
+		<text>Храбрость этого ранга. Вычитается при расчете конечного шанса на устрашение. Более храбрые нпц сдаются с меньшим шансом.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_expert_bravery">
+		<text>Храбрость эксперта</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_expert_bravery_desc">
+		<text>Храбрость этого ранга. Вычитается при расчете конечного шанса на устрашение. Более храбрые нпц сдаются с меньшим шансом.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_master_bravery">
+		<text>Храбрость мастера</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_master_bravery_desc">
+		<text>Храбрость этого ранга. Вычитается при расчете конечного шанса на устрашение. Более храбрые нпц сдаются с меньшим шансом.</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_legend_bravery">
+		<text>Храбрость легенды</text>
+	</string>
+	<string id="ui_mcm_intimidation_surrender_legend_bravery_desc">
+		<text>Храбрость этого ранга. Вычитается при расчете конечного шанса на устрашение. Более храбрые нпц сдаются с меньшим шансом.</text>
+	</string>
+	
+	<string id="ui_mcm_intimidation_surrender_int_calc_descr_text">
+		<text>Формула расчета конечного шанса:\n[базовый шанс] + [бонус скрытности](если враг вас не видит) + [бонус низкого здоровья](если у врага меньше 50% здоровья) + [бонус изоляции](за каждого враждебного и близкого к цели сталкера) - [минус изоляции](за каждого дружественного и близкого к цели сталкера) - [храбрость ранга противника] = [конечный шанс устрашения]%</text>
+	</string>
+	
+	<string id="ui_mcm_intimidation_surrender_convert_descr_text">
+		<text>Взаимодействие с аддоном "Перевод врагов на свою сторону"</text>
+	</string>
+
+	
+	
+	<string id="is_stalker_1">
+		<text>Сталкер 1</text>
+	</string>
+	<string id="is_stalker_1_muffled">
+		<text>Сталкер 1 приглушенный</text>
+	</string>
+	<string id="is_stalker_2">
+		<text>Сталкер 2</text>
+	</string>
+	<string id="is_stalker_2_muffled">
+		<text>Сталкер 2 приглушенный</text>
+	</string>
+	<string id="is_build">
+		<text>Сталкер 3</text>
+	</string>
+	<string id="is_build_muffled">
+		<text>Сталкер 3 приглушенный</text>
+	</string>
+	<string id="is_bandit_1">
+		<text>Бандит 1</text>
+	</string>
+	<string id="is_bandit_1_muffled">
+		<text>Бандит 1 приглушенный</text>
+	</string>
+	<string id="is_bandit_2">
+		<text>Бандит 2</text>
+	</string>
+	<string id="is_bandit_2_muffled">
+		<text>Бандит 2 приглушенный</text>
+	</string>
+	<string id="is_csky">
+		<text>Чистое Небо</text>
+	</string>
+	<string id="is_csky_muffled">
+		<text>Чистое Небо приглушенный</text>
+	</string>
+	<string id="is_dolg">
+		<text>Долг</text>
+	</string>
+	<string id="is_dolg_muffled">
+		<text>Долг приглушенный</text>
+	</string>
+	<string id="is_ecolog">
+		<text>Ученый</text>
+	</string>
+	<string id="is_ecolog_muffled">
+		<text>Ученый приглушенный</text>
+	</string>
+	<string id="is_freedom">
+		<text>Свобода</text>
+	</string>
+	<string id="is_freedom_muffled">
+		<text>Свобода приглушенный</text>
+	</string>
+	<string id="is_greh">
+		<text>Грех</text>
+	</string>
+	<string id="is_greh_muffled">
+		<text>Грех приглушенный</text>
+	</string>
+	<string id="is_military">
+		<text>Военный</text>
+	</string>
+	<string id="is_military_muffled">
+		<text>Военный приглушенный</text>
+	</string>
+	<string id="is_monolith_random_speeches">
+		<text>Случайные фразы монолитовцев</text>
+	</string>
+	<string id="is_custom">
+		<text>Свои звуки</text>
+	</string>
+	<string id="is_none">
+		<text>Без звука</text>
+	</string>
+
+
+</string_table>

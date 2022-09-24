@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<string_table>
+	
+    <string id="npc_convert_stalker">
+		<text>Mнrate a ti mismo. їNo estбs cansado de ser un don nadie, sin un verdadero grupo de personas que siempre te respalden? Ъnase a nosotros y tendrбs un nombre real y una vida mбs larga.</text>
+	</string>
+	 <string id="npc_convert_bandit">
+		<text>їQuй se siente ser una rata en la parte inferior de la cadena alimenticia, siempre recogiendo las sobras? Mira tu equipo de mierda. Mira a la gente que te rodea, siempre lista para apuсalarte la espalda. Ъnete a nosotros y es posible que tenga una oportunidad.</text>
+	</string>
+	 <string id="npc_convert_csky">
+		<text>їDe verdad quieres pasar tu corta vida viviendo en los pantanos, entre un montуn de cerdos mutantes y esa mierda? Su gente nunca lograrб nada a este ritmo. Ъnase a nosotros en su lugar.</text>
+	</string>
+	 <string id="npc_convert_army">
+		<text>їNo ves que a tu gobierno le importas una mierda? Eres solo un peуn en este juego de ajedrez. Empieza a pensar por ti mismo, ъnete a nosotros.</text>
+	</string>
+	 <string id="npc_convert_freedom">
+		<text>їEs esta la libertad que querнas? їDesangrбndose hasta la muerte, lejos de cualquier amigo? Tu gente es un grupo de drogadictos incompetentes, que apenas pueden salvarse a sн mismos. Ъnete a nosotros y vive mбs tiempo.</text>
+	</string>
+	 <string id="npc_convert_dolg">
+		<text>Pasaste tanto tiempo tratando de deshacerte de la zona que te olvidaste del mayor peligro que existe: los humanos. Ъnete a nosotros y te mostraremos la verdad: la zona no es nada comparada con las acciones humanas.</text>
+	</string>
+	 <string id="npc_convert_ecolog">
+		<text>Entraste en el lugar mбs peligroso del mundo, sosteniendo solo un bolнgrafo y una hoja de papel. їDe verdad esperabas que un montуn de nerds pudieran proteger tu vida? Si realmente quieres descubrir los secretos de la zona, ъnete a nosotros.</text>
+	</string>
+	 <string id="npc_convert_killer">
+		<text>Mira adуnde te ha llevado tu codicia por el dinero. Matarнas a tu propia familia si te pagaran por ello, їno? Deja de actuar como una maquina y trabajar a ciegas para obtener un solo nъmero mбs alto. Empieza a pensar por ti mismo, ъnete a nosotros.</text>
+	</string>
+	 <string id="npc_convert_monolith">
+		<text>Despierta, el credo solo te esta usando para sus propios fines. Deja de pelar para ese monton de fanaticos. El Monolito es solo una emboscada. Unete a nosotros y vuelve al mundo real.</text>
+	</string>
+	 <string id="npc_convert_renegade">
+		<text>їQuй se siente ser una rata en la parte inferior de la cadena alimenticia, siempre recogiendo las sobras? Mira tu equipo de mierda. Mira a la gente que te rodea, siempre lista para apuсalarte la espalda. Ъnase a nosotros y es posible que tenga una oportunidad.</text>
+	</string>
+	 <string id="npc_convert_greh">
+		<text>Despierta, estбs sirviendo bajo las уrdenes de un fanбtico loco. Si no funciona bien para monolith, їen serio crees que hacer otro grupo de este tipo cambiarнa algo? Termina con el pecado, ъnete a nosotros.</text>
+	</string>
+	<string id="npc_convert_isg">
+		<text>No estoy seguro de para quiйn trabaja, pero claramente no ha funcionado para tн. Voy a darte la oportunidad de redimirte. Ъnete a nosotros y te dejarй vivir.</text>
+	</string>
+	<string id="npc_convert_zombied">
+		<text>No eres tъ, cuando tienes hambre. Toma, toma unos Snickers. Espero que ayuden a calmar tu mente corrompida.</text>
+	</string>
+	<string id="npc_convert_unknown">
+		<text>Ъnete a nosotros y vivirбs mбs tiempo.</text>
+	</string>
+	
+	
+	 <string id="npc_convert_stalker_2">
+		<text>Mнrate a ti mismo. їNo estбs cansado de ser un don nadie, sin un verdadero grupo de personas que siempre te respalden? Ъnase a nosotros y tendrбs un nombre real y una vida mбs larga.</text>
+	</string>
+	 <string id="npc_convert_bandit_2">
+		<text>їQuй se siente ser una rata en la parte inferior de la cadena alimenticia, siempre recogiendo las sobras? Mira tu equipo de mierda. Mira a la gente que te rodea, siempre lista para apuсalarte la espalda. Ъnete a nosotros y es posible que tenga una oportunidad.</text>
+	</string>
+	 <string id="npc_convert_csky_2">
+		<text>їDe verdad quieres pasar tu corta vida viviendo en los pantanos, entre un montуn de cerdos mutantes y esa mierda? Su gente nunca lograrб nada a este ritmo. Ъnase a nosotros en su lugar.</text>
+	</string>
+	 <string id="npc_convert_army_2">
+		<text>їNo ves que a tu gobierno le importas una mierda? Eres solo un peуn en este juego de ajedrez. Empieza a pensar por ti mismo, ъnete a nosotros.</text>
+	</string>
+	 <string id="npc_convert_freedom_2">
+		<text>їEs esta la libertad que querнas? їDesangrбndose hasta la muerte, lejos de cualquier amigo? Tu gente es un grupo de drogadictos incompetentes, que apenas pueden salvarse a sн mismos. Ъnete a nosotros y vive mбs tiempo.</text>
+	</string>
+	 <string id="npc_convert_dolg_2">
+		<text>Pasaste tanto tiempo tratando de deshacerte de la zona que te olvidaste del mayor peligro que existe: los humanos. Ъnete a nosotros y te mostraremos la verdad: la zona no es nada comparada con las acciones humanas.</text>
+	</string>
+	 <string id="npc_convert_ecolog_2">
+		<text>Entraste en el lugar mбs peligroso del mundo, sosteniendo solo un bolнgrafo y una hoja de papel. їDe verdad esperabas que un montуn de nerds pudieran proteger tu vida? Si realmente quieres descubrir los secretos de la zona, ъnete a nosotros.</text>
+	</string>
+	 <string id="npc_convert_killer_2">
+		<text>Mira adуnde te ha llevado tu codicia por el dinero. Matarнas a tu propia familia si te pagaran por ello, їno? Deja de actuar como una maquina y trabajar a ciegas para obtener un solo nъmero mбs alto. Empieza a pensar por ti mismo, ъnete a nosotros.</text>
+	</string>
+	 <string id="npc_convert_monolith_2">
+		<text>Despierta, el credo solo te esta usando para sus propios fines. Deja de pelar para ese monton de fanaticos. El Monolito es solo una emboscada. Unete a nosotros y vuelve al mundo real.</text>
+	</string>
+	 <string id="npc_convert_renegade_2">
+		<text>їQuй se siente ser una rata en la parte inferior de la cadena alimenticia, siempre recogiendo las sobras? Mira tu equipo de mierda. Mira a la gente que te rodea, siempre lista para apuсalarte la espalda. Ъnase a nosotros y es posible que tenga una oportunidad.</text>
+	</string>
+	 <string id="npc_convert_greh_2">
+		<text>Despierta, estбs sirviendo bajo las уrdenes de un fanбtico loco. Si no funciona bien para monolith, їen serio crees que hacer otro grupo de este tipo cambiarнa algo? Termina con el pecado, ъnete a nosotros.</text>
+	</string>
+	<string id="npc_convert_isg_2">
+		<text>No estoy seguro de para quiйn trabaja, pero claramente no ha funcionado para tн. Voy a darte la oportunidad de redimirte. Ъnete a nosotros y te dejarй vivir.</text>
+	</string>
+	<string id="npc_convert_zombied_2">
+		<text>No eres tъ, cuando tienes hambre. Toma, toma unos Snickers. Espero que ayuden a calmar tu mente corrompida.</text>
+	</string>
+	<string id="npc_convert_unknown_2">
+		<text>Ъnete a nosotros y vivirбs mбs tiempo.</text>
+	</string>
+	
+	
+	<string id="npc_convert_join">
+		<text>Bien. Me unirй a ti.</text>
+	</string>
+	
+	<string id="ui_mcm_menu_npc_convert">
+		<text>Convertir Enemigos Rendidos</text>
+	</string>
+	<string id="ui_mcm_npc_convert_title">
+		<text>Convertir NPCs A Tu Faccion</text>
+	</string>
+	<string id="ui_mcm_npc_convert_random_convert_chance_enabled">
+		<text>Habilite la posibilidad aleatoria de rechazar su oferta.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_random_convert_chance_enabled_desc">
+		<text>Si esta desactivado, todos los NPCs tendran un 100 % de posibilidades de aceptar su oferta.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_calc_descr_text">
+		<text>La formula utilizada para calcular las posibilidades es:\n[Intimidacion del rango del jugador] - [Intimidacion del rango del enemigo] + [Probabilidad base] = [Probabilidad de conversion]%\nSi su intimidacion es 20, la intimidacion del npc es 10 y la probabilidad base es 30, el resultado final sera: 20 - 10 + 30 = 40 % de probabilidad de conversion\n \nSi no desea usar modificadores de probabilidad de rango, simplemente establezca la fuerza de todos los rangos en 0 y el script usara la probabilidad base para todo.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_base_chance">
+		<text>Probabilidad Base.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_base_chance_desc">
+		<text>Este numero siempre se suma despues de restar la intimidacion del NPC de la intimidacion del jugador.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_attack_chance">
+		<text>Probabilidad de ataque en caso de falla.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_attack_chance_desc">
+		<text>Posibilidad de que el NPC se levante inmediatamente y te ataque si no logras convertir. Siempre la misma oportunidad. Sin otros modificadores.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_novice_intimidation">
+		<text>Fuerza de intimidacion de Stalker Novato.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_trainee_intimidation">
+		<text>Fuerza de intimidacion de Stalker Aprendiz.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_experienced_intimidation">
+		<text>Fuerza de intimidacion de Stalker ExperimentadO.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_professional_intimidation">
+		<text>Fuerza de intimidacion de Stalker Profesional.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_veteran_intimidation">
+		<text>Fuerza de intimidacion de Stalker Veterano.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_expert_intimidation">
+		<text>Fuerza de intimidacion de Stalker Experto.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_master_intimidation">
+		<text>Fuerza de intimidacion de Stalker Maestro.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_legend_intimidation">
+		<text>Fuerza de intimidacion de Stalker Legendario.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_convert_debug_msg">
+		<text>(Depuracion) Mostrar posibilidades despues del intento de conversion.</text>
+	</string>
+	<string id="ui_mcm_npc_convert_convert_debug_msg_desc">
+		<text>Muestra el mensaje de depuracion en la parte inferior de la pantalla. Solo es necesario para encontrar posibles errores.</text>
+	</string>
+	
+</string_table>

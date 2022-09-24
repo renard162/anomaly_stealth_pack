@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<string id="st_campfire_off">
+		<text>You can not save at an unlit campfire</text>
+	</string>
+
+	<string id="st_campfire_danger">
+		<text>You can not save at a campfire while enemies are in the nearby</text>
+	</string>
+
+	<string id="st_campfire_surge">
+		<text>You can not save at a campfire during an emission</text>
+	</string>
+
+	<string id="st_campfire_psi_storm">
+		<text>You can not save at a campfire during a psi-storm</text>
+	</string>
+
+</string_table>

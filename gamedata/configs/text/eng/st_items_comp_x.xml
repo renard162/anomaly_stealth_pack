@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<string id="st_companion_item_x_1">
+		<text>Companion novice</text>
+	</string>
+	<string id="st_companion_item_x_1_descr">
+		<text>You and your childhood friend decided to try to earn extra money in the Zone. Having cashed out your savings, you both hitchhike to the Exclusion Zone and safely move it.</text>
+	</string>
+
+	<string id="st_companion_item_x_2">
+		<text>Companion experienced</text>
+	</string>
+	<string id="st_companion_item_x_2_descr">
+		<text>En route to the Zone, you run into a fellow traveler heading the same direction. He seems to be an experienced stalker, and after some polite conversation over a bottle of vodka, he agrees to accompany you.</text>
+	</string>
+
+	<string id="st_companion_item_x_3">
+		<text>Companion veteran</text>
+	</string>
+	<string id="st_companion_item_x_3_descr">
+		<text>You have decided to strike it rich in the Zone after hearing of how your cousin, an experienced stalker, has come back into the world and shared his stories. To ensure you don't become dog food your first day, he brings you back with him after he is done replenishing supplies.</text>
+	</string>
+
+</string_table>

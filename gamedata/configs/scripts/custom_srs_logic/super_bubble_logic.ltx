@@ -1,0 +1,9 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = sr_teleport %+actor_in_super_bubble%
+
+[sr_teleport]
+timeout = 200
+on_actor_outside = sr_idle %-actor_in_super_bubble%

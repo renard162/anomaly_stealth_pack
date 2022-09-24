@@ -1,0 +1,6 @@
+For custom sounds you have to put them into the correct format(.ogg 44100hz) and also add their address to the intimidation_surrender.script (at somewhere around line 318)
+Audacity helps with converting the file.
+
+
+
+The files in the folder are just examples. You can remove them from the path list and the folder.
