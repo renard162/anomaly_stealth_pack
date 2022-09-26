@@ -182,6 +182,7 @@ local function on_game_load(binder)
 			economy["scope_chance"] 		= ini_diff:r_float_ex("econ_" .. eco , "scope_chance") or 0.15
 			economy["restock"] 				= ini_diff:r_float_ex("econ_" .. eco , "restock") or 24
 			economy["percentage_parts"]		= ini_diff:r_bool_ex("econ_" .. eco , "percentage_parts") or false
+			economy["recover_parts"]		= ini_diff:r_bool_ex("econ_" .. eco , "recover_parts") or false
 			economy["limited_bolts"] 		= ini_diff:r_bool_ex("econ_" .. eco , "limited_bolts") or false
 			economy["arty_degradation"] 	= ini_diff:r_bool_ex("econ_" .. eco , "arty_degradation") or false
 			economy["bkpk_degradation"] 	= ini_diff:r_bool_ex("econ_" .. eco , "bkpk_degradation") or false
@@ -1705,11 +1706,11 @@ function UINewGame:UpdateDescr()
 		if not (k == faction) then
 			local v = relation_registry.community_relation("actor_" .. faction, k)
 			if (v >= 1000) then
-				str_stats = str_stats .. "%c[0,150,150,150]• %c[0,50,175,50]" .. game.translate_string("st_faction_" .. k) .. "\\n"
+				str_stats = str_stats .. "%c[0,150,150,150]ï¿½ %c[0,50,175,50]" .. game.translate_string("st_faction_" .. k) .. "\\n"
 			elseif (v <= -1000) then
-				str_stats = str_stats .. "%c[0,150,150,150]• %c[0,175,50,50]" .. game.translate_string("st_faction_" .. k) .. "\\n"
+				str_stats = str_stats .. "%c[0,150,150,150]ï¿½ %c[0,175,50,50]" .. game.translate_string("st_faction_" .. k) .. "\\n"
 			else
-				str_stats = str_stats .. "%c[0,150,150,150]• %c[0,175,175,50]" .. game.translate_string("st_faction_" .. k) .. "\\n"
+				str_stats = str_stats .. "%c[0,150,150,150]ï¿½ %c[0,175,175,50]" .. game.translate_string("st_faction_" .. k) .. "\\n"
 			end
 		end
 	end

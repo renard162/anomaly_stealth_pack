@@ -15,7 +15,7 @@ ui_workshop.UIWorkshopRepair.ReplaceCondition = function(self, id)
 			local obj = level.object_by_id(id)
 			if obj and obj ~= 0 and self.conditions[i] then
 				local new_cond = round_idp(self.conditions[i] * 0.01, 2)
-				printf("replacement found for %s, sec %s, condition of replaced part %s", i, obj:section(), new_cond)
+				printdbg("~ replacement found for %s, sec %s, condition of replaced part %s", i, obj:section(), new_cond)
 				obj:set_condition(new_cond)
 			end
 		end
@@ -34,8 +34,8 @@ override_func = {
 	end
 }
 ui_workshop.alife_release_id = function(id)
-	printf("firing override")
-	if current_override and override_func[current_override] then
+	printdbg("~ firing override")
+	if game_difficulties.get_eco_factor("recover_parts") and current_override and override_func[current_override] then
 		return override_func[current_override](id)
 	else
 		return og_alife_release_id(id)
