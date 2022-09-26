@@ -775,6 +775,7 @@ function UINewGame:Main_Controls()
 		self.ck_conditions_cap = xml:InitStatic("main_dialog:options:cap_check_conditions",self.templ_options)
 		self.ck_conditions = xml:InitCheck("main_dialog:options:check_conditions",	self.templ_options)
 		self:Register(self.ck_conditions,"check_conditions")
+		self.ck_conditions:SetCheck(true) -- ON by default
 		
 		self.list_hardcore_lives_cap = xml:InitStatic("main_dialog:options:cap_list_hardcore_lives",self.templ_options)
 		self.list_hardcore_lives = xml:InitComboBox("main_dialog:options:list_hardcore_lives", self.templ_options)
