@@ -665,7 +665,7 @@ options = {
 		{ id= "important_save"           			 ,type= "check"    ,val= 1	,def= true	 ,cmd= "g_important_save"	   },
 		-- { id= "autosave_timer"    		 			 ,type= "check"    ,val= 1	,def= false	 ,functor= {func_autosave_timer}    }, -- removed for custom value box below
 		{ id= "autosave_timer_new"    	 	 		,type= "input"    ,val= 0	,def= 0, functor ={func_autosave_timer_new}},
-		{ id= "quicksave_cnt"  			 			 ,type= "list"     ,val= 2  ,def= 5 	 ,content= {{1} , {5} , {10} , {15} , {20}}		,no_str= true  },
+		{ id= "quicksave_cnt"  			 			 ,type= "list"     ,val= 2  ,def= 5 	 ,content= {{1} , {5} , {10} , {15} , {20} , {50} , {100}}		,no_str= true  },
 			 
 		{ id= "line"				 	 			 ,type= "line"					  			,precondition = {debug_only} },
 		{ id= "debug_hud"             	 			 ,type= "check"    ,val= 1	,def= false     ,precondition = {debug_only} 	,functor= {func_debug_hud}		},
