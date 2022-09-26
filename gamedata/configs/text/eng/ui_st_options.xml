@@ -1147,6 +1147,18 @@
 	<string id="ui_mm_gameplay_economy_diff_wpn_condition">
 		<text>Average condition of looted weapons</text>
 	</string>
+	<string id="ui_mm_gameplay_economy_diff_outfit_cond_mult">
+		<text>Dropped outfit condition multiplier</text>
+	</string>
+	<string id="ui_mm_gameplay_economy_diff_outfit_cond_mult_desc">
+		<text>Increases or reduce the condition of outfits dropped by killed stalkers.</text>
+	</string>
+	<string id="ui_mm_gameplay_economy_diff_weapon_cond_mult">
+		<text>Dropped weapon condition multiplier</text>
+	</string>
+	<string id="ui_mm_gameplay_economy_diff_weapon_cond_mult_desc">
+		<text>Increases or reduce the condition of weapons dropped by killed stalkers.</text>
+	</string>
 	<string id="ui_mm_gameplay_economy_diff_stash_chance">
 		<text>Chance of discovering stashes</text>
 	</string>

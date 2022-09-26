@@ -175,6 +175,8 @@ local function on_game_load(binder)
 			economy["artefact"]           	= ini_diff:r_float_ex("econ_" .. eco , "artefact") or 1
 			economy["loots"]              	= ini_diff:r_float_ex("econ_" .. eco , "loots") or 1
 			economy["money_loots"]        	= ini_diff:r_float_ex("econ_" .. eco , "money_loots") or 1
+			economy["outfit_cond_mult"]		= ini_diff:r_float_ex("econ_" .. eco , "outfit_cond_mult") or 1.0
+			economy["weapon_cond_mult"]		= ini_diff:r_float_ex("econ_" .. eco , "weapon_cond_mult") or 1.0
 			economy["stash_chance"]			= ini_diff:r_float_ex("econ_" .. eco , "stash_chance") or 0.4
 			economy["weapon_degradation"] 	= ini_diff:r_float_ex("econ_" .. eco , "weapon_degradation") or 1
 			economy["battery_consumption"] 	= ini_diff:r_float_ex("econ_" .. eco , "battery_consumption") or 1

@@ -50,6 +50,8 @@ function setup_eco_factors(eco)
 	factors_eco["artefact"]			    = economy["artefact"] or ini_diff:r_float_ex("econ_" .. eco , "artefact") or 1
 	factors_eco["loots"]			    = economy["loots"] or ini_diff:r_float_ex("econ_" .. eco , "loots") or 1
 	factors_eco["money_loots"]		    = economy["money_loots"] or ini_diff:r_float_ex("econ_" .. eco , "money_loots") or 1
+	factors_eco["outfit_cond_mult"]		= economy["outfit_cond_mult"] or ini_diff:r_float_ex("econ_" .. eco , "outfit_cond_mult") or 1.0
+	factors_eco["weapon_cond_mult"]	    = economy["weapon_cond_mult"] or ini_diff:r_float_ex("econ_" .. eco , "weapon_cond_mult") or 1.0
 	factors_eco["stash_chance"]		    = economy["stash_chance"] or ini_diff:r_float_ex("econ_" .. eco , "stash_chance") or 0.4
 	factors_eco["weapon_degradation"]	= economy["weapon_degradation"] or ini_diff:r_float_ex("econ_" .. eco , "weapon_degradation") or 1
 	factors_eco["battery_consumption"]	= economy["battery_consumption"] or ini_diff:r_float_ex("econ_" .. eco , "battery_consumption") or 1
