@@ -1,5 +1,3 @@
---STRESSFULL ZONE MOD v0.8.2----------------------------------------------
-
 --PPE SETTINGS------------------------------------------------------------
 local c_ppe_max_intensity = 0.5 --Max intensity of the sound shock PPE effect.
 
@@ -69,6 +67,7 @@ local arszi_previous_time = nil
 local arszi_zombification_time_counter = 0
 local campfire_bonus = 1.33
 local safe_area_bonus = 1.13
+local musical_instrument_correction = 20
 
 --FLAGS--------------------------------------------------------------------------
 local anomaly_close = false
@@ -479,7 +478,7 @@ end
 
 function get_playing_music_bonus()
     if itms_manager.playing_instrument then
-        local music_psy_heal = c_psy_health_regen_campfire_bonus * itms_manager.playing_music_length * 75
+        local music_psy_heal = c_psy_health_regen_campfire_bonus * itms_manager.playing_music_length * musical_instrument_correction
         local instrument_factor = musical_instrument_bonus[itms_manager.playing_instrument] or 1
         local stress_factor = clamp((db.actor.health + psy_table.actor_psy_health) / (2 * math.max(get_stress_multiplier(), 1)), 0.25, 1.00)
         music_psy_heal = music_psy_heal * instrument_factor
