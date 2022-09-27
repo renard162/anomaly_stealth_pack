@@ -19,6 +19,11 @@ local function lerp(a, b, f)
 	end
 end
 
+-- Time delta
+local function time_delta()
+	return math.min(80, device().time_delta)
+end
+
 -- LUT Lookup
 local function array_keys(t, sorted, sort_func)
 	local res = {}
@@ -120,7 +125,7 @@ local function ema(key, value, def, steps, delta)
 	return smoothed_values[key]
 end
 
-local special_characters = {
+special_characters = {
 	["m_trader"] = "esc_2_12_stalker_trader",
 	["m_lesnik"] = "red_forester_tech",
 	["zat_a2_stalker_nimble"] = "esc_2_12_stalker_nimble",
@@ -128,24 +133,26 @@ local special_characters = {
 
 -- LUT for rotating camera to the angle depending on aspect ratio of display (device().width / device().height)
 local ratio_to_rotate = {
-	[1.333] = -10,
-	[1.600] = -12.5,
-	[1.777] = -14,
-	[2.370] = -19,
-	[3.555] = -27,
+	[1.333] = -11,
+	[1.600] = -13.5,
+	[1.777] = -15.5,
+	[2.370] = -21.5,
+	[3.555] = -31,
 }
 local ratio_to_rotate_keys = array_keys(ratio_to_rotate, true)
 
+-- Vars
 local saved_fov
 local zoom_fov_from
 local zoom_fov_to
 local zoom_fov_active = false
+local zoom_fov_active_always = false
 local saved_npc
 local saved_dist
 local saved_rotate
 
 -- Get NPC actor talks to
-local function on_key_press(key)
+function on_key_press(key)
 	if db.actor and db.actor:alive() then
 		local bind = dik_to_bind(key)
 		if (bind == key_bindings.kUSE) then
@@ -189,10 +196,11 @@ function move_camera()
 
 	-- Smooth the turning for better effect
 	local steps = settings.smoothing
+	local delta = time_delta()
 	local smoothed_look_dir = vector():set(
-		ema("look_dir_x", new_look_dir.x, look_dir.x, steps, device().time_delta),
-		ema("look_dir_y", new_look_dir.y, look_dir.y, steps, device().time_delta),
-		ema("look_dir_z", new_look_dir.z, look_dir.z, steps, device().time_delta)
+		ema("look_dir_x", new_look_dir.x, look_dir.x, steps, delta),
+		ema("look_dir_y", new_look_dir.y, look_dir.y, steps, delta),
+		ema("look_dir_z", new_look_dir.z, look_dir.z, steps, delta)
 	)
 
 	-- Apply the turning
@@ -227,7 +235,7 @@ function GUI_on_show(name)
 			if saved_dist and settings.distance_fov then
 				new_fov = math.atan(math.tan(new_fov * (0.5 * math.pi / 180)) / saved_dist) / (0.5 * math.pi / 180)
 			end
-			start_fov(saved_fov, new_fov)
+			start_fov(saved_fov, new_fov, true)
 		end
 		if settings.track_npc then
 			start_move_camera()
@@ -245,24 +253,27 @@ end
 -- start_fov(fov_from, fov_to) initiate the changing procedure
 function change_fov()
 	local steps = settings.fov_smoothing
-	local smoothed_fov = ema("fov", zoom_fov_to, zoom_fov_from, steps, device().time_delta)
+	local delta = time_delta()
+	local smoothed_fov = ema("fov", zoom_fov_to, zoom_fov_from, steps, time_delta())
 	exec_console_cmd("fov " .. smoothed_fov)
-	if similar(smoothed_fov, zoom_fov_to, 0.02) then
+	if not zoom_fov_active_always and similar(smoothed_fov, zoom_fov_to, 0.02) then
 		exec_console_cmd("fov " .. zoom_fov_to)
 		stop_fov()
 	end
 end
 
-function start_fov(fov_from, fov_to)
+function start_fov(fov_from, fov_to, active_always)
 	zoom_fov_from = fov_from or get_console_cmd(2, "fov")
 	zoom_fov_to = fov_to
 	zoom_fov_active = true
+	zoom_fov_active_always = active_always
 	RegisterScriptCallback("actor_on_update", change_fov)
 end
 
 function stop_fov()
 	smoothed_values.fov = nil
 	zoom_fov_active = false
+	zoom_fov_active_always = false
 	UnregisterScriptCallback("actor_on_update", change_fov)
 end
 
@@ -320,19 +331,19 @@ end
 
 function switch_mod(enable)
 	local funcs = {
-		["on_key_press"] =  on_key_press,
-		["GUI_on_show"] =  GUI_on_show,
-		["GUI_on_hide"] =  GUI_on_hide,
-		["actor_on_net_destroy"] =  hard_reset,
-		["actor_on_before_death"] =  hard_reset,
+		{"on_key_press", on_key_press},
+		{"GUI_on_show", GUI_on_show},
+		{"GUI_on_hide", GUI_on_hide},
+		{"actor_on_net_destroy", hard_reset},
+		{"actor_on_before_death", hard_reset},
 	}
 	if enable then
-		for k, v in pairs(funcs) do
-			RegisterScriptCallback(k, v)
+		for i, v in ipairs(funcs) do
+			RegisterScriptCallback(v[1], v[2])
 		end
 	else
-		for k, v in pairs(funcs) do
-			UnregisterScriptCallback(k, v)
+		for i, v in ipairs(funcs) do
+			UnregisterScriptCallback(v[1], v[2])
 		end
 		reset()
 		return
