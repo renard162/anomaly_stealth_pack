@@ -1,6 +1,3 @@
--- FIX FLAGS
-local fix_rotate_camera = 20
-
 -- UTILS
 -- Similar floats
 local function similar(f1, f2, e)
@@ -194,12 +191,12 @@ function move_camera()
 	if saved_dist and settings.zoom_fov_enabled and settings.distance_fov then
 		rotate_deg = rotate_deg / saved_dist
 	end
-	rotate_deg = rotate_deg * settings.turn_modifier
+	rotate_deg = rotate_deg * 1 --settings.turn_modifier
 	local new_look_dir = vector_rotate_y(look_dir, rotate_deg)
 
 	-- Smooth the turning for better effect
-	local steps = settings.smoothing
-	local delta = time_delta()
+	local steps = 1 --settings.smoothing
+	local delta = 1 --time_delta()
 	local smoothed_look_dir = vector():set(
 		ema("look_dir_x", new_look_dir.x, look_dir.x, steps, delta),
 		ema("look_dir_y", new_look_dir.y, look_dir.y, steps, delta),
@@ -207,21 +204,18 @@ function move_camera()
 	)
 
 	-- Apply the turning
-	local new_look_pos = vector():mad(device().cam_pos, smoothed_look_dir, 10)
+	local new_look_pos = vector():mad(device().cam_pos, smoothed_look_dir, 1)
 	db.actor:actor_look_at_point(new_look_pos)
 end
 
 function start_move_camera()
-	fix_rotate_camera = 20
 	RegisterScriptCallback("actor_on_update", move_camera)
 end
 
 function stop_move_camera()
 	UnregisterScriptCallback("actor_on_update", move_camera)
-	if db.actor then
-		if db.actor.actor_stop_look_at_point then
-			db.actor:actor_stop_look_at_point()
-		end
+	if db.actor and db.actor.actor_stop_look_at_point then
+		db.actor:actor_stop_look_at_point()
 	end
 	smoothed_values.look_dir_x = nil
 	smoothed_values.look_dir_y = nil
@@ -362,16 +356,8 @@ function switch_mod(enable)
 	end
 end
 
-function force_stop_rotate_camera()
-	if fix_rotate_camera > 0 then
-		fix_rotate_camera =  fix_rotate_camera - 1
-		stop_move_camera()
-	end
-end
-
 function on_game_start()
 	RegisterScriptCallback("actor_on_first_update", on_option_change)
 	RegisterScriptCallback("on_option_change", on_option_change)
-	RegisterScriptCallback("actor_on_update", force_stop_rotate_camera)
 	switch_mod(true)
 end
