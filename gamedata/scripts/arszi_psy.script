@@ -319,9 +319,9 @@ function actor_on_sleep(hours)
     --Regenerate Psy Health while sleeping
     --Temprorary boosts and stresses are not considered
     local psy_health_regen_while_slept = get_psy_health_regeneration() * 60 * 60 * hours
-    if inside_safe_area then
+    if not inside_safe_area then
         --Sleep in safe areas is considerable more efficient!
-        psy_health_regen_while_slept = psy_health_regen_while_slept * safe_area_bonus^2
+        psy_health_regen_while_slept = psy_health_regen_while_slept / (safe_area_bonus^3)
     end
     set_psy_health(psy_table.actor_psy_health + psy_health_regen_while_slept)
     arszi_previous_time = nil
