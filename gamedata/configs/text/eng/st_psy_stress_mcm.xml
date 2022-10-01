@@ -25,7 +25,7 @@
 		<text>Controller Psy attack MAX hit distance (meters)</text>
 	</string>
 	<string id="ui_mcm_psy_stress_hit_stress">
-		<text>Psy stress on receving damage (X% of damage)</text>
+		<text>Base psy stress on receving damage (X% of damage)</text>
 	</string>
 	<string id="ui_mcm_psy_stress_wounded_stress">
 		<text>Psy stress from being wounded (X% in 10 minutes for 10% wound)</text>
