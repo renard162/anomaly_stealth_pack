@@ -308,8 +308,8 @@ Invisibility_BlinkMicroInterval           = 30
 Invisibility_EnergySpeed              = 0.05
 
 full_visibility_radius = 5 		;5
-partial_visibility_radius = 9	;10
-no_visibility_radius   = 14 	;15
+partial_visibility_radius = 400	;10
+no_visibility_radius   = 450 	;15
 
 visibility_state_change_min_delay = 1000 ; ms
 
@@ -327,7 +327,7 @@ Vampire_Distance   = 1 ; may artifact when < 1
 ;-------------------------------------------------------------------------
 ; Predator Ability
 ;-------------------------------------------------------------------------
-Predator_Visual = monsters\krovosos\krovosos_xray
+Predator_Visual = monsters\krovosos\krovosos_cloak
 
 
 
@@ -649,7 +649,7 @@ Accel_Aggressive      = 15.0
 $spawn        = "monsters\bloodsuckers\bloodsucker_02_normal"
 visual        = monsters\krovosos\krovosos_green
 corpse_visual        = monsters\krovosos\krovosos_green_dead
-Predator_Visual   = monsters\krovosos\krovosos_green_xray
+Predator_Visual   = monsters\krovosos\krovosos_cloak
 
 
 icon        = ui_npc_monster_krovosos
@@ -722,7 +722,7 @@ $spawn        = "monsters\bloodsuckers\bloodsucker_03_strong"
 visual        = monsters\krovosos\krovosos_strong
 corpse_visual        = monsters\krovosos\krovosos_dead
 icon        = ui_npc_monster_krovosos_strong
-Predator_Visual   = monsters\krovosos\krovosos_strong_xray
+Predator_Visual   = monsters\krovosos\krovosos_cloak
 panic_threshold   = 0.05
 rank        = 16
 immunities_sect   = bloodsucker_immunities_strong
