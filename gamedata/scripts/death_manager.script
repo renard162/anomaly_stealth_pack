@@ -555,7 +555,7 @@ function set_weapon_drop_condition(npc,itm)
 	condition = clamp(condition,5,100)
 	condition = condition / 100
     condition = condition * (game_difficulties.get_eco_factor("weapon_cond_mult") or 1)
-    condition = condition * ((math.random(0,99) <= 5 and 1.5) or 1)
+    condition = condition * ((math.random(100) <= 5 and 1.5) or 1)
 	condition = math.min(condition, 1)
 
 	itm:set_condition(condition)
@@ -644,7 +644,7 @@ function get_condition_by_rank(rank,coef)
 	local max_con = outfit_drop_condition[rank] and outfit_drop_condition[rank][2] or 30
 	local con = utils_data.mean_random(min_con, max_con, coef, 7)/100
     con = con * (game_difficulties.get_eco_factor("outfit_cond_mult") or 1)
-    con = con * ((math.random(0,99) <= 5 and 1.5) or 1)
+    con = con * ((math.random(100) <= 5 and 1.5) or 1)
 	con = math.min(con, 1)
 	return con
 end
