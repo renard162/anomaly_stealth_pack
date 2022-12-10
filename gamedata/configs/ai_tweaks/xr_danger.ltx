@@ -1,0 +1,53 @@
+;Note: Ignore distance is only checked if danger was produced by game_object.enemy with the exception of grenade and ent. corpse
+
+[danger_inertion] ;May use condlists from xr_condition
+grenade 		= 6000
+entity_corpse 	= 60000
+entity_attacked = 30000
+attacked 		= 120000
+bullet_ricochet = 250000
+enemy_sound 	= 45000
+attack_sound 	= 45000
+entity_death 	= 30000
+hit				= 126000
+sound			= 25000
+visual			= 45000
+
+[danger_object] ;Ignore distances squared -- May use condlists from xr_condition
+grenade 		= 400
+entity_corpse 	= 10000
+entity_attacked = {=is_dark_night} 900, {=is_heavy_rain} 625, {=is_rain} 900, 2500
+attacked 		= 90000
+bullet_ricochet = 16
+enemy_sound 	= {=is_heavy_rain} 900, {=is_rain} 2500, 5625
+attack_sound 	= {=is_heavy_rain} 900, {=is_rain} 2500, 5625
+entity_death 	= {=is_heavy_rain} 225,{=is_rain} 400, 1000
+hit 			= 22500
+sound			= {=is_heavy_rain} 900, {=is_rain} 2500, 5625
+visual			= {=is_dark_night} 2500, {=is_heavy_rain} 8100,{=is_rain} 10000, 22500
+
+[danger_inertion_actor] ;May use condlists from xr_condition
+grenade 		= 6000
+entity_corpse 	= 60000
+entity_attacked = 30000
+attacked 		= 120000
+bullet_ricochet = 5000
+enemy_sound 	= 45000
+attack_sound 	= {=actor_enemy} 45000, 3000
+entity_death 	= 30000
+hit				= 126000
+sound			= 25000
+visual			= 45000
+
+[danger_object_actor] ;Ignore distances squared -- May use condlists from xr_condition
+grenade 		= 400
+entity_corpse 	= 60000
+entity_attacked = {=is_dark_night} 900, {=is_heavy_rain} 625, {=is_rain} 900, 2500
+attacked 		= 90000
+bullet_ricochet = {=actor_enemy} 250000, 10000
+enemy_sound 	= {=is_heavy_rain} 900, {=is_rain} 2500, 5625
+attack_sound 	= {=is_heavy_rain} 900, {=is_rain} 2500, 5625
+entity_death 	= {=is_heavy_rain} 225,{=is_rain} 400, 1000
+hit 			= 22500
+sound			= {=is_heavy_rain} 900, {=is_rain} 2500, 5625
+visual			= {=is_dark_night} 2500, {=is_heavy_rain} 8100,{=is_rain} 10000, 22500
