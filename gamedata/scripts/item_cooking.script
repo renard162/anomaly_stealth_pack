@@ -634,15 +634,15 @@ end
 
 function UICook:Discharge(sect, amt)
     local id_uses_pairs = {}
-    
+
     for id, uses in pairs(self.objs[sect]) do
         table.insert(id_uses_pairs, {id = id, uses = uses})
     end
-    
+
     table.sort(id_uses_pairs, function(x1, x2) return x1.uses < x2.uses end)
-    
+
     local discharged_amt = 0
-    
+
     for i = 1, #id_uses_pairs do
         local id_uses_pair = id_uses_pairs[i]
         local avbl_charges = math.min(id_uses_pair.uses, amt - discharged_amt)
@@ -650,10 +650,13 @@ function UICook:Discharge(sect, amt)
         local obj_section = obj:section()
 
         local remaining_uses = utils_item.discharge(obj, avbl_charges)
-        haruka_fill.return_empty_canteen(obj_section, remaining_uses)
+
+        if not (obj_section == "dirty_water") then
+            haruka_fill.return_empty_canteen(obj_section, remaining_uses)
+        end
 
         discharged_amt = discharged_amt + avbl_charges
-        
+
         if (discharged_amt >= amt) then return end
     end
 
