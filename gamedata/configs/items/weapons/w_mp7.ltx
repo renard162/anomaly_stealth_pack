@@ -9,20 +9,21 @@ cform                                    = skeleton
 parent_section                           = wpn_mp7
 
 class                                    = WP_LR300
-slot                                     = 2
+slot                                     = 1
 animation_slot                           = 8
 ef_main_weapon_type                      = 2
 ef_weapon_type                           = 6
 hand_dependence                          = 1
-single_handed                            = 0
+single_handed                            = 1
 
 default_to_ruck                          = false
 sprint_allowed                           = true
 
-inv_grid_height                          = 2
-inv_grid_width                           = 2
-inv_grid_x                               = 48
-inv_grid_y                               = 61
+icons_texture				    = ui\ui_icon_folded_guns
+inv_grid_height                 = 1
+inv_grid_width                  = 2
+inv_grid_x                      = 4
+inv_grid_y                      = 0
 inv_name                                 = st_wpn_mp7
 inv_name_short                           = st_wpn_mp7
 description                              = st_wpn_mp7_descr
@@ -60,8 +61,8 @@ light_time                               = 0.2
 light_var_color                          = 0.05
 light_var_range                          = 0.5
 
-upgrades                                 = up_gr_firstab_mp5, up_gr_seconab_mp5, up_gr_thirdab_mp5, up_gr_fourtab_mp5, up_gr_fifthab_mp5
-installed_upgrades                       =
+upgrades                                 = up_gr_firstab_mp5, up_gr_seconab_mp5, up_gr_thirdab_mp5, up_gr_fourtab_mp5, up_gr_fifthab_mp5_nimble
+installed_upgrades                       = up_fiftha_mp5_nimble
 upgrade_scheme                           = upgrade_scheme_mp5_nimble
 upgr_icon_x                              = 1900
 upgr_icon_y                              = 1350
@@ -78,10 +79,10 @@ scopes                                   = acog, eot, ac10632, c-more
 scope_status                             = 0
 scope_zoom_factor                        = 0
 
-silencer_name                            = wpn_sil_9mm
+silencer_name                            = wpn_sil_gemtech
 silencer_status                          = 2
 silencer_x                               = 85
-silencer_y                               = 13
+silencer_y                      = -13
 silencer_light_color                     = 0.6, 0.5, 0.3
 silencer_light_range                     = 0.01
 silencer_light_time                      = 0.2
@@ -185,6 +186,11 @@ aim_hud_offset_pos                       = -0.0793, 0.0579, -0.265
 aim_hud_offset_pos_16x9                  = -0.0793, 0.0579, -0.265
 aim_hud_offset_rot                       = 0.038, 0.008, -0.004
 aim_hud_offset_rot_16x9                  = 0.038, 0.008, -0.004
+
+lowered_hud_offset_pos					 = 0, -0.01,-0.1
+lowered_hud_offset_rot					 = 0.1,-0.2,0.1
+lowered_hud_offset_pos_16x9				 = 0, -0.01,-0.1
+lowered_hud_offset_rot_16x9				 = 0.1,-0.2,0.1
 
 gl_hud_offset_pos                        = 0, 0, 0
 gl_hud_offset_pos_16x9                   = 0, 0, 0

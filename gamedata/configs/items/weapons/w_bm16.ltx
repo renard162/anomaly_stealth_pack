@@ -8,17 +8,18 @@
         cform                       = skeleton
         
         class                       = WP_BM16
-        slot                        = 2
+        slot                        = 1
         animation_slot              = 3
         ef_main_weapon_type         = 1
         ef_weapon_type              = 9
         hand_dependence             = 1
-        single_handed               = 0
+        single_handed               = 1
         
+        icons_texture		    = ui\ui_icon_folded_guns
         inv_grid_height             = 1
-        inv_grid_width              = 3
-        inv_grid_x                  = 47
-        inv_grid_y                  = 55
+        inv_grid_width              = 2
+        inv_grid_x                  = 2
+        inv_grid_y                  = 0
         inv_name                    = st_wpn_bm16
         inv_name_short              = st_wpn_bm16
         description                 = st_wpn_bm16_descr
@@ -147,6 +148,11 @@ control_inertion_factor = 1.0f
         hands_orientation           = 0.9, 0.9, -4
         hands_orientation_16x9      = 0.9, 0.9, -4
         
+        lowered_hud_offset_pos					 = 0, -0.01,-0.1
+	lowered_hud_offset_rot					 = 0.1,-0.2,0.1
+	lowered_hud_offset_pos_16x9				 = 0, -0.01,-0.1
+	lowered_hud_offset_rot_16x9				 = 0.1,-0.2,0.1
+
         aim_hud_offset_pos          = -0.03, 0.05, -0.01
         aim_hud_offset_pos_16x9     = -0.03, 0.05, -0.01
         aim_hud_offset_rot          = 0, 0.01, -0.05
@@ -209,7 +215,7 @@ control_inertion_factor = 1.0f
  
 ;------------------------------------------------------------------------------------------------
 [wpn_bm16_alt]:wpn_bm16
-        inv_grid_y                  = 56
+        inv_grid_y                  = 1
         inv_name                    = st_wpn_bm16_alt
         inv_name_short              = st_wpn_bm16_alt
         
@@ -240,6 +246,7 @@ control_inertion_factor = 1.0f
         single_handed               = 0
         slot                        = 2
         
+        icons_texture		        = ui\ui_icon_equipment
         inv_grid_height             = 1
         inv_grid_width              = 5
         inv_grid_x                  = 30
