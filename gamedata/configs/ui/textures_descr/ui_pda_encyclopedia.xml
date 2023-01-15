@@ -179,6 +179,7 @@
 		<texture id="encyclopedia_items_itm_basickit_image" x="512" y="256" width="512" height="256"/>
 		<texture id="encyclopedia_items_itm_advancedkit_image" x="1024" y="256" width="512" height="256"/>
 		<texture id="encyclopedia_items_itm_expertkit_image" x="1536" y="256" width="512" height="256"/>
+        <texture id="article_craft_image" x="512" y="256" width="512" height="256"/>
 		
 		<texture id="encyclopedia_items_itm_drugkit_image" x="0" y="512" width="512" height="256"/>
 		<texture id="encyclopedia_items_itm_ammokit_image" x="512" y="512" width="512" height="256"/>
