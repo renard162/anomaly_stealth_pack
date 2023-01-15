@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	
+	<string id="ui_mcm_advanced_stamina_system_title">
+		<text>Advanced Stamina System</text>
+	</string>
+	<string id="ui_mcm_menu_advanced_stamina_system">
+		<text>ASS</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_enable_satiety_limit">
+		<text>Enable stamina limit by satiety</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_satiety_limit_modifier">
+		<text>Satiety limit modifier</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_enable_blood_loss_limit">
+		<text>Enable health limit depending on the blood level</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_enable_blood_loss_limit_desc">
+		<text>When receiving a bleeding, your character will lose blood which will reduce the maximum possible health. To restore the limit you need to eat a hearty meal, or better eat a protein bar or use a glucose syringe</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_blood_loss_limit_modifier">
+		<text>Blood loss modifier</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_enable_thirst_drain">
+		<text>Enable stamina drain and boost on thirst.</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_enable_thirst_drain_desc">
+		<text>With no thirst you receive stamina boost which drops linearly with thirst increase. Starting from gray icon you receive penalty</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_thirst_drain_modifier">
+		<text>Effect modifier</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_enable_sleep_drain">
+		<text>Enable stamina drain and boost on sleep.</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_enable_sleep_drain_desc">
+		<text>With no sleep you receive stamina boost which drops linearly with sleep increase. Starting from gray icon you receive penalty</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_sleep_drain_modifier">
+		<text>Effect modifier</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_enable_uphill_drain">
+		<text>Enable stamina drain and boost on going Up/Down a hill</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_uphill_drain_modifier">
+		<text>Effect modifier</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_enable_uphill_speed_modifier">
+		<text>Enable speed modifier on going Up/Down a hill</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_uphill_speed_modifier_modifier">
+		<text>Effect modifier</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_enable_material_drain">
+		<text>Enable stamina drain and boost based on material under foot</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_material_drain_modifier">
+		<text>Effect modifier</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_enable_stamina_speed_modifier">
+		<text>Enable speed modifier based on stamina</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_enable_stamina_speed_modifier_desc">
+		<text>With lowering stamina your speed will be decreasing, starting from about the middle of the stamina bar</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_stamina_speed_modifier_modifier">
+		<text>Effect modifier</text>
+	</string>
+	<string id="ui_mcm_advanced_stamina_system_debug_mode">
+		<text>Debug mode</text>
+	</string>
+	
+</string_table>
