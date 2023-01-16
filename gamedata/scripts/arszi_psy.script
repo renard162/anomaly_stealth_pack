@@ -310,7 +310,7 @@ end
 
 function actor_on_hit_callback(obj, amount, local_direction, who, bone_id)
     --Stress resulting from physical damage--------------------------
-    local c_psy_hit_stress = amount * c_psy_hit_stress_multiplier * (((level.get_game_difficulty() or 1) + 1) / 4)
+    local c_psy_hit_stress = amount * c_psy_hit_stress_multiplier * (((level.get_game_difficulty() or 1) + 1) / 2)
     set_psy_health(psy_table.actor_psy_health - c_psy_hit_stress)
 end
 
