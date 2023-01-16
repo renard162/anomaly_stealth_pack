@@ -401,10 +401,23 @@ local function actor_on_update()
 end
 
 boosted_blood_loss_items = {
-	rebirth = 10,
+	-- Tier 2 monster meat recipes
+	meat_tushkano_a = 3,
+	meat_dog_a = 3,
+	meat_pseudodog_a = 3,
+	meat_flesh_a = 3,
+	meat_boar_a = 3,
+	meat_bloodsucker_a = 3,
+	meat_snork_a = 3,
+	meat_chimera_a = 3,
+	meat_lurker_a = 3,
+	meat_psysucker_a = 3,
+
+	-- Medical items
 	protein = 3,
-	glucose = 6,
 	glucose_s = 5,
+	glucose = 6,
+	rebirth = 10,
 }
 
 function actor_on_item_use(obj, str)
@@ -413,7 +426,7 @@ function actor_on_item_use(obj, str)
 	printf("%s", satiety_increase)
 	if satiety_increase > 0 then
 		local coeff = 0.15
-		satiety_increase = satiety_increase * coeff * (boosted_blood_loss_items[sec] or 1)
+		satiety_increase = satiety_increase * coeff * (boosted_blood_loss_items[sec] or 2.0)
 		change_blood_loss(-satiety_increase)
 	end
 end
