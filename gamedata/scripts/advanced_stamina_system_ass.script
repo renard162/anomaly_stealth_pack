@@ -359,7 +359,7 @@ local function actor_on_update()
 
 	-- apply blood loss health limit
 	if settings.enable_blood_loss_limit then
-		local coeff = 0.0004125 * (0.5 + 0.5*level.get_game_difficulty()) 
+		local coeff = 0.0004125 * (0.5 + 0.5*(level.get_game_difficulty() or 1))
 		local bleeding = actor.bleeding * coeff * settings.blood_loss_limit_modifier
 		change_blood_loss(bleeding)
 		if settings.debug_mode then
