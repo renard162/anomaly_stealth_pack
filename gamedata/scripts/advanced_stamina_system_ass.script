@@ -401,6 +401,7 @@ local function actor_on_update()
 end
 
 boosted_blood_loss_items = {
+	rebirth = 10,
 	protein = 3,
 	glucose = 6,
 	glucose_s = 5,
