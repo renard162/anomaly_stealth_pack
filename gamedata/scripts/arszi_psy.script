@@ -31,7 +31,7 @@ local c_psy_health_regen_dist_to_campfire = stress_mcm.get_config("campfire_dist
 local c_psy_controler_damage_multiplier = ( stress_mcm.get_config("controler_damage_multiplier" ) or 40) / 100		--psy damage divider, to balace out controller attacks
 local c_controler_damage_max_distance = ( stress_mcm.get_config("controler_damage_max_distance" ) or 50)			--with every X meters, controller's tube attack will do 1% less damage. 100*X for max distance.
 local c_controler_damage_min_distance = 15
-local c_psy_hit_stress_multiplier = ( stress_mcm.get_config("hit_stress") or 15 ) / 100							--multiplier for stress on being hit
+local c_psy_hit_stress_multiplier = ( stress_mcm.get_config("hit_stress") or 8 ) / 100							--multiplier for stress on being hit
 local c_psy_wound_stress_multiplier = ( stress_mcm.get_config("wounded_stress") or 19 ) / 600000					--multiplier for stress drain from not being at full physical health
 
 --PSY-STATE CONTROLS--------------------------------------------------------------
@@ -153,7 +153,7 @@ function reinitialization()
         c_psy_health_regen_dist_to_campfire = stress_mcm.get_config("campfire_distance") or 15
         c_psy_controler_damage_multiplier = ( stress_mcm.get_config("controler_damage_multiplier") or 40) / 100
         c_controler_damage_max_distance = ( stress_mcm.get_config("controler_damage_max_distance") or 50)
-        c_psy_hit_stress_multiplier = ( stress_mcm.get_config("hit_stress") or 15) / 100
+        c_psy_hit_stress_multiplier = ( stress_mcm.get_config("hit_stress") or 8) / 100
         c_psy_wound_stress_multiplier = ( stress_mcm.get_config("wounded_stress") or 19) / 600000
         c_psy_stage_1 = ( stress_mcm.get_config("stage_1") or 75) / 100
         c_psy_stage_2 = ( stress_mcm.get_config("stage_2") or 50) / 100
