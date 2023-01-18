@@ -994,7 +994,7 @@ function tb_radio_thing()
 					sameaspreviousmap = false
 				end
 				tb_package_in_level = chosenmap
-				if (db.actor:object("bad_psy_helmet") ~= nil or db.actor:object("good_psy_helmet") ~= nil) then
+				if (db.actor:object("bad_psy_helmet") ~= nil or db.actor:object("good_psy_helmet") ~= nil or db.actor:character_community() == "actor_monolith" or db.actor:character_community() == "actor_greh") then
 					suitablemapforpsyhelmet = true
 				else
 					if (chosenmap == "l10_radar" or chosenmap == "l11_pripyat" or chosenmap == "l12_stancia" or chosenmap == "l12_stancia_2" or chosenmap == "l13_generators") then
