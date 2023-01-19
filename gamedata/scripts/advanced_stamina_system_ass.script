@@ -438,8 +438,8 @@ boosted_blood_loss_items = {
 	-- Medical items
 	protein = 3,
 	medkit_army = 3,
-	glucose_s = 6,
-	glucose = 8,
+	glucose_s = 5,
+	glucose = 7,
 	rebirth = 12,
 }
 
