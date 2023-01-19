@@ -401,6 +401,28 @@ local function actor_on_update()
 end
 
 boosted_blood_loss_items = {
+	-- Misc
+	dirty_water = 0,
+
+	-- Drugs
+	vodka = 1,
+	vodka2 = 1,
+	vodka_quality = 1,
+	beer = 1,
+	bottle_metal = 1,
+	drink_crow = 1,
+	joint = 1,
+	marijuana = 1,
+	cigarettes = 1,
+	cigarettes_lucky = 1,
+	cigarettes_russian = 1,
+	cigar = 1,
+	cigar1 = 1,
+	cigar2 = 1,
+	cigar3 = 1,
+	tobacco = 1,
+	hand_rolling_tobacco = 1,
+
 	-- Tier 2 monster meat recipes
 	meat_tushkano_a = 3,
 	meat_dog_a = 3,
@@ -416,8 +438,8 @@ boosted_blood_loss_items = {
 	-- Medical items
 	protein = 3,
 	glucose_s = 5,
-	glucose = 6,
-	rebirth = 10,
+	glucose = 7,
+	rebirth = 12,
 }
 
 function actor_on_item_use(obj, str)
