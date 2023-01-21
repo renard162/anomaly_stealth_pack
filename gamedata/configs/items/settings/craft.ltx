@@ -304,9 +304,19 @@ y_ied_new  				    = 5, recipe_ammo_4, grenade_f1,1,ammo_m209,2,prt_i_scrap,4
 ;]]
 
 [item_combination]
-;-------<Dirty Water>-------------------------
+;-------<Survival Recipes>-------------------------
+;--Firestarter--
+prt_i_wood:box_matches = matches
+box_matches:prt_i_wood = matches
+
+;--Bandage--
+prt_o_fabrics_3:vodka = bandage
+vodka:prt_o_fabrics_3 = bandage
+
+;--Dirty Water--
 dirty_water:akvatab = flask
 akvatab:dirty_water = flask
+
 
 ;-------< Basic Tooolkit craft >----------------
 prt_i_fasteners:prt_i_scrap = prt_i_miscparts
