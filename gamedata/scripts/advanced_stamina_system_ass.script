@@ -410,7 +410,6 @@ boosted_blood_loss_items = {
 	vodka_quality = 1,
 	beer = 1,
 	bottle_metal = 1,
-	drink_crow = 1,
 	joint = 1,
 	marijuana = 1,
 	cigarettes = 1,
