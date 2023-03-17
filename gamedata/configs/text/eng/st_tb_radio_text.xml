@@ -2,6 +2,24 @@
 
 <string_table>
 
+	<!-- PDA UI -->
+	
+	<string id="cb_pda_cancel">
+		<text>Cancel RF package</text>
+	</string>
+
+	<string id="cb_cancel_package_inactive">
+		<text>You do not have an active RF package to cancel.</text>
+	</string>
+	
+	<string id="cb_cancel_package_underground">
+		<text>The signal cannot reach from underground.</text>
+	</string>
+	
+	<string id="cb_cancel_package_success">
+		<text>You don't want it? We'll send someone to pick it up then.</text>
+	</string>
+	
 	<!-- PDA MESSAGES -->
 
 	<string id="tb_anon_sender">
@@ -38,6 +56,10 @@
 
 	<string id="tb_the_mhz">
 		<text> MHz.</text>
+	</string>
+	
+	<string id="cb_package_lost">
+		<text>The package was lost, a new package can be found somewhere in </text>
 	</string>
 
 	<!-- ROUGH LOCATION TEXTS -->

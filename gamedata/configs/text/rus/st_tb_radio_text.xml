@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="windows-1251"?>
-
 <string_table>
+
+	<!-- PDA UI -->
+	
+	<string id="cb_pda_cancel">
+		<text>Отменить RF посылку</text>
+	</string>
+
+	<string id="cb_cancel_package_inactive">
+		<text>У вас нет активной посылки для отмены.</text>
+	</string>
+	
+	<string id="cb_cancel_package_underground">
+		<text>Невозможно отменить. Нет связи под землей.</text>
+	</string>
+	
+	<string id="cb_cancel_package_success">
+		<text>Не нужна посылка? Что ж, мы сами ее заберем.</text>
+	</string>
 
 	<!-- PDA MESSAGES -->
 
@@ -38,6 +55,10 @@
 
 	<string id="tb_the_mhz">
 		<text> МГц.</text>
+	</string>
+	
+	<string id="cb_package_lost">
+		<text>Посылка потеряна, можно найти новую посылку</text>
 	</string>
 
 	<!-- ROUGH LOCATION TEXTS -->
