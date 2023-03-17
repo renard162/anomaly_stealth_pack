@@ -1,0 +1,28 @@
+<w>
+	<main_wnd x="0" y="0" width="1024" height="768"/>
+	<taskboard_listbox x="28" y="150" width="764" height="558" can_select="0" always_show_scroll="0" stretch="0"/>
+		
+	<frame1 x="28" y="41" width="764" height="90" stretch="1">
+		<texture>ui_inGame2_pda_buttons_background</texture>
+	</frame1>
+	
+	<frame2 x="28" y="137" width="764" height="571" stretch="1">
+		<texture>ui_inGame2_pda_buttons_background</texture>
+	</frame2>
+
+	<btn_accept_task width="24" height="30" stretch="1">
+		<texture>ui_inGame2_pda_Filtr_arrow_right</texture>
+		<text x="30" font="letterica16" r="170" g="170" b="170">st_pda_accept_task</text>
+	</btn_accept_task>
+
+	<btn_next_task width="24" height="30" stretch="1">
+		<texture>ui_inGame2_pda_Filtr_arrow_right</texture>
+		<text x="30" font="letterica16" r="170" g="170" b="170">st_pda_next_task</text>
+	</btn_next_task>
+
+	<btn_refresh_tasks x="580" y="94" width="24" height="30" stretch="1">
+		<texture>ui_inGame2_pda_Filtr_arrow_right</texture>
+		<text x="76" font="letterica16" r="170" g="170" b="170">st_pda_refresh_tasks</text>
+	</btn_refresh_tasks>
+</w>
+

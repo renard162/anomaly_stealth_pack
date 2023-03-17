@@ -1,0 +1,23 @@
+-- Default config
+config = {
+	scanning_range_tier_1 = 5,
+	scanning_range_tier_2 = 33,
+	scanning_range_tier_3 = 150,
+	trim_text = true,
+	list_row_height = 165
+}
+
+op = {
+	id = "pda_taskboard", sh = true, gr = {
+    	{id = "banner", type = "slide", size = {512, 50}, text="ui_mcm_pda_taskboard_banner", spacing = 20},
+        {id = "scanning_range_tier_1", type = "track", val = 2, min = 0, max = 200, step = 1, def = config.scanning_range_tier_1},
+		{id = "scanning_range_tier_2", type = "track", val = 2, min = 0, max = 200, step = 1, def = config.scanning_range_tier_2},
+		{id = "scanning_range_tier_3", type = "track", val = 2, min = 0, max = 200, step = 1, def = config.scanning_range_tier_3},
+		{id = "trim_text", type = "check", val = 1, def = config.trim_text},
+		{id = "list_row_height", type = "track", val = 2, min = 150, max = 400, step = 1, def = config.list_row_height},
+	}
+}
+
+function on_mcm_load()
+    return op
+end
