@@ -448,7 +448,7 @@ function keep_item(npc, item) -- The function is called for each item, and decid
 		local npc_comm = character_community(npc)
 		local npc_rank = ranks.get_obj_rank_name(npc)
 		local coef = get_comb_coeff(npc_rank,npc_comm)^0.44
-		local condition = get_condition_by_rank(npc_rank, coef)
+		local condition = get_condition_by_rank(npc_rank, coef, npc)
 		itms_manager.process_item(section, item_id, {cond = condition} )
 		return
 	end
@@ -550,6 +550,7 @@ function set_weapon_drop_condition(npc,itm)
 		condition = math.random( weapon_drop_condition[rank][1] , weapon_drop_condition[rank][2] )
 	else
 		condition = math.random( weapon_drop_condition["novice"][1] , weapon_drop_condition["novice"][2] )
+		condition = condition * 0.50
 	end
 	
 	condition = clamp(condition,5,100)
@@ -638,13 +639,16 @@ function get_outfit_by_visual(visual)
 	return str and str_explode(str,",")
 end
 
-function get_condition_by_rank(rank,coef)
+function get_condition_by_rank(rank,coef,npc)
 -- Get suitable condition
 	local min_con = outfit_drop_condition[rank] and outfit_drop_condition[rank][1] or 10
 	local max_con = outfit_drop_condition[rank] and outfit_drop_condition[rank][2] or 30
 	local con = utils_data.mean_random(min_con, max_con, coef, 7)/100
     con = con * (game_difficulties.get_eco_factor("outfit_cond_mult") or 1)
     con = con * ((math.random(100) <= 5 and 1.5) or 1)
+	if npc:character_community() == "zombied" then
+		con = con * 0.50
+	end
 	con = math.min(con, 1)
 	return con
 end
@@ -711,14 +715,14 @@ function spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, rand_condition
 	-- Spawn outfit
 	local outfit_id
 	if outfit_section and ini_sys:section_exist(outfit_section) and  validate_drop(outfit_section) then
-		local condition = rand_condition and (math.random(75,85)/100) or get_condition_by_rank(npc_rank, coef)
+		local condition = rand_condition and (math.random(75,85)/100) or get_condition_by_rank(npc_rank, coef, npc)
 		outfit_id = spawn_with_condition(npc, outfit_section, condition)
 	end
 	
 	-- Spawn helmet
 	local helmet_id
 	if helmet_section and ini_sys:section_exist(helmet_section) and  validate_drop(helmet_section) then
-		local condition = rand_condition and (math.random(75,85)/100) or get_condition_by_rank(npc_rank, coef)
+		local condition = rand_condition and (math.random(75,85)/100) or get_condition_by_rank(npc_rank, coef, npc)
 		helmet_id = spawn_with_condition(npc, helmet_section, condition)
 	end
 
