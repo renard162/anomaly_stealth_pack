@@ -1,0 +1,219 @@
+[wpn_duplet]:identity_immunities,weapon_probability,default_weapon_params
+    GroupControlSection		= spawn_group
+    $npc			 		= on
+    $prefetch 		 		= 8
+    $spawn                  = "weapons\duplet"
+	scheduled               = off		
+    cform                   = skeleton
+    icons_texture           = ui\ui_icon_duplet
+
+    class                   = WP_ASHTG
+    slot 					= 2
+    animation_slot			= 3
+    ef_main_weapon_type		= 1
+    ef_weapon_type			= 9
+    hand_dependence 		= 1
+    single_handed			= 0
+
+    inv_grid_height         = 1
+    inv_grid_width          = 5
+    inv_grid_x              = 0
+    inv_grid_y              = 0
+    inv_name				= st_wpn_duplet
+    inv_name_short			= st_wpn_duplet
+    description				= st_wpn_duplet_descr
+
+    kind                    = w_shotgun
+    inv_weight				= 2
+    cost					= 9916
+    repair_type = weapon ;             = shotgun
+    weapon_class			= shotgun
+
+    hud                     = wpn_duplet_hud
+    visual                  = dynamics\weapons\wpn_duplet\wpn_duplet.ogf
+    position                = -0.023,-0.09, 0.05
+    orientation             = 0, 30, 0
+    fire_point              = 0.0, 0.168, 0.755
+    fire_point2             = 0.0, 0.168, 0.755
+    strap_bone0				= bip01_spine2
+    strap_bone1				= bip01_spine1
+    strap_position          = -0.26,-0.11,0.15
+    strap_orientation      	= -15,-9,110
+    ph_mass			 					= 3
+
+    flame_particles		    = weapons\generic_weapon05
+    smoke_particles   = amik\weapons\smoke_particles\smoke_particles_pump_01
+
+    light_color		 	    = 0.6,0.5,0.3
+    light_range		 		= 6.0
+    light_time 		 		= 0.2
+    light_var_color		 	= 0.05
+    light_var_range		 	= 0.5
+    
+    upgrades							= up_gr_firstab_bm16, up_gr_seconab_bm16, up_gr_thirdab_bm16
+    installed_upgrades          =
+    upgrade_scheme              = upgrade_scheme_bm16
+    upgr_icon_x             = 1450
+    upgr_icon_y             = 600
+    upgr_icon_width         = 300
+    upgr_icon_height        = 100
+
+    fire_modes              = 2, 1
+    ammo_class		 	    = ammo_12x70_buck, ammo_12x70_buck_bad, ammo_12x70_buck_verybad, ammo_12x76_zhekan, ammo_12x76_zhekan_bad, ammo_12x76_zhekan_verybad
+    ammo_elapsed		 	= 2
+    ammo_mag_size		 	= 2
+    startup_ammo            = 10
+
+    scope_status			= 0
+    scope_zoom_factor       = 0
+
+    silencer_status			= 0
+
+    grenade_launcher_status	= 0
+
+    hit_impulse             = 125
+    hit_power               = 0.6, 0.6, 0.6, 0.6
+    hit_type 		        = fire_wound
+    fire_distance       	= 400
+    bullet_speed			= 300
+    rpm                 	= 9999
+    rpm_empty_click         = 200
+
+    zoom_dof			    = 0.5, 1.0, 180
+    zoom_enabled			= true
+control_inertion_factor    	= 1.075f
+    crosshair_inertion		= 4.9
+    fire_dispersion_base	= 1.5
+    fire_dispersion_condition_factor = 0.001
+
+    misfire_start_condition	= 0.825
+    misfire_start_prob     	= 0.008
+    misfire_end_condition	= 0.1
+    misfire_end_prob        = 0.08
+
+    condition_queue_shot_dec	= 0.0024
+    condition_shot_dec      	= 0.0024
+
+    cam_return 				= 0
+    cam_relax_speed			= 2
+    cam_dispersion          = 6.0
+    cam_dispersion_frac     = 1.1
+    cam_dispersion_inc      = 7.5
+    cam_max_angle        	= 50.0	
+    cam_max_angle_horz      = 50.0	
+    cam_step_angle_horz     = 7.3
+    zoom_cam_relax_speed	= 1
+    zoom_cam_dispersion		= 3.0
+    zoom_cam_dispersion_frac    = 0.7
+    zoom_cam_dispersion_inc		= 3.0
+    zoom_cam_max_angle			= 50.0
+    zoom_cam_max_angle_horz		= 50.0
+    zoom_cam_step_angle_horz	= 5.0
+
+    PDM_disp_accel_factor 		= 1.35
+    PDM_disp_base 				= 1.35
+    PDM_disp_crouch             = 1.0 
+    PDM_disp_crouch_no_acc      = 1.0
+    PDM_disp_vel_factor 		= 1.35
+
+    cam_relax_speed_ai          = 360
+    zoom_cam_relax_speed_ai		= 360
+    holder_range_modifier	    = 1.0 
+    holder_fov_modifier		    = 1.0  
+    min_radius                   = 0
+    max_radius                  = 500
+    hit_probability_gd_novice   = 1.00 
+    hit_probability_gd_stalker  = 1.00 
+    hit_probability_gd_veteran  = 1.00 
+    hit_probability_gd_master   = 1.00 
+
+    kill_msg_x				= 0
+    kill_msg_y		  		= 104
+    kill_msg_width			= 54
+    kill_msg_height			= 16
+
+    ;shell_point      = 0.0, 0.183, 0.07
+
+    snd_draw				        = weapons\duplet\duplet_deploy
+    snd_holster			            = weapons\duplet\duplet_holster
+    snd_shoot						= weapons\duplet\duplet_1
+    snd_shoot1						= weapons\duplet\duplet_2
+    snd_shoot2						= weapons\duplet\duplet_3
+    snd_shoot3						= weapons\duplet\duplet_4
+    snd_empty			            = weapons\duplet\duplet_empty
+    snd_reload_empty			            = weapons\duplet\duplet_reload_lr_new		;reload both
+    snd_shoot_duplet				= weapons\duplet\duplet_1
+    snd_shoot_1						= weapons\duplet\duplet_2
+
+    snd_reload		            = weapons\duplet\duplet_reload_l		;reload left
+
+[wpn_duplet_hud]:hud_base
+    item_visual						= dynamics\weapons\wpn_duplet\wpn_duplet_hud.ogf
+    attach_place_idx					= 0
+    zoom_hide_crosshair				= true
+
+    item_position						= -0.003178,0.002246,0.000581
+    item_orientation					= -181.191742,180.482727,-180.330688
+
+    hands_position			= 0.156500,-0.096000,-0.004000
+    hands_position_16x9				= 0.156500,-0.096000,-0.004000
+    hands_orientation		= 0.300000,1.350000,-2.599999
+    hands_orientation_16x9			= 0.300000,1.350000,-2.599999
+
+    aim_hud_offset_pos = -0.15400,0.103000,-0.21
+    aim_hud_offset_pos_16x9 = -0.15400,0.103000,-0.21
+    aim_hud_offset_rot = 0.023000,0.006200,-0.036000
+    aim_hud_offset_rot_16x9 = 0.023000,0.006200,-0.036000
+
+    ;anm_hide_0			            = duplet_holster
+    ;anm_hide_1			            = duplet_holster
+    ;anm_hide_2			            = duplet_holster
+    ;anm_idle_0			            = duplet_idle
+    ;anm_idle_1			            = duplet_idle
+    ;anm_idle_2			            = duplet_idle
+    ;anm_idle_aim_0			         = duplet_aim
+    ;anm_idle_aim_1			         = duplet_aim
+    ;anm_idle_aim_2			         = duplet_aim
+    ;anm_idle_moving_0		         = duplet_move
+    ;anm_idle_moving_1		         = duplet_move
+    ;anm_idle_moving_2		         = duplet_move
+    ;anm_idle_sprint_0		         = duplet_sprint
+    ;anm_idle_sprint_1		         = duplet_sprint
+    ;anm_idle_sprint_2		         = duplet_sprint
+    ;anm_reload_1						= duplet_reload_l, reload_l
+    ;anm_reload_2						= duplet_reload_lr, reload_lr
+    ;anm_shot_1							= duplet_shoot, shoot
+    ;anm_shot_2							= duplet_shoot, shoot
+    ;anm_show_0			            = duplet_draw
+    ;anm_show_1			            = duplet_draw
+    ;anm_show_2			            = duplet_draw
+    ;anm_bore_0							= duplet_aim
+    ;anm_bore_1							= duplet_aim
+    ;anm_bore_2							= duplet_aim
+
+    anm_hide                                 = duplet_holster
+    anm_idle                                 = duplet_idle
+    anm_idle_aim                             = duplet_aim
+    anm_idle_aim_moving                      = duplet_aim
+    anm_idle_aim_moving_crouch               = duplet_move
+    anm_idle_moving                          = duplet_move
+    anm_idle_sprint                          = duplet_sprint
+    anm_reload                               = duplet_reload_l, reload_l
+    anm_reload_empty                         = duplet_reload_lr, reload_lr
+    anm_shots                                = duplet_shoot, shoot
+    anm_show                                 = duplet_draw
+    anm_bore                                 = duplet_aim
+
+    shell_bone							= wpn_body
+    shell_dir                    		= 0.0, 1.0, 0.0
+    shell_point							= 0,0,0
+
+    fire_bone                     = wpn_body
+    fire_point		= 0, 0.066, 0.514
+
+item_position						= 0,0,0
+item_orientation					= 0,0,0
+
+fire_bone                     		= muzzle
+fire_point							= 0,0,0
+

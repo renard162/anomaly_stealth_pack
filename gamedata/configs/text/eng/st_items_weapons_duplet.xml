@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+    <string id="st_wpn_duplet">
+		<text>Duplet</text>
+	</string>
+	<string id="st_wpn_duplet_descr">
+		<text>The Duplet is a simple, crude firearm made from reinforced scrap metal and wood. The accuracy is low due to the crude finish of the barrel, but it's not an issue since the Duplet is made for close quarters, one of the first kind of firearms to ever be available in the Zone. It has the option of single and double firing \n</text>
+	</string>
+
+</string_table>
+
+
+
+
+
