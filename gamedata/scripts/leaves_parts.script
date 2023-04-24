@@ -1,0 +1,54 @@
+local rnd = math.random
+local particles_name = { "nature\\fog_stormy_02" , "nature\\fog_tornado_00" , "lanforse\\storm_heavy" , "anomaly2\\electra_idle" }
+
+local first_time_play = false
+local first_time_play_in = 40		-- math.random(20, 30)
+
+local particles_playing = false
+local play_particles_again_in = .25	-- real life sec
+
+function actor_on_update()
+	if (psi_storm_manager.is_finished()) and (first_time_play) then
+		first_time_play = false
+	end
+
+	if not (psi_storm_manager.get_psi_storm_manager().started) then return end
+	if (particles_playing) then return end
+
+	local pos = db.actor:position()
+	if not (first_time_play) then
+		first_time_play = true
+		particles_playing = true
+		CreateTimeEvent("part_first_time", "part_first_time", first_time_play_in, first_playing_allow)
+	else
+		particles_playing = true
+		local leaves_particles = particles_object(particles_name[rnd(#particles_name)])
+		pos.x = pos.x + rnd(-40, 40)
+		pos.y = clamp(pos.y, pos.y, 20)
+		pos.z = pos.z + rnd(-40, 40)
+
+		leaves_particles:play_at_pos(pos)
+		CreateTimeEvent("part_x_1", "part_x_1", play_particles_again_in, playing_allow)
+	end
+
+end
+
+function first_playing_allow()
+	particles_playing = false
+	local pos = db.actor:position()
+	local leaves_particles = particles_object(particles_name[rnd(#particles_name)])
+	pos.x = pos.x + rnd(-10, 10)
+	pos.y = clamp(pos.y, pos.y, 20)
+	pos.z = pos.z - 20
+
+	return true
+end
+
+function playing_allow()
+	particles_playing = false
+	return true
+end
+ 
+function on_game_start()
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+end
