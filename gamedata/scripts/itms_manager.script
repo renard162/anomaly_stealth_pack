@@ -52,6 +52,24 @@ for i=0,n-1 do
 	end
 end
 
+local empty_jar_items = {}
+n = ini_manager:line_count("empty_jar_items")
+for i=0,n-1 do
+	result, id, value = ini_manager:r_line_ex("empty_jar_items",i,"","")
+	if ini_sys:section_exist(id) then
+		empty_jar_items[id] = true
+	end
+end
+
+local empty_plastic_items = {}
+n = ini_manager:line_count("empty_plastic_items")
+for i=0,n-1 do
+	result, id, value = ini_manager:r_line_ex("empty_plastic_items",i,"","")
+	if ini_sys:section_exist(id) then
+		empty_plastic_items[id] = true
+	end
+end
+
 item_rewards = {}
 ini_reward:section_for_each(function(section)
 	if (not item_rewards[section]) then
@@ -315,6 +333,14 @@ function actor_on_item_use(obj)
 	-- give empty syringe on using some medical items
 	elseif empty_syringe_items[sec] then
 		alife_create_item("e_syringe", db.actor)
+
+	-- give empty jar on using yadylin
+	elseif empty_jar_items[sec] then
+		alife_create_item("jar", db.actor)
+
+		-- give empty plastic on using yadylin
+	elseif empty_plastic_items[sec] then
+		alife_create_item("prt_i_plastic", db.actor)
 	
 	-- weather radar
 	elseif (sec == "device_weather_radar") then
