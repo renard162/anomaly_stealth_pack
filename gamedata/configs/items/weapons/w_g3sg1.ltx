@@ -81,7 +81,10 @@ scope_dynamic_zoom                       = off
 scope_texture                            = wpn_crosshair_g3sg1
 scope_zoom_factor                        = 10
 
-silencer_status                          = 0
+silencer_name                            = wpn_sil_nato
+silencer_status                          = 2
+silencer_x                               = 232
+silencer_y                               = 20
 silencer_light_color                     = 0.6, 0.5, 0.3
 silencer_light_range                     = 0.01
 silencer_light_time                      = 0.2
@@ -162,6 +165,9 @@ kill_msg_y                               = 0
 kill_msg_width                           = 82
 kill_msg_height                          = 28
 
+snd_reload = wpn\g3\g3_reload
+snd_reload_empty = wpn\g3\g3_reload_empty
+snd_reload_misfire = wpn\g3\g3_misfire
 
 [wpn_g3sg1_new_hud]:hud_base
 item_visual                              = anomaly_weapons\wpn_g3sg1\wpn_g3sg1_hud.ogf
@@ -171,15 +177,21 @@ zoom_hide_crosshair                      = true
 item_position                            = 0, 0, 0
 item_orientation                         = 0, 0, 0
 
-hands_position                           = -0.05, -0.2, 0.15
-hands_position_16x9                      = -0.05, -0.2, 0.15
-hands_orientation                        = 4.3, 4.3, 0
-hands_orientation_16x9                   = 4.3, 4.3, 0
+        aim_hud_offset_rot               = 0.011398, 0.024999, -0.011214
+        aim_hud_offset_rot_16x9          = 0.011398, 0.024999, -0.011214
+        aim_hud_offset_pos               = -0.065937, 0.008788, -0.030498
+        aim_hud_offset_pos_16x9          = -0.065937, 0.008788, -0.030498
+		
+        hands_orientation                = 1.7976, 0.944531, -2.292528
+        hands_orientation_16x9           = 1.7976, 0.944531, -2.292528
+        hands_position                   = 0.00507, -0.026377, -0.136633
+        hands_position_16x9              = 0.00507, -0.026377, -0.136633
+		
+        lowered_hud_offset_pos           = 0.067603, -0.000701, 0
+        lowered_hud_offset_pos_16x9      = 0.067603, -0.000701, 0
+        lowered_hud_offset_rot           = 0.181492, -0.502347, 0.1
+        lowered_hud_offset_rot_16x9      = 0.181492, -0.502347, 0.1
 
-aim_hud_offset_pos                       = -0.09, 0.02, -0.22
-aim_hud_offset_pos_16x9                  = -0.09, 0.02, -0.22
-aim_hud_offset_rot                       = 0.03, 0.0165, 0.01
-aim_hud_offset_rot_16x9                  = 0.03, 0.0165, 0.01
 
 gl_hud_offset_pos                        = 0, 0, 0
 gl_hud_offset_pos_16x9                   = 0, 0, 0
@@ -189,15 +201,41 @@ gl_hud_offset_rot_16x9                   = 0, 0, 0
 lean_hud_offset_pos                      = 0, 0, 0
 lean_hud_offset_rot                      = 0, 0, 0
 
-anm_hide                                 = g3_holster
-anm_idle                                 = g3_idle
-anm_idle_aim                             = g3_aim
-anm_idle_moving                          = g3_move
-anm_idle_sprint                          = g3_sprint
-anm_reload                               = g3_reload, reload
-anm_shots                                = g3_shoot, shoot
-anm_show                                 = g3_draw
+anm_bore                                 = g3_h_bore, idle
+anm_hide                                 = g3_h_hide, idle
+anm_idle                                 = g3_h_idle, idle
+anm_idle_aim                             = g3_h_idle_aim, idle
+anm_idle_moving                          = g3_h_walk, idle
+anm_idle_sprint                          = g3_h_sprint, idle
+anm_reload                               = g3_h_reload, g3_g_reload
+anm_reload_empty                               = g3_h_reload_empty, g3_g_reload_empty
+anm_reload_misfire                               = g3_h_misfire, g3_g_misfire
+anm_shots                                = g3_h_shot, g3_g_shot
+anm_show                                 = g3_h_draw, idle
 
+anm_bore_jammed                                 = g3_h_bore, idle_jammed
+anm_hide_jammed                                 = g3_h_hide, idle_jammed
+anm_idle_jammed                                 = g3_h_idle, idle_jammed
+anm_idle_aim_jammed                             = g3_h_idle_aim, idle_jammed
+anm_idle_moving_jammed                          = g3_h_walk, idle_jammed
+anm_idle_sprint_jammed                          = g3_h_sprint, idle_jammed
+anm_shots_jammed                                = g3_h_shot, g3_g_shot_jamm
+anm_show_jammed                                  = g3_h_draw, idle_jammed 
+;--- Переходы спринта---
+        anm_sprint_start             = g3_h_sprint_start, idle
+        anm_sprint_end               = g3_h_sprint_end, idle
+		anm_sprint_start_jammed             = g3_h_sprint_start, idle_jammed
+        anm_sprint_end_jammed               = g3_h_sprint_end, idle_jammed
+;--- Паттерны спринта---
+        ts_pattern_sprint_start            = .+, anm_idle_sprint, anm_sprint_start, 1
+        ts_pattern_sprint_end              = anm_idle_sprint, ^anm_idle.*, anm_sprint_end
+        ts_strict_sprint_end_move          = anm_sprint_start, anm_idle_moving, anm_sprint_end	\
+;--- Переходы прицела---
+;anm_idle_aim_start                         = g3_h_aim_start, idle
+;anm_idle_aim_end                           = g3_h_aim_start, idle
+;anm_idle_aim_start_jammed                         = g3_h_aim_start, idle_jammed
+;anm_idle_aim_end_jammed                           = g3_h_aim_start, idle_jammed
+;-----------------------
 shell_bone                               = wpn_body
 shell_dir                                = 0, 1, 0
 shell_point                              = 0.021, 0.099, 0.286
@@ -217,15 +255,15 @@ zoom_hide_crosshair                      = true
 item_position                            = 0, 0, 0
 item_orientation                         = 0, 0, 0
 
-hands_position                           = -0.07, -0.19, 0.12
-hands_position_16x9                      = -0.07, -0.19, 0.12
-hands_orientation                        = 1.5, 1.2, 0.1
-hands_orientation_16x9                   = 1.5, 1.2, 0.1
+        aim_hud_offset_pos               = -0.061889, 0.025365, -0.05787
+        aim_hud_offset_pos_16x9          = -0.061889, 0.025365, -0.05787
+        aim_hud_offset_rot               = 0.011398, 0.024999, -0.011214
+        aim_hud_offset_rot_16x9          = 0.011398, 0.024999, -0.011214
+        hands_orientation                = 1.649, 0.762932, -2.292528
+        hands_orientation_16x9           = 1.649, 0.762932, -2.292528
+        hands_position                   = 0.000114, -0.010743, -0.165723
+        hands_position_16x9              = 0.000114, -0.010743, -0.165723
 
-aim_hud_offset_pos                       = -0.0893, 0.006, -0.29
-aim_hud_offset_pos_16x9                  = -0.0893, 0.006, -0.29
-aim_hud_offset_rot                       = 0, 0.35, 0
-aim_hud_offset_rot_16x9                  = 0, 0.35, 0
 
 gl_hud_offset_pos                        = 0, 0, 0
 gl_hud_offset_pos_16x9                   = 0, 0, 0
@@ -235,16 +273,26 @@ gl_hud_offset_rot_16x9                   = 0, 0, 0
 lean_hud_offset_pos                      = 0, 0, 0
 lean_hud_offset_rot                      = 0, 0, 0
 
-anm_hide                                 = g3sg1_holster
-anm_idle                                 = g3sg1_idle
-anm_idle_aim                             = g3sg1_idle
-anm_idle_aim_moving                      = g3sg1_idle_moving, idle, 0.75
-anm_idle_aim_moving_crouch               = g3sg1_idle_moving, idle, 0.7
-anm_idle_moving                          = g3sg1_idle_moving
-anm_idle_sprint                          = g3sg1_idle_sprint
-anm_reload                               = g3sg1_reload1, g36_reload_w
-anm_shots                                = g3sg1_shoot, g36_shoot_w
-anm_show                                 = g3sg1_draw
+anm_bore                                 = g3_h_bore, idle
+anm_hide                                 = g3_h_hide, idle
+anm_idle                                 = g3_h_idle, idle
+anm_idle_aim                             = g3_h_idle_aim, idle
+anm_idle_moving                          = g3_h_walk, idle
+anm_idle_sprint                          = g3_h_sprint, idle
+anm_reload                               = g3_h_reload, g3_g_reload
+anm_reload_empty                               = g3_h_reload_empty, g3_g_reload_empty
+anm_reload_misfire                               = g3_h_misfire, g3_g_misfire
+anm_shots                                = g3_h_shot, g3_g_shot
+anm_show                                 = g3_h_draw, idle
+
+anm_bore_jammed                                 = g3_h_bore, idle_jammed
+anm_hide_jammed                                 = g3_h_hide, idle_jammed
+anm_idle_jammed                                 = g3_h_idle, idle_jammed
+anm_idle_aim_jammed                             = g3_h_idle_aim, idle_jammed
+anm_idle_moving_jammed                          = g3_h_walk, idle_jammed
+anm_idle_sprint_jammed                          = g3_h_sprint, idle_jammed
+anm_shots_jammed                                = g3_h_shot, g3_g_shot_jamm
+anm_show_jammed                                  = g3_h_draw, idle_jammed 
 
 shell_bone                               = eject
 shell_dir                                = 0, 0, 0
@@ -313,7 +361,7 @@ scope_zoom_factor                        = 0
 silencer_name                            = wpn_sil_nato
 silencer_status                          = 2
 silencer_x                               = 232
-silencer_y                               = 18
+silencer_y                               = 20
 
 grenade_class                            = ammo_m209, ammo_m209_bad, ammo_m209_verybad
 grenade_launcher_status                  = 0
@@ -364,6 +412,9 @@ zoom_cam_step_angle_horz                 = 1.13
 cam_relax_speed_ai                       = 360
 zoom_cam_relax_speed_ai                  = 360
 
+snd_reload = wpn\g3\g3_reload
+snd_reload_empty = wpn\g3\g3_reload_empty
+snd_reload_misfire = wpn\g3\g3_misfire
 
 [wpn_g3_hud]:hud_base
 item_visual                              = anomaly_weapons\wpn_g3\wpn_g3_hud.ogf
@@ -373,15 +424,20 @@ zoom_hide_crosshair                      = true
 item_position                            = 0, 0, 0
 item_orientation                         = 0, 0, 0
 
-hands_position                           = -0.05968,-0.2262,0.2
-hands_position_16x9                      = -0.05968,-0.2262,0.2
-hands_orientation                        = 0.8, 2.0, 0.0
-hands_orientation_16x9                   = 0.8, 2.0, 0.0
+        aim_hud_offset_pos               = -0.062031, 0.025365, -0.05787
+        aim_hud_offset_pos_16x9          = -0.062031, 0.025365, -0.05787
+        aim_hud_offset_rot               = 0.011043, 0.024999, -0.015474
+        aim_hud_offset_rot_16x9          = 0.011043, 0.024999, -0.015474
+		
+        hands_orientation                = 1.649, 0.762932, -2.292528
+        hands_orientation_16x9           = 1.649, 0.762932, -2.292528
+        hands_position                   = 0.000114, -0.010743, -0.165723
+        hands_position_16x9              = 0.000114, -0.010743, -0.165723
 
-aim_hud_offset_pos                       = -0.09485, 0.0878, -0.3
-aim_hud_offset_pos_16x9                  = -0.09485, 0.0878, -0.3
-aim_hud_offset_rot                       = 0.0365, 0.01311, -0.0051
-aim_hud_offset_rot_16x9                  = 0.0365, 0.01311, -0.0051
+        lowered_hud_offset_pos           = 0.050264, -0.001558, 0
+        lowered_hud_offset_pos_16x9      = 0.050264, -0.001558, 0
+        lowered_hud_offset_rot           = 0.170396, -0.438986, 0.1
+        lowered_hud_offset_rot_16x9      = 0.170396, -0.438986, 0.1
 
 gl_hud_offset_pos                        = 0, 0, 0
 gl_hud_offset_pos_16x9                   = 0, 0, 0
@@ -391,14 +447,41 @@ gl_hud_offset_rot_16x9                   = 0, 0, 0
 lean_hud_offset_pos                      = 0, 0, 0
 lean_hud_offset_rot                      = 0, 0, 0
 
-anm_hide                                 = g3_holster
-anm_idle                                 = g3_idle
-anm_idle_aim                             = g3_aim
-anm_idle_moving                          = g3_move
-anm_idle_sprint                          = g3_sprint
-anm_reload                               = g3_reload, reload
-anm_shots                                = g3_shoot, shoot
-anm_show                                 = g3_draw
+anm_bore                                 = g3_h_bore, idle
+anm_hide                                 = g3_h_hide, idle
+anm_idle                                 = g3_h_idle, idle
+anm_idle_aim                             = g3_h_idle_aim, idle
+anm_idle_moving                          = g3_h_walk, idle
+anm_idle_sprint                          = g3_h_sprint, idle
+anm_reload                               = g3_h_reload, g3_g_reload
+anm_reload_empty                               = g3_h_reload_empty, g3_g_reload_empty
+anm_reload_misfire                               = g3_h_misfire, g3_g_misfire
+anm_shots                                = g3_h_shot, g3_g_shot
+anm_show                                 = g3_h_draw, idle
+
+anm_bore_jammed                                 = g3_h_bore, idle_jammed
+anm_hide_jammed                                 = g3_h_hide, idle_jammed
+anm_idle_jammed                                 = g3_h_idle, idle_jammed
+anm_idle_aim_jammed                             = g3_h_idle_aim, idle_jammed
+anm_idle_moving_jammed                          = g3_h_walk, idle_jammed
+anm_idle_sprint_jammed                          = g3_h_sprint, idle_jammed
+anm_shots_jammed                                = g3_h_shot, g3_g_shot_jamm
+anm_show_jammed                                  = g3_h_draw, idle_jammed 
+;--- Переходы спринта---
+        anm_sprint_start             = g3_h_sprint_start, idle
+        anm_sprint_end               = g3_h_sprint_end, idle
+		anm_sprint_start_jammed             = g3_h_sprint_start, idle_jammed
+        anm_sprint_end_jammed               = g3_h_sprint_end, idle_jammed
+;--- Паттерны спринта---
+        ts_pattern_sprint_start            = .+, anm_idle_sprint, anm_sprint_start, 1
+        ts_pattern_sprint_end              = anm_idle_sprint, ^anm_idle.*, anm_sprint_end
+        ts_strict_sprint_end_move          = anm_sprint_start, anm_idle_moving, anm_sprint_end
+;--- Переходы прицела---
+;anm_idle_aim_start                         = g3_h_aim_start, idle
+;anm_idle_aim_end                           = g3_h_aim_start, idle
+;anm_idle_aim_start_jammed                         = g3_h_aim_start, idle_jammed
+;anm_idle_aim_end_jammed                           = g3_h_aim_start, idle_jammed
+;-----------------------
 
 shell_bone                               = wpn_body
 shell_dir                                = 0, 1, 0
@@ -415,7 +498,7 @@ freelook_z_offset_mul					 = 0.5
 [wpn_g3_ac10632]:wpn_g3
 1icon_layer                              = ac10632
 1icon_layer_x                            = 74
-1icon_layer_y                            = -3
+1icon_layer_y                            = -2
 
 inv_weight                               = 4.745
 
@@ -426,21 +509,13 @@ visual                                   = dynamics\weapons\wpn_g3\wpn_g3_ac1063
 [wpn_g3_ac10632_hud]:wpn_g3_hud
 item_visual                              = anomaly_weapons\wpn_g3\wpn_g3_ac10632_hud.ogf
 
-hands_position                           = -0.06, -0.22, 0.2
-hands_position_16x9                      = -0.06, -0.22, 0.2
-hands_orientation                        = 0, 3, 0
-hands_orientation_16x9                   = 0, 3, 0
-
-aim_hud_offset_pos                       = -0.0918, 0.0376, -0.33
-aim_hud_offset_pos_16x9                  = -0.0918, 0.0376, -0.33
-aim_hud_offset_rot                       = 0.054050, -0.0005, 0
-aim_hud_offset_rot_16x9                  = 0.054050, -0.0005, 0
-
+        aim_hud_offset_pos               = -0.061907, 0.003326, -0.05787
+        aim_hud_offset_pos_16x9          = -0.061907, 0.003326, -0.05787
 ;------------------------------------------------------------------------------------------------
 [wpn_g3_acog]:wpn_g3
 1icon_layer                              = acog
 1icon_layer_x                            = 72
-1icon_layer_y                            = -1
+1icon_layer_y                            = 0
 
 inv_weight                               = 4.98
 
@@ -449,22 +524,14 @@ visual                                   = dynamics\weapons\wpn_g3\wpn_g3_acog.o
 
 scope_status                             = 0
 scope_zoom_factor                        = 20
-scope_texture                            = wpn_crosshair_acog
+scope_texture                                      = wpn_crosshair_acog
 
 
 [wpn_g3_acog_hud]:wpn_g3_hud,hud_low_interia
 item_visual                              = anomaly_weapons\wpn_g3\wpn_g3_acog_hud.ogf
 
-hands_position                           = -0.06, -0.22, 0.2
-hands_position_16x9                      = -0.06, -0.22, 0.2
-hands_orientation                        = 0, 3, 0
-hands_orientation_16x9                   = 0, 3, 0
-
-aim_hud_offset_pos                       = -0.0921,0.0321,-0.32
-aim_hud_offset_pos_16x9                  = -0.0921,0.0321,-0.32
-aim_hud_offset_rot                       = 0.0385,-0.00076,-0.001
-aim_hud_offset_rot_16x9                  = 0.0385,-0.00076,-0.001
-
+        aim_hud_offset_pos               = -0.06125, 0.002183, -0.05787
+        aim_hud_offset_pos_16x9          = -0.06125, 0.002183, -0.05787
 ;------------------------------------------------------------------------------------------------
 [wpn_g3_eot]:wpn_g3
 1icon_layer                              = eot
@@ -477,16 +544,9 @@ hud                                      = wpn_g3_eot_hud
 visual                                   = dynamics\weapons\wpn_g3\wpn_g3_eot.ogf
 
 
-[wpn_g3_eot_hud]:wpn_g3_acog_hud
+[wpn_g3_eot_hud]:wpn_g3_hud
 item_visual                              = anomaly_weapons\wpn_g3\wpn_g3_eot_hud.ogf
 
-hands_position                           = -0.06, -0.22, 0.2
-hands_position_16x9                      = -0.06, -0.22, 0.2
-hands_orientation                        = 0, 3, 0
-hands_orientation_16x9                   = 0, 3, 0
-
-aim_hud_offset_pos                       = -0.09216,0.03592,-0.35
-aim_hud_offset_pos_16x9                  = -0.09216,0.03592,-0.35
-aim_hud_offset_rot                       = 0.05405,-0.0005,0
-aim_hud_offset_rot_16x9                  = 0.05405,-0.0005,0
+        aim_hud_offset_pos               = -0.061818, -0.002646, -0.05787
+        aim_hud_offset_pos_16x9          = -0.061818, -0.002646, -0.05787
 
