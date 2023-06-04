@@ -767,6 +767,7 @@ function UINewGame:Main_Controls()
 		self.ck_treasurehunt_mode_cap = xml:InitStatic("main_dialog:options:cap_check_treasurehunt_mode",self.templ_options)
 		self.ck_treasurehunt_mode = xml:InitCheck("main_dialog:options:check_treasurehunt_mode",	self.templ_options)
 		self:Register(self.ck_treasurehunt_mode,"check_treasurehunt_mode")
+		self.ck_treasurehunt_mode:SetCheck(true) -- ON by default
 		
 		self.ck_fortuneswheel_mode_cap = xml:InitStatic("main_dialog:options:cap_check_fortuneswheel_mode",self.templ_options)
 		self.ck_fortuneswheel_mode = xml:InitCheck("main_dialog:options:check_fortuneswheel_mode",	self.templ_options)
