@@ -759,7 +759,6 @@ function UINewGame:Main_Controls()
 		self.ck_routes_cap = xml:InitStatic("main_dialog:options:cap_check_routes",self.templ_options)
 		self.ck_routes = xml:InitCheck("main_dialog:options:check_routes",	self.templ_options)
 		self:Register(self.ck_routes,"check_routes")
-		self.ck_routes:SetCheck(true) -- ON by default
 		
 		self.ck_blackroad_mode_cap = xml:InitStatic("main_dialog:options:cap_check_blackroad_mode",self.templ_options)
 		self.ck_blackroad_mode = xml:InitCheck("main_dialog:options:check_blackroad_mode",	self.templ_options)
