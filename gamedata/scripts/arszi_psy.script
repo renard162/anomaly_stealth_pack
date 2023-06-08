@@ -18,7 +18,7 @@ local c_psy_health_regen_per_second = ( stress_mcm.get_config("regen") or 26 ) /
 local c_psy_stress_drain_per_second = ( stress_mcm.get_config("drain") or 13 ) / 2160000						--psy health drain per in-game second, when stalker is out and about in the Zone
 local c_psy_health_regen_booster_divider = 25																	--psy health regeneration divider for medicines
 local c_psy_health_regen_artefacts_divider = 100																--psy health regeneration divider for artefacts and attachments
-local safe_distance_to_base = 35
+local safe_distance_to_base = 45
 local danger_distance_static_anomaly = 18
 local fate_of_player_zombfication = false
 
