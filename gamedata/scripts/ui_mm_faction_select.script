@@ -754,6 +754,7 @@ function UINewGame:Main_Controls()
 		self.ck_campfire_cap = xml:InitStatic("main_dialog:options:cap_check_campfire",self.templ_options)
 		self.ck_campfire = xml:InitCheck("main_dialog:options:check_campfire",	self.templ_options)
 		self:Register(self.ck_campfire,"check_campfire")
+		self.ck_campfire:SetCheck(true) -- ON by default
 		
 		self.ck_routes_cap = xml:InitStatic("main_dialog:options:cap_check_routes",self.templ_options)
 		self.ck_routes = xml:InitCheck("main_dialog:options:check_routes",	self.templ_options)
