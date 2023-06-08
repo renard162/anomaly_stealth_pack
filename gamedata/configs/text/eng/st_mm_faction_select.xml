@@ -177,7 +177,7 @@
 	</string>
 	<string id="st_mm_ck_campfire_desc">
 		<text>
-			%c[0,150,150,150]In Campfire save mode, you can't save your progress unless you're standing near a campfire. Campfires can be found all across the Zone, and represent gathering places for stalkers everywhere.
+			%c[0,150,150,150]In Campfire save mode, you can't save your progress unless you're standing near a campfire or inside a safe area. Campfires can be found all across the Zone, and represent gathering places for stalkers everywhere.
 			\n \n%c[200,50,200,50]• %c[0,150,150,150]All hardcore save modes are compatible with each other.
 		</text>
 	</string>

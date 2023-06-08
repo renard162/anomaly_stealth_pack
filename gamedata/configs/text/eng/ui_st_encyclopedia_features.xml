@@ -86,7 +86,7 @@
 		<text>
 			%c[pda_white]Campfire save mode%c[ui_gray_1] prevents you from saving your progress unless you're standing close to a campfire.\n
 			\n%c[pda_green]Information%c[ui_gray_1]
-			\nTo save your progress in Campfire mode, approach a nearby campfire, then save your game as usual.
+			\nTo save your progress in Campfire mode, approach a nearby campfire or stay inside a safe area, then save your game as usual.
 			\n \nCampfire mode is automatically disabled in underground levels due to their nature.
 		</text>
 	</string>

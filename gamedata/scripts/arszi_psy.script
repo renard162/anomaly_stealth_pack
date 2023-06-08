@@ -70,9 +70,9 @@ local safe_area_bonus = 1.13
 local musical_instrument_correction = 20
 
 --FLAGS--------------------------------------------------------------------------
+inside_safe_area = false
 local anomaly_close = false
 local nearby_lit_campfire = false
-local inside_safe_area = false
 local in_combat = false
 
 --DEBUG CONTROL------------------------------------------------------------------

@@ -158,27 +158,9 @@ end
 
 local function on_before_save_input(flags, typ, text)
 	if (alife_storage_manager.get_state().enable_campfire_mode)
-	and (level_weathers.valid_levels[level.name()]) 
+	and (level_weathers.valid_levels[level.name()])
 	then
-		--Check for campfires in the nearby
-		if (check_no_nearby_campfire()) then
-			local str = strformat(game.translate_string("st_ui_no_save_campfire"),text)
-			actor_menu.set_msg(1, str,4)
-			exec_console_cmd("main_menu off")
-			flags.ret = true
-			return
-		end
-
-		--Check for lit campfire
-		if (check_for_not_lit_campfire()) then
-			local str = strformat(game.translate_string("st_campfire_off"),text)
-			actor_menu.set_msg(1, str,4)
-			exec_console_cmd("main_menu off")
-			flags.ret = true
-			return
-		end
-		
-		--Check for enemies in the nearby
+        --Check for enemies in the nearby
 		if (not is_empty(xr_combat_ignore.fighting_with_actor_npcs)) then
 			local str = strformat(game.translate_string("st_campfire_danger"),text)
 			actor_menu.set_msg(1, str,4)
@@ -207,6 +189,30 @@ local function on_before_save_input(flags, typ, text)
 
 		--Return if immersive save is in progress already
 		if (check_if_immersive_save_is_in_progress()) then
+			exec_console_cmd("main_menu off")
+			flags.ret = true
+			return
+		end
+
+        -- Acept save if inside safe base
+        if (arszi_psy.inside_safe_area) then
+            begin_immersive_save()
+            return
+        end
+
+		--Check for campfires in the nearby
+		if (check_no_nearby_campfire()) then
+			local str = strformat(game.translate_string("st_ui_no_save_campfire"),text)
+			actor_menu.set_msg(1, str,4)
+			exec_console_cmd("main_menu off")
+			flags.ret = true
+			return
+		end
+
+		--Check for lit campfire
+		if (check_for_not_lit_campfire()) then
+			local str = strformat(game.translate_string("st_campfire_off"),text)
+			actor_menu.set_msg(1, str,4)
 			exec_console_cmd("main_menu off")
 			flags.ret = true
 			return
