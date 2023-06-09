@@ -776,7 +776,6 @@ function UINewGame:Main_Controls()
 		self.ck_conditions_cap = xml:InitStatic("main_dialog:options:cap_check_conditions",self.templ_options)
 		self.ck_conditions = xml:InitCheck("main_dialog:options:check_conditions",	self.templ_options)
 		self:Register(self.ck_conditions,"check_conditions")
-		self.ck_conditions:SetCheck(true) -- ON by default
 		
 		self.list_hardcore_lives_cap = xml:InitStatic("main_dialog:options:cap_list_hardcore_lives",self.templ_options)
 		self.list_hardcore_lives = xml:InitComboBox("main_dialog:options:list_hardcore_lives", self.templ_options)
@@ -859,6 +858,8 @@ function UINewGame:Main_CallBacks()
 	self:AddCallback("check_survival", ui_events.BUTTON_CLICKED, self.OnCheckSetSurvival, self)
 	self:AddCallback("check_azazel_mode", ui_events.BUTTON_CLICKED, self.OnCheckSetAzazel, self)
 	self:AddCallback("check_warfare", ui_events.BUTTON_CLICKED, self.OnCheckSetWarfare, self)
+    self:AddCallback("check_campfire", ui_events.BUTTON_CLICKED, self.OnCheckCampfire, self)
+    self:AddCallback("check_conditions", ui_events.BUTTON_CLICKED, self.OnCheckConditions, self)
 	self:AddCallback("check_blackroad_mode", ui_events.BUTTON_CLICKED, self.OnCheckSetBlackroad, self)
 	self:AddCallback("check_treasurehunt_mode", ui_events.BUTTON_CLICKED, self.OnCheckSetTreasureHunt, self)
 	self:AddCallback("check_fortuneswheel_mode", ui_events.BUTTON_CLICKED, self.OnCheckSetFortunesWheel, self)
@@ -1633,6 +1634,22 @@ function UINewGame:OnCheckSetTreasureHunt()
 	end
 	
 	self:LoadMap()
+end
+
+function UINewGame:OnCheckConditions()
+	if (not self.access) then
+		return
+	end
+	self.ck_campfire:SetCheck(false)
+	self.ck_states["ck_campfire"] = false
+end
+
+function UINewGame:OnCheckCampfire()
+	if (not self.access) then
+		return
+	end
+	self.ck_conditions:SetCheck(false)
+	self.ck_states["ck_conditions"] = false
 end
 
 function UINewGame:OnCheckSetFortunesWheel()

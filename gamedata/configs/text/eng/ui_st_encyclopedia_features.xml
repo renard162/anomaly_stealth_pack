@@ -80,25 +80,33 @@
 	</string>
 	
 	<string id="encyclopedia_features_campfire_mode">
-		<text>Campfire mode</text>
+		<text>Campfire save mode</text>
 	</string>
 	<string id="encyclopedia_features_campfire_mode_text">
 		<text>
-			%c[pda_white]Campfire save mode%c[ui_gray_1] prevents you from saving your progress unless you're standing close to a campfire.\n
+			%c[pda_white]Campfire save mode%c[ui_gray_1] adds another layer of difficulty by advancing time when saving and preventing you from saving your progress based on certain criteria.\n
 			\n%c[pda_green]Information%c[ui_gray_1]
-			\nTo save your progress in Campfire mode, approach a nearby campfire or stay inside a safe area, then save your game as usual.
-			\n \nCampfire mode is automatically disabled in underground levels due to their nature.
+			\nYou can't save your progress in Campfire save mode if you're:
+			\n%c[200,200,200,50]• %c[0,150,150,150]Injured
+			\n%c[200,200,200,50]• %c[0,150,150,150]Bleeding
+			\n%c[200,200,200,50]• %c[0,150,150,150]Irradiated
+			\n%c[200,200,200,50]• %c[0,150,150,150]In combat with enemies
+			\n%c[200,200,200,50]• %c[0,150,150,150]Under circumstances of an emission or psi-storm
+            \n%c[200,200,200,50]• %c[0,150,150,150]Outside of a safe area
+            \n \n%c[ui_gray_1]Safe areas includes:
+            \n%c[d_orange]• %c[0,150,150,150]Areas controlled by allied faction
+            \n%c[d_orange]• %c[0,150,150,150]Nearby of a lit campfire
 		</text>
 	</string>
 	
 	<string id="encyclopedia_features_agony_mode">
-		<text>Agony mode</text>
+		<text>Agony save mode</text>
 	</string>
 	<string id="encyclopedia_features_agony_mode_text">
 		<text>
-			%c[pda_white]Agony mode%c[ui_gray_1] adds another layer of difficulty by preventing you from saving your progress based on certain criteria.\n
+			%c[pda_white]Agony save mode%c[ui_gray_1] adds another layer of difficulty by preventing you from saving your progress based on certain criteria.\n
 			\n%c[pda_green]Information%c[ui_gray_1]
-			\nYou can't save your progress in Agony mode if you're:
+			\nYou can't save your progress in Agony save mode if you're:
 			\n%c[200,200,200,50]• %c[0,150,150,150]Injured
 			\n%c[200,200,200,50]• %c[0,150,150,150]Bleeding
 			\n%c[200,200,200,50]• %c[0,150,150,150]Irradiated

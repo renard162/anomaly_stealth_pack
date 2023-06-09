@@ -177,8 +177,18 @@
 	</string>
 	<string id="st_mm_ck_campfire_desc">
 		<text>
-			%c[0,150,150,150]In Campfire save mode, you can't save your progress unless you're standing near a campfire or inside a safe area. Campfires can be found all across the Zone, and represent gathering places for stalkers everywhere.
+            %c[0,150,150,150]Campfire save mode will advance time when saving and prevent you from saving your progress if you're:
+			\n%c[200,200,200,50]• %c[0,150,150,150]Injured
+			\n%c[200,200,200,50]• %c[0,150,150,150]Bleeding
+			\n%c[200,200,200,50]• %c[0,150,150,150]Irradiated
+			\n%c[200,200,200,50]• %c[0,150,150,150]In combat with enemies
+			\n%c[200,200,200,50]• %c[0,150,150,150]Under circumstances of an emission or psi-storm
+            \n%c[200,200,200,50]• %c[0,150,150,150]Outside of a safe area
+            \n \n%c[0,150,150,150]Safe areas includes:
+            \n%c[d_orange]• %c[0,150,150,150]Areas controlled by allied faction
+            \n%c[d_orange]• %c[0,150,150,150]Nearby of a lit campfire
 			\n \n%c[200,50,200,50]• %c[0,150,150,150]All hardcore save modes are compatible with each other.
+            \n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Agony mode.
 		</text>
 	</string>
 	<string id="st_mm_ck_conditions_desc">
@@ -287,10 +297,10 @@
 		<text>DoctorX Questlines</text>
 	</string>
 	<string id="st_cap_check_campfire">
-		<text>Campfire mode</text>
+		<text>Campfire save mode</text>
 	</string>
 	<string id="st_cap_check_conditions">
-		<text>Agony mode</text>
+		<text>Agony save mode</text>
 	</string>
 	<string id="st_cap_list_timer">
 		<text>Timer mode</text>
