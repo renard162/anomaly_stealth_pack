@@ -109,9 +109,11 @@
 		<texture id="encyclopedia_features_workshop_craft_image" x="0" y="256" width="512" height="256"/>
 		<texture id="encyclopedia_features_disassembly_image" x="512" y="256" width="512" height="256"/>
 		<texture id="encyclopedia_features_campfire_mode_image" x="0" y="512" width="512" height="256"/>
+        <texture id="article_survival_image" x="0" y="512" width="512" height="256"/>
 		<texture id="encyclopedia_features_battery_image" x="512" y="512" width="512" height="256"/>
 		<texture id="encyclopedia_features_warfare_image" x="0" y="768" width="512" height="256"/>
 		<texture id="encyclopedia_features_story_mode_image" x="512" y="768" width="512" height="256"/>
+        <texture id="article_psy_image" x="512" y="768" width="512" height="256"/>
 	</file>
 	
 	<!-- notes -->

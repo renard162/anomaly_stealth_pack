@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<string id="article_psy">
+		<text>Psy health</text>
+	</string>
+	<string id="article_psy_text">
+		<text>
+			%c[pda_green]Psy health%c[ui_gray_1]\n
+			\nTo survive in exclusion zone, you'll need more than physical strength, you need to fight to maintain your sanity.
+            
+            \n \nStressful situations like combats, emissions, stay in anomalous areas, thirsty, hunger, sleepiness or stay injured will reduce your psy health.
+            
+            \n \nLow psy health will cause hallucinations, reduce your perceptions and, in extreme cases, can kill you, then, take care.
+            
+            \n \nTo restore your sanity, stay in safe areas like near lit campfire or areas controlled by allied factions, use drugs like tobacco, Psy-block or 027 R pills, play some music or sleep.
+            
+            \n \nEven inside areas controlled by allied factions, if you are near a lit campfire, you will recover your sanity much faster.
+		</text>
+	</string>
+
+
+</string_table>
