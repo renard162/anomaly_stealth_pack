@@ -27,7 +27,8 @@ scopeRadii = {
 	wpn_crosshair_vss = 0.38,
 	wpn_crosshair_acog = 0.40,
 	wpn_crosshair_trijicon = 0.40,
-	wpn_crosshair_bino = 1.05
+	wpn_crosshair_bino = 1.05,
+    wpn_crosshair_g36s = 0.38,
 }
 
 -- wpn_crosshair_class - unused
