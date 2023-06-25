@@ -8,27 +8,27 @@
 	<string id="article_survival_text">
 		<text>
 			%c[pda_green]Survival tips%c[ui_gray_1]\n
-			\nWelcome to Chernobyl exclusion zone. This article will outline the basics to survive in this hostile location.
+			\nWelcome to the Chernobyl exclusion zone. This article will outline the basics of surviving in this hostile location.
             
             \n \n%c[pda_green]Food%c[ui_gray_1]
-            \n• Some low tier mutant meat can be cooked directly in a lit campfire. This process is more time-consuming than cooking in properly equipment, but can be a lifesaver.
-            \nTo rust meat just approach a lit campfire, open the inventory and the option %c[pda_yellow]Roast%c[ui_gray_1] can be selected to cook the meat.
+            \n• Some low tier mutant meat can be cooked directly over a lit campfire. This process is more time-consuming than cooking with proper equipment, but it can be a lifesaver.
+            \nTo rust meat, just approach a lit campfire, open the inventory, and the option %c[pda_yellow]Roast%c[ui_gray_1] can be selected to cook the meat.
             
             \n \n• If you need charcoal to cook and have %c[pda_yellow]Wooden parts%c[ui_gray_1], just make a controlled burn to that wood into %c[pda_yellow]Field cooking kit%c[ui_gray_1], %c[pda_yellow]Army kettle%c[ui_gray_1] or %c[pda_yellow]Multi-fuel stove%c[ui_gray_1].
 
             \n \n%c[pda_green]Water%c[ui_gray_1]
-            \nTo acquire potable water, you can get an %c[pda_yellow]Empty flask%c[ui_gray_1], stay over a water pool and the option %c[pda_yellow]Fill%c[ui_gray_1] will be available. This way you'll get a flask of %c[pda_yellow]Dirty water%c[ui_gray_1] that need to be purified in the following ways:
+            \nTo acquire potable water, you can get an %c[pda_yellow]Empty flask%c[ui_gray_1], stay over a water pool, and the option %c[pda_yellow]Fill%c[ui_gray_1] will be available. This way, you'll get a flask of %c[pda_yellow]Dirty water%c[ui_gray_1] that needs to be purified in the following ways:
             \n• Use an %c[pda_yellow]Akvatabs%c[ui_gray_1] on the Dirty water.
             \n• Boil the Dirty water on a lit campfire or in any cooking kit.
 
             \n \n%c[pda_green]Bleeding control%c[ui_gray_1]
-            \nNo matter how good equipped you are, blood loss can kill you really fast. For that reason, have some bandages is crucial to your survivability. Bandages can be made sterilizing fabric with some alcohol, combining both on inventory.
+            \nNo matter how well-equipped you are, blood loss can kill you really fast. For that reason, having some bandages is crucial to your survival. Bandages can be made by sterilizing fabric with some alcohol, combining both in inventory.
             \nYou can use %c[pda_yellow]Cloth sheets%c[ui_gray_1], %c[pda_yellow]Cloth sheets (synthetic)%c[ui_gray_1], %c[pda_yellow]Durable textiles%c[ui_gray_1] or %c[pda_yellow]Mil-spec textiles%c[ui_gray_1] as fabric.
             \nYou can use %c[pda_yellow]Nemiroff vodka%c[ui_gray_1], %c[pda_yellow]Putinka vodka%c[ui_gray_1] or %c[pda_yellow]Stolichnaya vodka%c[ui_gray_1] to sterilize the fabric.
             
             \n \n%c[pda_green]Campfire%c[ui_gray_1]
-            \nAs you can see above, lit campfires are extremely useful. You can cook, purify water and create a calming safe area just litting a campfire out of enemies vision.
-            \nTo lit a campfire you can use a %c[pda_yellow]Matchbox%c[ui_gray_1], that can fail if the weather won't help, or you can use a %c[pda_yellow]Firestarter set%c[ui_gray_1], that can lit a campfire much easier in any weather condition.
+            \nAs you can see above, lit campfires are extremely useful. You can cook, purify water, and create a calming, safe area by litting a campfire out of the enemy's sight.
+            \nTo lit a campfire, you can use a %c[pda_yellow]Matchbox%c[ui_gray_1], which can fail if the weather won't help, or you can use a %c[pda_yellow]Firestarter set%c[ui_gray_1], which can make lighting a campfire much easier in any weather condition.
             \nTo craft a %c[pda_yellow]Firestarter set%c[ui_gray_1], just combine a %c[pda_yellow]Wooden part%c[ui_gray_1] with a fuel.
             \nYou can use %c[pda_yellow]Matchbox%c[ui_gray_1], %c[pda_yellow]Kerosene%c[ui_gray_1] or %c[pda_yellow]Jerrycan%c[ui_gray_1] as fuel.
 		</text>
