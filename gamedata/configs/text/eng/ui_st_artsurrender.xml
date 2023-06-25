@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<string id="article_surrender">
+		<text>War or Peace?</text>
+	</string>
+	<string id="article_surrender_text">
+		<text>
+			%c[pda_green]Can I be a Pacifist?%c[ui_gray_1]\n
+			\nStalkers are humans and usually don't want to die, so you can take advantage of that.
+            
+            \n \n%c[pda_green]How to surrender an enemy?%c[ui_gray_1]
+            \n• When severely injured
+            \n• Threaten the enemy by approaching him, aiming your gun (with iron sights on him), and pressing %c[pda_yellow]Action Button%c[ui_gray_1]
+            \n \nBut take care, you have only one chance to surrender each enemy, and if you fail, the enemy will attack you if you are threatening him or prefer the death if severely injured
+
+            \n \n%c[pda_green]What I can do with a surrendered enemy?%c[ui_gray_1]
+            \n• Take some information and/or equipment
+            \n• Try to convert him to your faction
+            
+            \n \n%c[red]ATTENTION!%c[ui_gray_1]
+            \nNever convert a quest NPC, it will make the quest unfinished until the death of that NPC and can cause reputation loss.
+		</text>
+	</string>
+
+
+</string_table>
