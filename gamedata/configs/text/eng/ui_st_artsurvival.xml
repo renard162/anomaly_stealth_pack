@@ -31,6 +31,7 @@
             \nTo lit a campfire, you can use a %c[pda_yellow]Matchbox%c[ui_gray_1], which can fail if the weather won't help, or you can use a %c[pda_yellow]Firestarter set%c[ui_gray_1], which can make lighting a campfire much easier in any weather condition.
             \nTo craft a %c[pda_yellow]Firestarter set%c[ui_gray_1], just combine a %c[pda_yellow]Wooden part%c[ui_gray_1] with a fuel.
             \nYou can use %c[pda_yellow]Matchbox%c[ui_gray_1], %c[pda_yellow]Kerosene%c[ui_gray_1] or %c[pda_yellow]Jerrycan%c[ui_gray_1] as fuel.
+            \n \nIf you have both %c[pda_yellow]Firestarter set%c[ui_gray_1] and %c[pda_yellow]Matchbox%c[ui_gray_1] in your bag, you'll use the %c[pda_yellow]Firestarter set%c[ui_gray_1] if it's raining, else will use %c[pda_yellow]Matchbox%c[ui_gray_1].
 		</text>
 	</string>
 

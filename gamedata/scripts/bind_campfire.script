@@ -60,19 +60,26 @@ function turn_off_campfires_by_smart_name(smart_name,use_rand)
 	end
 end
 
-function rain_pass()
+function rain_pass(obj)
 	local rain = level.rain_factor()
-	if (rain ~= nil) and (rain > 0 and rain < 0.5) then
-		return (math.random(1,2) == 1)
-	elseif (rain > 0.5) then
-		return (math.random(1,3) == 1)
-	else
-		return true
-	end
+
+    if (rain == nil) or (rain <= 0) then
+        return true
+    end
+
+    if obj and (obj:section() == "matches") then
+        return (math.random(1,20) > 1) -- 5% to fail
+    elseif (rain < 0.5) then
+        return (math.random(1,2) == 1) -- 50% to fail
+    else
+        return (math.random(1,4) == 1) -- 75% to fail
+    end
 end
 
 function use_campfire(actor,zone,p) -- called from game_tutorials.xml
 	local pos = db.actor:position()
+    local rain_level = level.rain_factor()
+    local obj_item = nil
 	for id,binder in pairs(campfires_all) do 
 		if (binder and binder.campfire) then
 			if (pos:distance_to_sqr(binder.object:position()) <= 2) then
@@ -80,7 +87,11 @@ function use_campfire(actor,zone,p) -- called from game_tutorials.xml
 					campfire_go_off(binder.campfire)
 					--binder.campfire:turn_off()
 				else
-					local obj_item = db.actor:object("matches") or db.actor:object("box_matches")
+                    if (rain_level == nil) or (rain_level <= 0) then
+                        obj_item = db.actor:object("box_matches") or db.actor:object("matches")
+                    else
+                        obj_item = db.actor:object("matches") or db.actor:object("box_matches")
+                    end
 					if obj_item then
 						actor_on_item_use(obj_item, nil, binder.campfire)
 					else
@@ -102,7 +113,7 @@ function campfire_go_on(obj, cf)
 		return
 	end
 	
-	if rain_pass() then
+	if rain_pass(obj) then
 		if (k_rain < 1)then
 			k_rain = k_rain + 1
 			actor_menu.set_msg(1, game.translate_string("st_camp_help"),3)
@@ -116,7 +127,7 @@ function campfire_go_on(obj, cf)
 		actor_effects.play_item_fx("matches_script")
 		actor_menu.set_msg(1, game.translate_string("st_fail"),3)
 	end
-	
+
 	utils_item.discharge(obj)
 end
 
