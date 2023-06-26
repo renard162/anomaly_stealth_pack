@@ -5,7 +5,6 @@ local default = {
 
 	campfire_enabled = true,
 	campfire_psy_regen = 40,
-	campfire_distance = 15,
 
 	controler_damage_multiplier = 50,
 	controler_damage_max_distance = 50,
@@ -39,7 +38,6 @@ function on_mcm_load()
 		--
 		{ id = "campfire_enabled", type = "check", val = 1, def = true},
 		{ id = "campfire_regen", type = "track", val = 2, min = 0.1, max = 25, step = 0.1, def = 1.8},
-		{ id = "campfire_distance", type = "track", val = 2, min = 5, max = 25, step = 1, def = 15},
 		},
 	}
 

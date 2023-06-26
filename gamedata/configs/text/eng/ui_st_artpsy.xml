@@ -14,9 +14,11 @@
             
             \n \nLow psy health will cause hallucinations, reduce your perceptions, and, in extreme cases, kill you, then take care.
             
-            \n \nTo restore your sanity, stay in safe areas like near a lit campfire or areas controlled by allied factions, use drugs like tobacco, Psy-block or 027 R pills, play some music, or sleep.
+            \n \nTo restore your sanity, stay in safe areas like near a lit campfire, a player mounted %c[pda_yellow]camping tent%c[ui_gray_1] or areas controlled by allied factions, use drugs like tobacco, Psy-block or 027 R pills, play some music, or sleep.
             
             \n \nEven inside areas controlled by allied factions, if you are near a lit campfire, you will recover your sanity much faster.
+            
+            \n \nOutside the areas controlled by allied factions, you can mount a camping tent near a lit campfire to create a calming atmosphere to rest in.
 		</text>
 	</string>
 

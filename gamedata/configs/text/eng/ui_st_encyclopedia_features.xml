@@ -95,6 +95,7 @@
             \n%c[200,200,200,50]• %c[0,150,150,150]Outside of a safe area
             \n \n%c[ui_gray_1]Safe areas includes:
             \n%c[d_orange]• %c[0,150,150,150]Areas controlled by allied faction
+            \n%c[d_orange]• %c[0,150,150,150]Nearby of a player mounted camping tent
             \n%c[d_orange]• %c[0,150,150,150]Nearby of a lit campfire
 		</text>
 	</string>

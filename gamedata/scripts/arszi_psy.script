@@ -25,7 +25,7 @@ local fate_of_player_zombfication = false
 --PSY-HEALTH REGEN AT CAMPFIRES--------------------------------------------------
 local c_psy_health_regen_campfire_enabled = stress_mcm.get_config("campfire_enabled" ) or false
 local c_psy_health_regen_campfire_bonus = ( stress_mcm.get_config("campfire_regen" ) or 40 ) / 60000			--psy health regeneration bonus for campfire bonus
-local c_psy_health_regen_dist_to_campfire = stress_mcm.get_config("campfire_distance" ) or 15					--distance at which to apply campfire regen bonus
+local c_psy_health_regen_dist_to_campfire = 15					                                                --distance at which to apply campfire regen bonus
 
 --PSY-DAMAGE---------------------------------------------------------------------
 local c_psy_controler_damage_multiplier = ( stress_mcm.get_config("controler_damage_multiplier" ) or 40) / 100		--psy damage divider, to balace out controller attacks
@@ -150,7 +150,6 @@ function reinitialization()
         c_psy_stress_drain_per_second = ( stress_mcm.get_config("drain") or 13) / 2160000
         c_psy_health_regen_campfire_enabled = stress_mcm.get_config("campfire_enabled") or false
         c_psy_health_regen_campfire_bonus = ( stress_mcm.get_config("campfire_regen") or 40 ) / 60000
-        c_psy_health_regen_dist_to_campfire = stress_mcm.get_config("campfire_distance") or 15
         c_psy_controler_damage_multiplier = ( stress_mcm.get_config("controler_damage_multiplier") or 40) / 100
         c_controler_damage_max_distance = ( stress_mcm.get_config("controler_damage_max_distance") or 50)
         c_psy_hit_stress_multiplier = ( stress_mcm.get_config("hit_stress") or 8) / 100
@@ -247,7 +246,7 @@ function actor_on_update()
         if debug_time == nil or (curr_time:diffSec(debug_time) > debug_trigger_time) then
             debug_triggered = true
             debug_time = curr_time
-            printf(string.format("PSY HEALTH: %.4f; PROT: %.4f CHANGE: %.4e", psy_table.actor_psy_health, get_telepatic_protection_total(), get_psy_health_change()))
+            printf(string.format("~ PSY HEALTH: %.4f; PROT: %.4f CHANGE: %.4e", psy_table.actor_psy_health, get_telepatic_protection_total(), get_psy_health_change()))
         else
             debug_triggered = false
         end
@@ -526,8 +525,8 @@ function get_stress_multiplier()
 
     ------------------------------------------------------------------------------
     if debug_triggered then
-        printf(string.format( "current states:" ))
-        printf(string.format( "%s / %s / %s / %s / %s / %s / %s |", state_emission_cover and "surge protected" or "no surge protection", state_surge and "surge ongoing" or "clear sky", state_surface and "on surface" or "underground", state_safe_camp and "in non-hostile camp" or "no camp", state_anomaly_zone_close and "inside static anomaly zone" or "no static anomaly zone", anomaly_close and "anomaly close" or "no anomalies", in_combat and "in combat" or "not fighting"))
+        printf(string.format( "~ current states:" ))
+        printf(string.format( "%s / %s / %s / %s / %s / %s / %s / %s |", state_emission_cover and "surge protected" or "no surge protection", state_surge and "surge ongoing" or "clear sky", state_surface and "on surface" or "underground", state_safe_camp and "in safe area" or "no camp", nearby_lit_campfire and "nearby lit campfire" or "no lit campfire", state_anomaly_zone_close and "inside static anomaly zone" or "no static anomaly zone", anomaly_close and "anomaly close" or "no anomalies", in_combat and "in combat" or "not fighting"))
     end
     ------------------------------------------------------------------------------
 
@@ -628,7 +627,13 @@ end
 
 
 function set_inside_safe_area_flag()
-    if debug_triggered then printf(string.format("safe bases")) end
+    if debug_triggered then printf(string.format("~ safe bases:")) end
+    if item_tent and item_tent.get_nearby_tent(c_psy_health_regen_dist_to_campfire/2.5) then
+        if debug_triggered then printf(string.format("actor inside Tent")) end
+        if inside_safe_area then return end
+        inside_safe_area = true
+        return
+    end
     for id, base in pairs(safe_bases) do
         if debug_triggered then printf(string.format("safe base: %s, distance %.2f", base:name(), base.dist_to_actor or 9999)) end
         if base and base.dist_to_actor and base.dist_to_actor < safe_distance_to_base then
