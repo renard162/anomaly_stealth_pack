@@ -246,7 +246,8 @@
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] everyday item\n
 		%c[d_orange] • %c[ui_gray_2] used for deploying tent\n
-		%c[d_blue] • %c[ui_gray_2] unlimited usages\n</text>
+		%c[d_blue] • %c[ui_gray_2] unlimited usages\n
+        %c[d_blue] • %c[ui_gray_2] creates a safe area\n</text>
 	</string>
 	
 	<string id="st_lighter">
