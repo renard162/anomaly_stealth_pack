@@ -170,9 +170,17 @@ local function save_state(m_data)
 end 
 
 local function on_before_save_input(flags, typ, text)
-	if (alife_storage_manager.get_state().enable_campfire_mode)
-	and (level_weathers.valid_levels[level.name()])
-	then
+	if (alife_storage_manager.get_state().enable_campfire_mode) then
+
+        --Check if is in restricted map
+        if (game_fast_travel.is_restricted_map(level.name())) then
+            local str = strformat(game.translate_string("st_campfire_restricted_area"),text)
+			actor_menu.set_msg(1, str,4)
+			exec_console_cmd("main_menu off")
+			flags.ret = true
+			return
+        end
+
         --Check health condition
         if gamemode_agony.is_health_critical(flags)
         or gamemode_agony.is_bleeding(flags)

@@ -16,5 +16,9 @@
 	<string id="st_campfire_psi_storm">
 		<text>You can not save at a campfire during a psi-storm</text>
 	</string>
+    
+    <string id="st_campfire_restricted_area">
+		<text>This area is unsafe, you can't relax and save here</text>
+	</string>
 
 </string_table>

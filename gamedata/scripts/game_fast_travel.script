@@ -26,7 +26,7 @@ local restricted_areas = {
 	"labx8"
 }
 
-local function restricted_map(actual_map)
+function is_restricted_map(actual_map)
     for index, value in ipairs(restricted_areas) do
         if value == actual_map then
             return true
@@ -83,7 +83,7 @@ local function map_spot_menu_property_clicked(property_ui,id,level_name,prop)
 
 	-- Prevent fast travel if in restricted area
 	if not (onunderground) then
-		if (restricted_map(level.name())) then
+		if (is_restricted_map(level.name())) then
 			hide_hud_pda()
 			actor_menu.set_msg(1, game.translate_string("st_travel_restricted_area"),4)
 			return
