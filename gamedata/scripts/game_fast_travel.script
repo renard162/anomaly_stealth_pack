@@ -14,18 +14,6 @@ local markermessage = false
 local notime = false
 local tsmarts = nil
 
-local restricted_areas = {
-	"jupiter_underground",
-	"l03u_agr_underground",
-	"l04u_labx18",
-	"l08u_brainlab",
-	"l10u_bunker",
-	"l12u_control_monolith",
-	"l12u_sarcofag",
-	"l13u_warlab",
-	"labx8"
-}
-
 -- Any non-listed map is a weight 1 map
 local map_weight = {
     ["l10_red_forest"] = 2,
@@ -58,11 +46,21 @@ local between_map_travel_times_by_weight = {
     ["3-3"] = {55,120},
 }
 
+local restricted_areas = {
+	["jupiter_underground"] = true,
+	["l03u_agr_underground"] = true,
+	["l04u_labx18"] = true,
+	["l08u_brainlab"] = true,
+	["l10u_bunker"] = true,
+	["l12u_control_monolith"] = true,
+	["l12u_sarcofag"] = true,
+	["l13u_warlab"] = true,
+	["labx8"] = true,
+}
+
 function is_restricted_map(actual_map)
-    for index, value in ipairs(restricted_areas) do
-        if value == actual_map then
-            return true
-        end
+    if restricted_areas[actual_map] then
+        return true
     end
     return false
 end
