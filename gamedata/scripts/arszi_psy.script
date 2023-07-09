@@ -371,7 +371,8 @@ function manage_zombification()
         level.add_pp_effector("alcohol.ppe", c_id_ppe_alcohol, true)
     end
 
-    if (psy_table.actor_psy_health < 1E-4) then
+    if (psy_table.actor_psy_health <= 1E-2) or (arszi_zombification_time_counter > 0) then
+
         --Death or Zombification
         if (psy_table.current_stage ~= c_stage_3) then
             -- Entering Stage 3 (death)
