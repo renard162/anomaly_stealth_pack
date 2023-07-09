@@ -31,7 +31,7 @@ local map_weight = {
 
 -- Hours * 10 to traven inside a <Weight> map (random limits)
 local in_map_travel_times_by_weight = {
-    [1] = {5,30},
+    [1] = {5,25},
     [2] = {25,60},
     [3] = {35,90},
 }
