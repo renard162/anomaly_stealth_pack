@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<string id="article_health">
+		<text>Health system</text>
+	</string>
+	<string id="article_health_text">
+		<text>
+			%c[pda_green]Taking damage can be more dangerous than you think!%c[ui_gray_1]\n
+            \nTaking damage, depending on the damage type, besides the health loss, you can get %c[pda_yellow]Bleeding effect%c[ui_gray_1], which will gradually reduce your health and your max health.
+            
+            \n \n%c[pda_green]And how can I recover?%c[ui_gray_1]
+            \nThere are several ways to recover your health. Some drugs will have few side effects, like increasing your %c[pda_yellow]Thirst%c[ui_gray_1] and %c[pda_yellow]Hunger%c[ui_gray_1], which will also reduce your max stamina.
+            \nYou can use medical services from some factions too, and that way there are no side effects.
+
+            \n \n%c[pda_green]What can I do to recover my maximum health and stamina?%c[ui_gray_1]
+            \nThe simplest way is to consume some %c[pda_yellow]food%c[ui_gray_1]. Even if you are not hungry, your maximum stamina and health will be restored.
+            \nIf you need to recover in dangerous situations, try to use some %c[pda_yellow]Glucose shots%c[ui_gray_1], but this can make you tired, increasing your stress and increasing your psy damage.
+
+		</text>
+	</string>
+
+
+</string_table>
