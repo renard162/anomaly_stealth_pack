@@ -19,14 +19,14 @@ local map_weight = {
     ["l10_red_forest"] = 2,
     ["l10_limansk"] = 2,
     ["l10_radar"] = 2,
-    ["pripyat"] = 2,
     ["jupiter"] = 2,
     ["zaton"] = 2,
-    ["l13_generators"] = 3,
-    ["l12_stancia_2"] = 3,
-    ["l12_stancia"] = 3,
-    ["l11_hospital"] = 3,
+    ["pripyat"] = 3,
     ["l11_pripyat"] = 3,
+    ["l11_hospital"] = 3,
+    ["l12_stancia"] = 3,
+    ["l12_stancia_2"] = 3,
+    ["l13_generators"] = 3,
 }
 
 -- Hours * 10 to traven inside a <Weight> map (random limits)
