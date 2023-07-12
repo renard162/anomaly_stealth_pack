@@ -184,7 +184,8 @@ local function map_spot_menu_property_clicked(property_ui,id,level_name,prop)
             max_hours = between_map_travel_times_by_weight[between_map_code][2]
         end
 
-        local travel_hours = math.ceil(math.random(min_hours, max_hours)/10)
+		local time_division_factor = 10 + ((spatial_anomalies.compass_on_belt_status > 0) and 5 or 0)
+        local travel_hours = math.ceil(math.random(min_hours, max_hours) / time_division_factor)
         local travel_minutes = math.random(1,59)
 		level.change_game_time(0, travel_hours, travel_minutes)
 		surge_manager.get_surge_manager().time_forwarded = true
