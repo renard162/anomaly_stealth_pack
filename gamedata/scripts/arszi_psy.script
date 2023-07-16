@@ -537,7 +537,7 @@ function get_stress_multiplier()
     --stressfull conditions
     if state_surge then stress_multiplier                           = stress_multiplier + 1.25 end
     if not state_surface then stress_multiplier                     = stress_multiplier + 0.33 end
-    if state_anomaly_zone_close then tress_multiplier               = stress_multiplier + 0.50 end
+    if state_anomaly_zone_close then stress_multiplier              = stress_multiplier + 0.50 end
     if anomaly_close then stress_multiplier                         = stress_multiplier + 0.50 end
     if in_combat then stress_multiplier                             = stress_multiplier + 0.66 end
     stress_multiplier = stress_multiplier + (get_bleeding_level() * 0.66)
