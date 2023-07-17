@@ -471,6 +471,7 @@ function get_psy_health_change()
     if (psy_heal_booster == 0) and (psy_heal_campfire == 0) then
         return psy_heal_artefacts - psy_damage
     else
+        psy_heal_booster = psy_heal_booster * 4 / (1 + (level.get_game_difficulty() or 3))
         return c_psy_health_regen_per_second + psy_heal_booster + psy_heal_campfire + psy_heal_artefacts - psy_damage
     end
 end
