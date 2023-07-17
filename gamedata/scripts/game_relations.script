@@ -154,6 +154,14 @@ function reset_goodwill (faction_1 , faction_2) -- Reset the goodwill for actors
 	end
 end
 
+function reset_all_player_goodwill()
+	for i=1, #factions_table_all do
+		local faction = factions_table_all[i]
+		local relation = relation_registry.community_relation(db.actor:character_community(), faction)
+		relation_registry.set_community_goodwill(faction, AC_ID, relation)
+	end
+end
+
 function is_relation_allowed (faction_1 , faction_2) -- Check if the relation between both factions is changeable 
 	-- Check blacklisted factions
 	if blacklist[faction_1] or blacklist[faction_2] then

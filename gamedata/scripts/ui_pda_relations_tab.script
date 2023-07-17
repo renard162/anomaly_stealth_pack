@@ -17,22 +17,26 @@ function pda_relations_tab:__init() super()
 		"killer",
 		"army",
 		"bandit",
-		"monolith"
 	}
-	
+
+	local cfg = axr_main.config
+	if cfg:r_value("unlocked_factions","renegade",1) == true then
+		self.list[#self.list+1] = "renegade"
+	end
+	if cfg:r_value("unlocked_factions","isg",1) == true then
+		self.list[#self.list+1] = "isg"
+	end
+	if cfg:r_value("unlocked_factions","greh",1) == true then
+		self.list[#self.list+1] = "greh"
+	end
+
+	self.list[#self.list+1] = "monolith"
+
 	self.clr_red 	= utils_xml.get_color("red",true) -- GetARGB(255, 255, 1, 1)
 	self.clr_green 	= utils_xml.get_color("green",true) -- GetARGB(255, 1, 255, 1)
 	self.clr_yellow = utils_xml.get_color("yellow",true) -- GetARGB(255, 255, 255, 1)
 	
 	-- Tronex: use these factions if player is one of them
-	local actor_comm = get_actor_true_community()
-	if (actor_comm == "renegade") then
-		self.list[9] = "renegade"
-	elseif (actor_comm == "greh") then
-		self.list[8] = "greh"
-	elseif (actor_comm == "isg") then
-		self.list[9] = "isg"
-	end
 	
 	
 	
@@ -80,17 +84,25 @@ function pda_relations_tab:InitControls()
 	
 	local is_widescreen = true --utils_xml.is_widescreen()
 	local x = is_widescreen and 40 or 55
-	local c_width = is_widescreen and 75 or 90
-	local c_height = 35
+	local c_width = is_widescreen and 56.25 or 67.5
+	local c_height = 27
+	local x_offset = 0
 
 	for i=1, #self.list do
 		x = x + c_width
+
+		if (i == 1) then
+			x_offset = x + 8
+		else
+			x_offset = x
+		end
+
 		local iobj = xml:InitTextWnd("tab:faction", self.tab)
-		iobj:SetWndPos(vector2():set(x,65))
+		iobj:SetWndPos(vector2():set(x_offset,65))
 		iobj:SetText(game.translate_string(self.list[i]))
 		
 		self.relations[i] = {}
-		local y = 60
+		local y = 63
 		for k=0, #self.list do
 			y = y + c_height
 			if (i == 1) then
@@ -104,7 +116,10 @@ function pda_relations_tab:InitControls()
 				end
 			end
 			self.relations[i][k] = xml:InitTextWnd("tab:cell",self.tab)
-			self.relations[i][k]:SetWndPos(vector2():set(x,y))
+			self.relations[i][k]:SetWndPos(vector2():set(x_offset,y))
+		end
+		if (i == 1) then
+			x = x_offset
 		end
 	end
 
@@ -334,9 +349,12 @@ function pda_relations_tab:Reset()
 				elseif r_val < 1000 and r_val >= 500 then
 					self.relations[i][k]:SetTextColor(self.clr_yellow)
 					self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_2"))
+				elseif r_val >= 0 then
+					self.relations[i][k]:SetTextColor(self.clr_yellow)
+					self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_1"))
 				else
 					self.relations[i][k]:SetTextColor(self.clr_red)
-					self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_1"))
+					self.relations[i][k]:SetText(game.translate_string("st_goodwill_enemy"))
 				end
 			else
 				if r_val >= game_relations.FRIENDS then
