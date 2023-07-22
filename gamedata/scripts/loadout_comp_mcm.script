@@ -78,9 +78,10 @@ function ui_mm_faction_select.UINewGame.LoadLoadout(self, rand)
 	-- add companions
 	
 	local eco_idxs = self.selected_economy:gsub("st_econ_","") or "1"
-	local reverse_eco_num = clamp(4 - tonumber(eco_idxs), 1, 3)
+	eco_idxs = tonumber(eco_idxs)
+	local reverse_eco_num = clamp(4 - eco_idxs, 1, 3)
 	
-	local has_bonus_troops = (axr_main.config:r_value("unlocked_achievment","patriarch",1) == true)  and (eco_idxs == "1")
+	local has_bonus_troops = (axr_main.config:r_value("unlocked_achievment","patriarch",1) == true)  and (eco_idxs <= 1)
 	local amount_for_each = 1 + ((has_bonus_troops and 1) or 0)	-- amount of each companion tier
 	local points_per_tier = (has_bonus_troops and 1253) or 3375	-- points cost per tier
 
@@ -93,7 +94,7 @@ function ui_mm_faction_select.UINewGame.LoadLoadout(self, rand)
 	end
 
 	-- add bonus loadout items to Tourist difficulty
-	if (tonumber(eco_idxs) <= 1) then
+	if (eco_idxs <= 1) then
 		local ini_bonus = ini_file("axr_options.ltx")
 		local bonus_line_count = ini_bonus:line_count("unlocked_bonus_loadout") or 0
 		for i=0, bonus_line_count-1 do
