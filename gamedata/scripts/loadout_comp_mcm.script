@@ -76,19 +76,19 @@ function ui_mm_faction_select.UINewGame.LoadLoadout(self, rand)
 	end
 
 	-- add companions
-	local points_per_tier = 3375	-- points cost per tier
 	
 	local eco_idxs = self.selected_economy:gsub("st_econ_","") or "1"
 	local reverse_eco_num = clamp(4 - tonumber(eco_idxs), 1, 3)
 	
-	local has_bonus_troops = axr_main.config:r_value("unlocked_achievment","patriarch",1) == true
-	local amount_for_each = 1 + (((has_bonus_troops and (eco_idxs == "1")) and 1) or 0)	-- amount of each companion tier
+	local has_bonus_troops = (axr_main.config:r_value("unlocked_achievment","patriarch",1) == true)  and (eco_idxs == "1")
+	local amount_for_each = 1 + ((has_bonus_troops and 1) or 0)	-- amount of each companion tier
+	local points_per_tier = (has_bonus_troops and 1253) or 3375	-- points cost per tier
 
 	for i = 1, reverse_eco_num do
 		for j = 1, amount_for_each do
 			size_loadout = size_loadout + 1
 			t_loadout[size_loadout] = self.selected_faction .. "_sim_squad_comp_" .. tostring(i) .. "_comp_item"
-			p_loadout[size_loadout] = (j ~= 1 and 10) or (i * points_per_tier)
+			p_loadout[size_loadout] = i * points_per_tier
 		end
 	end
 
