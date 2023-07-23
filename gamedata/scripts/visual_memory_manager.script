@@ -13,6 +13,8 @@ local jacket_t = {
 }
 
 local jacketmult = 1
+local jacketmult_clean = 1
+local active_ghil_camo = false
 local summ = 0
 local renderer = get_console_cmd(0, "renderer")
 local is_r1 = (renderer == "renderer_r1")
@@ -41,6 +43,7 @@ function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_fac
 	end
 
 	luminocity = get_luminocity_mult(npc, who, luminocity, object_distance, distance)
+	check_ghil_camo()
 	local lum_dist = (distance - object_distance / 1.35) / distance
 	local Luminocity = (33 * luminocity * lum_dist) * stealth_mcm.get_config("luminocity")
 
@@ -257,19 +260,20 @@ function slot_in_out(obj)
 	local get_camo_get_line = outfit and ini_sys:line_exist(outfit:section(), "npc_blindness_koeff")
 	get_camo_k = get_camo_get_line and ini_sys:r_float(outfit:section(), "npc_blindness_koeff") or 0
 	jacketmult = kind and jacket_t[kind] or 1
-
+	jacketmult_clean = jacketmult
 end
 
 function get_camo_mult(velocity, object_distance)
 	local camo_mult = 1
-	local camo_checks = get_camo_k > 0 and velocity == 0 and object_distance >= 30
+	local velocity_camo_enabled = (active_ghil_camo and (velocity < 2.0)) or (velocity < 0.05)
+	local camo_checks = get_camo_k > 0 and velocity_camo_enabled and object_distance >= 30
 
 	if not camo_checks then
 		return camo_mult
 	end
 
 	local camo_dist = 1 - object_distance * 0.01
-	local camo_mult = get_camo_k / 20 * camo_dist
+	local camo_mult = (get_camo_k / 20) * camo_dist
 	camo_mult = clamp(camo_mult, 0.02, 1.0)
 
 	return camo_mult
@@ -429,6 +433,38 @@ function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, dist
 end
 
 --===================================
+-- Ghillie bonus
+local in_ghil_camo_surface = false
+local ghil_camo_surfaces = {"earth", "dirt", "grass", "bush"}
+local function actor_on_footstep(mat)
+    for n, material in ipairs(ghil_camo_surfaces) do
+        if string.find(mat, material) then
+			in_ghil_camo_surface = true
+            return
+        end
+    end
+	in_ghil_camo_surface = false
+end
+
+function check_ghil_camo()
+	local outfit = db.actor:item_in_slot(7)
+	local sec = outfit and outfit:section()
+	if sec ~= "ghillie_outfit" then
+		jacketmult = jacketmult_clean
+		active_ghil_camo = false
+		return
+	elseif in_ghil_camo_surface and (sec == "ghillie_outfit") then
+		jacketmult = jacketmult_clean * 0.5
+		active_ghil_camo = true
+		return
+	elseif (not in_ghil_camo_surface) and (sec == "ghillie_outfit") then
+		jacketmult = jacketmult_clean * 2
+		active_ghil_camo = false
+		return
+	end
+end
+
+--===================================
 function on_game_start()
 	RegisterScriptCallback("actor_on_update", set_campfire_val)
 	RegisterScriptCallback("actor_on_update", update_icon)
@@ -437,4 +473,5 @@ function on_game_start()
 	RegisterScriptCallback("actor_item_to_ruck", slot_in_out)
 	RegisterScriptCallback("actor_on_item_drop", slot_in_out)
 	RegisterScriptCallback("actor_on_weapon_fired", actor_on_weapon_fired)
+	RegisterScriptCallback("actor_on_footstep", actor_on_footstep)
 end
