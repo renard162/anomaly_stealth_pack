@@ -401,6 +401,8 @@ function build_desc_footer(obj, sec, str) -- one obj used
 		local artefact_count = ini_sys:r_float_ex(sec,"artefact_count") or 0
 		local sprint_allowed = ini_sys:r_bool_ex(sec,"sprint_allowed") ~= false
 		local additional_inventory_weight = ini_sys:r_float_ex(sec,"additional_inventory_weight") or 0
+		local blindness = ini_sys:r_float_ex(sec,"npc_blindness_koeff") or 100
+		local camo_level = (blindness <= 20 and 4) or (blindness <= 22 and 3) or (blindness <= 25 and 2) or (blindness <= 28 and 1) or 0
 		local community = ini_sys:r_string_ex(sec,"community")
 		
 		_str = _str .. clr_2 .. " " .. str_tbl.prop .. ":\\n"
@@ -409,6 +411,9 @@ function build_desc_footer(obj, sec, str) -- one obj used
 --		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_slots .. ": " .. clr_2 .. tostring(artefact_count) .. " \\n"
 --		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_cw .. ": " .. clr_2 .. "+" .. tostring(additional_inventory_weight) .. " " .. gc("st_kg") .. " \\n"
 		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_run .. " " .. (sprint_allowed and str_tbl.stat_posble_y or str_tbl.stat_posble_n) .. " \\n"
+		if camo_level > 0 then
+			_str = _str .. clr_g .. "  • " .. clr_1 .. " " .. gc("st_camo_bonus_" .. camo_level) .. " \\n"
+		end
 	
 	-- parts
 	elseif IsItem("part",sec) then
