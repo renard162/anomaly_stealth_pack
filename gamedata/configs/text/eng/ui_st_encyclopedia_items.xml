@@ -15,9 +15,10 @@
 		\n \n%c[pda_green]Information%c[ui_gray_1]
 		\nThe PDA is essential for daily information sharing. For this reason, almost every stalker in the Zone owns one.
 		\nA GPS module is used to provide geolocation and time information to the user.
-		\nApart from basic functions, the PDA has many features. Including access to the local network. Stalkers can easily communicate on normal days.
+		\nApart from basic functions, the PDA has many features. Including access to the local network. Stalkers can easily communicate on normal days and will post their tasks in network (accessible in %c[pda_white]Contacts%c[ui_gray_1] tab).
 		\nIt also comes with an FM radio receiver, providing access to local radio channels.
 		\nImproved versions of PDAs come with an improved module to retrieve and process the position of other modules connected to the network in a radius of 300 meters, which makes this PDA compelling among stalkers.
+		\nDue to the complexity of the task posting communication system, low tier PDAs only access very close PDAs (about 5 meters) and only higher tier PDAs can scan larger areas.
 		\n \n• The PDA consumes %c[pda_white]0.1 mAh%c[ui_gray_1] per second of continuous usage. The consumption is higher for improved variants.
 		</text>
 	</string>
