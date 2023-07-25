@@ -265,7 +265,7 @@ end
 
 function get_camo_mult(velocity, object_distance)
 	local camo_mult = 1
-	local velocity_camo_enabled = (active_ghil_camo and (velocity < 2.0)) or (velocity < 0.05)
+	local velocity_camo_enabled = (active_ghil_camo and (velocity < 2.5)) or (velocity < 0.5)
 	local camo_checks = get_camo_k > 0 and velocity_camo_enabled and object_distance >= 30
 
 	if not camo_checks then
@@ -423,7 +423,7 @@ function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, dist
 		pr(jacketmult, 1, ("6.f) jacketmult --------- %s"))
 		pr(memory_factor, 0, ("7. memory ------------- %s"))
 		printf("8. Step incr --- %s", step_incr)
-		actor_menu.set_msg(1, strformat("Threshold: %s/%s || (Lumin: %s | Veloc: %s | Dist: %s | Weight: %s | Memory: %s || Total per update: %s)", r(summ), obj:visibility_threshold(), r(Luminocity), r(Velocity), r(eq_dist), r(weight), r(memory_factor), r(step_incr) ))
+		actor_menu.set_msg(1, strformat("Threshold: %s/%s || Camo: %s | (Lumin: %s | Veloc: %s | Dist: %s | Weight: %s | Memory: %s || Total per update: %s)", r(summ), r(obj:visibility_threshold()), r(camo_x), r(Luminocity), r(Velocity), r(eq_dist), r(weight), r(memory_factor), r(step_incr) ))
 	end
 
 	if obj == nil then
