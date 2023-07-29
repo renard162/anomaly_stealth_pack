@@ -1,0 +1,210 @@
+-- OPTIONS
+-- Dont set this to 0
+-- Visibility will be reduce by this value each update
+visibility_reduce_coefficient = 0.02
+
+-- Visibility will start to reduce after this amount of updates
+-- Each update is 200ms
+visibility_reduce_tick_threshold = 8
+
+-- Smoke field registry
+smoke_fields = {}
+function spawn_smoke_field(pos, radius, lifetime)
+    local f = SmokeField(pos, radius, lifetime)
+    smoke_fields[#smoke_fields + 1] = f
+    return f
+end
+function update_smoke_fields()
+    local tg = time_global()
+    for i = #smoke_fields, 1, -1 do
+        local f = smoke_fields[i]
+        if tg > f:getEndTime() then
+            table.remove(smoke_fields, i)
+            printf("%s: SmokeField destroy", f.init_time)
+        end
+    end
+end
+
+-- Smoke field class
+class "SmokeField"
+function SmokeField:__init(pos, radius, lifetime)
+    self.position = vector():set(pos)
+    self.radius = radius
+    self.lifetime = lifetime
+    self.init_time = time_global()
+
+    -- Adjust position by radius up
+    self.position.y = self.position.y + 1
+
+    printf("%s: SmokeField spawn", self.init_time)
+end
+
+function SmokeField:getEndTime()
+    return self.init_time + self.lifetime * 1000
+end
+
+function bind(obj)
+    obj:bind_object(smoke_grenade_binder(obj))
+end
+
+class "smoke_grenade_binder" (object_binder)
+
+function smoke_grenade_binder:__init(obj) super(obj)
+    self.sec = self.object:section()
+
+    -- Flag of fused
+    self.fused = false
+    self.time_event_done = false
+
+    -- Get fuse time
+    self.fuse_time = SYS_GetParam(2, self.sec, "destroy_time", 0) / 1000
+
+    -- Smoke params
+    self.smoke_radius = SYS_GetParam(2, self.sec, "smoke_radius", 0)
+    self.smoke_lifetime = SYS_GetParam(2, self.sec, "smoke_lifetime", 0)
+
+    -- Fastcall to collision detection check
+    self.object:set_fastcall(self.fastcall, self)
+end
+
+function smoke_grenade_binder:fastcall()
+    local obj = self.object
+    local id = obj:id()
+
+    -- If object is in someone hands, dont check it
+    if obj:parent() then
+        if self.position then
+            self.position = nil
+        end
+        self.fused = nil
+        return
+    end
+
+    if self.fused == nil then
+        printf("%s: check for fuse", obj:name())
+        self.fused = not alife_object(obj:id())
+    end
+
+    if not self.fused then
+        return
+    end
+    
+    self.position = obj:position()
+    if not self.time_event_done then
+        self.time_event_done = true
+        printf("%s: fused %s", obj:name(), self.fused)
+        CreateTimeEvent(obj:name(), "spawn_smoke_field", self.fuse_time, function()
+            printf("%s: spawn smoke field at %s", obj:name(), self.position)
+            spawn_smoke_field(self.position, self.smoke_radius, self.smoke_lifetime)
+            return true
+        end)
+    end
+end
+
+function actor_on_first_update()
+    AddUniqueCall(update_smoke_fields)
+end
+
+function on_game_start()
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+end
+
+function get_npc_pos(npc)
+    return utils_obj.safe_bone_pos(npc, "bip01_spine") or npc:position():add(vector():set(0, 0.4, 0))
+end
+
+if AddScriptCallback then
+    AddScriptCallback("npc_behind_smoke")
+end
+
+function is_smoke_field_between_npcs(field, npc, who)
+    -- Check if field is between npcs
+    local npc_pos = get_npc_pos(npc)
+    local who_pos = get_npc_pos(who)
+    local field_to_npc = vector():set(field.position):sub(npc_pos)
+    local field_to_who = vector():set(field.position):sub(who_pos)
+
+    if field_to_npc:dotproduct(field_to_who) > 0 then
+        -- Vectors are in the same direction, field is not in between
+        -- printf("check %s against %s, field is not in between", npc:name(), who:name())
+        return false
+    end
+
+    -- Construct invisibility cone
+    local apex = npc_pos
+    local pos = vector():set(who_pos):sub(apex):normalize()
+    local axis_direction = vector():set(field_to_npc):normalize()
+    local dot = pos:dotproduct(axis_direction)
+    local cos_half_angle
+    do
+        local height = apex:distance_to(field.position)
+        local half_angle = math.atan(field.radius / height)
+        cos_half_angle = math.cos(half_angle)
+    end
+
+    -- Check if inside invisibility cone
+    local res = dot >= cos_half_angle
+
+    return res
+end
+
+function IsValidMonster(o)
+    local c = o:clsid()
+    return c == clsid.burer
+    or c == clsid.burer_s
+    or c == clsid.controller
+    or c == clsid.controller_s
+end
+
+-- function r(val)
+--     return tostring(round_idp(val, 2))
+-- end
+-- local dbg_str = nil
+
+local vis_decrease_ticks = {}
+get_visible_value = visual_memory_manager.get_visible_value
+visual_memory_manager.get_visible_value = function(npc,who,time_delta,time_quant,luminocity,velocity_factor,velocity,distance,object_distance,always_visible_distance)
+    local res = get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_factor,velocity,distance,object_distance,always_visible_distance)
+    if #smoke_fields > 0
+       and npc
+       and who
+       and (IsStalker(npc) or IsValidMonster(npc))
+       and (who:id() == AC_ID or IsStalker(who) or IsMonster(who))
+    then
+        local under_field = false
+        for i = 1, #smoke_fields do
+            local f = smoke_fields[i]
+            if is_smoke_field_between_npcs(f, npc, who) then
+                under_field = true
+
+                -- Add an update threshold
+                local npc_name = npc:name()
+                local who_name = who:name()
+                vis_decrease_ticks[npc_name] = vis_decrease_ticks[npc_name] or {}
+                vis_decrease_ticks[npc_name][who_name] = (vis_decrease_ticks[npc_name][who_name] or 0) + 1
+                if vis_decrease_ticks[npc_name][who_name] >= visibility_reduce_tick_threshold then
+                    res = -visibility_reduce_coefficient
+                    -- dbg_str = strformat("check %s against %s, %s is in invisibility cone, start reducing visibility %s/%s (%s)", npc:name(), who:name(), who:name(), vis_decrease_ticks[npc_name][who_name], visibility_reduce_tick_threshold, r(res))
+                else
+                    -- dbg_str = strformat("check %s against %s, %s is in invisibility cone, under threshold %s/%s", npc:name(), who:name(), who:name(), vis_decrease_ticks[npc_name][who_name], visibility_reduce_tick_threshold)
+                end
+                -- actor_menu.set_msg(1, dbg_str)
+
+                -- Send callback
+                -- Npc is the one who tries to see enemy behind smoke
+                -- Who is the enemy behind smoke
+                if AddScriptCallback then 
+                    SendScriptCallback("npc_behind_smoke", npc, who)
+                end
+            end
+        end
+        if not under_field then
+            vis_decrease_ticks[npc:name()] = vis_decrease_ticks[npc:name()] or {}
+            vis_decrease_ticks[npc:name()][who:name()] = 0
+        end
+    elseif npc and who then
+        vis_decrease_ticks[npc:name()] = vis_decrease_ticks[npc:name()] or {}
+        vis_decrease_ticks[npc:name()][who:name()] = 0
+    end
+    return res
+end
