@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<string id="article_combat">
+		<text>How to survive in the zone?</text>
+	</string>
+	<string id="article_combat_text">
+		<text>
+			%c[pda_green]You are not a one-man army%c[ui_gray_1]\n
+			\nTake care during combats to not be flanked by enemies, search for cover and %c[red]Don't Panic!%c[ui_gray_1] Even small calibers can easily kill you, then you need to stay calm to take the best action.\n
+			
+			\nBreaking enemies line of sight using smoke grenades to obfuscate the enemies vision or forcing them to run using explosive grenades can be a very effective strategy to make a combat scenario favorable to you.\n
+
+			\nAgainst mutants, try to not be trigger-happy. Be a hunter and observe their movement pattern to get the best moment to attack.\n
+
+			\n\n%c[pda_green]The armor system%c[ui_gray_1]\n
+			\nArmors are not enough to protect you against bullets and mutants. To complete the protection, you'll need the extra protection from a %c[pda_yellow]Ballistic plate%c[ui_gray_1] equipped too. If you only wear the armor, it'll be servery damaged and the most part of the damage will bypass the protection.\n
+
+			\nEach armor can equip one ballistic plate that will absorb much of the damage taken and will save the armor from being severely damaged and you from be severely injured.\n
+
+			\nThere are many types of Ballistic plates in the zone, most of it are sold by mechanics and there are rumors of powerful artifacts that can be used as ballistic plates.\n
+		</text>
+	</string>
+
+
+</string_table>
