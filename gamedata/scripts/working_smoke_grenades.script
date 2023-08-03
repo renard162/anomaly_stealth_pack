@@ -169,9 +169,7 @@ end
 function IsValidMonster(o)
     local c = o:clsid()
     return c == clsid.burer
-    or c == clsid.burer_s
-    or c == clsid.controller
-    or c == clsid.controller_s
+        or c == clsid.burer_s
 end
 
 -- function r(val)
