@@ -1,11 +1,29 @@
 -- OPTIONS
 -- Dont set this to 0
--- Visibility will be reduce by this value each update
-visibility_reduce_coefficient = 0.02
+-- Visibility will be set to this value when blinded
+visibility_reduce_coefficient = -0.02
 
--- Visibility will start to reduce after this amount of updates
+-- Visibility will reduce after this amount of updates
 -- Each update is 200ms
-visibility_reduce_tick_threshold = 8
+
+-- #Calculate average tick to receive blind (python 3.10 + numpy):
+-- import numpy as np
+
+-- n_min = 6
+-- n_max = 30
+
+-- n_prob_blind = np.zeros(n_max)
+-- n_prob_blind[n_min-1:] = np.arange(1,n_max-n_min+2)
+-- prob_not_blind_per_tick = 1 - (n_prob_blind/np.max(n_prob_blind))
+-- prob_not_blind = np.zeros(n_max)
+-- for n,_ in enumerate(prob_not_blind_per_tick):
+--     tick = n + 1
+--     prob_not_blind[n] = np.prod(prob_not_blind_per_tick[:tick])
+-- avg_blind_tick = np.average(np.arange(n_min,n_max+1),weights=prob_not_blind[n_min-1:n_max])
+-- print(f'Average tick to receive blind: {avg_blind_tick:.1f}')
+
+visibility_reduce_tick_threshold_min = 6
+visibility_reduce_tick_threshold_max = 30
 
 -- Smoke field registry
 smoke_fields = {}
@@ -180,10 +198,12 @@ visual_memory_manager.get_visible_value = function(npc,who,time_delta,time_quant
                 -- Add an update threshold
                 local npc_name = npc:name()
                 local who_name = who:name()
+                local visibility_reduce_tick_threshold =  math.random(visibility_reduce_tick_threshold_min, visibility_reduce_tick_threshold_max)
                 vis_decrease_ticks[npc_name] = vis_decrease_ticks[npc_name] or {}
                 vis_decrease_ticks[npc_name][who_name] = (vis_decrease_ticks[npc_name][who_name] or 0) + 1
                 if vis_decrease_ticks[npc_name][who_name] >= visibility_reduce_tick_threshold then
-                    res = -visibility_reduce_coefficient
+                    vis_decrease_ticks[npc_name][who_name] = vis_decrease_ticks[npc_name][who_name] + visibility_reduce_tick_threshold_max
+                    res = visibility_reduce_coefficient
                     -- dbg_str = strformat("check %s against %s, %s is in invisibility cone, start reducing visibility %s/%s (%s)", npc:name(), who:name(), who:name(), vis_decrease_ticks[npc_name][who_name], visibility_reduce_tick_threshold, r(res))
                 else
                     -- dbg_str = strformat("check %s against %s, %s is in invisibility cone, under threshold %s/%s", npc:name(), who:name(), who:name(), vis_decrease_ticks[npc_name][who_name], visibility_reduce_tick_threshold)
