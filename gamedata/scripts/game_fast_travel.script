@@ -185,7 +185,7 @@ local function map_spot_menu_property_clicked(property_ui,id,level_name,prop)
         end
 
 		if actor_status.get_overweight(true) > 0 then
-			min_hours = math.floor((min_hours + 3*max_hours) / 4)
+			min_hours = math.floor((min_hours + max_hours) / 2)
 		end
 
 		local time_division_factor = 10 + ((spatial_anomalies.compass_on_belt_status > 0) and 5 or 0)
