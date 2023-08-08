@@ -490,7 +490,7 @@
 			\n• You can control fast and backpack travel through a variety of options inside the settings menu.
             
             \n \n%c[200,200,50,50]ATTENTION%c[ui_gray_1]
-            \n• By default, time will advance when fast travel is used. This time change will increase your hunger and thirst and reduce your sanity. Be prepared to take a break after long trips.
+            \n• By default, time will advance when fast travel is used. This time change will increase your hunger and thirst and reduce your sanity. Be prepared to take a break after long trips, especially if you're carrying too much weight.
             \n• Areas at northern of Dead City, the Army Warehouse, and the Truck Cemetery are considerably more dangerous and will take more time to fast travel.
 		</text>
 	</string>
