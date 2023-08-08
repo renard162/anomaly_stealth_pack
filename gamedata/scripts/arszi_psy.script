@@ -736,6 +736,9 @@ end
 
 
 function set_psy_health(amount)
+    if level_environment.is_actor_immune() then
+        return
+    end
     psy_table.actor_psy_health = clamp(amount, 0.0, 1.0)
 end
 
