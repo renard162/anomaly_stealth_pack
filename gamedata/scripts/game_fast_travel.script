@@ -29,7 +29,7 @@ local map_weight = {
     ["l13_generators"] = 3,
 }
 
--- Hours * 10 to traven inside a <Weight> map (random limits)
+-- Hours * 10 to travel inside a <Weight> map (random limits)
 local in_map_travel_times_by_weight = {
     [1] = {5,25},
     [2] = {25,60},
