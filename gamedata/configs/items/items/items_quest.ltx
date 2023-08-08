@@ -1307,7 +1307,7 @@ inv_grid_height                          = 2
 inv_grid_x                               = 9
 inv_grid_y                               = 11
 cost                                     = 20
-attach_angle_offset                      = 3.080506,-1.493053,-1.202040	                                       ;устанавливается в радианах Angle*PI/180
+attach_angle_offset                      = 3.080506,-1.493053,-1.202040	                                       ;пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Angle*PI/180
 attach_position_offset                   = 0.080000,0.021273,0.100000
 attach_bone_name                         = bip01_r_hand
 auto_attach                              = false
@@ -1393,21 +1393,6 @@ can_trade                                = false
 ;quest_item     		                 = true
 cost                                     = 0
 
-[zat_a23_labx8_key]:dev_flash_2
-$spawn                                   = "	                                       ;quest_items\zat_a23_labx8_key"
-kind			                     = i_quest
-visual                                   = dynamics\equipments\quest\access_card.ogf
-description                              = st_zat_a23_labx8_key_descr
-inv_name                                 = st_zat_a23_labx8_key_name
-inv_name_short                           = st_zat_a23_labx8_key_name
-can_trade                                = false
-cost                                     = 0
-;quest_item     		                 = true
-inv_grid_width                           = 1
-inv_grid_height                          = 1
-inv_grid_x                               = 12
-inv_grid_y                               = 3
-
 [lx8_service_instruction]:tch_quest
 $spawn                                   = "	                                       ;quest_items\lx8_service_instruction"
 kind			                     = i_quest
@@ -1477,15 +1462,15 @@ inv_grid_y                               = 28
 cost                                     = 44380
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;			Итем для вызова НПС
+;;;			пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [radio_connections_pda]:tch_quest
 $spawn                                   = "quest_items\radio_connections_pda"
 kind			                     = i_quest
 visual                                   = dynamics\devices\dev_pda\dev_pda.ogf
-;description			                 = ПДА_для_связи_с_другими_НПС
-;inv_name			                     = ПДА_для_связи
-;inv_name_short		                     = ПДА_для_связи
+;description			                 = пїЅпїЅпїЅ_пїЅпїЅпїЅ_пїЅпїЅпїЅпїЅпїЅ_пїЅ_пїЅпїЅпїЅпїЅпїЅпїЅпїЅ_пїЅпїЅпїЅ
+;inv_name			                     = пїЅпїЅпїЅ_пїЅпїЅпїЅ_пїЅпїЅпїЅпїЅпїЅ
+;inv_name_short		                     = пїЅпїЅпїЅ_пїЅпїЅпїЅ_пїЅпїЅпїЅпїЅпїЅ
 can_trade                                = false
 cost                                     = 0
 quest_item                               = true
@@ -1881,7 +1866,7 @@ inv_name                                 = mlr_x8_copybook_2
 inv_name_short                           = mlr_x8_copybook_2
 can_trade                                = false
 cost                                     = 0
-;артефакты
+;пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 [mutant_part_general_mlr]:identity_immunities
 GroupControlSection                      = spawn_group
@@ -1895,7 +1880,7 @@ inv_weight                               = 0.2
 can_trade                                = true
 inv_grid_width                           = 1
 inv_grid_height                          = 1
-;юзабельные
+;пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 [item_pda_map_mlr]:booster_script
 $spawn                                   = "mlr_items\item_pda_map_mlr"
@@ -2502,3 +2487,8 @@ inv_grid_x			                     = 10
 inv_grid_y			                     = 10
 quest_item			                     = true
 can_trade                                = false
+
+[zat_a23_labx8_key]:cit_doctors_key
+description                              = st_zat_a23_labx8_key_descr
+inv_name                                 = st_zat_a23_labx8_key_name
+inv_name_short                           = st_zat_a23_labx8_key_name

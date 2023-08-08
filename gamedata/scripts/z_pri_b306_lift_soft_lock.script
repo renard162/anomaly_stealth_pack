@@ -1,0 +1,9 @@
+local function pri_b306_lift_generator()
+    if (level.name() == "pripyat") and (db.actor:object("zat_a23_labx8_key") ~= nil) then
+        xr_effects.anim_obj_forward(nil, nil, {"pri_b306_door","pri_b306_door_0000","pri_b306_door_0001","pri_b306_door_0002"})
+    end
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update",pri_b306_lift_generator)
+end

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+    <string id="st_zat_a23_labx8_key_name">
+		<text>Lab X-8 elevator key</text>
+	</string>
+	<string id="st_zat_a23_labx8_key_descr">
+		<text>This very rusty key was found behind the generator control panel. The inscription X-8 can be read amidst the rust.\n</text>
+	</string>
+
+</string_table>
