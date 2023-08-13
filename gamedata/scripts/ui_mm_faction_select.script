@@ -327,8 +327,9 @@ local function on_game_load(binder)
 		-- Reset player goodwill
 		local communities = utils_obj.get_communities_list( )		
 		for i, community in pairs( communities ) do
-			relation_registry.set_community_goodwill( community, 0, 0 )
+			relation_registry.set_community_goodwill( community, AC_ID, 0 )
 		end
+		game_relations.set_initial_player_goodwill("actor_"..faction)
 		
 		-- Money
 		local money = config:r_value("character_creation","new_game_money",2)
@@ -407,8 +408,6 @@ local function on_game_load(binder)
 		config:w_value("character_creation","new_game_loadout")
 		
 		se_actor:set_profile_name("actor_"..faction)
-
-		game_relations.reset_all_player_goodwill()
 	end
 
 	if (need_save) then
