@@ -502,8 +502,6 @@ function UINewGame:__init(owner) super()
 	self.ini_ico = ini_file("plugins\\player_icons.ltx")
 	self.ini_opt = ini_file("plugins\\new_game_options.ltx")
 
-	check_axr_key()
-
 	-- Tables
 	self.table_faction = {
 		["stalker"] = true,
@@ -1943,22 +1941,4 @@ function UINewGame:OnStartGame()
 	
 	axr_main.config:save() -- Store info in temp file
 	self.owner:StartGame() -- Start the game
-end
-
-function check_axr_key()
-	local need_save = false
-
-	if not (axr_main.config:line_exist("unlocked_achievment","")) then
-		axr_main.config:w_value("unlocked_achievment","","")
-		need_save = true
-	end
-
-	if not (axr_main.config:line_exist("unlocked_bonus_loadout","")) then
-		axr_main.config:w_value("unlocked_bonus_loadout","","")
-		need_save = true
-	end
-
-	if (need_save) then
-		axr_main.config:save()
-	end
 end

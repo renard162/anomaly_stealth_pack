@@ -20,6 +20,14 @@ if not (config:section_exist("temp")) then
 	config:w_value("temp","rspec_default",true)
 	config:save()
 end
+
+if not (config:section_exist("unlocked_achievment")) then
+	config:w_value("unlocked_achievment","","")
+end
+
+if not (config:section_exist("unlocked_bonus_loadout")) then
+	config:w_value("unlocked_bonus_loadout","","")
+end
 -------------------------------------------------------------------------------------------------
 
 -- debug scan/simulation
