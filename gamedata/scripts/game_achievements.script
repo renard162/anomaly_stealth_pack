@@ -766,7 +766,7 @@ end
 function bookworm_food_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","fieldcooker","1")
 	axr_main.config:w_value("unlocked_bonus_loadout","kerosene","1")
-	axr_main.config:w_value("unlocked_achievment","bookworm_food",true)
+	-- axr_main.config:w_value("unlocked_achievment","bookworm_food",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","bookworm_food","st_achievement_15_unlock")
 end
@@ -774,7 +774,7 @@ end
 -- Completionist.
 function completionist_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","wpn_rpg7","1")
-	axr_main.config:w_value("unlocked_achievment","completionist",true)
+	-- axr_main.config:w_value("unlocked_achievment","completionist",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","completionist","st_achievement_10_unlock")
 end
@@ -783,7 +783,7 @@ end
 -- Weaker helicopters are respawned.
 function down_to_earth_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","wpn_rpg7","1")
-	axr_main.config:w_value("unlocked_achievment","down_to_earth",true)
+	-- axr_main.config:w_value("unlocked_achievment","down_to_earth",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","down_to_earth","st_achievement_12_unlock")
 end
@@ -791,7 +791,7 @@ end
 -- Duga Free.
 -- Yantar & Radar psi-fields disabled.
 function duga_free_rewards()
-	axr_main.config:w_value("unlocked_achievment","duga_free",true)
+	-- axr_main.config:w_value("unlocked_achievment","duga_free",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","duga_free","st_achievement_4_unlock")
 end
@@ -800,7 +800,7 @@ end
 -- Increased spawn chance of artefacts.
 function geologist_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","detector_scientific","1")
-	axr_main.config:w_value("unlocked_achievment","geologist",true)
+	-- axr_main.config:w_value("unlocked_achievment","geologist",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","geologist","st_achievement_13_unlock")
 end
@@ -810,7 +810,7 @@ end
 function heavy_pockets_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","af_camelbak_up","1")
 	axr_main.config:w_value("unlocked_bonus_loadout","survival_kit","3")
-	axr_main.config:w_value("unlocked_achievment","heavy_pockets",true)
+	-- axr_main.config:w_value("unlocked_achievment","heavy_pockets",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","heavy_pockets","st_achievement_1_unlock")
 end
@@ -819,7 +819,7 @@ end
 -- Money received for delivering PDAs increased.
 function infopreneur_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","device_pda_3","1")
-	axr_main.config:w_value("unlocked_achievment","infopreneur",true)
+	-- axr_main.config:w_value("unlocked_achievment","infopreneur",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","infopreneur","st_achievement_3_unlock")
 end
@@ -830,7 +830,7 @@ function mechanized_warfare_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","itm_basickit","1")
 	axr_main.config:w_value("unlocked_bonus_loadout","itm_ammokit","1")
 	axr_main.config:w_value("unlocked_bonus_loadout","itm_drugkit","1")
-	axr_main.config:w_value("unlocked_achievment","mechanized_warfare",true)
+	-- axr_main.config:w_value("unlocked_achievment","mechanized_warfare",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","mechanized_warfare","st_achievement_7_unlock")
 end
@@ -848,7 +848,7 @@ end
 -- 25% chance of surviving emissions and psi-vortices.
 function radiotherapy_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","rebirth","3")
-	axr_main.config:w_value("unlocked_achievment","radiotherapy",true)
+	-- axr_main.config:w_value("unlocked_achievment","radiotherapy",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","radiotherapy","st_achievement_2_unlock")
 end
@@ -859,7 +859,7 @@ function rag_and_bone_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","itm_sleepbag","1")
 	axr_main.config:w_value("unlocked_bonus_loadout","itm_tent","1")
 	axr_main.config:w_value("unlocked_bonus_loadout","harmonica_a","1")
-	axr_main.config:w_value("unlocked_achievment","rag_and_bone",true)
+	-- axr_main.config:w_value("unlocked_achievment","rag_and_bone",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","rag_and_bone","st_achievement_9_unlock")
 end
@@ -869,7 +869,7 @@ end
 function silver_or_lead_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","wpn_vintorez_pso1m21","1")
 	axr_main.config:w_value("unlocked_bonus_loadout","device_torch_nv_4","1")
-	axr_main.config:w_value("unlocked_achievment","silver_or_lead",true)
+	-- axr_main.config:w_value("unlocked_achievment","silver_or_lead",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","silver_or_lead","st_achievement_6_unlock")
 end
@@ -881,7 +881,7 @@ function tourist_rewards()
 		treasure_manager.create_random_stash(nil, "Curious stash", nil)
 	end
 	axr_main.config:w_value("unlocked_bonus_loadout","af_compass_af_aam","1")
-	axr_main.config:w_value("unlocked_achievment","tourist",true)
+	-- axr_main.config:w_value("unlocked_achievment","tourist",true)
 	axr_main.config:save()
 	db.actor:disable_info_portion("tourist_achievement_delay")
 	SendScriptCallback("actor_on_achievement_earned","tourist","st_achievement_8_unlock")
@@ -894,7 +894,7 @@ function well_dressed_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","wpn_toz34_decor","1")
 	axr_main.config:w_value("unlocked_bonus_loadout","ammo_12x76_zhekan","3")
 	axr_main.config:w_value("unlocked_bonus_loadout","ammo_12x76_dart","3")
-	axr_main.config:w_value("unlocked_achievment","well_dressed",true)
+	-- axr_main.config:w_value("unlocked_achievment","well_dressed",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","well_dressed","st_achievement_5_unlock")
 end
@@ -903,7 +903,7 @@ end
 -- Unlock "Renegades" faction
 function wishful_thinking_rewards()
 	axr_main.config:w_value("unlocked_factions","renegade",true)
-	axr_main.config:w_value("unlocked_achievment","wishful_thinking",true)
+	-- axr_main.config:w_value("unlocked_achievment","wishful_thinking",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","wishful_thinking","st_achievement_11_unlock")
 end
@@ -912,7 +912,7 @@ end
 -- 25% chance of extra items found in boxes.
 function infantile_pleasure_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","wpn_axe3","1")
-	axr_main.config:w_value("unlocked_achievment","infantile_pleasure",true)
+	-- axr_main.config:w_value("unlocked_achievment","infantile_pleasure",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","infantile_pleasure","st_achievement_16_unlock")
 end
@@ -922,7 +922,7 @@ end
 function recycler_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","leatherman_tool","1")
 	axr_main.config:w_value("unlocked_bonus_loadout","sharpening_stones","1")
-	axr_main.config:w_value("unlocked_achievment","recycler",true)
+	-- axr_main.config:w_value("unlocked_achievment","recycler",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","recycler","st_achievement_17_unlock")
 end
@@ -934,7 +934,7 @@ function artificer_eagerness_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","gun_oil","3")
 	axr_main.config:w_value("unlocked_bonus_loadout","sewing_kit_h","3")
 	axr_main.config:w_value("unlocked_bonus_loadout","armor_repair_fa","3")
-	axr_main.config:w_value("unlocked_achievment","artificer_eagerness",true)
+	-- axr_main.config:w_value("unlocked_achievment","artificer_eagerness",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","artificer_eagerness","st_achievement_18_unlock")
 end
@@ -943,7 +943,7 @@ end
 -- less suspicious spikes upon sudden actions.
 function unforeseen_guest_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","ghillie_outfit","1")
-	axr_main.config:w_value("unlocked_achievment","unforeseen_guest",true)
+	-- axr_main.config:w_value("unlocked_achievment","unforeseen_guest",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","unforeseen_guest","st_achievement_19_unlock")
 end
@@ -952,7 +952,7 @@ end
 -- Unlock "Sin" faction
 function absolver_rewards()
 	axr_main.config:w_value("unlocked_factions","greh",true)
-	axr_main.config:w_value("unlocked_achievment","absolver",true)
+	-- axr_main.config:w_value("unlocked_achievment","absolver",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","absolver","st_achievement_20_unlock")
 end
@@ -961,7 +961,7 @@ end
 -- Unlock "ISG" faction
 function collaborator_rewards()
 	axr_main.config:w_value("unlocked_factions","isg",true)
-	axr_main.config:w_value("unlocked_achievment","collaborator",true)
+	-- axr_main.config:w_value("unlocked_achievment","collaborator",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","collaborator","st_achievement_21_unlock")
 end
@@ -970,7 +970,7 @@ end
 -- Reward 40,000 RU
 function iron_curtain_rewards()
 	db.actor:give_money(40000)
-	axr_main.config:w_value("unlocked_achievment","iron_curtain",true)
+	-- axr_main.config:w_value("unlocked_achievment","iron_curtain",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","iron_curtain","st_achievement_22_unlock")
 end
@@ -980,7 +980,7 @@ function murky_spirit_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","af_full_empty_af_aam","1")
 	axr_main.config:w_value("unlocked_bonus_loadout","af_polymer_up","1")
 	axr_main.config:w_value("unlocked_bonus_loadout","helm_ach7ex","1")
-	axr_main.config:w_value("unlocked_achievment","murky_spirit",true)
+	-- axr_main.config:w_value("unlocked_achievment","murky_spirit",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","murky_spirit","st_achievement_23_unlock")
 end
@@ -998,7 +998,7 @@ function invictus_rewards()
 	axr_main.config:w_value("unlocked_bonus_loadout","wpn_vityaz_ac10632","1")
 	axr_main.config:w_value("unlocked_bonus_loadout","wpn_bizon_kobra","1")
 	axr_main.config:w_value("unlocked_bonus_loadout","exobackpack_exo_outfit_up","1")
-	axr_main.config:w_value("unlocked_achievment","invictus",true)
+	-- axr_main.config:w_value("unlocked_achievment","invictus",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","invictus","st_achievement_24_unlock")
 end
@@ -1008,7 +1008,7 @@ end
 function true_stalker_rewards()
 	alife_create_item("af_belial", db.actor)
 	axr_main.config:w_value("unlocked_bonus_loadout","af_belial","1")
-	axr_main.config:w_value("unlocked_achievment","true_stalker",true)
+	-- axr_main.config:w_value("unlocked_achievment","true_stalker",true)
 	axr_main.config:save()
 	SendScriptCallback("actor_on_achievement_earned","true_stalker","st_achievement_25_unlock")
 end
