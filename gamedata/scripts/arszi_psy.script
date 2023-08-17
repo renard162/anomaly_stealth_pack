@@ -55,6 +55,12 @@ local difficulty_controller_multiplier = {
     [2] = 0.875, -- Average |#hits[%](effect): 1[65](Satge 1), 2[30](Stage 2), 3[0](Death)
     [3] = 1.000, -- Poor    |#hits[%](effect): 1[60](Satge 1), 2[20](Stage 2), 3[0](Death)
 }
+local difficulty_hit_damage_multiplier = {
+    [0] = 0.500, -- Great
+    [1] = 0.958, -- Good
+    [2] = 1.342, -- Average
+    [3] = 1.800, -- Poor
+}
 
 --SOUND--------------------------------------------------------------------------
 local sound_zombified = sound_object("arszi_psy\\pripyat_whispers_final")
@@ -309,7 +315,7 @@ end
 
 function actor_on_hit_callback(obj, amount, local_direction, who, bone_id)
     --Stress resulting from physical damage--------------------------
-    local c_psy_hit_stress = amount * c_psy_hit_stress_multiplier * (((level.get_game_difficulty() or 1) + 1) / 2)
+    local c_psy_hit_stress = amount * c_psy_hit_stress_multiplier * (difficulty_hit_damage_multiplier[level.get_game_difficulty()] or 1.5)
     set_psy_health(psy_table.actor_psy_health - c_psy_hit_stress)
 end
 
