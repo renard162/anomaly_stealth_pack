@@ -1724,12 +1724,12 @@ function UINewGame:UpdateDescr()
 	
 	-- Relations
 	local str_stats = "%c[0,250,250,250]" .. game.translate_string("st_mm_new_game_relations") .. " \\n"
-	for k,v in pairs(self.table_faction) do
+	for k,_v in pairs(self.table_faction) do
 		if not (k == faction) then
 			local v = relation_registry.community_relation("actor_" .. faction, k)
 			if (v >= 1000) then
 				str_stats = str_stats .. "%c[0,150,150,150]- %c[0,50,175,50]" .. game.translate_string("st_faction_" .. k) .. "\\n"
-			elseif (v <= -1000) then
+			elseif (v < 0) then
 				str_stats = str_stats .. "%c[0,150,150,150]- %c[0,175,50,50]" .. game.translate_string("st_faction_" .. k) .. "\\n"
 			else
 				str_stats = str_stats .. "%c[0,150,150,150]- %c[0,175,175,50]" .. game.translate_string("st_faction_" .. k) .. "\\n"
