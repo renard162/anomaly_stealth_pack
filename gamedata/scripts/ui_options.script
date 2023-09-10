@@ -320,7 +320,7 @@ options = {
 		{ id= "sk_melee_hear_dist"    	 	,type= "input"    ,val= 0	,def= 5},
 		{ id= "sk_gun_hear_dist"    	 	,type= "input"    ,val= 0	,def= 10},
 	},},
-	{ id= "economy_diff" 	,sh=true ,precondition = {level_present} ,output = "ui_mm_warning_economy_diff_not_level_present" ,presets= {"economy_easy","economy_medium","economy_hard","economy_suicide","economy_expensive"} ,gr={
+	{ id= "economy_diff" 	,sh=true ,precondition = {level_present} ,output = "ui_mm_warning_economy_diff_not_level_present" ,presets= {"economy_easy","economy_medium","economy_hard","economy_expensive","economy_suicide"} ,gr={
 		{ id= "slide_economy_diff"		 ,type= "slide"	  ,link= "ui_options_slider_economy_diff"	 ,text= "ui_mm_title_economy_diff"		,size= {512,50}		},
 		{ id= "desc_ingame_only"         ,type= "desc"    ,text= "ui_mm_desc_economy_diff"           ,clr= {255,200,75,75}	},
 		
@@ -346,7 +346,7 @@ options = {
 		{ id= "outfit_drops"    	     ,type= "list"     ,val= 2	,curr= {curr_economy,"outfit_drops"}	     ,functor= {func_economy_diff,"outfit_drops"}	       ,content= {{1,"off"} , {2,"progressive"} , {3,"full"}} },
 		
 	},},
-	{ id= "gameplay_diff"	,sh=true ,precondition = {level_present} ,output = "ui_mm_warning_gameplay_diff_not_level_present" ,presets= {"gameplay_easy","gameplay_medium","gameplay_hard","gameplay_hardcore","gameplay_stealth"} ,gr={
+	{ id= "gameplay_diff"	,sh=true ,precondition = {level_present} ,output = "ui_mm_warning_gameplay_diff_not_level_present" ,presets= {"gameplay_easy","gameplay_medium","gameplay_hard","gameplay_stealth","gameplay_hardcore"} ,gr={
 		{ id= "slide_gameplay_diff"		 ,type= "slide"	  ,link= "ui_options_slider_gameplay_diff"	 ,text= "ui_mm_title_gameplay_diff"		,size= {512,50}		},
 		{ id= "desc_ingame_only"         ,type= "desc"    ,text= "ui_mm_desc_gameplay_diff"           ,clr= {255,200,75,75}	},
 

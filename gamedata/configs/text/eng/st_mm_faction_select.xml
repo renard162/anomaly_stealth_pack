@@ -332,10 +332,10 @@
 		<text>Survivalist</text>
 	</string>
 	<string id="st_econ_4">
-		<text>Suicider</text>
+		<text>Rich but Expensive</text>
 	</string>
     <string id="st_econ_5">
-		<text>Rich but Expensive</text>
+		<text>Suicider</text>
 	</string>
 	
 	<string id="st_diff_1">
@@ -348,10 +348,10 @@
 		<text>Hard</text>
 	</string>
 	<string id="st_diff_4">
-		<text>Hardcore</text>
+		<text>Stealth</text>
 	</string>
     <string id="st_diff_5">
-		<text>Stealth</text>
+		<text>Hardcore</text>
 	</string>
 	
 	<!--string id="st_diff_1">

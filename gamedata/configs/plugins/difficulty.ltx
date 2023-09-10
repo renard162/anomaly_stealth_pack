@@ -3,8 +3,8 @@
 ;; This config controls all aspects regarding progression and gameplay difficulty (factors and multipliers)
 ;; These will be applied on new games, later on you can control them from "Extra Options" menu in-game
 
-;; [econ_1] is for (Tourist) | [econ_2] is for (Scavenger) | [econ_3] is for (Survivalist) | [econ_4] is for (Suicider) | [econ_5] is for (Rich but Expensive Zone)
-;; [gdiff_1] is for (Easy) | [gdiff_2] is for (Medium) | [gdiff_3] is for (Hard) | [gdiff_4] is for (Hardcore) | [gdiff_5] is for (Stealth)
+;; [econ_1] is for (Tourist) | [econ_2] is for (Scavenger) | [econ_3] is for (Survivalist) | [econ_4] is for (Rich but Expensive Zone) | [econ_5] is for (Suicider)
+;; [gdiff_1] is for (Easy) | [gdiff_2] is for (Medium) | [gdiff_3] is for (Hard) | [gdiff_4] is for (Stealth) | [gdiff_5] is for (Hardcore)
 ;; Edit the values under the economy option you play on (if you play on Scavenger difficulty, then you need to edit the values under [econ_2] section)
 
 ;;-- Details about the values:
@@ -118,31 +118,6 @@ bkpk_degradation				= false
 outfit_drops                    = 2
 
 [econ_4]
-goodwill					    = 0.5
-rewards							= 0.75
-repair					        = 2.0
-upgrade					        = 2.5
-buy						        = 0.5
-sell						    = 1.5
-loots						    = 1.0
-money_loots					    = 0.5
-outfit_cond_mult				= 0.75
-weapon_cond_mult				= 0.75
-stash_chance					= 0.1
-weapon_degradation				= 1.25
-battery_consumption				= 1.25
-random_items					= 0.3
-scope_chance					= 0.01
-arty_chance						= 0.10
-restock							= 96
-percentage_parts			    = true
-recover_parts			       	= false
-limited_bolts					= true
-arty_degradation				= false
-bkpk_degradation				= false
-outfit_drops                    = 2
-
-[econ_5]
 goodwill					    = 2.0
 rewards							= 1.5
 repair					        = 2.0
@@ -162,6 +137,31 @@ arty_chance						= 0.3
 restock							= 12
 percentage_parts			    = true
 recover_parts			       	= true
+limited_bolts					= true
+arty_degradation				= false
+bkpk_degradation				= false
+outfit_drops                    = 2
+
+[econ_5]
+goodwill					    = 0.5
+rewards							= 0.75
+repair					        = 2.0
+upgrade					        = 2.5
+buy						        = 0.5
+sell						    = 1.5
+loots						    = 1.0
+money_loots					    = 0.5
+outfit_cond_mult				= 0.75
+weapon_cond_mult				= 0.75
+stash_chance					= 0.1
+weapon_degradation				= 1.25
+battery_consumption				= 1.25
+random_items					= 0.3
+scope_chance					= 0.01
+arty_chance						= 0.10
+restock							= 96
+percentage_parts			    = true
+recover_parts			       	= false
 limited_bolts					= true
 arty_degradation				= false
 bkpk_degradation				= false
@@ -211,19 +211,6 @@ notify_anomaly					= false
 
 [gdiff_4]
 actor_immunities				= 4
-hit_power						= 1.0
-dispersion_base					= 1.05
-dispersion_factor				= 1.20
-power_loss_bias					= 0.5
-max_weight						= 10
-thirst							= true
-sleep							= true
-radiation_day					= false
-notify_geiger					= true
-notify_anomaly					= false
-
-[gdiff_5]
-actor_immunities				= 4
 hit_power						= 1.5
 dispersion_base					= 1.05
 dispersion_factor				= 1.20
@@ -234,6 +221,19 @@ sleep							= true
 radiation_day					= false
 notify_geiger					= true
 notify_anomaly					= true
+
+[gdiff_5]
+actor_immunities				= 4
+hit_power						= 1.0
+dispersion_base					= 1.05
+dispersion_factor				= 1.20
+power_loss_bias					= 0.5
+max_weight						= 10
+thirst							= true
+sleep							= true
+radiation_day					= false
+notify_geiger					= true
+notify_anomaly					= false
 
 [exclude_from_multi]
 itm_pda_common
