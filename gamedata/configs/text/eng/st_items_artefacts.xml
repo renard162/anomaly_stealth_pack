@@ -219,6 +219,7 @@
 		\nThis artefact is quite heavy as the gravitational field seems to increase mass. Another downside to this artefact is that it will increase the negative effects of psy-waves and is a potent conductor.
 		\n \nRadiation output is low on the artefact radiation scale.\n \n
 		%c[ui_gray_2]PROPERTIES:\n
+        %c[d_cyan] • %c[ui_gray_2] provides Class IIIA / BR4 protection\n
 		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
 		</text>
 	</string>
@@ -234,6 +235,7 @@
 		\nWrenced can generate a locally directed gravity field which increases its mass. For this reason, this artefact is heavy.
 		\n \nRadiation output is average on the artefact radiation scale.\n \n
 		%c[ui_gray_2]PROPERTIES:\n
+        %c[d_cyan] • %c[ui_gray_2] provides Class III / BR4 protection\n
 		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
 		</text>
 	</string>
@@ -249,6 +251,7 @@
 		\nThe real usefulness of this effect comes to the ability to reduce friction, thus obtaining great protection against physical impacts.
 		\n \nRadiation output is average on the artefact radiation scale.\n \n
 		%c[ui_gray_2]PROPERTIES:\n
+        %c[d_cyan] • %c[ui_gray_2] provides Class III+ / BR4 protection\n
 		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
 		</text>
 	</string> 
@@ -264,6 +267,7 @@
 		\nBeing superior artefact to Empty, the protection against physical impacts is remarkable. Some claims that Full Empty is capable of stopping 9mm bullets fired at point blank.
 		\n \nRadiation output is high on the artefact radiation scale.\n \n
 		%c[ui_gray_2]PROPERTIES:\n
+        %c[d_cyan] • %c[ui_gray_2] provides Class IV / BR5 protection\n
 		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
 		</text>
 	</string> 
@@ -444,8 +448,9 @@
 		\nIt also weakens the body by draining stamina and increasing bleeding rate constantly. But the biggest draw however, is the dangerous radiation output this artefact emits comparing to the artefact radiation scale.
 		\nHolding this artefact near the body will cause death in matter of few minutes.\n \n
 		%c[ui_gray_2]PROPERTIES:\n
-		%c[d_green] • %c[ui_gray_2] Reduces fast travel time\n
-		%c[d_green] • %c[ui_gray_2] Releases the full potential of spatial anomalies\n
+		%c[d_green] • %c[ui_gray_2] reduces fast travel time\n
+		%c[d_green] • %c[ui_gray_2] releases the full potential of spatial anomalies\n
+        %c[d_cyan] • %c[ui_gray_2] space-time distortion caused by artefact causes a slight reduction in damage received\n
 		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
 		</text>
 	</string>
