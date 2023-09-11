@@ -16,7 +16,7 @@
 local plate_cond = {}
 local update_plate_condition = true
 local coeff = 0.012				-- Used to calculate damage multiplier. By default, kevlar plates hit multiplier is 0.24
-local af_coeff = 0.028			-- Artifacts provides less protection because they are indestruvtible
+local af_coeff = 0.026			-- Artifacts provides less protection because they are indestruvtible
 local co_coeff = 0.024			-- Compass have his unique coefficient
 
 -- 1st parameter is damage multiplier, 2nd parameter is condition loss on hit for ratio = 1, 3rd parameter is k_ap that penetrates a brand new plate
