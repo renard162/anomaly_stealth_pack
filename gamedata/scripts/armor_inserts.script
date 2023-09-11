@@ -32,30 +32,30 @@ local plate_sections = {
 	["af_polymer"]				= { coeff / ini_sys:r_float_ex("af_polymer_absorbation","fire_wound_immunity")	 	, 0.10, 0.45 },		-- standard UHMWPE plates (III or BR4)
 	["af_polymer_up"]			= { coeff / ini_sys:r_float_ex("af_polymer_up_absorbation","fire_wound_immunity")	, 0.15, 1.10 },		-- next-gen UHMWPE/ceramic composite plates (IV or BR5)
 
-	["af_medusa"]				= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")	, 0.00, 0.35 },		-- Jellyfish (IIIA or BR4)
+	["af_medusa"]				= { coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")		, 0.00, 0.35 },		-- Jellyfish (IIIA or BR4)
 	["af_medusa_af_aac"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Jellyfish AAC (II or BR3)
 	["af_medusa_af_aam"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Jellyfish AAM (II or BR3)
 	["af_medusa_af_iam"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Jellyfish IAM (II or BR3)
 
-	["af_vyvert"]				= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")	, 0.00, 0.45 },		-- Wrenched (III or BR4)
+	["af_vyvert"]				= { coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")		, 0.00, 0.45 },		-- Wrenched (III or BR4)
 	["af_vyvert_af_aac"]		= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")	, 0.00, 0.24 },		-- Wrenched AAC (IIIA or BR4)
 	["af_vyvert_af_aam"]		= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")	, 0.00, 0.24 },		-- Wrenched AAM (IIIA or BR4)
 	["af_vyvert_af_iam"]		= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")	, 0.00, 0.24 },		-- Wrenched IAM (IIIA or BR4)
 
-	["af_empty"]				= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")		, 0.00, 0.60 },		-- Empty (III+ or BR4)
+	["af_empty"]				= { coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")		, 0.00, 0.60 },		-- Empty (III+ or BR4)
 	["af_empty_af_aac"]			= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")		, 0.00, 0.40 },		-- Empty AAC (III or BR4)
 	["af_empty_af_aam"]			= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")		, 0.00, 0.40 },		-- Empty AAM (III or BR4)
 	["af_empty_af_iam"]			= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")		, 0.00, 0.40 },		-- Empty IAM (III or BR4)
 
-	["af_full_empty"]			= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity"), 0.00, 1.10 },		-- Full Empty (IV or BR5)
+	["af_full_empty"]			= { coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity")	, 0.00, 1.10 },		-- Full Empty (IV or BR5)
 	["af_full_empty_af_aac"]	= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity"), 0.00, 0.50 },		-- Full Empty AAC (III+ or BR4)
 	["af_full_empty_af_aam"]	= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity"), 0.00, 0.50 },		-- Full Empty AAM (III+ or BR4)
 	["af_full_empty_af_iam"]	= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity"), 0.00, 0.50 },		-- Full Empty IAM (III+ or BR4)
 
-	["af_compass"]				= { af_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 0.35 },		-- Compass (IIIA or BR4)
-	["af_compass_af_aac"]		= { af_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Compass AAC (II or BR3)
-	["af_compass_af_aam"]		= { af_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Compass AAM (II or BR3)
-	["af_compass_af_iam"]		= { af_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Compass IAM (II or BR3)
+	["af_compass"]				= { af_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 9.99 },		-- Compass
+	["af_compass_af_aac"]		= { af_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 9.99 },		-- Compass AAC
+	["af_compass_af_aam"]		= { af_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 9.99 },		-- Compass AAM
+	["af_compass_af_iam"]		= { af_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 9.99 },		-- Compass IAM
 }
 
 -- Other option is check if "plate_sections[sec][2] <= 0" but this method can create bugs due float point arithmetics or garbage memory values
@@ -85,10 +85,10 @@ local is_plate_artifact = {
 	["af_full_empty_af_aac"]	= true,		-- Full Empty AAC (III+ or BR4)
 	["af_full_empty_af_aam"]	= true,		-- Full Empty AAM (III+ or BR4)
 	["af_full_empty_af_iam"]	= true,		-- Full Empty IAM (III+ or BR4)
-	["af_compass"]				= true,		-- Compass (IIIA or BR4)
-	["af_compass_af_aac"]		= true,		-- Compass AAC (II or BR3)
-	["af_compass_af_aam"]		= true,		-- Compass AAM (II or BR3)
-	["af_compass_af_iam"]		= true,		-- Compass IAM (II or BR3)
+	["af_compass"]				= true,		-- Compass
+	["af_compass_af_aac"]		= true,		-- Compass AAC
+	["af_compass_af_aam"]		= true,		-- Compass AAM
+	["af_compass_af_iam"]		= true,		-- Compass IAM
 }
 
 -- includes chest bones, and any arm bones potentially in the path of the bullet that would hit the chest are included
@@ -241,7 +241,8 @@ local function actor_on_before_hit(shit,bone_id)
 			if is_artifact then
 				ratio = ratio * (math.random(90,110)/100)
 			end
-			-- printf("~Ratio: "..tostring(ratio).." | Dano inicial: "..tostring(shit.power))
+			-- printf("~Arma: "..tostring(sec).." | Municao: "..tostring(ammo_section).." | k_ap: "..tostring(k_ap))
+			-- printf("~Defense: "..tostring(armor_defense).." | Ratio: "..tostring(ratio).." | Dano inicial: "..tostring(shit.power))
 			
 			-- armor's ability to stop rounds is diminished as it loses condition
 			if (ratio > 1) then
