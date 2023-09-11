@@ -16,7 +16,7 @@
 local plate_cond = {}
 local update_plate_condition = true
 local coeff = 0.012				-- Used to calculate damage multiplier. By default, kevlar plates hit multiplier is 0.24
-local af_coeff = 0.021			-- Artifacts provides less protection because they are indestruvtible
+local af_coeff = 0.026			-- Artifacts provides less protection because they are indestruvtible
 
 -- 1st parameter is damage multiplier, 2nd parameter is condition loss on hit for ratio = 1, 3rd parameter is k_ap that penetrates a brand new plate
 local plate_sections = {
@@ -238,6 +238,9 @@ local function actor_on_before_hit(shit,bone_id)
 			local ammo_section = ammo_list[ammo_type_number+1]
 			local k_ap = ini_sys:r_float_ex(ammo_section, "k_ap") or 0
 			ratio = k_ap / armor_defense
+			if is_artifact then
+				ratio = ratio * (math.random(90,110)/100)
+			end
 			-- printf("~Ratio: "..tostring(ratio).." | Dano inicial: "..tostring(shit.power))
 			
 			-- armor's ability to stop rounds is diminished as it loses condition
