@@ -15,18 +15,80 @@
 --===================================== Variables ====================================
 local plate_cond = {}
 local update_plate_condition = true
-local coeff = 0.012			-- used to calculate damage multiplier. By default, kevlar plates hit multiplier is 0.20
+local coeff = 0.012				-- Used to calculate damage multiplier. By default, kevlar plates hit multiplier is 0.24
+local af_coeff = 0.021			-- Artifacts provides less protection because they are indestruvtible
 
 -- 1st parameter is damage multiplier, 2nd parameter is condition loss on hit for ratio = 1, 3rd parameter is k_ap that penetrates a brand new plate
 local plate_sections = {
-    ["af_kevlar"]           = { coeff / ini_sys:r_float_ex("af_kevlar_absorbation","fire_wound_immunity")	 , 0.14, 0.25 },		-- normal kevlar inserts stop FMJ handgun rounds (II or BR3)
-	["af_kevlar_up"]        = { coeff / ini_sys:r_float_ex("af_kevlar_up_absorbation","fire_wound_immunity") , 0.12, 0.35 },		-- better kevlar inserts (IIIA or BR4)
-    ["af_plates"]           = { coeff / ini_sys:r_float_ex("af_plates_absorbation","fire_wound_immunity")	 , 0.20, 0.60 },		-- standard steel plates (III+ or BR4)
-    ["af_plates_up"]        = { coeff / ini_sys:r_float_ex("af_plates_up_absorbation","fire_wound_immunity") , 0.20, 1.10 },		-- next-gen steel plates (IV or BR5)
-	["af_ceramic"]			= { coeff / ini_sys:r_float_ex("af_ceramic_absorbation","fire_wound_immunity")	 , 0.35, 1.30 },		-- normal ceramic plates stop AP large-calibers (IV or BR5)
-	["af_ceramic_up"]		= { coeff / ini_sys:r_float_ex("af_ceramic_up_absorbation","fire_wound_immunity"), 0.30, 1.70 },		-- next-gen ceramic plate can stop .300 (IV or BR6)
-	["af_polymer"]			= { coeff / ini_sys:r_float_ex("af_polymer_absorbation","fire_wound_immunity")	 , 0.10, 0.45 },		-- standard UHMWPE plates (III or BR4)
-	["af_polymer_up"]		= { coeff / ini_sys:r_float_ex("af_polymer_up_absorbation","fire_wound_immunity"), 0.15, 1.10 },		-- next-gen UHMWPE/ceramic composite plates (IV or BR5)
+    ["af_kevlar"]           	= { coeff / ini_sys:r_float_ex("af_kevlar_absorbation","fire_wound_immunity")	 	, 0.14, 0.25 },		-- normal kevlar inserts stop FMJ handgun rounds (II or BR3)
+	["af_kevlar_up"]        	= { coeff / ini_sys:r_float_ex("af_kevlar_up_absorbation","fire_wound_immunity") 	, 0.12, 0.35 },		-- better kevlar inserts (IIIA or BR4)
+
+    ["af_plates"]           	= { coeff / ini_sys:r_float_ex("af_plates_absorbation","fire_wound_immunity")	 	, 0.20, 0.60 },		-- standard steel plates (III+ or BR4)
+    ["af_plates_up"]        	= { coeff / ini_sys:r_float_ex("af_plates_up_absorbation","fire_wound_immunity") 	, 0.20, 1.10 },		-- next-gen steel plates (IV or BR5)
+
+	["af_ceramic"]				= { coeff / ini_sys:r_float_ex("af_ceramic_absorbation","fire_wound_immunity")	 	, 0.35, 1.30 },		-- normal ceramic plates stop AP large-calibers (IV or BR5)
+	["af_ceramic_up"]			= { coeff / ini_sys:r_float_ex("af_ceramic_up_absorbation","fire_wound_immunity")	, 0.30, 1.70 },		-- next-gen ceramic plate can stop .300 (IV or BR6)
+
+	["af_polymer"]				= { coeff / ini_sys:r_float_ex("af_polymer_absorbation","fire_wound_immunity")	 	, 0.10, 0.45 },		-- standard UHMWPE plates (III or BR4)
+	["af_polymer_up"]			= { coeff / ini_sys:r_float_ex("af_polymer_up_absorbation","fire_wound_immunity")	, 0.15, 1.10 },		-- next-gen UHMWPE/ceramic composite plates (IV or BR5)
+
+	["af_medusa"]				= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")	, 0.00, 0.35 },		-- Jellyfish (IIIA or BR4)
+	["af_medusa_af_aac"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Jellyfish AAC (II or BR3)
+	["af_medusa_af_aam"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Jellyfish AAM (II or BR3)
+	["af_medusa_af_iam"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Jellyfish IAM (II or BR3)
+
+	["af_vyvert"]				= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")	, 0.00, 0.45 },		-- Wrenched (III or BR4)
+	["af_vyvert_af_aac"]		= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")	, 0.00, 0.24 },		-- Wrenched AAC (IIIA or BR4)
+	["af_vyvert_af_aam"]		= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")	, 0.00, 0.24 },		-- Wrenched AAM (IIIA or BR4)
+	["af_vyvert_af_iam"]		= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")	, 0.00, 0.24 },		-- Wrenched IAM (IIIA or BR4)
+
+	["af_empty"]				= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")		, 0.00, 0.60 },		-- Empty (III+ or BR4)
+	["af_empty_af_aac"]			= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")		, 0.00, 0.40 },		-- Empty AAC (III or BR4)
+	["af_empty_af_aam"]			= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")		, 0.00, 0.40 },		-- Empty AAM (III or BR4)
+	["af_empty_af_iam"]			= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")		, 0.00, 0.40 },		-- Empty IAM (III or BR4)
+
+	["af_full_empty"]			= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity"), 0.00, 1.10 },		-- Full Empty (IV or BR5)
+	["af_full_empty_af_aac"]	= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity"), 0.00, 0.50 },		-- Full Empty AAC (III+ or BR4)
+	["af_full_empty_af_aam"]	= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity"), 0.00, 0.50 },		-- Full Empty AAM (III+ or BR4)
+	["af_full_empty_af_iam"]	= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity"), 0.00, 0.50 },		-- Full Empty IAM (III+ or BR4)
+
+	["af_compass"]				= { af_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 0.35 },		-- Compass (IIIA or BR4)
+	["af_compass_af_aac"]		= { af_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Compass AAC (II or BR3)
+	["af_compass_af_aam"]		= { af_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Compass AAM (II or BR3)
+	["af_compass_af_iam"]		= { af_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Compass IAM (II or BR3)
+}
+
+-- Other option is check if "plate_sections[sec][2] <= 0" but this method can create bugs due float point arithmetics or garbage memory values
+local is_plate_artifact = {
+	["af_kevlar"]           	= false,	-- normal kevlar inserts stop FMJ handgun rounds (II or BR3)
+	["af_kevlar_up"]        	= false,	-- better kevlar inserts (IIIA or BR4)
+    ["af_plates"]           	= false,	-- standard steel plates (III+ or BR4)
+    ["af_plates_up"]        	= false,	-- next-gen steel plates (IV or BR5)
+	["af_ceramic"]				= false,	-- normal ceramic plates stop AP large-calibers (IV or BR5)
+	["af_ceramic_up"]			= false,	-- next-gen ceramic plate can stop .300 (IV or BR6)
+	["af_polymer"]				= false,	-- standard UHMWPE plates (III or BR4)
+	["af_polymer_up"]			= false,	-- next-gen UHMWPE/ceramic composite plates (IV or BR5)
+
+	["af_medusa"]				= true,		-- Jellyfish (IIIA or BR4)
+	["af_medusa_af_aac"]		= true,		-- Jellyfish AAC (II or BR3)
+	["af_medusa_af_aam"]		= true,		-- Jellyfish AAM (II or BR3)
+	["af_medusa_af_iam"]		= true,		-- Jellyfish IAM (II or BR3)
+	["af_vyvert"]				= true,		-- Wrenched (III or BR4)
+	["af_vyvert_af_aac"]		= true,		-- Wrenched AAC (IIIA or BR4)
+	["af_vyvert_af_aam"]		= true,		-- Wrenched AAM (IIIA or BR4)
+	["af_vyvert_af_iam"]		= true,		-- Wrenched IAM (IIIA or BR4)
+	["af_empty"]				= true,		-- Empty (III+ or BR4)
+	["af_empty_af_aac"]			= true,		-- Empty AAC (III or BR4)
+	["af_empty_af_aam"]			= true,		-- Empty AAM (III or BR4)
+	["af_empty_af_iam"]			= true,		-- Empty IAM (III or BR4)
+	["af_full_empty"]			= true,		-- Full Empty (IV or BR5)
+	["af_full_empty_af_aac"]	= true,		-- Full Empty AAC (III+ or BR4)
+	["af_full_empty_af_aam"]	= true,		-- Full Empty AAM (III+ or BR4)
+	["af_full_empty_af_iam"]	= true,		-- Full Empty IAM (III+ or BR4)
+	["af_compass"]				= true,		-- Compass (IIIA or BR4)
+	["af_compass_af_aac"]		= true,		-- Compass AAC (II or BR3)
+	["af_compass_af_aam"]		= true,		-- Compass AAM (II or BR3)
+	["af_compass_af_iam"]		= true,		-- Compass IAM (II or BR3)
 }
 
 -- includes chest bones, and any arm bones potentially in the path of the bullet that would hit the chest are included
@@ -124,6 +186,7 @@ local function actor_on_before_hit(shit,bone_id)
 	local plate
 	local hit_multiplier
 	local plate_name
+	local is_artifact
 	
 	-- check belt for plates
 	db.actor:iterate_belt(
@@ -131,6 +194,7 @@ local function actor_on_before_hit(shit,bone_id)
 			if obj and plate_sections[obj:section()] then
 				plate = obj
 				plate_name = plate:section()
+				is_artifact = is_plate_artifact[plate_name] or (is_plate_artifact[plate_name] == nil)
 				hit_multiplier = plate_sections[plate_name][1]
 				
 				if not plate_cond[plate:id()] then
@@ -138,8 +202,10 @@ local function actor_on_before_hit(shit,bone_id)
 					plate_cond[plate:id()] = 1		-- new plates get full condition on register
 				elseif (plate_cond[plate:id()] > 0) then
 					found =  true
-					local cond = plate_cond[plate:id()]
-					plate:set_condition(cond)
+					if not is_artifact then
+						local cond = plate_cond[plate:id()]
+						plate:set_condition(cond)
+					end
 				end
 			end
 		end
@@ -149,10 +215,13 @@ local function actor_on_before_hit(shit,bone_id)
 		return
 	end
 	
+	-- printf("~Tomei um tiro")
+	-- printf("~Placa: "..tostring(plate_name).." | Condicao: "..tostring(plate_cond[plate:id()]).." | Artefato: "..tostring(is_artifact).." | Multiplicador: "..tostring(hit_multiplier))
+
 	if (plate and plate_cond[plate:id()]) then
 		local ratio			-- multiplier to plate condition loss calculated from bullet's AP vs armor's defense
 		local armor_rating = plate_sections[plate_name][3]
-		local armor_condition = plate:condition()
+		local armor_condition = is_artifact and 1.0 or plate:condition()
 		local armor_defense = armor_rating * armor_condition
 		local msg = game.translate_string("st_armor_absorbed")-- "Armor insert absorbed impact"
 		
@@ -169,7 +238,7 @@ local function actor_on_before_hit(shit,bone_id)
 			local ammo_section = ammo_list[ammo_type_number+1]
 			local k_ap = ini_sys:r_float_ex(ammo_section, "k_ap") or 0
 			ratio = k_ap / armor_defense
-			
+			-- printf("~Ratio: "..tostring(ratio).." | Dano inicial: "..tostring(shit.power))
 			
 			-- armor's ability to stop rounds is diminished as it loses condition
 			if (ratio > 1) then
@@ -180,34 +249,37 @@ local function actor_on_before_hit(shit,bone_id)
 			else
 				shit.power = shit.power * hit_multiplier		-- reduce damage
 			end
+			-- printf("~Dano recebido: "..tostring(shit.power))
 		else
 			-- grenade shrapnel is blocked by all inserts
 			ratio = 0.05 / armor_defense
 			shit.power = shit.power * hit_multiplier			-- reduce damage
 		end
 
-		-- decrease plate condition
-		local cond_loss = plate_sections[plate_name][2] * math.max(ratio, 0.5)		-- minimum condition loss is ratio = 0.5
-		local cond = clamp(plate:condition() - cond_loss, 0, 1)
-		plate_cond[plate:id()] = cond
-		plate:set_condition(cond)
-		--printdbg("%s condition decreased to %s", plate_name, cond)
-		
-		-- delete broken plates, and notify actor of fully broken plate
-		if plate and plate_cond[plate:id()] < 0.01 then
-			plate_cond[plate:id()] = nil		-- delete plate and clear from storage
-			alife_release_id(plate:id())
-			if arti_slot_control_mcm.get_config("ballisticMessage") then
-				local message = game.translate_string("st_armor_broken")--"Ballistic insert has fully broken"
-				news_manager.send_tip(db.actor, message, nil, "swiss_knife", 6000)
-				shot_type = shot_type + 2
+		-- decrease plate condition if is not an artifact
+		if not is_artifact then
+			local cond_loss = plate_sections[plate_name][2] * math.max(ratio, 0.5)		-- minimum condition loss is ratio = 0.5
+			local cond = clamp(plate:condition() - cond_loss, 0, 1)
+			plate_cond[plate:id()] = cond
+			plate:set_condition(cond)
+			--printdbg("%s condition decreased to %s", plate_name, cond)
+			
+			-- delete broken plates, and notify actor of fully broken plate
+			if plate and plate_cond[plate:id()] < 0.01 then
+				plate_cond[plate:id()] = nil		-- delete plate and clear from storage
+				alife_release_id(plate:id())
+				if arti_slot_control_mcm.get_config("ballisticMessage") then
+					local message = game.translate_string("st_armor_broken")--"Ballistic insert has fully broken"
+					news_manager.send_tip(db.actor, message, nil, "swiss_knife", 6000)
+					shot_type = shot_type + 2
+				end
 			end
 		end
 		
 		-- inform actor of hit
         if arti_slot_control_mcm.get_config("ballisticMessage")  then
 			actor_menu.set_msg(1, msg, 3)
-		end		
+		end
 		-- play appropriate sounds
 		play_appropriate_sounds(material, shot_type)
 		-- extra sound effect
