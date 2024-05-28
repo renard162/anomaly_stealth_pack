@@ -177,10 +177,10 @@ end
 function on_mcm_load() --builds mcm menu
 		t = {
 				{ id= "sorting"				 ,type= "slide"	  ,link= "ui_options_slider_economy_diff"	 ,text= "ui_mcm_title_SortingPlus"		,size= {512,50}		,spacing= 20 },
-				{id = "playerinv", type = "check", val = 1, def = true},
-				{id = "playertrade", type = "check", val = 1, def = true},
-				{id = "npcinv", type = "check", val = 1, def = true},
-				{id = "npctrade", type = "check", val = 1, def = true},
+				{id = "playerinv", type = "check", val = 1, def = false},
+				{id = "playertrade", type = "check", val = 1, def = false},
+				{id = "npcinv", type = "check", val = 1, def = false},
+				{id = "npctrade", type = "check", val = 1, def = false},
 				{id = "line", type = "line"},
 				{id = "hilitejunk", type = "check", val = 1, def = true},
 				{id = "iconjunk", type = "check", val = 1, def = true},
