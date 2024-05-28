@@ -982,13 +982,13 @@
 	</string>
 	
 	<string id="ui_mm_prst_gameplay_easy">
-		<text>Easy</text>
+		<text>Arcade</text>
 	</string>
 	<string id="ui_mm_prst_gameplay_medium">
-		<text>Medium</text>
+		<text>Arcade Hard</text>
 	</string>
 	<string id="ui_mm_prst_gameplay_hard">
-		<text>Hard</text>
+		<text>Stalker</text>
 	</string>
 	
 	<string id="ui_mm_lst_great">
