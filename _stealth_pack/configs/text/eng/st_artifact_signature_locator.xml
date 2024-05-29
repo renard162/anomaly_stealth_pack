@@ -7,7 +7,7 @@
 		A highly experimental device that was developed in the depths of the zone. Powered by an artifact-made battery, it holds the latest application of artifact-emission connection research. This wonder of technology is capable of detecting residual link between anomalous zones and artifacts spawned by them.\n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] technological item\n
-		%c[d_blue] • %c[ui_gray_2] Connects to the PDA, updating the map\n
+		%c[d_blue] • %c[ui_gray_2] connects to the PDA, updating the map\n
 		%c[d_blue] • %c[ui_gray_2] powerd by a Shell artefact\n
 		</text>
 	</string>
