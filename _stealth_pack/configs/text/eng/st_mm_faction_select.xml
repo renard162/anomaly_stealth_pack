@@ -106,14 +106,14 @@
 		<text>
 			%c[0,150,150,150]The Progression difficulty has a big impact on the economy, which affects the player's progression during their journey in the Zone.
 			\nAspects affected by this range from sell/buy prices with traders, repair/upgrade prices with mechanics, rarity of loots, money and goodwill earned by completing tasks and more. 
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]You can control each one of these aspects in your playthrough at any time.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]You can control each one of these aspects in your playthrough at any time.
 			\nSee "Extra Options -> Progression difficulty".
 		</text>
 	</string>
 	<string id="st_mm_list_difficulty_desc">
 		<text>
 			%c[0,150,150,150]Gameplay difficulty affects aspects related to the player such as protection against damage sources, stamina loss and carry weight. In addition to extra aspects such as water and sleep deprivation.
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]You can control each one of these aspects in your playthrough at any time.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]You can control each one of these aspects in your playthrough at any time.
 			\nSee "Extra Options -> Gameplay difficulty".
 		</text>
 	</string>
@@ -122,17 +122,17 @@
 			%c[0,150,150,150]Story mode, when active, allows the player to experience a unique set of story-driven and dynamic questlines.\n 
 			\nStory-driven questlines such as "Living Legend", "Mortal Sin" and "Operation Afterglow" are only available to Loner, Duty, Freedom, Ecologist, Mercenary and Clear Sky factions.\n
 			\nDynamic questlines, however, can be enjoyed  by all the playable factions. In both cases, speak to your faction leader to begin them. Have fun!
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Not compatible with Warfare mode.
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Not compatible with Survival mode.
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Not compatible with Azazel mode.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Warfare mode.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Survival mode.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Azazel mode.
 		</text>
 	</string>
 	<string id="st_mm_ck_drx_desc">
 		<text>
 			%c[0,150,150,150]A dynamic, linked set of varied tasks to take you throughout the Zone.
 			\nInfinite replayability; playthrough will never be the same even if you play again as the same faction.
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Not compatible with Story mode.
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Not compatible with Azazel mode.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Story mode.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Azazel mode.
 		</text>
 	</string>
 	<string id="st_mm_ck_hardcore_desc">
@@ -150,8 +150,8 @@
 		<text>
 			%c[0,150,150,150]Survival mode is a feature that replaces all spawns with Zombies.\n
 			\nThese hordes will make their way to your location - be prepared! See how long you can survive!
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Not compatible with Warfare mode.
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Not compatible with Survival mode.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Warfare mode.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Survival mode.
 		</text>
 	</string>
 	<string id="st_mm_ck_azazel_mode_desc">
@@ -159,9 +159,9 @@
 			%c[0,150,150,150]In Azazel mode, death is not the end.\n
 			\nLike the demon Azazel you will possess a new body when you die; taking over the form of another random stalker that really exists in the Zone.\n
 			\nIf you have companions, you will become one of them. This feature compliments Ironman and/or Survival mode very well.\n
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]All maps will be unlocked in Azazel mode.
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Not compatible with Story mode.
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Not compatible with Black road mode.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]All maps will be unlocked in Azazel mode.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Story mode.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Black road mode.
 		</text>
 	</string>
 	<string id="st_mm_ck_warfare_desc">
@@ -169,38 +169,38 @@
 			%c[0,150,150,150]This mode grants Stalker's A-Life system more freedom, creating a more dynamic Zone.
 			\n \nFaction ownership of bases and territories is more prone to change. Medics, traders and mechanics are now also replaceable.\n
 			\n \nYou also have the ability to lead your faction and help them with taking over the surrounding areas, achieving dominance in the Zone.\n
-			\n \n%c[200,150,50,200]ï¿½ %c[0,150,150,150]Command your faction through the PDA map!
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Not compatible with Story mode.
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Not compatible with Survival mode.
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Not compatible with Black road mode.
+			\n \n%c[200,150,50,200]• %c[0,150,150,150]Command your faction through the PDA map!
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Story mode.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Survival mode.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Black road mode.
 		</text>
 	</string>
 	<string id="st_mm_ck_campfire_desc">
 		<text>
             %c[0,150,150,150]Campfire save mode will advance time when saving and prevent you from saving your progress if you're:
-			\n%c[200,200,200,50]ï¿½ %c[0,150,150,150]Injured
-			\n%c[200,200,200,50]ï¿½ %c[0,150,150,150]Bleeding
-			\n%c[200,200,200,50]ï¿½ %c[0,150,150,150]Irradiated
-			\n%c[200,200,200,50]ï¿½ %c[0,150,150,150]In combat with enemies
-			\n%c[200,200,200,50]ï¿½ %c[0,150,150,150]Under circumstances of an emission or psi-storm
-            \n%c[200,200,200,50]ï¿½ %c[0,150,150,150]In underground areas
-            \n%c[200,200,200,50]ï¿½ %c[0,150,150,150]Outside of a safe area
+			\n%c[200,200,200,50]• %c[0,150,150,150]Injured
+			\n%c[200,200,200,50]• %c[0,150,150,150]Bleeding
+			\n%c[200,200,200,50]• %c[0,150,150,150]Irradiated
+			\n%c[200,200,200,50]• %c[0,150,150,150]In combat with enemies
+			\n%c[200,200,200,50]• %c[0,150,150,150]Under circumstances of an emission or psi-storm
+            \n%c[200,200,200,50]• %c[0,150,150,150]In underground areas
+            \n%c[200,200,200,50]• %c[0,150,150,150]Outside of a safe area
             \n \n%c[0,150,150,150]Safe areas includes:
-            \n%c[d_orange]ï¿½ %c[0,150,150,150]Areas controlled by allied faction
-            \n%c[d_orange]ï¿½ %c[0,150,150,150]Nearby of a player mounted camping tent
-            \n%c[d_orange]ï¿½ %c[0,150,150,150]Nearby of a lit campfire
-            \n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Not compatible with Agony save mode.
+            \n%c[d_orange]• %c[0,150,150,150]Areas controlled by allied faction
+            \n%c[d_orange]• %c[0,150,150,150]Nearby of a player mounted camping tent
+            \n%c[d_orange]• %c[0,150,150,150]Nearby of a lit campfire
+            \n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Agony save mode.
 		</text>
 	</string>
 	<string id="st_mm_ck_conditions_desc">
 		<text>
 			%c[0,150,150,150]Agony mode will prevent you from saving your progress if you're:
-			\n%c[200,200,200,50]ï¿½ %c[0,150,150,150]Injured
-			\n%c[200,200,200,50]ï¿½ %c[0,150,150,150]Bleeding
-			\n%c[200,200,200,50]ï¿½ %c[0,150,150,150]Irradiated
-			\n%c[200,200,200,50]ï¿½ %c[0,150,150,150]In combat with enemies
-			\n%c[200,200,200,50]ï¿½ %c[0,150,150,150]Under circumstances of an emission or psi-storm
-			\n \n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Not compatible with Campfire save mode.
+			\n%c[200,200,200,50]• %c[0,150,150,150]Injured
+			\n%c[200,200,200,50]• %c[0,150,150,150]Bleeding
+			\n%c[200,200,200,50]• %c[0,150,150,150]Irradiated
+			\n%c[200,200,200,50]• %c[0,150,150,150]In combat with enemies
+			\n%c[200,200,200,50]• %c[0,150,150,150]Under circumstances of an emission or psi-storm
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Campfire save mode.
 		</text>
 	</string>
 	<string id="st_mm_ck_routes_desc">
@@ -214,21 +214,21 @@
 			%c[0,150,150,150]An addition feature for Ironman mode that allows you to set how many lives you have at the beginning of your new game.
 			\nEverytime you die, you will lose a life.
 			\nOnce you run out of lives, all the game saves of your related playthrough will be removed.\n
-			\n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Ironman mode must be active.
+			\n%c[200,200,50,50]• %c[0,150,150,150]Ironman mode must be active.
 		</text>
 	</string>
 	<string id="st_mm_list_hardcore_regen_desc">
 		<text>
 			%c[0,150,150,150]An additional feature for Ironman mode that allows you to set how many days it will take to grant an extra life.
-			\n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Sleeping will not help.
-			\n%c[200,200,50,50]ï¿½ %c[0,150,150,150]Ironman mode must be active.
+			\n%c[200,200,50,50]• %c[0,150,150,150]Sleeping will not help.
+			\n%c[200,200,50,50]• %c[0,150,150,150]Ironman mode must be active.
 		</text>
 	</string>
 	<string id="st_mm_list_timer_desc">
 		<text>
 			%c[0,150,150,150]In Timer mode, you can save your game every specific amount of time. 
 			\nOnce you save your game, you cannot make another save once again until the timer is over.
-			\n \n%c[200,50,200,50]ï¿½ %c[0,150,150,150]All hardcore save modes are compatible with each other.
+			\n \n%c[200,50,200,50]• %c[0,150,150,150]All hardcore save modes are compatible with each other.
 		</text>
 	</string>
 	
