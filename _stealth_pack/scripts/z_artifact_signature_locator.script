@@ -1,0 +1,37 @@
+--base = level_input.action_toggle_pda_tab
+
+pdabasecall = pda.set_active_subdialog
+
+function pda.set_active_subdialog(section) 
+
+	local actor = db.actor
+    	
+	if section == "eptTasks" then		
+	
+		for i=1,65534 do
+			if (level.map_has_object_spot(i, "artefact") ~= 0) then
+				level.map_remove_object_spot(i, "artefact")				
+			end
+		end
+
+		local obj_item = actor:object("artifact_signature_locator") 
+		if obj_item then 
+		
+			local sim = alife()	
+			for name,binder in pairs(db.anomaly_by_name) do  
+				local obj = binder.object
+
+				for k,v in pairs(binder.artefact_ways_by_id) do
+					local se_obj = sim:object(tonumber(k))
+					if (se_obj) then
+						--.. "," .. se_obj.position.x  .. "," ..  se_obj.position.y  .. "," ..  se_obj.position.z 
+						-- level.map_add_object_spot_ser(se_obj.id, "artefact", se_obj:name())
+						level.map_add_object_spot_ser(se_obj.id, "artefact", "Artifact Signature")
+						--news_manager.send_tip(actor,"add " .. se_obj:name(),0,"tourist",5000,nil,game.translate_string("st_revealled_area"))
+					end
+				end 
+			end
+		end
+	end
+	return pdabasecall(section)
+end
