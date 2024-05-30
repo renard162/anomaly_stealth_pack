@@ -92,7 +92,7 @@ function manage_burer_blinding()
         -- Efficiency is calculated into this inner check to avoid useless calculations
         if math.random(1, 100) <= c_headlamp_efficiency then
             blinded_burer_id = obj:id()
-            show_message("BLIND (HEADLAMP) "..get_distance(db.actor:position(), obj:position()))
+            -- show_message("BLIND (HEADLAMP) "..get_distance(db.actor:position(), obj:position()))
         end
     end
 
