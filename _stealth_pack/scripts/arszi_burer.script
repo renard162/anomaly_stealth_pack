@@ -1,0 +1,418 @@
+local c_limit = 0.09  --Battery limit for headlamp and flashlight, do not touch it!
+local c_weapon_condition_loss_on_jamming = 0.02
+local c_weapon_drop_chance_percentage_decrease_per_meters = 3 --With every meters, burer will have X% less chance to make you drop your weapon by its telekinetic attack, becoming 0% at 25 meters
+local c_weapon_jam_chance_percentage_decrease_per_meters = 7 --With every meters, burer will have X% less chance to jam your weapon
+local c_weapon_jam_chance_divider = 4 --Divides the calculated weapon jam percentage
+local c_light_efficiency_percentage_decrease_per_meters = 6 --Light will blind Burers with X% less chance per meters
+local c_headlamp_efficiency = 6 --This value is checked each tick, then values with greater times than Burer recovery time (in ticks) will cause stum lock with headlamp
+
+local enable_rat_spawn = true --Enables/Disables rat spawn for Burers
+local number_of_rats_min = 10 --Minimum number of Tushkanos to spawn
+local number_of_rats_max = 15 --Maximum number of Tushkanos to spawn
+
+local arszi_previous_time = nil
+
+local burer_table = {}
+local burer_rat_spawn_table = {}
+blinded_burer_id = nil
+
+local rat_table = {
+  "tushkano_normal",
+  "tushkano_normal_a",
+  "tushkano_normal_b", 
+  "tushkano_normal_c",
+  "tushkano_weak",
+  "tushkano_weak_a", 
+  "tushkano_weak_b",
+  "tushkano_weak_c", 
+  "tushkano_strong",
+  "tushkano_strong_a",
+  "tushkano_strong_b",
+  "tushkano_strong_c"
+}
+
+function on_game_start()
+    RegisterScriptCallback("actor_on_update", actor_on_update)
+    -- RegisterScriptCallback("actor_on_before_hit", actor_on_before_hit)
+    RegisterScriptCallback("monster_on_update", monster_on_update)
+    RegisterScriptCallback("save_state",save_state)
+    RegisterScriptCallback("load_state",load_state)
+    RegisterScriptCallback("on_enemy_eval", on_enemy_eval)
+end
+
+function on_enemy_eval(obj, enemy, flags)
+	if (obj and is_burer(obj)) then
+    if (obj:id() == arszi_burer.blinded_burer_id) then
+      flags.override = true
+      flags.result = false
+      return
+		end
+	end
+end
+
+function save_state(m_data)
+	m_data.burer_rat_spawn_table = burer_rat_spawn_table
+end
+
+function load_state(m_data)
+	burer_rat_spawn_table = m_data.burer_rat_spawn_table or {}
+end
+
+function actor_on_update()
+
+  local curr_time = game.get_game_time()
+  if (arszi_previous_time == nil) then arszi_previous_time = curr_time end
+
+	if (curr_time:diffSec(arszi_previous_time) > 1) then
+		arszi_previous_time = curr_time
+
+    manage_burer_blinding()
+
+    manage_burers()
+
+    manage_burer_rat_spawn_table()
+  end
+end
+
+function manage_burer_rat_spawn_table()
+  for k, v in pairs(burer_rat_spawn_table) do
+    if (not alife():object(k)) then
+      burer_rat_spawn_table[k] = nil
+      trace_this("SQUAD "..k.." REMOVED FROM RAT SPAWN TABLE")
+    end
+  end
+end
+
+function manage_burer_blinding()
+  local obj = level.get_target_obj()
+  if (obj and obj:alive() and is_burer(obj)) then
+
+    local torch = targeted_by_torch()
+    if (torch and should_burer_be_blinded(obj:position())) then
+        -- Efficiency is calculated into this inner check to avoid useless calculations
+        if math.random(1, 100) <= c_headlamp_efficiency then
+            blinded_burer_id = obj:id()
+            show_message("BLIND (HEADLAMP) "..get_distance(db.actor:position(), obj:position()))
+        end
+    end
+
+    local flashlight = targeted_by_flashlight()
+    if (flashlight and should_burer_be_blinded(obj:position())) then
+        blinded_burer_id = obj:id()
+        --show_message("BLIND (FLASHLIGHT) "..get_distance(db.actor:position(), obj:position()))
+    end
+  
+    cause_fake_damage(obj)
+  else
+    blinded_burer_id = nil
+  end
+end
+
+function manage_burers()
+  for k, v in pairs(burer_table) do
+    local obj = level.object_by_id(k)
+    
+    --Weapon jamming for actor and NPCs
+    if (obj and obj:alive()) then
+      handle_weapon_jamming(obj)
+    end
+
+    --Remove burer from the table if dead or level object do not exist anymore
+    if (not obj or (obj and not obj:alive())) then
+      burer_table[k] = nil
+    end
+  end
+end
+
+function monster_on_update(npc)
+  if (not npc) then return end
+  if (not npc:alive()) then return end
+
+  if (is_burer(npc)) then
+      if (not burer_table[npc:id()]) then
+        burer_table[npc:id()] = true
+
+        if (enable_rat_spawn) then
+          try_spawn_rats_for_burer(npc)
+        end
+        trace_this("BURER added to burer table: "..npc:name())
+      end
+  end
+end
+
+function try_spawn_rats_for_burer(burer)
+  squad_burer = get_object_squad(burer)
+  if (not squad_burer) then return end
+  if (burer_rat_spawn_table[squad_burer.id]) then return end
+  
+  local squad_count = utils_obj.get_squad_count(burer)
+  local number_of_burers = 0
+  local number_of_rats = 0
+
+  for k in squad_burer:squad_members() do
+    local obj = level.object_by_id(k.id)
+    trace_this("obj name: "..obj:name())
+
+    if (obj and is_burer(obj)) then
+      number_of_burers = number_of_burers + 1
+    else
+      number_of_rats = number_of_rats + 1
+    end
+  end
+
+  trace_this("number_of_burers: "..number_of_burers)
+  trace_this("number_of_rats: "..number_of_rats)
+  local number_to_spawn = math.random(number_of_rats_min, number_of_rats_max)
+
+    --One Burer zero rats, spawn full number of rats
+    if (number_of_burers == 1 and number_of_rats == 0) then
+      spawn_rats(number_to_spawn, squad_burer, burer)
+
+      trace_this("SPAWN RATS - One burer zero rats")
+    end
+
+    --One Burer with rats, spawn reduced number of rats
+    if (number_of_burers == 1 and number_of_rats > 0) then
+      number_to_spawn = math.ceil((number_to_spawn * 0.3))
+      spawn_rats(number_to_spawn, squad_burer, burer)
+
+      trace_this("SPAWN RATS - One burer with rats")
+      trace_this("CEILED VALUE: "..number_to_spawn)
+    end
+
+    --More than one Burers, spawn more rats
+    if (number_of_burers > 1) then
+      number_to_spawn = math.ceil((number_to_spawn * 1.5))
+      spawn_rats(number_to_spawn, squad_burer, burer)
+
+      trace_this("SPAWN RATS - More than one Burers")
+      trace_this("CEILED VALUE: "..number_to_spawn)
+    end
+
+  burer_rat_spawn_table[squad_burer.id] = true
+end
+
+function spawn_rats(number_to_spawn, squad_burer, burer)
+  for i = 1,number_to_spawn,1 do
+    local section = rat_table[math.random(1,#rat_table)]
+
+    local se_obj = alife():create(section, burer:position(), burer:level_vertex_id(), burer:game_vertex_id())
+    if (se_obj) then
+      add_squad_member_by_id(se_obj.id, squad_burer)
+      trace_this("RAT SPAWNED FOR BURER: "..section)
+    end
+  end
+end
+
+-- function actor_on_before_hit(s_hit)
+  -- if (s_hit.draftsman and is_burer(s_hit.draftsman)) then
+
+    -- if (should_actor_drop_weapon(s_hit.draftsman:position())) then
+      -- local itm = db.actor:active_item()
+      -- if (itm and IsWeapon(itm) and not is_meele(itm)) then
+          -- db.actor:drop_item(itm)
+      -- end
+
+      -- local det = db.actor:active_detector()
+      -- local fl_con = det and (det:section() == "device_flashlight")
+      -- if (fl_con) then
+        -- db.actor:drop_item(det)
+      -- end
+    -- end
+  -- end
+-- end
+
+local iteration_to_skip = 0
+function handle_weapon_jamming(burer)
+
+  --Let's handle it in every real-world second, it is easier
+  if (iteration_to_skip == 6) then
+    iteration_to_skip = 0
+
+    if (blinded_burer_id == burer:id()) then return end
+
+    if (burer and burer:alive() and burer:see(db.actor) and should_actors_weapon_get_jammed(burer:position())) then        
+      local itm = db.actor:active_item()
+      if (IsWeapon(itm)) then
+        play_sound_effect_for_weapon(itm)
+        --draw_effect_for_weapon(itm)
+
+        itm:unload_magazine(true)
+
+        local condition = itm:condition()
+        itm:set_condition(condition - c_weapon_condition_loss_on_jamming)
+      end  
+    end
+
+  else
+    iteration_to_skip = iteration_to_skip + 1
+  end
+end
+
+function should_actors_weapon_get_jammed(obj_position)
+  local distance = get_distance(db.actor:position(), obj_position)
+  local percentage = 100 - (distance * c_weapon_jam_chance_percentage_decrease_per_meters)
+  if (percentage < 0) then percentage = 0 end
+  local random = math.random(1, 100)
+  if (random <= percentage) then
+    return true
+  else
+    return false
+  end
+end
+
+-- function should_actor_drop_weapon(obj_position)
+  -- local distance = get_distance(db.actor:position(), obj_position)
+  -- local percentage = 100 - (distance * c_weapon_drop_chance_percentage_decrease_per_meters)
+  -- if (percentage < 0) then percentage = 0 end
+  -- local random = math.random(1, 100)
+  -- if (random <= percentage) then
+    -- return true
+  -- else
+    -- return false
+  -- end
+-- end
+
+function should_burer_be_blinded(obj_position)
+  local distance = get_distance(db.actor:position(), obj_position)
+  local percentage = 100 - (distance * c_light_efficiency_percentage_decrease_per_meters)
+  if (percentage < 0) then percentage = 0 end
+  local random = math.random(1, 100)
+  if (random <= percentage) then
+    return true
+  else
+    return false
+  end
+end
+
+--Cause fake damage
+function cause_fake_damage(obj)
+  --Burer has to receive some fake damage, or it will just stand
+    local h= hit()
+    h.type = hit.telepatic
+    h.power = 1
+    h.impulse = 1
+    h.direction = VEC_Z
+    h.draftsman = db.actor
+    obj:hit(h)
+end
+
+function draw_effect_for_weapon(act_item)
+  local position = act_item:position()
+
+  --if (not axr_main.weapon_is_zoomed) then
+  --  if (not is_pistol(act_item)) then
+  --    position.z = position.z - 0.3
+  --    position.y = position.y + 0.6
+  --    local dir = act_item:direction()
+  --    position = position:add(dir:mul(0.7))
+  --  else
+  --    position.y = position.y + 0.25
+  --  end
+  --end
+
+  --fx_particle = "anomaly2\\effects\\burer_shield_wave---(hitmark)_arszi"
+  fx_particle = "anomaly2\\burer_wave"
+  fx_particle = particles_object(fx_particle)
+  fx_particle:play_at_pos(position)
+end
+
+function play_sound_effect_for_weapon(act_item)
+  local sounds = {
+    --"weapons\\abakan\\abakan_empty",
+    --"weapons\\ak47m\\rifle_empty",
+    --"weapons\\ak74u\\empty",
+    --"weapons\\aug\\aug_empty",
+    "material\\small-weapon\\collide\\impact_wpn_small_asphalt1",
+    "material\\small-weapon\\collide\\impact_wpn_small_asphalt2"
+  }
+
+  fx_snd = xr_sound.get_safe_sound_object(sounds[math.random(1, #sounds)])
+  fx_snd:play_no_feedback(act_item, sound_object.s3d, 0, act_item:position(), 1)
+end
+
+function is_pistol(item)
+	local section = item:section()
+	if(section=="wpn_beretta")
+	or(section=="wpn_colt1911")
+	or(section=="wpn_desert_eagle")
+	or(section=="wpn_fort")
+	or(section=="wpn_hpsa")
+	or(section=="wpn_pb")
+	or(section=="wpn_pm")
+	or(section=="wpn_usp")
+	or(section=="wpn_walther") then
+    return true
+  else
+    return false
+	end
+end
+
+--Check if targeted by headlamp
+function targeted_by_torch()
+  local torch = db.actor:item_in_slot(10)
+  local torch_con = torch and torch:condition()
+  local flag_to = torch_con and (torch_con and (torch_con > c_limit))
+  if (flag_to and torch:torch_enabled()) then
+    return true
+  else
+    return false
+  end
+end
+
+--Check if targeted by flashlight
+function targeted_by_flashlight()
+  local det = db.actor:active_detector()
+  local fl_con = det and (det:section() == "device_flashlight") and det:condition()
+  local flag_fl = (fl_con and (fl_con > c_limit))
+  if (flag_fl) then
+    return true
+  else
+    return false
+  end
+end
+
+function get_distance(position_1, position_2)
+  local x = math.abs(position_1.x - position_2.x)
+  local z = math.abs(position_1.z - position_2.z)
+  local distance = math.sqrt((x * x) + (z * z))
+  return distance
+end
+
+function is_burer(obj)
+  return obj:clsid() == clsid.burer_s
+end
+
+function is_meele(obj)
+  return obj:clsid() == 167
+end
+
+function add_squad_member_by_id(id, squad)
+	local obj = alife_object(id)
+	local position	= obj.position
+	local level_vertex_id = obj.m_level_vertex_id
+	local game_vertex_id = obj.m_game_vertex_id
+
+	squad:register_member(obj.id)
+
+	local actor = alife():actor()
+	if (simulation_objects.is_on_the_same_level(obj, actor) and position:distance_to_sqr(actor.position) <= alife():switch_distance()^2) then
+		db.spawned_vertex_by_id[obj.id] = level_vertex_id
+	end
+	SendScriptCallback("squad_on_add_npc",squad,obj,position,position,level_vertex_id,game_vertex_id)
+end
+
+function show_message(msg,time)
+	local hud = get_hud()
+	hud:AddCustomStatic("can_use_weapon_now", true)
+	hud:GetCustomStatic("can_use_weapon_now"):wnd():TextControl():SetTextST(msg)
+	ShowMessage = true
+	ShowMessageInit = game.get_game_time()
+	ShowMessageTime = time
+end
+
+function trace_this(to_trace)
+	--local log_file = io.open("log_arszi_burer.txt", "a")
+	--log_file:write(to_trace.."\n")
+	--log_file:close(log_file)
+end
