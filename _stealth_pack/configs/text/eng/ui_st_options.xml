@@ -888,9 +888,9 @@
 		<text>PDA simple mode</text>
 	</string>
 	<string id="ui_mm_control_general_simple_pda_mode_desc">
-		<text>%c[ui_gray_1]ï¿½%c[ui_gray_2]Enabled: Simple mode.
+		<text>%c[ui_gray_1]•%c[ui_gray_2]Enabled: Simple mode.
 		\nPDA will enter focus (Interface) mode only when player holds it close (Reload keybind).
-		\n \n%c[ui_gray_1]ï¿½%c[ui_gray_2]Disabled: Advanced mode.
+		\n \n%c[ui_gray_1]•%c[ui_gray_2]Disabled: Advanced mode.
 		\nPlayer can switch between focus/movement modes by pressing the Grenade Launcher keybind, regardless if PDA is held close or far from view point.
 		</text>
 	</string>
@@ -1455,9 +1455,9 @@
 		<text>This option adds to the dynamic aspects of the A-Life simulation, by allowing squads in distant parts of the Zone to fight against their enemies.
 		It can impact factions and mutant populations, depending on the outcome of these battles.
 		\n \n%c[pda_yellow]Note:%c[ui_gray_2]
-		\n%c[ui_gray_1]ï¿½%c[ui_gray_2] When the dynamic relations option is enabled, offline combat will play a large role in relation changes, due to the running battles between factions.
-		\n%c[ui_gray_1]ï¿½%c[ui_gray_2] This feature works for all game modes, including Warfare.
-		\n%c[ui_gray_1]ï¿½%c[ui_gray_2] Be aware that this feature can reduce the overall stalker population to some extent. Do not enable this option if you want a more populated zone.
+		\n%c[ui_gray_1]•%c[ui_gray_2] When the dynamic relations option is enabled, offline combat will play a large role in relation changes, due to the running battles between factions.
+		\n%c[ui_gray_1]•%c[ui_gray_2] This feature works for all game modes, including Warfare.
+		\n%c[ui_gray_1]•%c[ui_gray_2] Be aware that this feature can reduce the overall stalker population to some extent. Do not enable this option if you want a more populated zone.
 		</text>
 	</string>
 	<string id="ui_mm_alife_general_excl_dist">
