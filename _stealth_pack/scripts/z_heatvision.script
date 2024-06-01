@@ -121,7 +121,6 @@ local lowered_anm_classes = {
 	["WP_SVU"]		= true,
 	["WP_GROZA"] 	= true,
 	["WP_ASHTG"] 	= true,
-	["WP_ASHTG"] 	= true,
 	["WP_SHOTG"] 	= true,
 	["WP_RG6"] 		= true,
 	["WP_RPG7"] 	= true,
