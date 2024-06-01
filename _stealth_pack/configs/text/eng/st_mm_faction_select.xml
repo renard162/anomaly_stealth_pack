@@ -6,7 +6,7 @@
 		<text>Loner</text>
 	</string>
 	<string id="st_faction_stalker_desc">
-		<text>%c[0,150,150,150]Loners, or free stalkers, prefer to remain unaligned with the various factions operating in the Zone.\nThe vast majority of the Zone's inhabitants belong to this unofficial brotherhood, choosing to live life without getting caught up in someone else's ideals.\n \n%c[d_cyan]Recommended For: New Players\n \n%c[d_green]Includes tutorial quests to introduce game mechanics and give better initial equipments</text>
+		<text>%c[0,150,150,150]Loners, or free stalkers, prefer to remain unaligned with the various factions operating in the Zone.\nThe vast majority of the Zone's inhabitants belong to this unofficial brotherhood, choosing to live life without getting caught up in someone else's ideals.\n \n%c[d_cyan]Recommended For: New Players\n \n%c[d_green]Includes tutorial questline to introduce game mechanics and give better initial equipments</text>
 	</string>
 	<string id="st_faction_bandit">
 		<text>Bandit</text>
