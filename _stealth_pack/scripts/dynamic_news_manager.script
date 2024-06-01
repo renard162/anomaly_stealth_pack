@@ -95,7 +95,7 @@ end
 function actor_on_update()
 	if (delay and delay <= time_global()) then
 		if (not delay_start) then 
-			delay_start = time_global() + 20000
+			delay_start = time_global() + 25000
 		elseif (delay_start and delay_start <= time_global()) then
 			UnregisterScriptCallback("actor_on_first_update", actor_on_first_update)
 			UnregisterScriptCallback("actor_on_update", actor_on_update)
@@ -2383,20 +2383,35 @@ end
 
 function DynamicNewsManager:GossipTaskDRX()
 	local actor_comm = get_actor_true_community()
-	local f = faction_expansions.faction[actor_comm]
-	local leader = f and f["leader"]
+	local leader = ""
+	if (actor_comm == "renegade") then
+		-- Renegade does not have a leader it's a bandit hard mode
+		leader = "zat_b7_bandit_boss_sultan"
+	else
+		local f = faction_expansions.faction[actor_comm]
+		leader = f and f["leader"]
+	end
 	local npc_info = leader and get_story_npc_info(leader)
 	local Se = npc_info and npc_info.name
 	local Ico = npc_info and npc_info.icon
 	if not (Se and Ico) then
 		return
 	end
-	
-	local msg = game.translate_string("drx_sl_start_msg_" .. actor_comm)
+
 	local actor_name = alife():actor():character_name()
-	msg = strformat(msg,actor_name)
-	
-	dynamic_news_helper.send_tip(msg,Se, 0, 20,Ico,"news","npc")
+	local msg = game.translate_string("drx_sl_start_msg_" .. actor_comm)
+	msg = strformat(msg, actor_name)
+	dynamic_news_helper.send_tip(msg, Se, 0, 120, Ico,"news", "npc")
+
+	-- Loners have tutorial questline
+	if (actor_comm == "stalker") then
+		local tut_npc_info = "esc_2_12_stalker_fanat" and get_story_npc_info("esc_2_12_stalker_fanat")
+		local tut_Se = tut_npc_info and tut_npc_info.name
+		local tut_Ico = tut_npc_info and tut_npc_info.icon
+		local tut_msg = game.translate_string("fanatic_tutorial_start_msg_stalker")
+		tut_msg = strformat(tut_msg, actor_name)
+		dynamic_news_helper.send_tip(tut_msg, tut_Se, 0, 120, tut_Ico, "news", "npc")
+	 end
 end
 
 --< Companions News >--

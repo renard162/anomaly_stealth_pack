@@ -39,6 +39,12 @@
 	</string>
 
 
+	<!-- FANATIC TUTORIAL CALL -->
+	<string id="fanatic_tutorial_start_msg_stalker">
+		<text>Hey rookie, you might have already gotten a message from Sidorovich. Before doing business with him, gear up (pressing %c[0,250,250,0]I%c[0,255,255,255]) and come talk to me behind the red house. I've got some lessons that will help you on your journey here in the Exclusion Zone. And remember, you can read all received messages and the Survival Guide on your PDA (pressing %c[0,250,250,0]P%c[0,255,255,255]).</text>
+	</string>
+
+
 	<!-- SIDOROVICH STORYLINE START GAME 1 DIALOG -->
 	<string id="drx_sl_start_msg_stalker">
 		<text>Stalkers, I've got some interesting work lined up that you might want to look at. You interested in adventure? Fame? Cash? Come to my place in the Rookie Village and we'll talk.</text>
@@ -209,6 +215,12 @@
 	<!-- KUZNETSOV STORYLINE START GAME 1 END GAME 1 TEXT: -->
 	<string id="drx_sl_agr_smart_terrain_1_6_near_2_military_colonel_kovalski_start_game_1_endgame_1">
 		<text>Thank you soldier. You have done well for me, now I will do something for you, although you may not want to hear it. You are expecting to rotate out of here soon, yes? I'm afraid the top brass has other ideas. The cordon has closed in and has been locked down, nothing and no one is able to get in or out of the Zone any more, including the military. You've been left here to die, and even your corpse will be left for worm food. You can't even escape in a body bag. But all hope is not lost for you, if you are daring. There is only one way left for you to get out of here, and it lies in Chernobyl. Buried deep within the NPP is the Wish Granter. If you can find it, and if you survive, you can use it to wish your way out of here. It is your only hope soldier. Good luck to you.</text>
+	</string>
+
+
+	<!-- SULTAN STORYLINE START GAME 1 DIALOG TO REGEGADES -->
+	<string id="drx_sl_start_msg_renegade">
+		<text>I hear you're not exactly welcome around these parts. Come meet me at the abandoned factory in Dark Valley. We might have some business to discuss!</text>
 	</string>
 
 
