@@ -6,79 +6,79 @@
 		<text>Loner</text>
 	</string>
 	<string id="st_faction_stalker_desc">
-		<text>%c[0,150,150,150]Loners, or free stalkers, prefer to remain unaligned with the various factions operating in the Zone.\nThe vast majority of the Zone's inhabitants belong to this unofficial brotherhood, choosing to live life without getting caught up in someone else's ideals.\n \n%c[0,255,255,255]Recommended For: New Players</text>
+		<text>%c[0,150,150,150]Loners, or free stalkers, prefer to remain unaligned with the various factions operating in the Zone.\nThe vast majority of the Zone's inhabitants belong to this unofficial brotherhood, choosing to live life without getting caught up in someone else's ideals.\n \n%c[d_cyan]Recommended For: New Players\n \n%c[d_green]Includes tutorial quests to introduce game mechanics and give better initial equipments</text>
 	</string>
 	<string id="st_faction_bandit">
 		<text>Bandit</text>
 	</string>
 	<string id="st_faction_bandit_desc">
-		<text>%c[0,150,150,150]Chernobyl's outlaws know that while Ukraine and Belarus control the Zone on paper, it is in effect a lawless place.\n \nBandits are killers, thieves and other members of the criminal underworld who exploit this, abusing the Zone's anarchic state to hide from the law and continue their illicit dealings.</text>
+		<text>%c[0,150,150,150]Chernobyl's outlaws know that while Ukraine and Belarus control the Zone on paper, it is in effect a lawless place.\n \nBandits are killers, thieves and other members of the criminal underworld who exploit this, abusing the Zone's anarchic state to hide from the law and continue their illicit dealings.\n \n%c[0,250,250,0]Recommended For: Experienced Players</text>
 	</string>
 	<string id="st_faction_dolg">
 		<text>Duty</text>
 	</string>
 	<string id="st_faction_dolg_desc">
-		<text>%c[0,150,150,150]Duty is a paramilitary faction that wages war against the Zone itself, seeing it as an incubator for untold horrors that would threaten the entire world if left unchecked.\n \nThey have long been in fierce conflict with Freedom due to their conflicting ideals.</text>
+		<text>%c[0,150,150,150]Duty is a paramilitary faction that wages war against the Zone itself, seeing it as an incubator for untold horrors that would threaten the entire world if left unchecked.\n \nThey have long been in fierce conflict with Freedom due to their conflicting ideals.\n \n%c[0,250,250,0]Recommended For: Experienced Players</text>
 	</string>
 	<string id="st_faction_freedom">
 		<text>Freedom</text>
 	</string>
 	<string id="st_faction_freedom_desc">
-		<text>%c[0,150,150,150]Freedom are anarchists and daredevils who fight for unregulated access to the Zone, seeing the Zone as a miracle to be shared and consequently finding themselves in constant conflict with Duty.</text>
+		<text>%c[0,150,150,150]Freedom are anarchists and daredevils who fight for unregulated access to the Zone, seeing the Zone as a miracle to be shared and consequently finding themselves in constant conflict with Duty.\n \n%c[0,250,250,0]Recommended For: Experienced Players</text>
 	</string>
 	<string id="st_faction_army">
 		<text>Military</text>
 	</string>
 	<string id="st_faction_army_desc">
-		<text>%c[0,150,150,150]The Military refers to the Ukrainian government's internal troops, Spetsnaz detachments and commissioned stalkers.\n \nTaking a hardline approach to securing the border between the Zone and the outside world, they're known to shoot all unsanctioned personnel on sight.</text>
+		<text>%c[0,150,150,150]The Military refers to the Ukrainian government's internal troops, Spetsnaz detachments and commissioned stalkers.\n \nTaking a hardline approach to securing the border between the Zone and the outside world, they're known to shoot all unsanctioned personnel on sight.\n \n%c[0,250,250,0]Recommended For: Experienced Players</text>
 	</string>
 	<string id="st_faction_ecolog">
 		<text>Ecologist</text>
 	</string>
 	<string id="st_faction_ecolog_desc">
-		<text>%c[0,150,150,150]Sponsored by the Ukrainian government, the Ecologists are an official body of scientists and contracted field assistants who research the Zone, hoping to harness its potential for the good of mankind.\n \n%c[0,255,255,255]Recommended For: Pacifistic Players</text>
+		<text>%c[0,150,150,150]Sponsored by the Ukrainian government, the Ecologists are an official body of scientists and contracted field assistants who research the Zone, hoping to harness its potential for the good of mankind.\n \n%c[d_green]Recommended For: Pacifistic Players</text>
 	</string>
 	<string id="st_faction_killer">
 		<text>Mercenary</text>
 	</string>
 	<string id="st_faction_killer_desc">
-		<text>%c[0,150,150,150]Mercenaries in the Zone usually belong to a semi-loose company of professional fighters.\nThese irregulars come from all sorts of nationalities and backgrounds, selling their services as veteran soldiers to anyone willing to pay.\n \nIt is unknown who hired them to enter the Zone, or why they have interests there.</text>
+		<text>%c[0,150,150,150]Mercenaries in the Zone usually belong to a semi-loose company of professional fighters.\nThese irregulars come from all sorts of nationalities and backgrounds, selling their services as veteran soldiers to anyone willing to pay.\n \nIt is unknown who hired them to enter the Zone, or why they have interests there.\n \n%c[0,250,250,0]Recommended For: Experienced Players</text>
 	</string>
 	<string id="st_faction_monolith">
 		<text>Monolith</text>
 	</string>
 	<string id="st_faction_monolith_desc">
-		<text>%c[0,150,150,150]The Monolith are a fanatical cult hostile to all but their own.\n \nDespite the destruction of the C-Conciousness, they recently experienced a troubling surge in numbers. Since then, they have retaken many of their former territories.\n \n%c[0,255,255,255]Recommended For: Advanced Players Only</text>
+		<text>%c[0,150,150,150]The Monolith are a fanatical cult hostile to all but their own.\n \nDespite the destruction of the C-Conciousness, they recently experienced a troubling surge in numbers. Since then, they have retaken many of their former territories.\n \n%c[d_red]Recommended For: Advanced Players Only</text>
 	</string>
 	<string id="st_faction_csky">
 		<text>Clear Sky</text>
 	</string>
 	<string id="st_faction_csky_desc">
-		<text>%c[0,150,150,150]Clear Sky is an independent scientific and paramilitary organisation, dedicated to increasing general understanding of the Zone while safeguarding its deadliest secrets.\n \nAlthough the group effectively collapsed after a failed expedition to the CNPP seven years ago, the few remaining survivors eventually rebuilt the faction to its former stature.\n \n%c[0,255,255,255]Recommended For: New Players</text>
+		<text>%c[0,150,150,150]Clear Sky is an independent scientific and paramilitary organisation, dedicated to increasing general understanding of the Zone while safeguarding its deadliest secrets.\n \nAlthough the group effectively collapsed after a failed expedition to the CNPP seven years ago, the few remaining survivors eventually rebuilt the faction to its former stature.\n \n%c[d_cyan]Recommended For: New Players</text>
 	</string>
 	<string id="st_faction_renegade">
 		<text>Renegade</text>
 	</string>
 	<string id="st_faction_renegade_desc">
-		<text>%c[0,150,150,150]Renegades consist of the most despicable stalkers in the Zone.\n \nEach member has committed transgressions so grave that no group will take them in, and even bandits just barely tolerate them.\n \n%c[0,255,255,255]Recommended For: Advanced Players Only</text>
+		<text>%c[0,150,150,150]Renegades consist of the most despicable stalkers in the Zone.\n \nEach member has committed transgressions so grave that no group will take them in, and even bandits just barely tolerate them.\n \n%c[d_red]Recommended For: Advanced Players Only</text>
 	</string>
 	<string id="st_faction_greh">
 		<text>Sin</text>
 	</string>
 	<string id="st_faction_greh_desc">
-		<text>%c[0,150,150,150]Sin are an extremely hostile cult of mutant stalkers who believe in the divine essence of the Zone.\n \nVariously described as zombified, mutated or possessed, "dark stalkers" of the ominous Sin faction seek to expand the Zone to span the whole world - and they will stop at nothing to accomplish this ambitious goal.\n \n%c[0,255,255,255]Recommended For: Advanced Players Only</text>
+		<text>%c[0,150,150,150]Sin are an extremely hostile cult of mutant stalkers who believe in the divine essence of the Zone.\n \nVariously described as zombified, mutated or possessed, "dark stalkers" of the ominous Sin faction seek to expand the Zone to span the whole world - and they will stop at nothing to accomplish this ambitious goal.\n \n%c[d_red]Recommended For: Advanced Players Only</text>
 	</string>
 	<string id="st_faction_isg">
 		<text>UNISG</text>
 	</string>
 	<string id="st_faction_isg_desc">
-		<text>%c[0,150,150,150]The United Nations International Scientific Group is a special forces unit with a keen interest in the Zone.\n \nWhatever their goal may be, their field agents are far from defenceless, and most would rather shoot first than risk information on their movements getting leaked.\n \n%c[0,255,255,255]Recommended For: Advanced Players Only</text>
+		<text>%c[0,150,150,150]The United Nations International Scientific Group is a special forces unit with a keen interest in the Zone.\n \nWhatever their goal may be, their field agents are far from defenceless, and most would rather shoot first than risk information on their movements getting leaked.\n \n%c[d_red]Recommended For: Advanced Players Only</text>
 	</string>
 	<string id="st_faction_zombied">
 		<text>Zombified</text>
 	</string>
 	<string id="st_faction_zombied_desc">
-		<text>%c[0,150,150,150]Braaaiiinnnsss!!!\n \nZombified stalkers are mindless husks of their previous selves reduced to their most basic animal-like instincts and will attack almost anything that gets too close.\n \n%c[0,255,255,255]Recommended For: Advanced Players Only</text>
+		<text>%c[0,150,150,150]Braaaiiinnnsss!!!\n \nZombified stalkers are mindless husks of their previous selves reduced to their most basic animal-like instincts and will attack almost anything that gets too close.\n \n%c[d_red]Recommended For: Advanced Players Only</text>
 	</string>
 	
 	<!-- Hint -->
