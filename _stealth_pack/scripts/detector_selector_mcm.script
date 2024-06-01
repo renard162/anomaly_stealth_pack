@@ -8,7 +8,7 @@
 ]]
 
 local mcm_id = "detector_selector"
-local mcm_key = DIK_keys.DIK_B
+local mcm_key = DIK_keys.DIK_H
 
 categories = {
     anomaly = {
@@ -24,25 +24,25 @@ categories = {
         devices = {
             ["detector_radio"] = 1
         },
-        defaults = {keybind = mcm_key, modifier = 1, second_key = 0}
+        defaults = {keybind = mcm_key, modifier = 2, second_key = 0}
     },
     geiger = {
         devices = {
             ["detector_geiger"] = 1
         },
-        defaults = {keybind = mcm_key, modifier = 2, second_key = 0}
+        defaults = {keybind = mcm_key, modifier = 1, second_key = 3}
     },
     lights = {
         devices = {
             ["device_flashlight"] = 1
         },
-        defaults = {keybind = mcm_key, modifier = 0, second_key = 1}
+        defaults = {keybind = mcm_key, modifier = 1, second_key = 0}
     },
     detector_anomaly = {
         devices = {
             ["detector_anomaly"] = 1
         },
-        defaults = {keybind = mcm_key, modifier = 1, second_key = 1}
+        defaults = {keybind = mcm_key, modifier = 2, second_key = 3}
     }
 }
 
