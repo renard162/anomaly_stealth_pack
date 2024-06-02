@@ -579,12 +579,12 @@ function UINewGame:__init(owner) super()
 	self.selected_icon = nil
 	self.selected_map = nil
 	self.selected_difficulty = self.table_difficulty[1]
-	self.selected_economy = self.table_economy[1]
+	self.selected_economy = self.table_economy[2]
 	self.selected_hardcore_lives = self.table_hardcore_lives[1]
 	self.selected_hardcore_regen = self.table_hardcore_regen[1]
 	self.selected_timer = self.table_timer[1]
 	self.selected_fortuneswheel_interval = self.table_fortuneswheel_interval[1]
-	self.points_left = ini_itm:r_float_ex("points","total_points_eco_1") or 15000
+	self.points_left = ini_itm:r_float_ex("points","total_points_eco_2") or 12000
 	self.points_used = 0
 	
 	-- Utility
@@ -1410,7 +1410,7 @@ function UINewGame:LoadEconomy (rand)
 	for i=1,#self.table_economy do
 		self.list_economy:AddItem(game.translate_string(self.table_economy[i]), i)
 	end
-	local pick = rand and self.table_economy[math.random(#self.table_economy)] or self.table_economy[1]
+	local pick = rand and self.table_economy[math.random(#self.table_economy)] or self.table_economy[2]
 	self.list_economy:SetText(game.translate_string(pick))
 	self.selected_economy = pick
 end
@@ -1903,7 +1903,7 @@ function UINewGame:OnStartGame()
 	
 	-- preparing economy values
 	if (self.selected_economy == nil or self.selected_economy == "") then
-		self.selected_economy = self.table_economy[1]
+		self.selected_economy = self.table_economy[2]
 	end
 	local econ = self.selected_economy:gsub("st_econ_","")
 	econ = tonumber(econ) or 1
