@@ -39,7 +39,7 @@
 		%c[d_blue] • %c[ui_gray_2] technological item\n
 		%c[d_green] • %c[ui_gray_2] low-tier field cooking equipment\n
 		%c[d_green] • %c[ui_gray_2] fuel: %c[ui_gray_1] charcoal\n
-		%c[d_green] • %c[ui_gray_2] usable for cooking meats of lesser mutants\n
+		%c[d_green] • %c[ui_gray_2] usable for cooking simple meals\n
 		</text>
 	</string>
 	
@@ -56,8 +56,8 @@
 		%c[d_blue] • %c[ui_gray_2] high quality\n
 		%c[d_green] • %c[ui_gray_2] medium-tier field cooking equipment\n
 		%c[d_green] • %c[ui_gray_2] fuel: %c[ui_gray_1] charcoal\n
-		%c[d_green] • %c[ui_gray_2] usable on %c[ui_gray_1]campfires%c[ui_gray_2]
-		%c[d_green] • %c[ui_gray_2] usable for cooking meats of lesser mutants\n</text>
+		%c[d_green] • %c[ui_gray_2] usable on %c[ui_gray_1]campfires%c[ui_gray_2]\n
+		%c[d_green] • %c[ui_gray_2] usable for cooking simple meals\n</text>
 	</string>
 	
 	<string id="st_fieldcooker">
@@ -73,7 +73,7 @@
 		%c[d_blue] • %c[ui_gray_2] high quality\n
 		%c[d_green] • %c[ui_gray_2] high-tier cooking equipment\n
 		%c[d_green] • %c[ui_gray_2] fuel: %c[ui_gray_1] gasoline, natural gas, kerosene\n
-		%c[d_green] • %c[ui_gray_2] usable for cooking meats of all mutants\n</text>
+		%c[d_green] • %c[ui_gray_2] usable for cooking any meal\n</text>
 	</string>
 	
 	<string id="st_box_matches">
