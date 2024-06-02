@@ -282,7 +282,7 @@ options = {
 		{ id= "lookout_toggle"          ,type= "check"    ,val= 1	,cmd= "g_lookout_toggle"	   ,def= false	 },
 		{ id= "aim_toggle"            	,type= "check"    ,val= 1	,cmd= "wpn_aim_toggle"	       ,def= false	 ,bool_to_num= true	},
 		{ id= "pickup_mode"             ,type= "check"    ,val= 1	,cmd= "g_multi_item_pickup"	   ,def= true	 },
-		{ id= "simple_pda_mode"       	,type= "check"    ,val= 1	,cmd= "g_simple_pda"	   	   ,def= false	 },
+		{ id= "simple_pda_mode"       	,type= "check"    ,val= 1	,cmd= "g_simple_pda"	   	   ,def= true	 },
 		{ id= "disassembly_warning"    	,type= "check"    ,val= 1	,def= true	 },
 	},},
 	{ id= "keybind"  		,sh=true ,gr={},}, -- ENGINE!
