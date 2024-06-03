@@ -1215,8 +1215,10 @@
 		<text>Mechanics and medics trades recipes</text>
 	</string>
 	<string id="ui_mm_gameplay_economy_diff_trade_recipes_desc">
-		<text>When enabled, mechanics and medics will trade recipes if completed his toolkit questline.\n
-		ATTENTION: This change will have effect on next trader restock</text>
+		<text>When enabled, mechanics and medics will trade recipes if completed his toolkit questline.
+		\n \n%c[pda_red]ATTENTION:%c[ui_gray_2]
+		\nThis change will have effect on next trader restock
+		</text>
 	</string>
 	<string id="ui_mm_gameplay_economy_diff_restock">
 		<text>Traders restock cycle (hours)</text>
