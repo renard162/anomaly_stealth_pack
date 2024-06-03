@@ -186,6 +186,7 @@ local function on_game_load(binder)
 			economy["percentage_parts"]		= ini_diff:r_bool_ex("econ_" .. eco , "percentage_parts") or false
 			economy["recover_parts"]		= ini_diff:r_bool_ex("econ_" .. eco , "recover_parts") or false
 			economy["limited_bolts"] 		= ini_diff:r_bool_ex("econ_" .. eco , "limited_bolts") or false
+			economy["trade_recipes"]		= ini_diff:r_bool_ex("econ_" .. eco , "trade_recipes") or false
 			economy["arty_degradation"] 	= ini_diff:r_bool_ex("econ_" .. eco , "arty_degradation") or false
 			economy["bkpk_degradation"] 	= ini_diff:r_bool_ex("econ_" .. eco , "bkpk_degradation") or false
 

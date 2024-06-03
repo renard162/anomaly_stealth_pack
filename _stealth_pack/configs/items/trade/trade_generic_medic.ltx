@@ -4,7 +4,7 @@
 [trader]
 buy_condition = trade_generic_buy 
 sell_condition = trade_generic_sell
-buy_supplies = {=drugkit_task_done()} supplies_2, supplies_1
+buy_supplies = {=drugkit_task_done() =recipe_trade_enabled()} supplies_3, {=drugkit_task_done()} supplies_2, supplies_1
 buy_item_condition_factor = 0.50
 buy_item_exponent = 2.25
 sell_item_exponent = 0.75
@@ -20,6 +20,10 @@ itm_drugkit				= 2.0, 2.0
 
 [trade_generic_sell]:medic
 itm_drugkit				= 2.0, 2.0
+recipe_drug_1			= 13.1, 13.1
+recipe_drug_2			= 14.2, 14.2
+recipe_drug_3			= 15.3, 15.3
+recipe_drug_4			= 16.4, 16.4
 
 [supplies_1]:common_stock
 glucose_s				= 2, 1
@@ -84,3 +88,9 @@ antirad_kalium			= 3, 1
 antibio_sulfad			= 3, 1
 antiemetic   			= 3, 1
 glucose_s				= 3, 1
+
+[supplies_3]:supplies_2
+recipe_drug_1			= 1, 1
+recipe_drug_2			= 1, 1
+recipe_drug_3			= 1, 1
+recipe_drug_4			= 1, 1

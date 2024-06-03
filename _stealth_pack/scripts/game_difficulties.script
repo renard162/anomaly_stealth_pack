@@ -62,6 +62,7 @@ function setup_eco_factors(eco)
 	factors_eco["percentage_parts"]	    = economy["percentage_parts"] or ((economy["percentage_parts"] ~= false) and ini_diff:r_bool_ex("econ_" .. eco , "percentage_parts")) or false
 	factors_eco["recover_parts"]	    = economy["recover_parts"] or ((economy["recover_parts"] ~= false) and ini_diff:r_bool_ex("econ_" .. eco , "recover_parts")) or false
 	factors_eco["limited_bolts"]		= economy["limited_bolts"] or ((economy["limited_bolts"] ~= false) and ini_diff:r_bool_ex("econ_" .. eco , "limited_bolts")) or false
+	factors_eco["trade_recipes"]	    = economy["trade_recipes"] or ((economy["trade_recipes"] ~= false) and ini_diff:r_bool_ex("econ_" .. eco , "trade_recipes")) or false
 	factors_eco["arty_degradation"]		= economy["arty_degradation"] or ((economy["arty_degradation"] ~= false) and ini_diff:r_bool_ex("econ_" .. eco , "arty_degradation")) or false
 	factors_eco["bkpk_degradation"]		= economy["bkpk_degradation"] or ((economy["bkpk_degradation"] ~= false) and ini_diff:r_bool_ex("econ_" .. eco , "bkpk_degradation")) or false
 	factors_eco["outfit_drops"]			= economy["outfit_drops"] or ini_diff:r_float_ex("econ_" .. eco , "outfit_drops") or 2

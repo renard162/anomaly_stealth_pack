@@ -343,6 +343,7 @@ options = {
 		{ id= "percentage_parts"    	 ,type= "check"    ,val= 1	,curr= {curr_economy,"percentage_parts"}	 ,functor= {func_economy_diff,"percentage_parts"}	        	                    				},
 		{ id= "recover_parts"    	 	 ,type= "check"    ,val= 1	,curr= {curr_economy,"recover_parts"}	 	 ,functor= {func_economy_diff,"recover_parts"}		        	                    				},
 		{ id= "limited_bolts"    	     ,type= "check"    ,val= 1	,curr= {curr_economy,"limited_bolts"}	     ,functor= {func_economy_diff,"limited_bolts"}	       	                   	 						},
+		{ id= "trade_recipes"    	 	 ,type= "check"    ,val= 1	,curr= {curr_economy,"trade_recipes"}	 	 ,functor= {func_economy_diff,"trade_recipes"}		        	                    				},
 		{ id= "outfit_drops"    	     ,type= "list"     ,val= 2	,curr= {curr_economy,"outfit_drops"}	     ,functor= {func_economy_diff,"outfit_drops"}	       ,content= {{1,"off"} , {2,"progressive"} , {3,"full"}} },
 		
 	},},

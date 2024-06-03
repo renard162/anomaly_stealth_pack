@@ -15,6 +15,13 @@ function is_npc_enemy_to_faction(actor,npc,p)
 	return false
 end
 
+function recipe_trade_enabled(actor, npc, p)
+	if game_difficulties.get_eco_factor("trade_recipes") then
+		return true
+	end
+	return false
+end
+
 function toolkit_task_done(actor, npc, p)
 	if (not p and p[1]) then return end
 	local npc_sec = npc and npc:section()
