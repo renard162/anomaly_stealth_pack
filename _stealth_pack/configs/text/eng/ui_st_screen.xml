@@ -708,7 +708,7 @@
 		<text>Campfire lighting unsuccessful</text>
 	</string>
 	<string id="st_ui_no_save_campfire">
-		<text>You can only %s near campfires or in safe areas.</text>
+		<text>You can only %s near campfires or in safe areas. (PDA -> Guide -> Features -> Campfire save mode)</text>
 	</string>
 	<string id="st_ui_campfire_prereq">
 		<text>Matches or Firestarter set are required to ignite campfires.</text>

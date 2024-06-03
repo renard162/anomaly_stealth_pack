@@ -404,6 +404,7 @@
 			
 			\n%c[pda_blue]Details%c[ui_gray_1]
 			\nAnomaly allows you to customise all aspects of Progression Difficulty, here's a list of all available options:
+			\n%c[200,200,50,50]• %c[pda_white]Minimum item condition for sale: %c[ui_gray_1]changes the minimum condition to sell items.
 			\n%c[200,200,50,50]• %c[pda_white]Earned goodwill factor: %c[ui_gray_1]multiplier for the amount of goodwill earned upon completing tasks.
 			\n%c[200,200,50,50]• %c[pda_white]Money rewards factor: %c[ui_gray_1]multiplier for the amount of money earned upon completing tasks.
 			\n%c[200,200,50,50]• %c[pda_white]Repair costs coefficient: %c[ui_gray_1]multiplier for the cost of repair services offered by mechanics.
@@ -412,11 +413,14 @@
 			\n%c[200,200,50,50]• %c[pda_white]Trade prices (sell) factor: %c[ui_gray_1]multiplier for the prices of items that traders buy from you.
 			\n%c[200,200,50,50]• %c[pda_white]Loots (items) chance factor: %c[ui_gray_1]multiplier for the chance of finding items on corpses.
 			\n%c[200,200,50,50]• %c[pda_white]Loots (money) factor: %c[ui_gray_1]multiplier for the amount of money found on corpses.
+			\n%c[200,200,50,50]• %c[pda_white]Dropped outfit/weapon condition multiplier: %c[ui_gray_1]increases or reduces the quality of armors and weapons looted from corpses.
 			\n%c[200,200,50,50]• %c[pda_white]Full-percentage system for parts: %c[ui_gray_1]when enabled, the parts disassembled from weapons/outfits will have numric condition. Thus making the system more complicated.
 			\n%c[200,200,50,50]• %c[pda_white]Chance of discovering stashes: %c[ui_gray_1]controls the chance of finding stash locations in PDAs.
 			\n%c[200,200,50,50]• %c[pda_white]Weapon degradation factor: %c[ui_gray_1]multiplier for degradation rate of your weapons.
 			\n%c[200,200,50,50]• %c[pda_white]Battery power consumption factor: %c[ui_gray_1]multiplier for the amount of power consumed from devices on use.
 			\n%c[200,200,50,50]• %c[pda_white]Enable limited amount of bolts: %c[ui_gray_1]as the name suggests, your bolts storage is limited.
+			\n%c[200,200,50,50]• %c[pda_white]Recover old parts when fixing: %c[ui_gray_1]as the name suggests, when you replace a part in workbench, the replaced part will not be destroyed.
+			\n%c[200,200,50,50]• %c[pda_white]Mechanics and medics trade recipes: %c[ui_gray_1]when you finish the questline of mechanic tools or the medic Drug-making kit, they will include recipes in their selling inventory.
 			\n%c[200,200,50,50]• %c[pda_white]Enable artefact degradation: %c[ui_gray_1]arterfacts can degrade when they protect their users from relative anomolous damager. Degradation affects artefact price.
 			\n%c[200,200,50,50]• %c[pda_white]Artefact respawn chance: %c[ui_gray_1]chance of artefacts to appear in anomolous fields.
 			\n%c[200,200,50,50]• %c[pda_white]Traders restock cycle (hours): %c[ui_gray_1]Hours until traders restock again.
