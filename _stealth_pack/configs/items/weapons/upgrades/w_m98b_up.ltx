@@ -93,12 +93,12 @@ PDM_disp_accel_factor                    = -0.5
 inv_weight                               = -0.23
 
 [up_sect_fourta_m98b]
-cost                                     = 2560
-silencer_status                          = 2
-silencer_name                            = wpn_sil_sr25
-silencer_x                               = 256 
-silencer_y                               = 13
-snd_silncer_shot                         = wpn_m98b_snd_silncer_shot
+cost                                     = 5400
+value                                    = +15
+condition_queue_shot_dec                 = -0.0009
+condition_shot_dec                       = -0.0009
+misfire_start_prob                       = -0.0009
+misfire_end_prob                         = -0.009
 
 [up_sect_fourtc_m98b]
 cost                                     = 6360
@@ -324,7 +324,7 @@ scheme_index                             = 0, 3
 known                                    = 1
 effects                                  = up_gr_fourtcd_m98b
 section                                  = up_sect_fourta_m98b
-property                                 = prop_silencer
+property                                 = prop_reliability
 precondition_functor                     = inventory_upgrades.precondition_functor_a
 precondition_parameter                   = a & b
 effect_functor                           = inventory_upgrades.effect_functor_a
@@ -332,9 +332,9 @@ effect_parameter                         = something_here
 prereq_functor                           = inventory_upgrades.prereq_functor_a
 prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
 prereq_params                            =
-name                                     = st_up_add_a1_name
-description                              = st_up_add_a1_descr
-icon                                     = ui_inGame2_upgrade_IL86_16
+name                                     = st_up_stvh_b2_name
+description                              = st_up_stvh_b2_descr
+icon                                     = ui_inGame2_upgrade_RP74_10
 
 [up_fourtc_m98b]
 scheme_index                             = 1, 5
