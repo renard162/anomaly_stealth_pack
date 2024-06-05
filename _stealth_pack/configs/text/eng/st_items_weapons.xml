@@ -1112,8 +1112,7 @@
 	<string id="st_wpn_m98b_descr">
 		<text>The Barrett M98B is a bolt-action sniper rifle chambered in .338 Lapua Mag. Rather than modifying a hunting rifle, Barrett created an original design for the M98B. The M98B features an adjustable stock and cheek pad for comfort, an adjustable trigger for preferable trigger control, a rear monopod and a front bi-pod for stability. Users can further modify the rifle by attaching sights, lights and grips to its rails. The M98B has a simple design making it easy for users to disassemble and clean.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] Leupold Mark 4 scope (integrated)\n
-		%c[d_purple] • %c[ui_gray_2] SR-25 suppressor(after modification)</text>
+		%c[d_purple] • %c[ui_gray_2] Leupold Mark 4 scope (integrated)</text>
 	</string>
 	
 	<string id="st_wpn_mosin">
@@ -2072,7 +2071,7 @@
 	<string id="st_wpn_wa2000_descr">
 		<text>The Walther WA 2000 is a semi-automatic bullpup sniper rifle produced by the Carl Walther GmbH Sportwaffen company from 1982 until 1988. It was produced in three different calibers. Production of the rifle was limited and it was shortly stopped because it was too expensive to achieve widespread sales and not robust enough for military use as a sniper rifle. Only 176 were built due to its high cost, making it one of the rarest and most sought production firearms ever made.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] KZRZP suppressor (after modification)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] Schmidt and Bender x2.5 to x10 scope (integrated)\n \n</text>
 	</string>
 	
 	<string id="st_wpn_apb">
