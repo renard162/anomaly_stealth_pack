@@ -215,6 +215,21 @@ local function on_key_hold(key)
 	end
 end
 
+local nv_change_state = false
+
+local function on_key_press(key)
+    local bind = dik_to_bind(key)
+
+    if (bind == key_bindings.kNIGHT_VISION) then
+        local torch = db.actor:item_in_slot(10)
+        CreateTimeEvent("nvg_keypress", "nvg_keypress_long", 0.5, function()
+            nv_change_state = true
+            set_nightvision(torch and torch:section(), not nv_state)
+            return true 
+        end)
+    end
+end
+
 local function on_key_release(key)
 
 	if (key == DIK_keys["DIK_LSHIFT"]) then
@@ -226,8 +241,11 @@ local function on_key_release(key)
 	
 	-- Night-Vision
 	if (bind == key_bindings.kNIGHT_VISION) then
-		local torch = db.actor:item_in_slot(10)
-		set_nightvision(torch and torch:section(), not nv_state)
+        RemoveTimeEvent("nvg_keypress", "nvg_keypress_long")
+        if not nv_change_state then
+            z_heatvision.switch_heat_mode()
+        end
+        nv_change_state = false
 		
 	-- Dosimeter keybind
 	elseif (bind == key_bindings.kCUSTOM14) then
@@ -408,6 +426,7 @@ function on_game_start()
 	
 	RegisterScriptCallback("server_entity_on_unregister",se_device_on_unregister)
 	RegisterScriptCallback("actor_on_feeling_anomaly",on_anomaly_touch)
+    RegisterScriptCallback("on_key_press",on_key_press)
 	RegisterScriptCallback("on_key_release",on_key_release)
 	RegisterScriptCallback("on_key_hold",on_key_hold)
 	

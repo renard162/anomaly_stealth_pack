@@ -587,7 +587,7 @@ function actor_on_update()
 		state_change_effect()
 		update_nvgs()
 	end
-	
+
 	tg = time_global()
 	if tg < tmr then return end
 	tmr = tg + tmr_step
@@ -613,12 +613,6 @@ end
 -----------------------------------------------------------------------------
 --		RegisterScriptCallback Functions
 -----------------------------------------------------------------------------
-
-local function on_key_release(key)
-	if (key == DIK_keys["DIK_J"]) then
-        switch_heat_mode()
-	end
-end
 
 local function actor_on_first_update()
     update_nvgs()
@@ -670,7 +664,6 @@ function on_game_start()
     end
 
 	RegisterScriptCallback("on_option_change", on_option_change)
-	RegisterScriptCallback("on_key_release", on_key_release)
 	RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
 	on_option_change()
 end

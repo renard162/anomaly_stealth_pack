@@ -148,7 +148,8 @@
 		<text>A standard head-mounted flashlight in fully working order. Useful for stalkers who find themselves out and about after dark, but may attract trouble if used unwisely. This head lamp comes with a standard-issue 1PN93-1 Russian Military Forces night-vision device. Offers generation 2+ image intensification, especially useful for operations at night or in low-light conditions.\n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] technological item\n
-		%c[d_purple] • %c[ui_gray_2] nightvision: %c[ui_gray_1]1PN93-1.\n
+		%c[d_purple] • %c[ui_gray_2] nightvision: %c[ui_gray_1]1PN93-1\n
+		%c[d_green] • %c[ui_gray_2] hold Nightvision key to toggle on/off\n
 		%c[d_blue] • %c[ui_gray_2] low electric power consumption\n
 		</text>
 	</string>
@@ -161,7 +162,8 @@
 		<text>A standard head-mounted flashlight in fully working order. Useful for stalkers who find themselves out and about after dark, but may attract trouble if used unwisely. This head lamp comes with an IIT generation 2+ image intensification, intended for operation at night under natural illumination and in the complete darkness with the switched on infrared illuminator.\n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] technological item\n
-		%c[d_purple] • %c[ui_gray_2] nightvision: %c[ui_gray_1]PN21KL.\n
+		%c[d_purple] • %c[ui_gray_2] nightvision: %c[ui_gray_1]PN21KL\n
+		%c[d_green] • %c[ui_gray_2] hold Nightvision key to toggle on/off\n
 		%c[d_blue] • %c[ui_gray_2] moderate electric power consumption\n
 		</text>
 	</string>
@@ -173,7 +175,8 @@
 		<text>A standard head-mounted flashlight in fully working order. Useful for stalkers who find themselves out and about after dark, but may attract trouble if used unwisely. This head lamp has an electric powerate of lenses and image-processing software that removes video noise and enhances image-intensifying capabilities of PN21K unit, thus making it a full-fledged IIT generation 3+ night vision device.\n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] technological item\n
-		%c[d_purple] • %c[ui_gray_2] nightvision: %c[ui_gray_1]Oracle.\n
+		%c[d_purple] • %c[ui_gray_2] nightvision: %c[ui_gray_1]Oracle\n
+		%c[d_green] • %c[ui_gray_2] hold Nightvision key to toggle on/off\n
 		%c[d_blue] • %c[ui_gray_2] high electric power consumption\n
 		</text>
 	</string>

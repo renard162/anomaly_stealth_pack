@@ -13,6 +13,8 @@
 		<text>Thermal background recognition device (thermal visor) equipped with a built-in flashlight. Allows to distinguish thermal signatures of warm objects, including people, animals, fire, anomalous fields, and more. \n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] technological item\n
+		%c[d_green] • %c[ui_gray_2] hold Nightvision key to toggle on/off\n
+		%c[d_green] • %c[ui_gray_2] press Nightvision key to change mode\n
 		%c[d_blue] • %c[ui_gray_2] extreme electric power consumption\n
 		</text>
 	</string>
