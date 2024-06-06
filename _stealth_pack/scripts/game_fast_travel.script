@@ -95,6 +95,15 @@ local function map_spot_menu_add_property(property_ui,id,level_name)
 	end
 end
 
+local function teleport_actor(se_obj)
+	if (se_obj.online) then
+		db.actor:set_actor_position(se_obj.position)
+		hide_hud_pda()
+	else
+		ChangeLevel(se_obj.position, se_obj.m_level_vertex_id, se_obj.m_game_vertex_id, VEC_ZERO, true)
+	end
+end
+
 local function map_spot_menu_property_clicked(property_ui,id,level_name,prop)
 	local se_obj = alife_object(id)
 	if not (se_obj) then
@@ -109,6 +118,11 @@ local function map_spot_menu_property_clicked(property_ui,id,level_name,prop)
 		if (prop ~= (game.translate_string("st_pda_fast_travel_to").." "..game.translate_string(se_obj:name()))) then
 			return
 		end
+	end
+
+	if DEV_DEBUG then
+		teleport_actor(se_obj)
+		return
 	end
 
 	-- Prevent fast travel if in restricted area
@@ -197,12 +211,7 @@ local function map_spot_menu_property_clicked(property_ui,id,level_name,prop)
 		level_weathers.get_weather_manager():forced_weather_change()
 	end
 
-	if (se_obj.online) then
-		db.actor:set_actor_position(se_obj.position)
-		hide_hud_pda()
-	else
-		ChangeLevel(se_obj.position, se_obj.m_level_vertex_id, se_obj.m_game_vertex_id, VEC_ZERO, true)
-	end
+	teleport_actor(se_obj)
 end
 
 -- Used for Visit_Only mode, catches the player near the marker and updates things.
