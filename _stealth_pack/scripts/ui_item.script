@@ -487,7 +487,7 @@ function build_desc_footer(obj, sec, str) -- one obj used
 				val = val * 1000
 				unit = str_tbl.pah_sec
 			end
-			
+            val = round(val)
 			_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. gc("st_ui_power_consumption") .. ": " .. clr_2 .. tostring(val) .. " " .. unit .. " \\n"
 		end
 	end
