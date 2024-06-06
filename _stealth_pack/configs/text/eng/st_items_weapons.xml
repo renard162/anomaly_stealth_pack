@@ -1883,7 +1883,7 @@
 	<string id="st_wpn_vintorez_1pn93_descr">
 		<text>Designed at TsNIITochMash by Peter Serdyukov and his team, the new rifle was intended for various Spetsnaz troops of the Soviet Army, KGB and MVD. The VSS is quite popular among its users for its stealthy capabilities and the great lethality of the heavy 9x39mm bullets. The effective range of the VSS is limited to 300-400 metres. Standard sighting equipment consists of side rail on the receiver, which usually accommodates the 4x  PSO-1M2-1 scope. Any other scope or night vision sight can be mounted on the appropriate mount. Backup iron sights consist of tangent rear and blade front. The rear sight is graduated for up to 400 metres.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 1PN93 "Tot" scope (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] Improved 1PN93 "Tot" nightvision scope (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] VSS suppressor (integrated)\n \n</text>
 	</string>
 	<string id="st_wpn_vintorez_alt">
