@@ -931,7 +931,7 @@
 		<text>Amount</text>
 	</string>
 	<string id="st_ui_power_consumption">
-		<text>power consumption</text>
+		<text>maximum power consumption</text>
 	</string>
 	<string id="st_ui_info">
 		<text>Info</text>
