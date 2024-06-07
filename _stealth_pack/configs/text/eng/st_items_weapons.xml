@@ -2224,11 +2224,12 @@ Grenades
 	</string>
 	<string id="st_grenade_f1_descr">
 		<text>A defensive hand grenade, with fragments capable of piercing medium level body armour. The grenade has an approximately 4 metre kill radius. Stalkers get F1 grenades from trading with the military, who write them off as having been used for fighting mutants.\n \n
+        %c[ui_gray_1]PROPERTIES:\n
 		%c[d_purple] • %c[ui_gray_2] Blast power: %c[ui_gray_1]high\n
 		%c[d_purple] • %c[ui_gray_2] Blast radius: %c[ui_gray_1]4.2 m\n
 		%c[d_purple] • %c[ui_gray_2] Fragments' radius: %c[ui_gray_1]48 m\n
 		%c[d_purple] • %c[ui_gray_2] Av. number of fragments: %c[ui_gray_1]380 (small shrapnels)\n
-		%c[d_purple] • %c[ui_gray_2] Explosion delay: %c[ui_gray_1]~4 seconds</text>
+		%c[d_purple] • %c[ui_gray_2] Explosion delay: %c[ui_gray_1]~4 seconds\n</text>
 	</string>
 	
 	<string id="st_grenade_rgd5">
@@ -2236,18 +2237,21 @@ Grenades
 	</string>
 	<string id="st_grenade_rgd5_descr">
 		<text>An offensive hand grenade with a small kill zone of about 3 metres. Often used by stalkers to "smoke out" mutants due to its relatively low cost.\n \n
+        %c[ui_gray_1]PROPERTIES:\n
 		%c[d_purple] • %c[ui_gray_2] Blast power: %c[ui_gray_1]medium\n
 		%c[d_purple] • %c[ui_gray_2] Blast radius: %c[ui_gray_1]3,2 m\n
 		%c[d_purple] • %c[ui_gray_2] Fragments' radius: %c[ui_gray_1]43 m\n
 		%c[d_purple] • %c[ui_gray_2] Av. number of fragments: %c[ui_gray_1]240 (small shrapnels)\n
-		%c[d_purple] • %c[ui_gray_2] Explosion delay: %c[ui_gray_1]~4 seconds</text>
+		%c[d_purple] • %c[ui_gray_2] Explosion delay: %c[ui_gray_1]~4 seconds\n</text>
 	</string>
 	
 	<string id="st_grenade_smoke">
 		<text>Smoke grenade</text>
 	</string>
 	<string id="st_grenade_smoke_descr">
-		<text>A hand smoke grenade. Used to put up smoke screens. Once the grenade is thrown it takes 10 seconds for the smoke screen to expand.</text>
+		<text>A hand smoke grenade. Used to put up smoke screens. Once the grenade is thrown it takes 10 seconds for the smoke screen to expand.\n \n
+        %c[ui_gray_1]PROPERTIES:\n
+        %c[d_purple] • %c[ui_gray_2] Blocks line of sight\n</text>
 	</string>
 	
 	<string id="st_grenade_thermite">
@@ -2259,7 +2263,7 @@ Grenades
 		%c[d_purple] • %c[ui_gray_2] Blast radius: %c[ui_gray_1]4.6 m\n
 		%c[d_purple] • %c[ui_gray_2] Fragments' radius: %c[ui_gray_1]none\n
 		%c[d_purple] • %c[ui_gray_2] Av. number of fragments: %c[ui_gray_1]none\n
-		%c[d_purple] • %c[ui_gray_2] Explosion delay: %c[ui_gray_1]~4 seconds</text>
+		%c[d_purple] • %c[ui_gray_2] Explosion delay: %c[ui_gray_1]~4 seconds\n</text>
 	</string>
 	
 <!--
