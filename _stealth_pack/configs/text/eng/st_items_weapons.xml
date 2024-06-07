@@ -2269,22 +2269,31 @@ Grenades
 		<text>M9 bayonet</text>
 	</string>
 	<string id="st_knife_combat_descr">
-		<text>\n \n%c[ui_gray_1]A large multi-purpose knife with a rugged rubber handle, commonly used by US soldiers since 1986. Sharp and well maintained. Although it's inconvenienced when facing heavily protected opponents, its toothed blade is ideal for causing massive, bleeding wounds to softer targets. This is makes it a perfect choice for finishing off wounded animals, or silently getting the drop on light infantry.</text>
+		<text>A large multi-purpose knife with a rugged rubber handle, commonly used by US soldiers since 1986. Sharp and well maintained. Although it's inconvenienced when facing heavily protected opponents, its toothed blade is ideal for causing massive, bleeding wounds to softer targets. This is makes it a perfect choice for finishing off wounded animals, or silently getting the drop on light infantry.\n \n
+		%c[ui_gray_1]PROPERTIES:\n
+        %c[d_green] • %c[ui_gray_2] Sidearm\n
+		%c[d_cyan] • %c[ui_gray_2] melee weapon\n</text>
 	</string>
 	
 	<string id="st_knife_6x4">
 		<text>6H4 bayonet</text>
 	</string>
 	<string id="st_knife_6x4_descr">
-		<text>\n \n%c[ui_gray_1]Soviet-Polish bayonet first adopted in 1972 for use with AK rifles. Although highly durable, it is much better at thrusting than it is at chopping or slashing.\n \n
-		%c[d_red] • %c[d_red] unsuitable for chopping thick-skinned mutants</text>
+		<text>Soviet-Polish bayonet first adopted in 1972 for use with AK rifles. Although highly durable, it is much better at thrusting than it is at chopping or slashing.\n \n
+		%c[ui_gray_1]PROPERTIES:\n
+        %c[d_green] • %c[ui_gray_2] Sidearm\n
+		%c[d_cyan] • %c[ui_gray_2] melee weapon\n
+		%c[d_red] • %c[d_red] unsuitable for chopping thick-skinned mutants.\n</text>
 	</string>
 	
 	<string id="st_knife_hunting">
 		<text>Hunting knife</text>
 	</string>
 	<string id="st_knife_hunting_descr">
-		<text>\n \n%c[ui_gray_1]A modern, highly durable hunting knife with a large blade of stainless steel. Ideal for field dressing the meat off larger animals with thick hides. It is also able to cause massive, bleeding wounds to exposed flesh. As it wasn't intended for use in battle, it struggles against combat armours.</text>
+		<text>A modern, highly durable hunting knife with a large blade of stainless steel. Ideal for field dressing the meat off larger animals with thick hides. It is also able to cause massive, bleeding wounds to exposed flesh. As it wasn't intended for use in battle, it struggles against combat armours.\n \n
+		%c[ui_gray_1]PROPERTIES:\n
+        %c[d_green] • %c[ui_gray_2] Sidearm\n
+		%c[d_cyan] • %c[ui_gray_2] melee weapon\n</text>
 	</string>
 	
 	<string id="st_knife_m">
@@ -2298,8 +2307,11 @@ Grenades
 		<text>NR-40 scout's knife</text>
 	</string>
 	<string id="st_knife_needle_descr">
-		<text>\n \n%c[ui_gray_1]A combat knife, based on designs first adopted by the Soviet Army in WWII. It is technically surplus, and isn't officially used by any modern army.\n \nThis weapon consists of a 152 mm blade with a clip point, a large choil, a black wooden handle, and an S-shaped guard. The guard is "inverted" because standard Soviet Army grips frequently called for holding the knife with the edge facing upwards. The handle is enforced with rugged fabric for a good grip.\n \nAlthough a good combat knife for its time, in the Zone its cutting power is suitable only for utility purposes or for finishing off already helpless opponents. Its piercing power, however, is something to be feared: it is easy to angle this blade's deadly point between the gaps of even modern combat armours.\n \n
-		%c[d_red] • %c[d_red] unsuitable for chopping thick-skinned mutants.</text>
+		<text>A combat knife, based on designs first adopted by the Soviet Army in WWII. It is technically surplus, and isn't officially used by any modern army.\n \nThis weapon consists of a 152 mm blade with a clip point, a large choil, a black wooden handle, and an S-shaped guard. The guard is "inverted" because standard Soviet Army grips frequently called for holding the knife with the edge facing upwards. The handle is enforced with rugged fabric for a good grip.\n \nAlthough a good combat knife for its time, in the Zone its cutting power is suitable only for utility purposes or for finishing off already helpless opponents. Its piercing power, however, is something to be feared: it is easy to angle this blade's deadly point between the gaps of even modern combat armours.\n \n
+		%c[ui_gray_1]PROPERTIES:\n
+        %c[d_green] • %c[ui_gray_2] Sidearm\n
+		%c[d_cyan] • %c[ui_gray_2] melee weapon\n
+		%c[d_red] • %c[d_red] unsuitable for chopping thick-skinned mutants.\n</text>
 	</string>
 	
 	<string id="st_knife_nr40">
@@ -2313,7 +2325,10 @@ Grenades
 		<text>Spetsnaz switchblade</text>
 	</string>
 	<string id="st_knife_swat_descr">
-		<text>A well-kept blade, ideal for special forces operators participating in surgical strikes. Rumoured to have averted several nuclear incidents during the Cold War. It is a deadly weapon and the only knife in the Zone that is relatively good at both piercing armours and dealing massive tissue damage. The ultimate combat cutlery.</text>
+		<text>A well-kept blade, ideal for special forces operators participating in surgical strikes. Rumoured to have averted several nuclear incidents during the Cold War. It is a deadly weapon and the only knife in the Zone that is relatively good at both piercing armours and dealing massive tissue damage. The ultimate combat cutlery.\n \n
+		%c[ui_gray_1]PROPERTIES:\n
+        %c[d_green] • %c[ui_gray_2] Sidearm\n
+		%c[d_cyan] • %c[ui_gray_2] melee weapon\n</text>
 	</string>
 	
 	<string id="st_axe">
@@ -2322,9 +2337,9 @@ Grenades
 	<string id="st_axe_descr">
 		<text>An axe (or ax) is an implement that has been used for millennia to shape, split and cut wood, to harvest timber, as a weapon, and as a ceremonial or heraldic symbol. The axe has many forms but generally consists of an axe head with a handle, or helve. In the Zone, the axe can ensure your survival thanks to its versatility.\n \n
 		%c[ui_gray_1]PROPERTIES:\n
+        %c[d_green] • %c[ui_gray_2] Sidearm\n
 		%c[d_cyan] • %c[ui_gray_2] melee weapon\n
-		%c[d_cyan] • %c[ui_gray_2] has greater reach compared to knives\n
-		%c[d_cyan] • %c[ui_gray_2] everyday item</text>
+		%c[d_cyan] • %c[ui_gray_2] has greater reach compared to knives\n</text>
 	</string>
 	
 	<string id="st_axe2">
@@ -2333,9 +2348,9 @@ Grenades
 	<string id="st_axe2_descr">
 		<text>Most commonly employed by firefighters, this heavy axe is often used by stalkers for felling trees, or, like all great things, repurposed for hacking apart one's enemies, living or dead. Thus, it can serve as a formidable weapon in the hands of a skilled stalker.\n \n
 		%c[ui_gray_1]PROPERTIES:\n
+        %c[d_green] • %c[ui_gray_2] Sidearm\n
 		%c[d_cyan] • %c[ui_gray_2] melee weapon\n
-		%c[d_cyan] • %c[ui_gray_2] has greater reach compared to knives\n
-		%c[d_cyan] • %c[ui_gray_2] everyday item</text>
+		%c[d_cyan] • %c[ui_gray_2] has greater reach compared to knives\n</text>
 	</string>
 	
 	<string id="st_axe3">
@@ -2344,9 +2359,9 @@ Grenades
 	<string id="st_axe3_descr">
 		<text>Used for thousands of years for cutting wood, hacking flesh, and even as a ceremonial object, this convenient axe comes in many shapes, though always consisting of a cleaver and handle. In a place like the Zone, this axe can mean both life and death.\n \n
 		%c[ui_gray_1]PROPERTIES:\n
+        %c[d_green] • %c[ui_gray_2] Sidearm\n
 		%c[d_cyan] • %c[ui_gray_2] melee weapon\n
-		%c[d_cyan] • %c[ui_gray_2] has greater reach compared to knives\n
-		%c[d_cyan] • %c[ui_gray_2] everyday item</text>
+		%c[d_cyan] • %c[ui_gray_2] has greater reach compared to knives\n</text>
 	</string>
 	
 	<string id="st_grenade_light">
