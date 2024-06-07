@@ -73,7 +73,7 @@
 	<string id="st_wpn_ace21_descr">
 		<text>The Galil ACE family is designed and produced by the Israeli arms company IWI Ltd. The basis of the ACE Galil rifles is the Galil assault rifle, which in its turn is based on Kalashnikov's AK rifle. The Galil ACE focuses on ergonomics, ease of use and integration with additional attachments, as well as flexibility in combat - the Galil ACE family includes the three most common types of ammunition in the world (5.56x45 NATO, 7.62x39 M43 and NATO 7.62x51), with multiple barrel lengths for each type. This particular variant utilises 5.56x45 NATO rounds and has a compact barrel. In the Zone, this assault rifle is a real rarity.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech scopes\n \n</text>
 	</string>
 	
@@ -118,7 +118,8 @@
 	<string id="st_wpn_ak_descr">
 		<text>The AK-47 can be described as a hybrid of previous rifle technology. Mikhail Kalashnikov designed this automatic rifle combining the best features of the American M1 and the German StG44. The Kalashnikov is a gas operated 7.62x39 assault rifle and by far the most prolific small arm of the 2nd half of the 20th century. It had been and still is, in more or less modified form, manufactured in dozens of countries and has been used in hundreds of conflicts since its introduction.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] PBS-1 suppressor\n%c[d_red] • %c[d_red] None due to the absence of a dovetail mount\n
+		%c[d_purple] • %c[ui_gray_2] PBS-1 suppressor\n
+        %c[d_red] • %c[d_red] None due to the absence of a dovetail mount\n
 		%c[d_purple] • %c[ui_gray_2] GP-25 grenade launcher (after modification)\n \n</text>
 	</string>
 	
@@ -395,7 +396,7 @@
 	<string id="st_wpn_aps_descr">
 		<text>The Stechkin APS is a Russian selective fire machine pistol, bearing the name of its designer Igor Stechkin. The Stechkin automatic pistol was originally chambered for 7.62x25mm Tokarev but was changed to the 9x18mm calibre used in the new Makarov pistol, as it became clear that this cartridge was set to become the new service ammunition for handguns in the Soviet Army. In 1951, both the Makarov and Stechkin were introduced into the Soviet military arsenal, replacing the ageing TT-33.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] APS suppressor</text>
+		%c[d_purple] • %c[ui_gray_2] APS suppressor (after modification)</text>
 	</string>
 	<string id="st_wpn_aps_worn">
 		<text>APS (worn)</text>
@@ -410,7 +411,7 @@
 	<string id="st_wpn_aug_descr">
 		<text>Steyr AUG A1 in standard rifle configuration (military green colour). The AUG is an Austrian bullpup 5.56mm assault rifle, designed in the 1960s by Steyr Mannlicher GmbH &amp; Co KG (formerly Steyr-Daimler-Puch). The AUG (Armee-Universal-Gewehr "universal army rifle") was adopted by the Austrian Army as the StG 77 (Sturmgewehr 77) in 1978, where it replaced the 7.62mm StG 58 automatic rifle (a licence-built FN FAL). In production since 1978, it is the standard small arm of the Austrian Bundesheer and various national police units.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] 1.5x scope (integrated).\n \n</text>
 	</string>
 	<string id="st_wpn_aug_freedom">
@@ -425,7 +426,7 @@
 	<string id="st_wpn_aug_modern_descr">
 		<text>Steyr AUG A1 in standard rifle configuration (military green colour). The AUG is an Austrian bullpup 5.56mm assault rifle, designed in the 1960s by Steyr Mannlicher GmbH &amp; Co KG (formerly Steyr-Daimler-Puch). The AUG (Armee-Universal-Gewehr "universal army rifle") was adopted by the Austrian Army as the StG 77 (Sturmgewehr 77) in 1978, where it replaced the 7.62mm StG 58 automatic rifle (a licence-built FN FAL). In production since 1978, it is the standard small arm of the Austrian Bundesheer and various national police units. This model has been modified for usage of 7.62x51 NATO cartridge.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] 1.5x scope (integrated).\n \n</text>
 	</string>
 	<string id="st_wpn_aug_worn">
@@ -621,7 +622,7 @@
 		<text>From the late 1980s to early 1990s, FN Herstal began to develop a new rifle. The aim was to produce a modern and modular weapon resulting in the FN F2000 rifle, first displayed to the public in 2001. The F2000 offers all of the popular features of the modern assault rifle such as a compact bullpup layout, ambidextrous handling and a modular design with plenty of options and addons available. So far, the FN F2000 rifle has found only a few buyers, including the Armed Forces of Slovenia and Belgian Special Operations Forces.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
 		%c[d_purple] • %c[ui_gray_2] FN2000 scope (integrated)\n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n \n</text>
 	</string>
 	<string id="st_wpn_fn2000_nimble">
 		<text>FN F2000 EOTech</text>
@@ -630,7 +631,7 @@
 		<text>From the late 1980s to early 1990s, FN Herstal began to develop a new rifle. The aim was to produce a modern and modular weapon resulting in the FN F2000 rifle, first displayed to the public in 2001. The F2000 offers all of the popular features of the modern assault rifle such as a compact bullpup layout, ambidextrous handling and a modular design with plenty of options and addons available. So far, the FN F2000 rifle has found only a few buyers, including the Armed Forces of Slovenia and Belgian Special Operations Forces. This model has an integrated EOTech scope, which results in slightly lower accuracy, but since this model was aimed for CQC, rate of fire was increased accordingly.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
 		%c[d_purple] • %c[ui_gray_2] EOTech sight (integrated)\n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n \n</text>
 	</string>
 	<string id="st_wpn_fn2000_worn">
 		<text>FN F2000 (worn)</text>
@@ -640,7 +641,9 @@
 		<text>FN Five-seveN</text>
 	</string>
 	<string id="st_wpn_fn57_descr">
-		<text>The Five-seveN is a delayed blowback operated, semi-automatic firearm. The Five-seveN pistol was designed by FN Herstal as a complimentary sidearm for the P90 submachine gun. The P90 and Five-seveN share the same ammunition, the 5.7x28mm SS190 cartridge. The idea behind the ammunition and weapon is to provide good penetration against targets protected by body armour, while keeping the weapon's weight, dimensions and recoil at reasonable levels.</text>
+		<text>The Five-seveN is a delayed blowback operated, semi-automatic firearm. The Five-seveN pistol was designed by FN Herstal as a complimentary sidearm for the P90 submachine gun. The P90 and Five-seveN share the same ammunition, the 5.7x28mm SS190 cartridge. The idea behind the ammunition and weapon is to provide good penetration against targets protected by body armour, while keeping the weapon's weight, dimensions and recoil at reasonable levels.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] 5.7x28 compatible suppressor</text>
 	</string>
 	
 	<string id="st_wpn_fnp45">
@@ -707,7 +710,7 @@
 	<string id="st_wpn_g3_descr">
 		<text>The G3A3 is a battle rifle developed in the 1950s by the German arms manufacturer Heckler &amp; Koch GmbH in collaboration with the Spanish state owned design and development agency CETME (Centro de Estudios Tecnicos de Materiales Especiales). It is designed to use the 7.62x51mm NATO round, and uses a Roller-delayed blowback action. The rifle owes its design to the CETME mod. A, which was designed by the german engineer Dr. Ludwig Vorgrimler. In 1957, Heckler &amp; Koch bought the license to manufacture the rifle, where small modifications were made to the CETME design. Officially adopted into service in 1959, by the Bundeswehr as the G3, it remained in service until 1995 when it was replaced by the G36. Despite having been officially replaced by the German army, it is still in limited use.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech scopes\n \n</text>
 	</string>
 	<string id="st_wpn_g3_worn">
@@ -723,7 +726,7 @@
         %c[d_purple] • %c[ui_gray_2] Selectable scope (selected by Under-barrel grenade launcher key)\n
         %c[d_purple] • %c[ui_gray_2] G36 3x Scope (integrated)\n
         %c[d_purple] • %c[ui_gray_2] Reflex sight (integrated)\n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n \n</text>
 	</string>
 	<string id="st_wpn_g36_camo">
 		<text>G36 (camouflaged)</text>
@@ -739,7 +742,7 @@
 		<text>A shortened variant of the G-36 rifle with a shorter barrel, fitted with an open type flash suppressor, a shorter forend and a bottom rail that can be used to attach tactical accessories, such as a UTL flashlight. The rifle's barrel lacks the ability to launch rifle grenades and will not support a bayonet. G36K in service with German special forces are issued with a 100 round C-Mag drum. There are two variants of the G-36K, first has 3x scope with carry handle attached to the top and the second is fitted with iron sights and rail.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
 		%c[d_purple] • %c[ui_gray_2] G36 3x scope (integrated)\n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n \n</text>
 	</string>
 	<string id="st_wpn_g36k_worn">
 		<text>G36K (worn)</text>
@@ -751,11 +754,13 @@
 	<string id="st_wpn_g3sg1_descr">
 		<text>A sniper variant of the G3. The "SG" stands for Scharfschutzengewehr, or "sharpshooting rifle". The rifles were individually selected from the production line for their accuracy and then modified. A Zeiss 1.5-6x variable power telescopic sight was added using a HK claw mount attached to the receiver. The stock was extended slightly and comes with a heavy, dual-stage buffer and adjustable cheek rest. A special set trigger group was added for a crisp trigger pull of 1 lb. Automatic fire was retained.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] G3 scope (integrated)\n \n</text>
 	</string>
 	<string id="st_wpn_g3sg1_modern_descr">
 		<text>A sniper variant of the G3. The "SG" stands for Scharfschutzengewehr, or "sharpshooting rifle". The rifles were individually selected from the production line for their accuracy and then modified. A Zeiss 1.5-6x variable power telescopic sight was added using a H&amp;K claw mount attached to the receiver. The stock was extended slightly and comes with a heavy, dual-stage buffer and adjustable cheek rest. A special set trigger group was added for a crisp trigger pull of 1lb. Automatic fire was retained.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] G3 scope (integrated)\n \n</text>
 	</string>
 	<string id="st_wpn_g3sg1_worn">
@@ -777,7 +782,7 @@
     <string id="st_wpn_famas3_descr">
         <text>FAMAS stands for Fusil d'Assaut de la Manufacture d'Armes de St-Etienne (Assault Rifle by St-Etienne Arms Factory). Development of this rifle began in 1967, by Paul Tellie, a French arms designer. This new rifle was intended to replace the ageing MAS Mle.49/56 semi-automatic rifles, MAT-49 submachine guns and MAC Mle.1929 light machine guns. The first FAMAS prototype had been built in 1971, and French military began to test this rifle in 1972. Meanwhile, France adopted a Swiss-designed SIG SG-540 5.56mm assault rifle as an intermediate solution. The FAMAS was adopted by the French in 1978 and since then became a standard French Army rifle, known among the French soldiers as "Le Clairon" (the bulge).\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech scopes \n \n</text>
     </string>
 	
@@ -880,7 +885,7 @@
 	<string id="st_wpn_hk416_descr">
 		<text>The HK416 is a rifle designed and manufactured by Heckler &amp; Koch to improve the M4. It is available as a complete firearm, or as an upper receiver that fits on any AR-15 type lower receiver. The US Army's Delta Force collaborated with the German arms makers to develop the new rifle. Testing the H&amp;K 416 in 2004 revealed that the piston operating system significantly reduces malfunctions while increasing the life of parts. The project was originally called the H&amp;K M4, but was changed in response to a trademark infringement suit filed by Colt Defence. Currently, it is only available to government and military organisations, hence why this assault rifle is usually carried by Mercenaries.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech scopes\n
 		%c[d_purple] • %c[ui_gray_2] M203 grenade launcher\n \n</text>
 	</string>
@@ -914,7 +919,7 @@
 		<text>During World War II, certain Karabiner 98k rifles were selected for their exceptional accuracy and fitted with the ZF39 telescopic sight. These rifles were used by Nazi Germany as sniper rifles. In skilled hands, they had an effective range of up to 1000 metres.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
 		%c[d_purple] • %c[ui_gray_2] ZF scope series\n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor (alternate)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor (alternate)\n \n</text>
 	</string>
 	
 	<string id="st_wpn_kiparis">
@@ -945,7 +950,7 @@
 		<text>The development of the SA80 system, which included two weapons - the SA80 IW assault rifle and SA80 LSW light machine gun, began in the late 1960s when the British Army decided to develop a new rifle, to replace the ageing 7.62x51mm L1 SLR British made FN FAL. The standard individual weapon for the British armed forces, the L85 (in its original A1 version) had numerous performance issues. The improved L85A2 is extremely reliable over a range of climates for various operational scenarios. The current L85A2 rifles are recognised as reliable and accurate, especially when using standard issue SUSAT telescope sights.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
 		%c[d_purple] • %c[ui_gray_2] SUSAT 4x scope (integrated)\n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor (after modification)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor (after modification)\n \n</text>
 	</string>
 	
 	<string id="st_wpn_l85">
@@ -967,7 +972,7 @@
 		<text>The development of the SA80 system, which included two weapons - the SA80 IW assault rifle and SA80 LSW light machine gun, began in the late 1960s when the British Army decided to develop a new rifle, to replace the ageing 7.62x51mm L1 SLR British made FN FAL. The standard individual weapon for the British armed forces, the L85 (in its original A1 version) had numerous performance issues. The improved L85A1 is extremely reliable over a range of climates for various operational scenarios. The current L85A1 rifles are recognised as reliable and accurate, especially when using standard issue SUSAT telescope sights.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
 		%c[d_purple] • %c[ui_gray_2] SUSAT scope (integrated)\n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor (after modification)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor (after modification)\n \n</text>
 	</string>
 	
 	<string id="st_wpn_l96a1">
@@ -1003,7 +1008,7 @@
 	<string id="st_wpn_lr300_descr">
 		<text>Based on the AR-15, the LR-300 is an excellent weapon system suitable for military use in close quarters battle. Its folding skeletal stock makes it ideal for aggressive and rapid building entries requiring a compact yet powerful selective fire weapon. With excellent ergonomics and lightweight, this weapon is highly accurate but it is sensitive to dirt and is not ideal for difficult field conditions.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech scopes\n
 		%c[d_purple] • %c[ui_gray_2] M203 grenade launcher (after modification)\n \n</text>
 	</string>
@@ -1026,7 +1031,7 @@
 	<string id="st_wpn_m16_descr">
 		<text>The M16 is the U.S. military designation for a family of rifles derived from the ArmaLite AR-15 and further developed by Colt starting in the 1960s. The M16 rifle family including the M16/A1/A2/A3/A4 has been the primary infantry rifle of the United States military since the 1960s. With its variants, it has been in use by 15 NATO countries, and is the most produced firearm in its calibre. The M16 is a lightweight, 5.56x45mm calibre, air cooled, gas operated, magazine fed assault rifle, with a rotating bolt, actuated by direct impingement gas operation. The rifle is made of steel, aluminium, and composite plastics.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech scopes\n
 		%c[d_purple] • %c[ui_gray_2] M203 grenade launcher\n \n</text>
 	</string>
@@ -1041,7 +1046,7 @@
 		<text>The M16A2 rifle entered service in the 1980s, chambered to fire the standard NATO round, the Belgian designed M855/M856 cartridge. The M16A2 is a select fire rifle, incorporating design elements requested by the Marine Corps: an adjustable, windage rear sight, longer stock, heavier barrel, case deflector for left-hand shooters and cylindrical hand guards. The M16A2 is manufactured by Colt and the Fabrique Nationale de Herstal arms company, with the variant rifles made elsewhere in the world.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
 		%c[d_purple] • %c[ui_gray_2] M203 grenade launcher\n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n \n</text>
 	</string>
 	
 	<string id="st_wpn_m24">
@@ -1068,7 +1073,7 @@
 	<string id="st_wpn_m4_descr">
 		<text>The M4 Carbine descends from a family of firearms tracing its lineage back to earlier carbine versions of the M16, all based on the original AR-15 made by ArmaLite. It is a shorter and lighter version of the M16 assault rifle, sharing 80% of its parts. The M4 fires 5.56x45mm NATO ammunition and are gas operated, air cooled, magazine fed, selective fire firearms with a 4 position telescoping stock. As with many carbines, the M4 is handy and more convenient to carry than a full length rifle. It has been adopted by United States Special Operations Command (USSOCOM) and is the preferred weapon of the U.S. Army Special Forces and Navy SEALs.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech scopes\n
 		%c[d_purple] • %c[ui_gray_2] M203 grenade launcher\n \n</text>
 	</string>
@@ -1088,7 +1093,7 @@
 	<string id="st_wpn_m4a1_descr">
 		<text>Ideal for CQC (Close Quarters Combat), the M4A1 carbine is a fully automatic variant of the M16A2 assault rifle. In military use, it has largely replaced the submachine guns firing pistol cartridges that are inadequate against modern body armour. The M4A1 is a modified variant of the M4 carbine able to fire automatic or semi-automatic.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech scopes\n
 		%c[d_purple] • %c[ui_gray_2] M203 grenade launcher (after modification)\n \n</text>
 	</string>
@@ -1431,7 +1436,7 @@
 		<text>The Saiga-12 is a Kalashnikov pattern, 12 gauge combat shotgun, manufactured by Izhmash. The Saiga-12 is recognizable by its Kalashnikov design with the large lever safety on the right side of the receiver, the optic mounting rail on the left and the large top mounted dust cover held in place by the rear of the recoil spring assembly. Earning respect in the Zone for its lethality, it is intended for engaging targets at short range (50 metres or less) or in confined spaces.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
 		%c[d_purple] • %c[ui_gray_2] EKP-8-02 Kobra, 1P29, PSO-1 scopes\n
-		%c[d_purple] • %c[ui_gray_2] PBS-1\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] PBS-1 suppressor\n \n</text>
 	</string>
 	<string id="st_wpn_saiga12s_worn">
 		<text>Saiga-12S (worn)</text>
@@ -1446,7 +1451,7 @@
 	<string id="st_wpn_scar_descr">
 		<text>The Special Operations Forces Combat Assault Rifle (SCAR) is a modular rifle made by FN Herstal for SOCOM to satisfy the requirements of the SCAR competition. This family of rifle consist of two types, the SCAR-H and SCAR-L. The SCAR-H (Heavy) is chambered in 7.62x51mm NATO cartridge.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech scopes\n
 		%c[d_purple] • %c[ui_gray_2] M203 grenade launcher\n \n</text>
 	</string>
@@ -1499,7 +1504,7 @@
 	<string id="st_wpn_sig550_descr">
 		<text>Renowned for its high production quality and good performance, the SG 550 is often referred to as the finest 5.56 mm rifle ever made. It has a side-folding skeletonised buttstock and a lightweight aluminium bipod that folds into grooves in the lower handguard.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech scopes\n
 		%c[d_purple] • %c[ui_gray_2] M203 grenade launcher\n \n</text>
 	</string>
@@ -1518,7 +1523,7 @@
 	<string id="st_wpn_sig550_sniper_descr">
 		<text>A marksman variant of a popular Swiss-made assault rifle, the SG 550-S constitutes a perfect middle ground between sniper and assault rifles, retaining the strong points of both types of weaponry. On the other hand, it suffers from certain drawbacks such as being somewhat lacking in stopping power and accuracy for a sniper rifle and lack of automatic fire. Still, it remains one of the best top-tier weapon systems available within the Exclusion Zone.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] Kahles ZF95 scope (integrated)\n \n</text>
 	</string>
 	<string id="st_wpn_sig550_strelok">
@@ -1527,7 +1532,7 @@
 	<string id="st_wpn_sig550_strelok_descr">
 		<text>A Swiss made SIG SG-550 assault rifle. Although it isn't new, it is clear that the previous owner took good care of it: the weapon has been taken apart and put back together with every component fine-tuned for optimum performance, increasing stopping power. The letter "S" has been carved into the stock, along with 16 small notches.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech scopes\n
 		%c[d_purple] • %c[ui_gray_2] M203 grenade launcher</text>
 	</string>
@@ -1541,7 +1546,7 @@
 	<string id="st_wpn_sig552_descr">
 		<text>The SG 552 Commando is designed for urban combat, making it the most compact member of SIG's renowned SG 550 family, which enhances its CQC capabilities.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech scopes\n \n</text>
 	</string>
 	<string id="st_wpn_sig552_worn">
@@ -1937,6 +1942,7 @@
 	<string id="st_wpn_vssk_descr">
 		<text>The VSSK is a Russian bullpup, straight-pull bolt-action sniper rifle chambered for the 12.7x55mm subsonic round. The weapon is also known by its other name, Vykhlop. It was developed in 2002 for special forces units of FSB.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] VSSK supressor (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] PKS-07 scope (integrated)</text>
 	</string>
 	
@@ -2010,7 +2016,7 @@
 	<string id="st_wpn_aug_a3_descr">
 		<text>Steyr AUG (Armee Universal Gewehr - Army Universal Rifle) is an Austrian 5.56x45mm NATO bullpup assault rifle, designed in the 1960s by Steyr-Daimler-Puch and now manufactured by Steyr Mannlicher GmbH & Co KG. The Steyr AUG A3 differs from the base model in the presence of four Picatinny slats: the top one is used for attaching sights, a grenade launcher or a vertical front handle can be attached to the bottom, and a laser pointer or other necessary additional equipment is attached to the side.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, C-more Railway Tactical, EOTech scopes\n \n</text>
 	</string>
 	
@@ -2020,6 +2026,7 @@
 	<string id="st_wpn_mk14_descr">
 		<text>United States Navy Mark 14 Enhanced Battle Rifle (Mk 14 Enhanced Battle Rifle, "improved combat rifle") - American Marksman rifle, created by special operations of the US Navy based on the M14 rifle. Used by a number of special units of the Navy, including SEAL.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, C-more Railway Tactical, EOTech scopes\n \n</text>
 	</string>
 	
@@ -2029,7 +2036,7 @@
 	<string id="st_wpn_fal_descr">
 		<text>FN FAL is a NATO firearm produced in Belgium by Fabrique Nationale de Herstal. One of the most recognized and popular automatic rifles. The FN FAL was originally developed for an intermediate 7.92x33 mm cartridge used by the Germans during World War II, then prototypes for the .280 British cartridge appeared. It was later remade chambered for 7.62x51 mm NATO, adopted as a single patron for NATO countries. During the Cold War, it received the nickname "the right hand of the free world."\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, C-more Railway Tactical, EOTech scopes\n \n</text>
 	</string>
 
@@ -2094,7 +2101,7 @@
 	<string id="st_wpn_fnc_descr">
 		<text>The FNC (Fabrique Nationale Carabine) is a 5.56x45mm NATO assault rifle developed by the Belgian arms manufacturer FN Herstal and introduced in the late 1970s.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n \n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n \n
 		</text>
 	</string>
 	
@@ -2104,7 +2111,7 @@
 	<string id="st_wpn_hk417_descr">
 		<text>The Heckler & Koch HK417 is a battle rifle designed and manufactured by Heckler & Koch in Germany. It is the larger caliber version of the HK416, and chambered for the full-power 7.62x51mm NATO rifle cartridge. It is a gas-operated, selective fire rifle with a rotating bolt. The HK417 is intended for use in roles where the greater penetrative power, stopping power, and range of the 7.62x51mm cartridge are required. It has been adopted for service by a number of armed forces, special forces, and police organizations.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, EOTech scopes\n \n</text>
 	</string>
 	
@@ -2132,7 +2139,7 @@
 		<text>The XM8 is a lightweight assault rifle system from the late 1990s to early 2000s. The rifle was designed by German small arms manufacturer Heckler & Koch (H&K), and shares design and engineering with their G36 rifle.\n
 		The XM8 design was originally part of the Objective Individual Combat Weapon program (OICW), which was developing a "smart" grenade launcher system with an underslung carbine rifle. The system was unable to meet performance and weight requirements and was eventually cancelled. In the aftermath, the two portions of the OICW were separated, resulting in the XM8 and XM25 projects.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 5.56x45 compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, C-more Railway Tactical, EOTech scopes\n \n</text>
 	</string>
 	
