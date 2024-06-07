@@ -46,7 +46,7 @@ local psy_table = {}
 local safe_bases = {}
 local level_static_anomaly = {}
 local musical_instrument_bonus = {
-    ["guitar_a"] = 1.33,
+    ["guitar_a"] = 2.00,
     ["harmonica_a"] = 1.00,
 }
 local difficulty_controller_multiplier = {
