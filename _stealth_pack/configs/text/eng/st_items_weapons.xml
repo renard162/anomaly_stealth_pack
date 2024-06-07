@@ -729,6 +729,7 @@
         %c[d_purple] • %c[ui_gray_2] Selectable scope (selected by Under-barrel grenade launcher key)\n
         %c[d_purple] • %c[ui_gray_2] G36 3x Scope (integrated)\n
         %c[d_purple] • %c[ui_gray_2] Reflex sight (integrated)\n
+        %c[d_purple] • %c[ui_gray_2] M203 grenade launcher\n
 		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n \n</text>
 	</string>
 	<string id="st_wpn_g36_camo">
@@ -2019,6 +2020,7 @@
 	<string id="st_wpn_aug_a3_descr">
 		<text>Steyr AUG (Armee Universal Gewehr - Army Universal Rifle) is an Austrian 5.56x45mm NATO bullpup assault rifle, designed in the 1960s by Steyr-Daimler-Puch and now manufactured by Steyr Mannlicher GmbH & Co KG. The Steyr AUG A3 differs from the base model in the presence of four Picatinny slats: the top one is used for attaching sights, a grenade launcher or a vertical front handle can be attached to the bottom, and a laser pointer or other necessary additional equipment is attached to the side.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] M203 grenade launcher\n
 		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, C-more Railway Tactical, EOTech scopes\n \n</text>
 	</string>
@@ -2117,6 +2119,7 @@
 	<string id="st_wpn_hk417_descr">
 		<text>The Heckler & Koch HK417 is a battle rifle designed and manufactured by Heckler & Koch in Germany. It is the larger caliber version of the HK416, and chambered for the full-power 7.62x51mm NATO rifle cartridge. It is a gas-operated, selective fire rifle with a rotating bolt. The HK417 is intended for use in roles where the greater penetrative power, stopping power, and range of the 7.62x51mm cartridge are required. It has been adopted for service by a number of armed forces, special forces, and police organizations.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] M203 grenade launcher\n
 		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, EOTech scopes\n \n</text>
 	</string>
