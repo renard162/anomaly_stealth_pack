@@ -143,7 +143,7 @@
 	<string id="st_wpn_ak102_descr">
 		<text>The AK-102 is a 5.56x45mm carbine version of the AK-101 rifle. It features a shortened barrel that makes it a middle ground between a full rifle and the more compact AKS-74U. The rifle's receiver is made of stamped steel; magazine is made out of reinforced fibreglass and the stock is made of hollow plastic; making it lighter, more durable, and allowing a field kit to be stored inside of  it.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech, EKP-8-02 Kobra, PSO-1 scopes\n
+		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech, EKP-8-02 Kobra, 1P29, PSO-1 scopes\n
 		%c[d_purple] • %c[ui_gray_2] ATG suppressor\n \n</text>
 	</string>
 	
@@ -227,7 +227,8 @@
 	<string id="st_wpn_ak74_old_descr">
 		<text>The AK-74 is a 5.45x45mm assault rifle developed in the early 1970s by Mikhail Kalashnikov to replace the earlier AKM. It was introduced in 1974 and first saw service with Soviet forces engaged in the Afghanistan Conflict. The AKM rifle was adapted to fire smaller 5.45x45mm cartridge and fitted with a large muzzle brake. This particular variant was assembled a long time ago.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] GP-25 grenade launcher (after modification)\n%c[d_red] • %c[d_red] None due to the absence of a dovetail mount\n
+		%c[d_purple] • %c[ui_gray_2] GP-25 grenade launcher (after modification)\n
+        %c[d_red] • %c[d_red] None due to the absence of a dovetail mount\n
 		%c[d_purple] • %c[ui_gray_2] TGP-A suppressor\n \n</text>
 	</string>
 	<string id="st_wpn_ak74_rusty">
@@ -300,7 +301,8 @@
 	</string>
 	<string id="st_wpn_ak74u_old_descr">
 		<text>The AKS-74U was intended for use mainly by Spetsnaz units, airborne infantry, rear-echelon support units and armoured vehicle crews, who require a compact but relatively powerful individual automatic weapon. The AKS-74U is significantly more manoeuvrable in tight quarters than the AKS-74, but a significant decline in muzzle velocity resulted in a decrease in effective range. This model seems to be very old.\n \n
-		%c[ui_gray_2]ATTACHMENTS: \n%c[d_red] • %c[d_red] None due to the absence of a dovetail mount\n
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_red] • %c[d_red] None due to the absence of a dovetail mount\n
 		%c[d_purple] • %c[ui_gray_2] PBS-4 suppressor\n \n</text>
 	</string>
 	<string id="st_wpn_ak74u_rusty">
@@ -361,7 +363,8 @@
 	<string id="st_wpn_aks_descr">
 		<text>A variant of the AK-47, equipped with an under folding metal shoulder stock in place of the fixed wooden stock. It was designed for use inside armoured vehicles and by paratroopers.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] PBS-1 suppressor\n%c[d_red] • %c[d_red] None due to the absence of a dovetail mount\n
+		%c[d_purple] • %c[ui_gray_2] PBS-1 suppressor\n
+        %c[d_red] • %c[d_red] None due to the absence of a dovetail mount\n
 		%c[d_purple] • %c[ui_gray_2] GP-25 grenade launcher (after modification)\n \n</text>
 	</string>
 	<string id="st_wpn_aks74">
@@ -1186,7 +1189,7 @@
 	<string id="st_wpn_mp5_descr">
 		<text>The MP5 is one of the most famous and wide spread firearms of its class. The MP5's compactness, accuracy and reliability have made it a favourite of numerous military, law enforcement, intelligence and security organisations the world over. The MP5A3 is fitted with a retractable metal stock. Not surprisingly, having flooded the global black markets, it eventually made its way to the Zone.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632 scopes\n
+		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632 scopes, EOTech scopes\n
 		%c[d_purple] • %c[ui_gray_2] 9x19 compatible suppressor (after modification)\n \n</text>
 	</string>
 	<string id="st_wpn_mp5_nimble">
@@ -1195,7 +1198,7 @@
 	<string id="st_wpn_mp5_nimble_descr">
 		<text>A submachine gun prototype based on the excellent H&amp;K MP5A3 model. Designed as a next generation close quarter combat weapon, it benefits from a higher calibre, rate of fire and accuracy.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632 scopes\n
+		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632 scopes, EOTech scopes\n
 		%c[d_purple] • %c[ui_gray_2] GemTech suppressor (after modification)\n \n</text>
 	</string>
 	<string id="st_wpn_mp5_worn">
@@ -2051,7 +2054,9 @@
 		<text>Barrett M82</text>
 	</string>
 	<string id="st_wpn_m82_descr">
-		<text>Barrett M82, in the documentation of the US Armed Forces M107 - American self-loading large-caliber sniper rifle, manufactured by Barrett Firearms Manufacturing and in service with several countries around the world. The automatics of this rifle are based on a butterfly valve. The rifle belongs to the class of "antimaterial", but is more often used as a weapon against enemy infantry.\n \n</text>
+		<text>Barrett M82, in the documentation of the US Armed Forces M107 - American self-loading large-caliber sniper rifle, manufactured by Barrett Firearms Manufacturing and in service with several countries around the world. The automatics of this rifle are based on a butterfly valve. The rifle belongs to the class of "antimaterial", but is more often used as a weapon against enemy infantry.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Leupold 4.5-14x50 Mark 4 scope (integrated)\n \n</text>
 	</string>
 
 	<string id="st_wpn_remington700">
@@ -2060,6 +2065,7 @@
 	<string id="st_wpn_remington700_descr">
 		<text>There are many options for a different rifle cartridge. Standard cartridge - 7.62x51 mm NATO (.308 Win). Technically, it is a magazine rifle with a longitudinally sliding rotary bolt. Store capacity depends on the caliber and can be from 3 to 5. It is a top product from Remington Arms.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Leupold VX Freedom scope (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] KZRZP suppressor (after modification)\n \n</text>
 	</string>
 	
