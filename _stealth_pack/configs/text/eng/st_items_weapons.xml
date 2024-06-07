@@ -750,7 +750,7 @@
 	<string id="st_wpn_g36_descr">
 		<text>The H&amp;K G-36 was known as the HK-50 project in early 1990s. After the cancellation of the G11 and G41 projects, the Bundeswehr was left with outdated G3 rifles; Heckler &amp; Koch was set to develop a new assault rifle for both the German army and for export. The new 5.56x45mm assault rifle was adopted by the Bundeswehr in 1995 and also found its way into the hands of various law enforcement agencies worldwide, including British police and some US police departments. So far, there have been very few complaints about this rifle. The more common ones being the overheating of the handguards during sustained fire, and the loss of zero on the built in scope of G36KE rifles. Some German soldiers also complained about the position of the dual optical sights and it being easily fogged in bad weather. Otherwise, it is accurate, reliable and simple in maintenance.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-        %c[d_purple] • %c[ui_gray_2] Selectable scope (selected by Under-barrel grenade launcher key)\n
+        %c[d_green] • %c[ui_gray_2] Selectable scope (selected by Under-barrel grenade launcher key)\n
         %c[d_purple] • %c[ui_gray_2] G36 3x Scope (integrated)\n
         %c[d_purple] • %c[ui_gray_2] Reflex sight (integrated)\n
         %c[d_purple] • %c[ui_gray_2] M203 grenade launcher\n
@@ -1650,11 +1650,11 @@
 	<string id="st_wpn_sr25_descr">
 		<text>The SR-25, Stoner Rifle, model 25 was developed by Reed Knight, owner of Knights Armament Co. and Eugene Stoner. The SR-25 is an AR-15 rifle scaled up to shoot 7.62x51mm NATO or .308 ammunition. 60% of parts in the rifle is interchangeable with AR-15 components. This rifle sold well among civilian shooters who needed an accurate semi-automatic rifle in 7.62x51mm NATO or .308 calibre for hunting or target shooting. This rifle also found a favour in US Military. All rifles built on the SR-25 platform share the same basic action, the AR-15/M16 system. Because of AR-15 style recoil buffer, which extends rearwards from the receiver, SR-25 cannot be fitted with a folding stock instead it is fitted with telescoping stock.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] SR-25 special suppressor\n
-        %c[d_purple] • %c[ui_gray_2] Selectable scope (selected by Under-barrel Grenade Launcher key)\n
-        %c[d_purple] • %c[ui_gray_2] Laser Sight (toggle on/off holding Torch key)\n
+        %c[d_green] • %c[ui_gray_2] Selectable scope (selected by Under-barrel Grenade Launcher key)\n
+        %c[d_green] • %c[ui_gray_2] Laser Sight (toggle on/off holding Torch key)\n
 		%c[d_purple] • %c[ui_gray_2] Leupold Mark 4 scope (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] Side rail mounted Red Dot (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] SR-25 special suppressor\n
 		%c[d_purple] • %c[ui_gray_2] M203 grenade launcher\n \n</text>
 	</string>
 	
