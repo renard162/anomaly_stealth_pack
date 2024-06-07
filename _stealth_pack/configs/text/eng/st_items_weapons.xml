@@ -399,6 +399,7 @@
 	<string id="st_wpn_aps_descr">
 		<text>The Stechkin APS is a Russian selective fire machine pistol, bearing the name of its designer Igor Stechkin. The Stechkin automatic pistol was originally chambered for 7.62x25mm Tokarev but was changed to the 9x18mm calibre used in the new Makarov pistol, as it became clear that this cartridge was set to become the new service ammunition for handguns in the Soviet Army. In 1951, both the Makarov and Stechkin were introduced into the Soviet military arsenal, replacing the ageing TT-33.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] APS suppressor (after modification)</text>
 	</string>
 	<string id="st_wpn_aps_worn">
@@ -448,6 +449,7 @@
 	<string id="st_wpn_beretta_descr">
 		<text>The 92F is perhaps best known as the standard pistol of the US Military, replacing the legendary M1911. It is a short-recoil operated, locked-breech weapon with an aluminium frame and a hard chromed barrel bore. A popular sidearm adopted by several countries, it is especially popular among criminals for its high-powered rounds and high-capacity magazine.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] 9x19 compatible suppressor (after modification)</text>
 	</string>
 	<string id="st_wpn_beretta_modern">
@@ -458,7 +460,9 @@
 	</string>
 	<string id="st_wpn_beretta_rusty_descr">
 		<text>The 92F is perhaps best known as the standard pistol of the US Military, replacing the legendary M1911. It is a short-recoil operated, locked-breech weapon with an aluminium frame and a hard chromed barrel bore. A popular sidearm adopted by several countries, it is especially popular among criminals for its high-powered rounds and high-capacity magazine. This model became rusty over time, resulting in low reliablity.\n \n
-		%c[ui_gray_2]ATTACHMENTS: \n%c[d_red] • %c[d_red] mounting suppressor is not possible</text>
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
+        %c[d_red] • %c[d_red] mounting suppressor is not possible</text>
 	</string>
 	<string id="st_wpn_beretta_worn">
 		<text>Beretta 92F (worn)</text>
@@ -481,7 +485,9 @@
 		<text>TOZ-66 (alternate sawn-off)</text>
 	</string>
 	<string id="st_wpn_bm16_descr">
-		<text>A double-barrelled shotgun with shortened barrels. Lighter and more compact, effective at close range. Needing a cheap, short range weapon that's effective and lethal, many rookie stalkers resort to sawing off the buttstock and barrel on the easily acquired TOZ 66. This makes the shotgun quick to wield, but at the cost of range and accuracy.\n \n</text>
+		<text>A double-barrelled shotgun with shortened barrels. Lighter and more compact, effective at close range. Needing a cheap, short range weapon that's effective and lethal, many rookie stalkers resort to sawing off the buttstock and barrel on the easily acquired TOZ 66. This makes the shotgun quick to wield, but at the cost of range and accuracy.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Sidearm\n \n</text>
 	</string>
 	<string id="st_wpn_bm16_full">
 		<text>TOZ-66</text>
@@ -509,7 +515,9 @@
 		<text>Kimber Desert Warrior</text>
 	</string>
 	<string id="st_wpn_colt_kimber_descr">
-		<text>An advanced variant of the Colt M1911A1 developed by Kimber Manufacturing. The Desert Warrior was made for conducting special operations by the USA.</text>
+		<text>An advanced variant of the Colt M1911A1 developed by Kimber Manufacturing. The Desert Warrior was made for conducting special operations by the USA.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n</text>
 	</string>
 	
 	<string id="st_wpn_colt1911">
@@ -524,6 +532,7 @@
 	<string id="st_wpn_colt1911_camo_descr">
 		<text>The M1911 was the standard-issue side arm for the US military from 1911 to 1985. An extremely reliable and robust weapon, it's been adopted for military, police and civilian use around the world and remains a very popular firearm to this day. This is a unique model with red stains on dark-beige colour.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] .45 ACP suppressor (after modification)</text>
 	</string>
 	<string id="st_wpn_colt1911_custom">
@@ -532,6 +541,7 @@
 	<string id="st_wpn_colt1911_descr">
 		<text>The M1911 was the standard-issue side arm for the US military from 1911 to 1985. An extremely reliable and robust weapon, it's been adopted for military, police and civilian use around the world and remains a very popular firearm to this day.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] .45 ACP suppressor (after modification)</text>
 	</string>
 	<string id="st_wpn_colt1911_duty">
@@ -540,6 +550,7 @@
 	<string id="st_wpn_colt1911_duty_descr">
 		<text>The M1911 was the standard-issue side arm for the US military from 1911 to 1985. An extremely reliable and robust weapon, it's been adopted for military, police and civilian use around the world and remains a very popular firearm to this day. This variant has a distinctive feature - it's more powerful than the normal one.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] .45 ACP suppressor (after modification)</text>
 	</string>
 	<string id="st_wpn_colt1911_merc">
@@ -548,6 +559,7 @@
 	<string id="st_wpn_colt1911_merc_descr">
 		<text>The M1911 was the standard-issue side arm for the US military from 1911 to 1985. An extremely reliable and robust weapon, it's been adopted for military, police and civilian use around the world and remains a very popular firearm to this day. This model is considerably more reliable and accurate.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] .45 ACP suppressor (after modification)</text>
 	</string>
 	<string id="st_wpn_colt1911_modern">
@@ -561,7 +573,9 @@
 	</string>
 	<string id="st_wpn_colt1911_rusty_descr">
 		<text>The M1911 was the standard-issue side arm for the US military from 1911 to 1985. An extremely reliable and robust weapon, it's been adopted for military, police and civilian use around the world and remains a very popular firearm to this day. This model has rust all over the place, which will likely increase a probability of it jamming.\n \n
-		%c[ui_gray_2]ATTACHMENTS: \n%c[d_red] • %c[d_red] mounting suppressor is not possible\n \n</text>
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
+        %c[d_red] • %c[d_red] mounting suppressor is not possible\n \n</text>
 	</string>
 	<string id="st_wpn_colt1911_worn">
 		<text>Colt M1911 (worn)</text>
@@ -574,7 +588,9 @@
 		<text>CZ-75 Automatic</text>
 	</string>
 	<string id="st_wpn_cz75_auto_descr">
-		<text>The CZ-75 was developed in the Czech Republic by the Koucky brothers. This semi-automatic pistol first appeared in 1975, entered production in 1976 and was intended for the export market. The CZ-75 accumulated the best features from many preceding designs and the resulting pistol was aesthetically attractive, comfortable to handle, shoot, accurate and reliable in operation. Made by CZ arms in various versions and modifications, the CZ-75 was also widely copied and cloned. The CZ-75 Auto is a 1995 model, boasting of a fully automatic fire mode and a longer barrel.</text>
+		<text>The CZ-75 was developed in the Czech Republic by the Koucky brothers. This semi-automatic pistol first appeared in 1975, entered production in 1976 and was intended for the export market. The CZ-75 accumulated the best features from many preceding designs and the resulting pistol was aesthetically attractive, comfortable to handle, shoot, accurate and reliable in operation. Made by CZ arms in various versions and modifications, the CZ-75 was also widely copied and cloned. The CZ-75 Auto is a 1995 model, boasting of a fully automatic fire mode and a longer barrel.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n</text>
 	</string>
 	<string id="st_wpn_cz75_custom">
 		<text>CZ-75 (custom)</text>
@@ -582,6 +598,7 @@
 	<string id="st_wpn_cz75_descr">
 		<text>The CZ-75 was developed in the Czech Republic by the Koucky brothers. This semi-automatic pistol first appeared in 1975, entered production in 1976 and was intended for the export market. The CZ-75 accumulated the best features from many preceding designs and the resulting pistol was aesthetically attractive, comfortable to handle, shoot, accurate and reliable in operation. Made by CZ arms in various versions and modifications, the CZ-75 was also widely copied and cloned.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] 9x19 compatible suppressor</text>
 	</string>
 	<string id="st_wpn_cz75_worn">
@@ -595,7 +612,9 @@
 		<text>Desert Eagle (custom)</text>
 	</string>
 	<string id="st_wpn_desert_eagle_descr">
-		<text>The IMI Desert Eagle is a semi-automatic handgun notable for chambering the largest centrefire cartridge of any magazine fed, self-loading pistol and also being the heaviest and blockiest gun of its type. No one knows why IMI thought shooting a calibre of this size out of a handgun was a good idea, even though there are plenty of rounds out there that can do the job without breaking your wrist; this one assumes because of a pissing contest between the .44 and .50 AE. Not only is it heavy and harsh in recoil, you can also use it to bludgeon your enemies to death because of its blockiness and weight. Although militaries and law enforcement around the world, in their moment of sanity, never adopted this brick; Hollywood did, mostly because of its "cool factor" and now is the poster child for gangsters and pimps and a status symbol for those who reached a certain rank in a certain console shooter. Rumour is that there's a stalker with a crowbar wandering around the Zone with a rechambered version of this gun, but it's just a rumour.</text>
+		<text>The IMI Desert Eagle is a semi-automatic handgun notable for chambering the largest centrefire cartridge of any magazine fed, self-loading pistol and also being the heaviest and blockiest gun of its type. No one knows why IMI thought shooting a calibre of this size out of a handgun was a good idea, even though there are plenty of rounds out there that can do the job without breaking your wrist; this one assumes because of a pissing contest between the .44 and .50 AE. Not only is it heavy and harsh in recoil, you can also use it to bludgeon your enemies to death because of its blockiness and weight. Although militaries and law enforcement around the world, in their moment of sanity, never adopted this brick; Hollywood did, mostly because of its "cool factor" and now is the poster child for gangsters and pimps and a status symbol for those who reached a certain rank in a certain console shooter. Rumour is that there's a stalker with a crowbar wandering around the Zone with a rechambered version of this gun, but it's just a rumour.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n</text>
 	</string>
 	<string id="st_wpn_desert_eagle_modern">
 		<text>Desert Eagle (modern)</text>
@@ -606,6 +625,7 @@
 	<string id="st_wpn_desert_eagle_nimble_descr">
 		<text>The IMI Desert Eagle is a semi-automatic handgun notable for chambering the largest centrefire cartridge of any magazine fed, self-loading pistol and also being the heaviest and blockiest gun of its type. No one knows why IMI thought shooting a calibre of this size out of a handgun was a good idea, even though there are plenty of rounds out there that can do the job without breaking your wrist; this one assumes because of a pissing contest between the .44 and .50 AE. This weapon was brought to the Zone by a stalker named Logan Williams. Disguised as a TIME photographer he managed to single-handedly enter the centre of Pripyat. His current whereabouts are unknown, but he is rumoured to work as an information broker specializing in all matters related to the Zone.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] DOCTER sight (integrated)</text>
 	</string>
 	<string id="st_wpn_desert_eagle_worn">
@@ -646,6 +666,7 @@
 	<string id="st_wpn_fn57_descr">
 		<text>The Five-seveN is a delayed blowback operated, semi-automatic firearm. The Five-seveN pistol was designed by FN Herstal as a complimentary sidearm for the P90 submachine gun. The P90 and Five-seveN share the same ammunition, the 5.7x28mm SS190 cartridge. The idea behind the ammunition and weapon is to provide good penetration against targets protected by body armour, while keeping the weapon's weight, dimensions and recoil at reasonable levels.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] 5.7x28 compatible suppressor</text>
 	</string>
 	
@@ -658,6 +679,7 @@
 	<string id="st_wpn_fnp45_descr">
 		<text>The FN FNP pistol is a series of semi-automatic, polymer framed pistols manufactured in Columbia, South Carolina by FNH USA, a division of Fabrique Nationale de Herstal. Debuted in early 2006, the FNP series weapons are hammer fired weapons utilizing a Browning cam system with an external extractor. The trigger module is housed inside the polymer frame as an individual unit connected to the hammer. The magazine release button is held in place by a retention pin which can be removed to allow the button to be reversed.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] GemTech suppressor</text>
 	</string>
 	<string id="st_wpn_fnp45_worn">
@@ -676,6 +698,7 @@
 	<string id="st_wpn_fnx45_descr">
 		<text>The FNX line of pistols were introduced in 2009 by FNH USA, a US based subsidiary of the Belgian gun company FN Herstal. Originally developed to the requirements of the US Joint Combat Pistol Program, these pistols are manufactured in US and intended for military, law enforcement and civilian use. All FNX handguns are semi-automatic pistols with double/single action trigger and external hammer. Frame of the every FNX pistol is made from impact resistant polymer, with removable backstraps of different sizes. FNX-45 Tactical is a specialised variant of the basic FNX-45, that features extended threaded barrel and raised sights, to be used with detachable sound suppressor.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] FNX Tactical sight (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] GemTech suppressor (integrated)</text>
 	</string>
@@ -686,6 +709,7 @@
 	<string id="st_wpn_fort_descr">
 		<text>The Fort-17 pistol is the latest development of the Ukrainian state owned FORT factory. It is a polymer framed modification of the earlier Fort-12 pistol, and all the mechanisms and properties are almost identical between the two pistols. However, the Fort-17 is lighter than its predecessor and features a removable grip backstrap, which can be had in various sizes, to adapt the pistol for a particular shooter.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] 9x19 compatible suppressor</text>
 	</string>
 	<string id="st_wpn_fort_rusty">
@@ -827,6 +851,7 @@
 	<string id="st_wpn_glock_descr">
 		<text>The Glock 19 is a smaller version of the Glock 17. Its reduced size made the Glock 19 easier to conceal and carry by military and police forces. The pistol was debuted by Glock GbmH of Austria in 1988. When compared to the Glock 17, the Glock 19 retains the weight of its slide to keep the short recoil operation in check while at the same time shortening the grip and barrel. Many components of the Glock 19 were made interchangeable with the Glock 17, including the magazine. Simply put, the Glock 19 is a compact version of the 17.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] GemTech suppressor (after modification)</text>
 	</string>
 	<string id="st_wpn_glock_modern">
@@ -835,6 +860,7 @@
 	<string id="st_wpn_glock_modern_descr">
 		<text>The Glock 19 is a smaller version of the Glock 17. Its reduced size made the Glock 19 easier to conceal and carry by military and police forces. The pistol was debuted by Glock GbmH of Austria in 1988. When compared to the Glock 17, the Glock 19 retains the weight of its slide to keep the short recoil operation in check while at the same time shortening the grip and barrel. Many components of the Glock 19 were made interchangeable with the Glock 17, including the magazine. Simply put, the Glock 19 is a compact version of the 17. This model has an optional automatic fire mode.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] GemTech suppressor (after modification)</text>
 	</string>
 	<string id="st_wpn_glock_worn">
@@ -845,7 +871,9 @@
 		<text>MP-443 Grach</text>
 	</string>
 	<string id="st_wpn_grach_descr">
-		<text>The MP-443 is a short recoil operated, locked breech pistol that was developed for the Russian Army trials, codenamed "Grach" (rook). These trials were started by issuing initial requirements for a new military pistol in 1993. Several designs were submitted to the trials and the winner was the pistol designed at the state Izhevsk Mechanical Plant by Vladimir Yarygin. This pistol, initially known as the 6P35 military index during trials or the MP-443 "Grach" manufacturer's designation, is adopted by the Russian Government for military and law enforcement use under the PYa designation, and already issued to some Russian Army units.</text>
+		<text>The MP-443 is a short recoil operated, locked breech pistol that was developed for the Russian Army trials, codenamed "Grach" (rook). These trials were started by issuing initial requirements for a new military pistol in 1993. Several designs were submitted to the trials and the winner was the pistol designed at the state Izhevsk Mechanical Plant by Vladimir Yarygin. This pistol, initially known as the 6P35 military index during trials or the MP-443 "Grach" manufacturer's designation, is adopted by the Russian Government for military and law enforcement use under the PYa designation, and already issued to some Russian Army units.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n</text>
 	</string>
 	<string id="st_wpn_grach_worn">
 		<text>MP-443 Grach (worn)</text>
@@ -877,7 +905,9 @@
 		<text>Gsh-18 (custom)</text>
 	</string>
 	<string id="st_wpn_gsh18_descr">
-		<text>The GSh-18 is a 9x19mm semi-automatic pistol developed in the early 1990s at the KBP Instrument Design Bureau in Tula. The pistol's name is derived from its designers - Gryazev and Shipunow, and the number 18 denotes the magazine capacity. The GSh-18 is a recoil-operated, locked breech pistol. The weapon has an unusual cam-rotated barrel with 10 locking lugs. The GSh-18 is striker fired and features a pre-set trigger that pre-cocks the pistol when the slide recoils after firing a shot, the striker firing pin is then fully cocked by pulling the trigger back to the rear. With the 7N21 and 7N31 armour-piercing bullets, it can pierce 8mm of steel at 20 metres.</text>
+		<text>The GSh-18 is a 9x19mm semi-automatic pistol developed in the early 1990s at the KBP Instrument Design Bureau in Tula. The pistol's name is derived from its designers - Gryazev and Shipunow, and the number 18 denotes the magazine capacity. The GSh-18 is a recoil-operated, locked breech pistol. The weapon has an unusual cam-rotated barrel with 10 locking lugs. The GSh-18 is striker fired and features a pre-set trigger that pre-cocks the pistol when the slide recoils after firing a shot, the striker firing pin is then fully cocked by pulling the trigger back to the rear. With the 7N21 and 7N31 armour-piercing bullets, it can pierce 8mm of steel at 20 metres.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n</text>
 	</string>
 	<string id="st_wpn_gsh18_worn">
 		<text>Gsh-18 (worn)</text>
@@ -903,6 +933,7 @@
 	<string id="st_wpn_hpsa_descr">
 		<text>The Browning Hi-Power is a single-action, 9mm semi-automatic pistol. It is based on the ideas of American firearms inventor John Browning, created and patented in 1922, later patented by FN Herstal. Browning died in 1926, before he had finished developing a production version, but FN arms designer Dieudonne Saive fully developed it. The Hi-Power pistol was noted for its 13 round magazine capacity, twice that of contemporary designs such as the Luger or Mauser 1910. This modified variant of the Browning HP pistol, despite its venerable age, enjoys popularity around the world.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] 9x19 compatible suppressor (after modification)</text>
 	</string>
 	<string id="st_wpn_hpsa_rusty">
@@ -932,6 +963,7 @@
 	<string id="st_wpn_kiparis_descr">
 		<text>OTs-02 "Kiparis" (Cypress) is a sub-machine gun, developed in 1972 by order of the Ministry of Defence of the USSR by weapon designers from TsKIB COO of Tula. The layout is based on the Czechoslovak sub-machine gun Scorpion Vz.61 (1961 variant). The OTs-02 "Kiparis" automatic mechanism is powered by a free bolt recoil. Shots are fired from closed bolt, which increases the accuracy of fire. To increase stability of the weapon, a folding stock is used, which in the compact position is folded on top of the receiver. In the Zone, this weapon is not uncommon and usually used by bandits and loners who can't afford a better weapon.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] 9x19 compatible suppressor\n \n</text>
 	</string>
 	<string id="st_wpn_kiparis_worn">
@@ -1112,7 +1144,9 @@
 		<text>M79</text>
 	</string>
 	<string id="st_wpn_m79_descr">
-		<text>The M79 grenade launcher is a single shot, shoulder-fired, break-action grenade launcher that fires a 40x46mm grenade, which uses what the US Army calls the High-Low Propulsion System to keep recoil low. First appeared during the Vietnam War.</text>
+		<text>The M79 grenade launcher is a single shot, shoulder-fired, break-action grenade launcher that fires a 40x46mm grenade, which uses what the US Army calls the High-Low Propulsion System to keep recoil low. First appeared during the Vietnam War.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Sidearm\n \n</text>
 	</string>
 	
 	<string id="st_wpn_m98b">
@@ -1175,7 +1209,9 @@
 		<text>MP-412 Rex</text>
 	</string>
 	<string id="st_wpn_mp412_descr">
-		<text>The MP412 REX is a Russian double-action .357 magnum revolver with a break-action chamber and an automatic ejector. It was designed for export (REX, Revolver for EXport), but never put into full production due to lack of a market. The weapon was designed by IZHMECH, the state-owned Russian Izhevsk Mechanical Plant, which also designed and produced the Makarov PM semi-automatic pistol.</text>
+		<text>The MP412 REX is a Russian double-action .357 magnum revolver with a break-action chamber and an automatic ejector. It was designed for export (REX, Revolver for EXport), but never put into full production due to lack of a market. The weapon was designed by IZHMECH, the state-owned Russian Izhevsk Mechanical Plant, which also designed and produced the Makarov PM semi-automatic pistol.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n</text>
 	</string>
 	
 	<string id="st_wpn_mp5">
@@ -1231,6 +1267,7 @@
 	<string id="st_wpn_oc33_descr">
 		<text>OTs-33 "Pernach" (Russian for multivaned mace) is a recent entry into the small class of Russian automatic pistols. The OTs-33 is a blowback-operated weapon firing the 9x18mm Makarov pistol cartridge in automatic and semi-automatic mode. The Pernach was developed in 1995 to replace the Stechkin APS pistol in special paramilitary units. Designed in 1995 by Igor Stechkin at the TSKIB SOO, Central Design Bureau for Sporting and Hunting arms, Tula, Russia, the same designer who developed the APS.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] APS suppressor (after modification)</text>
 	</string>
 	<string id="st_wpn_oc33_rusty">
@@ -1263,6 +1300,7 @@
 	<string id="st_wpn_pb_descr">
 		<text>The PB (Pistolet Besshumnyj or Silent Pistol), also known in the Soviet army as 6P9, has been developed in 1967 for Spetsnaz units of the Soviet Army, as well as for KGB operatives. The pistol is based on a modified Makarov PM pistol and features an unique integral two part suppressor. Issued into service in 1967, the PB (GRAU index 6P9) is a Soviet silenced pistol based on the Makarov PM. It was intended for use by the KGB and army reconnaissance groups. The front part of the suppressor is detachable, so that the pistol can be broken down into two parts for convenient carry. The PB's integral suppressor also reduces the bullet velocity to below subsonic levels.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] 6P9 suppressor (integrated)</text>
 	</string>
 	<string id="st_wpn_pb_worn">
@@ -1292,19 +1330,25 @@
 		<text>Ceremonial Makarov PM</text>
 	</string>
 	<string id="st_wpn_pm_actor_descr">
-		<text>An ancient PM given to Degtyarev as a reward for "Successful execution of highly dangerous state orders, as well as valour and courage shown in the line of duty".</text>
+		<text>An ancient PM given to Degtyarev as a reward for "Successful execution of highly dangerous state orders, as well as valour and courage shown in the line of duty".\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n</text>
 	</string>
 	<string id="st_wpn_pm_custom">
 		<text>PM (custom)</text>
 	</string>
 	<string id="st_wpn_pm_descr">
-		<text>This Soviet legacy is the most common pistol in the Zone and is one of the best compact self-defence handguns available. It is small, highly reliable, easy to use and maintain in working order. It also suffers from several drawbacks, including short range, low firing accuracy and poor stopping power, while also losing out to modern pistols in its class in terms of weight and magazine size. In 1951, the Pistol Makarova was selected because of its simplicity, easy manufacturing, accuracy, and reasonable stopping power.</text>
+		<text>This Soviet legacy is the most common pistol in the Zone and is one of the best compact self-defence handguns available. It is small, highly reliable, easy to use and maintain in working order. It also suffers from several drawbacks, including short range, low firing accuracy and poor stopping power, while also losing out to modern pistols in its class in terms of weight and magazine size. In 1951, the Pistol Makarova was selected because of its simplicity, easy manufacturing, accuracy, and reasonable stopping power.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n</text>
 	</string>
 	<string id="st_wpn_pm_rusty">
 		<text>PM (rusty)</text>
 	</string>
 	<string id="st_wpn_pm_rusty_descr">
-		<text>This Soviet legacy is the most common pistol in the Zone and is one of the best compact self-defence handguns available. It is small, highly reliable, easy to use and maintain in working order. It also suffers from several drawbacks, including short range, low firing accuracy and poor stopping power, while also losing out to modern pistols in its class in terms of weight and magazine size. In 1951, the Pistol Makarova was selected because of its simplicity, easy manufacturing, accuracy, and reasonable stopping power. Rust has made this model considerably less reliable</text>
+		<text>This Soviet legacy is the most common pistol in the Zone and is one of the best compact self-defence handguns available. It is small, highly reliable, easy to use and maintain in working order. It also suffers from several drawbacks, including short range, low firing accuracy and poor stopping power, while also losing out to modern pistols in its class in terms of weight and magazine size. In 1951, the Pistol Makarova was selected because of its simplicity, easy manufacturing, accuracy, and reasonable stopping power. Rust has made this model considerably less reliable\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n</text>
 	</string>
 	<string id="st_wpn_pm_worn">
 		<text>PM (worn)</text>
@@ -1314,7 +1358,9 @@
 		<text>PMM</text>
 	</string>
 	<string id="st_wpn_pmm_descr">
-		<text>The most widely known variant, the Makarov PMM was a redesign of the original gun. In 1990 a group of engineers reworked the original Makarov, primarily by increasing the load for the cartridge. The result is 25% more gas pressure increasing in muzzle velocity. The PMM magazine holds 12 rounds, compared to the PM's 8 rounds.</text>
+		<text>The most widely known variant, the Makarov PMM was a redesign of the original gun. In 1990 a group of engineers reworked the original Makarov, primarily by increasing the load for the cartridge. The result is 25% more gas pressure increasing in muzzle velocity. The PMM magazine holds 12 rounds, compared to the PM's 8 rounds.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n</text>
 	</string>
 	
 	<string id="st_wpn_pp2000">
@@ -1323,6 +1369,7 @@
 	<string id="st_wpn_pp2000_descr">
 		<text>The PP-2000 is the latest development of the Instrument Design Bureau (KBP) from Tula, Russia. First displayed to the public in 2004, the patent for its layout has been filed in 2001 and was issued in 2003. The niche for the PP-2000 is a personal defence weapon for non-infantry military personnel, as well as close combat weapon for special forces and special law enforcement teams. As such, it is a compact weapon with few parts for reliability, simplified maintenance and low cost. Best suited for close combat.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, EOTech scopes\n
 		%c[d_purple] • %c[ui_gray_2] 9x19 compatible suppressor\n \n</text>
 	</string>
@@ -1475,6 +1522,7 @@
 	<string id="st_wpn_sig220_descr">
 		<text>The SIG-Sauer P220, manufactured in the late 1970s by J.P. Sauer &amp; Son Company, is often considered the best out of the box .45 calibre double action pistol. An instant success, the P220 was adopted by the Swiss and Japanese SDF and by many European police organisations. This pistol also found its way into the US, first through the Browning Arms Company of Utah and since the 1980s, through the SIGARMS Company of New Hampshire.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] .45 ACP Suppressor</text>
 	</string>
 	<string id="st_wpn_sig220_nimble">
@@ -1483,6 +1531,7 @@
 	<string id="st_wpn_sig220_nimble_descr">
 		<text>A unique model of the SIG-Sauer P220 handgun. Part of a small limited edition made for an unidentified special forces unit. The model benefits from an increased magazine capacity, a high durability steel barrel and an ultra-durable polymer receiver.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] .45 ACP Suppressor</text>
 	</string>
 	<string id="st_wpn_sig220_rusty">
@@ -1490,7 +1539,9 @@
 	</string>
 	<string id="st_wpn_sig220_rusty_descr">
 		<text>The SIG-Sauer P220, manufactured in the late 1970s by J.P. Sauer &amp; Son Company, is often considered the best out of the box .45 calibre double action pistol. An instant success, the P220 was adopted by the Swiss and Japanese SDF and by many European police organisations. This pistol also found its way into the US, first through the Browning Arms Company of Utah and since the 1980s, through the SIGARMS Company of New Hampshire. This model is covered in rust, resulting in lower combat effectiveness.\n \n
-		%c[ui_gray_2]ATTACHMENTS: \n%c[d_red] • %c[d_red] mounting suppressor is not possible</text>
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
+        %c[d_red] • %c[d_red] mounting suppressor is not possible</text>
 	</string>
 	<string id="st_wpn_sig220_worn">
 		<text>SIG P220 (worn)</text>
@@ -1744,7 +1795,9 @@
 		<text>TOZ-34 (decorated sawn-off)</text>
 	</string>
 	<string id="st_wpn_toz34_obrez_descr">
-		<text>Intended for professional and amateur hunting the TOZ-34 is a over/under shotgun. Modifications made to this gun by removing much of the barrel and the stock makes this shotgun more compact and easier to carry. Popular among rookies and bandits as they can hide it easily in their trench coats.\n \n</text>
+		<text>Intended for professional and amateur hunting the TOZ-34 is a over/under shotgun. Modifications made to this gun by removing much of the barrel and the stock makes this shotgun more compact and easier to carry. Popular among rookies and bandits as they can hide it easily in their trench coats.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Sidearm\n \n</text>
 	</string>
 	<string id="st_wpn_toz34_obrez_rusty">
 		<text>TOZ-34 (rusty sawn-off) </text>
@@ -1822,6 +1875,7 @@
 	<string id="st_wpn_usp_descr">
 		<text>Originally designed for the American market, the USP, Universal Self loading Pistol, is known as an accurate and reliable handgun. U.S. law enforcement and military provided much of the design criteria for the USP. The controls are uniquely American, influenced by famous designs like the Government Model 1911 pistol. All USPs use a fibre-reinforced polymer frame stiffened by stainless steel inserts at areas subject to stress and friction. Incorporating several successful handgun design elements, the USP Compact .45 is a part of the USP family of handguns designed by H&amp;K. Able to withstand extreme punishment and adverse conditions, it is used by several countries' police and special forces units.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] .45 ACP suppressor (after modification)</text>
 	</string>
 	<string id="st_wpn_usp_match">
@@ -1830,6 +1884,7 @@
 	<string id="st_wpn_usp_match_descr">
 		<text>An enhanced USP by HK with distinct characteristics that make it more attractive to the target shooter. With the O-Ring barrel first seen in the Mark 23, the Match includes compensator that helps reduce the relatively mild kick of the 9x19. The Match also features polygonal rifling, a trigger stop, and fully adjustable rear sight.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] GemTech suppressor (after modification)</text>
 	</string>
 	<string id="st_wpn_usp_nimble">
@@ -1838,6 +1893,7 @@
 	<string id="st_wpn_usp_nimble_descr">
 		<text>A compact, large calibre pistol with short bolt movement and lightweight bolt assembly. Used to belong to a mercenary called Wolfhound. Appears to be a modified USP Compact pistol.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] GemTech suppressor (after modification)</text>
 	</string>
 	<string id="st_wpn_usp_worn">
@@ -1962,6 +2018,7 @@
 	<string id="st_wpn_vz61_descr">
 		<text>Originally chambered for .32 ACP when adopted by the Czechoslovak Army in 1961, mass production of the Skorpion vz. 68 never took place. Even so, a large number of pre-production vz. 68 models made their way into the Zone. \n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] 9x19 compatible suppressor (after modification)\n \n</text>
 	</string>
 	<string id="st_wpn_vz61_freedom">
@@ -1987,6 +2044,7 @@
 	<string id="st_wpn_walther_descr">
 		<text>Ergonomics being a key focus in its design, the Walther P99 is a recoil-operated pistol with a fibreglass polymer frame. Developed for law enforcement and the civilian shooting market, it's employed by police units in a number of countries.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] 9x19 compatible suppressor</text>
 	</string>
 	<string id="st_wpn_walther_worn">
@@ -1994,7 +2052,9 @@
 	</string>
 	
 	<string id="wpn_tt33_descr">
-		<text>The TT-33 is a Russian 7.62x25mm pistol. It was developed in the early 1930s by Fedor Tokarev as a service pistol for the Soviet military to replace the Nagant M1895 revolver. Many communist or Soviet bloc countries made a variation of the TT-33 pistol, until it was eventually replaced by 9x18mm Makarov PM in 1952. Production of the TT-33 in the USSR ended in 1954.</text>
+		<text>The TT-33 is a Russian 7.62x25mm pistol. It was developed in the early 1930s by Fedor Tokarev as a service pistol for the Soviet military to replace the Nagant M1895 revolver. Many communist or Soviet bloc countries made a variation of the TT-33 pistol, until it was eventually replaced by 9x18mm Makarov PM in 1952. Production of the TT-33 in the USSR ended in 1954.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n</text>
 	</string>
 	
 	<string id="st_wpn_umirotvoritel">
@@ -2100,7 +2160,9 @@
 		<text>CZ 52</text>
 	</string>
 	<string id="st_wpn_cz52_descr">
-		<text>The CZ 52 (also known by the Czechoslovak military designations vz. 52, for (vz. - vzor = model) "model of 1952", and CZ 482) is a semi-automatic pistol designed by two brothers, Jan and Jaroslav Kratochvil, in the early 1950s for the Czechoslovak military. Around 200,000 vz. 52s were made by Ceska Zbrojovka in Strakonice from 1952 to 1954. Before standardizing on the 7.62x25mm vz. 52, the Czechoslovak military used several domestic and foreign pistol models in three different calibers.\n \n</text>
+		<text>The CZ 52 (also known by the Czechoslovak military designations vz. 52, for (vz. - vzor = model) "model of 1952", and CZ 482) is a semi-automatic pistol designed by two brothers, Jan and Jaroslav Kratochvil, in the early 1950s for the Czechoslovak military. Around 200,000 vz. 52s were made by Ceska Zbrojovka in Strakonice from 1952 to 1954. Before standardizing on the 7.62x25mm vz. 52, the Czechoslovak military used several domestic and foreign pistol models in three different calibers.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n</text>
 	</string>
 	
 	<string id="st_wpn_fnc">
@@ -2137,6 +2199,7 @@
 	<string id="st_wpn_mp7_descr">
 		<text>The Heckler & Koch MP7 (Maschinenpistole 7) is a German personal defence weapon (PDW) designed and manufactured by Heckler & Koch (H&K) and chambered for the HK 4.6x30mm cartridge. It was designed with the new cartridge to meet NATO requirements published in 1989, as these requirements call for a personal defense weapon (PDW) class firearm, with a greater ability to penetrate body armor than current weapons limited to conventional pistol cartridges. The MP7 went into production in 2001.\n \n
 		%c[ui_gray_2]ATTACHMENTS: \n
+        %c[d_purple] • %c[ui_gray_2] Sidearm\n
 		%c[d_purple] • %c[ui_gray_2] GemTech suppressor\n
 		%c[d_purple] • %c[ui_gray_2] ACOG, Barska ES AC10632, C-more Railway Tactical, EOTech scopes\n \n</text>
 	</string>
