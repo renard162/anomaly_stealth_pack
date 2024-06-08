@@ -644,7 +644,7 @@
 	<string id="st_wpn_fn2000_descr">
 		<text>From the late 1980s to early 1990s, FN Herstal began to develop a new rifle. The aim was to produce a modern and modular weapon resulting in the FN F2000 rifle, first displayed to the public in 2001. The F2000 offers all of the popular features of the modern assault rifle such as a compact bullpup layout, ambidextrous handling and a modular design with plenty of options and addons available. So far, the FN F2000 rifle has found only a few buyers, including the Armed Forces of Slovenia and Belgian Special Operations Forces.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] FN2000 scope (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] FN2000 1.5x scope (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n \n</text>
 	</string>
 	<string id="st_wpn_fn2000_nimble">
@@ -783,13 +783,13 @@
 		<text>A sniper variant of the G3. The "SG" stands for Scharfschutzengewehr, or "sharpshooting rifle". The rifles were individually selected from the production line for their accuracy and then modified. A Zeiss 1.5-6x variable power telescopic sight was added using a HK claw mount attached to the receiver. The stock was extended slightly and comes with a heavy, dual-stage buffer and adjustable cheek rest. A special set trigger group was added for a crisp trigger pull of 1 lb. Automatic fire was retained.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
         %c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
-		%c[d_purple] • %c[ui_gray_2] G3 scope (integrated)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] G3 4x scope (integrated)\n \n</text>
 	</string>
 	<string id="st_wpn_g3sg1_modern_descr">
 		<text>A sniper variant of the G3. The "SG" stands for Scharfschutzengewehr, or "sharpshooting rifle". The rifles were individually selected from the production line for their accuracy and then modified. A Zeiss 1.5-6x variable power telescopic sight was added using a H&amp;K claw mount attached to the receiver. The stock was extended slightly and comes with a heavy, dual-stage buffer and adjustable cheek rest. A special set trigger group was added for a crisp trigger pull of 1lb. Automatic fire was retained.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
         %c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
-		%c[d_purple] • %c[ui_gray_2] G3 scope (integrated)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] G3 4x scope (integrated)\n \n</text>
 	</string>
 	<string id="st_wpn_g3sg1_worn">
 		<text>G3SG1 (worn)</text>
@@ -801,7 +801,7 @@
 	<string id="st_wpn_g43_descr">
 		<text>Adopting a simple gas-operated mechanism from Soviet SVT rifles, Nazi Germany developed the Gewehr 43 semi-automatic rifle. It was renamed Karabiner 43 in 1944. Equipped with the ZF 4 telescopic sight, it is an effective sniper rifle.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] ZF-41 scope (integrated)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] ZF-41 3x scope (integrated)\n \n</text>
 	</string>
 	
     <string id="st_wpn_famas3"> <!-- NEW GUNS -->
@@ -839,7 +839,7 @@
 	<string id="st_wpn_gauss_descr">
 		<text>A highly experimental, artefact-powered, super-accurate weapon made by an unknown party in the Zone. Its gunshot is nearly inaudible, because instead of gunpowder, it uses magnets to accelerate its bullet to incredible speeds. Despite the gauss rifle's tremendous firepower, the recoil is insignificant. The accuracy and power of this gun exceeds those of all other small arms.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] Enhanced 4x scope (integrated)</text>
+		%c[d_purple] • %c[ui_gray_2] Enhanced 1.5-12x scope (integrated)</text>
 	</string>
 	
 	<string id="st_wpn_glock">
@@ -1007,7 +1007,7 @@
 	<string id="st_wpn_l85_descr">
 		<text>The development of the SA80 system, which included two weapons - the SA80 IW assault rifle and SA80 LSW light machine gun, began in the late 1960s when the British Army decided to develop a new rifle, to replace the ageing 7.62x51mm L1 SLR British made FN FAL. The standard individual weapon for the British armed forces, the L85 (in its original A1 version) had numerous performance issues. The improved L85A1 is extremely reliable over a range of climates for various operational scenarios. The current L85A1 rifles are recognised as reliable and accurate, especially when using standard issue SUSAT telescope sights.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] SUSAT scope (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] SUSAT 4x scope (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor (after modification)\n \n</text>
 	</string>
 	
@@ -1017,7 +1017,7 @@
 	<string id="st_wpn_l96a1_descr">
 		<text>The Accuracy International Arctic Warfare rifle is a family of bolt-action sniper rifles designed and manufactured by the British company, Accuracy International. It has proved popular as a civilian, police and military rifle since its introduction in the 1980s. The rifles have some features which improve performance in very cold conditions, without impairing operation in less extreme conditions.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] Leupold Mark 4 scope (integrated)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] Leupold Mark 4 5.5x scope (integrated)\n \n</text>
 	</string>
 	<string id="st_wpn_l96a1_worn">
 		<text>L96A1 (worn)</text>
@@ -1029,7 +1029,7 @@
 	<string id="st_wpn_l96a1m_descr">
 		<text>The Accuracy International Arctic Warfare rifle is a family of bolt-action sniper rifles designed and manufactured by the British company, Accuracy International. It has proved popular as a civilian, police and military rifle since its introduction in the 1980s. The rifles have some features which improve performance in very cold conditions, without impairing operation in less extreme conditions. L96 AWSM utilises .338 Lapua Magnum.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] Leupold Mark 4 scope (integrated)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] Leupold Mark 4 5.5x scope (integrated)\n \n</text>
 	</string>
 	
 	<string id="st_wpn_lr300">
@@ -1091,7 +1091,7 @@
 	<string id="st_wpn_m24_descr">
 		<text>A sniper rifle of the US Army, the M24 Sniper Weapon System (SWS) is based on the Remington 700. Fitted with a Leupold 10x40mm scope, the M24 has a stainless steel barrel and an adjustable composite stock made from Kevlar and graphite.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] M24 sniper scope (integrated)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] M24 1.5-4.5x sniper scope (integrated)\n \n</text>
 	</string>
 	
 	<string id="st_wpn_m249">
@@ -1155,7 +1155,7 @@
 	<string id="st_wpn_m98b_descr">
 		<text>The Barrett M98B is a bolt-action sniper rifle chambered in .338 Lapua Mag. Rather than modifying a hunting rifle, Barrett created an original design for the M98B. The M98B features an adjustable stock and cheek pad for comfort, an adjustable trigger for preferable trigger control, a rear monopod and a front bi-pod for stability. Users can further modify the rifle by attaching sights, lights and grips to its rails. The M98B has a simple design making it easy for users to disassemble and clean.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] Leupold Mark 4 scope (integrated)</text>
+		%c[d_purple] • %c[ui_gray_2] Leupold 1.5-10x50 Mark 4 scope (integrated)</text>
 	</string>
 	
 	<string id="st_wpn_mosin">
@@ -1579,7 +1579,7 @@
 		<text>A marksman variant of a popular Swiss-made assault rifle, the SG 550-S constitutes a perfect middle ground between sniper and assault rifles, retaining the strong points of both types of weaponry. On the other hand, it suffers from certain drawbacks such as being somewhat lacking in stopping power and accuracy for a sniper rifle and lack of automatic fire. Still, it remains one of the best top-tier weapon systems available within the Exclusion Zone.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
 		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
-		%c[d_purple] • %c[ui_gray_2] Kahles ZF95 scope (integrated)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] Kahles ZF95 4.5x scope (integrated)\n \n</text>
 	</string>
 	<string id="st_wpn_sig550_strelok">
 		<text>SIG SG550 Arrow</text>
@@ -1652,7 +1652,7 @@
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
         %c[d_green] • %c[ui_gray_2] Selectable scope (selected by Under-barrel Grenade Launcher key)\n
         %c[d_green] • %c[ui_gray_2] Laser Sight (toggle on/off holding Torch key)\n
-		%c[d_purple] • %c[ui_gray_2] Leupold Mark 4 scope (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] Leupold Mark 4 1.5-5.5x scope (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] Side rail mounted Red Dot (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] SR-25 special suppressor\n
 		%c[d_purple] • %c[ui_gray_2] M203 grenade launcher\n \n</text>
@@ -1667,7 +1667,7 @@
 	<string id="st_wpn_sv98_descr">
 		<text>The SV-98 (Snaiperskaya Vintovka Model 1998) is a Russian bolt action sniper rifle designed by Vladimir Stronskiy. In 2003 special operations troops were armed with the 7.62 mm 6S11 sniper system comprising the SV-98 sniper rifle (index 6V10) and 7N14 sniper enhanced penetration round. The rifle has been used in combat during operations in Chechnya.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] PKS-07 scope (integrated)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] PKS-07 5x scope (integrated)\n \n</text>
 	</string>
 	<string id="st_wpn_sv98_worn">
 		<text>SV98 (worn)</text>
@@ -1691,7 +1691,7 @@
 	<string id="st_wpn_svd_nimble_descr">
 		<text>A hand-assembled version of the SVDm-2 sniper rifle with improved mechanisms for increased flatness. Little difference in appearance, but provides an ideal combination of accuracy and stopping power.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] 1P59 "Hyperon" scope (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] 1P59 "Hyperon" 1.5-4.5x scope (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] KZRZP suppressor\n \n</text>
 	</string>
 	<string id="st_wpn_svd_rusty">
@@ -1783,7 +1783,7 @@
 	<string id="st_wpn_toz34_mark4_descr">
 		<text>Intended for professional and amateur hunting the TOZ-34 is an over/under shotgun. Though lacking in capacity, only 2 rounds, it compares well with high-grade shotguns due to its high accuracy of hits. The TOZ 34 was designed by N. I. Korovyakov and V. P. Ochnev in 1965. Affordable in price, with high damage output and its ability to unload both rounds instantly make it a popular weapon among rookies on the outskirts of the Zone. Especially useful against mutants thanks to its accuracy and stopping power. This model has a Leupold Mark 4 scope attached to it.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] Leupold Mark 4 scope (integrated)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] Leupold Mark 4 1.5-4x scope (integrated)\n \n</text>
 	</string>
 	<string id="st_wpn_toz34_obrez">
 		<text>TOZ-34 (sawn-off)</text>
@@ -1815,7 +1815,7 @@
 	<string id="st_wpn_trg_descr">
 		<text>The TRG-42 is not an accurised version of an existing rifle, but was developed from the very beginning as a sniper rifle. Its consistent high accuracy and reliability have made it popular both in long-range competitions and military sniper operations.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] FINDOT scope (integrated)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] FINDOT 6x scope (integrated)\n \n</text>
 	</string>
 	
 	<string id="st_wpn_tt33">
@@ -1948,7 +1948,7 @@
 	<string id="st_wpn_vintorez_1pn93_descr">
 		<text>Designed at TsNIITochMash by Peter Serdyukov and his team, the new rifle was intended for various Spetsnaz troops of the Soviet Army, KGB and MVD. The VSS is quite popular among its users for its stealthy capabilities and the great lethality of the heavy 9x39mm bullets. The effective range of the VSS is limited to 300-400 metres. Standard sighting equipment consists of side rail on the receiver, which usually accommodates the 4x  PSO-1M2-1 scope. Any other scope or night vision sight can be mounted on the appropriate mount. Backup iron sights consist of tangent rear and blade front. The rear sight is graduated for up to 400 metres.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] Improved 1PN93 "Tot" nightvision scope (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] Improved 1PN93 "Tot" nightvision 1.5-4x scope (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] VSS suppressor (integrated)\n \n</text>
 	</string>
 	<string id="st_wpn_vintorez_alt">
@@ -1966,7 +1966,7 @@
 	<string id="st_wpn_vintorez_nimble_descr">
 		<text>A special variant of the famous VSS sniper rifle. This model has been extensively customised. Its internal mechanism has been replaced with a better one, which results in increased muzzle velocity and accuracy. It has an effective range of up to 600 metres.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] PSO-1 scope (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] PSO-1 4x scope (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] VSS suppressor (integrated)\n \n</text>
 	</string>
 	<string id="st_wpn_vintorez_worn">
@@ -2003,7 +2003,7 @@
 		<text>The VSSK is a Russian bullpup, straight-pull bolt-action sniper rifle chambered for the 12.7x55mm subsonic round. The weapon is also known by its other name, Vykhlop. It was developed in 2002 for special forces units of FSB.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
         %c[d_purple] • %c[ui_gray_2] VSSK supressor (integrated)\n
-		%c[d_purple] • %c[ui_gray_2] PKS-07 scope (integrated)</text>
+		%c[d_purple] • %c[ui_gray_2] PKS-07 6x scope (integrated)</text>
 	</string>
 	
 	<string id="st_wpn_vz61">
@@ -2118,7 +2118,7 @@
 	<string id="st_wpn_m82_descr">
 		<text>Barrett M82, in the documentation of the US Armed Forces M107 - American self-loading large-caliber sniper rifle, manufactured by Barrett Firearms Manufacturing and in service with several countries around the world. The automatics of this rifle are based on a butterfly valve. The rifle belongs to the class of "antimaterial", but is more often used as a weapon against enemy infantry.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] Leupold 4.5-14x50 Mark 4 scope (integrated)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] Leupold 1.5-10x50 Mark 4 scope (integrated)\n \n</text>
 	</string>
 
 	<string id="st_wpn_remington700">
@@ -2127,7 +2127,7 @@
 	<string id="st_wpn_remington700_descr">
 		<text>There are many options for a different rifle cartridge. Standard cartridge - 7.62x51 mm NATO (.308 Win). Technically, it is a magazine rifle with a longitudinally sliding rotary bolt. Store capacity depends on the caliber and can be from 3 to 5. It is a top product from Remington Arms.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-        %c[d_purple] • %c[ui_gray_2] Leupold VX Freedom scope (integrated)\n
+        %c[d_purple] • %c[ui_gray_2] Leupold VX Freedom 1.5-6x scope (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] KZRZP suppressor (after modification)\n \n</text>
 	</string>
 	
@@ -2146,7 +2146,7 @@
 	<string id="st_wpn_wa2000_descr">
 		<text>The Walther WA 2000 is a semi-automatic bullpup sniper rifle produced by the Carl Walther GmbH Sportwaffen company from 1982 until 1988. It was produced in three different calibers. Production of the rifle was limited and it was shortly stopped because it was too expensive to achieve widespread sales and not robust enough for military use as a sniper rifle. Only 176 were built due to its high cost, making it one of the rarest and most sought production firearms ever made.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] Schmidt and Bender x2.5 to x10 scope (integrated)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] Schmidt and Bender 1.5-5.5x scope (integrated)\n \n</text>
 	</string>
 	
 	<string id="st_wpn_apb">

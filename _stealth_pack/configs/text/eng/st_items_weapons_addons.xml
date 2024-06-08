@@ -115,7 +115,7 @@
         %c[d_cyan] • %c[ui_gray_2] can be used as binoculars\n
         %c[d_cyan] • %c[ui_gray_2] all Warsaw Pact rifles\n \n
         %c[ui_gray_1]The PSO-1M2-O1 features an extremely effective and useful height-based rangefinder for dual use, with graduated scales for both standing and prone figure estimation. The 400 meter Simonov height based gradient (choke style) rangefinder has a chevron for use with the 9x39 calibre rifles.\n \n
-		%c[d_purple] • %c[ui_gray_2] Magnification: %c[ui_gray_1]4.0x\n
+		%c[d_purple] • %c[ui_gray_2] Magnification: %c[ui_gray_1]1.5-4.0x\n
 		%c[d_purple] • %c[ui_gray_2] Condition: %c[ui_gray_1]very good\n
 		%c[d_purple] • %c[ui_gray_2] Reticule pattern: %c[ui_gray_1]PSO-1-1\n \n</text>
 	</string>
