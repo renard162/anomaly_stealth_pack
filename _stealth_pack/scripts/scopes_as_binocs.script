@@ -136,7 +136,8 @@ function actor_on_update()
 	if not cobj then return end
 
 	local zoom_factor = SYS_GetParam(2, sec, "scope_zoom_factor", 25)
-	if cobj:IsZoomed() then
+	local has_static_zoom = (SYS_GetParam(0, sec, "scope_dynamic_zoom", "off") == "off")
+	if (cobj:IsZoomed() and has_static_zoom) then
 		cobj:SetZoomFactor(zoom_factor)
 	end
 end
