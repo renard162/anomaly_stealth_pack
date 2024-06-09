@@ -102,8 +102,8 @@ prior = 107
 storyline = true
 title = st_lttz_hb_task_3_2_search_labx18_name
 descr = st_lttz_hb_task_3_2_search_labx18_text
-target = val_space_restrictor_to_labx18
-condlist_0 = {=actor_on_level(l04u_labx18)} nil, {=actor_has_item(main_story_2_lab_x18_documents)} complete
+target = {=actor_on_level(l04u_labx18)} nil, val_space_restrictor_to_labx18
+condlist_0 = {=actor_has_item(main_story_2_lab_x18_documents)} complete
 on_complete = %+main_2_search_labx18_task_done =evaluate_mysteries_of_the_zone_tasks%
 
 [lttz_hb_task_3_3_search_labx16]
