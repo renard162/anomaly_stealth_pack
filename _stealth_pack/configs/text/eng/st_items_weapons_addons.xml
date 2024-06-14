@@ -11,6 +11,7 @@
 	</string>
 	<string id="st_addon_scope_descr">
 		<text>\n \n%c[ui_gray_2]COMPATIBILITY:\n \n
+        %c[d_cyan] • %c[ui_gray_2] Suitable for pouch attachment\n
         %c[d_cyan] • %c[ui_gray_2] can be used as binoculars\n
         %c[d_cyan] • %c[ui_gray_2] all Warsaw Pact rifles\n \n
         %c[ui_gray_1]PSO (for Pritsel Snaipersky Optichesky, "Optical Sniper Sight") is a series of Soviet-made optical scopes produced by Novosibirsk Instrument-Making Plant (NPZ Optics State Plant). In common use since 1964 when it was introduced as a standard issue telescopic sight for SVD sniper rifle. The scope has been later adapted to assault rifles such as AK-74 or AN-94. Recognized for its durability, versatility and very well-designed reticule pattern featuring convenient range-finder scale. This particular type has 4.0x magnification rate, making it usable mainly for combat at long ranges. It is attached to weapons by means of a dovetail mount, which is standard in Warsaw Pact countries.\n \n
@@ -24,6 +25,7 @@
 	</string>
 	<string id="st_addon_scope_1p29_descr">
 		<text>\n \n%c[ui_gray_2]COMPATIBILITY:\n \n
+        %c[d_cyan] • %c[ui_gray_2] Suitable for pouch attachment\n
         %c[d_cyan] • %c[ui_gray_2] can be used as binoculars\n
         %c[d_cyan] • %c[ui_gray_2] all Warsaw Pact rifles\n \n
         %c[ui_gray_1]The USP-1 sight (index 1P29) has an optical arrangement with a prism-erecting system. Sighting angles are set mechanically by turning the sight body relative to the weapon mounting bracket. Requires no batteries as it is tritium illuminated. The ranging scale at the edge of the sight's field of view provides a means to find visually the range of up to 1200 m of a target 1.5 m high.\n \n
@@ -48,6 +50,7 @@
 	</string>
 	<string id="st_addon_scope_acog_descr">
 		<text>\n \n%c[ui_gray_2]COMPATIBILITY:\n \n
+        %c[d_cyan] • %c[ui_gray_2] Suitable for pouch attachment\n
         %c[d_cyan] • %c[ui_gray_2] can be used as binoculars\n
         %c[d_cyan] • %c[ui_gray_2] all NATO rifles\n \n
         %c[ui_gray_1]ACOG stands for Advanced Combat Optical Gunsights and refers to a family of firearm scopes produced by the Trijicon company. Scopes of this type are usually of high quality and have an internal tritium-based reticule illumination. This particular type has a USMC-style reticule and features adjustable magnification.\n \n
@@ -75,6 +78,7 @@
 	</string>
 	<string id="st_addon_scope_galil_descr">
 		<text>\n \n%c[ui_gray_2]COMPATIBILITY:\n \n
+        %c[d_cyan] • %c[ui_gray_2] Suitable for pouch attachment\n
         %c[d_cyan] • %c[ui_gray_2] can be used as binoculars\n
         %c[d_cyan] • %c[ui_gray_2] automatic rifle Galil AR\n \n
         %c[ui_gray_1]Optical sight for the Israeli IMI Galil rifle.\n \n
@@ -99,6 +103,7 @@
 	</string>
 	<string id="st_addon_scope_po4x34_descr">
 		<text>\n \n%c[ui_gray_2]COMPATIBILITY:\n \n
+        %c[d_cyan] • %c[ui_gray_2] Suitable for pouch attachment\n
         %c[d_cyan] • %c[ui_gray_2] can be used as binoculars\n
         %c[d_cyan] • %c[ui_gray_2] OTs-14 weapon series\n \n
         %c[ui_gray_1]Optical sight for the OTs-14 weapon series.\n \n
@@ -112,6 +117,7 @@
 	</string>
 	<string id="st_addon_scope_pso-1m2-01_descr">
 		<text>\n \n%c[ui_gray_2]COMPATIBILITY:\n \n
+        %c[d_cyan] • %c[ui_gray_2] Suitable for pouch attachment\n
         %c[d_cyan] • %c[ui_gray_2] can be used as binoculars\n
         %c[d_cyan] • %c[ui_gray_2] all Warsaw Pact rifles\n \n
         %c[ui_gray_1]The PSO-1M2-O1 features an extremely effective and useful height-based rangefinder for dual use, with graduated scales for both standing and prone figure estimation. The 400 meter Simonov height based gradient (choke style) rangefinder has a chevron for use with the 9x39 calibre rifles.\n \n
@@ -125,6 +131,7 @@
 	</string>
 	<string id="st_addon_scope_pu_descr">
 		<text>\n \n%c[ui_gray_2]COMPATIBILITY:\n \n
+        %c[d_cyan] • %c[ui_gray_2] Suitable for pouch attachment\n
         %c[d_cyan] • %c[ui_gray_2] can be used as binoculars\n
         %c[d_cyan] • %c[ui_gray_2] historic Russian rifles\n \n
         %c[ui_gray_1]Standard-issue telescopic sight of the Red Army in World War II and years after it, designed to fit infantry and precision rifles such as Mosin-Nagant or SVT-40. It features a fixed 3.5x zoom making it a good choice for long-distance combat. Like all Soviet designs, it is durable and effective, remaining in production and use to this day.\n \n
@@ -138,6 +145,7 @@
 	</string>
 	<string id="st_addon_scope_zf4_descr">
 		<text>\n \n%c[ui_gray_2]COMPATIBILITY:\n \n
+        %c[d_cyan] • %c[ui_gray_2] Suitable for pouch attachment\n
         %c[d_cyan] • %c[ui_gray_2] can be used as binoculars\n
         %c[d_cyan] • %c[ui_gray_2] historic German rifles\n \n
         %c[ui_gray_1]ZF-4 is one of the first telescopic sights ever created. Designed and manufactured in Germany during World War II, it was intended to provide regular infantry with the ability to fight at long distances. In the end, due to insufficient numbers produced, it has been primarily used by German snipers and elite combat squads. The scope is still in use since weapons it has been designed for are commonly available, hence it remains a relatively popular model in the Zone as well.\n \n

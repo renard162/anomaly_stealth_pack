@@ -84,7 +84,10 @@
 		<text>Military binoculars</text>
 	</string>
 	<string id="st_binocular_descr">
-		<text>Standard Ukrainian-issue military binoculars. Useful in the Zone in that they allow its owner to observe things from a distance. Very durable.\n</text>
+		<text>Standard Ukrainian-issue military binoculars. Useful in the Zone in that they allow its owner to observe things from a distance. Very durable.\n \n
+		%c[ui_gray_1]PROPERTIES:\n
+        %c[d_green] • %c[ui_gray_2] Suitable for pouch attachment\n
+        </text>
 	</string>
 	
 	<string id="st_con_checker_name">
