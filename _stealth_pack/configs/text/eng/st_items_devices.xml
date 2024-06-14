@@ -60,6 +60,7 @@
 		<text>This dated anomalous activity detector produces an alarm signal when anomalous particles enter a special chamber as you approach an anomaly. It can also register the presence of artefacts and measure the distance to the nearest one. The distance is indicated by the frequency of the sound the detector emits. To switch to artefact search mode, open the device's front cover. Due to its simple design, Echo can only be used to locate the most common artefacts.\n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] technological item\n
+		%c[d_blue] • %c[ui_gray_2] emits sound alert when near an anomaly\n
 		%c[d_blue] • %c[ui_gray_2] low electric power consumption\n
 		</text>
 	</string>
@@ -71,6 +72,7 @@
 		<text>This last generation anomalous activity detector can be used to locate anomalous formations and has a colour diode panel, which not only indicates the direction of artefacts, but also measures the distance to them. To switch to artefact search mode, open the device's front cover. Unfortunately, the device is programmed with a somewhat outdated list of detectable artefacts.\n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] technological item\n
+		%c[d_blue] • %c[ui_gray_2] emits sound alert when near an anomaly\n
 		%c[d_blue] • %c[ui_gray_2] low electric power consumption\n
 		</text>
 	</string>
@@ -82,6 +84,7 @@
 		<text>A next generation scientific detection scanner. Thanks to three modernised detection chambers, the position of artefacts is shown on a special display screen. When closed, the device registers only radiation and anomalies. To switch to artefact search mode, open the front LED display. When in search mode, the detector is capable of locating all artefacts known to science.\n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] technological item\n
+		%c[d_blue] • %c[ui_gray_2] emits sound alert when near an anomaly\n
 		%c[d_blue] • %c[ui_gray_2] moderate electric power consumption\n
 		</text>
 	</string>
@@ -93,6 +96,7 @@
 		<text>A prototype of an expanded functionality anomalous frequency scanner. This device comes with a program used to identify static areas of anomalous activity stored in its database, while retaining the ability to locate artefacts. The position of anomalous areas and artefacts is displayed on a special screen. The artefact search mode, which can be activated by opening the front LED display, has been modified to detect anomalous formations currently unknown to science.\n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] technological item\n
+		%c[d_blue] • %c[ui_gray_2] emits sound alert when near an anomaly\n
 		%c[d_blue] • %c[ui_gray_2] high electric power consumption\n
 		</text>
 	</string>
@@ -229,9 +233,11 @@
 		<text>A Geiger counter measures ionising (radioactive) radiation. It detects the emission of alpha particles, beta particles and gamma particles. Invented in 1908, Geiger counters remain popular technological object used for measurements in health, physics, industry, geology and other fields of activity. Made of simple electronic circuits.\n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] technological device \n
+		%c[d_blue] • %c[ui_gray_2] emits sound alert when radiation levels increases\n
 		%c[d_orange] • %c[ui_gray_2] measures the level of radioactive contamination\n
-		%c[d_blue] • %c[ui_gray_2] low electric power consumption\n
 		%c[d_orange] • %c[ui_gray_2] operates in 3 modes\n
+		%c[d_green] • %c[ui_gray_2] hold Shift and press Geiger Counter key to change mode\n
+		%c[d_blue] • %c[ui_gray_2] low electric power consumption\n
 		</text>
 	</string>
 	

@@ -41,7 +41,7 @@
 
 	<!-- FANATIC TUTORIAL CALL -->
 	<string id="fanatic_tutorial_start_msg_stalker">
-		<text>%c[0,255,255,255]Hey rookie, you might have already gotten a message from Sidorovich. Before doing business with him, gear up (pressing %c[0,250,250,0]I%c[0,255,255,255]) and come talk to me behind the red house. I've got some lessons that will help you on your journey here in the Exclusion Zone. And remember, you can read all received messages and the Survival Guide on your PDA (pressing %c[0,250,250,0]P%c[0,255,255,255]).</text>
+		<text>%c[0,255,255,255]Hey rookie, you might have already gotten a message from Sidorovich. Before doing business with him, gear up (pressing %c[0,250,250,0]Inventory key%c[0,255,255,255]) and come talk to me behind the red house. I've got some lessons that will help you on your journey here in the Exclusion Zone. And remember, you can read all received messages and the Survival Guide on your PDA (pressing %c[0,250,250,0]PDA key%c[0,255,255,255]).</text>
 	</string>
 
 
