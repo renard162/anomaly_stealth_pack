@@ -103,6 +103,7 @@
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_red] • %c[ui_gray_2] slow usage (dispersible tablets)\n
 		%c[d_blue] • %c[ui_gray_2] clean nutrition source\n
+		%c[d_green] • %c[ui_gray_2] each pill can purify a canteen of dirty water\n
 		</text>
 	</string>
 	
