@@ -107,14 +107,26 @@
 			%c[0,150,150,150]The Progression difficulty has a big impact on the economy, which affects the player's progression during their journey in the Zone.
 			\nAspects affected by this range from sell/buy prices with traders, repair/upgrade prices with mechanics, rarity of loots, money and goodwill earned by completing tasks and more. 
 			\n \n%c[200,200,50,50]• %c[0,150,150,150]You can control each one of these aspects in your playthrough at any time.
-			\nSee "Extra Options -> Progression difficulty".
+			\nSee "Settings -> Gameplay -> Progression .diff".
+            \n \nPRESETS:
+            \n%c[d_cyan]• %c[0,150,150,150]Tourist - Just enjoy the journey
+            \n%c[d_green]• %c[0,150,150,150]Scavenger - Balanced mode
+            \n%c[ui_yellow]• %c[0,150,150,150]Survivalist - Treasure hunt mode
+            \n%c[d_orange]• %c[0,150,150,150]Rich but Expensive - High resource management mode
+            \n%c[d_red]• %c[0,150,150,150]Suicider - Challenge mode
 		</text>
 	</string>
 	<string id="st_mm_list_difficulty_desc">
 		<text>
 			%c[0,150,150,150]Gameplay difficulty affects aspects related to the player such as protection against damage sources, stamina loss and carry weight. In addition to extra aspects such as water and sleep deprivation.
 			\n \n%c[200,200,50,50]• %c[0,150,150,150]You can control each one of these aspects in your playthrough at any time.
-			\nSee "Extra Options -> Gameplay difficulty".
+			\nSee "Settings -> Gameplay -> Gameplay .diff".
+            \n \nPRESETS:
+            \n%c[d_cyan]• %c[0,150,150,150]Arcade - Run'n'gun oriented gameplay
+            \n%c[d_green]• %c[0,150,150,150]Arcade Hard - Harder run'n'gun gameplay
+            \n%c[ui_yellow]• %c[0,150,150,150]Stalker - Do not understimate anyone
+            \n%c[d_orange]• %c[0,150,150,150]Stealth - Never face fights head-on. Strategize.
+            \n%c[d_red]• %c[0,150,150,150]Hardcore - Challenge mode
 		</text>
 	</string>
 	<string id="st_mm_ck_story_desc">
