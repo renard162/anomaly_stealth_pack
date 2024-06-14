@@ -970,6 +970,7 @@ function UINewGame:OnFactionSelect(faction)
 		self.ck_story:SetCheck(false)
 		self.ck_story:Enable(false)
 	else
+        self.ck_story:SetCheck(true)
 		self.ck_story:Enable(true)
 	end
 end
@@ -1829,6 +1830,7 @@ function UINewGame:OnKeyboard(dik, keyboard_action)
 					self.ck_story:SetCheck(false)
 					self.ck_story:Enable(false)
 				else
+                    self.ck_story:SetCheck(true)
 					self.ck_story:Enable(true)
 				end
 				self:UpdateAll(false , self.selected_faction)
