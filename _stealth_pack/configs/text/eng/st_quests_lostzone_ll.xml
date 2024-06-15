@@ -129,7 +129,7 @@
 	<string id="lttz_ll_wpn_gauss_quest_descr">
 		<text>Extremely powerful and highly accurate electromagnetic accelerator gun. Obtains energy from electric-type artefacts. Can penetrate even the best armour. Someone apparently abandoned this hand-held version on the shooting range of its much bigger prototype.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
-		%c[d_purple] • %c[ui_gray_2] Enhanced 1.5-12x scope (integrated)</text>
+		%c[d_purple] • %c[ui_gray_2] Enhanced 1.5-12x scope (integrated)\n \n</text>
 	</string>
 	
 	<!-- ----------------------------------------------------------------------------------------- -->
