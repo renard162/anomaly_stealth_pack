@@ -55,6 +55,13 @@ local last_desc_sec       = nil
 function refresh_strings()
 	gc = game.translate_string
 	
+    str_tbl.firemodes = gc("st_wp_firemode")
+    str_tbl.fm_full_auto = gc("st_wp_firemode_full_auto")
+    str_tbl.fm_semi_auto = gc("st_wp_firemode_semi_auto")
+    str_tbl.fm_semi_auto_sniper = gc("st_wp_firemode_sniper_semi_auto")
+    str_tbl.fm_semi_auto_shotgun = gc("st_wp_firemode_shotgun_semi_auto")
+    str_tbl.fm_burst = gc("st_wp_firemode_burst")
+    
 	str_tbl.prop = gc("st_itm_desc_properties")
 	str_tbl.details = gc("st_itm_desc_details")
 	str_tbl.warning = gc("st_itm_desc_warning")
@@ -354,9 +361,8 @@ function build_desc_header(obj, sec, str)  -- obj needed
 			end
 		end
 	end
-	
+
 	-- Exoseva
-	
 	if IsOutfit(obj) and string_find(sec,"looted_") then
 		if not obj:has_upgrade("up_fiftha_exoseva_2") then
 			_str = _str .. clr_r .. str_tbl.warning .. ": " .. clr_2 .. strformat(str_tbl.exoseva) .. "\\n \\n" .. clr_2
@@ -541,8 +547,40 @@ function build_desc_footer(obj, sec, str) -- one obj used
 		local required_tool_name = get_sec_name(required_tool)
 		_str = _str .. clr_o .. "  • " .. clr_1 .. " " .. str_tbl.require_tool .. ": " .. clr_2 .. " " .. required_tool_name .. " \\n"
 	end
-	
-	
+
+    -- Weapon fire modes
+    local is_firearm = IsPistol(obj) or IsRifle(obj) or IsShotgun(obj) or IsSniper(obj)
+    if is_firearm then
+        local firemodes = ini_sys:r_string_ex(sec,"fire_modes")
+        local firemode_table = (firemodes and str_explode(firemodes,",")) or {"1"}
+        local include_comma = false
+
+        _str = _str .. clr_o .. "  • " .. clr_1 .. " " .. str_tbl.firemodes .. ": "
+
+        for i=1, #firemode_table do
+
+            if include_comma then
+                _str = _str .. ", "
+            end
+            include_comma = true
+
+            if firemode_table[i] == "-1" then
+                _str = _str .. str_tbl.fm_full_auto
+            elseif firemode_table[i] == "1" then
+                if IsSniper(obj) then
+                    _str = _str .. str_tbl.fm_semi_auto_sniper
+                elseif IsShotgun(obj) then
+                    _str = _str .. str_tbl.fm_semi_auto_shotgun
+                else
+                    _str = _str .. str_tbl.fm_semi_auto
+                end
+            else
+                _str = _str .. str_tbl.fm_burst
+            end
+        end
+        _str = _str .. " \\n"
+    end
+
 	str = str .. _str .. " \\n"
 	
 	return str

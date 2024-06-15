@@ -442,6 +442,25 @@
 	<string id="ui_inv_handling">
 		<text>Handling</text>
 	</string>
+    
+    <string id="st_wp_firemode">
+		<text>Fire modes</text>
+	</string>
+    <string id="st_wp_firemode_full_auto">
+		<text>Full-auto</text>
+	</string>
+    <string id="st_wp_firemode_semi_auto">
+		<text>Semi-auto</text>
+	</string>
+    <string id="st_wp_firemode_sniper_semi_auto">
+		<text>Bolt-action/Semi-auto</text>
+	</string>
+    <string id="st_wp_firemode_shotgun_semi_auto">
+		<text>Pump-action/Semi-auto</text>
+	</string>
+    <string id="st_wp_firemode_burst">
+		<text>Burst</text>
+	</string>
 	
 	<string id="ui_inv_health">
 		<text>Health restoration</text>
