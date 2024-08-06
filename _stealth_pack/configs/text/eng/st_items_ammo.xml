@@ -70,7 +70,7 @@
 		<text>12x76 Bull shells</text>
 	</string>
 	<string id="ammo-12x76-bull_descr">
-		<text>12 gauge custom-made slugs for putting down dinosaurs and mutants. Slug inside is made of lead covered in copper that has steel, dart-like insert inside. Slug is very long and has got big powder load. It really can break your hands with recoil.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IIIA\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]very high</text>
+		<text>12 gauge custom-made slugs for putting down dinosaurs and mutants. Slug inside is made of artifact fragment covered in copper that has steel, dart-like insert inside. Slug is very long and has got big powder load. It really can break your hands with recoil.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IV\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]very high</text>
 	</string>
 	<string id="ammo-12x76-bull_s">
 		<text>12x76 Bull</text>
