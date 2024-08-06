@@ -456,7 +456,7 @@
 		<text>Bolt-action/Semi-auto</text>
 	</string>
     <string id="st_wp_firemode_shotgun_semi_auto">
-		<text>Pump-action/Semi-auto</text>
+		<text>Manual/Semi-auto</text>
 	</string>
     <string id="st_wp_firemode_burst">
 		<text>Burst</text>
