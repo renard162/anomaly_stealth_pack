@@ -63,6 +63,7 @@
 		<text>Improvements to the Camelbak keeps the stored water refreshingly cold, cooling the user passively and on drink. Borrowing its name from the myth that camels store water in their humps, camelbak is a pack worn on the back or around the waist of the user, containing a bladder that is filled with water to keep one hydrated. Flexible tube with a mouthpiece facilitates use even in most pressing situations. This model is camouflaged and integrated in the suit to protect the system from damage from any source, be it combat or anomaly. Because the container is made of a high-quality textile, experienced stalkers sometimes re-use scrapped camelbaks for quality materials to patch their field outfits.\n \n%c[d_red]\n\n%c[d_red]WARNING:%c[ui_gray_2]\n \n%c[default]Although water has low electrical conductivity, its proximity to the body may make you more vulnerable to electrical currents. For this reason, it is recommended to take special notice of your surroundings when in possession of a camelbak.\n \n
 		%c[ui_gray_2]PROPERTIES:\n
 		%c[d_cyan] • %c[ui_gray_2] military item\n
+		%c[d_green] • %c[ui_gray_2] provides fast hydration\n
 		%c[d_cyan] • %c[ui_gray_2] can only wear one camelbak\n
 		</text>
 	</string>
@@ -130,6 +131,7 @@
 		<text>Borrowing its name from the myth that camels store water in their humps, the Camelbak is a pack worn on the back or around the waist of the user, containing a bladder that is filled with water to keep one hydrated. Flexible tube with a mouthpiece facilitates use even in most pressing situations. This model is camouflaged and integrated in the suit to protect the system from damage from any source, be it combat or anomaly. Because the container is made of a high-quality textile, experienced stalkers sometimes re-use scrapped camelbaks for quality materials to patch their field outfits.\n \n%c[d_red]\n\n%c[d_red]WARNING:%c[ui_gray_2]\n \n%c[default]Although water has low electrical conductivity, its proximity to the body may make you more vulnerable to electrical currents. For this reason, it is recommended to take special notice of your surroundings when in possession of a camelbak.\n \n
 		%c[ui_gray_2]PROPERTIES:\n
 		%c[d_cyan] • %c[ui_gray_2] military item\n
+        %c[d_green] • %c[ui_gray_2] provides fast hydration\n
 		%c[d_cyan] • %c[ui_gray_2] can only wear one camelbak\n
 		</text>
 	</string>
