@@ -12,6 +12,13 @@ local jacket_t = {
 	["o_heavy"] = 4.5,
 }
 
+local difficulty_t = {
+    [0] = 0.80, -- Great (Arcade)
+    [1] = 0.85, -- Good (Arcade)
+    [2] = 0.94, -- Average (Hardcore)
+    [3] = 1.00, -- Poor (Hardcore)
+}
+
 local jacketmult = 1
 local jacketmult_clean = 1
 local active_ghil_camo = false
@@ -65,6 +72,7 @@ function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_fac
 
 --============== total =============================
 	local step_incr = Luminocity * Velocity * eq_dist * camo_x * weight * crouch * danger_mult * scheme_mult + pewpewmult + memory_factor
+	step_incr = step_incr * (difficulty_t[level.get_game_difficulty()] or 1.0)
 -------------------------------------------------------------------------
 
 -- alt icon
