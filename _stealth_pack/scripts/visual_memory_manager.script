@@ -318,7 +318,10 @@ function get_crouch_mult()
 		crouch_mult = stealth_mcm.get_config("crouch")
 	end
 
-	return crouch_mult
+	if not active_ghil_camo then
+		return crouch_mult
+	end
+	return crouch_mult * 0.8
 end
 
 -- danger
