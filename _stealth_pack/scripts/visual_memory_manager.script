@@ -273,8 +273,8 @@ end
 
 function get_camo_mult(velocity, object_distance)
 	local camo_mult = 1
-	local velocity_camo_enabled = (active_ghil_camo and (velocity < 2.5)) or (velocity < 0.5)
-	local camo_checks = get_camo_k > 0 and velocity_camo_enabled and object_distance >= 3
+	local velocity_camo_penalty = ((velocity >= 0.5) and (not active_ghil_camo)) or (velocity >= 2.5)
+	local camo_checks = get_camo_k > 0 and object_distance >= 3
 
 	if not camo_checks then
 		return camo_mult
@@ -282,6 +282,7 @@ function get_camo_mult(velocity, object_distance)
 
 	local camo_dist = 1.00 - object_distance * 0.015
 	local camo_mult = (get_camo_k / 20) * camo_dist
+	camo_mult = camo_mult * ((velocity_camo_penalty and 2) or 1)
 	camo_mult = clamp(camo_mult, 0.02, 1.00)
 
 	return camo_mult
