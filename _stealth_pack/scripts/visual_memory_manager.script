@@ -6,10 +6,10 @@
 -- warning npc and who can be nil sometimes
 
 local jacket_t = {
-	["o_medium"] = 2,
-	["o_sci"] = 2,
-	["o_light"] = 1.35,
-	["o_heavy"] = 4.5,
+	["o_medium"] = 1.75,
+	["o_sci"] = 2.00,
+	["o_light"] = 1.00,
+	["o_heavy"] = 4.50,
 }
 
 local difficulty_t = {
@@ -280,9 +280,9 @@ function get_camo_mult(velocity, object_distance)
 		return camo_mult
 	end
 
-	local camo_dist = 1 - object_distance * 0.01
+	local camo_dist = 1.00 - object_distance * 0.015
 	local camo_mult = (get_camo_k / 20) * camo_dist
-	camo_mult = clamp(camo_mult, 0.02, 1.0)
+	camo_mult = clamp(camo_mult, 0.02, 1.00)
 
 	return camo_mult
 end
@@ -290,7 +290,7 @@ end
 function get_weight_mult(object_distance)
 	local actor_weight = db.actor:get_total_weight()
 	local weight_factor = math.exp(actor_weight / 100)
-	local dist = 1.1 - 0.02 * object_distance
+	local dist = 1.00 - 0.02 * object_distance
 	local weight_mult = weight_factor * jacketmult * dist * stealth_mcm.get_config("weight")
 	weight_mult = weight_mult > 1 and weight_mult or 1
 
@@ -431,7 +431,7 @@ function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, dist
 		pr(jacketmult, 1, ("6.f) jacketmult --------- %s"))
 		pr(memory_factor, 0, ("7. memory ------------- %s"))
 		printf("8. Step incr --- %s", step_incr)
-		actor_menu.set_msg(1, strformat("Threshold: %s/%s || Camo: %s | (Lumin: %s | Veloc: %s | Dist: %s | Weight: %s | Memory: %s || Total per update: %s)", r(summ), r(obj:visibility_threshold()), r(camo_x), r(Luminocity), r(Velocity), r(eq_dist), r(weight), r(memory_factor), r(step_incr) ))
+		actor_menu.set_msg(1, strformat("Threshold: %s/%s || Jack: %s | Camo: %s | (Lumin: %s | Veloc: %s | Dist: %s | Weight: %s | Memory: %s || Total per update: %s)", r(summ), r(obj:visibility_threshold()), r(jacketmult), r(camo_x), r(Luminocity), r(Velocity), r(eq_dist), r(weight), r(memory_factor), r(step_incr) ))
 	end
 
 	if obj == nil then

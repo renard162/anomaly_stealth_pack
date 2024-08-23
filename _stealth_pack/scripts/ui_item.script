@@ -408,7 +408,7 @@ function build_desc_footer(obj, sec, str) -- one obj used
 		local sprint_allowed = ini_sys:r_bool_ex(sec,"sprint_allowed") ~= false
 		local additional_inventory_weight = ini_sys:r_float_ex(sec,"additional_inventory_weight") or 0
 		local blindness = ini_sys:r_float_ex(sec,"npc_blindness_koeff") or 100
-		local camo_level = (blindness <= 20 and 4) or (blindness <= 22 and 3) or (blindness <= 25 and 2) or (blindness <= 28 and 1) or 0
+		local camo_level = (blindness <= 20 and 4) or (blindness <= 22 and 3) or (blindness <= 24 and 2) or (blindness <= 26 and 1) or 0
 		local community = ini_sys:r_string_ex(sec,"community")
 		
 		_str = _str .. clr_2 .. " " .. str_tbl.prop .. ":\\n"
