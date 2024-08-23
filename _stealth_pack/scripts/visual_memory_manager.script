@@ -6,10 +6,10 @@
 -- warning npc and who can be nil sometimes
 
 local jacket_t = {
-	["o_medium"] = 1.75,
-	["o_sci"] = 2.00,
 	["o_light"] = 1.00,
+	["o_medium"] = 1.75,
 	["o_heavy"] = 4.50,
+	["o_sci"] = 2.00,
 }
 
 local difficulty_t = {
