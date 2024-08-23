@@ -468,7 +468,7 @@ function check_ghil_camo()
 		active_ghil_camo = false
 		return
 	elseif in_ghil_camo_surface and (sec == "ghillie_outfit") then
-		jacketmult = jacketmult_clean * 0.5
+		jacketmult = jacketmult_clean * 0.57
 		active_ghil_camo = true
 		return
 	elseif (not in_ghil_camo_surface) and (sec == "ghillie_outfit") then
