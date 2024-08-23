@@ -72,7 +72,7 @@ function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_fac
 
 --============== total =============================
 	local step_incr = Luminocity * Velocity * eq_dist * camo_x * weight * crouch * danger_mult * scheme_mult + pewpewmult + memory_factor
-	step_incr = step_incr * (difficulty_t[level.get_game_difficulty()] or 1.0)
+	step_incr = step_incr * (difficulty_t[level.get_game_difficulty()] or 1.0) * (active_ghil_camo and 0.8 or 1.0)
 -------------------------------------------------------------------------
 
 -- alt icon
