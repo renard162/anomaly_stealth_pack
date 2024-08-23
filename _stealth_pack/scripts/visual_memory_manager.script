@@ -19,6 +19,8 @@ local difficulty_t = {
     [3] = 1.00, -- Poor (Hardcore)
 }
 
+local ghillie_factor_on = jacket_t["o_light"] / jacket_t["o_medium"]
+local ghillie_factor_off = jacket_t["o_heavy"] / jacket_t["o_medium"]
 local jacketmult = 1
 local jacketmult_clean = 1
 local active_ghil_camo = false
@@ -72,14 +74,14 @@ function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_fac
 
 --============== total =============================
 	local step_incr = Luminocity * Velocity * eq_dist * camo_x * weight * crouch * danger_mult * scheme_mult + pewpewmult + memory_factor
-	step_incr = step_incr * (difficulty_t[level.get_game_difficulty()] or 1.0) * (active_ghil_camo and 0.8 or 1.0)
+	step_incr = step_incr * (difficulty_t[level.get_game_difficulty()] or 1.0) * (active_ghil_camo and 0.8 or 1.00)
 -------------------------------------------------------------------------
 
 -- alt icon
 	stealth_icon_alt(npc, who, step_incr)
 
 -- dbg
-	stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, distance, weight, crouch, danger_mult, camo_x, scheme_mult, memory_factor, eq_dist)
+	stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velocity, distance, weight, crouch, danger_mult, camo_x, scheme_mult, memory_factor, eq_dist)
 -------------------------------------------------------------------------
 
 	return step_incr
@@ -274,14 +276,14 @@ end
 function get_camo_mult(velocity, object_distance)
 	local camo_mult = 1
 
-	if object_distance < 3 then
+	if object_distance < 30 then
 		return camo_mult
 	end
 
 	local velocity_camo_penalty = ((velocity >= 0.5) and (not active_ghil_camo)) or (velocity >= 2.5)
 	local camo_val = (get_camo_k > 0) and get_camo_k or 100
-	local camo_dist_factor = 0.010 + ((get_camo_k > 0) and 0.005 or 0) + (active_ghil_camo and 0.005 or 0)
-	local camo_dist = 1.00 - (camo_dist_factor * object_distance * (active_ghil_camo and object_distance or 1))
+	local camo_dist_factor = 0.010 + ((get_camo_k > 0) and 0.005 or 0) + (active_ghil_camo and 0.010 or 0)
+	local camo_dist = 1.00 - (camo_dist_factor * object_distance)
 
 	camo_mult = (camo_val / 20) * camo_dist
 	camo_mult = camo_mult * (velocity_camo_penalty and 2.5 or 1)
@@ -321,7 +323,7 @@ function get_crouch_mult()
 	if not active_ghil_camo then
 		return crouch_mult
 	end
-	return crouch_mult * 0.8
+	return crouch_mult * 0.5
 end
 
 -- danger
@@ -395,7 +397,7 @@ end
 --------------------------------------------------------------------------------
 
 ------- Debug
-function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, distance, weight, crouch, danger_mult, camo_x, scheme_mult, memory_factor, eq_dist)
+function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velocity_raw, distance, weight, crouch, danger_mult, camo_x, scheme_mult, memory_factor, eq_dist)
 	if not (stealth_mcm.get_config("debugx")) then return end
 
 	local wthrs = level_weathers.get_weather_manager():get_curr_weather_preset()
@@ -437,7 +439,7 @@ function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, dist
 		pr(jacketmult, 1, ("6.f) jacketmult --------- %s"))
 		pr(memory_factor, 0, ("7. memory ------------- %s"))
 		printf("8. Step incr --- %s", step_incr)
-		actor_menu.set_msg(1, strformat("Threshold: %s/%s || Jack: %s | Camo: %s | (Lumin: %s | Veloc: %s | Dist: %s | Weight: %s | Memory: %s || Total per update: %s)", r(summ), r(obj:visibility_threshold()), r(jacketmult), r(camo_x), r(Luminocity), r(Velocity), r(eq_dist), r(weight), r(memory_factor), r(step_incr) ))
+		actor_menu.set_msg(1, strformat("Threshold: %s/%s || Jack: %s | Camo: %s | (Lumin: %s | Veloc: %s (%s) | Dist: %s (%s) | Weight: %s | Memory: %s || Total per update: %s)", r(summ), r(obj:visibility_threshold()), r(jacketmult), r(camo_x), r(Luminocity), r(Velocity), r(velocity_raw), r(eq_dist), r(distance), r(weight), r(memory_factor), r(step_incr) ))
 	end
 
 	if obj == nil then
@@ -468,11 +470,11 @@ function check_ghil_camo()
 		active_ghil_camo = false
 		return
 	elseif in_ghil_camo_surface and (sec == "ghillie_outfit") then
-		jacketmult = jacketmult_clean * 0.57
+		jacketmult = jacketmult_clean * ghillie_factor_on
 		active_ghil_camo = true
 		return
 	elseif (not in_ghil_camo_surface) and (sec == "ghillie_outfit") then
-		jacketmult = jacketmult_clean * 2.6
+		jacketmult = jacketmult_clean * ghillie_factor_off
 		active_ghil_camo = false
 		return
 	end
