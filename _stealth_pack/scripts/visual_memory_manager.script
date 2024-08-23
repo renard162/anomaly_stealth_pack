@@ -281,7 +281,7 @@ function get_camo_mult(velocity, object_distance)
 	local velocity_camo_penalty = ((velocity >= 0.5) and (not active_ghil_camo)) or (velocity >= 2.5)
 	local camo_val = (get_camo_k > 0) and get_camo_k or 100
 	local camo_dist_factor = 0.010 + ((get_camo_k > 0) and 0.005 or 0) + (active_ghil_camo and 0.005 or 0)
-	local camo_dist = 1.00 - (object_distance * camo_dist_factor)
+	local camo_dist = 1.00 - (camo_dist_factor * object_distance * (active_ghil_camo and object_distance or 1))
 
 	camo_mult = (camo_val / 20) * camo_dist
 	camo_mult = camo_mult * (velocity_camo_penalty and 2.5 or 1)
@@ -293,9 +293,9 @@ end
 function get_weight_mult(object_distance)
 	local actor_weight = db.actor:get_total_weight()
 	local weight_factor = math.exp(actor_weight / 100)
-	local dist = 1.00 - 0.02 * object_distance
+	local dist = 1.00 - (0.02 * object_distance)
 	local weight_mult = weight_factor * jacketmult * dist * stealth_mcm.get_config("weight")
-	weight_mult = weight_mult > 1 and weight_mult or 1
+	weight_mult = math.max(1.0, weight_mult)
 
 	return weight_mult
 end
