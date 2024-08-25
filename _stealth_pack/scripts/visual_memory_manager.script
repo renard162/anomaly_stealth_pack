@@ -19,8 +19,8 @@ local difficulty_t = {
     [3] = 1.00, -- Poor (Hardcore)
 }
 
-local ghillie_factor_on = jacket_t["o_light"] / jacket_t["o_medium"]
-local ghillie_factor_off = jacket_t["o_heavy"] / jacket_t["o_medium"]
+local ghillie_factor_on = jacket_t["o_light"]
+local ghillie_factor_off = jacket_t["o_heavy"]
 local jacketmult = 1
 local jacketmult_clean = 1
 local active_ghil_camo = false
@@ -36,7 +36,7 @@ local ind_t = {}
 
 function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_factor,velocity,distance,object_distance,always_visible_distance)
 
-	distance = distance <= 0 and 0.00001 or distance
+	distance = math.max(0.00001, distance)
 	
 	local function obj_is_alive(obj)
 		return (IsStalker(obj) or IsMonster(obj)) and obj:alive()
@@ -81,7 +81,7 @@ function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_fac
 	stealth_icon_alt(npc, who, step_incr)
 
 -- dbg
-	stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velocity, distance, weight, crouch, danger_mult, camo_x, scheme_mult, memory_factor, eq_dist)
+	stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velocity, distance, weight, crouch, danger_mult, camo_x, scheme_mult, memory_factor, eq_dist, object_distance)
 -------------------------------------------------------------------------
 
 	return step_incr
@@ -276,7 +276,7 @@ end
 function get_camo_mult(velocity, object_distance)
 	local camo_mult = 1
 
-	if object_distance < 30 then
+	if object_distance < 3 then
 		return camo_mult
 	end
 
@@ -294,8 +294,8 @@ end
 
 function get_weight_mult(object_distance)
 	local actor_weight = db.actor:get_total_weight()
-	local weight_factor = math.exp(actor_weight / 100)
-	local dist = 1.00 - (0.02 * object_distance)
+	local weight_factor = math.exp(actor_weight / 90)
+	local dist = 1.00 - (0.04 * object_distance)
 	local weight_mult = weight_factor * jacketmult * dist * stealth_mcm.get_config("weight")
 	weight_mult = math.max(1.0, weight_mult)
 
@@ -397,11 +397,13 @@ end
 --------------------------------------------------------------------------------
 
 ------- Debug
-function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velocity_raw, distance, weight, crouch, danger_mult, camo_x, scheme_mult, memory_factor, eq_dist)
+function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velocity_raw, distance, weight, crouch, danger_mult, camo_x, scheme_mult, memory_factor, eq_dist, object_distance)
 	if not (stealth_mcm.get_config("debugx")) then return end
 
 	local wthrs = level_weathers.get_weather_manager():get_curr_weather_preset()
 	local obj = level.get_target_obj()
+	local weight_raw = db.actor:get_total_weight()
+	local weight_dist = 1.00 - (0.05 * object_distance)
 
 	if (obj and (obj:alive()) and (who and (who:id() == db.actor:id() or who:id() == obj:id() ) and npc and (npc:id() == db.actor:id() or npc:id() == obj:id() ))) and (not obj:see(db.actor)) then
 		summ = summ + step_incr
@@ -429,6 +431,9 @@ function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velo
 		printf("1.c) who:get_lum() ---- %s", who:get_luminocity())
 		pr(Velocity, 1, ("2. Velocity ------------- %s"))
 		printf("3. dist_original --------- %s", distance)
+		pr(weight_raw, 1, ("4. weight_raw ---------- %s"))
+		pr(math.exp(weight_raw/100), 1, ("4. weight_factor ------- %s"))
+		pr(weight_dist, 1, ("4. weight_dist --------- %s"))
 		pr(weight, 1, ("4. weight&outfit ------- %s"))
 		pr(crouch, 1, ("5. crouch ------------- %s"))
 		pr(pewpewmult, 0, ("6.a) shot_mult --------- %s"))
@@ -439,7 +444,7 @@ function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velo
 		pr(jacketmult, 1, ("6.f) jacketmult --------- %s"))
 		pr(memory_factor, 0, ("7. memory ------------- %s"))
 		printf("8. Step incr --- %s", step_incr)
-		actor_menu.set_msg(1, strformat("Threshold: %s/%s || Jack: %s | Camo: %s | (Lumin: %s | Veloc: %s (%s) | Dist: %s (%s) | Weight: %s | Memory: %s || Total per update: %s)", r(summ), r(obj:visibility_threshold()), r(jacketmult), r(camo_x), r(Luminocity), r(Velocity), r(velocity_raw), r(eq_dist), r(distance), r(weight), r(memory_factor), r(step_incr) ))
+		actor_menu.set_msg(1, strformat("Threshold: %s/%s || Armor: %s | Camo: %s | (Lumin: %s | Veloc: %s (%s) | Dist: %s (%s) | Weight: %s (%s) | Crouch: %s | Memory: %s || Total per update: %s)", r(summ), r(obj:visibility_threshold()), r(jacketmult), r(camo_x), r(Luminocity), r(Velocity), r(velocity_raw), r(eq_dist), r(object_distance), r(weight), r(weight_raw), r(crouch), r(memory_factor), r(step_incr) ))
 	end
 
 	if obj == nil then
@@ -470,11 +475,11 @@ function check_ghil_camo()
 		active_ghil_camo = false
 		return
 	elseif in_ghil_camo_surface and (sec == "ghillie_outfit") then
-		jacketmult = jacketmult_clean * ghillie_factor_on
+		jacketmult = ghillie_factor_on
 		active_ghil_camo = true
 		return
 	elseif (not in_ghil_camo_surface) and (sec == "ghillie_outfit") then
-		jacketmult = jacketmult_clean * ghillie_factor_off
+		jacketmult = ghillie_factor_off
 		active_ghil_camo = false
 		return
 	end
