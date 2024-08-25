@@ -404,6 +404,7 @@ function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velo
 	local obj = level.get_target_obj()
 	local weight_raw = db.actor:get_total_weight()
 	local weight_dist = 1.00 - (0.05 * object_distance)
+	local icon_lum_val = icon_lum()
 
 	if (obj and (obj:alive()) and (who and (who:id() == db.actor:id() or who:id() == obj:id() ) and npc and (npc:id() == db.actor:id() or npc:id() == obj:id() ))) and (not obj:see(db.actor)) then
 		summ = summ + step_incr
@@ -428,7 +429,8 @@ function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velo
 		printf("1. Luminocity  ---------- %s", Luminocity)
 		printf("1.a) luminocity --------- %s", luminocity)
 		printf("1.b) lights_lum() ------- %s", lights_lum())
-		printf("1.c) who:get_lum() ---- %s", who:get_luminocity())
+		printf("1.c) who:get_lum() ------ %s", who:get_luminocity())
+		printf("1.d) icon_lum() --------- %s", icon_lum_val)
 		pr(Velocity, 1, ("2. Velocity ------------- %s"))
 		printf("3. dist_original --------- %s", distance)
 		pr(weight_raw, 1, ("4. weight_raw ---------- %s"))
@@ -444,7 +446,7 @@ function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velo
 		pr(jacketmult, 1, ("6.f) jacketmult --------- %s"))
 		pr(memory_factor, 0, ("7. memory ------------- %s"))
 		printf("8. Step incr --- %s", step_incr)
-		actor_menu.set_msg(1, strformat("Threshold: %s/%s || Armor: %s | Camo: %s | (Lumin: %s | Veloc: %s (%s) | Dist: %s (%s) | Weight: %s (%s) | Crouch: %s | Memory: %s || Total per update: %s)", r(summ), r(obj:visibility_threshold()), r(jacketmult), r(camo_x), r(Luminocity), r(Velocity), r(velocity_raw), r(eq_dist), r(object_distance), r(weight), r(weight_raw), r(crouch), r(memory_factor), r(step_incr) ))
+		actor_menu.set_msg(1, strformat("Threshold: %s/%s || Armor: %s | Camo: %s | (Lumin: %s (%s) | Veloc: %s (%s) | Dist: %s (%s) | Weight: %s (%s) | Crouch: %s | Memory: %s || Total per update: %s)", r(summ), r(obj:visibility_threshold()), r(jacketmult), r(camo_x), r(Luminocity), r(icon_lum_val), r(Velocity), r(velocity_raw), r(eq_dist), r(object_distance), r(weight), r(weight_raw), r(crouch), r(memory_factor), r(step_incr) ))
 	end
 
 	if obj == nil then
