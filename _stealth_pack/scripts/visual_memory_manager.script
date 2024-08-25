@@ -383,9 +383,13 @@ end
 function actor_on_weapon_fired()
 	local wpn = db.actor:active_item()
 	if not (wpn) then return end
-	if not (IsWeapon(wpn)) or IsMelee(wpn) or wpn:weapon_is_silencer() then return end
+	if not (IsWeapon(wpn)) or IsMelee(wpn) then return end
 
-	pewpewmult = 7
+	if wpn:weapon_is_silencer() then
+		pewpewmult = 1
+	else
+		pewpewmult = 10
+	end
 
 	local function wpn_fired_stop()
 		pewpewmult = 0
