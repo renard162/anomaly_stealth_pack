@@ -385,7 +385,7 @@ function actor_on_weapon_fired()
 	if not (wpn) then return end
 	if not (IsWeapon(wpn)) or IsMelee(wpn) then return end
 
-	pewpewmult = wpn:weapon_is_silencer() and 1 or 10
+	pewpewmult = wpn:weapon_is_silencer() and 2 or 10
 
 	local function wpn_fired_stop()
 		pewpewmult = 0
