@@ -12,6 +12,14 @@ local jacket_t = {
 	["o_sci"] = 2.00,
 }
 
+local helmet_t = {
+	[-2] = -2,
+	[-1] = -1,
+	[1] = 1,
+	[2] = 2,
+	[3] = 4,
+}
+
 local difficulty_t = {
     [0] = 0.80, -- Great (Arcade)
     [1] = 0.85, -- Good (Arcade)
@@ -23,6 +31,7 @@ local ghillie_factor_on = jacket_t["o_light"]
 local ghillie_factor_off = jacket_t["o_heavy"]
 local jacketmult = 1
 local jacketmult_clean = 1
+local helmet_camo_bonus = 0
 local active_ghil_camo = false
 local summ = 0
 local renderer = get_console_cmd(0, "renderer")
@@ -153,6 +162,9 @@ function get_luminocity_mult(npc, who, luminocity, object_distance, distance)
 		lumin_r2 = lumin_r2 + npc_dist
 	end
 
+	-- helmet reflection bonus/penalty
+	lumin_r2 = lumin_r2 * (1 - 0.05*helmet_camo_bonus)
+
 	return lumin_r2
 end
 
@@ -264,13 +276,24 @@ function actor_on_first_update()
 end
 
 function slot_in_out(obj)
-	if not IsOutfit(obj) then return end
+	if (not IsOutfit(obj)) and (not IsHeadgear(obj)) then
+		return
+	end
+
 	local outfit = db.actor:item_in_slot(7)
-	local kind = outfit and ini_sys:r_string_ex(outfit:section(),"kind")
-	local get_camo_get_line = outfit and ini_sys:line_exist(outfit:section(), "npc_blindness_koeff")
-	get_camo_k = get_camo_get_line and ini_sys:r_float(outfit:section(), "npc_blindness_koeff") or 0
-	jacketmult = kind and jacket_t[kind] or 1
+	local helmet = db.actor:item_in_slot(12)
+
+	local outfit_kind = outfit and ini_sys:r_string_ex(outfit:section(),"kind")
+	get_camo_k = outfit and ini_sys:r_float(outfit:section(), "npc_blindness_koeff") or 0
+	jacketmult = outfit_kind and jacket_t[outfit_kind] or 1
 	jacketmult_clean = jacketmult
+
+	local camo_bonus_code = helmet and ini_sys:r_float_ex(helmet:section(),"camo_bonus") or 0
+	helmet_camo_bonus = camo_bonus_code and helmet_t[camo_bonus_code] or 0
+
+	if outfit and string.find(outfit:section(), "nosorog") then
+		helmet_camo_bonus = helmet_t[-2]
+	end
 end
 
 function get_camo_mult(velocity, object_distance)
@@ -281,13 +304,19 @@ function get_camo_mult(velocity, object_distance)
 	end
 
 	local velocity_camo_penalty = ((velocity >= 0.5) and (not active_ghil_camo)) or (velocity >= 2.5)
-	local camo_val = (get_camo_k > 0) and get_camo_k or 100
+	local camo_val =  100
+	if get_camo_k > 0 then
+		camo_val = get_camo_k - helmet_camo_bonus
+	else
+		camo_val = camo_val - (helmet_camo_bonus * 10)
+	end
+	camo_val = math.max(18, camo_val)
 	local camo_dist_factor = 0.010 + ((get_camo_k > 0) and 0.005 or 0) + (active_ghil_camo and 0.010 or 0)
 	local camo_dist = 1.00 - (camo_dist_factor * object_distance)
 
 	camo_mult = (camo_val / 20) * camo_dist
 	camo_mult = camo_mult * (velocity_camo_penalty and 2.5 or 1)
-	camo_mult = clamp(camo_mult, 0.02, 1.00)
+	camo_mult = clamp(camo_mult, 0.01, 1.00)
 
 	return camo_mult
 end

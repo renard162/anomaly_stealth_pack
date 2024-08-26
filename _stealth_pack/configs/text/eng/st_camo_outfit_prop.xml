@@ -1,15 +1,29 @@
 <string_table>
-
+    <string id="st_camo_bonus_helmet_w1">
+		<text>Sightly reduces camouflage effectiveness</text>
+	</string>
+    <string id="st_camo_bonus_helmet_w2">
+		<text>Reduces camouflage effectiveness</text>
+	</string>
+    <string id="st_camo_bonus_helmet_b1">
+		<text>Sightly improves camouflage effectiveness</text>
+	</string>
+    <string id="st_camo_bonus_helmet_b2">
+		<text>Improves camouflage effectiveness</text>
+	</string>
+    <string id="st_camo_bonus_helmet_b3">
+		<text>Greatly improves camouflage effectiveness</text>
+	</string>
 	<string id="st_camo_bonus_1">
-		<text>Sightly effective camouflage at distance</text>
+		<text>Sightly effective camouflage at a distance</text>
 	</string>
 	<string id="st_camo_bonus_2">
-		<text>Effective camouflage at distance</text>
+		<text>Effective camouflage at a distance</text>
 	</string>
 	<string id="st_camo_bonus_3">
-		<text>Highly effective camouflage at distance</text>
+		<text>Highly effective camouflage at a distance</text>
 	</string>
 	<string id="st_camo_bonus_4">
-		<text>Extreme effective camouflage in wild terrain at distance</text>
+		<text>Extreme effective camouflage in wild terrain at a distance</text>
 	</string>
 </string_table>

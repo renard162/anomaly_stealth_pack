@@ -420,7 +420,20 @@ function build_desc_footer(obj, sec, str) -- one obj used
 		if camo_level > 0 then
 			_str = _str .. clr_g .. "  • " .. clr_1 .. " " .. gc("st_camo_bonus_" .. camo_level) .. " \\n"
 		end
-	
+
+	-- helmet
+	elseif IsHeadgear(obj) then
+		local camo_bonus = ini_sys:r_float_ex(sec,"camo_bonus") or 0
+		if camo_bonus ~= 0 then
+			_str = _str .. clr_2 .. " " .. str_tbl.prop .. ":\\n"
+		end
+		if camo_bonus > 0 then
+			_str = _str .. clr_g .. "  • " .. clr_1 .. " " .. gc("st_camo_bonus_helmet_b" .. camo_bonus) .. " \\n"
+		elseif camo_bonus < 0 then
+			camo_bonus = camo_bonus * -1
+			_str = _str .. clr_r .. "  • " .. clr_1 .. " " .. gc("st_camo_bonus_helmet_w" .. camo_bonus) .. " \\n"
+		end
+
 	-- parts
 	elseif IsItem("part",sec) then
 		local part_o = string_find(sec,"prt_o") and true or false
