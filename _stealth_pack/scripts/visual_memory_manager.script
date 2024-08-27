@@ -283,7 +283,7 @@ function slot_in_out(obj)
 	local outfit = db.actor:item_in_slot(7)
 	local helmet = db.actor:item_in_slot(12)
 
-	local outfit_kind = outfit and ini_sys:r_string_ex(outfit:section(),"kind")
+	local outfit_kind = outfit and ini_sys:r_string_ex(outfit:section(),"kind") or 'o_medium'
 	get_camo_k = outfit and ini_sys:r_float(outfit:section(), "npc_blindness_koeff") or 0
 	jacketmult = outfit_kind and jacket_t[outfit_kind] or 1
 	jacketmult_clean = jacketmult
