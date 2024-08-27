@@ -102,7 +102,7 @@ function StealthIcon:StatUpd()
 	--Default color: light yellow
 	local R_max_diff = 250
 	local G_max_diff = 250
-	local B_max_diff = 95
+	local B_max_diff = 145
 
 	local gem_lum = visual_memory_manager.icon_lum()
 	local torch = db.actor:item_in_slot(10)
