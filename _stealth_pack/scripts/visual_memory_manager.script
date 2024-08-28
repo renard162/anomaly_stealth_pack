@@ -309,11 +309,15 @@ function slot_in_out(obj)
 	end
 
 	--Backpack
-	local bonus_weight = backpack and ini_sys:r_float_ex(backpack:section(),"additional_inventory_weight") or extra_weight_reference
+	local bonus_weight = extra_weight_reference
 	local outfit_backpack = outfit and (ini_sys:r_bool_ex(outfit:section(),"backpack_avaliable") == false)
 
-	if outfit_backpack then
+	if backpack then
+		bonus_weight = ini_sys:r_float_ex(backpack:section(),"additional_inventory_weight") or extra_weight_reference
+	elseif outfit_backpack then
 		bonus_weight = ini_sys:r_float_ex(outfit:section(), "additional_inventory_weight") or extra_weight_reference
+	elseif (not backpack) and (not outfit_backpack) then
+		bonus_weight = 10
 	end
 
 	bonus_weight = math.min(extra_weight_max, bonus_weight)
