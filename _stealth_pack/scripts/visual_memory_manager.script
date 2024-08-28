@@ -31,7 +31,11 @@ local ghillie_factor_on = jacket_t["o_light"]
 local ghillie_factor_off = jacket_t["o_heavy"]
 local jacketmult = 1
 local jacketmult_clean = 1
-local helmet_camo_bonus = 0
+local helmet_camo_factor = 0
+local backpack_camo_limit = 1
+local extra_weight_max = 80
+local extra_weight_reference = 34
+local backpack_camo_reference = math.exp(extra_weight_reference/extra_weight_max)
 local active_ghil_camo = false
 local summ = 0
 local renderer = get_console_cmd(0, "renderer")
@@ -163,7 +167,7 @@ function get_luminocity_mult(npc, who, luminocity, object_distance, distance)
 	end
 
 	-- helmet reflection bonus/penalty
-	lumin_r2 = lumin_r2 * (1 - 0.05*helmet_camo_bonus)
+	lumin_r2 = lumin_r2 * (1 - 0.05*helmet_camo_factor)
 
 	return lumin_r2
 end
@@ -275,25 +279,45 @@ function actor_on_first_update()
 
 end
 
+local function IsBackpack(obj)
+	return (obj and (ini_sys:r_string_ex(obj:section(),"class") == "EQ_BAKPK")) or false
+end
+
 function slot_in_out(obj)
-	if (not IsOutfit(obj)) and (not IsHeadgear(obj)) then
+	if (not IsOutfit(obj)) and (not IsHeadgear(obj)) and (not IsBackpack(obj)) then
 		return
 	end
 
 	local outfit = db.actor:item_in_slot(7)
 	local helmet = db.actor:item_in_slot(12)
+	local backpack = db.actor:item_in_slot(13)
 
+	--Outfit
 	local outfit_kind = outfit and ini_sys:r_string_ex(outfit:section(),"kind") or 'o_medium'
-	get_camo_k = outfit and ini_sys:r_float(outfit:section(), "npc_blindness_koeff") or 0
+	get_camo_k = outfit and ini_sys:r_float_ex(outfit:section(), "npc_blindness_koeff") or 0
 	jacketmult = outfit_kind and jacket_t[outfit_kind] or 1
 	jacketmult_clean = jacketmult
 
-	local camo_bonus_code = helmet and ini_sys:r_float_ex(helmet:section(),"camo_bonus") or 0
-	helmet_camo_bonus = camo_bonus_code and helmet_t[camo_bonus_code] or 0
+	--Helmet
+	local helmet_camo_code = helmet and ini_sys:r_float_ex(helmet:section(),"camo_bonus") or 0
+	helmet_camo_factor = helmet_camo_code and helmet_t[helmet_camo_code] or 0
 
 	if outfit and string.find(outfit:section(), "nosorog") then
-		helmet_camo_bonus = helmet_t[-2]
+		helmet_camo_factor = helmet_t[-2]
+	elseif outfit and (ini_sys:r_bool_ex(outfit:section(),"helmet_avaliable") == false) then
+		helmet_camo_factor = 0
 	end
+
+	--Backpack
+	local bonus_weight = backpack and ini_sys:r_float_ex(backpack:section(),"additional_inventory_weight") or extra_weight_reference
+	local outfit_backpack = outfit and (ini_sys:r_bool_ex(outfit:section(),"backpack_avaliable") == false)
+
+	if outfit_backpack then
+		bonus_weight = ini_sys:r_float_ex(outfit:section(), "additional_inventory_weight") or extra_weight_reference
+	end
+
+	bonus_weight = math.min(extra_weight_max, bonus_weight)
+	backpack_camo_limit = math.exp(bonus_weight/extra_weight_max) / backpack_camo_reference
 end
 
 function get_camo_mult(velocity, object_distance)
@@ -306,9 +330,9 @@ function get_camo_mult(velocity, object_distance)
 	local velocity_camo_penalty = ((velocity >= 0.5) and (not active_ghil_camo)) or (velocity >= 2.5)
 	local camo_val =  100
 	if get_camo_k > 0 then
-		camo_val = get_camo_k - helmet_camo_bonus
+		camo_val = get_camo_k - helmet_camo_factor
 	else
-		camo_val = camo_val - (helmet_camo_bonus * 10)
+		camo_val = camo_val - (helmet_camo_factor * 10)
 	end
 	camo_val = math.max(18, camo_val)
 	local camo_dist_factor = 0.010 + ((get_camo_k > 0) and 0.005 or 0) + (active_ghil_camo and 0.010 or 0)
@@ -326,7 +350,7 @@ function get_weight_mult(object_distance)
 	local weight_factor = math.exp(actor_weight / 90)
 	local dist = 1.00 - (0.04 * object_distance)
 	local weight_mult = weight_factor * jacketmult * dist * stealth_mcm.get_config("weight")
-	weight_mult = math.max(1.0, weight_mult)
+	weight_mult = math.max(backpack_camo_limit, weight_mult)
 
 	return weight_mult
 end
@@ -465,6 +489,7 @@ function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velo
 		pr(weight_raw, 1, ("4. weight_raw ---------- %s"))
 		pr(math.exp(weight_raw/100), 1, ("4. weight_factor ------- %s"))
 		pr(weight_dist, 1, ("4. weight_dist --------- %s"))
+		printf("4. min_weight_mult --------- %s", backpack_camo_limit)
 		pr(weight, 1, ("4. weight&outfit ------- %s"))
 		pr(crouch, 1, ("5. crouch ------------- %s"))
 		pr(pewpewmult, 0, ("6.a) shot_mult --------- %s"))
