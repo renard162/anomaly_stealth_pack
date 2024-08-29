@@ -27,6 +27,7 @@ local difficulty_t = {
     [3] = 1.00, -- Poor (Hardcore)
 }
 
+local mcm_memory = stealth_mcm.get_config("memory")
 local ghillie_factor_on = jacket_t["o_light"]
 local ghillie_factor_off = jacket_t["o_heavy"]
 local jacketmult = 1
@@ -39,6 +40,7 @@ local backpack_camo_reference = math.exp(extra_weight_reference/extra_weight_max
 local active_ghil_camo = false
 local alert = false
 local alert_penalty_divisor = 1
+local alert_time = 3.0 * mcm_memory
 local summ = 0
 local renderer = get_console_cmd(0, "renderer")
 local is_r1 = (renderer == "renderer_r1")
@@ -423,7 +425,6 @@ end
 function get_memory_val(npc, who)
 	local tg = time_global()
 	local memory_val = 0
-	local mcm_memory = stealth_mcm.get_config("memory")
 
 	local who_fits = IsStalker(who) or IsMonster(who)
 	if not (who_fits) then
@@ -467,7 +468,7 @@ function actor_on_weapon_fired()
 		alert = false
 		return true
 	end
-	CreateTimeEvent("snk_alert_stop_e", "snk_alert_stop_a", 3.0, alert_stop)
+	CreateTimeEvent("snk_alert_stop_e", "snk_alert_stop_a", alert_time, alert_stop)
 end
 --------------------------------------------------------------------------------
 
@@ -516,6 +517,7 @@ function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velo
 		pr(crouch, 1, ("5. crouch ------------- %s"))
 		pr(pewpewmult, 0, ("6.a) shot_mult --------- %s"))
 		pr(danger_mult, 1, ("6.b) danger ------------ %s"))
+		pr(alert_time, 1, ("6.d) alert time --------- %s"))
 		pr(camo_x, 1, ("6.c) camo ------------- %s"))
 		pr(scheme_mult, 1, ("6.d) ai scheme --------- %s"))
 		pr(get_camo_k, 0, ("6.e) get_camo_k ------ %s"))
@@ -563,6 +565,11 @@ function check_ghil_camo()
 	end
 end
 
+function load_settings()
+	mcm_memory = stealth_mcm.get_config("memory")
+	alert_time = 3.0 * mcm_memory
+end
+
 --===================================
 function on_game_start()
 	RegisterScriptCallback("actor_on_update", set_campfire_val)
@@ -573,4 +580,5 @@ function on_game_start()
 	RegisterScriptCallback("actor_on_item_drop", slot_in_out)
 	RegisterScriptCallback("actor_on_weapon_fired", actor_on_weapon_fired)
 	RegisterScriptCallback("actor_on_footstep", actor_on_footstep)
+	RegisterScriptCallback("on_option_change", load_settings)
 end
