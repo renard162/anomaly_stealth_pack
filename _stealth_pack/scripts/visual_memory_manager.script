@@ -38,6 +38,7 @@ local extra_weight_reference = 34
 local backpack_camo_reference = math.exp(extra_weight_reference/extra_weight_max)
 local active_ghil_camo = false
 local alert = false
+local alert_penalty_divisor = 1
 local summ = 0
 local renderer = get_console_cmd(0, "renderer")
 local is_r1 = (renderer == "renderer_r1")
@@ -348,7 +349,7 @@ function get_camo_mult(velocity, object_distance)
 	if alert then
 		--Alert penalty distance limit: Non-stealth (83), Stealth (50), Ghillie (40)
 		local camo_alert_dist_factor = 0.012 + ((get_camo_k > 0) and 0.008 or 0) + (active_ghil_camo and 0.005 or 0)
-		alert_mult = 1 / (camo_alert_dist_factor * math.max(1, object_distance))
+		alert_mult = 1 / (camo_alert_dist_factor * math.max(1, object_distance) * alert_penalty_divisor)
 		alert_mult = math.max(1.0, alert_mult)
 	end
 
@@ -461,6 +462,7 @@ function actor_on_weapon_fired()
 	CreateTimeEvent("stealth_wpn_fired_e", "stealth_wpn_fired_a", 0.2, wpn_fired_stop)
 
 	alert = true
+	alert_penalty_divisor = wpn:weapon_is_silencer() and 2 or 1
 	local function alert_stop()
 		alert = false
 		return true
