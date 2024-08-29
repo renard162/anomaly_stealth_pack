@@ -10,7 +10,7 @@ local defaults = {
 	["icon"] = true,
 	["icon_type"] = 1,
 	["icon_x"] = 12,
-	["icon_y"] = 650,
+	["icon_y"] = 655,
 	["michiko_patch"] = false,
 	["debugx"] = false,
 }
@@ -37,7 +37,7 @@ function on_mcm_load()
 			{id = "icon", type = "check", val = 1, def = true},
 			{id = "icon_type", type= "list", val= 2, def= 1, 	content= { {1, "Light indicator"} , {2, "NPC vision"} } , no_str = true },
 			{id = "icon_x", type = "input", val = 2, min=0,max=1000, def = 12},
-			{id = "icon_y", type = "input", val = 2, min=0,max=1000, def = 650},
+			{id = "icon_y", type = "input", val = 2, min=0,max=1000, def = 655},
 
 			{id= "divider", type = "line" },
 			{ id= "title"				   ,type= "title"	 ,text= "ui_mcm_stealth_header_patches" 			,align= "c"	,clr= {255,200,200,200}	},
