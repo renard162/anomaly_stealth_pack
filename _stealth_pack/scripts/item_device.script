@@ -624,12 +624,14 @@ function set_nightvision(section,state)
 			utils_obj.play_sound("interface\\inv_nv_start")
 			nv_state = true
 			game.set_nv_lumfactor(ppe.lum)
+			ghilllie_hood.ghood_hide()
 		elseif (not state) and nv_state then
 			local ppe = ppe_effects[nv_eff[section]]
 			level.remove_pp_effector(ppe.id)
 			utils_obj.play_sound("interface\\inv_nv_off")
 			nv_state = false
 			game.set_nv_lumfactor(0)
+			ghilllie_hood.ghood_show()
 		end
 		
 		set_nightvision_HUD(nv_state)
