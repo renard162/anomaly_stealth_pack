@@ -1,5 +1,6 @@
 local ghood = nil
 local g_flag = false
+local mask_enabled = ui_options.get("video/player/mask_hud")
 
 local function check_ghil()
 	local outfit = db.actor:item_in_slot(7)
@@ -11,7 +12,7 @@ local function is_nv_active()
 end
 
 local function is_hood_equiped()
-	return g_flag and ghood
+	return mask_enabled and g_flag and ghood
 end
 
 local function init_mask()
@@ -37,16 +38,17 @@ end
 function mask_on_load()
 	init_mask()
 	check_ghil()
-	if is_hood_equiped() then
+	if is_hood_equiped() and (not is_nv_active()) then
 		ghood:Show(true)
-	else
+	elseif ghood then
 		ghood:Show(false)
 	end
 end
 
 function on_option_change()
+	mask_enabled = ui_options.get("video/player/mask_hud")
 	check_ghil()
-	if is_hood_equiped() then
+	if is_hood_equiped() and (not is_nv_active()) then
 		ghood:Show(true)
 	elseif ghood then
 		ghood:Show(false)
@@ -54,17 +56,20 @@ function on_option_change()
 end
 
 function mask_equip(ghil)
-	if ghil and (ghil:section() == "ghillie_outfit") and ghood and (not is_nv_active()) then
+	check_ghil()
+	if not mask_enabled then
+		return
+	end
+	if ghil and (ghil:section() == "ghillie_outfit") and (not is_nv_active()) and ghood then
 		ghood:Show(true)
 	end
-	check_ghil()
 end
 
 function mask_unequip(ghil)
+	check_ghil()
 	if ghil and (ghil:section() == "ghillie_outfit") and ghood then
 		ghood:Show(false)
 	end
-	check_ghil()
 end
 
 function ghood_show()
