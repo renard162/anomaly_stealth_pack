@@ -48,8 +48,7 @@ function on_option_change()
 	check_ghil()
 	if is_hood_equiped() then
 		ghood:Show(true)
-	end
-	if ghood then
+	elseif ghood then
 		ghood:Show(false)
 	end
 end
