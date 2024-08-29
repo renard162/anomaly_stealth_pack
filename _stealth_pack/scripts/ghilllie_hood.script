@@ -11,7 +11,7 @@ local function is_nv_active()
 end
 
 local function is_hood_equiped()
-	return g_flag and (ghood ~= nil)
+	return g_flag and ghood
 end
 
 local function init_mask()
@@ -36,13 +36,12 @@ end
 
 function mask_on_load()
 	init_mask()
-	local out = db.actor:item_in_slot(7)
-	if out and (out:section() == "ghillie_outfit") then
+	check_ghil()
+	if is_hood_equiped() then
 		ghood:Show(true)
 	else
 		ghood:Show(false)
 	end
-	check_ghil()
 end
 
 function on_option_change()
@@ -50,20 +49,20 @@ function on_option_change()
 	if is_hood_equiped() then
 		ghood:Show(true)
 	end
-	if ghood ~= nil then
+	if ghood then
 		ghood:Show(false)
 	end
 end
 
 function mask_equip(ghil)
-	if ghil and (ghil:section() == "ghillie_outfit") and (ghood ~= nil) and (not is_nv_active()) then
+	if ghil and (ghil:section() == "ghillie_outfit") and ghood and (not is_nv_active()) then
 		ghood:Show(true)
 	end
 	check_ghil()
 end
 
 function mask_unequip(ghil)
-	if ghil and (ghil:section() == "ghillie_outfit") and (ghood ~= nil) then
+	if ghil and (ghil:section() == "ghillie_outfit") and ghood then
 		ghood:Show(false)
 	end
 	check_ghil()
