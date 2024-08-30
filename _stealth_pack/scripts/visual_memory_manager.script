@@ -365,7 +365,7 @@ function get_camo_mult(velocity, object_distance)
 	local camo_dist = 1.00 - (camo_dist_factor * object_distance)
 
 	--Ghillie suit applies over final perception not only camo bonus
-	local camo_terrain_penalty = (not in_camo_surface) and (not ghil_equipped) and 1.2 or 1.0
+	local camo_terrain_penalty = ((not in_camo_surface) and (not ghil_equipped)) and 1.2 or 1.0
 
 	local alert_mult = 1.0
 	if alert then
@@ -375,7 +375,7 @@ function get_camo_mult(velocity, object_distance)
 		alert_mult = math.max(1.0, alert_mult)
 	end
 
-	camo_mult = (camo_val / 20) * camo_dist * alert_mult
+	camo_mult = (camo_val / 20) * camo_dist * alert_mult * camo_terrain_penalty
 	camo_mult = camo_mult * (velocity_camo_penalty and 2.5 or 1)
 	camo_mult = clamp(camo_mult, 0.01, 1.00)
 
