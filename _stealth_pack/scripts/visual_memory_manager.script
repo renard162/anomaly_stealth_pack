@@ -107,7 +107,7 @@ function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_fac
 end
 
 ------- Final multiplicator
-local function final_mult()
+function final_mult()
 	local mult = difficulty_t[level.get_game_difficulty()] or 1.0
 
 	if not ghil_equipped then
