@@ -21,8 +21,8 @@ local helmet_t = {
 }
 
 local difficulty_t = {
-    [0] = 0.80, -- Great (Arcade)
-    [1] = 0.85, -- Good (Arcade)
+    [0] = 0.85, -- Great (Arcade)
+    [1] = 0.89, -- Good (Arcade)
     [2] = 0.94, -- Average (Hardcore)
     [3] = 1.00, -- Poor (Hardcore)
 }
@@ -30,6 +30,7 @@ local difficulty_t = {
 local mcm_memory = stealth_mcm.get_config("memory")
 local ghillie_factor_on = jacket_t["o_light"]
 local ghillie_factor_off = jacket_t["o_heavy"]
+local ghil_equipped = false
 local jacketmult = 1
 local jacketmult_clean = 1
 local helmet_camo_factor = 0
@@ -47,6 +48,7 @@ local is_r1 = (renderer == "renderer_r1")
 local luminocity_cf = 0
 local pewpewmult = 0
 local get_camo_k = 0
+local in_camo_surface = false
 local vision_memory = {}
 stealth_light_ind = { 0, false }
 local ind_t = {}
@@ -91,7 +93,7 @@ function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_fac
 
 --============== total =============================
 	local step_incr = Luminocity * Velocity * eq_dist * camo_x * weight * crouch * danger_mult * scheme_mult + pewpewmult + memory_factor
-	step_incr = step_incr * (difficulty_t[level.get_game_difficulty()] or 1.0) * (active_ghil_camo and 0.8 or 1.0)
+	step_incr = step_incr * final_mult()
 -------------------------------------------------------------------------
 
 -- alt icon
@@ -102,6 +104,21 @@ function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_fac
 -------------------------------------------------------------------------
 
 	return step_incr
+end
+
+------- Final multiplicator
+local function final_mult()
+	local mult = difficulty_t[level.get_game_difficulty()] or 1.0
+
+	if not ghil_equipped then
+		return mult
+	end
+
+	if active_ghil_camo then
+		return mult * 0.8
+	end
+	
+	return mult * 1.2
 end
 
 ------- Luminocity
@@ -266,7 +283,7 @@ function update_icon()
 	end
 
 	stealth_light_ind[1] = max_val
-	stealth_light_ind[2] = ind_t[max_id] and ind_t[max_id].danger or false
+	stealth_light_ind[2] = ind_t[max_id] and ind_t[max_id].danger or alert
 
 end
 --------------------------------------------------------------------------------
@@ -347,10 +364,13 @@ function get_camo_mult(velocity, object_distance)
 	local camo_dist_factor = 0.010 + ((get_camo_k > 0) and 0.005 or 0) + (active_ghil_camo and 0.010 or 0)
 	local camo_dist = 1.00 - (camo_dist_factor * object_distance)
 
+	--Ghillie suit applies over final perception not only camo bonus
+	local camo_terrain_penalty = (not in_camo_surface) and (not ghil_equipped) and 1.2 or 1.0
+
 	local alert_mult = 1.0
 	if alert then
-		--Alert penalty distance limit: Non-stealth (83), Stealth (50), Ghillie (40)
-		local camo_alert_dist_factor = 0.012 + ((get_camo_k > 0) and 0.008 or 0) + (active_ghil_camo and 0.005 or 0)
+		--Alert penalty distance limit: Non-stealth (142/113), Stealth (80/64), Ghillie (50/40)
+		local camo_alert_dist_factor = 0.0070 + ((get_camo_k > 0) and 0.0055 or 0) + (active_ghil_camo and 0.0075 or 0)
 		alert_mult = 1 / (camo_alert_dist_factor * math.max(1, object_distance) * alert_penalty_divisor)
 		alert_mult = math.max(1.0, alert_mult)
 	end
@@ -463,7 +483,7 @@ function actor_on_weapon_fired()
 	CreateTimeEvent("stealth_wpn_fired_e", "stealth_wpn_fired_a", 0.2, wpn_fired_stop)
 
 	alert = true
-	alert_penalty_divisor = wpn:weapon_is_silencer() and 2 or 1
+	alert_penalty_divisor = wpn:weapon_is_silencer() and 1.25 or 1.00
 	local function alert_stop()
 		alert = false
 		return true
@@ -535,30 +555,30 @@ end
 
 --===================================
 -- Ghillie bonus
-local in_ghil_camo_surface = false
-local ghil_camo_surfaces = {"earth", "dirt", "grass", "bush"}
+local camo_surfaces = {"earth", "dirt", "grass", "bush"}
 local function actor_on_footstep(mat)
-    for n, material in ipairs(ghil_camo_surfaces) do
+    for n, material in ipairs(camo_surfaces) do
         if string.find(mat, material) then
-			in_ghil_camo_surface = true
+			in_camo_surface = true
             return
         end
     end
-	in_ghil_camo_surface = false
+	in_camo_surface = false
 end
 
 function check_ghil_camo()
 	local outfit = db.actor:item_in_slot(7)
 	local sec = outfit and outfit:section()
-	if sec ~= "ghillie_outfit" then
+	ghil_equipped = (sec == "ghillie_outfit")
+	if not ghil_equipped then
 		jacketmult = jacketmult_clean
 		active_ghil_camo = false
 		return
-	elseif in_ghil_camo_surface and (sec == "ghillie_outfit") then
+	elseif in_camo_surface and ghil_equipped then
 		jacketmult = ghillie_factor_on
 		active_ghil_camo = true
 		return
-	elseif (not in_ghil_camo_surface) and (sec == "ghillie_outfit") then
+	elseif (not in_camo_surface) and ghil_equipped then
 		jacketmult = ghillie_factor_off
 		active_ghil_camo = false
 		return
