@@ -362,19 +362,23 @@ function get_camo_mult(velocity, object_distance)
 	end
 	camo_val = math.max(18, camo_val)
 
-	local camo_dist_factor = 0.010 + ((get_camo_k > 0) and 0.005 or 0) + (active_ghil_camo and 0.010 or 0)
-	local camo_dist = 1.00 - (camo_dist_factor * object_distance)
-
 	--Ghillie suit applies over final perception not only camo bonus
 	local camo_terrain_penalty = ((not in_camo_surface) and (not ghil_equipped) and (get_camo_k > 0)) and 1.2 or 1.0
 
+	local camo_dist_factor = 0.010 + ((get_camo_k > 0) and 0.005 or 0) + (active_ghil_camo and 0.010 or 0)
+
 	local alert_mult = 1.0
 	if alert then
+		--Alert state makes dist factor: Non-stealth (0.005/0.007), Stealth (0.008/0.010), Ghillie (0.013/0.017)
+		camo_dist_factor = camo_dist_factor * 0.528 * alert_penalty_divisor
+
 		--Alert penalty distance limit: Non-stealth (142/113), Stealth (80/64), Ghillie (50/40)
 		local camo_alert_dist_factor = 0.0070 + ((get_camo_k > 0) and 0.0055 or 0) + (active_ghil_camo and 0.0075 or 0)
 		alert_mult = 1 / (camo_alert_dist_factor * math.max(1, object_distance) * alert_penalty_divisor)
 		alert_mult = math.max(1.0, alert_mult)
 	end
+
+	local camo_dist = 1.00 - (camo_dist_factor * object_distance)
 
 	camo_mult = (camo_val / 20) * camo_dist * alert_mult * camo_terrain_penalty
 	camo_mult = camo_mult * (velocity_camo_penalty and 2.5 or 1)
