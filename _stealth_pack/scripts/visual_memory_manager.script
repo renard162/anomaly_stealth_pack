@@ -21,13 +21,46 @@ local helmet_t = {
 }
 
 local difficulty_t = {
-    [0] = 0.85, -- Great (Arcade)
-    [1] = 0.89, -- Good (Arcade)
+    [0] = 0.80, -- Great (Arcade)
+    [1] = 0.85, -- Good (Arcade)
     [2] = 0.94, -- Average (Hardcore)
     [3] = 1.00, -- Poor (Hardcore)
 }
 
+local game_mode_t = {
+    [0] = 3.0, -- Arcade (Great)
+    [1] = 3.9, -- Arcade (Good)
+    [2] = 1.1, -- Hardcore (Average)
+    [3] = 1.3, -- Hardcore (Poor)
+}
+
+local game_mode_dist_t = {
+    [0] = 1.0, -- Arcade (Great)
+    [1] = 1.3, -- Arcade (Good)
+    [2] = 0.2, -- Hardcore (Average)
+    [3] = 0.3, -- Hardcore (Poor)
+}
+
+local alert_time_t = {
+    [0] = 4.0, -- Arcade (Great)
+    [1] = 5.0, -- Arcade (Good)
+    [2] = 3.0, -- Hardcore (Average)
+    [3] = 3.4, -- Hardcore (Poor)
+}
+
 local mcm_memory = stealth_mcm.get_config("memory")
+local mcm_velocity = stealth_mcm.get_config("velocity")
+local mcm_luminocity = stealth_mcm.get_config("luminocity")
+local mcm_distance = stealth_mcm.get_config("distance")
+local mcm_weight = stealth_mcm.get_config("weight")
+local mcm_low_crouch = stealth_mcm.get_config("low_crouch")
+local mcm_crouch = stealth_mcm.get_config("crouch")
+local mcm_michiko_patch = stealth_mcm.get_config("michiko_patch")
+local mcm_debugx = stealth_mcm.get_config("debugx")
+local game_difficulty = level.get_game_difficulty() or 2
+
+local base_diff_mult = difficulty_t[game_difficulty] or 1.0
+
 local ghillie_factor_on = jacket_t["o_light"]
 local ghillie_factor_off = jacket_t["o_heavy"]
 local ghil_equipped = false
@@ -39,16 +72,20 @@ local extra_weight_max = 80
 local extra_weight_reference = 34
 local backpack_camo_reference = math.exp(extra_weight_reference/extra_weight_max)
 local active_ghil_camo = false
+local get_camo_k = 0
+local in_camo_surface = false
+
 local alert = false
-local alert_penalty_divisor = 1
-local alert_time = 3.0 * mcm_memory
+local silenced_weapon_factor = 1
+local alert_time = alert_time_t[game_difficulty] * mcm_memory
+local pewpewmult = 0
+local alert_diff_mult = game_mode_t[game_difficulty] or 1.3
+local alert_dist_penalty = game_mode_dist_t[game_difficulty] or 0.3
+
 local summ = 0
 local renderer = get_console_cmd(0, "renderer")
 local is_r1 = (renderer == "renderer_r1")
 local luminocity_cf = 0
-local pewpewmult = 0
-local get_camo_k = 0
-local in_camo_surface = false
 local vision_memory = {}
 stealth_light_ind = { 0, false }
 local ind_t = {}
@@ -65,19 +102,22 @@ function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_fac
 	local who_fits = who and obj_is_alive(who)
 
 	if not (npc_fits and who_fits) then
-		local def_lum = luminocity <= 0 and 0.0001 or luminocity
+		local def_lum = math.max(0.0001, luminocity)
 		local def_step_incr = time_delta / time_quant * def_lum * (1 + velocity_factor * velocity) * (distance - object_distance) / distance
 		return def_step_incr
 	end
 
-	luminocity = get_luminocity_mult(npc, who, luminocity, object_distance, distance)
 	check_ghil_camo()
-	local lum_dist = (distance - object_distance / 1.35) / distance
-	local Luminocity = (33 * luminocity * lum_dist) * stealth_mcm.get_config("luminocity")
 
-	local Velocity = (1 + velocity_factor * velocity) * stealth_mcm.get_config("velocity")
+	local lum_dist = math.max(0, distance - object_distance / (mcm_luminocity + 0.35)) / distance
 
-	local eq_dist = ((distance - object_distance / (1.15 + (alert and 0.3 or 0))) / distance) * stealth_mcm.get_config("distance")
+	luminocity = get_luminocity_mult(npc, who, luminocity, object_distance, distance)
+
+	local Luminocity = (33 * luminocity * lum_dist)
+
+	local Velocity = mcm_velocity + velocity_factor * velocity
+
+	local eq_dist = math.max(0, distance - object_distance / (mcm_distance + 0.15 + (alert and alert_dist_penalty or 0))) / distance
 
 	local camo_x = get_camo_mult(velocity, object_distance)
 
@@ -108,8 +148,8 @@ end
 
 ------- Final multiplicator
 function final_mult()
-	local mult = difficulty_t[level.get_game_difficulty()] or 1.0
-	mult = mult * (alert and 1.3 or 1)
+	local mult = base_diff_mult
+	mult = mult * (alert and alert_diff_mult or 1.3)
 
 	if not ghil_equipped then
 		return mult
@@ -118,7 +158,7 @@ function final_mult()
 	if active_ghil_camo then
 		return mult * 0.8
 	end
-	
+
 	return mult * 1.2
 end
 
@@ -137,7 +177,7 @@ function lights_lum()
 end
 
 function get_luminocity_mult(npc, who, luminocity, object_distance, distance)
-	local michiko_patch = stealth_mcm.get_config("michiko_patch")
+	local michiko_patch = mcm_michiko_patch
 	local hrs = level.get_time_hours() + level.get_time_minutes() / 60
 	local who_lum = who:get_luminocity()
 
@@ -348,8 +388,9 @@ end
 
 function get_camo_mult(velocity, object_distance)
 	local camo_mult = 1
+	local camo_min_distance = 30 - ((get_camo_k > 0) and 10 or 0)
 
-	if object_distance < 3 then
+	if (object_distance < camo_min_distance) and (not active_ghil_camo) then
 		return camo_mult
 	end
 
@@ -363,26 +404,28 @@ function get_camo_mult(velocity, object_distance)
 	camo_val = math.max(18, camo_val)
 
 	--Ghillie suit applies over final perception not only camo bonus
-	local camo_terrain_penalty = ((not in_camo_surface) and (not ghil_equipped) and (get_camo_k > 0)) and 1.2 or 1.0
+	local camo_terrain_penalty = ((not in_camo_surface) and (not ghil_equipped) and (get_camo_k > 0)) and 1.1 or 1.0
 
-	local camo_dist_factor = 0.010 + ((get_camo_k > 0) and 0.005 or 0) + (active_ghil_camo and 0.010 or 0)
+	local camo_dist_factor = 0.008 + ((get_camo_k > 0) and 0.008 or 0) + (active_ghil_camo and 0.004 or 0)
 
 	local alert_mult = 1.0
 	if alert then
-		--Alert state makes dist factor: Non-stealth (0.005/0.007), Stealth (0.008/0.010), Ghillie (0.013/0.017)
-		camo_dist_factor = camo_dist_factor * 0.528 * alert_penalty_divisor
+		--Alert state makes dist factor (non arcade mode): Non-stealth (0.004/0.005), Stealth (0.008/0.011), Ghillie (0.011/0.013)
+		--In arcade game modes, the factor will be drastically reduced in alert time
+		camo_dist_factor = camo_dist_factor * 0.528 * silenced_weapon_factor * ((game_difficulty <= 1) and 0.5 or 1)
 
-		--Alert penalty distance limit: Non-stealth (142/113), Stealth (80/64), Ghillie (50/40)
-		local camo_alert_dist_factor = 0.0070 + ((get_camo_k > 0) and 0.0055 or 0) + (active_ghil_camo and 0.0075 or 0)
-		alert_mult = 1 / (camo_alert_dist_factor * math.max(1, object_distance) * alert_penalty_divisor)
+		--Alert penalty distance limit: Non-stealth (143/114), Stealth (100/80), Ghillie (80/64)
+		local camo_alert_dist_factor = 0.0070 + ((get_camo_k > 0) and 0.0030 or 0) + (active_ghil_camo and 0.0025 or 0)
+		alert_mult = 1 / (camo_alert_dist_factor * math.max(1, object_distance) * silenced_weapon_factor)
 		alert_mult = math.max(1.0, alert_mult)
 	end
 
+	local min_camo_value = alert and 0.08 or 0.02
 	local camo_dist = 1.00 - (camo_dist_factor * object_distance)
 
 	camo_mult = (camo_val / 20) * camo_dist * alert_mult * camo_terrain_penalty
-	camo_mult = camo_mult * (velocity_camo_penalty and 2.5 or 1)
-	camo_mult = clamp(camo_mult, 0.01, 1.00)
+	camo_mult = camo_mult * (velocity_camo_penalty and (1 + mcm_velocity) or 1)
+	camo_mult = clamp(camo_mult, min_camo_value, 1.00)
 
 	return camo_mult
 end
@@ -390,8 +433,11 @@ end
 function get_weight_mult(object_distance)
 	local actor_weight = db.actor:get_total_weight()
 	local weight_factor = math.exp(actor_weight / 90)
-	local dist = 1.00 - (0.04 * object_distance)
-	local weight_mult = weight_factor * jacketmult * dist * stealth_mcm.get_config("weight")
+	local dist = 1.00 - (0.03 * object_distance)
+	local weight_mult = weight_factor * jacketmult * dist * mcm_weight
+
+	--Backpack camo limits by extra weight (min weight_mult):
+	--Unnequiped (0.7408), +21 (0.8500), +28 (0.9277), +34 (1.0000), +41 (1.0914), +47 (1.1764), +80 and more (1.7771)
 	weight_mult = math.max(backpack_camo_limit, weight_mult)
 
 	return weight_mult
@@ -410,9 +456,9 @@ function get_crouch_mult()
 	end
 
 	if accel_state then
-		crouch_mult = stealth_mcm.get_config("low_crouch")
+		crouch_mult = mcm_low_crouch
 	else
-		crouch_mult = stealth_mcm.get_config("crouch")
+		crouch_mult = mcm_crouch
 	end
 
 	if not active_ghil_camo then
@@ -479,7 +525,11 @@ function actor_on_weapon_fired()
 	if not (wpn) then return end
 	if not (IsWeapon(wpn)) or IsMelee(wpn) then return end
 
-	pewpewmult = wpn:weapon_is_silencer() and 2 or 10
+	if wpn:weapon_is_silencer() then
+		pewpewmult = alert and 7 or 2
+	else
+		pewpewmult = 16
+	end
 
 	local function wpn_fired_stop()
 		pewpewmult = 0
@@ -488,7 +538,7 @@ function actor_on_weapon_fired()
 	CreateTimeEvent("stealth_wpn_fired_e", "stealth_wpn_fired_a", 0.2, wpn_fired_stop)
 
 	alert = true
-	alert_penalty_divisor = wpn:weapon_is_silencer() and 1.25 or 1.00
+	silenced_weapon_factor = wpn:weapon_is_silencer() and 1.25 or 1.00
 	local function alert_stop()
 		alert = false
 		return true
@@ -499,7 +549,7 @@ end
 
 ------- Debug
 function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velocity_raw, distance, weight, crouch, danger_mult, camo_x, scheme_mult, memory_factor, eq_dist, object_distance)
-	if not (stealth_mcm.get_config("debugx")) then return end
+	if not (mcm_debugx) then return end
 
 	local wthrs = level_weathers.get_weather_manager():get_curr_weather_preset()
 	local obj = level.get_target_obj()
@@ -590,9 +640,22 @@ function check_ghil_camo()
 	end
 end
 
-function load_settings()
+function on_option_change()
 	mcm_memory = stealth_mcm.get_config("memory")
-	alert_time = 3.0 * mcm_memory
+	mcm_velocity = stealth_mcm.get_config("velocity")
+	mcm_luminocity = stealth_mcm.get_config("luminocity")
+	mcm_distance = stealth_mcm.get_config("distance")
+	mcm_weight = stealth_mcm.get_config("weight")
+	mcm_low_crouch = stealth_mcm.get_config("low_crouch")
+	mcm_crouch = stealth_mcm.get_config("crouch")
+	mcm_michiko_patch = stealth_mcm.get_config("michiko_patch")
+	mcm_debugx = stealth_mcm.get_config("debugx")
+	game_difficulty = level.get_game_difficulty() or 2
+
+	base_diff_mult = difficulty_t[game_difficulty] or 1.0
+	alert_time = alert_time_t[game_difficulty] * mcm_memory
+	alert_diff_mult = game_mode_t[game_difficulty] or 1.3
+	alert_dist_penalty = game_mode_dist_t[game_difficulty] or 0.3
 end
 
 --===================================
@@ -605,5 +668,5 @@ function on_game_start()
 	RegisterScriptCallback("actor_on_item_drop", slot_in_out)
 	RegisterScriptCallback("actor_on_weapon_fired", actor_on_weapon_fired)
 	RegisterScriptCallback("actor_on_footstep", actor_on_footstep)
-	RegisterScriptCallback("on_option_change", load_settings)
+	RegisterScriptCallback("on_option_change", on_option_change)
 end
