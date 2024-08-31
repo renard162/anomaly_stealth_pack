@@ -109,18 +109,18 @@ function StealthIcon:StatUpd()
 	local flash = db.actor:item_in_slot(9)
 
 	if (flash and (flash:section() == "device_flashlight") and db.actor:active_detector()) then
-		--Set color: light red
-		-- R_max_diff = 250
-		G_max_diff = 70
-		B_max_diff = 70
+		--Set color: light blue
+		R_max_diff = 145
+		-- G_max_diff = 250
+		B_max_diff = 250
 
 		gem_lum = gem_lum + FLASHLIGHT_PENALTY --flat value to make the gem jump as a reminder that you should shut off the light
 
 	elseif (torch and torch:torch_enabled()) then
-		 --Set color: light blue
-		R_max_diff = 95
-		-- G_max_diff = 250
-		B_max_diff = 250
+		--Set color: light red
+		-- R_max_diff = 250
+		G_max_diff = 145
+		-- B_max_diff = 145
 
 		gem_lum = gem_lum + FLASHLIGHT_PENALTY --flat value to make the gem jump as a reminder that you should shut off the light
 	end
