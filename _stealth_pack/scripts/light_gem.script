@@ -98,7 +98,7 @@ function StealthIcon:StatUpd()
 	-- both of these can be set from the debug menue. f7->0 light_gem.LUM_MULT = 1.9 into the execute text box then hit execute button. (typos will crash the game)
 	local FLASHLIGHT_PENALTY = .5 --flat value to make the gem jump as a reminder that you should shut off the light.
 
-	local A_max_diff = 150 --Remember to change the default alpha value by 255-A_max_diff (local gem_color = GetARGB(170+A_diff, 5+R_diff, 5+G_diff, 5+B_diff))
+	local A_max_diff = 85 --Remember to change the default alpha value by 255-A_max_diff (local gem_color = GetARGB(170+A_diff, 5+R_diff, 5+G_diff, 5+B_diff))
 	--Default color: light yellow
 	local R_max_diff = 250
 	local G_max_diff = 250
@@ -130,7 +130,7 @@ function StealthIcon:StatUpd()
 	local G_diff = clamp((G_max_diff * LUM_MULT * gem_lum), 0, G_max_diff)
 	local B_diff = clamp((B_max_diff * LUM_MULT * gem_lum), 0, B_max_diff)
 
-	local gem_color = GetARGB(105+A_diff, 5+R_diff, 5+G_diff, 5+B_diff)
+	local gem_color = GetARGB(170+A_diff, 5+R_diff, 5+G_diff, 5+B_diff)
 	self.gem:SetTextureColor(gem_color)
 
 end
