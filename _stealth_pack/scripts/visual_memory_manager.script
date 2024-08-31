@@ -388,7 +388,7 @@ end
 
 function get_camo_mult(velocity, object_distance)
 	local camo_mult = 1
-	local camo_min_distance = 30 - ((get_camo_k > 0) and 10 or 0)
+	local camo_min_distance = 20 - ((get_camo_k > 0) and 12 or 0)
 
 	if (object_distance < camo_min_distance) and (not active_ghil_camo) then
 		return camo_mult
