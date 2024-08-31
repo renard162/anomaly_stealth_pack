@@ -67,6 +67,7 @@ local ghil_equipped = false
 local jacketmult = 1
 local jacketmult_clean = 1
 local helmet_camo_factor = 0
+local helmet_camo_factor_clean = 0
 local backpack_camo_limit = 1
 local extra_weight_max = 80
 local extra_weight_reference = 34
@@ -370,6 +371,8 @@ function slot_in_out(obj)
 		helmet_camo_factor = 0
 	end
 
+	helmet_camo_factor_clean = helmet_camo_factor
+
 	--Backpack
 	local bonus_weight = extra_weight_reference
 	local outfit_backpack = outfit and (ini_sys:r_bool_ex(outfit:section(),"backpack_avaliable") == false)
@@ -406,11 +409,11 @@ function get_camo_mult(velocity, object_distance)
 	--Ghillie suit applies over final perception not only camo bonus
 	local camo_terrain_penalty = ((not in_camo_surface) and (not ghil_equipped) and (get_camo_k > 0)) and 1.1 or 1.0
 
-	local camo_dist_factor = 0.008 + ((get_camo_k > 0) and 0.008 or 0) + (active_ghil_camo and 0.004 or 0)
+	local camo_dist_factor = 0.008 + ((get_camo_k > 0) and 0.008 or 0) + (active_ghil_camo and 0.014 or 0)
 
 	local alert_mult = 1.0
 	if alert then
-		--Alert state makes dist factor (non arcade mode): Non-stealth (0.004/0.005), Stealth (0.008/0.011), Ghillie (0.011/0.013)
+		--Alert state makes dist factor (non arcade mode): Non-stealth (0.004/0.005), Stealth (0.008/0.011), Ghillie (0.016/0.020)
 		--In arcade game modes, the factor will be drastically reduced in alert time
 		camo_dist_factor = camo_dist_factor * 0.528 * silenced_weapon_factor * ((game_difficulty <= 1) and 0.5 or 1)
 
@@ -420,7 +423,7 @@ function get_camo_mult(velocity, object_distance)
 		alert_mult = math.max(1.0, alert_mult)
 	end
 
-	local min_camo_value = alert and 0.08 or 0.02
+	local min_camo_value = (alert and 0.08 or 0.02) * (active_ghil_camo and 0.5 or 1)
 	local camo_dist = 1.00 - (camo_dist_factor * object_distance)
 
 	camo_mult = (camo_val / 20) * camo_dist * alert_mult * camo_terrain_penalty
@@ -526,9 +529,9 @@ function actor_on_weapon_fired()
 	if not (IsWeapon(wpn)) or IsMelee(wpn) then return end
 
 	if wpn:weapon_is_silencer() then
-		pewpewmult = alert and 7 or 2
+		pewpewmult = (alert and 7 or 2) * (active_ghil_camo and 0.5 or 1)
 	else
-		pewpewmult = 16
+		pewpewmult = 16 * (active_ghil_camo and 0.5 or 1)
 	end
 
 	local function wpn_fired_stop()
@@ -627,14 +630,17 @@ function check_ghil_camo()
 	ghil_equipped = (sec == "ghillie_outfit")
 	if not ghil_equipped then
 		jacketmult = jacketmult_clean
+		helmet_camo_factor = helmet_camo_factor_clean
 		active_ghil_camo = false
 		return
 	elseif in_camo_surface and ghil_equipped then
 		jacketmult = ghillie_factor_on
+		helmet_camo_factor = helmet_camo_factor_clean + 1
 		active_ghil_camo = true
 		return
 	elseif (not in_camo_surface) and ghil_equipped then
 		jacketmult = ghillie_factor_off
+		helmet_camo_factor = helmet_camo_factor_clean
 		active_ghil_camo = false
 		return
 	end
