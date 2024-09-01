@@ -1566,7 +1566,9 @@
 		<text>Ghillie suit</text>
 	</string>
 	<string id="ghillie_outfit_description">
-		<text>%c[ui_gray_1]This suit is designed to simulate a ‘heap of foliage.’ Usually this type of suit is worn by snipers and hunters to blend in with the environment and hide themselves from enemies. Ghillie suits are commercially produced, but usually both military personnel and civilians customise and improve them to suit their needs. Despite its high efficiency, it can be very impractical: even in a temperate climate, it becomes hot over time and is very heavy.\n \n
+		<text>%c[ui_gray_1]The Ghillie suit is a specialized piece of camouflage gear designed to simulate a "heap of foliage," allowing its wearer to blend seamlessly into natural environments. Commonly used by snipers and hunters, the suit provides highly effective concealment in terrain such as dirt, grasslands, dense forests, and shrubbery, where its irregular patterns of colors and textures break up the human silhouette and disrupt visual and thermal detection.\n
+        
+        \nDespite its exceptional effectiveness in natural settings, the Ghillie suit becomes a liability in urban or man-made environments like roads, cities, or industrial areas. In these locations, the suit's natural, foliage-like appearance stands out conspicuously, making the wearer easily detectable and vulnerable to enemy observation.\n \n
 		</text>
 	</string>
 
