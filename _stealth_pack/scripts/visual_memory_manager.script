@@ -67,7 +67,6 @@ local ghil_equipped = false
 local jacketmult = 1
 local jacketmult_clean = 1
 local helmet_camo_factor = 0
-local helmet_camo_factor_clean = 0
 local backpack_camo_limit = 1
 local extra_weight_max = 80
 local extra_weight_reference = 34
@@ -365,13 +364,14 @@ function slot_in_out(obj)
 	local helmet_camo_code = helmet and ini_sys:r_float_ex(helmet:section(),"camo_bonus") or 0
 	helmet_camo_factor = helmet_camo_code and helmet_t[helmet_camo_code] or 0
 
-	if outfit and string.find(outfit:section(), "nosorog") then
+	if ghil_equipped then
+		helmet_camo_factor = helmet_camo_factor + 1
+	elseif outfit and string.find(outfit:section(), "nosorog") then
 		helmet_camo_factor = helmet_t[-2]
 	elseif outfit and (ini_sys:r_bool_ex(outfit:section(),"helmet_avaliable") == false) then
 		helmet_camo_factor = 0
 	end
 
-	helmet_camo_factor_clean = helmet_camo_factor
 
 	--Backpack
 	local bonus_weight = extra_weight_reference
@@ -399,7 +399,8 @@ function get_camo_mult(velocity, object_distance)
 
 	local camo_val =  100
 	if get_camo_k > 0 then
-		camo_val = get_camo_k - helmet_camo_factor
+		--Helmet camo bonus from ghillie applies only to luminosity bonus, not to camo factor
+		camo_val = get_camo_k + (ghil_equipped and 1 or 0) - helmet_camo_factor
 	else
 		camo_val = camo_val - (helmet_camo_factor * 10)
 	end
@@ -430,6 +431,7 @@ function get_camo_mult(velocity, object_distance)
 	end
 
 	if active_ghil_camo then
+		min_camo_value = min_camo_value * 0.5
 		velocity_camo_penalty = velocity_camo_penalty * 0.65
 		min_camo_value = min_camo_value * 0.5
 	end
@@ -640,17 +642,14 @@ end
 function check_ghil_camo()
 	if (not ghil_equipped) then
 		jacketmult = jacketmult_clean
-		helmet_camo_factor = helmet_camo_factor_clean
 		active_ghil_camo = false
 		return
 	elseif ghil_equipped and in_camo_surface then
 		jacketmult = ghillie_factor_on
-		helmet_camo_factor = helmet_camo_factor_clean + 1
 		active_ghil_camo = true
 		return
 	elseif ghil_equipped and (not in_camo_surface) then
 		jacketmult = ghillie_factor_off
-		helmet_camo_factor = helmet_camo_factor_clean
 		active_ghil_camo = false
 		return
 	end
