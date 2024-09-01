@@ -397,7 +397,6 @@ function get_camo_mult(velocity, object_distance)
 		return camo_mult
 	end
 
-	local velocity_camo_penalty = ((velocity >= 0.5) and (not active_ghil_camo)) or (velocity >= 2.5)
 	local camo_val =  100
 	if get_camo_k > 0 then
 		camo_val = get_camo_k - helmet_camo_factor
@@ -406,28 +405,38 @@ function get_camo_mult(velocity, object_distance)
 	end
 	camo_val = math.max(18, camo_val)
 
+	local min_camo_value = alert and 0.08 or 0.02
+
 	--Ghillie suit applies over final perception not only camo bonus
 	local camo_terrain_penalty = ((not in_camo_surface) and (not ghil_equipped) and (get_camo_k > 0)) and 1.1 or 1.0
 
 	local camo_dist_factor = 0.008 + ((get_camo_k > 0) and 0.008 or 0) + (active_ghil_camo and 0.014 or 0)
+
+	local velocity_camo_penalty = 1.0
+	if velocity > 0 then
+		velocity_camo_penalty = mcm_velocity + (0.2*velocity) + ((velocity > 1) and (0.422*velocity*velocity - 1.072*velocity + 0.650) or 0)
+	end
 
 	local alert_mult = 1.0
 	if alert then
 		--Alert state makes dist factor (non arcade mode): Non-stealth (0.004/0.005), Stealth (0.008/0.011), Ghillie (0.016/0.020)
 		--In arcade game modes, the factor will be drastically reduced in alert time
 		camo_dist_factor = camo_dist_factor * 0.528 * silenced_weapon_factor * ((game_difficulty <= 1) and 0.5 or 1)
-
+		
 		--Alert penalty distance limit: Non-stealth (143/114), Stealth (100/80), Ghillie (80/64)
 		local camo_alert_dist_factor = 0.0070 + ((get_camo_k > 0) and 0.0030 or 0) + (active_ghil_camo and 0.0025 or 0)
 		alert_mult = 1 / (camo_alert_dist_factor * math.max(1, object_distance) * silenced_weapon_factor)
 		alert_mult = math.max(1.0, alert_mult)
 	end
 
-	local min_camo_value = (alert and 0.08 or 0.02) * (active_ghil_camo and 0.5 or 1)
+	if active_ghil_camo then
+		velocity_camo_penalty = velocity_camo_penalty * 0.65
+		min_camo_value = min_camo_value * 0.5
+	end
+
 	local camo_dist = 1.00 - (camo_dist_factor * object_distance)
 
-	camo_mult = (camo_val / 20) * camo_dist * alert_mult * camo_terrain_penalty
-	camo_mult = camo_mult * (velocity_camo_penalty and (1 + mcm_velocity) or 1)
+	camo_mult = (camo_val / 20) * camo_dist * alert_mult * camo_terrain_penalty * math.max(1, velocity_camo_penalty)
 	camo_mult = clamp(camo_mult, min_camo_value, 1.00)
 
 	return camo_mult
@@ -589,6 +598,7 @@ function stealth_dbg(npc, who, step_incr, luminocity_score, luminocity_mult, lum
 		printf("1.f) luminocity_cf ------- %s", luminocity_cf)
 		printf("1.g) icon_lum() --------- %s", icon_lum_val)
 		pr(Velocity, 1, ("2. Velocity ------------- %s"))
+		pr(velocity_raw, 1, ("2a. velocity_raw ------------- %s"))
 		printf("3. dist_original --------- %s", distance)
 		pr(weight_raw, 1, ("4. weight_raw ---------- %s"))
 		pr(math.exp(weight_raw/100), 1, ("4. weight_factor ------- %s"))
