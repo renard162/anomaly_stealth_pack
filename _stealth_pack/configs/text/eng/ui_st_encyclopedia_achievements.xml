@@ -353,7 +353,7 @@
 			%c[pda_white]Invictus%c[ui_gray_1] requires you to do the impossible:
 			\n%c[d_red] • %c[ui_gray_1]Play on Story mode, complete all three "Lost to the Zone" storylines
 			\n%c[d_red] • %c[ui_gray_1]Ironman mode must be active since day 1 in the Zone, until you complete the storlines.
-			\n%c[d_red] • %c[ui_gray_1]Play on Stalker Difficulty or higher and Survival Economy or higher, without changing modifiers.
+			\n%c[d_red] • %c[ui_gray_1]Play on Stalker mode or higher and Survival Economy or higher, without changing modifiers.
 			\n%c[d_red] • %c[ui_gray_1]Never die twice on your journey.
 			\n%c[d_red] • %c[ui_gray_1]Never use debug mode.\n
 			\n%c[d_orange]Tourist Economy Unlock%c[ui_gray_1]
@@ -378,7 +378,7 @@
 			%c[pda_white]True STALKER%c[ui_gray_1] requirements:
 			\n%c[d_red] • %c[ui_gray_1]Play on Story mode, complete all three "Lost to the Zone" storylines
 			\n%c[d_red] • %c[ui_gray_1]Ironman mode must be active since day 1 in the Zone, until you complete the storlines.
-			\n%c[d_red] • %c[ui_gray_1]Play on Hardcore Difficulty and Suicider Economy, without changing modifiers.
+			\n%c[d_red] • %c[ui_gray_1]Play on Hardcore mode and Suicider Economy, without changing modifiers.
 			\n%c[d_red] • %c[ui_gray_1]Do not die at all in one playthrough. (Without extra lives)
 			\n%c[d_red] • %c[ui_gray_1]Never use debug mode.\n
 			\n%c[d_orange]Tourist Economy Unlock%c[ui_gray_1]

@@ -56,10 +56,10 @@
 		<text>Gameplay</text>
 	</string>
 		<string id="ui_mm_menu_economy_diff">
-			<text>Progression .diff</text>
+			<text>Progression params</text>
 		</string>
 		<string id="ui_mm_menu_gameplay_diff">
-			<text>Gameplay .diff</text>
+			<text>Gameplay params</text>
 		</string>
 		<string id="ui_mm_menu_disguise">
 			<text>Disguise</text>
@@ -151,10 +151,10 @@
 		<text>You have (%s) pending changes.</text>
 	</string>
 	<string id="ui_mm_warning_economy_diff_not_level_present">
-		<text>Progression Difficulty factors are only accessible in a loaded game.</text>
+		<text>Progression mode factors are only accessible in a loaded game.</text>
 	</string>
 	<string id="ui_mm_warning_gameplay_diff_not_level_present">
-		<text>Gameplay Difficulty factors are only accessible in a loaded game.</text>
+		<text>Gameplay mode factors are only accessible in a loaded game.</text>
 	</string>
 	<string id="ui_mm_change_done_restart">
 		<text>Changes are saved\nyou need to restart your game!</text>
@@ -975,10 +975,10 @@
 	
 	<!-- Gameplay difficulty -->
 	<string id="ui_mm_title_gameplay_diff">
-		<text>Gameplay difficulty</text>
+		<text>Gameplay params</text>
 	</string>
 	<string id="ui_mm_desc_gameplay_diff">
-		<text>Changes made to Gameplay difficulty settings will be applied to your active playthrough only.</text>
+		<text>Changes made to Gameplay params settings will be applied to your active playthrough only.</text>
 	</string>
 	
 	<string id="ui_mm_prst_gameplay_easy">
@@ -1076,10 +1076,10 @@
 	
 <!-- Gameplay - Progression difficulty -->
 	<string id="ui_mm_title_economy_diff">
-		<text>Progression difficulty</text>
+		<text>Progression params</text>
 	</string>
 	<string id="ui_mm_desc_economy_diff">
-		<text>Changes made to Progression difficulty settings will be applied to your active playthrough only.</text>
+		<text>Changes made to Progression params settings will be applied to your active playthrough only.</text>
 	</string>
 	
 	<string id="ui_mm_prst_economy_easy">

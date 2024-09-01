@@ -23,7 +23,7 @@
 	</string>
 	<string id="encyclopedia_features_ironman_mode_text">
 		<text>
-			%c[pda_white]Ironman mode%c[ui_gray_1] adds an indirect layer of difficulty to gameplay, whereby all of your saved games for a character are deleted upon their death.\n
+			%c[pda_white]Ironman mode%c[ui_gray_1] adds an indirect layer of mode to gameplay, whereby all of your saved games for a character are deleted upon their death.\n
 			\n%c[pda_green]Information%c[ui_gray_1]
 			\nYou can customize your Ironman run on new game setup, such as the maximum number of deaths before your save games get deleted.
 			\nThe life granting feature has an opposite effect: every cycle will revert one death count, so that player can have a chance to survive more deaths over time.
@@ -84,7 +84,7 @@
 	</string>
 	<string id="encyclopedia_features_campfire_mode_text">
 		<text>
-			%c[pda_white]Campfire save mode%c[ui_gray_1] adds another layer of difficulty by advancing time when saving and preventing you from saving your progress based on certain criteria.\n
+			%c[pda_white]Campfire save mode%c[ui_gray_1] adds another layer of mode by advancing time when saving and preventing you from saving your progress based on certain criteria.\n
 			\n%c[pda_green]Information%c[ui_gray_1]
 			\nYou can't save your progress in Campfire save mode if you're:
 			\n%c[200,200,200,50]• %c[0,150,150,150]Injured
@@ -106,7 +106,7 @@
 	</string>
 	<string id="encyclopedia_features_agony_mode_text">
 		<text>
-			%c[pda_white]Agony save mode%c[ui_gray_1] adds another layer of difficulty by preventing you from saving your progress based on certain criteria.\n
+			%c[pda_white]Agony save mode%c[ui_gray_1] adds another layer of mode by preventing you from saving your progress based on certain criteria.\n
 			\n%c[pda_green]Information%c[ui_gray_1]
 			\nYou can't save your progress in Agony save mode if you're:
 			\n%c[200,200,200,50]• %c[0,150,150,150]Injured
@@ -392,18 +392,18 @@
 	</string>
 	
 	<string id="encyclopedia_features_economy_difficulty">
-		<text>Progression Difficulty</text>
+		<text>Progression Mode</text>
 	</string>
 	<string id="encyclopedia_features_economy_difficulty_text">
 		<text>
-			%c[pda_white]Progression Difficulty%c[ui_gray_1] establishes how harsh is the economy of the Zone. And directly influences the progress of your playthough.\n
+			%c[pda_white]Progression Mode%c[ui_gray_1] establishes how harsh is the economy of the Zone. And directly influences the progress of your playthough.\n
 			
 			\n%c[pda_green]Information%c[ui_gray_1]
-			\nThe Progression difficulty has a big impact on the economy, which affects the player's progression during their journey in the Zone.
+			\nThe Progression mode has a big impact on the economy, which affects the player's progression during their journey in the Zone.
 			\nAspects affected by this range from sell/buy prices with traders, repair/upgrade prices with mechanics, rarity of loots, money and goodwill earned by completing tasks and more.\n
 			
 			\n%c[pda_blue]Details%c[ui_gray_1]
-			\nAnomaly allows you to customise all aspects of Progression Difficulty, here's a list of all available options:
+			\nAnomaly allows you to customise all aspects of Progression mode, here's a list of all available options:
 			\n%c[200,200,50,50]• %c[pda_white]Minimum item condition for sale: %c[ui_gray_1]changes the minimum condition to sell items.
 			\n%c[200,200,50,50]• %c[pda_white]Earned goodwill factor: %c[ui_gray_1]multiplier for the amount of goodwill earned upon completing tasks.
 			\n%c[200,200,50,50]• %c[pda_white]Money rewards factor: %c[ui_gray_1]multiplier for the amount of money earned upon completing tasks.
@@ -432,18 +432,18 @@
 	</string>
 	
 	<string id="encyclopedia_features_gameplay_difficulty">
-		<text>Gameplay Difficulty</text>
+		<text>Gameplay Mode</text>
 	</string>
 	<string id="encyclopedia_features_gameplay_difficulty_text">
 		<text>
-			%c[pda_white]Gameplay Difficulty%c[ui_gray_1] establishes how easy or hard the game should be to play.\n
+			%c[pda_white]Gameplay Mode%c[ui_gray_1] defines how the game is played, allowing players to choose between stealth-oriented combat or direct confrontation.\n
 			
 			\n%c[pda_green]Information%c[ui_gray_1]
-			\nGameplay difficulty affects aspects related to the player such as protection against damage sources, stamina loss and carry weight. In addition to extra aspects such as water and sleep deprivation.\n
+			\nGameplay mode affects aspects related to the player such as protection against damage sources, stamina loss and carry weight. In addition to extra aspects such as water and sleep deprivation.\n
 			
 			\n%c[pda_blue]Details%c[ui_gray_1]
-			\nAnomaly allows you to customise all aspects of Gameplay difficulty, here's a list of all available options:
-			\n%c[200,200,50,50]• %c[pda_white]Player's protection: %c[ui_gray_1]A list of four choices that detemine player's base protection against damage sources.
+			\nAnomaly allows you to customise all aspects of Gameplay mode, here's a list of all available options:
+			\n%c[200,200,50,50]• %c[pda_white]Player's protection: %c[ui_gray_1]A list of four choices that detemine player's base protection against damage sources (including psy damage) and enemy perception.
 			\n%c[200,200,50,50]• %c[pda_white]Bullet hit power factor: %c[ui_gray_1]Multiplier for the amount of damage dealt by bullets from all weapons. Higher values means higher damage, and faster kills.
 			\n%c[200,200,50,50]• %c[pda_white]Stamina loss factor: %c[ui_gray_1]multiplier for the amount of stamina lost by movement/carry weight.
 			\n%c[200,200,50,50]• %c[pda_white]Max carry weight: %c[ui_gray_1]controls the max amount of weight you can carry.
@@ -455,8 +455,8 @@
 	
 	
 			\n \n \n%c[200,200,50,50]ATTENTION%c[ui_gray_1]
-			\n• Gameplay difficulty factors are configured per current playthrough.
-			\n• Gameplay difficulty factors are only accessible through loaded saves. You can tweak them inside the settings menu.
+			\n• Gameplay mode factors are configured per current playthrough.
+			\n• Gameplay mode factors are only accessible through loaded saves. You can tweak them inside the settings menu.
 		</text>
 	</string>
 	

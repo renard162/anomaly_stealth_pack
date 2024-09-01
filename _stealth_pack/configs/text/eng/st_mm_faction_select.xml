@@ -104,10 +104,10 @@
 	</string>
 	<string id="st_mm_list_economy_desc">
 		<text>
-			%c[0,150,150,150]The Progression difficulty has a big impact on the economy, which affects the player's progression during their journey in the Zone.
+			%c[0,150,150,150]The Progression mode has a big impact on the economy, which affects the player's progression during their journey in the Zone.
 			\nAspects affected by this range from sell/buy prices with traders, repair/upgrade prices with mechanics, rarity of loots, money and goodwill earned by completing tasks and more. 
 			\n \n%c[200,200,50,50]• %c[0,150,150,150]You can control each one of these aspects in your playthrough at any time.
-			\nSee "Settings -> Gameplay -> Progression .diff".
+			\nSee "Settings -> Gameplay -> Progression params".
             \n \nPRESETS:
             \n%c[d_cyan]• %c[0,150,150,150]Tourist - Just enjoy the journey
             \n%c[d_green]• %c[0,150,150,150]Scavenger - Balanced mode
@@ -118,9 +118,9 @@
 	</string>
 	<string id="st_mm_list_difficulty_desc">
 		<text>
-			%c[0,150,150,150]Gameplay difficulty affects aspects related to the player such as protection against damage sources, stamina loss and carry weight. In addition to extra aspects such as water and sleep deprivation.
+			%c[0,150,150,150]Gameplay mode affects aspects related to the player such as protection against damage sources, psy health, stamina loss and carry weight. In addition to extra aspects such as water and sleep deprivation.
 			\n \n%c[200,200,50,50]• %c[0,150,150,150]You can control each one of these aspects in your playthrough at any time.
-			\nSee "Settings -> Gameplay -> Gameplay .diff".
+			\nSee "Settings -> Gameplay -> Gameplay params".
             \n \nPRESETS:
             \n%c[d_cyan]• %c[0,150,150,150]Arcade - Run'n'gun oriented gameplay
             \n%c[d_green]• %c[0,150,150,150]Arcade Hard - Harder run'n'gun gameplay
@@ -328,10 +328,10 @@
 		<text>Life granter</text>
 	</string>
 	<string id="st_cap_list_economy">
-		<text>Progression difficulty</text>
+		<text>Progression mode</text>
 	</string>
 	<string id="st_cap_list_difficulty">
-		<text>Gameplay difficulty</text>
+		<text>Gameplay mode</text>
 	</string>
 	
 	<string id="st_econ_1">
