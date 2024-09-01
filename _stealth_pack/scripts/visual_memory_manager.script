@@ -274,10 +274,12 @@ end
 -- icon
 function icon_lum()
 	local act_lum = db.actor:get_luminocity()
-	local dblum = (act_lum + act_lum^0.5 + lights_lum()) / 3 + luminocity_cf
-	local luminocity_icon = is_r1 and (act_lum)^0.7 or dblum
+	if is_r1 then
+		return (act_lum)^0.7
+	end
 
-	return luminocity_icon
+	local dblum = (act_lum + act_lum^0.5 + lights_lum()) / 3 + luminocity_cf
+	return dblum
 end
 
 -- alt icon
@@ -584,7 +586,8 @@ function stealth_dbg(npc, who, step_incr, luminocity_score, luminocity_mult, lum
 		printf("1.c) who:get_lum() ------ %s", who:get_luminocity())
 		printf("1.d) db.actor:get_luminocity() ------ %s", db.actor:get_luminocity())
 		printf("1.e) lights_lum() ------- %s", lights_lum())
-		printf("1.f) icon_lum() --------- %s", icon_lum_val)
+		printf("1.f) luminocity_cf ------- %s", luminocity_cf)
+		printf("1.g) icon_lum() --------- %s", icon_lum_val)
 		pr(Velocity, 1, ("2. Velocity ------------- %s"))
 		printf("3. dist_original --------- %s", distance)
 		pr(weight_raw, 1, ("4. weight_raw ---------- %s"))
