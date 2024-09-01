@@ -94,7 +94,7 @@ local ind_t = {}
 function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_factor,velocity,distance,object_distance,always_visible_distance)
 
 	distance = math.max(0.00001, distance)
-	
+
 	local function obj_is_alive(obj)
 		return (IsStalker(obj) or IsMonster(obj)) and obj:alive()
 	end
@@ -104,7 +104,7 @@ function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_fac
 
 	if not (npc_fits and who_fits) then
 		local def_lum = math.max(0.0001, luminocity)
-		local def_step_incr = time_delta / time_quant * def_lum * (1 + velocity_factor * velocity) * (distance - object_distance) / distance
+		local def_step_incr = time_delta / time_quant * def_lum * (1 + velocity_factor * velocity) * math.max(0, distance - object_distance) / distance
 		return def_step_incr
 	end
 
@@ -112,9 +112,9 @@ function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_fac
 
 	local lum_dist = math.max(0, distance - object_distance / (mcm_luminocity + 0.35)) / distance
 
-	luminocity = get_luminocity_mult(npc, who, luminocity, object_distance, distance)
+	local luminocity_mult = get_luminocity_mult(npc, who, luminocity, object_distance, distance)
 
-	local Luminocity = (33 * luminocity * lum_dist)
+	local luminocity_score = (33 * luminocity_mult * lum_dist)
 
 	local Velocity = mcm_velocity + velocity_factor * velocity
 
@@ -133,7 +133,7 @@ function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_fac
 	local memory_factor = get_memory_val(npc, who)
 
 --============== total =============================
-	local step_incr = Luminocity * Velocity * eq_dist * camo_x * weight * crouch * danger_mult * scheme_mult + pewpewmult + memory_factor
+	local step_incr = luminocity_score * Velocity * eq_dist * camo_x * weight * crouch * danger_mult * scheme_mult + pewpewmult + memory_factor
 	step_incr = step_incr * final_mult()
 -------------------------------------------------------------------------
 
@@ -141,7 +141,7 @@ function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_fac
 	stealth_icon_alt(npc, who, step_incr)
 
 -- dbg
-	stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velocity, distance, weight, crouch, danger_mult, camo_x, scheme_mult, memory_factor, eq_dist, object_distance)
+	stealth_dbg(npc, who, step_incr, luminocity_score, luminocity_mult, luminocity, Velocity, velocity, distance, weight, crouch, danger_mult, camo_x, scheme_mult, memory_factor, eq_dist, object_distance)
 -------------------------------------------------------------------------
 
 	return step_incr
@@ -183,7 +183,7 @@ function get_luminocity_mult(npc, who, luminocity, object_distance, distance)
 	local who_lum = who:get_luminocity()
 
 	-- dx8
-	local lumin_r1 = luminocity <= 0 and 0.0001 or luminocity
+	local lumin_r1 = math.max(0.0001, luminocity)
 	if is_r1 then
 		if level_weathers.bLevelUnderground then
 			return lumin_r1 + 0.35
@@ -551,7 +551,7 @@ end
 --------------------------------------------------------------------------------
 
 ------- Debug
-function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velocity_raw, distance, weight, crouch, danger_mult, camo_x, scheme_mult, memory_factor, eq_dist, object_distance)
+function stealth_dbg(npc, who, step_incr, luminocity_score, luminocity_mult, luminocity, Velocity, velocity_raw, distance, weight, crouch, danger_mult, camo_x, scheme_mult, memory_factor, eq_dist, object_distance)
 	if not (mcm_debugx) then return end
 
 	local wthrs = level_weathers.get_weather_manager():get_curr_weather_preset()
@@ -580,11 +580,12 @@ function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velo
 	if obj and (obj:alive()) and (who and (who:id() == db.actor:id() or who:id() == obj:id() ) and npc and (npc:id() == db.actor:id() or npc:id() == obj:id() )) then
 		printf('---------------------------------------------------------------')
 		printf("Weather is: " .. (wthrs))
-		printf("1. Luminocity  ---------- %s", Luminocity)
-		printf("1.a) luminocity --------- %s", luminocity)
-		printf("1.b) lights_lum() ------- %s", lights_lum())
-		printf("1.c) who:get_lum() ------ %s", who:get_luminocity())
-		printf("1.d) icon_lum() --------- %s", icon_lum_val)
+		printf("1. luminocity_score  ---------- %s", luminocity_score)
+		printf("1.a luminocity_mult  ---------- %s", luminocity_mult)
+		printf("1.b) luminocity --------- %s", luminocity)
+		printf("1.c) lights_lum() ------- %s", lights_lum())
+		printf("1.d) who:get_lum() ------ %s", who:get_luminocity())
+		printf("1.e) icon_lum() --------- %s", icon_lum_val)
 		pr(Velocity, 1, ("2. Velocity ------------- %s"))
 		printf("3. dist_original --------- %s", distance)
 		pr(weight_raw, 1, ("4. weight_raw ---------- %s"))
@@ -602,7 +603,7 @@ function stealth_dbg(npc, who, step_incr, Luminocity, luminocity, Velocity, velo
 		pr(jacketmult, 1, ("6.f) jacketmult --------- %s"))
 		pr(memory_factor, 0, ("7. memory ------------- %s"))
 		printf("8. Step incr --- %s", step_incr)
-		actor_menu.set_msg(1, strformat("Threshold: %s/%s || Armor: %s | Camo: %s | (Lumin: %s (%s) | Veloc: %s (%s) | Dist: %s (%s) | Weight: %s (%s) | Crouch: %s | Memory: %s || Total per update: %s)", r(summ), r(obj:visibility_threshold()), r(jacketmult), r(camo_x), r(Luminocity), r(icon_lum_val), r(Velocity), r(velocity_raw), r(eq_dist), r(object_distance), r(weight), r(weight_raw), r(crouch), r(memory_factor), r(step_incr) ))
+		actor_menu.set_msg(1, strformat("Threshold: %s/%s || Armor: %s | Camo: %s | (Lumin: %s (%s) | Veloc: %s (%s) | Dist: %s (%s) | Weight: %s (%s) | Crouch: %s | Memory: %s || Total per update: %s)", r(summ), r(obj:visibility_threshold()), r(jacketmult), r(camo_x), r(luminocity_score), r(icon_lum_val), r(Velocity), r(velocity_raw), r(eq_dist), r(object_distance), r(weight), r(weight_raw), r(crouch), r(memory_factor), r(step_incr) ))
 	end
 
 	if obj == nil then
