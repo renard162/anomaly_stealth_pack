@@ -610,6 +610,9 @@
 	<string id="st_itm_desc_outfit_heardgear">
 		<text>headgear</text>
 	</string>
+	<string id="st_itm_desc_outfit_backpack">
+		<text>backpack</text>
+	</string>
 	<string id="st_itm_desc_outfit_num_of_slots">
 		<text>attachments for extra slots</text>
 	</string>

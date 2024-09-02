@@ -1,4 +1,17 @@
 <string_table>
+	<string id="st_camo_backpack_bonus">
+		<text>A small backpack size can provide a concealment bonus</text>
+	</string>
+	<string id="st_camo_backpack_inert">
+		<text>Backpack size has a minor impact on concealment</text>
+	</string>
+	<string id="st_camo_backpack_small_penalty">
+		<text>Backpack size and attachments slightly hinder concealment</text>
+	</string>
+	<string id="st_camo_backpack_great_penalty">
+		<text>Backpack size and moving parts greatly hinder concealment</text>
+	</string>
+
     <string id="st_camo_bonus_helmet_w1">
 		<text>Sightly reduces camouflage effectiveness</text>
 	</string>
@@ -14,6 +27,7 @@
     <string id="st_camo_bonus_helmet_b3">
 		<text>Greatly improves camouflage effectiveness</text>
 	</string>
+
 	<string id="st_camo_bonus_1">
 		<text>Sightly effective camouflage at a distance</text>
 	</string>

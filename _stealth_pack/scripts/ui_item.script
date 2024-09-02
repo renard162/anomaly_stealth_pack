@@ -48,6 +48,10 @@ local last_name_sec       = nil
 local last_short_name_sec = nil
 local last_desc_sec       = nil
 
+local lvl_0_bck_camo_penalty = visual_memory_manager.extra_weight_reference
+local lvl_1_bck_camo_penalty = 41
+local lvl_2_bck_camo_penalty = visual_memory_manager.extra_weight_max
+
 
 ------------------------------------------------------------
 -- Strings
@@ -96,6 +100,7 @@ function refresh_strings()
 	
 	str_tbl.out_upgr = gc("st_itm_desc_outfit_upgradable")
 	str_tbl.out_helm = gc("st_itm_desc_outfit_heardgear")
+	str_tbl.out_backpack = gc("st_itm_desc_outfit_backpack")
 	str_tbl.out_slots = gc("st_itm_desc_outfit_num_of_slots")
 	str_tbl.out_cw = gc("st_itm_desc_outfit_carry_weight")
 	str_tbl.out_run = gc("st_itm_desc_outfit_run")
@@ -136,12 +141,30 @@ function refresh_strings()
 	str_tbl.cap_bad = gc("st_cap_verybad")
 	
 	str_tbl.exoseva = gc("looted_exoseva_warn")
+
+	str_tbl.bck_camo_bonus = gc("st_camo_backpack_bonus")
+	str_tbl.bck_camo_inert = gc("st_camo_backpack_inert")
+	str_tbl.bck_camo_small_penalty = gc("st_camo_backpack_small_penalty")
+	str_tbl.bck_camo_great_penalty = gc("st_camo_backpack_great_penalty")
 end
 
 
 ------------------------------------------------------------
 -- Functions
 ------------------------------------------------------------
+function IsBackpack(sec)
+	return (sec and (ini_sys:r_string_ex(sec,"class") == "EQ_BAKPK")) or false
+end
+
+function is_outfit_and_has_backpack(obj)
+	if not IsOutfit(obj) then return false end
+	return obj and (ini_sys:r_bool_ex(obj:section(),"backpack_avaliable") == false)
+end
+
+function get_extra_weight(sec)
+	return sec and ini_sys:r_float_ex(sec,"additional_inventory_weight") or 0
+end
+
 function get_list_highlight()
 	return last_d_id
 end
@@ -406,14 +429,16 @@ function build_desc_footer(obj, sec, str) -- one obj used
 		local helmet_avaliable = ini_sys:r_bool_ex(sec,"helmet_avaliable") ~= false
 		local artefact_count = ini_sys:r_float_ex(sec,"artefact_count") or 0
 		local sprint_allowed = ini_sys:r_bool_ex(sec,"sprint_allowed") ~= false
+		local backpack_avaliable = (ini_sys:r_bool_ex(obj:section(),"backpack_avaliable") == true)
 		local additional_inventory_weight = ini_sys:r_float_ex(sec,"additional_inventory_weight") or 0
 		local blindness = ini_sys:r_float_ex(sec,"npc_blindness_koeff") or 100
 		local camo_level = (blindness <= 20 and 4) or (blindness <= 22 and 3) or (blindness <= 24 and 2) or (blindness <= 26 and 1) or 0
 		local community = ini_sys:r_string_ex(sec,"community")
-		
+
 		_str = _str .. clr_2 .. " " .. str_tbl.prop .. ":\\n"
 		_str = _str .. clr_y .. "  • " .. clr_1 .. " " .. str_tbl.out_comm .. ": " .. clr_2 .. (community and gc("st_dyn_news_comm_" .. community .. "_6") or str_tbl.stat_unknown) .. " \\n"
 		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_helm .. ": " .. clr_2 .. (helmet_avaliable and str_tbl.stat_included or str_tbl.stat_avail) .. " \\n"
+		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_backpack .. ": " .. clr_2 .. (backpack_avaliable and str_tbl.stat_included or str_tbl.stat_avail) .. " \\n"
 --		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_slots .. ": " .. clr_2 .. tostring(artefact_count) .. " \\n"
 --		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_cw .. ": " .. clr_2 .. "+" .. tostring(additional_inventory_weight) .. " " .. gc("st_kg") .. " \\n"
 		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_run .. " " .. (sprint_allowed and str_tbl.stat_posble_y or str_tbl.stat_posble_n) .. " \\n"
@@ -488,7 +513,22 @@ function build_desc_footer(obj, sec, str) -- one obj used
 			_str = _str .. clr_r .. "  • " .. clr_1 .. " " .. str_tbl.eat_rad_poison .. ": " .. clr_2 .. "+" .. math_ceil(num) .. " " .. str_tbl.msv .. " \\n"
 		end
 	end
-	
+
+	--Extra weight camo factor
+	if is_outfit_and_has_backpack(obj) or IsBackpack(sec) then
+		local additional_inventory_weight = ini_sys:r_float_ex(sec,"additional_inventory_weight") or 0
+
+		if additional_inventory_weight < lvl_0_bck_camo_penalty then
+			_str = _str .. clr_g .. "  • " .. clr_1 .. " " .. str_tbl.bck_camo_bonus .. " \\n"
+		elseif additional_inventory_weight < lvl_1_bck_camo_penalty then
+			_str = _str .. clr_y .. "  • " .. clr_1 .. " " .. str_tbl.bck_camo_inert .. " \\n"
+		elseif additional_inventory_weight < lvl_2_bck_camo_penalty then
+			_str = _str .. clr_o .. "  • " .. clr_1 .. " " .. str_tbl.bck_camo_small_penalty .. " \\n"
+		elseif additional_inventory_weight >= lvl_2_bck_camo_penalty then
+			_str = _str .. clr_r .. "  • " .. clr_1 .. " " .. str_tbl.bck_camo_great_penalty .. " \\n"
+		end
+	end
+
 	-- Power Consumption
 	if IsItem("device",sec) then
 		local val = item_device.dev_consumption_tot[sec]
