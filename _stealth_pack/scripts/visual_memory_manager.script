@@ -149,7 +149,9 @@ end
 ------- Final multiplicator
 function final_mult()
 	local mult = base_diff_mult
-	mult = mult * (alert and alert_diff_mult or 1.3)
+	if alert then
+		mult = mult * (alert_diff_mult or 1.3)
+	end
 
 	if (not ghil_equipped) then
 		return mult
@@ -187,7 +189,7 @@ function get_luminocity_mult(npc, who, luminocity, object_distance, distance)
 		if level_weathers.bLevelUnderground then
 			return lumin_r1 + 0.35
 		end
-		return lumin_r1
+		return lumin_r1 * (1 - 0.05*helmet_camo_factor)
 	end
 
 	-- colors, time, lum
