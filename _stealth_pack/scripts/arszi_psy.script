@@ -82,6 +82,7 @@ local nearby_lit_campfire = false
 local in_combat = false
 
 --DEBUG CONTROL------------------------------------------------------------------
+local debug_mode = false
 local debug_time = nil
 local debug_trigger_time = 60
 local debug_triggered = false
@@ -247,7 +248,7 @@ function actor_on_update()
     time_delta = curr_time:diffSec(arszi_previous_time)
 
     --used to maintain reasonable amount of logs entries in debug mode
-    if DEV_DEBUG then
+    if DEV_DEBUG and debug_mode then
         --nested if, because it would be faster for non-debug mode.
         if debug_time == nil or (curr_time:diffSec(debug_time) > debug_trigger_time) then
             debug_triggered = true
