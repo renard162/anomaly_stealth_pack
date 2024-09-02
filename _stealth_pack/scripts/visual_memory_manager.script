@@ -42,8 +42,8 @@ local game_mode_dist_t = {
 }
 
 local alert_time_t = {
-    [0] = 8.0, -- Arcade (Great)
-    [1] = 10.0, -- Arcade (Good)
+    [0] = 5.0, -- Arcade (Great)
+    [1] = 6.5, -- Arcade (Good)
     [2] = 3.0, -- Hardcore (Average)
     [3] = 3.4, -- Hardcore (Poor)
 }
