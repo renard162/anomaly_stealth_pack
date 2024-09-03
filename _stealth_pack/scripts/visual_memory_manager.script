@@ -451,7 +451,7 @@ function get_weight_mult(object_distance)
 	local weight_factor = math.exp(actor_weight / 90)
 	local dist = 1.00 - (0.03 * object_distance)
 	local weight_mult = weight_factor * jacketmult * dist * mcm_weight
-	local min_weight_mult = backpack_camo_limit * (active_ghil_camo and 0.9 or 1)
+	local min_weight_mult = backpack_camo_limit * (ghil_equipped and 0.9 or 1)
 
 	--Backpack camo limits by extra weight (min weight_mult):
 	--Unnequiped (0.7408), +21 (0.8500), +28 (0.9277), +34 (1.0000), +41 (1.0914), +47 (1.1764), +80 and more (1.7771)
