@@ -28,6 +28,10 @@
 		<text>greatly improves camouflage effectiveness</text>
 	</string>
 
+	<string id="st_camo_nosorog_helmet_penalty">
+		<text>included helmet reduces camouflage effectiveness</text>
+	</string>
+
 	<string id="st_camo_no_bonus">
 		<text>very poor camouflage at a distance</text>
 	</string>

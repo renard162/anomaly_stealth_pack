@@ -32,6 +32,8 @@ local clr_w  = utils_xml.get_color("pda_white")
 local clr_1  = utils_xml.get_color("ui_gray_2")
 local clr_2  = utils_xml.get_color("ui_gray_1")
 
+local camo_g  = strformat("%c[255,0,180,0]")
+
 
 local str_tbl             = {}
 local last_n_id           = nil
@@ -143,6 +145,7 @@ function refresh_strings()
 	str_tbl.exoseva = gc("looted_exoseva_warn")
 
 	str_tbl.no_camo_armor = gc("st_camo_no_bonus")
+	str_tbl.nosorog_camo_penalty = gc("st_camo_nosorog_helmet_penalty")
 
 	str_tbl.bck_camo_bonus = gc("st_camo_backpack_bonus")
 	str_tbl.bck_camo_inert = gc("st_camo_backpack_inert")
@@ -163,10 +166,13 @@ function is_outfit_and_has_backpack(obj)
 	return obj and (ini_sys:r_bool_ex(obj:section(),"backpack_avaliable") == false)
 end
 
+function is_nosorog(sec)
+	return sec and string.find(sec, "nosorog")
+end
+
 function get_list_highlight()
 	return last_d_id
 end
-
 
 function get_sec_name(sec)
 	if (sec == last_n_sec) then
@@ -440,10 +446,15 @@ function build_desc_footer(obj, sec, str) -- one obj used
 --		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_slots .. ": " .. clr_2 .. tostring(artefact_count) .. " \\n"
 --		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_cw .. ": " .. clr_2 .. "+" .. tostring(additional_inventory_weight) .. " " .. gc("st_kg") .. " \\n"
 		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_run .. " " .. (sprint_allowed and str_tbl.stat_posble_y or str_tbl.stat_posble_n) .. " \\n"
-		if camo_level >= 0 then
+		if camo_level > 3 then
+			_str = _str .. camo_g .. "  • " .. clr_1 .. " " .. gc("st_camo_bonus_" .. camo_level) .. " \\n"
+		elseif camo_level >= 0 then
 			_str = _str .. clr_g .. "  • " .. clr_1 .. " " .. gc("st_camo_bonus_" .. camo_level) .. " \\n"
 		else
 			_str = _str .. clr_o .. "  • " .. clr_1 .. " " .. str_tbl.no_camo_armor .. " \\n"
+		end
+		if is_nosorog(sec) then
+			_str = _str .. clr_r .. "  • " .. clr_1 .. " " .. str_tbl.nosorog_camo_penalty .. " \\n"
 		end
 
 	-- helmet
