@@ -432,7 +432,7 @@ function build_desc_footer(obj, sec, str) -- one obj used
 		local backpack_avaliable = (ini_sys:r_bool_ex(obj:section(),"backpack_avaliable") == true)
 		local additional_inventory_weight = ini_sys:r_float_ex(sec,"additional_inventory_weight") or 0
 		local blindness = ini_sys:r_float_ex(sec,"npc_blindness_koeff") or 100
-		local camo_level = (blindness <= 20 and 4) or (blindness <= 22 and 3) or (blindness <= 24 and 2) or (blindness <= 26 and 1) or 0
+		local camo_level = (blindness <= 20 and 4) or (blindness <= 22 and 3) or (blindness <= 24 and 2) or (blindness <= 26 and 1) or (blindness <= 28 and 0) or -1
 		local community = ini_sys:r_string_ex(sec,"community")
 
 		_str = _str .. clr_2 .. " " .. str_tbl.prop .. ":\\n"
@@ -442,7 +442,7 @@ function build_desc_footer(obj, sec, str) -- one obj used
 --		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_slots .. ": " .. clr_2 .. tostring(artefact_count) .. " \\n"
 --		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_cw .. ": " .. clr_2 .. "+" .. tostring(additional_inventory_weight) .. " " .. gc("st_kg") .. " \\n"
 		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_run .. " " .. (sprint_allowed and str_tbl.stat_posble_y or str_tbl.stat_posble_n) .. " \\n"
-		if camo_level > 0 then
+		if camo_level >= 0 then
 			_str = _str .. clr_g .. "  • " .. clr_1 .. " " .. gc("st_camo_bonus_" .. camo_level) .. " \\n"
 		end
 
@@ -550,7 +550,7 @@ function build_desc_footer(obj, sec, str) -- one obj used
 			_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. gc("st_ui_power_consumption") .. ": " .. clr_2 .. tostring(val) .. " " .. unit .. " \\n"
 		end
 	end
-	
+
     -- Artifacts bonus
     if string_find(sec,"af_") then
         local is_lead_box = string_find(sec, "(lead.-_box)",3)
