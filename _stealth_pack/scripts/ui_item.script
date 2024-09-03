@@ -161,10 +161,6 @@ function is_outfit_and_has_backpack(obj)
 	return obj and (ini_sys:r_bool_ex(obj:section(),"backpack_avaliable") == false)
 end
 
-function get_extra_weight(sec)
-	return sec and ini_sys:r_float_ex(sec,"additional_inventory_weight") or 0
-end
-
 function get_list_highlight()
 	return last_d_id
 end
