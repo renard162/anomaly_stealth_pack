@@ -399,12 +399,12 @@ function get_camo_mult(velocity, object_distance)
 		return camo_mult
 	end
 
-	local camo_val =  100
+	local camo_val =  50
 	if get_camo_k > 0 then
 		--Helmet camo bonus from ghillie applies only to luminosity bonus, not to camo factor
 		camo_val = get_camo_k + (ghil_equipped and 1 or 0) - helmet_camo_factor
 	else
-		camo_val = camo_val - (helmet_camo_factor * 10)
+		camo_val = camo_val - (helmet_camo_factor * 5)
 	end
 	camo_val = math.max(18, camo_val)
 
