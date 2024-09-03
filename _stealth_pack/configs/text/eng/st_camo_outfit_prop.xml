@@ -28,6 +28,9 @@
 		<text>greatly improves camouflage effectiveness</text>
 	</string>
 
+	<string id="st_camo_no_bonus">
+		<text>very poor camouflage at a distance</text>
+	</string>
 	<string id="st_camo_bonus_0">
 		<text>sightly effective camouflage at a distance</text>
 	</string>

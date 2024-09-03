@@ -142,6 +142,8 @@ function refresh_strings()
 	
 	str_tbl.exoseva = gc("looted_exoseva_warn")
 
+	str_tbl.no_camo_armor = gc("st_camo_no_bonus")
+
 	str_tbl.bck_camo_bonus = gc("st_camo_backpack_bonus")
 	str_tbl.bck_camo_inert = gc("st_camo_backpack_inert")
 	str_tbl.bck_camo_small_penalty = gc("st_camo_backpack_small_penalty")
@@ -440,6 +442,8 @@ function build_desc_footer(obj, sec, str) -- one obj used
 		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_run .. " " .. (sprint_allowed and str_tbl.stat_posble_y or str_tbl.stat_posble_n) .. " \\n"
 		if camo_level >= 0 then
 			_str = _str .. clr_g .. "  • " .. clr_1 .. " " .. gc("st_camo_bonus_" .. camo_level) .. " \\n"
+		else
+			_str = _str .. clr_o .. "  • " .. clr_1 .. " " .. str_tbl.no_camo_armor .. " \\n"
 		end
 
 	-- helmet
