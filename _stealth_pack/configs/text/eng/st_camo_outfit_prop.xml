@@ -29,23 +29,23 @@
 	</string>
 
 	<string id="st_camo_nosorog_helmet_penalty">
-		<text>included helmet reduces camouflage effectiveness</text>
+		<text>helmet reduces camouflage effectiveness</text>
 	</string>
 
 	<string id="st_camo_no_bonus">
-		<text>very poor camouflage at a distance</text>
+		<text>armor provides very poor camouflage at a distance</text>
 	</string>
 	<string id="st_camo_bonus_0">
-		<text>sightly effective camouflage at a distance</text>
+		<text>armor provides slightly effective camouflage at a distance</text>
 	</string>
 	<string id="st_camo_bonus_1">
-		<text>moderately effective camouflage at a distance</text>
+		<text>armor provides moderately effective camouflage at a distance</text>
 	</string>
 	<string id="st_camo_bonus_2">
-		<text>effective camouflage at a distance</text>
+		<text>armor provides effective camouflage at a distance</text>
 	</string>
 	<string id="st_camo_bonus_3">
-		<text>highly effective camouflage at a distance</text>
+		<text>armor provides highly effective camouflage at a distance</text>
 	</string>
 	<string id="st_camo_bonus_4">
 		<text>extreme effective camouflage in wild terrain</text>
