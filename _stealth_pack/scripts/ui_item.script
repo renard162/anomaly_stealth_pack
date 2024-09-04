@@ -146,6 +146,7 @@ function refresh_strings()
 
 	str_tbl.no_camo_armor = gc("st_camo_no_bonus")
 	str_tbl.nosorog_camo_penalty = gc("st_camo_nosorog_helmet_penalty")
+	str_tbl.nbc_camo_bonus = gc("st_camo_nbc_helmet_bonus")
 
 	str_tbl.bck_camo_bonus = gc("st_camo_backpack_bonus")
 	str_tbl.bck_camo_inert = gc("st_camo_backpack_inert")
@@ -157,6 +158,16 @@ end
 ------------------------------------------------------------
 -- Functions
 ------------------------------------------------------------
+-- Outfits check type
+function is_nosorog(sec)
+	return sec and string.find(sec, "nosorog")
+end
+
+function is_nbc(sec)
+	return sec and string.find(sec, "nbc_")
+end
+-------------------------
+
 function IsBackpack(sec)
 	return (sec and (ini_sys:r_string_ex(sec,"class") == "EQ_BAKPK")) or false
 end
@@ -164,10 +175,6 @@ end
 function is_outfit_and_has_backpack(obj)
 	if not IsOutfit(obj) then return false end
 	return obj and (ini_sys:r_bool_ex(obj:section(),"backpack_avaliable") == false)
-end
-
-function is_nosorog(sec)
-	return sec and string.find(sec, "nosorog")
 end
 
 function get_list_highlight()
@@ -455,6 +462,8 @@ function build_desc_footer(obj, sec, str) -- one obj used
 		end
 		if is_nosorog(sec) then
 			_str = _str .. clr_r .. "  • " .. clr_1 .. " " .. str_tbl.nosorog_camo_penalty .. " \\n"
+		elseif is_nbc(sec) then
+			_str = _str .. clr_g .. "  • " .. clr_1 .. " " .. str_tbl.nbc_camo_bonus .. " \\n"
 		end
 
 	-- helmet

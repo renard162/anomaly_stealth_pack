@@ -370,6 +370,8 @@ function slot_in_out(obj)
 		helmet_camo_factor = helmet_camo_factor + 1
 	elseif outfit and string.find(outfit:section(), "nosorog") then
 		helmet_camo_factor = helmet_t[-2]
+	elseif outfit and string.find(outfit:section(), "nbc_") then
+		helmet_camo_factor = helmet_t[2]
 	elseif outfit and (ini_sys:r_bool_ex(outfit:section(),"helmet_avaliable") == false) then
 		helmet_camo_factor = 0
 	end
@@ -617,7 +619,8 @@ function stealth_dbg(npc, who, step_incr, luminocity_score, luminocity_mult, lum
 		pr(camo_x, 1, ("6.c) camo ------------- %s"))
 		pr(scheme_mult, 1, ("6.d) ai scheme --------- %s"))
 		pr(get_camo_k, 0, ("6.e) get_camo_k ------ %s"))
-		pr(jacketmult, 1, ("6.f) jacketmult --------- %s"))
+		pr(helmet_camo_factor, 0, ("6.f) helmet_camo_factor ------ %s"))
+		pr(jacketmult, 1, ("6.g) jacketmult --------- %s"))
 		pr(memory_factor, 0, ("7. memory ------------- %s"))
 		printf("8. Step incr --- %s", step_incr)
 		actor_menu.set_msg(1, strformat("Threshold: %s/%s || Armor: %s | Camo: %s | (Lumin: %s (%s) | Veloc: %s (%s) | Dist: %s (%s) | Weight: %s (%s) | Crouch: %s | Memory: %s || Total per update: %s)", r(summ), r(obj:visibility_threshold()), r(jacketmult), r(camo_x), r(luminocity_score), r(icon_lum_val), r(Velocity), r(velocity_raw), r(eq_dist), r(object_distance), r(weight), r(weight_raw), r(crouch), r(memory_factor), r(step_incr) ))
