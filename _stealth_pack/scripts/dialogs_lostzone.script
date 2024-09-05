@@ -225,6 +225,9 @@ end
 ------------------------
 function give_task_lttz_ll_find_doctor()
 	dialogs_lostzone.give_task('lttz_ll_find_doctor')
+	if get_actor_true_community() == "freedom" then
+		txr_routes.open_route("mil","trc",true)
+	end
 end
 
 function set_degtyarev_taskforce_squad_as_companion(a,b)
