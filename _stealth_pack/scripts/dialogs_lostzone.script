@@ -225,7 +225,7 @@ end
 ------------------------
 function give_task_lttz_ll_find_doctor()
 	dialogs_lostzone.give_task('lttz_ll_find_doctor')
-	if get_actor_true_community() == "freedom" then
+	if (get_actor_true_community() == "freedom") or (get_actor_true_community() == "killer") then
 		txr_routes.open_route("mil","trc",true)
 	end
 end
