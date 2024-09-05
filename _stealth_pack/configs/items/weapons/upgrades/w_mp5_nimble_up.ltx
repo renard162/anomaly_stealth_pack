@@ -16,6 +16,15 @@ cam_dispersion                           = -0.038
 cam_dispersion_inc                       = 0.0 ;-0.044 
 cam_step_angle_horz                      = -0.025 
 
+[up_sect_fifthd_mp5_nimble]
+cost                                     = 4742
+value                                    = "5.7x28"
+ammo_class                               = ammo_5.7x28_ss190, ammo_5.7x28_ss190_bad, ammo_5.7x28_ss190_verybad, ammo_5.7x28_ss195, ammo_5.7x28_ss195_bad, ammo_5.7x28_ss195_verybad
+ammo_mag_size                            = -5
+condition_shot_dec                       = +0.0001
+condition_queue_shot_dec                 = +0.0001
+misfire_start_prob                       = 0.0002
+misfire_end_prob                         = 0.002
 
 ;----------------------------------------------------------------------------------------------------------------------
 [up_firsta_mp5_nimble]
@@ -335,6 +344,23 @@ name                                     = st_up_zatp_c7_name
 description                              = st_up_zatp_c7_descr
 icon                                     = ui_inGame2_upgrade_Volker_P9M_4
 
+[up_fifthd_mp5_nimble]
+scheme_index                             = 1, 7
+known                                    = 1
+effects                                  =
+section                                  = up_sect_fifthd_mp5_nimble
+property                                 = prop_calibre
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = true
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_add_mp7cal_name
+description                              = st_up_add_mp7cal_descr
+icon                                     = ui_inGame2_upgrade_Gadyuka_5_18
+
 
 ;----------------------------------------------------------------------------------------------------------------------
 [up_gr_firstab_mp5_nimble]
@@ -377,4 +403,4 @@ elements                                 = up_fourte_mp5_nimble, up_fourtf_mp5_n
 elements                                 = up_fiftha_mp5_nimble
 
 [up_gr_fifthcd_mp5_nimble]
-elements                                 = up_fifthc_mp5_nimble
+elements                                 = up_fifthc_mp5_nimble, up_fifthd_mp5_nimble
