@@ -307,7 +307,7 @@
 		<text>7.62x54 mm AP rounds</text>
 	</string>
 	<string id="ammo-7.62x54-ap_descr">
-		<text>The 7.62x54mm calibre 7N13 armor-piercing machine gun round. It is a high-powered round and thanks to a hard steel core it possesses quite good penetrative capabilities.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IV\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]high</text>
+		<text>The 7.62x54mm calibre 7N13 armor-piercing machine gun round. This zone-made, low quality ammo is a high-powered round and thanks to a hard steel core it possesses quite good penetrative capabilities.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IV\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]high</text>
 	</string>
 	<string id="ammo-7.62x54-ap_s">
 		<text>7.62x54 AP</text>
