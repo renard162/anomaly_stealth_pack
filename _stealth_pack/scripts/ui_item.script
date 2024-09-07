@@ -152,6 +152,9 @@ function refresh_strings()
 	str_tbl.bck_camo_inert = gc("st_camo_backpack_inert")
 	str_tbl.bck_camo_small_penalty = gc("st_camo_backpack_small_penalty")
 	str_tbl.bck_camo_great_penalty = gc("st_camo_backpack_great_penalty")
+
+	str_tbl.plate_durability = gc("st_af_plate_durability")
+	str_tbl.plate_indestructible = gc("st_af_plate_indestructible")
 end
 
 
@@ -175,6 +178,10 @@ end
 function is_outfit_and_has_backpack(obj)
 	if not IsOutfit(obj) then return false end
 	return obj and (ini_sys:r_bool_ex(obj:section(),"backpack_avaliable") == false)
+end
+
+function IsBallisticPlate(sec)
+	return armor_inserts.plate_sections[sec] ~= nil
 end
 
 function get_list_highlight()
@@ -477,6 +484,15 @@ function build_desc_footer(obj, sec, str) -- one obj used
 		elseif camo_bonus < 0 then
 			camo_bonus = camo_bonus * -1
 			_str = _str .. clr_r .. "  • " .. clr_1 .. " " .. gc("st_camo_bonus_helmet_w" .. camo_bonus) .. " \\n"
+		end
+
+	elseif IsBallisticPlate(sec) then
+		local degradation_rate = armor_inserts.plate_sections[sec][2]
+		if degradation_rate > 0 then
+			local durability = tostring(math.ceil(1 / degradation_rate))
+			_str = _str .. clr_g .. "  • " .. clr_1 .. " " .. str_tbl.plate_durability .. " " .. durability .. " \\n"
+		else
+			_str = _str .. clr_g .. "  • " .. clr_1 .. " " .. str_tbl.plate_indestructible .. " \\n"
 		end
 
 	-- parts

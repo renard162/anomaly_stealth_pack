@@ -20,7 +20,7 @@ local af_coeff = 0.026			-- Artifacts provides less protection because they are 
 local co_coeff = 0.024			-- Compass have his unique coefficient
 
 -- 1st parameter is damage multiplier, 2nd parameter is condition loss on hit for ratio = 1, 3rd parameter is k_ap that penetrates a brand new plate
-local plate_sections = {
+plate_sections = {
     ["af_kevlar"]           	= { coeff / ini_sys:r_float_ex("af_kevlar_absorbation","fire_wound_immunity")	 	, 0.14, 0.25 },		-- normal kevlar inserts stop FMJ handgun rounds (II or BR3)
 	["af_kevlar_up"]        	= { coeff / ini_sys:r_float_ex("af_kevlar_up_absorbation","fire_wound_immunity") 	, 0.12, 0.35 },		-- better kevlar inserts (IIIA or BR4)
 

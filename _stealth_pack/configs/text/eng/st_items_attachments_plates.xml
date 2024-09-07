@@ -91,5 +91,12 @@
 		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
 		</text>
 	</string>
+
+	<string id="st_af_plate_durability">
+		<text>max durability:</text>
+	</string>
+	<string id="st_af_plate_indestructible">
+		<text>absorbed bullets do not cause degradation</text>
+	</string>
 	
 </string_table>
