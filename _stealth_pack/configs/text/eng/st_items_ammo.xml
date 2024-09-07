@@ -434,7 +434,7 @@
 		<text>Home-made batteries</text>
 	</string>
 	<string id="ammo-gauss_cardan_descr">
-		<text>These lower-capacity cells use capsulated fragments of the "Flash" artefact as their power source. Their lower capacity is due to makeshift production conditions and lack of specialised equipment.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]V\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]extreme high\n \n%c[ui_gray_1]SPECIAL:\n \n%c[d_purple] • %c[ui_gray_2] technological item\n%c[d_purple] • %c[ui_gray_2] prototype</text>
+		<text>These lower-capacity cells use capsulated fragments of the "Flash" artefact, reclaimed from old gauss batteries, as their power source. Their lower capacity is due to makeshift production conditions and lack of specialised equipment.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]V\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]extreme high\n \n%c[ui_gray_1]SPECIAL:\n \n%c[d_purple] • %c[ui_gray_2] technological item\n%c[d_purple] • %c[ui_gray_2] prototype</text>
 	</string>
 	
 	<string id="ammo-m209">
