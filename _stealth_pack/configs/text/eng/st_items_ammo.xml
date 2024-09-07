@@ -10,7 +10,7 @@
 		<text>12.7x55 mm STs-130 VPS rounds</text>
 	</string>
 	<string id="ammo_12.7x55_ap_descr">
-		<text>The armour-piercing 12.7x55mm subsonic cartridge is used in the VKS bullpup sniper rifle. The cartridge can carry a projectile weighing between from 59 grams (911 grains) and 76 g (1173 grains), yielding massive amounts of kinetic energy.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IV\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]very high</text>
+		<text>The armour-piercing 12.7x55mm subsonic cartridge is used in the VKS bullpup sniper rifle. The cartridge can carry a projectile weighing between from 59 grams (911 grains) and 76 g (1173 grains), yielding massive amounts of kinetic energy.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IV\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]extreme high</text>
 	</string>
 	<string id="ammo_12.7x55_ap_s">
 		<text>12.7x55 AP</text>
@@ -20,7 +20,7 @@
 		<text>.45 ACP rounds</text>
 	</string>
 	<string id="ammo-11.43x23-fmj_descr">
-		<text>The .45 calibre full metal jacket round has enjoyed popularity for a hundred years thanks to its ballistic performance and a relatively small propelling charge. As a result, the bullet in this round is relatively slow but highly accurate and provides considerable stopping power.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]none\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]medium</text>
+		<text>The .45 calibre full metal jacket round has enjoyed popularity for a hundred years thanks to its ballistic performance and a relatively small propelling charge. As a result, the bullet in this round is relatively slow but highly accurate and provides considerable stopping power.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]none\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]medium - high</text>
 	</string>
 	<string id="ammo-11.43x23-fmj_s">
 		<text>.45 ACP</text>
@@ -40,7 +40,7 @@
 		<text>12.7x55mm STs-130 rounds</text>
 	</string>
 	<string id="ammo-12.7x55-fmj_descr">
-		<text>The full metal jacket 12.7x55mm subsonic cartridge is used in the VKS bullpup sniper rifle. The cartridge can carry a projectile weighing between from 59 grams (911 grains) and 76 g (1173 grains), yielding massive amounts of kinetic energy.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]III\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]very high</text>
+		<text>The full metal jacket 12.7x55mm subsonic cartridge is used in the VKS bullpup sniper rifle. The cartridge can carry a projectile weighing between from 59 grams (911 grains) and 76 g (1173 grains), yielding massive amounts of kinetic energy.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]III\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]extreme high</text>
 	</string>
 	<string id="ammo-12.7x55-fmj_s">
 		<text>12.7x55</text>
@@ -70,7 +70,7 @@
 		<text>12x76 Bull shells</text>
 	</string>
 	<string id="ammo-12x76-bull_descr">
-		<text>12 gauge custom-made slugs for putting down dinosaurs and mutants. Slug inside is made of artifact fragment covered in copper that has steel, dart-like insert inside. Slug is very long and has got big powder load. It really can break your hands with recoil.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IV\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]very high</text>
+		<text>12 gauge custom-made slugs for putting down dinosaurs and mutants. Slug inside is made of artifact fragment covered in copper that has steel, dart-like insert inside. Slug is very long and has got big powder load. It really can break your hands with recoil.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IV\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]extreme high</text>
 	</string>
 	<string id="ammo-12x76-bull_s">
 		<text>12x76 Bull</text>
@@ -120,7 +120,7 @@
 		<text>5.45x39 mm EP rounds</text>
 	</string>
 	<string id="ammo-5.45x39-ep_descr">
-		<text>Military 5.45x39 calibre 7N10 is an enhanced penetration round for automatic rifles of Warsaw Pact countries. A harder and sleeker steel core is used to improve penetration.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IIIA\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]medium</text>
+		<text>Military 5.45x39 calibre 7N10 is an enhanced penetration round for automatic rifles of Warsaw Pact countries. A harder and sleeker steel core is used to improve penetration.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IIIA\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]medium - high</text>
 	</string>
 	<string id="ammo-5.45x39-ep_s">
 		<text>5.45x39 EP</text>
@@ -150,7 +150,7 @@
 		<text>5.56x45 mm EP rounds</text>
 	</string>
 	<string id="ammo-5.56x45-ss190_descr">
-		<text>A standard-issue NATO 5.56x45 calibre round with a steel core. The new design improved penetration at the cost of less reliable tissue damage. Widely known under its M855 index.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]III\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]medium</text>
+		<text>A standard-issue NATO 5.56x45 calibre round with a steel core. The new design improved penetration at the cost of less reliable tissue damage. Widely known under its M855 index.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]III\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]high</text>
 	</string>
 	<string id="ammo-5.56x45-ss190_s">
 		<text>5.56x45 EP</text>
@@ -160,7 +160,7 @@
 		<text>5.56x45 mm FMJ rounds</text>
 	</string>
 	<string id="ammo-5.56x45-fmj_descr">
-		<text>A standard-issue NATO 5.56x45 calibre M193 round specially designed for accurate automatic fire. Provides good ballistic characteristics, having been designed on the basis of a hunting round. Well known for being used in the Vietnam war and having great performance against tissue, but limited penetration.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IIIA\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]high</text>
+		<text>A standard-issue NATO 5.56x45 calibre M193 round specially designed for accurate automatic fire. Provides good ballistic characteristics, having been designed on the basis of a hunting round. Well known for being used in the Vietnam war and having great performance against tissue, but limited penetration.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IIIA\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]medium - high</text>
 	</string>
 	<string id="ammo-5.56x45-fmj_s">
 		<text>5.56x45 FMJ</text>
@@ -170,7 +170,7 @@
 		<text>5.7x28 SS190 rounds</text>
 	</string>
 	<string id="ammo-5.7x28-ss190_descr">
-		<text>The FN 5.7x28mm is a high velocity cartridge designed and manufactured by FN Herstal. It is a bottlenecked centrefire cartridge that is somewhat similar to the .22 Hornet or .22 K-Hornet. The 5.7x28mm was developed in conjunction with the FN P90 personal defense weapon (PDW) and FN Five-seven pistol, in response to NATO requests for a replacement for the 9x19mm Parabellum cartridge.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IIIA\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]low - medium</text>
+		<text>The FN 5.7x28mm is a high velocity cartridge designed and manufactured by FN Herstal. It is a bottlenecked centrefire cartridge that is somewhat similar to the .22 Hornet or .22 K-Hornet. The 5.7x28mm was developed in conjunction with the FN P90 personal defense weapon (PDW) and FN Five-seven pistol, in response to NATO requests for a replacement for the 9x19mm Parabellum cartridge.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IIIA\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]medium</text>
 	</string>
 	<string id="ammo-5.7x28-ss190_s">
 		<text>5.7x28 AP</text>
@@ -198,7 +198,7 @@
 		<text>5.7x28 mm SS195 rounds</text>
 	</string>
 	<string id="ammo-5.7x28-ss195_descr">
-		<text>The SS195 FN 5.7x28mm is an expansive cartridge designed and manufactured by FN Herstal. It is a bottlenecked centrefire cartridge that is somewhat similar to the .22 Hornet or .22 K-Hornet. \n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IIA\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]medium</text>
+		<text>The SS195 FN 5.7x28mm is an expansive cartridge designed and manufactured by FN Herstal. It is a bottlenecked centrefire cartridge that is somewhat similar to the .22 Hornet or .22 K-Hornet. \n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IIA\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]medium - high</text>
 	</string>
 	<string id="ammo-5.7x28-ss195_s">
 		<text>5.7x28 HP</text>
@@ -211,7 +211,7 @@
 		<text>The .50 Browning Machine Gun (12.7?99mm NATO and designated as the 50 Browning by the C.I.P.) is a cartridge developed for the Browning .50 caliber machine gun in the late 1910s, entering official service in 1921. Under STANAG 4383, it is a standard cartridge for NATO forces as well as many non-NATO countries. The cartridge itself has been made in many variants: multiple generations of regular ball, tracer, armor-piercing (AP), incendiary, and saboted sub-caliber rounds. The rounds intended for machine guns are made into a continuous belt using metallic links. 
 		\nThe .50 BMG cartridge is also used in long-range target and anti-materiel rifles, as well as other .50-caliber machine guns.
 		\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IV
-		\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]high</text>
+		\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]extreme high</text>
 	</string>
 	<string id="ammo-50-bmg_s">
 		<text>.50 BMG</text>
@@ -247,7 +247,7 @@
 		<text>7.62x39 mm M43 rounds</text>
 	</string>
 	<string id="ammo-7.62x39_ap_descr">
-		<text>7.62x39 M43 is an armour piercing round produced in China, which is why it's often referred to as "7.62x39 CN". This round features a mild steel core which enhances its penetration capabilities. This Chinese round (as well as all other M43 ammunition) is currently banned for import in the US because US federal law classifies the round as an armour-piercing handgun round. This classification is based on materials and bullet design rather than on empirical ability to penetrate armour.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]III\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]high</text>
+		<text>7.62x39 M43 is an armour piercing round produced in China, which is why it's often referred to as "7.62x39 CN". This round features a mild steel core which enhances its penetration capabilities. This Chinese round (as well as all other M43 ammunition) is currently banned for import in the US because US federal law classifies the round as an armour-piercing handgun round. This classification is based on materials and bullet design rather than on empirical ability to penetrate armour.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]III\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]medium - high</text>
 	</string>
 	<string id="ammo-7.62x39_ap_s">
 		<text>7.62x39 AP</text>
@@ -257,7 +257,7 @@
 		<text>7.62x39 mm FMJ rounds</text>
 	</string>
 	<string id="ammo-7.62x39_fmj_descr">
-		<text>7.62x39 Full Metal Jacket is one the most commonly used types of ammunition, especially in Africa and in the Middle East. Some nicknamed it the "Round of the Revolution" due to its favored use by both terrorist and criminal organizations. Due to the sheer power of the round most military organizations have turned to using additional steel plates to counter 7.62x39 as there is a high probability of encountering it in combat situations.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]III\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]high</text>
+		<text>7.62x39 Full Metal Jacket is one the most commonly used types of ammunition, especially in Africa and in the Middle East. Some nicknamed it the "Round of the Revolution" due to its favored use by both terrorist and criminal organizations. Due to the sheer power of the round most military organizations have turned to using additional steel plates to counter 7.62x39 as there is a high probability of encountering it in combat situations.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]III\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]medium - high</text>
 	</string>
 	<string id="ammo-7.62x39_fmj_s">
 		<text>7.62x39 FMJ</text>
@@ -287,7 +287,7 @@
 		<text>7.62x54 mm 7N14 rounds</text>
 	</string>
 	<string id="ammo-7.62x54_7n14_descr">
-		<text>The 7.62x54 calibre 7N14 is an armour-piercing cartridge. The bullet has a steel core to penetrate body armour or light barriers, and a boat-tail base to increase accuracy.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IV\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]high</text>
+		<text>The 7.62x54 calibre 7N14 is an armour-piercing cartridge. The bullet has a steel core to penetrate body armour or light barriers, and a boat-tail base to increase accuracy.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IV\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]very high</text>
 	</string>
 	<string id="ammo-7.62x54_7n14_s">
 		<text>7.62x54 7N14</text>
@@ -297,7 +297,7 @@
 		<text>7.62x54 mm 7N1 rounds</text>
 	</string>
 	<string id="ammo-7.62x54-7n1_descr">
-		<text>A 7.62x54 calibre sniper round with a steel penetrator specially designed for the SVD. Unlike the machine gun round, the 7N1 provides much tighter groupings.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]III\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]high</text>
+		<text>A 7.62x54 calibre sniper round with a steel penetrator specially designed for the SVD. Unlike the machine gun round, the 7N1 provides much tighter groupings.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]III\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]very high</text>
 	</string>
 	<string id="ammo-7.62x54-7n1_s">
 		<text>7.62x54 7N1</text>
