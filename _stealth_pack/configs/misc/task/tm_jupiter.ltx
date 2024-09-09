@@ -144,7 +144,7 @@ status_functor = drx_sl_retrieve_item_task_status
 status_functor_params = drx_jup_u_documents
 condlist_0 = {!task_giver_alive(drx_sl_jup_b6_scientist_tech_task_4)} fail
 
-on_init = %=spawn_item_at_pos(drx_jup_u_documents)%
+on_init = %=spawn_item_at_pos(drx_jup_u_documents) =open_route(jup:jup_u)%
 on_complete = %+main_6_search_jup_ug_task_done =reward_random_money(23500:24000) =reward_stash(true) =complete_task_inc_goodwill(50:ecolog) =inc_task_stage(drx_sl_jup_b6_scientist_tech_task_4) =remove_item(drx_jup_u_documents) =drx_sl_unregister_task_giver(drx_sl_jup_b6_scientist_tech_task_4)%
 on_fail = %=fail_task_dec_goodwill(25:ecolog) =drx_sl_meet_random_honcho() =drx_sl_decrease_sl_tasks_count =drx_sl_unregister_task_giver(drx_sl_jup_b6_scientist_tech_task_4)%
 

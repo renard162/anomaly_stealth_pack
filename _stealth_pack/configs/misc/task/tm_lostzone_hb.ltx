@@ -79,7 +79,7 @@ descr = {=actor_has_item(main_story_6_jup_ug_documents)} lttz_hb_task_2_2_breakt
 target = {=actor_has_item(main_story_6_jup_ug_documents)} jup_depo_isg_leader_squad, {=actor_on_level(jupiter_underground)} nil, jupiter_space_restrictor_to_jupiter_ug
 condlist_0 = {+jup_depo_isg_leader_squad_dead} fail
 
-on_init = %=add_task_companion(jup_depo_isg_leader_squad) =add_task_companion(jup_depo_isg_guard_squad) =send_msg_hb_isg_tech_goodluck +lttz_hb_task_2_2_breakthrough_started%
+on_init = %=add_task_companion(jup_depo_isg_leader_squad) =add_task_companion(jup_depo_isg_guard_squad) =send_msg_hb_isg_tech_goodluck +lttz_hb_task_2_2_breakthrough_started =open_route(jup:jup_u)%
 on_complete = %=remove_item(main_story_6_jup_ug_documents) =remove_task_companion(jup_depo_isg_leader_squad) =remove_task_companion(jup_depo_isg_guard_squad) =send_msg_hb_isg_breakthrough +lttz_hb_isg_breakthrough%
 
 
@@ -146,6 +146,7 @@ title = lttz_hb_task_3_8_handle_docs_name
 descr = lttz_hb_task_3_8_handle_docs_text
 target = {=actor_on_level(jupiter_underground)} jup_depo_isg_leader_squad, jupiter_space_restrictor_to_jupiter_ug
 condlist_0 = {+jup_depo_isg_leader_squad_dead} fail
+on_init = %=open_route(jup:jup_u)%
 on_complete = %=remove_item(main_story_1_quest_case) =remove_item(main_story_2_lab_x18_documents) =remove_item(main_story_3_lab_x16_documents) =remove_item(main_story_4_lab_x10_documents) =remove_item(main_story_5_lab_x8_documents)%
 
 
@@ -166,7 +167,7 @@ target = {=actor_on_level(jupiter_underground) =actor_has_item(strelok_pendrive)
 condlist_0 = {+hb_escort_strelok -lost_stalker_strelok_dead -hb_betray_strelok =actor_inside_zone(pas_b400_sr_hall_1:pas_b400_sr_hall_12:pas_b400_field_tunnel:pas_b400_sr_track_door_in)} nil %+hb_betray_strelok =remove_task_companion(lost_stalker_strelok) =lttz_set_squad_enemy_to_actor(lost_stalker_strelok)%
 condlist_1 = {+hb_escorted_strelok -hb_strelok_leaving} nil %+hb_strelok_leaving =remove_special_companion_squad(lost_stalker_strelok)%
 
-on_init = %=clear_smart_terrain(pri_b35_mercs) =create_squad(stalker_strelok_hb_squad:pri_b35_mercs) =create_squad(degtyarev_pri_b35_squad:pri_b35_mercs) =create_squad(tarasov_pri_b35_squad:pri_b35_mercs) =pripyat_degtyarev_message_isg%
+on_init = %=clear_smart_terrain(pri_b35_mercs) =create_squad(stalker_strelok_hb_squad:pri_b35_mercs) =create_squad(degtyarev_pri_b35_squad:pri_b35_mercs) =create_squad(tarasov_pri_b35_squad:pri_b35_mercs) =pripyat_degtyarev_message_isg =open_route(jup:jup_u)%
 on_complete = %=remove_item(strelok_pendrive) =remove_task_companion(pass_hall_isg_companion_squad) +lttz_hb_task_4_1_crossfire_done -lttz_hb_isg_leader_in_jup -lttz_hb_isg_breakthrough -faction_limited_playthrough_cf%
 on_fail = %=drx_sl_change_factions(stalker) =remove_special_companion_squad(lost_stalker_strelok) =fail_task_dec_goodwill(500:isg) +lttz_hb_task_4_1_crossfire_done -lttz_hb_isg_leader_in_jup -lttz_hb_isg_breakthrough -faction_limited_playthrough_cf%
 

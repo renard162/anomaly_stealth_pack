@@ -855,6 +855,7 @@ title = st_main_6_search_jup_ug_name
 descr = st_main_6_search_jup_ug_text
 target = jupiter_space_restrictor_to_jupiter_ug
 condlist_0 = {=actor_has_item(main_story_6_jup_ug_documents)} complete
+on_init = %=open_route(jup:jup_u)%
 on_complete = %+main_6_search_jup_ug_task_done%, {+main_1_search_agr_ug_task_done +main_2_search_labx18_task_done +main_3_search_labx16_task_done +main_4_search_labx10_task_done +main_5_search_labx8_task_done +main_6_search_jup_ug_task_done +main_7_search_mon_con_task_done +pri_monolith_decoder_got +pri_documents_warlab_task} %+warlab_password_info =give_task(sar_warlab) =give_task(sar_monolith_destroy)%
 
 [main_7_search_mon_con]
