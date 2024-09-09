@@ -139,7 +139,7 @@ status_functor = drx_sl_retrieve_item_task_status
 status_functor_params = drx_x19_documents
 condlist_0 = {!task_giver_alive(drx_sl_bar_dolg_general_petrenko_stalker_task_4)} fail
 
-on_init = %=spawn_item_at_pos(drx_x19_documents)%
+on_init = %=spawn_item_at_pos(drx_x19_documents) =open_route(rad:x19)%
 on_complete = %+main_4_search_labx10_task_done =reward_random_money(20000:21500) =reward_stash(true) =complete_task_inc_goodwill(50:dolg) =inc_task_stage(drx_sl_bar_dolg_general_petrenko_stalker_task_4) =remove_item(drx_x19_documents) =drx_sl_unregister_task_giver(drx_sl_bar_dolg_general_petrenko_stalker_task_4)%
 on_fail = %=fail_task_dec_goodwill(25:dolg) =drx_sl_meet_random_honcho() =drx_sl_decrease_sl_tasks_count =drx_sl_unregister_task_giver(drx_sl_bar_dolg_general_petrenko_stalker_task_4)%
 
