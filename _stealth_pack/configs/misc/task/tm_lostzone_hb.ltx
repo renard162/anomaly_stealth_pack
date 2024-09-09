@@ -114,6 +114,7 @@ title = st_lttz_hb_task_3_3_search_labx16_name
 descr = st_lttz_hb_task_3_3_search_labx16_text
 target = {=actor_on_level(l08u_brainlab)} nil, yan_space_restrictor_to_x16
 condlist_0 = {=actor_has_item(main_story_3_lab_x16_documents)} complete
+on_init = %=open_route(yan:x16)%
 on_complete = %+main_3_search_labx16_task_done =evaluate_mysteries_of_the_zone_tasks%
 
 [lttz_hb_task_3_4_search_labx10]

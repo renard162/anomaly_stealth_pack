@@ -356,6 +356,7 @@ title = brain_machine_deactivate_name
 descr = brain_machine_deactivate_text
 
 target = yan_space_restrictor_to_x16
+on_init = %=open_route(yan:x16)%
 on_complete = %=complete_task_inc_goodwill(50:ecolog:stalker)%
 condlist_0 = {+yan_labx16_switcher_primary_off} complete
 

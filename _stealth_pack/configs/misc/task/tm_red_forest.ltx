@@ -49,7 +49,7 @@ status_functor = drx_sl_retrieve_item_task_status
 status_functor_params = drx_x16_documents
 condlist_0 = {!task_giver_alive(drx_sl_red_greh_trader_task_1)} fail
 
-on_init = %=spawn_item_at_pos(drx_x16_documents)%
+on_init = %=spawn_item_at_pos(drx_x16_documents) =open_route(yan:x16)%
 on_complete = %+main_3_search_labx16_task_done =reward_random_money(18500:19500) =reward_stash(true) =complete_task_inc_goodwill(50:greh) =inc_task_stage(drx_sl_red_greh_trader_task_1) =remove_item(drx_x16_documents) =drx_sl_unregister_task_giver(drx_sl_red_greh_trader_task_1)%
 on_fail = %=fail_task_dec_goodwill(25:greh) =drx_sl_meet_random_honcho() =drx_sl_decrease_sl_tasks_count =drx_sl_unregister_task_giver(drx_sl_red_greh_trader_task_1)%
 
