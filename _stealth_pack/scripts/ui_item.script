@@ -33,6 +33,7 @@ local clr_1  = utils_xml.get_color("ui_gray_2")
 local clr_2  = utils_xml.get_color("ui_gray_1")
 
 local camo_g  = strformat("%c[255,0,180,0]")
+local camo_gt  = strformat("%c[255,158,255,180]")
 
 
 local str_tbl             = {}
@@ -461,7 +462,7 @@ function build_desc_footer(obj, sec, str) -- one obj used
 --		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_cw .. ": " .. clr_2 .. "+" .. tostring(additional_inventory_weight) .. " " .. gc("st_kg") .. " \\n"
 		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_run .. " " .. (sprint_allowed and str_tbl.stat_posble_y or str_tbl.stat_posble_n) .. " \\n"
 		if camo_level > 3 then
-			_str = _str .. camo_g .. "  • " .. clr_g .. " " .. gc("st_camo_bonus_" .. camo_level) .. " \\n"
+			_str = _str .. camo_g .. "  • " .. camo_gt .. " " .. gc("st_camo_bonus_" .. camo_level) .. " \\n"
 		elseif camo_level >= 0 then
 			_str = _str .. clr_g .. "  • " .. clr_1 .. " " .. gc("st_camo_bonus_" .. camo_level) .. " \\n"
 		else
