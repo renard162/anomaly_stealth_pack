@@ -837,6 +837,7 @@ title = st_main_4_search_labx10_name
 descr = st_main_4_search_labx10_text
 target = rad_space_restrictor_to_bunker
 condlist_0 = {=actor_has_item(main_story_4_lab_x10_documents)} complete
+on_init = %=open_route(rad:x19)%
 on_complete = %+main_4_search_labx10_task_done%, {+main_1_search_agr_ug_task_done +main_2_search_labx18_task_done +main_3_search_labx16_task_done +main_4_search_labx10_task_done +main_5_search_labx8_task_done +main_6_search_jup_ug_task_done +main_7_search_mon_con_task_done +pri_monolith_decoder_got +pri_documents_warlab_task} %+warlab_password_info =give_task(sar_warlab) =give_task(sar_monolith_destroy)%
 
 [main_5_search_labx8]

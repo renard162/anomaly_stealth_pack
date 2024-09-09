@@ -126,6 +126,7 @@ title = st_lttz_hb_task_3_4_search_labx10_name
 descr = st_lttz_hb_task_3_4_search_labx10_text
 target = {=actor_on_level(l10u_bunker)} nil, rad_space_restrictor_to_bunker
 condlist_0 = {=actor_has_item(main_story_4_lab_x10_documents)} complete
+on_init = %=open_route(rad:x19)%
 on_complete = %+main_4_search_labx10_task_done =evaluate_mysteries_of_the_zone_tasks%
 
 [lttz_hb_task_3_5_search_labx8]
