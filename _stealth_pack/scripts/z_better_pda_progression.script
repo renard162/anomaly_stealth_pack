@@ -16,18 +16,21 @@
 local desired_icon_states = {
 	["device_pda_1"] = {
 		["actor_icon"] = true,
-		["actor_arrow"] = false,
+		["surge_danger_bar"] = false,
 		["companion_icons"] = false,
+		["actor_arrow"] = false,
 	},
 	["device_pda_2"] = {
 		["actor_icon"] = true,
-		["actor_arrow"] = false,
+		["surge_danger_bar"] = true,
 		["companion_icons"] = true,
+		["actor_arrow"] = false,
 	},
 	["device_pda_3"] = {
 		["actor_icon"] = true,
-		["actor_arrow"] = true,
+		["surge_danger_bar"] = true,
 		["companion_icons"] = true,
+		["actor_arrow"] = true,
 	},
 }
 
@@ -101,7 +104,23 @@ function dialogs_axr_companion.become_actor_companion(actor,npc)
 	end)
 end
 
+function is_surge_danger_bar_active()
+	local sec = get_pda_section()
+	if not sec then
+		return false
+	end
+	return desired_icon_states[sec]["surge_danger_bar"] or false
+end
 
+function pda_has_battery()
+	local pda = db.actor:item_in_slot(8)
+	if not pda then
+		return false
+	end
+	local sec = pda:section()
+	local cond = pda:condition()
+	return cond and (cond > item_device.dev_critical[sec])
+end
 
 local function actor_item_to_slot(item)
 	local sec = item:section()

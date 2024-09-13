@@ -62,11 +62,17 @@ rays_per_update = 10
 ray_range = 8
 north_facing_bonus = 0.01
 cover_prcnt_needed = 0.85
-show_cover_bar = true
 debug_mode = false
 protect_companions_range = 15
 grace_period = 1
-hud_delay = 0
+
+show_cover_bar = true
+hud_delay = 15
+local bar_update_tick = 0.05
+local bar_mult_tick = bar_update_tick / hud_delay
+local actual_bar_mult = 1
+local pda_has_battery = false
+danger_percentage = 0
 
 function init()
     -- Get options from MCM
@@ -79,6 +85,8 @@ function init()
     protect_companions_range = get_config("protect_companions")
     grace_period = get_config("grace_period")
     hud_delay = get_config("hud_show_delay")
+
+    bar_mult_tick = bar_update_tick / hud_delay
 
     -- Build a table of ray directions
     ray_table = {}
@@ -120,8 +128,12 @@ local HUD = nil
 local ray_counter = 1
 local points_table = {}
 local emission_first_update = true
-local hud_delay_hide = false
 local grace_period_start_time = 0
+
+function is_cover_bar_enabled()
+    local pda_valid = z_better_pda_progression.is_surge_danger_bar_active()
+    return show_cover_bar and pda_valid
+end
 
 function actor_on_update()
     if excluded_maps[level.name()] or size_table(ray_table) == 0 then return end
@@ -137,16 +149,21 @@ function actor_on_update()
         if emission_first_update then
             emission_first_update = false
             if hud_delay > 0 then
-                hud_delay_hide = true
-                CreateTimeEvent("dynamic_cover", "hud_show_delay", hud_delay, function ()
-                    --printf("-hud_delay_hide end")
-                    hud_delay_hide = false
+                actual_bar_mult = 0
+                CreateTimeEvent("dynamic_cover", "hud_show_delay", bar_update_tick, function ()
+                    actual_bar_mult = actual_bar_mult + bar_mult_tick
+                    if actual_bar_mult < 1.0 then
+                        return false
+                    end
+                    actual_bar_mult = 1.0
                     return true
                 end)
             end
         end
 
-        if show_cover_bar then
+        if is_cover_bar_enabled() then
+            pda_has_battery = z_better_pda_progression.pda_has_battery()
+            danger_percentage = 1 - get_total_points(points_table) / (size_table(ray_table) * cover_prcnt_needed)
             activate_hud()
         else
             deactivate_hud()
@@ -242,7 +259,7 @@ function actor_on_update()
             end
         end
 
-        if GetEvent("underground") or GetEvent("current_safe_cover") or hud_delay_hide then
+        if GetEvent("underground") or GetEvent("current_safe_cover") then
             hide_hud()
         else
             show_hud()
@@ -277,7 +294,7 @@ local defaults = {
     ["show_cover_bar"] = true,
     ["protect_companions"] = 15,
     ["grace_period"] = 1,
-    ["hud_show_delay"] = 0,
+    ["hud_show_delay"] = 15,
     ["debug_mode"] = false,
 }
 
@@ -294,7 +311,7 @@ function on_mcm_load()
             {id = "cover_range", type = "track", val = 2, min=2,max=10,step=0.2, def = 8},
             {id = "rays_per_update", type = "track", val = 2, min=1,max=30,step=1, def = 10},
             {id = "show_cover_bar", type = "check", val = 1, def = true},
-            {id = "hud_show_delay", type = "track", val = 2, min=0,max=15,step=1, def = 0},
+            {id = "hud_show_delay", type = "track", val = 2, min=0,max=20,step=1, def = 15},
             {id = "protect_companions", type = "track", val = 2, min=0,max=500,step=5, def = 15},
             {id = "grace_period", type = "track", val = 2, min=0,max=5,step=0.2, def = 1},
             {id = "debug_mode", type = "check", val = 1, def = false},
@@ -354,7 +371,7 @@ function DynamicCoverUI:__init() super()
 
     local bg_color = GetARGB(255,55,55,55)
 	self.cover_bar_bg:SetTextureColor(bg_color)
-    local bar_color = GetARGB(255,255,200,200)
+    local bar_color = GetARGB(255,255,210,210)
 	self.cover_bar:SetColor(bar_color)
 end
 
@@ -367,8 +384,14 @@ function DynamicCoverUI:Update()
 	end
 
     if size_table(ray_table) == 0 then return end
-    local bar_percentage = get_total_points(points_table) / (size_table(ray_table) * cover_prcnt_needed)
-    self.cover_bar:SetProgressPos(bar_percentage)
+
+    if not pda_has_battery then
+        self.cover_bar:SetProgressPos(-0.006)
+        return
+    end
+
+    local actual_bar_percentage = danger_percentage * actual_bar_mult
+    self.cover_bar:SetProgressPos(actual_bar_percentage)
 end
 
 function DynamicCoverUI:ShowUI()
