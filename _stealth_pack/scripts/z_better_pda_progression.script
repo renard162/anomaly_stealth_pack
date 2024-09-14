@@ -16,14 +16,14 @@
 local desired_icon_states = {
 	["device_pda_1"] = {
 		["actor_icon"] = true,
-		["surge_danger_bar"] = false,
 		["companion_icons"] = false,
+		["surge_danger_bar"] = false,
 		["actor_arrow"] = false,
 	},
 	["device_pda_2"] = {
 		["actor_icon"] = true,
-		["surge_danger_bar"] = true,
 		["companion_icons"] = true,
+		["surge_danger_bar"] = false,
 		["actor_arrow"] = false,
 	},
 	["device_pda_3"] = {
