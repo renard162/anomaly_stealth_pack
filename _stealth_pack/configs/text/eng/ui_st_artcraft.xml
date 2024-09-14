@@ -7,7 +7,7 @@
 	</string>
 	<string id="article_craft_text">
 		<text>
-			%c[pda_green]Craftable Basic Toolkit%c[ui_gray_1]\n \n
+			%c[pda_green]Craftable Basic Toolkit%c[ui_gray_1]\n
 			\nWelcome to the Craftable Basic Toolkit. This article will outline the recipe for crafting a Basic Toolkit within your inventory.\n \n
 			The intention behind this system is to allow you to bypass unlucky RNG, and to craft your own toolkit with salvaged parts, or by purchasing the components outright. The cost of purchasing the components ought to be considerably higher than the value of the toolkit - you are trading money for convenience.\n \n
 			
