@@ -460,4 +460,8 @@
 	<file name="ui\guide\article_combat">
 		<texture id="article_combat_image" x="0" y="0" width="512" height="256"/>
 	</file>
+
+	<file name="ui\guide\article_stealth">
+		<texture id="article_stealth_image" x="0" y="0" width="512" height="256"/>
+	</file>
 </w>
