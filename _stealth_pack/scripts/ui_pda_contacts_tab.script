@@ -484,6 +484,11 @@ local function load_defaults()
 end
 -- Default config
 config = load_defaults()
+pda_tier_range = {
+	["device_pda_1"] = config.scanning_range_tier_1,
+	["device_pda_2"] = config.scanning_range_tier_2,
+	["device_pda_3"] = config.scanning_range_tier_3,
+}
 
 local function load_settings()
 	config = load_defaults()
@@ -492,6 +497,11 @@ local function load_settings()
 			config[k] = ui_mcm.get("pda_taskboard/" .. k)
 		end
 	end
+	pda_tier_range = {
+		["device_pda_1"] = config.scanning_range_tier_1,
+		["device_pda_2"] = config.scanning_range_tier_2,
+		["device_pda_3"] = config.scanning_range_tier_3,
+	}
 end
 
 function on_game_start()

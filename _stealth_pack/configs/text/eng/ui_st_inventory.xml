@@ -332,6 +332,9 @@
 	<string id="ui_inv_seconds">
 		<text>seconds</text>
 	</string>
+	<string id="st_meters">
+		<text>meters</text>
+	</string>
 	
 	<!-- Player states -->
 	<string id="st_ui_main_sensor">
@@ -984,6 +987,9 @@
 	</string>
 	<string id="st_ui_cook_fuel_usable">
 		<text>Useable fuel</text>
+	</string>
+	<string id="st_ui_pda_network_range">
+		<text>network range</text>
 	</string>
 	
 

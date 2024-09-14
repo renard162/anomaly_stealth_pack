@@ -100,6 +100,8 @@ function refresh_strings()
 	
 	str_tbl.pwr_left = gc("st_ui_power")
 	str_tbl.pwr_cons = gc("st_ui_power_consumption")
+
+	str_tbl.pda_net_range = gc("st_ui_pda_network_range")
 	
 	str_tbl.out_upgr = gc("st_itm_desc_outfit_upgradable")
 	str_tbl.out_helm = gc("st_itm_desc_outfit_heardgear")
@@ -131,6 +133,7 @@ function refresh_strings()
 	str_tbl.mah_sec = gc("st_mah_sec")
 	str_tbl.uah_sec = gc("st_uah_sec")
 	str_tbl.pah_sec = gc("st_pah_sec")
+	str_tbl.meters = gc("st_meters")
 	
 	str_tbl.cap_upgr_1 = gc("st_cap_upgr_1")
 	str_tbl.cap_upgr_2 = gc("st_cap_upgr_2")
@@ -187,6 +190,10 @@ end
 
 function get_list_highlight()
 	return last_d_id
+end
+
+function get_pda_network_range(sec)
+	return ui_pda_contacts_tab.pda_tier_range[sec] or false
 end
 
 function get_sec_name(sec)
@@ -584,8 +591,13 @@ function build_desc_footer(obj, sec, str) -- one obj used
 				unit = str_tbl.pah_sec
 			end
             val = round(val)
-			_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. gc("st_ui_power_consumption") .. ": " .. clr_2 .. tostring(val) .. " " .. unit .. " \\n"
+			_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.pwr_cons .. ": " .. clr_2 .. tostring(val) .. " " .. unit .. " \\n"
 		end
+	end
+
+	local net_range = get_pda_network_range(sec)
+	if net_range then
+		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.pda_net_range .. ": " .. clr_2 .. tostring(net_range) .. " " .. str_tbl.meters .. " \\n"
 	end
 
     -- Artifacts bonus

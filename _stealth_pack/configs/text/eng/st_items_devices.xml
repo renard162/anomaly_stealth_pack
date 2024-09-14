@@ -36,10 +36,11 @@
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] technological item\n
 		%c[d_blue] • %c[ui_gray_2] low electric power consumption\n
+		%c[d_purple] • %c[ui_gray_2] equipped with an EMI meter to detect safe zones during emissions and psi-storms\n
 		%c[d_purple] • %c[ui_gray_2] shows location of nearby squads from your group\n
 		</text>
 	</string>
-	
+
 	<string id="st_pda_3_name">
 		<text>PDA (Version 3.1)</text>
 	</string>
@@ -48,6 +49,7 @@
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] technological item\n
 		%c[d_blue] • %c[ui_gray_2] moderate electric power consumption\n
+		%c[d_purple] • %c[ui_gray_2] equipped with an EMI meter to detect safe zones during emissions and psi-storms\n
 		%c[d_purple] • %c[ui_gray_2] shows location of nearby natural squads\n
 		%c[d_purple] • %c[ui_gray_2] high integration with the GPS network\n
 		</text>
