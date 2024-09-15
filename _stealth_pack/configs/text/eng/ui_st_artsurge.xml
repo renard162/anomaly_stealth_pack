@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	<string id="article_surge">
+		<text>An apocalypse in a flash</text>
+	</string>
+	<string id="article_surge_text">
+		<text>
+			%c[pda_green]The zone surge events%c[ui_gray_1]\n
+			\nOccasionally, the Zone becomes unstable and extremely dangerous, generating intense energy pulses or even ionizing the air to the point of destroying living cells.\n
+
+			\nAdvanced versions of PDAs are typically equipped with electromagnetic interference (EMI) meters, allowing you to measure electromagnetic noise and locate safe spots to hide.\n
+
+			\nHowever, be cautious, even a small amount of EMI detected by your PDA can seriously harm or even kill you. Always seek cover in areas where the EMI interference reads as zero.\n
+
+			\nIf you don't have an advanced PDA, don't worry. Even the simplest models are equipped with an EMI detector that will alert you if you're protected from the surge.\n
+
+			\nIn case you're unsure where to hide and don't have time to search, the Zone Network System will notify you of the nearest cataloged shelter to protect you from the surge.\n
+		</text>
+	</string>
+</string_table>
