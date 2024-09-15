@@ -370,11 +370,11 @@ end
 
 function devushka_quest_one_reward(first_speaker, second_speaker)
 	alife_create_item("stalker_predator_outfit", db.actor)
-	alife_create_item("af_kevlar", db.actor)
+	alife_create_item("af_kevlar_up", db.actor)
 	alife_create_item("wpn_knife3"  , db.actor)
 	alife_create_item("kit_hunt"    , db.actor)
 	news_manager.relocate_item(db.actor, "in", "stalker_predator_outfit", 1)
-	news_manager.relocate_item(db.actor, "in", "af_kevlar", 1)
+	news_manager.relocate_item(db.actor, "in", "af_kevlar_up", 1)
 	news_manager.relocate_item(db.actor, "in", "wpn_knife3"  , 1)
 	news_manager.relocate_item(db.actor, "in", "kit_hunt"    , 1)
 end
