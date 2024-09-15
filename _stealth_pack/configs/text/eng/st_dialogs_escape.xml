@@ -100,9 +100,12 @@
 		<text>No thanks, I'll live and learn at my own pace.</text>
 	</string>
 	<string id="fanat_training_start_3">
-		<text>Excellent. First, let's teach you how to hunt mutants. There's a small herd of boars on the other side of the road nearby. Now, boars have thick skulls and tiny brains, so the best way to deal with them is shoot them in the side, or - in a perfect world - right up the butt, from a nice, safe distance. We'll take them out together, but try keep them off me - they're in heat this time of year.</text>
+		<text>
+		Excellent. First, let's teach you how to hunt mutants. There's a small herd of boars on the other side of the road nearby. Now, boars have thick skulls and tiny brains, so the best way to deal with them is shoot them in the side, or - in a perfect world - right up the butt, from a nice, safe distance. We'll take them out together, but try keep them off me - they're in heat this time of year.\n \n
+		Take these Kevlar plates and integrate them into your armor. They'll reinforce your defenses against the savage bites lurking in the shadows.
+		</text>
 	</string>
-	
+
 	<string id="fanat_training_boars_death_0">
 		<text>Phew, that was crazy. What now?</text>
 	</string>
