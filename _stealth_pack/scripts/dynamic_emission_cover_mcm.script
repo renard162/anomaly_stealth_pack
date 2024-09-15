@@ -369,9 +369,9 @@ function DynamicCoverUI:__init() super()
     self.cover_bar_bg = xml:InitStatic("cover_hud:cover_bar_bg", self.dialog)
 	self.cover_bar = xml:InitProgressBar("cover_hud:cover_bar", self.dialog)
 
-    local bg_color = GetARGB(255,55,55,55)
+    local bg_color = GetARGB(255,50,50,50)
 	self.cover_bar_bg:SetTextureColor(bg_color)
-    local bar_color = GetARGB(255,255,210,210)
+    local bar_color = GetARGB(255,255,25,25)
 	self.cover_bar:SetColor(bar_color)
 end
 
