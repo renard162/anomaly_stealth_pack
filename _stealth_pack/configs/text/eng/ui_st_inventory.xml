@@ -989,7 +989,7 @@
 		<text>Useable fuel</text>
 	</string>
 	<string id="st_ui_pda_network_range">
-		<text>network range</text>
+		<text>LoRa network range</text>
 	</string>
 	
 
