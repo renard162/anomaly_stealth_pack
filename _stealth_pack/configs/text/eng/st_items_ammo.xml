@@ -100,7 +100,7 @@
 		<text>.357 HP rounds</text>
 	</string>
 	<string id="ammo-357-hp_descr">
-		<text>The .357 HP round is a hollow-point bullet. The purpose of the round is to slow down upon impact, which decreases its penetration, but at the same time causes larger internal tissue damage. \n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]II\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]high</text>
+		<text>The .357 HP round is a hollow-point bullet. The purpose of the round is to slow down upon impact, which decreases its penetration, but at the same time causes larger internal tissue damage. \n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IIIA\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]high</text>
 	</string>
 	<string id="ammo-357-hp_s">
 		<text>.357 HP</text>
