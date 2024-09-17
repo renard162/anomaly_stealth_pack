@@ -53,7 +53,7 @@ function prepare()
 	["action"] = {
 		{ 	name = "Go incognito" 					, cmd = "invisible on" 						         , hide_ui = 0 		, key = "DIK_I"			},
 		{ 	name = "Go rich" 						, cmd = "money 1000000" 					         , hide_ui = 0 		, key = "DIK_M"			},
-		{ 	name = "Clear map copses"               , cmd = "clear_corpses"      				         , hide_ui = 2 								},
+		{ 	name = "Clear map copses"               , cmd = "clear_corpses"      				         , hide_ui = 2 		, key = "DIK_H"			},
 		{ 	name = "Delete all squads" 				, cmd = "alife_release all" 				         , hide_ui = 2 								},
 		{ 	name = "Delete common squads" 			, cmd = "alife_release common" 				         , hide_ui = 2 								},
 		{ 	name = "Refresh game" 					, functor = {reload_textures} 				         , hide_ui = 2 		, key = "DIK_F5"		},
