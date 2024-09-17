@@ -277,7 +277,7 @@
 		<text>7.62x51 mm NATO ball rounds</text>
 	</string>
 	<string id="ammo-7.62x51_fmj_descr">
-		<text>The 7.62x51 NATO round is a military variant of the .308 round which was used as a standard-issue by the NATO forces until 5.56 ammunition was introduced in the '70s in the Vietnam War. At present, it is most commonly employed by private military contractors all over the world. The 7.62x51 round is a very common machine gun calibre, and can also be used in battle or sniper rifles.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]IIIA\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]high</text>
+		<text>The 7.62x51 NATO round is a military variant of the .308 round which was used as a standard-issue by the NATO forces until 5.56 ammunition was introduced in the '70s in the Vietnam War. At present, it is most commonly employed by private military contractors all over the world. The 7.62x51 round is a very common machine gun calibre, and can also be used in battle or sniper rifles.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]III\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]high</text>
 	</string>
 	<string id="ammo-7.62x51_fmj_s">
 		<text>7.62x51 ball</text>
@@ -357,7 +357,7 @@
 		<text>9x18 mm FMJ rounds</text>
 	</string>
 	<string id="ammo-9x18-fmj_descr">
-		<text>A full metal jacket round with a steel penetrator and a lead core under a metal jacket. Provides good stopping power but is ineffective against body armour.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]none\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]low - medium</text>
+		<text>A full metal jacket round with a steel penetrator and a lead core under a metal jacket. Provides good stopping power but is ineffective against body armour.\n \n%c[d_purple] • %c[ui_gray_2] Highest pierced armour class: %c[ui_gray_1]I\n%c[d_purple] • %c[ui_gray_2] Tissue damage rating: %c[ui_gray_1]low - medium</text>
 	</string>
 	<string id="ammo-9x18-fmj_s">
 		<text>9x18 FMJ</text>
