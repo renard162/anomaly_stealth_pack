@@ -13,7 +13,7 @@
 		<text>Bugs with MCM or crashes with ui_mcm.script in the log are most likely caused by one of the mods/addons using MCM and should be reported to that mod/addon's author. </text>
 	</string>
 	<string id="ui_mm_menu_mcm">
-		<text>Mod Configuration Menu</text>
+		<text>Mod Config. (Debug Mode only)</text>
 	</string>
 
 	<string id="ui_mcm_menu_mcm">

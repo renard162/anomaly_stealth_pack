@@ -189,6 +189,7 @@ function main_menu:OnButton_options_clicked()
 end
 
 function main_menu:OnButton_mcm_clicked()
+	if not DEV_DEBUG then return end
 	printf("MCMBTN press")
 	if (self.mcm_dlg == nil) then
 		self.mcm_dlg = ui_mcm.UIMCM()
