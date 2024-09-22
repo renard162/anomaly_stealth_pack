@@ -1,0 +1,44 @@
+ini_icons = nil
+x_offset, y_offset, seperator = 0
+
+function on_game_start()
+	rax_icon_layers.register("dyneq_armorfaction", dyneq_armorfaction)
+	ini_icons = ini_file("plugins\\eq_icons_settings.ltx")
+	x_offset = ini_icons:r_float("positioning", "x_offset")
+	y_offset = ini_icons:r_float("positioning", "y_offset")
+end
+
+function dyneq_armorfaction(cell, obj, sec)
+    local texture_table = get_comm_to_texture(sec, obj)
+    if not texture_table then return end
+
+    local texture_width = texture_table[2]
+    local texture_height = texture_table[3]
+    local axis = utils_xml.get_item_axis(sec)
+    return {texture = texture_table[1], x = (axis.w - texture_width + x_offset), y = (axis.h - texture_height + y_offset), w = texture_width, h = texture_height}
+end
+
+function get_comm_to_texture(sec, obj)
+    local comm = SYS_GetParam(0, sec, "community")
+	if not comm then return end
+
+	local faction_patch = comm
+	local is_outfit_obj = safe_IsOutfit_obj(obj)
+	if is_outfit_obj and se_load_var(obj:id(), nil, "unpatched") and (comm ~= "") then
+		faction_patch = faction_patch .. "_off"
+	end
+
+	local tx_table = faction_patch and ini_icons:r_string_ex("comm_to_texture", faction_patch)
+	if not tx_table then return end
+
+	tx_table = str_explode(tx_table, ",")
+	return tx_table
+end
+
+function safe_IsOutfit_obj(obj)
+	success, is_outfit = pcall(IsOutfit, obj)
+	if not success then
+		return false
+	end
+	return is_outfit
+end

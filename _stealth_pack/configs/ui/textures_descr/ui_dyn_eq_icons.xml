@@ -1,0 +1,32 @@
+<!--Custom HUD Indicator-->
+<w>
+	<file name="ui\dynamic_faction_patches">
+		<texture id="ui_dyn_eq_army"			x="1"	y="1"	width="48"	height="53" />
+		<texture id="ui_dyn_eq_bandit"			x="50"	y="1"	width="44"	height="54" />
+		<texture id="ui_dyn_eq_csky"			x="95"	y="1"	width="50"	height="54" />
+		<texture id="ui_dyn_eq_dolg"			x="146"	y="1"	width="54"	height="51" />
+		<texture id="ui_dyn_eq_ecolog"			x="201"	y="1"	width="54"	height="54" />
+		<texture id="ui_dyn_eq_freedom"			x="1"	y="56"	width="50"	height="54" />
+		<texture id="ui_dyn_eq_killer"			x="52"	y="56"	width="53"	height="51" />
+		<texture id="ui_dyn_eq_monolith"		x="105"	y="56"	width="53"	height="53" />
+		<texture id="ui_dyn_eq_stalker"			x="159"	y="56"	width="54"	height="53" />
+		<texture id="ui_dyn_eq_isg"				x="1"	y="111"	width="52"	height="52" />
+		<texture id="ui_dyn_eq_greh"			x="54"	y="111"	width="52"	height="52" />
+		<texture id="ui_dyn_eq_renegade"		x="107"	y="111"	width="43"	height="54" />
+	</file>
+
+	<file name="ui\dynamic_off_faction_patches">
+		<texture id="ui_dyn_eq_army_off"			x="1"	y="1"	width="48"	height="53" />
+		<texture id="ui_dyn_eq_bandit_off"			x="50"	y="1"	width="44"	height="54" />
+		<texture id="ui_dyn_eq_csky_off"			x="95"	y="1"	width="50"	height="54" />
+		<texture id="ui_dyn_eq_dolg_off"			x="146"	y="1"	width="54"	height="51" />
+		<texture id="ui_dyn_eq_ecolog_off"			x="201"	y="1"	width="54"	height="54" />
+		<texture id="ui_dyn_eq_freedom_off"			x="1"	y="56"	width="50"	height="54" />
+		<texture id="ui_dyn_eq_killer_off"			x="52"	y="56"	width="53"	height="51" />
+		<texture id="ui_dyn_eq_monolith_off"		x="105"	y="56"	width="53"	height="53" />
+		<texture id="ui_dyn_eq_stalker_off"			x="159"	y="56"	width="54"	height="53" />
+		<texture id="ui_dyn_eq_isg_off"				x="1"	y="111"	width="52"	height="52" />
+		<texture id="ui_dyn_eq_greh_off"			x="54"	y="111"	width="52"	height="52" />
+		<texture id="ui_dyn_eq_renegade_off"		x="107"	y="111"	width="43"	height="54" />
+	</file>
+</w>
