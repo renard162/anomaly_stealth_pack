@@ -497,8 +497,10 @@ function build_desc_footer(obj, sec, str) -- one obj used
 	elseif IsBallisticPlate(sec) then
 		local degradation_rate = armor_inserts.plate_sections[sec][2]
 		if degradation_rate > 0 then
-			local durability = tostring(math.ceil(1 / degradation_rate))
-			_str = _str .. clr_g .. "  • " .. clr_1 .. " " .. str_tbl.plate_durability .. " " .. durability .. " \\n"
+			local durability = math.ceil(10 / degradation_rate)
+			local condition = obj and math.ceil(obj:condition() * durability) or durability
+			local cond_color = (condition < durability) and clr_r or clr_1
+			_str = _str .. clr_g .. "  • " .. clr_1 .. " " .. str_tbl.plate_durability .. " " .. cond_color .. tostring(condition) .. clr_1 .. " / " .. tostring(durability) .. " \\n"
 		else
 			_str = _str .. clr_g .. "  • " .. clr_1 .. " " .. str_tbl.plate_indestructible .. " \\n"
 		end

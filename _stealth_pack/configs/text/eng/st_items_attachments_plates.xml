@@ -93,7 +93,7 @@
 	</string>
 
 	<string id="st_af_plate_durability">
-		<text>max durability:</text>
+		<text>durability:</text>
 	</string>
 	<string id="st_af_plate_indestructible">
 		<text>absorbed bullets do not cause degradation</text>
