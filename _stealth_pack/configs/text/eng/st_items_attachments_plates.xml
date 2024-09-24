@@ -95,4 +95,8 @@
 		<text>can only equip one armor insert</text>
 	</string>
 
+	<string id="st_af_plate_improvised">
+		<text>improvised insert, provides limited ballistic protection</text>
+	</string>
+
 </string_table>

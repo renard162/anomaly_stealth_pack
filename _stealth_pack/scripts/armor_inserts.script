@@ -16,51 +16,76 @@
 local plate_cond = {}
 local update_plate_condition = true
 local coeff = 0.012				-- Used to calculate damage multiplier. By default, kevlar plates hit multiplier is 0.24
+local coeff_hide = 0.008		-- Hide multiplier is sigtly lower to balance very low durability
 local af_coeff = 0.026			-- Artifacts provides less protection because they are indestruvtible
 local co_coeff = 0.024			-- Compass have his unique coefficient
 
 -- 1st parameter is damage multiplier, 2nd parameter is condition loss on hit for ratio = 1, 3rd parameter is k_ap that penetrates a brand new plate
 plate_sections = {
-    ["af_kevlar"]           	= { coeff / ini_sys:r_float_ex("af_kevlar_absorbation","fire_wound_immunity")	 	, 0.14, 0.25 },		-- normal kevlar inserts stop FMJ handgun rounds (II or BR3)
-	["af_kevlar_up"]        	= { coeff / ini_sys:r_float_ex("af_kevlar_up_absorbation","fire_wound_immunity") 	, 0.12, 0.35 },		-- better kevlar inserts (IIIA or BR4)
+    ["hide_psysucker"]         	= { coeff_hide / ini_sys:r_float_ex("hide_psysucker_absorbation","fire_wound_immunity")		, 0.38, 0.25 },	-- psysucker hide
+    ["hide_flesh"]           	= { coeff_hide / ini_sys:r_float_ex("hide_flesh_absorbation","fire_wound_immunity")			, 0.16, 0.23 },	-- flesh hide
+    ["hide_controller"]        	= { coeff_hide / ini_sys:r_float_ex("hide_controller_absorbation","fire_wound_immunity")	, 0.29, 0.20 },	-- controller hide
+    ["hide_boar"]           	= { coeff_hide / ini_sys:r_float_ex("hide_boar_absorbation","fire_wound_immunity")			, 0.18, 0.30 },	-- boar hide
+    ["hide_lurker"]           	= { coeff_hide / ini_sys:r_float_ex("hide_lurker_absorbation","fire_wound_immunity")		, 0.21, 0.30 },	-- lurker hide
+    ["hide_burer"]           	= { coeff_hide / ini_sys:r_float_ex("hide_burer_absorbation","fire_wound_immunity")			, 0.42, 0.63 },	-- burer hide
+    ["hide_pseudodog"]         	= { coeff_hide / ini_sys:r_float_ex("hide_pseudodog_absorbation","fire_wound_immunity")		, 0.39, 0.20 },	-- pseudodog hide
+    ["hide_bloodsucker"]       	= { coeff_hide / ini_sys:r_float_ex("hide_bloodsucker_absorbation","fire_wound_immunity")	, 0.40, 0.20 },	-- bloodsucker hide
+    ["hide_psy_dog"]           	= { coeff_hide / ini_sys:r_float_ex("hide_psy_dog_absorbation","fire_wound_immunity")		, 0.32, 0.20 },	-- psy dog hide
+    ["hide_chimera"]           	= { coeff_hide / ini_sys:r_float_ex("hide_chimera_absorbation","fire_wound_immunity")		, 0.12, 0.25 },	-- chimera hide
+    ["hide_pseudogiant"]       	= { coeff_hide / ini_sys:r_float_ex("hide_pseudogiant_absorbation","fire_wound_immunity")	, 0.14, 0.36 },	-- pseudogiant hide
 
-    ["af_plates"]           	= { coeff / ini_sys:r_float_ex("af_plates_absorbation","fire_wound_immunity")	 	, 0.20, 0.60 },		-- standard steel plates (III+ or BR4)
-    ["af_plates_up"]        	= { coeff / ini_sys:r_float_ex("af_plates_up_absorbation","fire_wound_immunity") 	, 0.20, 1.10 },		-- next-gen steel plates (IV or BR5)
+    ["af_kevlar"]           	= { coeff / ini_sys:r_float_ex("af_kevlar_absorbation","fire_wound_immunity")	 			, 0.14, 0.25 },	-- normal kevlar inserts stop FMJ handgun rounds (II or BR3)
+	["af_kevlar_up"]        	= { coeff / ini_sys:r_float_ex("af_kevlar_up_absorbation","fire_wound_immunity") 			, 0.12, 0.35 },	-- better kevlar inserts (IIIA or BR4)
 
-	["af_ceramic"]				= { coeff / ini_sys:r_float_ex("af_ceramic_absorbation","fire_wound_immunity")	 	, 0.35, 1.30 },		-- normal ceramic plates stop AP large-calibers (IV or BR5)
-	["af_ceramic_up"]			= { coeff / ini_sys:r_float_ex("af_ceramic_up_absorbation","fire_wound_immunity")	, 0.30, 1.70 },		-- next-gen ceramic plate can stop .300 (IV or BR6)
+    ["af_plates"]           	= { coeff / ini_sys:r_float_ex("af_plates_absorbation","fire_wound_immunity")	 			, 0.20, 0.60 },	-- standard steel plates (III+ or BR4)
+    ["af_plates_up"]        	= { coeff / ini_sys:r_float_ex("af_plates_up_absorbation","fire_wound_immunity") 			, 0.20, 1.10 },	-- next-gen steel plates (IV or BR5)
 
-	["af_polymer"]				= { coeff / ini_sys:r_float_ex("af_polymer_absorbation","fire_wound_immunity")	 	, 0.10, 0.45 },		-- standard UHMWPE plates (III or BR4)
-	["af_polymer_up"]			= { coeff / ini_sys:r_float_ex("af_polymer_up_absorbation","fire_wound_immunity")	, 0.15, 1.10 },		-- next-gen UHMWPE/ceramic composite plates (IV or BR5)
+	["af_ceramic"]				= { coeff / ini_sys:r_float_ex("af_ceramic_absorbation","fire_wound_immunity")	 			, 0.35, 1.30 },	-- normal ceramic plates stop AP large-calibers (IV or BR5)
+	["af_ceramic_up"]			= { coeff / ini_sys:r_float_ex("af_ceramic_up_absorbation","fire_wound_immunity")			, 0.30, 1.70 },	-- next-gen ceramic plate can stop .300 (IV or BR6)
 
-	["af_medusa"]				= { coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")		, 0.00, 0.35 },		-- Jellyfish (IIIA or BR4)
-	["af_medusa_af_aac"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Jellyfish AAC (II or BR3)
-	["af_medusa_af_aam"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Jellyfish AAM (II or BR3)
-	["af_medusa_af_iam"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")	, 0.00, 0.14 },		-- Jellyfish IAM (II or BR3)
+	["af_polymer"]				= { coeff / ini_sys:r_float_ex("af_polymer_absorbation","fire_wound_immunity")	 			, 0.10, 0.45 },	-- standard UHMWPE plates (III or BR4)
+	["af_polymer_up"]			= { coeff / ini_sys:r_float_ex("af_polymer_up_absorbation","fire_wound_immunity")			, 0.15, 1.10 },	-- next-gen UHMWPE/ceramic composite plates (IV or BR5)
 
-	["af_vyvert"]				= { coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")		, 0.00, 0.45 },		-- Wrenched (III or BR4)
-	["af_vyvert_af_aac"]		= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")	, 0.00, 0.24 },		-- Wrenched AAC (IIIA or BR4)
-	["af_vyvert_af_aam"]		= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")	, 0.00, 0.24 },		-- Wrenched AAM (IIIA or BR4)
-	["af_vyvert_af_iam"]		= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")	, 0.00, 0.24 },		-- Wrenched IAM (IIIA or BR4)
+	["af_medusa"]				= { coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")				, 0.00, 0.35 },	-- Jellyfish (IIIA or BR4)
+	["af_medusa_af_aac"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")			, 0.00, 0.14 },	-- Jellyfish AAC (II or BR3)
+	["af_medusa_af_aam"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")			, 0.00, 0.14 },	-- Jellyfish AAM (II or BR3)
+	["af_medusa_af_iam"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")			, 0.00, 0.14 },	-- Jellyfish IAM (II or BR3)
 
-	["af_empty"]				= { coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")		, 0.00, 0.60 },		-- Empty (III+ or BR4)
-	["af_empty_af_aac"]			= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")		, 0.00, 0.40 },		-- Empty AAC (III or BR4)
-	["af_empty_af_aam"]			= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")		, 0.00, 0.40 },		-- Empty AAM (III or BR4)
-	["af_empty_af_iam"]			= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")		, 0.00, 0.40 },		-- Empty IAM (III or BR4)
+	["af_vyvert"]				= { coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")				, 0.00, 0.45 },	-- Wrenched (III or BR4)
+	["af_vyvert_af_aac"]		= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")			, 0.00, 0.24 },	-- Wrenched AAC (IIIA or BR4)
+	["af_vyvert_af_aam"]		= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")			, 0.00, 0.24 },	-- Wrenched AAM (IIIA or BR4)
+	["af_vyvert_af_iam"]		= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")			, 0.00, 0.24 },	-- Wrenched IAM (IIIA or BR4)
 
-	["af_full_empty"]			= { coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity")	, 0.00, 1.10 },		-- Full Empty (IV or BR5)
-	["af_full_empty_af_aac"]	= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity"), 0.00, 0.50 },		-- Full Empty AAC (III+ or BR4)
-	["af_full_empty_af_aam"]	= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity"), 0.00, 0.50 },		-- Full Empty AAM (III+ or BR4)
-	["af_full_empty_af_iam"]	= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity"), 0.00, 0.50 },		-- Full Empty IAM (III+ or BR4)
+	["af_empty"]				= { coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")				, 0.00, 0.60 },	-- Empty (III+ or BR4)
+	["af_empty_af_aac"]			= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")				, 0.00, 0.40 },	-- Empty AAC (III or BR4)
+	["af_empty_af_aam"]			= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")				, 0.00, 0.40 },	-- Empty AAM (III or BR4)
+	["af_empty_af_iam"]			= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")				, 0.00, 0.40 },	-- Empty IAM (III or BR4)
 
-	["af_compass"]				= { co_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 9.99 },		-- Compass
-	["af_compass_af_aac"]		= { co_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 9.99 },		-- Compass AAC
-	["af_compass_af_aam"]		= { co_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 9.99 },		-- Compass AAM
-	["af_compass_af_iam"]		= { co_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")	, 0.00, 9.99 },		-- Compass IAM
+	["af_full_empty"]			= { coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity")			, 0.00, 1.10 },	-- Full Empty (IV or BR5)
+	["af_full_empty_af_aac"]	= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity")		, 0.00, 0.50 },	-- Full Empty AAC (III+ or BR4)
+	["af_full_empty_af_aam"]	= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity")		, 0.00, 0.50 },	-- Full Empty AAM (III+ or BR4)
+	["af_full_empty_af_iam"]	= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity")		, 0.00, 0.50 },	-- Full Empty IAM (III+ or BR4)
+
+	["af_compass"]				= { co_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")			, 0.00, 9.99 },	-- Compass
+	["af_compass_af_aac"]		= { co_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")			, 0.00, 9.99 },	-- Compass AAC
+	["af_compass_af_aam"]		= { co_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")			, 0.00, 9.99 },	-- Compass AAM
+	["af_compass_af_iam"]		= { co_coeff / ini_sys:r_float_ex("af_compass_absorbation","fire_wound_immunity")			, 0.00, 9.99 },	-- Compass IAM
 }
 
 -- Other option is check if "plate_sections[sec][2] <= 0" but this method can create bugs due float point arithmetics or garbage memory values
 local is_plate_artifact = {
+	["hide_psysucker"]        	= false,	-- psysucker hide
+	["hide_flesh"]           	= false,	-- flesh hide
+	["hide_controller"]        	= false,	-- controller hide
+	["hide_boar"]           	= false,	-- boar hide
+	["hide_lurker"]           	= false,	-- lurker hide
+	["hide_burer"]           	= false,	-- burer hide
+	["hide_pseudodog"]         	= false,	-- pseudodog hide
+	["hide_bloodsucker"]       	= false,	-- bloodsucker hide
+	["hide_psy_dog"]           	= false,	-- psy dog hide
+	["hide_chimera"]           	= false,	-- chimera hide
+	["hide_pseudogiant"]       	= false,	-- pseudogiant hide
+
 	["af_kevlar"]           	= false,	-- normal kevlar inserts stop FMJ handgun rounds (II or BR3)
 	["af_kevlar_up"]        	= false,	-- better kevlar inserts (IIIA or BR4)
     ["af_plates"]           	= false,	-- standard steel plates (III+ or BR4)
@@ -196,7 +221,7 @@ local function actor_on_before_hit(shit,bone_id)
 				plate = obj
 				plate_name = plate:section()
 				is_artifact = is_plate_artifact[plate_name] or (is_plate_artifact[plate_name] == nil)
-				hit_multiplier = plate_sections[plate_name][1]
+				hit_multiplier = math.min(plate_sections[plate_name][1], 0.75)
 				
 				if not plate_cond[plate:id()] then
 					found =  true
