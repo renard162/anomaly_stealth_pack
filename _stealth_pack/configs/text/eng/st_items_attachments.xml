@@ -188,7 +188,8 @@
 	<string id="st_hide_flesh_descr">
 		<text>Hide removed from a breed of mutated pigs commonly referred to as fleshes. Its heavy weight (its main drawback) results from a thick layer of fat underneath the relatively soft and shallow skin. It offers low physical protection, but on the other hand considerably reduces the harmful effects of chemical, thermal and electrical anomalies. Can be used only for minor repairs as the layer of fat is useless for the purposes of armour maintenance and must be cut off, leaving only a small patch of shallow skin tissue.\n \n
 		%c[ui_gray_2]PROPERTIES:\n
-		%c[d_cyan] • %c[ui_gray_2] light mutant pelt\n%c[d_purple] • %c[ui_gray_2] damage prot. negligible\n
+		%c[d_cyan] • %c[ui_gray_2] light mutant pelt\n
+		%c[d_purple] • %c[ui_gray_2] damage prot. negligible\n
 		</text>
 	</string>
 	

@@ -326,7 +326,6 @@
 		%c[ui_gray_2]PROPERTIES:\n
 		%c[d_cyan] • %c[ui_gray_2] technological item\n
 		%c[d_cyan] • %c[ui_gray_2] valuable\n
-		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
         %c[d_cyan] • %c[ui_gray_2] provides weakened Class II / BR3 protection\n
         %c[d_red] • %c[ui_gray_2] artefact storage weakens ballistic protection\n
 		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
@@ -349,7 +348,6 @@
 		%c[ui_gray_2]PROPERTIES:\n
 		%c[d_cyan] • %c[ui_gray_2] technological item\n
 		%c[d_cyan] • %c[ui_gray_2] valuable\n
-		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
         %c[d_cyan] • %c[ui_gray_2] provides weakened Class IIIA / BR4 protection\n
         %c[d_red] • %c[ui_gray_2] artefact storage weakens ballistic protection\n
 		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
@@ -372,7 +370,6 @@
 		%c[ui_gray_2]PROPERTIES:\n
 		%c[d_cyan] • %c[ui_gray_2] technological item\n
 		%c[d_cyan] • %c[ui_gray_2] valuable\n
-		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
         %c[d_cyan] • %c[ui_gray_2] provides weakened Class III / BR4 protection\n
         %c[d_red] • %c[ui_gray_2] artefact storage weakens ballistic protection\n
 		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
@@ -395,7 +392,6 @@
 		%c[ui_gray_2]PROPERTIES:\n
 		%c[d_cyan] • %c[ui_gray_2] technological item\n
 		%c[d_cyan] • %c[ui_gray_2] valuable\n
-		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
         %c[d_cyan] • %c[ui_gray_2] provides weakened Class III+ / BR4 protection\n
         %c[d_red] • %c[ui_gray_2] artefact storage weakens ballistic protection\n
 		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
@@ -667,7 +663,6 @@
 		%c[d_cyan] • %c[ui_gray_2] technological item\n
 		%c[d_cyan] • %c[ui_gray_2] valuable\n
         %c[d_cyan] • %c[ui_gray_2] space-time distortion caused by artefact causes a slight reduction in damage received\n
-		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
 		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
 		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
 		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n

@@ -220,7 +220,6 @@
 		\n \nRadiation output is low on the artefact radiation scale.\n \n
 		%c[ui_gray_2]PROPERTIES:\n
         %c[d_cyan] • %c[ui_gray_2] provides Class IIIA / BR4 protection\n
-		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
 		</text>
 	</string>
 	
@@ -236,7 +235,6 @@
 		\n \nRadiation output is average on the artefact radiation scale.\n \n
 		%c[ui_gray_2]PROPERTIES:\n
         %c[d_cyan] • %c[ui_gray_2] provides Class III / BR4 protection\n
-		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
 		</text>
 	</string>
 	
@@ -252,7 +250,6 @@
 		\n \nRadiation output is average on the artefact radiation scale.\n \n
 		%c[ui_gray_2]PROPERTIES:\n
         %c[d_cyan] • %c[ui_gray_2] provides Class III+ / BR4 protection\n
-		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
 		</text>
 	</string> 
  	
@@ -268,7 +265,6 @@
 		\n \nRadiation output is high on the artefact radiation scale.\n \n
 		%c[ui_gray_2]PROPERTIES:\n
         %c[d_cyan] • %c[ui_gray_2] provides Class IV / BR5 protection\n
-		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
 		</text>
 	</string> 
 	
@@ -451,7 +447,6 @@
 		%c[d_green] • %c[ui_gray_2] reduces fast travel time\n
 		%c[d_green] • %c[ui_gray_2] releases the full potential of spatial anomalies\n
         %c[d_cyan] • %c[ui_gray_2] space-time distortion caused by artefact causes a slight reduction in damage received\n
-		%c[d_cyan] • %c[ui_gray_2] can only equip one armor insert\n
 		</text>
 	</string>
 	

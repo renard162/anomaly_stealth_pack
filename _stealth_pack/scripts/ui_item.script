@@ -157,6 +157,7 @@ function refresh_strings()
 	str_tbl.bck_camo_small_penalty = gc("st_camo_backpack_small_penalty")
 	str_tbl.bck_camo_great_penalty = gc("st_camo_backpack_great_penalty")
 
+	str_tbl.plate_advise = gc("st_af_plate_insert_advise")
 	str_tbl.plate_durability = gc("st_af_plate_durability")
 	str_tbl.plate_indestructible = gc("st_af_plate_indestructible")
 end
@@ -496,6 +497,8 @@ function build_desc_footer(obj, sec, str) -- one obj used
 
 	elseif IsBallisticPlate(sec) then
 		local degradation_rate = armor_inserts.plate_sections[sec][2]
+
+		_str = _str .. clr_b .. "  • " .. clr_1 .. " " .. str_tbl.plate_advise .. " \\n"
 		if degradation_rate > 0 then
 			local durability = math.ceil(10 / degradation_rate)
 			local condition = obj and math.ceil(obj:condition() * durability) or durability
