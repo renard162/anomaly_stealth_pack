@@ -42,46 +42,39 @@ function actor_on_update()
     end
 end
 
-local TorchToggle = actor_effects.Hit_TorchToggle
+-- local TorchToggle = actor_effects.Hit_TorchToggle
+local SilencerToggle = item_weapon.test_silencer
 
-function actor_effects.Hit_TorchToggle()
+function item_weapon.test_silencer()
     return
 end
 
-local laser_change_state = false
+local silencer_change_state = false
 
 function on_key_press(key)
     local bind = dik_to_bind(key)
-    if bind ~= key_bindings.kTORCH then return end
-    if not actor_menu.is_hud_free() or device():is_paused() then
-        TorchToggle()
-        return
-    end
-    local wpn = db.actor:active_item()
-    local section = wpn and wpn:section()
-	local w_id = wpn and wpn:id()
-    if not section then TorchToggle() return end
-    if not w_id then TorchToggle() return end
-    if not has_laser(section) then TorchToggle() return end
-    local state = wpn:get_state()
-    if state ~= 0 then TorchToggle() return end
+    if bind ~= key_bindings.kCUSTOM13 then return end
+
     CreateTimeEvent("haruka_hold", "haruka_long_hold", 0.5, function()
-        laser_change_state = true
-        toggle_laser(w_id)
+        silencer_change_state = true
+        SilencerToggle()
         return true
     end)
 end
 
 function on_key_release(key)
     local bind = dik_to_bind(key)
-    if bind ~= key_bindings.kTORCH then return end
+    if bind ~= key_bindings.kCUSTOM13 then return end
     RemoveTimeEvent("haruka_hold", "haruka_long_hold")
 
-    if not laser_change_state then
-        TorchToggle()
+    local wpn = db.actor:active_item()
+    local section = wpn and wpn:section()
+	local w_id = wpn and wpn:id()
+    if (not silencer_change_state) and section and w_id and has_laser(section) then
+        toggle_laser(w_id)
     end
 
-    laser_change_state = false
+    silencer_change_state = false
 end
 
 function has_laser(section)

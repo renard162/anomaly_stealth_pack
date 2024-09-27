@@ -10,6 +10,8 @@
 local mcm_id = "detector_selector"
 local mcm_key = DIK_keys.DIK_H
 
+fixed_categories = {}
+
 categories = {
     anomaly = {
         devices = {
@@ -18,25 +20,25 @@ categories = {
             ["detector_advanced"] = 2,
             ["detector_simple"] = 1
         },
-        defaults = {keybind = mcm_key, modifier = 0, second_key = 0}
+        defaults = {keybind = bind_to_dik(key_bindings.kCUSTOM21), modifier = 0, second_key = 0}
     },
     radio = {
         devices = {
             ["detector_radio"] = 1
         },
-        defaults = {keybind = mcm_key, modifier = 2, second_key = 0}
+        defaults = {keybind = bind_to_dik(key_bindings.kCUSTOM21), modifier = 2, second_key = 0}
     },
     geiger = {
         devices = {
             ["detector_geiger"] = 1
         },
-        defaults = {keybind = mcm_key, modifier = 1, second_key = 3}
+        defaults = {keybind = bind_to_dik(key_bindings.kCUSTOM22), modifier = 0, second_key = 0}
     },
     lights = {
         devices = {
             ["device_flashlight"] = 1
         },
-        defaults = {keybind = mcm_key, modifier = 1, second_key = 0}
+        defaults = {keybind = bind_to_dik(key_bindings.kCUSTOM22), modifier = 2, second_key = 0}
     },
     detector_anomaly = {
         devices = {
@@ -49,6 +51,15 @@ categories = {
 local keybind_instances = {}
 local string_format = string.format
 local mcm_keybinds = ui_mcm and ui_mcm.key_hold
+
+function update_fixed_categories_binds()
+    fixed_categories = {
+        anomaly = {keybind = bind_to_dik(key_bindings.kCUSTOM21), modifier = 0, second_key = 0},
+        radio = {keybind = bind_to_dik(key_bindings.kCUSTOM21), modifier = 2, second_key = 0},
+        geiger = {keybind = bind_to_dik(key_bindings.kCUSTOM14), modifier = 2, second_key = 0},
+        lights = {keybind = bind_to_dik(key_bindings.kTORCH), modifier = 0, second_key = 0},
+    }
+end
 
 function get_options_for_key(category)
     local template = {
@@ -78,6 +89,7 @@ function get_options_for_key(category)
 end
 
 function on_mcm_load()
+    update_fixed_categories_binds()
     local options = {
         id = mcm_id, sh = true,
         gr = {
@@ -97,9 +109,11 @@ function on_mcm_load()
         }
     end
     for category, _ in spairs(categories) do
-        local key_options = get_options_for_key(category)
-        for key = 1, #key_options do
-            options.gr[#options.gr + 1] = key_options[key]
+        if not fixed_categories[category] then
+            local key_options = get_options_for_key(category)
+            for key = 1, #key_options do
+                options.gr[#options.gr + 1] = key_options[key]
+            end
         end
     end
     return options
@@ -221,20 +235,32 @@ function InputManager:destroy()
 end
 
 function on_option_change()
+    update_fixed_categories_binds()
     for category, _ in pairs(categories) do
         if keybind_instances[category] then
             keybind_instances[category]:destroy()
         end
-        keybind_instances[category] = InputManager(category, {
-                keybind = ui_mcm.get(string_format("%s/keybind_%s", mcm_id, category)),
-                modifier = ui_mcm.get(string_format("%s/modifier_%s", mcm_id, category)),
-                second_key = ui_mcm.get(string_format("%s/second_key_%s", mcm_id, category))
-            }
-        )
+        if fixed_categories[category] then
+            keybind_instances[category] = InputManager(category, {
+                    keybind = fixed_categories[category].keybind,
+                    modifier = fixed_categories[category].modifier,
+                    second_key = fixed_categories[category].second_key
+                }
+            )
+        else
+            keybind_instances[category] = InputManager(category, {
+                    keybind = ui_mcm.get(string_format("%s/keybind_%s", mcm_id, category)),
+                    modifier = ui_mcm.get(string_format("%s/modifier_%s", mcm_id, category)),
+                    second_key = ui_mcm.get(string_format("%s/second_key_%s", mcm_id, category))
+                }
+            )
+        end
     end
 end
 
 function on_game_start()
-    RegisterScriptCallback("on_option_change", on_option_change)
     on_option_change()
+    RegisterScriptCallback("on_option_change", on_option_change)
+    RegisterScriptCallback("actor_on_first_update", on_option_change)
+    RegisterScriptCallback("main_menu_on_keyboard", on_option_change)
 end

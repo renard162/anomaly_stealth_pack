@@ -1665,6 +1665,18 @@ local function actor_on_update()
 	Update_StaminaHUD(actor)
 end
 
+local torch_change_state = false
+local function on_key_press(key)
+	local bind = dik_to_bind(key)
+	if not (bind == key_bindings.kTORCH) then return end
+
+	CreateTimeEvent("headlamp_hold", "headlamp_long_hold", 0.5, function()
+        torch_change_state = true
+        Hit_TorchToggle()
+        return true
+    end)
+end
+
 local function on_key_release(key)
 	animation_start = true
 	local bind = dik_to_bind(key)
@@ -1675,7 +1687,8 @@ local function on_key_release(key)
 		
 	-- Toggle Torch
 	elseif (bind == key_bindings.kTORCH) then
-		Hit_TorchToggle()
+		RemoveTimeEvent("headlamp_hold", "headlamp_long_hold")
+		torch_change_state = false
 		
 	-- Grenade Quickthrow
 	elseif (bind == key_bindings.kCUSTOM19) then
@@ -1877,6 +1890,7 @@ end
 function on_game_start()
 	init_settings()
 
+	RegisterScriptCallback("on_key_press",on_key_press)
 	RegisterScriptCallback("on_key_release",on_key_release)
 	RegisterScriptCallback("actor_item_to_slot",actor_item_to_slot)
 	RegisterScriptCallback("actor_item_to_ruck",actor_item_to_ruck)

@@ -954,11 +954,7 @@ local function on_key_release(key)
 	-- Ammo wheel
 	if (bind == key_bindings.kWPN_NEXT) and (time_global() > ui_delay) then
 		start_ammo_wheel()
-		
-	-- Toggle silencer
-	elseif (bind == key_bindings.kCUSTOM13) then
-		test_silencer()
-		
+
 	-- Unload all weapons
 	elseif (bind == key_bindings.kCUSTOM15) then
 		unload_all_weapons()

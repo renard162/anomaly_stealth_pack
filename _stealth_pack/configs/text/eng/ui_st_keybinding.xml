@@ -104,7 +104,7 @@
 		<text>Previous firing mode</text>
 	</string>
 	<string id="kb_suppressor">
-		<text>Suppressor</text>
+		<text>Toggle Laser/Silencer</text>
 	</string>
 	<string id="kb_grenade_throw">
 		<text>Grenade quick-throw</text>
@@ -124,10 +124,10 @@
 		<text>Inventory</text>
 	</string>
 	<string id="kb_torch">
-		<text>Torch</text>
+		<text>Torch/Headlamp</text>
 	</string>
 	<string id="kb_detector">
-		<text>Detector</text>
+		<text>Wield/Put away equipped device</text>
 	</string>
 	<string id="kb_night_vision">
 		<text>Night vision</text>
@@ -155,6 +155,9 @@
 	</string>
 	<string id="kb_item_anim">
 		<text>Item animations</text>
+	</string>
+	<string id="kb_quick_detector_radio">
+		<text>Quick equip detector (press)/radio (hold)</text>
 	</string>
 
 <string id="kb_grp_pda">
@@ -248,12 +251,12 @@
 	</string>
 	
 <!-- Not used -->
-	<string id="kb_contacts">
-		<text>Contacts in the PDA</text>
-	</string>
-	<string id="kb_grp_multiplayer">
-		<text>Multiplayer</text>
-	</string>
+<string id="kb_contacts">
+	<text>Contacts in the PDA</text>
+</string>
+<string id="kb_grp_multiplayer">
+	<text>Multiplayer</text>
+</string>
 	<string id="kb_map">
 		<text>Map</text>
 	</string>

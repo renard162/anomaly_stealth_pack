@@ -47,6 +47,7 @@
 		<command id="kb_detector"						exe="show_detector"/>
 		<command id="kb_night_vision"					exe="night_vision"/>
 		<command id="kb_geiger"							exe="custom14"/>
+		<command id="kb_quick_detector_radio"			exe="custom21"/>
 		<command id="kb_mask_clean"               		exe="cam_zoom_in"/>
 		<command id="kb_drop"						  	exe="drop"/>
 		<command id="kb_quick_use_1"					exe="quick_use_1"/>
@@ -89,9 +90,8 @@
 		<command id="ui_mm_load_game"					exe="quick_load"/>
 		<command id="kb_screenshot"						exe="screenshot"/>
 		<command id="kb_quit"						  	exe="quit"/>
-		
+
 		<!-- More custom keybinds you can use
-		<command id="kb_custom_20"						exe="custom20"/>
 		<command id="kb_custom_21"						exe="custom21"/>
 		<command id="kb_custom_22"						exe="custom22"/>
 		<command id="kb_custom_23"						exe="custom23"/>

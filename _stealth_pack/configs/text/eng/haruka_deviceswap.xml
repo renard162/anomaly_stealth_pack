@@ -8,22 +8,22 @@
 	</string>
 		<string id="ui_mcm_detector_selector_keybind_anomaly">
 		<text>
-		Detector select key
+		Detector select key (HARDCODED, debug only)
 		</text>
 	</string>
 	<string id="ui_mcm_detector_selector_keybind_lights">
 		<text>
-		Flashlight select key
+		Flashlight select key (HARDCODED, debug only)
 		</text>
 	</string>
 	<string id="ui_mcm_detector_selector_keybind_radio">
 		<text>
-		RF Receiver select key
+		RF Receiver select key (HARDCODED, debug only)
 		</text>
 	</string>
 	<string id="ui_mcm_detector_selector_keybind_geiger">
 		<text>
-		Geiger select key
+		Geiger select key (HARDCODED, debug only)
 		</text>
 	</string>
 	<string id="ui_mcm_detector_selector_keybind_glowsticks">
