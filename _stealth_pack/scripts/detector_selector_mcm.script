@@ -57,7 +57,7 @@ function update_fixed_categories_binds()
         anomaly = {keybind = bind_to_dik(key_bindings.kCUSTOM21), modifier = 0, second_key = 0},
         radio = {keybind = bind_to_dik(key_bindings.kCUSTOM21), modifier = 2, second_key = 0},
         geiger = {keybind = bind_to_dik(key_bindings.kCUSTOM14), modifier = 2, second_key = 0},
-        lights = {keybind = bind_to_dik(key_bindings.kTORCH), modifier = 0, second_key = 0},
+        lights = {keybind = bind_to_dik(key_bindings.kTORCH), modifier = 2, second_key = 0},
     }
 end
 

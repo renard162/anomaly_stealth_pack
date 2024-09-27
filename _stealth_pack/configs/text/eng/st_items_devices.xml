@@ -142,7 +142,7 @@
 		<text>A standard head-mounted flashlight in fully working order. Useful for stalkers who find themselves out and about after dark, but may attract trouble if used unwisely.\n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] technological item\n
-		%c[d_green] • %c[ui_gray_2] hold Torch/Headlamp key to toggle on/off\n
+		%c[d_green] • %c[ui_gray_2] press Torch/Headlamp key to toggle on/off\n
 		%c[d_blue] • %c[ui_gray_2] low electric power consumption\n
 		</text>
 	</string>
@@ -157,7 +157,7 @@
 		%c[d_blue] • %c[ui_gray_2] technological item\n
 		%c[d_purple] • %c[ui_gray_2] nightvision: %c[ui_gray_1]1PN93-1\n
 		%c[d_green] • %c[ui_gray_2] hold Nightvision key to toggle on/off\n
-		%c[d_green] • %c[ui_gray_2] hold Torch/Headlamp key to toggle headlamp on/off\n
+		%c[d_green] • %c[ui_gray_2] press Torch/Headlamp key to toggle headlamp on/off\n
 		%c[d_blue] • %c[ui_gray_2] low electric power consumption\n
 		</text>
 	</string>
@@ -172,7 +172,7 @@
 		%c[d_blue] • %c[ui_gray_2] technological item\n
 		%c[d_purple] • %c[ui_gray_2] nightvision: %c[ui_gray_1]PN21KL\n
 		%c[d_green] • %c[ui_gray_2] hold Nightvision key to toggle on/off\n
-		%c[d_green] • %c[ui_gray_2] hold Torch/Headlamp key to toggle headlamp on/off\n
+		%c[d_green] • %c[ui_gray_2] press Torch/Headlamp key to toggle headlamp on/off\n
 		%c[d_blue] • %c[ui_gray_2] moderate electric power consumption\n
 		</text>
 	</string>
@@ -186,7 +186,7 @@
 		%c[d_blue] • %c[ui_gray_2] technological item\n
 		%c[d_purple] • %c[ui_gray_2] nightvision: %c[ui_gray_1]Oracle\n
 		%c[d_green] • %c[ui_gray_2] hold Nightvision key to toggle on/off\n
-		%c[d_green] • %c[ui_gray_2] hold Torch/Headlamp key to toggle headlamp on/off\n
+		%c[d_green] • %c[ui_gray_2] press Torch/Headlamp key to toggle headlamp on/off\n
 		%c[d_blue] • %c[ui_gray_2] high electric power consumption\n
 		</text>
 	</string>
@@ -198,7 +198,7 @@
 		<text>A general-purpose hand-held flashlight. Unfortunately, it cannot be used along most of the weaponry since it requires a free hand. Thus is can be simultaneously used only with pistols and other single-handed equipment.\n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] technological item\n
-		%c[d_green] • %c[ui_gray_2] press Torch/Headlamp key to quick equip\n
+		%c[d_green] • %c[ui_gray_2] hold Torch/Headlamp key to quick equip\n
 		%c[d_blue] • %c[ui_gray_2] very low electric power consumption\n
 		</text>
 	</string>

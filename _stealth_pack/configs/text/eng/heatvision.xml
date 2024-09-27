@@ -15,7 +15,7 @@
 		%c[d_blue] • %c[ui_gray_2] technological item\n
 		%c[d_green] • %c[ui_gray_2] hold Nightvision key to toggle on/off\n
 		%c[d_green] • %c[ui_gray_2] press Nightvision key to change mode\n
-		%c[d_green] • %c[ui_gray_2] hold Torch/Headlamp key to toggle headlamp on/off\n
+		%c[d_green] • %c[ui_gray_2] press Torch/Headlamp key to toggle headlamp on/off\n
 		%c[d_blue] • %c[ui_gray_2] extreme electric power consumption\n
 		</text>
 	</string>
