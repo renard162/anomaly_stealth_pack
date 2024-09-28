@@ -1,7 +1,7 @@
 -- Default config
 config = {
-	scanning_range_tier_1 = 5,
-	scanning_range_tier_2 = 33,
+	scanning_range_tier_1 = 15,
+	scanning_range_tier_2 = 35,
 	scanning_range_tier_3 = 150,
 	trim_text = true,
 	list_row_height = 165
