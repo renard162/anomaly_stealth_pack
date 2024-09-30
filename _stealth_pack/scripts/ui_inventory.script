@@ -252,11 +252,12 @@ function UIInventory:__init() super()
 		["custom_8"]        = { index= 18,  name_func= {"Name_Custom",8},      mode_func= {"Mode_Custom",8},	cont_func= {"Cont_Custom",8},   		precondition1= {"Name_Custom",8 },                                             action= {"Action_Custom",8} },
 		["custom_9"]        = { index= 19,  name_func= {"Name_Custom",9},      mode_func= {"Mode_Custom",9},	cont_func= {"Cont_Custom",9},   		precondition1= {"Name_Custom",9 },                                             action= {"Action_Custom",9} },
 		["custom_10"]       = { index= 20,  name_func= {"Name_Custom",10},     mode_func= {"Mode_Custom",10},	cont_func= {"Cont_Custom",10},  		precondition1= {"Name_Custom",10},                                             action= {"Action_Custom",10} },
-		["detach_silencer"] = { index= 21,  name= "st_detach_silencer",        mode= {"loot","inventory"},		cont= {"actor_equ","actor_bag","npc_bag"},        precondition1= {"Cond_Detach_Silencer"},                                       action= {"Action_Detach_Silencer"} },
-		["detach_scope"] 	= { index= 22,  name= "st_detach_scope",           mode= {"loot","inventory"},		cont= {"actor_equ","actor_bag","npc_bag"},        precondition1= {"Cond_Detach_Scope"},                                          action= {"Action_Detach_Scope"} },
-		["detach_gl"]       = { index= 23,  name= "st_detach_gl",              mode= {"loot","inventory"},		cont= {"actor_equ","actor_bag","npc_bag"},        precondition1= {"Cond_Detach_GL"},                                             action= {"Action_Detach_GL"} },
-		["drop"]            = { index= 24,  name= "st_drop",                   mode= {"inventory"},				cont= {"actor_equ","actor_bag"},        precondition1= {"Cond_NotQuest"},                                              action= {"Action_Drop"} },
-		["drop_all"]        = { index= 25,  name= "st_drop_all",               mode= {"inventory"},				cont= {"actor_bag"},                    precondition1= {"Cond_Childs"}, precondition2= {"Cond_NotQuest"},          	   action= {"Action_Drop_All"} },
+		["detach_silencer"] = { index= 21,  name= "st_detach_silencer",        mode= {"loot","inventory"},		cont= {"actor_equ","actor_bag","npc_bag"},        precondition1= {"Cond_Detach_Silencer"},                             action= {"Action_Detach_Silencer"} },
+		["detach_scope"] 	= { index= 22,  name= "st_detach_scope",           mode= {"loot","inventory"},		cont= {"actor_equ","actor_bag","npc_bag"},        precondition1= {"Cond_Detach_Scope"},                                action= {"Action_Detach_Scope"} },
+		["detach_tk"]	 	= { index= 23,  name= "st_detach_tactical_kit",    mode= {"loot","inventory"},		cont= {"actor_equ","actor_bag","npc_bag"},        precondition1= {"Cond_Detach_TK"},	                               action= {"Action_Detach_TK"} },
+		["detach_gl"]       = { index= 24,  name= "st_detach_gl",              mode= {"loot","inventory"},		cont= {"actor_equ","actor_bag","npc_bag"},        precondition1= {"Cond_Detach_GL"},                                   action= {"Action_Detach_GL"} },
+		["drop"]            = { index= 25,  name= "st_drop",                   mode= {"inventory"},				cont= {"actor_equ","actor_bag"},        precondition1= {"Cond_NotQuest"},                                              action= {"Action_Drop"} },
+		["drop_all"]        = { index= 26,  name= "st_drop_all",               mode= {"inventory"},				cont= {"actor_bag"},                    precondition1= {"Cond_Childs"}, precondition2= {"Cond_NotQuest"},          	   action= {"Action_Drop_All"} },
 	}
 	for _,props in pairs(self.properties) do
 		if props.mode then t2k_table(props.mode) end
@@ -1043,8 +1044,14 @@ end
 
 function UIInventory:Cond_Detach_Scope(obj, bag)
 	obj = self:CheckItem(obj,"Cond_Detach_Scope")
-	
-	return utils_item.has_attached_scope(obj)
+
+	return utils_item.has_attached_scope(obj) and (not ini_sys:r_bool_ex(obj:section(), "installed_tactical_kit", false))
+end
+
+function UIInventory:Cond_Detach_TK(obj, bag)
+	obj = self:CheckItem(obj,"Cond_Detach_TK")
+
+	return utils_item.has_attached_scope(obj) and ini_sys:r_bool_ex(obj:section(), "installed_tactical_kit", false)
 end
 
 function UIInventory:Cond_Detach_GL(obj, bag)
@@ -1241,6 +1248,16 @@ function UIInventory:Action_Detach_Scope(obj, bag)
 
 	utils_item.detach_addon(obj, nil, "scope")
 	
+	self:PlaySND(snd_detach_addon)
+	self:On_Item_Update()
+end
+
+function UIInventory:Action_Detach_TK(obj, bag)
+	obj = self:CheckItem(obj,"Action_Detach_TK")
+
+	utils_item.detach_addon(obj, nil, "scope")
+
+	actor_effects.play_item_fx("disassemble_metal_fast")
 	self:PlaySND(snd_detach_addon)
 	self:On_Item_Update()
 end

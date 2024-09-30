@@ -82,12 +82,16 @@ function attach_scope(item, weapon)
 	if not (check_scope(item:section(), weapon:section())) then
 		return
 	end
-	
+
 	-- Create objects for the 'before' and 'after' attachment weapons.
 	local old_weapon = alife_object(weapon:id())
 	local new_weapon = old_weapon and alife_clone_weapon(old_weapon, child_section)
 	if new_weapon then
 		alife_release(item)
+	end
+
+	if ini_sys:r_bool_ex(child_section, "installed_tactical_kit", false) then
+		actor_effects.play_item_fx("disassemble_metal_fast")
 	end
 end
 

@@ -175,7 +175,7 @@ kill_msg_width                           = 82
 kill_msg_height                          = 28
 
 hud_fov                                  = 0.78
-;-----------------------------------------------------------------------------------------SND----------------------------------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------SND---------------------------------------------------
 snd_bore                = $no_sound
 snd_draw                = weapons\scar_yang_prince\scar_inspect
 snd_holster				= weapons\generic\rifle_holster
@@ -199,7 +199,7 @@ snd_empty				= weapons\generic\ar_empty,	0.7
 
 snd_reload_misfire      = weapons\ak12custom\ak12_m1_misfire
 snd_switch_mode			= weapons\ru556\ru556_firemode
-;-----------------------------------------------------------------------------------------HUD----------------------------------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------HUD----------------------------------------------------
 [wpn_ak5c_bas_hud]:hud_base
 
 item_visual                              = dynamics\weapons\wpn_ak5c_bas\wpn_ak5c_hud.ogf
@@ -276,7 +276,7 @@ fire_point                               = 0, 0, 0
 fire_point2                              = 0, 0, 0
 
 freelook_z_offset_mul					 = 0.15
-;---------------------------------------------------------------------------Addons----------------------------------------------------------------------
+;---------------------------------------------------------------------------Addons------------------------------
 
 [wpn_ak5c_bas_acog]:wpn_ak5c_bas
 
@@ -291,6 +291,7 @@ scope_zoom_factor                                  = 25
 zoom_rotate_time                                   = 0.25
 
 hud					                               = wpn_ak5c_bas_acog_hud
+
 
 [wpn_ak5c_bas_acog_hud]:wpn_ak5c_bas_hud
 
@@ -312,7 +313,6 @@ inv_weight                                         = 4.300
 hud				= wpn_ak5c_bas_eot_hud
 
 
-
 [wpn_ak5c_bas_eot_hud]:wpn_ak5c_bas_hud
 
 item_visual                	= dynamics\weapons\wpn_ak5c_bas\wpn_ak5c_eot_hud.ogf
@@ -323,30 +323,30 @@ aim_hud_offset_rot_16x9				= 0.000700,0.009650,0.000000
 
 [wpn_ak5c_bas_5c_tik]:wpn_ak5c_bas
 
-visual					= dynamics\weapons\wpn_ak5c_bas\wpn_ak5c_5c_tik_world.ogf
+visual					                 = dynamics\weapons\wpn_ak5c_bas\wpn_ak5c_5c_tik_world.ogf
 
-hud					= wpn_ak5c_bas_5c_tik_hud
+hud					                     = wpn_ak5c_bas_5c_tik_hud
 
-inv_grid_width     = 6
-inv_grid_height    = 2
-inv_grid_x         = 6
-inv_grid_y         = 0
+inv_grid_width                           = 6
+inv_grid_height                          = 2
+inv_grid_x                               = 6
+inv_grid_y                               = 0
 
-inv_weight                                         = 4.700
-scope_dynamic_zoom                                 = off
+inv_weight                               = 4.700
+scope_dynamic_zoom                       = off
 
-hit_impulse                         = 27
-hit_power                           = 0.49, 0.49, 0.49, 0.49
-hit_type                            = fire_wound
-fire_distance                       = 800
-bullet_speed                        = 900
-rpm                                 = 825
-rpm_empty_click                     = 200
+hit_impulse                              = 27
+hit_power                                = 0.49, 0.49, 0.49, 0.49
+hit_type                                 = fire_wound
+fire_distance                            = 800
+bullet_speed                             = 900
+rpm                                      = 825
+rpm_empty_click                          = 200
 
-scopes                                             = none
-inv_name                                           = st_wpn_ak5c_bas_5c_tik
-inv_name_short                                     = st_wpn_ak5c_bas_5c_tik
-description                                        = st_wpn_ak5c_bas_5c_tik_descr
+scopes                                   = none
+inv_name                                 = st_wpn_ak5c_bas_5c_tik
+inv_name_short                           = st_wpn_ak5c_bas_5c_tik
+description                              = st_wpn_ak5c_bas_5c_tik_descr
 
 ;-- Accuracy
 fire_dispersion_base                     = 0.34
@@ -363,27 +363,29 @@ PDM_disp_base                            = 0.69
 PDM_disp_vel_factor                      = 1.245
 PDM_disp_accel_factor                    = 1.245
 
-silencer_status                                    = 1
+silencer_status                          = 1
 
-scope_zoom_factor_alt                              = 0
+scope_zoom_factor_alt                    = 0
 
-use_alt_aim_hud                                    = true	
+use_alt_aim_hud                          = true	
 
 zoom_rotate_time                         = 0.25
 scope_lense_fov                          = 4
 
-laser_status = true
-;---------------------------------------------------------------------HUD-------------------------------------------------------
+laser_status                             = true
+installed_tactical_kit                   = true
+
+
 [wpn_ak5c_bas_5c_tik_hud]:wpn_ak5c_bas_hud
 
-item_visual				= dynamics\weapons\wpn_ak5c_bas\wpn_ak5c_5c_tik_hud.ogf
+item_visual				                 = dynamics\weapons\wpn_ak5c_bas\wpn_ak5c_5c_tik_hud.ogf
 
-anm_bore				 = ras_m4a1_hand_idle, idle
+anm_bore				                 = ras_m4a1_hand_idle, idle
 
-aim_hud_offset_pos_16x9				= -0.058660,0.017290,-0.068201
-aim_hud_offset_rot_16x9				= 0.000700,0.009650,0.000000
+aim_hud_offset_pos_16x9				     = -0.058660,0.017290,-0.068201
+aim_hud_offset_rot_16x9				     = 0.000700,0.009650,0.000000
 
-aim_hud_offset_alt_pos_16x9				= -0.058560,0.004190,-0.034800
-aim_hud_offset_alt_rot_16x9				= 0.000700,0.009650,0.000000
+aim_hud_offset_alt_pos_16x9				 = -0.058560,0.004190,-0.034800
+aim_hud_offset_alt_rot_16x9				 = 0.000700,0.009650,0.000000
 ;-------------------------------------------------------------------------------------------------------------------------------
 
