@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="st_wpn_ak5c_bas">
+		<text>AK-5C Carabine</text>
+	</string>
+	<string id="st_wpn_ak5c_bas_descr">
+		<text>
+		The Ak-5 or Automatkarbin 5 ("automatic carbine 5", "automatic carbine" being the Swedish term for assault rifle) is the Swedish version of the FN FNC assault rifle with certain modifications, mostly to adapt the weapon to the partially subarctic Swedish climate. The Ak-5 is the service rifle of the Swedish Armed Forces. The Bofors Ak-5C is the modernized version of the original Ak-5, following the trend of modular weapons. One of the most significant improvements is the MIL-STD-1913 rail system to which a variety of different optics, lights and sights can be mounted, such as telescopic sights and image intensifiers. The double gas position, iron sights and bolt catch of the original Ak-5 rifle family were discarded.\n \n
+
+		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] NATO compatible suppressor\n
+		%c[d_purple] • %c[ui_gray_2] ACOG, EOTech scopes\n
+		%c[d_purple] • %c[ui_gray_2] Can be upgraded using Tactical Kit\n \n</text>
+	</string>
+
+    <string id="st_addon_scope_5c_tik">
+		<text> Special ISG (AK-5C Kit) Tactical Kit</text>
+	</string>
+	<string id="st_addon_scope_5c_tik_descr">
+		<text>
+		\n \n%c[ui_gray_2]COMPATIBILITY:\n \n
+		%c[d_cyan] • %c[ui_gray_2] Ak-5C Carabine\n \n
+		%c[ui_gray_1]Set of components for the Ak-5C. Converts the standard Ak-5C into a shortened version with a staff for all occasions. The set appeared in the Zone shortly after the emergence of the ISG.\n \n
+		%c[d_purple] • %c[ui_gray_2] collapsible stock\n
+		%c[d_purple] • %c[ui_gray_2] low profile foregrip\n
+		%c[d_purple] • %c[ui_gray_2] LA-5 laser aim module\n
+		%c[d_purple] • %c[ui_gray_2] Leupold LCO red dot sight\n
+		%c[d_purple] • %c[ui_gray_2] Leupold D'evo x6 scope\n
+		%c[d_purple] • %c[ui_gray_2] adjust kit to increases fire rate\n
+		%c[d_purple] • %c[ui_gray_2] short barrel\n
+		%c[d_purple] • %c[ui_gray_2] Razor556 sound supressor\n \n
+		</text>
+	</string>
+
+    <string id="st_wpn_ak5c_bas_5c_tik">
+		<text>AK-5C ISG Special</text>
+	</string>
+	<string id="st_wpn_ak5c_bas_5c_tik_descr">
+		<text>
+		The Ak-5 or Automatkarbin 5 ("automatic carbine 5", "automatic carbine" being the Swedish term for assault rifle) is the Swedish version of the FN FNC assault rifle with certain modifications, mostly to adapt the weapon to the partially subarctic Swedish climate. The Ak-5 is the service rifle of the Swedish Armed Forces. The Bofors Ak-5C is the modernized version of the original Ak-5, following the trend of modular weapons. One of the most significant improvements is the MIL-STD-1913 rail system to which a variety of different optics, lights and sights can be mounted, such as telescopic sights and image intensifiers. The double gas position, iron sights and bolt catch of the original Ak-5 rifle family were discarded.\n \n
+
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_green] • %c[ui_gray_2] selectable scope (selected pressing Under-barrel Grenade Launcher key)\n
+        %c[d_green] • %c[ui_gray_2] laser sight (toggle on/off pressing Toggle Laser/Silencer key)\n
+		%c[d_purple] • %c[ui_gray_2] Special ISG Tactical Kit (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] LA-5 laser aim module (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] Leupold LCO red dot sight (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] Leupold D'evo x6 scope (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] Razor556 sound supressor (integrated)\n \n
+		</text>
+	</string>
+</string_table>
