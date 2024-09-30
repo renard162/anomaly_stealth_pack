@@ -119,6 +119,9 @@
 	<string id="st_detach_scope">
 		<text>detach scope</text>
 	</string>
+	<string id="st_detach_tactical_kit">
+		<text>remove tactical kit</text>
+	</string>
 	<string id="st_detach_silencer">
 		<text>detach silencer</text>
 	</string>
