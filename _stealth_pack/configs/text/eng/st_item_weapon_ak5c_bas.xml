@@ -25,7 +25,7 @@
         %c[d_green] • %c[ui_gray_2] laser sight (toggle on/off pressing Toggle Laser/Silencer key)\n
 		%c[d_purple] • %c[ui_gray_2] Special ISG Tactical Kit (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] LA-5 laser aim module (integrated)\n
-		%c[d_purple] • %c[ui_gray_2] Leupold LCO red dot sight (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] Leupold LCO red dot sight (integrated, laser sight-dependent)\n
 		%c[d_purple] • %c[ui_gray_2] Leupold D'evo x6 scope (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] Razor556 sound supressor (integrated)\n \n
 		</text>
