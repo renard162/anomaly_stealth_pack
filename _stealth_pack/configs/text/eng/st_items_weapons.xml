@@ -294,7 +294,8 @@
 		<text>The AKS-74U was intended for use mainly by Spetsnaz units, airborne infantry, rear-echelon support units and armoured vehicle crews, who require a compact but relatively powerful individual automatic weapon. The AKS-74U is significantly more manoeuvrable in tight quarters than the AKS-74, but a significant decline in muzzle velocity resulted in a decrease in effective range.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
 		%c[d_purple] • %c[ui_gray_2] EKP-8-02 Kobra, 1P29, PSO-1 scopes\n
-		%c[d_purple] • %c[ui_gray_2] PBS-4 suppressor\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] PBS-4 suppressor\n
+		%c[d_purple] • %c[ui_gray_2] Can be upgraded using Nimble Tactical Kit\n \n</text>
 	</string>
 	<string id="st_wpn_ak74u_old">
 		<text>AKS-74U</text>
@@ -317,10 +318,13 @@
 		<text>AKS-74UNB (customised)</text>
 	</string>
 	<string id="st_wpn_ak74u_snag_descr">
-		<text>The AKS-74U was intended for use mainly by Spetsnaz units, airborne infantry, rear-echelon support units and armoured vehicle crews, who require a compact but relatively powerful individual automatic weapon. The AKS-74U is significantly more manoeuvrable in tight quarters than the AKS-74, but a significant decline in muzzle velocity resulted in a decrease in effective range. This special variant has a 45 round RPK magazine, an integrated Kobra sight and an integrated suppressor.\n \n
+		<text>
+		The AKS-74U was intended for use mainly by Spetsnaz units, airborne infantry, rear-echelon support units and armoured vehicle crews, who require a compact but relatively powerful individual automatic weapon. The AKS-74U is significantly more manoeuvrable in tight quarters than the AKS-74, but a significant decline in muzzle velocity resulted in a decrease in effective range. This special variant has a 45 round RPK magazine, an integrated Kobra sight and an integrated suppressor.\n \n
 		%c[ui_gray_2]PROPERTIES / ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Special Nimble Tactical Kit (integrated)\n
 		%c[d_purple] • %c[ui_gray_2] EKP-1S-03 Kobra sight (integrated)\n
-		%c[d_purple] • %c[ui_gray_2] PBS-4 suppressor (integrated)\n \n</text>
+		%c[d_purple] • %c[ui_gray_2] PBS-4 suppressor (integrated)\n \n
+		</text>
 	</string>
 	<string id="st_wpn_ak74u_worn">
 		<text>AKS-74UN (worn)</text>

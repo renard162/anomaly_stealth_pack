@@ -75,7 +75,7 @@ ammo_elapsed                             = 30
 ammo_mag_size                            = 30
 startup_ammo                             = 90
 
-scopes                                   = 1p29, kobra, ps01
+scopes                                   = 1p29, kobra, ps01, snag
 scope_status                             = 0
 scope_zoom_factor                        = 0
 
@@ -535,11 +535,11 @@ item_visual                              = anomaly_weapons\wpn_ak74u\wpn_ak74u_s
 
 
 ;------------------------------------------------------------------------------------------------
-;-- Snag
+;-- Snag (tactical kit)
 ;------------------------------------------------------------------------------------------------
 [wpn_ak74u_snag]:wpn_ak74u,wpn_aks74u_snag_sounds
 $spawn                                   = "weapons\wpn_ak74u_snag"
-parent_section                           = wpn_ak74u_snag
+parent_section                           = wpn_ak74u
 
 inv_grid_height                          = 2
 inv_grid_width                           = 5
@@ -559,6 +559,7 @@ ammo_elapsed                             = 45
 ammo_mag_size                            = 45
 
 scopes                                   = none
+installed_tactical_kit                   = true
 
 silencer_status                          = 1
 
@@ -635,3 +636,12 @@ fire_point                               = 0, 0.051841, 0.535482
 fire_point2                              = 0, -0.011, 0.553
 
 freelook_z_offset_mul					 = 0.4
+
+
+
+[wpn_ak74u_camo_snag]:wpn_ak74u_snag
+parent_section                           = wpn_ak74u_camo
+
+
+[wpn_ak74u_custom_snag]:wpn_ak74u_snag
+parent_section                           = wpn_ak74u_custom

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="st_addon_scope_5c_tik">
+		<text> Special ISG (AK-5C Kit) Tactical Kit</text>
+	</string>
+	<string id="st_addon_scope_5c_tik_descr">
+		<text>
+		\n \n%c[ui_gray_2]COMPATIBILITY:\n \n
+		%c[d_cyan] • %c[ui_gray_2] Ak-5C Carabine\n \n
+		%c[ui_gray_1]Set of components for the Ak-5C. Converts the standard Ak-5C into a shortened version with a staff for all occasions. The set appeared in the Zone shortly after the emergence of the ISG.\n \n
+		%c[d_purple] • %c[ui_gray_2] collapsible stock\n
+		%c[d_purple] • %c[ui_gray_2] low profile foregrip\n
+		%c[d_purple] • %c[ui_gray_2] LA-5 laser aim module\n
+		%c[d_purple] • %c[ui_gray_2] Leupold LCO red dot sight\n
+		%c[d_purple] • %c[ui_gray_2] Leupold D'evo x6 scope\n
+		%c[d_purple] • %c[ui_gray_2] adjust kit to increases fire rate\n
+		%c[d_purple] • %c[ui_gray_2] short barrel\n
+		%c[d_purple] • %c[ui_gray_2] Razor556 sound supressor\n \n
+		</text>
+	</string>
+
+	<string id="st_addon_scope_snag">
+		<text> Special Nimble (AKS-74UN Kit) Tactical Kit</text>
+	</string>
+	<string id="st_addon_scope_snag_descr">
+		<text>
+		\n \n%c[ui_gray_2]COMPATIBILITY:\n \n
+		%c[d_cyan] • %c[ui_gray_2] AKS-74UN\n \n
+		%c[ui_gray_1]Upgrades the standard AKS-74UN into a further compact variant, optimized for close-quarters combat. Developed by Spleen to support stalkers in fending off relentless Monolith assaults, the kit is discreetly stored in a small Sig Sauer case to maintain stealth against enemy forces.\n \n
+		%c[d_purple] • %c[ui_gray_2] polymer handguard\n
+		%c[d_purple] • %c[ui_gray_2] RPK 45 rounds magazine\n
+		%c[d_purple] • %c[ui_gray_2] EKP-1S-03 Kobra sight\n
+		%c[d_purple] • %c[ui_gray_2] adjust kit to increases fire rate\n
+		%c[d_purple] • %c[ui_gray_2] short barrel\n
+		%c[d_purple] • %c[ui_gray_2] PBS-4 suppressor\n \n
+		</text>
+	</string>
+</string_table>
