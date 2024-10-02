@@ -551,6 +551,7 @@
 			<phrase id="5">
 				<text>sidorovich_mortal_sin_zone_hero_5</text>
 				<give_info>mortal_sin_zone_hero</give_info>
+				<give_info>operation_afterglow_info_about_done</give_info>
 			</phrase>
         </phrase_list>
     </dialog>
@@ -736,6 +737,7 @@
 			<phrase id="5">
 				<text>cold_mortal_sin_zone_hero_5</text>
 				<give_info>mortal_sin_zone_hero</give_info>
+				<give_info>operation_afterglow_info_about_done</give_info>
 			</phrase>
         </phrase_list>
     </dialog>
@@ -1110,6 +1112,7 @@
 			<phrase id="5">
 				<text>sakharov_mortal_sin_zone_hero_5</text>
 				<give_info>mortal_sin_zone_hero</give_info>
+				<give_info>operation_afterglow_info_about_done</give_info>
 			</phrase>
         </phrase_list>
     </dialog>

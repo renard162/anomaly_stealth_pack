@@ -99,7 +99,7 @@
 		<text>Any further orders, General?</text>
 	</string>
 	<string id="voronin_mortal_sin_zone_hero_5">
-		<text>You are free to return to your regular duties. Dismissed.</text>
+		<text>You are dismissed for now. Stay sharp, I'll have a special assignment for you soon. Dismissed.</text>
 	</string>
 	
 	<string id="dushman_mortal_sin_0">
@@ -197,7 +197,7 @@
 		<text>Has anything new cropped up yet?</text>
 	</string>
 	<string id="dushman_mortal_sin_zone_hero_5">
-		<text>Nope. Back to bog-standard contracts. Enjoy the routine.</text>
+		<text>Nope. Back to bog-standard contracts for now. But don't get too comfortable, I'll have another job for you soon. Enjoy the routine.</text>
 	</string>
 	
 	<string id="sidorovich_mortal_sin_0">
@@ -295,7 +295,7 @@
 		<text>That's... nice. No more special tasks for now?</text>
 	</string>
 	<string id="sidorovich_mortal_sin_zone_hero_5">
-		<text>Just the usual stuff for the time being.</text>
+		<text>Just the usual stuff for the time being. But I'm picking up some strange transmissions. Probably gonna need you soon to help me figure out this mystery.</text>
 	</string>
 	
 	<string id="cold_mortal_sin_0">
@@ -393,7 +393,7 @@
 		<text>I have to say, it's good to finally rest a little.</text>
 	</string>
 	<string id="cold_mortal_sin_zone_hero_5">
-		<text>Sure, enjoy yourself for the time being. You deserve it.</text>
+		<text>Sure, enjoy yourself for the time being. I've been receiving some strange transmissions—go rest for now, you deserve ite, but as soon as I get another one, I'll call you to help me investigate.</text>
 	</string>
 	
 	<string id="lukash_mortal_sin_0">
@@ -494,7 +494,7 @@
 		<text>You won't mind if I chill out for a while? I'm a bit tired here.</text>
 	</string>
 	<string id="lukash_mortal_sin_zone_hero_5">
-		<text>Rest all you want mate, but don't forget to come to the victory celebration party!</text>
+		<text>Rest all you want, mate, but don't forget to join the victory celebration! I've been picking up some strange signals, once I get more, I'll call you for the next mission.</text>
 	</string>
 	
 	<string id="sakharov_mortal_sin_0">
@@ -592,7 +592,7 @@
 		<text>Is that all, Professor?</text>
 	</string>
 	<string id="sakharov_mortal_sin_zone_hero_5">
-		<text>Yes, you are free to return to your usual activities now.</text>
+		<text>Yes, you are free to return to your usual activities now. However, the Zone seems to hold more mysteries, strange encoded signals appear to be transmitting. Once I receive more data, I'll notify you so we can investigate this anomaly further.</text>
 	</string>
 	
 	<string id="greh_envoy_greeting_0">

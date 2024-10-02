@@ -423,7 +423,12 @@ function DynamicNewsManager:TickTask()
 		return true
 	end
 	
-	ResetTimeEvent("DynamicNewsManager","TickTask",math.random(cycle_TickTask + 1, cycle_TickTask*2 + 1))
+	local oa_init = (not has_alife_info("operation_afterglow_info_about_done")) and has_alife_info("mortal_sin_zone_hero")
+	if not oa_init then
+		ResetTimeEvent("DynamicNewsManager","TickTask",math.random(cycle_TickTask + 1, cycle_TickTask*2 + 1))
+	else
+		ResetTimeEvent("DynamicNewsManager","TickTask",math.random(45, 60))
+	end
 	--printf(">>> Dyn News: TickTask call - time cycle: " .. cycle_TickSpecial)
 	
 	-- news state check
@@ -444,7 +449,7 @@ function DynamicNewsManager:TickTask()
 			self:GossipTaskLL()
 		elseif (not has_alife_info("mortal_sin")) and has_alife_info("living_legend_done") and story_MS_trigger then
 			self:GossipTaskMS()
-		elseif (not has_alife_info("operation_afterglow_info_about_done")) and has_alife_info("mortal_sin_zone_hero") then
+		elseif oa_init then
 			self:GossipTaskOA()
 			db.actor:give_info_portion("operation_afterglow_info_about_done")
 		elseif (has_alife_info("operation_afterglow_transmission_report")) and (not has_alife_info("lttz_oa_army_degtyarev_jup_meet_msg")) then
@@ -2378,7 +2383,7 @@ function DynamicNewsManager:GossipTaskOA()
 	
 	local msg = game.translate_string("st_dyn_news_gossip_task_oa_" .. actor_comm)
 	
-	dynamic_news_helper.send_tip(msg, Se, math.random(20,30), 20, Ico, "news", "npc")
+	dynamic_news_helper.send_tip(msg, Se, math.random(20,30), 120, Ico, "news", "npc")
 end
 
 function DynamicNewsManager:GossipTaskDRX()
