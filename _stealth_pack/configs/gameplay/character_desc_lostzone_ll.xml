@@ -27,7 +27,7 @@
     </map_icon>
     <bio>An experienced loner who defends the Barrier from the Monolith.</bio>
     <class>stalker_gatekeeper</class>
-    <community>stalker</community>
+    <community>ecolog</community>
     <terrain_sect>stalker_terrain</terrain_sect>
     <snd_config>characters_voice\human\stalker_3\</snd_config>
     <rank>13501</rank>
