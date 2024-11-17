@@ -159,4 +159,4 @@ A maioria dos mods extras inclusos no pacote foram muito alterados a fim de comp
 ## Special Thanks
 - st4nn
 - [Seu Sidoro](https://www.youtube.com/@isaias3423)
-- All S.T.A.L.K.E.R. Brasilian Community
+- The Entire S.T.A.L.K.E.R. Brazilian Community
