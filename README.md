@@ -134,7 +134,7 @@ A maioria dos mods extras inclusos no pacote foram muito alterados a fim de comp
 1. [Stealth](https://www.moddb.com/mods/stalker-anomaly/addons/stealth1)
 1. [Longreed's stuck artefacts fix](https://www.moddb.com/mods/stalker-anomaly/addons/longreeds-stuck-artefacts-fix)
 1. [1st Person Visible Body](https://www.moddb.com/mods/stalker-anomaly/addons/swm-ported-visible-body-starter-version)
-1. Target Priority *(Link not found)*
+1. [NPC rank based travelling and respawn](https://www.moddb.com/mods/stalker-anomaly/addons/npc-rank-based-travelling-01)
 1. Old World Duplet *(Link not found)*
 1. [TB's companions deactivate headlamps when in stealth](https://www.moddb.com/mods/stalker-anomaly/addons/tbs-companions-deactivate-headlamps-when-in-stealth)
 1. [TB's RF Receiver Hidden Package Sidequests v1.8](https://www.moddb.com/mods/stalker-anomaly/addons/tbs-rf-receiver-hidden-package-sidequests)
