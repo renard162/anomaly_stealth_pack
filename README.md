@@ -31,34 +31,34 @@ Most extra mods included in this package have been heavily modified to ensure co
 
 
 
-## Portugu?s
-Este pacote busca remodelar completamente o combate por?m sem tornar o jogo em um simulador militar, mantendo os elementos arcade dos jogos originais mas melhorando consideravelmente as capacidades da inteligência artificial al?m de adicionar mec?nicas de combate como sa?de ps?quica e placas bal?�sticas e, principalmente, mec?nicas de stealth realmente funcionais. Al?m disso, diversas miss?es foram arrumadas, principalmente as miss?es de hist?ria, j? que este ? o foco do pacote.
+## Português
+Este pacote busca remodelar completamente o combate porém sem tornar o jogo em um simulador militar, mantendo os elementos arcade dos jogos originais mas melhorando consideravelmente as capacidades da inteligГЄncia artificial além de adicionar mecânicas de combate como saúde psíquica e placas balí­sticas e, principalmente, mecânicas de stealth realmente funcionais. Além disso, diversas missões foram arrumadas, principalmente as missões de história, já que este é o foco do pacote.
 
 
-### Instala??o
-Descompacte o jogo **S.T.A.L.K.E.R. Anomaly 1.5.1** (o pacote ? incompat?vel com outras vers?es do jogo!) e ent?o descompacte o paote no mesmo diret?rio do jogo substituindo os arquivos solicitados.
+### Instalação
+Descompacte o jogo **S.T.A.L.K.E.R. Anomaly 1.5.1** (o pacote é incompatível com outras versões do jogo!) e então descompacte o paote no mesmo diretório do jogo substituindo os arquivos solicitados.
 
-**Opcional:** O jogo teve os ?udis traduzidos para ingl?s. Caso seja desejado utilizar o ?udio original em russo, basta deletar o arquivo `db\mods\_english_pack.db0`
+**Opcional:** O jogo teve os áudis traduzidos para inglês. Caso seja desejado utilizar o áudio original em russo, basta deletar o arquivo `db\mods\_english_pack.db0`
 
-**Aten??o:** O pacote ? compat?vel apenas com o **DirectX 11**, utilizar outra vers?o causar? bugs gr?ficos ou travamento do jogo. Mods gr?ficos tamb?m tendem a ser incompat?veis e provavelmente causar?o bugs e travamentos.
+**Atenção:** O pacote é compatível apenas com o **DirectX 11**, utilizar outra versão causará bugs gráficos ou travamento do jogo. Mods gráficos também tendem a ser incompatíveis e provavelmente causarão bugs e travamentos.
 
-**ReShade:** Acompanha com o pacote tr?s presets para o [Reshade](https://reshade.me). Para utilizar, basta instalar a vers?o com suporte completo a addons, utilizando a op??o de DirectX e, utilizando algum dos presets durante a instala??o, instalar os addons necess?rios.
+**ReShade:** Acompanha com o pacote três presets para o [Reshade](https://reshade.me). Para utilizar, basta instalar a versão com suporte completo a addons, utilizando a opção de DirectX e, utilizando algum dos presets durante a instalação, instalar os addons necessários.
 
 
 ### Recursos
-- Stealth: condi??es como visibilidade, luminosidade e vegeta??o interferem na capacidade de camuflagem, aumentando o tempo de rea??o dos inimigos e fornecendo um valioso tempo para que ataques seguros sejam realizados. Em casos mais espec?ficos, ? poss?vel realizar miss?es completas sem ser detectado.
+- Stealth: condições como visibilidade, luminosidade e vegetação interferem na capacidade de camuflagem, aumentando o tempo de reação dos inimigos e fornecendo um valioso tempo para que ataques seguros sejam realizados. Em casos mais específicos, é possível realizar missões completas sem ser detectado.
 
-- Dificuldade: Ao inv?s de dificuldades progressivas, foi implementada uma forma de modificar o estilo de jogo. Agora os estilos s?o *Arcade* e *Arcade Hard* para uma forma mais pr?xima de jogo dos jogos originais, *Stalker* e *Stealth* focados em jogo totalmente stealth e *Hardcore* como um modo desafio.
+- Dificuldade: Ao invés de dificuldades progressivas, foi implementada uma forma de modificar o estilo de jogo. Agora os estilos são *Arcade* e *Arcade Hard* para uma forma mais próxima de jogo dos jogos originais, *Stalker* e *Stealth* focados em jogo totalmente stealth e *Hardcore* como um modo desafio.
 
-- Economia: Assim como na dificuldade, os modos de economia modificam a forma como se joga e n?o necessariamente torna o jogo mais dif?cil, sendo *Tourist* o modo onde se joga sem preocupa??o com economia e onde se recebe os benef?cios dos achievments, *Scavanger* como o modo similar aos jogos originais, onde o foco ? o combate, *Survivalist* onde o foco ? coleta de recursos, *Rich but Expensive Zone* com foco no gerenciamento de *Suicider* como um modo desafio.
+- Economia: Assim como na dificuldade, os modos de economia modificam a forma como se joga e não necessariamente torna o jogo mais difícil, sendo *Tourist* o modo onde se joga sem preocupação com economia e onde se recebe os benefícios dos achievments, *Scavanger* como o modo similar aos jogos originais, onde o foco é o combate, *Survivalist* onde o foco é coleta de recursos, *Rich but Expensive Zone* com foco no gerenciamento de *Suicider* como um modo desafio.
 
-- Combate: Por meio da mec?nica de placas bal?sticas, sa?de ps?quica e consider?vel melhora da intelig?ncia artificial, todo combate tem potencial de ser letal, mesmo contra inimigos mais simples como contra renegados ou bandidos.
+- Combate: Por meio da mecânica de placas balísticas, saúde psíquica e considerável melhora da inteligência artificial, todo combate tem potencial de ser letal, mesmo contra inimigos mais simples como contra renegados ou bandidos.
 
-- Rejogabilidade: A cada achievment conquistado, al?m dos b?nus fornecidos ao jogo atual, um conjunto de itens ? liberado no loadout inicial na economia *Tourist*.
+- Rejogabilidade: A cada achievment conquistado, além dos bônus fornecidos ao jogo atual, um conjunto de itens é liberado no loadout inicial na economia *Tourist*.
 
 
 ### Aviso
-A maioria dos mods extras inclusos no pacote foram muito alterados a fim de compatibilizar com outros mods, criar novas mec?nicas de jogo ou corrigir eventuais bugs existentes no jogo. Devido ? vers?o do jogo base utilizada, v?rios dos mods extras tamb?m j? n?o s?o encontrados na vers?o utilizada no pacote, j? que v?rios foram atualizados para vers?es mais novas do Anomaly. Por este motivo, caso ocorra algum bug, relate o bug nessa postagem e n?o no mod original, j? que provavelmente este foi modificado.
+A maioria dos mods extras inclusos no pacote foram muito alterados a fim de compatibilizar com outros mods, criar novas mecânicas de jogo ou corrigir eventuais bugs existentes no jogo. Devido à versão do jogo base utilizada, vários dos mods extras também já não são encontrados na versão utilizada no pacote, já que vários foram atualizados para versões mais novas do Anomaly. Por este motivo, caso ocorra algum bug, relate o bug nessa postagem e não no mod original, já que provavelmente este foi modificado.
 
 
 
