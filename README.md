@@ -35,7 +35,7 @@ Extract the **S.T.A.L.K.E.R. Anomaly 1.5.1** game files (this package is incompa
 
 
 ### Warning
-Most extra mods included in this package have been heavily modified to ensure compatibility with other mods, create new gameplay mechanics, or fix existing bugs. Due to the base game version used, several of these extra mods are no longer available in the version included in the package, as many have been updated to newer versions of Anomaly. For this reason, if you encounter any bugs, report them in this post rather than the original mod, as it has likely been modified.
+Most extra add-ons included in this package have been heavily modified to ensure compatibility with other add-ons, create new gameplay mechanics, or fix existing bugs. Due to the base game version used, several of these extra add-ons are no longer available in the version included in the package, as many have been updated to newer versions of Anomaly. For this reason, if you encounter any bugs, report them in this post rather than the original add-on, as it has likely been modified.
 
 
 
@@ -73,7 +73,7 @@ Descompacte o jogo **S.T.A.L.K.E.R. Anomaly 1.5.1** (o pacote é incompatível c
 
 
 ### Aviso
-A maioria dos mods extras inclusos no pacote foram muito alterados a fim de compatibilizar com outros mods, criar novas mecânicas de jogo ou corrigir eventuais bugs existentes no jogo. Devido à versão do jogo base utilizada, vários dos mods extras também já não são encontrados na versão utilizada no pacote, já que vários foram atualizados para versões mais novas do Anomaly. Por este motivo, caso ocorra algum bug, relate o bug nessa postagem e não no mod original, já que provavelmente este foi modificado.
+A maioria dos addons extras inclusos no pacote foram muito alterados a fim de compatibilizar com outros addons, criar novas mecânicas de jogo ou corrigir eventuais bugs existentes no jogo. Devido à versão do jogo base utilizada, vários dos addons extras também já não são encontrados na versão utilizada no pacote, já que vários foram atualizados para versões mais novas do Anomaly. Por este motivo, caso ocorra algum bug, relate o bug nessa postagem e não no addon original, já que provavelmente este foi modificado.
 
 
 
