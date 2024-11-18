@@ -8,10 +8,10 @@ What started as a simple project to integrate add-ons (like making fillable cant
 
 This pack is the culmination of three years of dedicated work. It includes newly crafted scripts, finely tuned attribute balancing, smarter AI behavior, fixes for bugs in the original game (especially in the main questline), and seamless integration of various add-ons.
 
-I chose to build on version 1.5.1 because working solo means focusing on what’s achievable. Porting everything to newer versions would be impractical, and 1.5.1 stands out as the most aligned with the core ideas behind the add-ons.
+I chose to build on version 1.5.1 because working solo means focusing on what's achievable. Porting everything to newer versions would be impractical, and 1.5.1 stands out as the most aligned with the core ideas behind the add-ons.
 
 ### Installation
-Extract the **S.T.A.L.K.E.R. Anomaly 1.5.1** game files (this package is incompatible with other versions of the game!) and then extract the package into the same directory as the game, replacing the requested files.
+Extract the [S.T.A.L.K.E.R. Anomaly 1.5.1](https://www.moddb.com/mods/stalker-anomaly/news/stalker-anomaly-version-151-release) game files (this package is incompatible with other versions of the game!) and then extract the package into the same directory as the game, replacing the requested files.
 
 **Optional:** The game audio has been translated into English. If you wish to use the original Russian audio, simply delete the file `db\mods\_english_pack.db0`
 
@@ -49,7 +49,7 @@ Este pacote é o resultado de três anos de trabalho dedicado. Ele inclui script
 Escolhi montar na versão 1.5.1 porque, sendo um desenvolvedor solo, preciso focar no que é viável. Portar tudo para versões mais recentes seria impraticável, e a 1.5.1 se destaca como a mais alinhada com as ideias centrais por trás dos mods.
 
 ### Instalação
-Descompacte o jogo **S.T.A.L.K.E.R. Anomaly 1.5.1** (o pacote é incompatível com outras versões do jogo!) e então descompacte o pacote no mesmo diretório do jogo substituindo os arquivos solicitados.
+Descompacte o jogo [S.T.A.L.K.E.R. Anomaly 1.5.1](https://www.moddb.com/mods/stalker-anomaly/news/stalker-anomaly-version-151-release) (o pacote é incompatível com outras versões do jogo!) e então descompacte o pacote no mesmo diretório do jogo substituindo os arquivos solicitados.
 
 **Opcional:** O jogo teve os áudios traduzidos para inglês. Caso seja desejado utilizar o áudio original em russo, basta deletar o arquivo `db\mods\_english_pack.db0`
 
