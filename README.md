@@ -4,6 +4,12 @@
 This package aims to completely overhaul combat without turning the game into a military simulator. It retains the arcade elements of the original games while significantly improving the capabilities of artificial intelligence. Additionally, it introduces combat mechanics such as psychic health, ballistic plates, and, most importantly, truly functional stealth mechanics. Furthermore, several missions have been fixed, especially story missions, as they are the focus of this package.
 
 
+What started as a simple project to integrate add-ons (like making fillable canteens compatible with camelbacks) quickly grew into something far greater: a complete transformation of the way the game is played.
+
+This pack is the culmination of three years of dedicated work. It includes newly crafted scripts, finely tuned attribute balancing, smarter AI behavior, fixes for bugs in the original game (especially in the main questline), and seamless integration of various add-ons.
+
+I chose to build on version 1.5.1 because working solo means focusing on what’s achievable. Porting everything to newer versions would be impractical, and 1.5.1 stands out as the most aligned with the core ideas behind the add-ons.
+
 ### Installation
 Extract the **S.T.A.L.K.E.R. Anomaly 1.5.1** game files (this package is incompatible with other versions of the game!) and then extract the package into the same directory as the game, replacing the requested files.
 
@@ -36,6 +42,11 @@ Most extra mods included in this package have been heavily modified to ensure co
 ## Português
 Este pacote busca remodelar completamente o combate porém sem tornar o jogo em um simulador militar, mantendo os elementos arcade dos jogos originais mas melhorando consideravelmente as capacidades da inteligência artificial além de adicionar mecânicas de combate como saúde psíquica e placas balí­sticas e, principalmente, mecânicas de stealth realmente funcionais. Além disso, diversas missões foram arrumadas, principalmente as missões de história, já que este é o foco do pacote.
 
+O que começou como um projeto simples para integrar mods (como tornar o fillable canteens compatível com os camelbacks) rapidamente se transformou em algo muito maior: uma verdadeira reformulação da maneira como o jogo é jogado.
+
+Este pacote é o resultado de três anos de trabalho dedicado. Ele inclui scripts criados do zero, um balanceamento refinado de atributos, NPCs mais inteligentes em combate, correções de bugs do jogo original (especialmente na linha principal de missões) e uma integração apurada de diversos addons.
+
+Escolhi montar na versão 1.5.1 porque, sendo um desenvolvedor solo, preciso focar no que é viável. Portar tudo para versões mais recentes seria impraticável, e a 1.5.1 se destaca como a mais alinhada com as ideias centrais por trás dos mods.
 
 ### Instalação
 Descompacte o jogo **S.T.A.L.K.E.R. Anomaly 1.5.1** (o pacote é incompatível com outras versões do jogo!) e então descompacte o pacote no mesmo diretório do jogo substituindo os arquivos solicitados.
@@ -66,7 +77,7 @@ A maioria dos mods extras inclusos no pacote foram muito alterados a fim de comp
 
 
 
-## Extra mods
+## Extra addons
 
 1. [Better Rain FX](https://www.moddb.com/mods/stalker-anomaly/addons/better-rain-fx)
 1. [Better PDA Progression v1.3](https://www.moddb.com/mods/stalker-anomaly/addons/better-pda-progression)
