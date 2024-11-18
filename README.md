@@ -9,7 +9,7 @@ Extract the **S.T.A.L.K.E.R. Anomaly 1.5.1** game files (this package is incompa
 
 **Optional:** The game audio has been translated into English. If you wish to use the original Russian audio, simply delete the file `db\mods\_english_pack.db0`
 
-**Attention:** This package is only compatible with **DirectX 11**. Using another version will cause graphical bugs or game crashes. Other Anomaly addons also tend to be incompatible and will likely cause bugs and crashes.
+**Attention:** This package is only compatible with **DirectX 11**. Using another version will cause graphical bugs or game crashes. Other Anomaly's addons also tend to be incompatible and will likely cause bugs and crashes.
 
 **ReShade:** The package includes three presets for [Reshade](https://reshade.me). To use them, install the version with full addon support, select the DirectX option during installation, and, by using one of the presets, install the required addons.
 
