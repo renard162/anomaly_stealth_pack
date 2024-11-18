@@ -15,7 +15,7 @@ Extract the **S.T.A.L.K.E.R. Anomaly 1.5.1** game files (this package is incompa
 
 
 ### Features
-- Stealth: Factors such as visibility, lighting, and vegetation influence camouflage effectiveness, increasing enemy reaction times and providing valuable opportunities for safe attacks. In more specific cases, entire missions can be completed undetected.
+- Stealth: Factors such as visibility, lighting, vegetation and weather influence camouflage effectiveness, increasing enemy reaction times providing valuable opportunities for safe attacks. In more specific cases, entire missions can be completed undetected.
 
 - Difficulty: Instead of progressive difficulties, a system was implemented to modify playstyles. Now the styles are *Arcade* and *Arcade Hard* for gameplay closer to the original games, *Stalker* and *Stealth* for a fully stealth-focused experience, and *Hardcore* as a challenge mode.
 
@@ -23,7 +23,7 @@ Extract the **S.T.A.L.K.E.R. Anomaly 1.5.1** game files (this package is incompa
 
 - Combat: With mechanics like ballistic plates, psychic health, and significant AI improvements, every combat encounter has the potential to be lethal, whether facing simple enemies like renegades or bandits.
 
-- Replayability: Each achievement unlocks a set of items for the starting loadout in the Tourist economy mode, in addition to providing bonuses for the current game.
+- Replayability: Each achievement unlocks a set of items for the starting loadout in the *Tourist* economy mode, in addition to providing bonuses for the current game.
 
 - Documentation: All new features and mechanics implemented are explained in the guide tab of the PDA.
 
@@ -34,13 +34,13 @@ Most extra mods included in this package have been heavily modified to ensure co
 
 
 ## Português
-Este pacote busca remodelar completamente o combate porém sem tornar o jogo em um simulador militar, mantendo os elementos arcade dos jogos originais mas melhorando consideravelmente as capacidades da inteligГЄncia artificial além de adicionar mecânicas de combate como saúde psíquica e placas balí­sticas e, principalmente, mecânicas de stealth realmente funcionais. Além disso, diversas missões foram arrumadas, principalmente as missões de história, já que este é o foco do pacote.
+Este pacote busca remodelar completamente o combate porém sem tornar o jogo em um simulador militar, mantendo os elementos arcade dos jogos originais mas melhorando consideravelmente as capacidades da inteligência artificial além de adicionar mecânicas de combate como saúde psíquica e placas balí­sticas e, principalmente, mecânicas de stealth realmente funcionais. Além disso, diversas missões foram arrumadas, principalmente as missões de história, já que este é o foco do pacote.
 
 
 ### Instalação
 Descompacte o jogo **S.T.A.L.K.E.R. Anomaly 1.5.1** (o pacote é incompatível com outras versões do jogo!) e então descompacte o pacote no mesmo diretório do jogo substituindo os arquivos solicitados.
 
-**Opcional:** O jogo teve os áudis traduzidos para inglês. Caso seja desejado utilizar o áudio original em russo, basta deletar o arquivo `db\mods\_english_pack.db0`
+**Opcional:** O jogo teve os áudios traduzidos para inglês. Caso seja desejado utilizar o áudio original em russo, basta deletar o arquivo `db\mods\_english_pack.db0`
 
 **Atenção:** O pacote é compatível apenas com o **DirectX 11**, utilizar outra versão causará bugs gráficos ou travamento do jogo. Outros addons do Anomaly também tendem a ser incompatíveis e provavelmente causarão bugs e travamentos.
 
@@ -48,7 +48,7 @@ Descompacte o jogo **S.T.A.L.K.E.R. Anomaly 1.5.1** (o pacote é incompatível c
 
 
 ### Recursos
-- Stealth: condições como visibilidade, luminosidade e vegetação interferem na capacidade de camuflagem, aumentando o tempo de reação dos inimigos e fornecendo um valioso tempo para que ataques seguros sejam realizados. Em casos mais específicos, é possível realizar missões completas sem ser detectado.
+- Stealth: condições como visibilidade, luminosidade, vegetação e clima interferem na capacidade de camuflagem, aumentando o tempo de reação dos inimigos e fornecendo um valioso tempo para que ataques seguros sejam realizados. Em casos mais específicos, é possível realizar missões completas sem ser detectado.
 
 - Dificuldade: Ao invés de dificuldades progressivas, foi implementada uma forma de modificar o estilo de jogo. Agora os estilos são *Arcade* e *Arcade Hard* para uma forma mais próxima de jogo dos jogos originais, *Stalker* e *Stealth* focados em jogo totalmente stealth e *Hardcore* como um modo desafio.
 
