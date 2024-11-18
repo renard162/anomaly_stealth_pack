@@ -9,9 +9,9 @@ Extract the **S.T.A.L.K.E.R. Anomaly 1.5.1** game files (this package is incompa
 
 **Optional:** The game audio has been translated into English. If you wish to use the original Russian audio, simply delete the file `db\mods\_english_pack.db0`
 
-**Attention:** This package is only compatible with **DirectX 11**. Using another version will cause graphical bugs or game crashes. Graphic mods also tend to be incompatible and will likely cause bugs and crashes.
+**Attention:** This package is only compatible with **DirectX 11**. Using another version will cause graphical bugs or game crashes. Other mods also tend to be incompatible and will likely cause bugs and crashes.
 
-**ReShade:** The package includes three presets for ReShade. To use them, install the version with full addon support, select the DirectX option during installation, and, by using one of the presets, install the required addons.
+**ReShade:** The package includes three presets for [Reshade](https://reshade.me). To use them, install the version with full addon support, select the DirectX option during installation, and, by using one of the presets, install the required addons.
 
 
 ### Features
@@ -42,7 +42,7 @@ Descompacte o jogo **S.T.A.L.K.E.R. Anomaly 1.5.1** (o pacote é incompatível c
 
 **Opcional:** O jogo teve os áudis traduzidos para inglês. Caso seja desejado utilizar o áudio original em russo, basta deletar o arquivo `db\mods\_english_pack.db0`
 
-**Atenção:** O pacote é compatível apenas com o **DirectX 11**, utilizar outra versão causará bugs gráficos ou travamento do jogo. Mods gráficos também tendem a ser incompatíveis e provavelmente causarão bugs e travamentos.
+**Atenção:** O pacote é compatível apenas com o **DirectX 11**, utilizar outra versão causará bugs gráficos ou travamento do jogo. Outros Mods também tendem a ser incompatíveis e provavelmente causarão bugs e travamentos.
 
 **ReShade:** Acompanha com o pacote três presets para o [Reshade](https://reshade.me). Para utilizar, basta instalar a versão com suporte completo a addons, utilizando a opção de DirectX e, utilizando algum dos presets durante a instalação, instalar os addons necessários.
 
