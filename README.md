@@ -25,6 +25,8 @@ Extract the **S.T.A.L.K.E.R. Anomaly 1.5.1** game files (this package is incompa
 
 - Replayability: Each achievement unlocks a set of items for the starting loadout in the Tourist economy mode, in addition to providing bonuses for the current game.
 
+- Documentation: All new features and mechanics implemented are explained in the guide tab of the PDA.
+
 
 ### Warning
 Most extra mods included in this package have been heavily modified to ensure compatibility with other mods, create new gameplay mechanics, or fix existing bugs. Due to the base game version used, several of these extra mods are no longer available in the version included in the package, as many have been updated to newer versions of Anomaly. For this reason, if you encounter any bugs, report them in this post rather than the original mod, as it has likely been modified.
@@ -55,6 +57,8 @@ Descompacte o jogo **S.T.A.L.K.E.R. Anomaly 1.5.1** (o pacote é incompatível c
 - Combate: Por meio da mecânica de placas balísticas, saúde psíquica e considerável melhora da inteligência artificial, todo combate tem potencial de ser letal, mesmo contra inimigos mais simples como contra renegados ou bandidos.
 
 - Rejogabilidade: A cada achievment conquistado, além dos bônus fornecidos ao jogo atual, um conjunto de itens é liberado no loadout inicial na economia *Tourist*.
+
+- Documenta??o: Todos os novos recursos e mec?nicas implementadas s?o explicadas na aba de guia do PDA.
 
 
 ### Aviso
