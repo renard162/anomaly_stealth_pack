@@ -188,3 +188,11 @@ A maioria dos addons extras inclusos no pacote foram muito alterados a fim de co
 - st4nn
 - [Seu Sidoro](https://www.youtube.com/@isaias3423)
 - The Entire S.T.A.L.K.E.R. Brazilian Community
+
+
+
+## Changelog
+1.1. Unlockable review
+    - Items unlocked by achievements can be used in *Replay mode*
+
+1.0. Initial release
