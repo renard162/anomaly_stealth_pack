@@ -10,6 +10,12 @@ This pack is the culmination of three years of dedicated work. It includes newly
 
 I chose to build on version 1.5.1 because working solo means focusing on what's achievable. Porting everything to newer versions would be impractical, and 1.5.1 stands out as the most aligned with the core ideas behind the add-ons.
 
+--------
+
+Don't expect this addon pack to introduce a new arsenal of weapons, radical graphical changes, or a drastically different look from the original Anomaly. Instead, this pack focuses on under-the-hood enhancements, such as improved AI, including NPC behavior and combat strategies, combat features like stealth, and adjustments to gear mechanics. For instance, it fixes exploits involving artifacts and armor that made players invulnerable to gunfire in the original Anomaly and many story questline bugs.
+
+---------
+
 ### Installation
 Extract the [S.T.A.L.K.E.R. Anomaly 1.5.1](https://www.moddb.com/mods/stalker-anomaly/news/stalker-anomaly-version-151-release) game files (this package is incompatible with other versions of the game!) and then extract the package into the same directory as the game, replacing the requested files.
 
@@ -25,11 +31,11 @@ Extract the [S.T.A.L.K.E.R. Anomaly 1.5.1](https://www.moddb.com/mods/stalker-an
 
 - Difficulty: Instead of progressive difficulties, a system was implemented to modify playstyles. Now the styles are *Arcade* and *Arcade Hard* for gameplay closer to the original games, *Stalker* and *Stealth* for a fully stealth-focused experience, and *Hardcore* as a challenge mode.
 
-- Economy: Similar to difficulty, the economy modes change the way the game is played without necessarily making it harder. *Tourist* mode allows worry-free gameplay, offering achievement benefits; *Scavenger* mirrors the original games, focusing on combat; *Survivalist* emphasizes resource gathering; *Rich but Expensive Zone* prioritizes management; and *Suicider* serves as a challenge mode.
+- Economy: Similar to difficulty, the economy modes change the way the game is played without necessarily making it harder. *Tourist* mode allows worry-free gameplay; *Scavenger* mirrors the original games, focusing on combat; *Survivalist* emphasizes resource gathering; *Rich but Expensive Zone* prioritizes management; and *Suicider* serves as a challenge mode.
 
 - Combat: With mechanics like ballistic plates, psychic health, and significant AI improvements, every combat encounter has the potential to be lethal, whether facing simple enemies like renegades or bandits.
 
-- Replayability: Each achievement unlocks a set of items for the starting loadout in the *Tourist* economy mode, in addition to providing bonuses for the current game.
+- Replayability: Each achievement unlocks a set of items for the starting loadout in the *Replay mode*, in addition to providing bonuses for the current game.
 
 - Documentation: All new features and mechanics implemented are explained in the guide tab of the PDA.
 
@@ -48,6 +54,12 @@ Este pacote é o resultado de três anos de trabalho dedicado. Ele inclui script
 
 Escolhi montar na versão 1.5.1 porque, sendo um desenvolvedor solo, preciso focar no que é viável. Portar tudo para versões mais recentes seria impraticável, e a 1.5.1 se destaca como a mais alinhada com as ideias centrais por trás dos mods.
 
+--------
+
+Não espere que este pacote de addons introduza muitas novas armas, mudanças gráficas radicais ou uma aparência drasticamente diferente do Anomaly original. Em vez disso, este pacote foca em melhorias internas, como IA aprimorada, incluindo o comportamento dos NPCs e suas estratégias de combate, além de recursos de combate, como furtividade, e ajustes na mecânica de equipamentos. Por exemplo, ele corrige o exploit envolvendo artefatos e armaduras que tornavam os jogadores invulneráveis a disparos no Anomaly original, além de muitos bugs nas missões do modo história.
+
+---------
+
 ### Instalação
 Descompacte o jogo [S.T.A.L.K.E.R. Anomaly 1.5.1](https://www.moddb.com/mods/stalker-anomaly/news/stalker-anomaly-version-151-release) (o pacote é incompatível com outras versões do jogo!) e então descompacte o pacote no mesmo diretório do jogo substituindo os arquivos solicitados.
 
@@ -63,11 +75,11 @@ Descompacte o jogo [S.T.A.L.K.E.R. Anomaly 1.5.1](https://www.moddb.com/mods/sta
 
 - Dificuldade: Ao invés de dificuldades progressivas, foi implementada uma forma de modificar o estilo de jogo. Agora os estilos são *Arcade* e *Arcade Hard* para uma forma mais próxima de jogo dos jogos originais, *Stalker* e *Stealth* focados em jogo totalmente stealth e *Hardcore* como um modo desafio.
 
-- Economia: Assim como na dificuldade, os modos de economia modificam a forma como se joga e não necessariamente torna o jogo mais difícil, sendo *Tourist* o modo onde se joga sem preocupação com economia e onde se recebe os benefícios dos achievments, *Scavanger* como o modo similar aos jogos originais, onde o foco é o combate, *Survivalist* onde o foco é coleta de recursos, *Rich but Expensive Zone* com foco no gerenciamento de *Suicider* como um modo desafio.
+- Economia: Assim como na dificuldade, os modos de economia modificam a forma como se joga e não necessariamente torna o jogo mais difícil, sendo *Tourist* o modo onde se joga sem preocupação com economia, *Scavanger* como o modo similar aos jogos originais, onde o foco é o combate, *Survivalist* onde o foco é coleta de recursos, *Rich but Expensive Zone* com foco no gerenciamento de *Suicider* como um modo desafio.
 
 - Combate: Por meio da mecânica de placas balísticas, saúde psíquica e considerável melhora da inteligência artificial, todo combate tem potencial de ser letal, mesmo contra inimigos mais simples como contra renegados ou bandidos.
 
-- Rejogabilidade: A cada achievment conquistado, além dos bônus fornecidos ao jogo atual, um conjunto de itens é liberado no loadout inicial na economia *Tourist*.
+- Rejogabilidade: A cada achievment conquistado, além dos bônus fornecidos ao jogo atual, um conjunto de itens é liberado no loadout inicial no modo de jogo *Replay mode*.
 
 - Documentação: Todos os novos recursos e mecânicas implementadas são explicadas na aba de guia do PDA.
 
