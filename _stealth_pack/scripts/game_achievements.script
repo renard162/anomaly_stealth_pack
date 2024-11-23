@@ -550,7 +550,7 @@ end
 function heavy_pockets_requirements()
 	return (
 				(db.actor:money() >= 1000000)
-		)	
+		)
 end
 
 -- Infopreneur.
@@ -737,6 +737,7 @@ function invictus_requirements()
 			and not (has_alife_info("diff_gameplay_flag_change"))
 			and not (has_alife_info("diff_economy_flag_change"))
 			and not (has_alife_info("debug_mode_flag_on"))
+			and not (has_alife_info("replay_mode_on"))
 		)
 end
 
@@ -754,6 +755,7 @@ function true_stalker_requirements()
 			and not (has_alife_info("diff_gameplay_flag_change"))
 			and not (has_alife_info("diff_economy_flag_change"))
 			and not (has_alife_info("debug_mode_flag_on"))
+			and not (has_alife_info("replay_mode_on"))
 		)
 end
 

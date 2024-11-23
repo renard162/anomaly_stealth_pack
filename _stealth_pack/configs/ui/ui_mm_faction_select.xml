@@ -255,7 +255,13 @@
 				</text_color>
 			</list_timer>
 			
-			
+			<cap_check_replay_mode x="665" y="30" width="40" height="20" stretch="1">
+				<text r="170" g="170" b="170" font="letterica16" align="l" vert_align="c">st_cap_check_replay_mode</text>
+			</cap_check_replay_mode>		
+			<check_replay_mode x="639" y="29" width="35" height="23" stretch="1">
+				<texture>ui_inGame2_checkbox</texture>
+			</check_replay_mode>
+
 			<cap_check_treasurehunt_mode x="665" y="60" width="40" height="20" stretch="1">
 				<text r="170" g="170" b="170" font="letterica16" align="l" vert_align="c">st_cap_check_treasurehunt_mode</text>
 			</cap_check_treasurehunt_mode>		

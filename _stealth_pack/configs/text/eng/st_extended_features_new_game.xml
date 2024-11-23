@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
+	<string id="st_cap_check_replay_mode">
+		<text>Replay mode</text>
+	</string>
+	<string id="st_mm_ck_replay_mode_desc">
+		<text>
+			%c[0,150,150,150]Hard work deserves recognition!\n
+			\nIn this mode, you can start the game with items unlocked through achievements earned in previous playthroughs.\n
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]Not compatible with Black road mode.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]The "Invictus" achievement cannot be earned.
+			\n \n%c[200,200,50,50]• %c[0,150,150,150]The "True Stalker" achievement cannot be earned.
+		</text>
+	</string>
 	<string id="st_cap_check_blackroad_mode">
 		<text>Black road mode</text>
 	</string>

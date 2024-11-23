@@ -113,6 +113,12 @@ local function on_game_load(binder)
 			config:w_value("character_creation","new_game_opened_routes")
 			need_save = true
 		end
+		if (config:r_value("character_creation","new_game_replay_mode",1) == true) then
+			alife_storage_manager.get_state().enable_replay_mode = true
+			config:w_value("character_creation","new_game_replay_mode")
+			give_info("replay_mode_on")
+			need_save = true
+		end
 		if (config:r_value("character_creation","new_game_blackroad_mode",1) == true) then
 			alife_storage_manager.get_state().enable_blackroad_mode = true
 			config:w_value("character_creation","new_game_blackroad_mode")
@@ -244,7 +250,7 @@ local function on_game_load(binder)
 		else
 			spawn_path = nil  --patrol("spawn_player_"..faction)
 		end
-		
+
 		-- Enable the story quests + Drx questlines, or disable their components depending on player choice and faction.
 		if (config:r_value("character_creation","new_game_story_mode",1) == true) and (not has_alife_info("story_mode_disabled")) then
 			if faction_psi_off[faction] then
@@ -717,6 +723,8 @@ function UINewGame:Main_Controls()
 	self:Register(self.ck_reset,"check_reset")
 	
 	-- Options
+	local axr_ini = ini_file("axr_options.ltx")
+	local replay_enabled = ((axr_ini:line_count("unlocked_bonus_loadout") or 0) + (axr_ini:line_count("unlocked_achievment") or 0)) > 0
 	self.scroll_options = xml:InitScrollView("main_dialog:scroll_options", self.dialog)
 	self.templ_options = xml:InitStatic("main_dialog:templ_options",nil)
 	if (USE_MARSHAL) then
@@ -765,7 +773,12 @@ function UINewGame:Main_Controls()
 		self.ck_blackroad_mode_cap = xml:InitStatic("main_dialog:options:cap_check_blackroad_mode",self.templ_options)
 		self.ck_blackroad_mode = xml:InitCheck("main_dialog:options:check_blackroad_mode",	self.templ_options)
 		self:Register(self.ck_blackroad_mode,"check_blackroad_mode")
-		
+
+		self.ck_replay_mode_cap = xml:InitStatic("main_dialog:options:cap_check_replay_mode",self.templ_options)
+		self.ck_replay_mode = xml:InitCheck("main_dialog:options:check_replay_mode",	self.templ_options)
+		self:Register(self.ck_replay_mode,"check_replay_mode")
+		self.ck_replay_mode:Enable(replay_enabled)
+
 		self.ck_treasurehunt_mode_cap = xml:InitStatic("main_dialog:options:cap_check_treasurehunt_mode",self.templ_options)
 		self.ck_treasurehunt_mode = xml:InitCheck("main_dialog:options:check_treasurehunt_mode",	self.templ_options)
 		self:Register(self.ck_treasurehunt_mode,"check_treasurehunt_mode")
@@ -804,6 +817,7 @@ function UINewGame:Main_Controls()
 		self:LoadFortunesWheelInterval()
 		
 		self.ck_states = { 	
+							-- ["debug"] = true,
 							--["box_faction"] = false,
 							--["box_icon"] = false,
 							--["list_map"] = false,
@@ -818,6 +832,7 @@ function UINewGame:Main_Controls()
 							["ck_routes"] = false,
 							["ck_warfare"] = false,
 							["ck_blackroad_mode"] = false,
+							["ck_replay_mode"] = false,
 							["ck_treasurehunt_mode"] = false,
 							["ck_fortuneswheel_mode"] = false,
 							
@@ -863,6 +878,7 @@ function UINewGame:Main_CallBacks()
     self:AddCallback("check_campfire", ui_events.BUTTON_CLICKED, self.OnCheckCampfire, self)
     self:AddCallback("check_conditions", ui_events.BUTTON_CLICKED, self.OnCheckConditions, self)
 	self:AddCallback("check_blackroad_mode", ui_events.BUTTON_CLICKED, self.OnCheckSetBlackroad, self)
+	self:AddCallback("check_replay_mode", ui_events.BUTTON_CLICKED, self.OnCheckSetReplay, self)
 	self:AddCallback("check_treasurehunt_mode", ui_events.BUTTON_CLICKED, self.OnCheckSetTreasureHunt, self)
 	self:AddCallback("check_fortuneswheel_mode", ui_events.BUTTON_CLICKED, self.OnCheckSetFortunesWheel, self)
 	self:AddCallback("list_difficulty", ui_events.LIST_ITEM_SELECT, self.OnSelectDifficulty, self)
@@ -1627,7 +1643,27 @@ function UINewGame:OnCheckSetBlackroad()
 	
 	self.ck_warfare:SetCheck(false)
 	self.ck_states["ck_warfare"] = false
+
+	self.ck_replay_mode:SetCheck(false)
+	self.ck_states["ck_replay_mode"] = false
+
+	self:LoadLoadout()
+	self:UpdateMoney()
+	self:LoadMap()
+end
+
+function UINewGame:OnCheckSetReplay()
+	if (not self.access) then
+		return
+	end
+
+	self.ck_states["ck_replay_mode"] = not self.ck_states["ck_replay_mode"]
+
+	self.ck_blackroad_mode:SetCheck(false)
+	self.ck_states["ck_blackroad_mode"] = false
 	
+	self:LoadLoadout()
+	self:UpdateMoney()
 	self:LoadMap()
 end
 
@@ -1931,6 +1967,7 @@ function UINewGame:OnStartGame()
 	axr_main.config:w_value("character_creation","new_game_warfare",self.ck_warfare and self.ck_warfare:GetCheck() and true or nil) -- special for warfare
 	axr_main.config:w_value("character_creation","new_game_timer_mode",timer or nil)
 	axr_main.config:w_value("character_creation","new_game_blackroad_mode",self.ck_blackroad_mode and self.ck_blackroad_mode:GetCheck() and true or nil) -- Black Road Mode
+	axr_main.config:w_value("character_creation","new_game_replay_mode",self.ck_replay_mode and self.ck_replay_mode:GetCheck() and true or nil) -- Replay Mode
 	axr_main.config:w_value("character_creation","new_game_treasurehunt_mode",self.ck_treasurehunt_mode and self.ck_treasurehunt_mode:GetCheck() and true or nil)
 	axr_main.config:w_value("character_creation","new_game_fortuneswheel_mode",self.ck_fortuneswheel_mode and self.ck_fortuneswheel_mode:GetCheck() and true or nil)
 	axr_main.config:w_value("character_creation","new_game_fortuneswheel_mode_interval",self.ck_fortuneswheel_mode and self.selected_fortuneswheel_interval[1] or nil)
