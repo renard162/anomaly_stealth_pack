@@ -192,7 +192,9 @@ A maioria dos addons extras inclusos no pacote foram muito alterados a fim de co
 
 
 ## Changelog
-1.1. Unlockable review
-    - Items unlocked by achievements can be used in *Replay mode*
+1.1) Unlockable review
 
-1.0. Initial release
+- Items unlocked by achievements can be used in *Replay mode*
+
+
+1.0) Initial release
