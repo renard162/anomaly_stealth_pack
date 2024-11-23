@@ -193,6 +193,7 @@ A maioria dos addons extras inclusos no pacote foram muito alterados a fim de co
 
 
 ## Special Thanks
+- Sgtanarchy
 - st4nn
 - [Seu Sidoro](https://www.youtube.com/@isaias3423)
 - The Entire S.T.A.L.K.E.R. Brazilian Community
