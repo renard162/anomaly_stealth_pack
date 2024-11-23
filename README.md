@@ -16,6 +16,10 @@ Don't expect this addon pack to introduce a new arsenal of weapons, radical grap
 
 ---------
 
+### Updating
+To avoid losing your progress with achievements and your settings, when updating the package, extract only the `db` directory into the game's directory.
+
+
 ### Installation
 Extract the [S.T.A.L.K.E.R. Anomaly 1.5.1](https://www.moddb.com/mods/stalker-anomaly/news/stalker-anomaly-version-151-release) game files (this package is incompatible with other versions of the game!) and then extract the package into the same directory as the game, replacing the requested files.
 
@@ -59,6 +63,10 @@ Escolhi montar na versão 1.5.1 porque, sendo um desenvolvedor solo, preciso foc
 Não espere que este pacote de addons introduza muitas novas armas, mudanças gráficas radicais ou uma aparência drasticamente diferente do Anomaly original. Em vez disso, este pacote foca em melhorias internas, como IA aprimorada, incluindo o comportamento dos NPCs e suas estratégias de combate, além de recursos de combate, como furtividade, e ajustes na mecânica de equipamentos. Por exemplo, ele corrige o exploit envolvendo artefatos e armaduras que tornavam os jogadores invulneráveis a disparos no Anomaly original, além de muitos bugs nas missões do modo história.
 
 ---------
+
+### Atualização
+Para não perder seu progresso com os achievements e suas configurações, para atualizar o pacote, descompacte apenas o diretório `db` no diretório do jogo.
+
 
 ### Instalação
 Descompacte o jogo [S.T.A.L.K.E.R. Anomaly 1.5.1](https://www.moddb.com/mods/stalker-anomaly/news/stalker-anomaly-version-151-release) (o pacote é incompatível com outras versões do jogo!) e então descompacte o pacote no mesmo diretório do jogo substituindo os arquivos solicitados.
