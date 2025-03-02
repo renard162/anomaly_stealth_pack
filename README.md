@@ -33,7 +33,7 @@ Extract the [S.T.A.L.K.E.R. Anomaly 1.5.1](https://www.moddb.com/mods/stalker-an
 ### Features
 - Stealth: Factors such as visibility, lighting, vegetation and weather influence camouflage effectiveness, increasing enemy reaction times providing valuable opportunities for safe attacks. In more specific cases, entire missions can be completed undetected.
 
-- Difficulty: Instead of progressive difficulties, a system was implemented to modify playstyles. Now the styles are *Arcade* and *Arcade Hard* for gameplay closer to the original games, *Stalker* and *Stealth* for a fully stealth-focused experience, and *Hardcore* as a challenge mode.
+- Difficulty: Instead of progressive difficulties, a system was implemented to modify playstyles. Now the styles are *Arcade* and *Arcade Hard* for gameplay closer to the original games, *Stalker* and *Ghost* for a fully stealth-focused experience, and *Hardcore* as a challenge mode.
 
 - Economy: Similar to difficulty, the economy modes change the way the game is played without necessarily making it harder. *Tourist* mode allows worry-free gameplay; *Scavenger* mirrors the original games, focusing on combat; *Survivalist* emphasizes resource gathering; *Rich but Expensive Zone* prioritizes management; and *Suicider* serves as a challenge mode.
 
@@ -81,7 +81,7 @@ Descompacte o jogo [S.T.A.L.K.E.R. Anomaly 1.5.1](https://www.moddb.com/mods/sta
 ### Recursos
 - Stealth: condições como visibilidade, luminosidade, vegetação e clima interferem na capacidade de camuflagem, aumentando o tempo de reação dos inimigos e fornecendo um valioso tempo para que ataques seguros sejam realizados. Em casos mais específicos, é possível realizar missões completas sem ser detectado.
 
-- Dificuldade: Ao invés de dificuldades progressivas, foi implementada uma forma de modificar o estilo de jogo. Agora os estilos são *Arcade* e *Arcade Hard* para uma forma mais próxima de jogo dos jogos originais, *Stalker* e *Stealth* focados em jogo totalmente stealth e *Hardcore* como um modo desafio.
+- Dificuldade: Ao invés de dificuldades progressivas, foi implementada uma forma de modificar o estilo de jogo. Agora os estilos são *Arcade* e *Arcade Hard* para uma forma mais próxima de jogo dos jogos originais, *Stalker* e *Ghost* focados em jogo totalmente stealth e *Hardcore* como um modo desafio.
 
 - Economia: Assim como na dificuldade, os modos de economia modificam a forma como se joga e não necessariamente torna o jogo mais difícil, sendo *Tourist* o modo onde se joga sem preocupação com economia, *Scavanger* como o modo similar aos jogos originais, onde o foco é o combate, *Survivalist* onde o foco é coleta de recursos, *Rich but Expensive Zone* com foco no gerenciamento de *Suicider* como um modo desafio.
 

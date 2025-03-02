@@ -125,7 +125,7 @@
             \n%c[d_cyan]• %c[0,150,150,150]Arcade - Run'n'gun oriented gameplay
             \n%c[d_green]• %c[0,150,150,150]Arcade Hard - Harder run'n'gun gameplay
             \n%c[ui_yellow]• %c[0,150,150,150]Stalker - Do not understimate anyone
-            \n%c[d_orange]• %c[0,150,150,150]Stealth - Never face fights head-on. Strategize
+            \n%c[d_orange]• %c[0,150,150,150]Ghost - Never face fights head-on. Strategize
             \n%c[d_red]• %c[0,150,150,150]Hardcore - Challenge mode
 		</text>
 	</string>
@@ -360,7 +360,7 @@
 		<text>Stalker</text>
 	</string>
 	<string id="st_diff_4">
-		<text>Stealth</text>
+		<text>Ghost</text>
 	</string>
     <string id="st_diff_5">
 		<text>Hardcore</text>
