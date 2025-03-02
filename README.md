@@ -201,6 +201,11 @@ A maioria dos addons extras inclusos no pacote foram muito alterados a fim de co
 
 
 ## Changelog
+1.2) New Player Review
+
+- Renamed "Stealth" game mode to "Ghost".
+- Reduced the crafting difficulty curve for starting equipment, focusing on new players.
+
 1.1) Unlockable review
 
 - Items unlocked by achievements can be used in *Replay mode*
