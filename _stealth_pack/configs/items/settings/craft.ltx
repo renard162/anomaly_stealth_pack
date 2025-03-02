@@ -21,12 +21,12 @@
 
 [1]
 title						= st_ui_craft_device
-x_detector_simple		    = 1, recipe_basic_0, broken_detector,1,prt_i_resistors,3,prt_i_transistors,2,prt_i_capacitors,3
-x_detector_geiger			= 1, recipe_basic_0, broken_detector,1,prt_i_resistors,3,prt_i_capacitors,3,prt_i_transistors,2
-x_device_flashlight 		= 1, recipe_basic_0, flashlight_broken,1,prt_i_resistors,2,prt_i_capacitors,2,prt_i_copper,3
-x_device_torch_dummy		= 1, recipe_basic_0, headlamp,1,prt_i_resistors,2,prt_i_capacitors,2,prt_i_copper,3
-x_detector_radio			= 1, recipe_advanced_1, walkie,1,prt_i_resistors,2,prt_i_capacitors,3,prt_i_transistors,2
-x_device_torch_nv_1			= 1, recipe_advanced_0, device_torch_dummy,1,prt_i_resistors,3,prt_i_capacitors,2,prt_i_copper,3
+x_detector_simple		    = 1, recipe_basic_0, broken_detector,1,prt_i_resistors,2,prt_i_transistors,1,prt_i_capacitors,2
+x_detector_geiger			= 1, recipe_basic_0, broken_detector,1,prt_i_resistors,2,prt_i_capacitors,2,prt_i_transistors,2
+x_device_flashlight 		= 1, recipe_basic_0, flashlight_broken,1,prt_i_resistors,1,prt_i_copper,1
+x_device_torch_dummy		= 1, recipe_basic_0, headlamp,1,prt_i_resistors,1,prt_i_copper,1
+x_detector_radio			= 1, recipe_advanced_1, walkie,1,prt_i_resistors,2,prt_i_capacitors,1,prt_i_transistors,2
+x_device_torch_nv_1			= 1, recipe_advanced_0, device_torch_dummy,1,prt_i_transistors,1,prt_i_capacitors,2,prt_i_copper,1
 x_af_iam                    = 1, recipe_advanced_0, lead_box,1,prt_i_resistors,4,prt_i_transistors,3,prt_i_capacitors,2
 x_detector_advanced         = 2, recipe_advanced_0, detector_simple,1,prt_i_resistors,4,prt_i_transistors,6,prt_i_capacitors,5
 x_device_torch_nv_2			= 2, recipe_advanced_2, device_torch_nv_1,1,prt_i_resistors,6,prt_i_capacitors,6,prt_i_transistors,6
@@ -72,7 +72,8 @@ x_af_cooler				    = 2, recipe_advanced_2, prt_o_retardant_15,1,prt_i_scrap,5,pr
 x_af_freon_up				= 3, recipe_advanced_3, af_freon,1,prt_o_retardant_2,1,prt_i_transistors,8,prt_i_scrap,6
 x_af_frames_up			    = 3, recipe_advanced_4, af_frames,1,prt_o_retardant_11,1,prt_i_fasteners,7,prt_o_fabrics_4,8
 x_wpn_binoc_inv			    = 1, recipe_expert_0, welding_goggles,2,mirror,4
-x_kit_hunt				    = 1, recipe_expert_0, sewing_thread,4,itm_backpack,1,swiss_knife,3,wpn_knife3,1
+x_kit_hunt				    = 1, recipe_expert_0, sewing_thread,4,itm_backpack,1,swiss_knife,1,wpn_knife,1
+y_kit_hunt				    = 1, recipe_expert_0, sewing_thread,4,itm_backpack,1,swiss_knife,1,wpn_knife2,1
 x_af_freon				    = 2, recipe_expert_0, prt_o_retardant_16,1,prt_i_transistors,5,prt_i_scrap,8,prt_i_plastic,3
 x_fieldcooker               = 3, recipe_expert_0, army_bowler,1,explo_balon_gas,6,prt_i_scrap,10,prt_i_fasteners,8
 x_af_cooler_up  			= 3, recipe_expert_1, af_cooler,1,prt_o_retardant_5,1,prt_i_scrap,8,prt_i_fasteners,9
@@ -293,13 +294,13 @@ x_ammo_12.7x55_fmj	        = 5, recipe_ammo_4, ammo_12.7x55_fmj_bad,1,prt_i_ammo
 x_ammo_12.7x55_ap	        = 5, recipe_ammo_4, ammo_12.7x55_ap_bad,1,prt_i_ammo,4
 x_ammo_12x76_bull           = 5, recipe_ammo_4, ammo_12x70_buck_bad,1,ammo_12x76_zhekan_bad,1,ammo_12x76_dart_bad,1,prt_i_ammo,4
 x_ammo_gauss_cardan			= 5, recipe_ammo_4, ammo_gauss_bad,1,batteries_dead,3
-x_mine_new     				= 5, recipe_ammo_4, grenade_rgd5,1,prt_i_ammo,1,prt_i_scrap,2
-x_ied_rpg_new  			    = 5, recipe_ammo_4, grenade_rgd5,1,ammo_og-7b,1,prt_i_scrap,3
-y_ied_rpg_new  			    = 5, recipe_ammo_4, grenade_rgd5,1,ammo_og-7b_bad,1,prt_i_scrap,3
-w_ied_new  				    = 5, recipe_ammo_4, grenade_rgd5,1,ammo_m209_bad,1,prt_i_scrap,4
-x_ied_new  				    = 5, recipe_ammo_4, grenade_rgd5,1,ammo_m209,1,prt_i_scrap,4
-y_ied_new  				    = 5, recipe_ammo_4, grenade_rgd5,1,ammo_vog-25_bad,1,prt_i_scrap,4
-z_ied_new  				    = 5, recipe_ammo_4, grenade_rgd5,1,ammo_vog-25,1,prt_i_scrap,4
+x_mine_new     				= 5, recipe_ammo_4, grenade_rgd5,1,prt_i_ammo,1,prt_i_scrap,1
+x_ied_rpg_new  			    = 5, recipe_ammo_4, grenade_rgd5,1,ammo_og-7b,1,prt_i_scrap,2
+y_ied_rpg_new  			    = 5, recipe_ammo_4, grenade_rgd5,1,ammo_og-7b_bad,1,prt_i_scrap,2
+w_ied_new  				    = 5, recipe_ammo_4, grenade_rgd5,1,ammo_m209_bad,1,prt_i_scrap,2
+x_ied_new  				    = 5, recipe_ammo_4, grenade_rgd5,1,ammo_m209,1,prt_i_scrap,2
+y_ied_new  				    = 5, recipe_ammo_4, grenade_rgd5,1,ammo_vog-25_bad,1,prt_i_scrap,2
+z_ied_new  				    = 5, recipe_ammo_4, grenade_rgd5,1,ammo_vog-25,1,prt_i_scrap,2
 
 ;;--==========================< Item combinations >=============================
 ;[[
