@@ -31,6 +31,13 @@ local item_prop_table = { cond_r = {30,70} , cond_ct = "part" , cond_cr = {0.5,0
 local sfind = string.find
 local keep_one = {}
 
+local ammo_drop_mult = {
+	[0] = 3.0,
+	[1] = 1.5,
+	[2] = 1.0,
+	[3] = 0.9,
+}
+
 
 function SetDiffModifications()
 	local diff = game_difficulties.get_eco_factor("loots") or 1
@@ -287,7 +294,8 @@ function create_item(npc, section, number, rnd, to_save)
 
 	--printf("death_dropped: create %s=%s",section,number)
 	if IsItem("ammo",section) and (number > 0) then
-		alife_create_item(section, npc, {ammo = number})
+		local ammo_number = math.ceil(number * (ammo_drop_mult[level.get_game_difficulty()] or 1))
+		alife_create_item(section, npc, {ammo = ammo_number})
 
 	else
 		for i=1,number do
@@ -508,7 +516,8 @@ function try_spawn_ammo(npc)
 				sec = ammo_class[math.random(1,#ammo_class)]
 				if (sec) then 
 					if (item_count[sec]) then
-						number = math.random(item_count[sec][1], item_count[sec][2])
+						number = math.random(item_count[sec][1], item_count[sec][2]) * (ammo_drop_mult[level.get_game_difficulty()] or 1)
+						number = math.ceil(number)
 					else 
 						number = 0
 					end
@@ -552,7 +561,7 @@ function set_weapon_drop_condition(npc,itm)
 		condition = math.random( weapon_drop_condition["novice"][1] , weapon_drop_condition["novice"][2] )
 		condition = condition * 0.50
 	end
-	
+
 	condition = clamp(condition,5,100)
 	condition = condition / 100
     condition = condition * (game_difficulties.get_eco_factor("weapon_cond_mult") or 1)
@@ -560,23 +569,24 @@ function set_weapon_drop_condition(npc,itm)
 	condition = math.min(condition, 1)
 
 	itm:set_condition(condition)
-	
+
 	-- avoid creating ammo on reload
 	local death_dropped = se_load_var(npc:id(), npc:name(), "death_dropped")
 	if (death_dropped) then
 		return
 	end
-	
+
 	if (IsWeapon(nil,itm:clsid()) and not npc:marked_dropped(itm)) then
 		--
 		local sec,number
 		local ammo_class = parse_list(ini_sys,itm:section(),"ammo_class")
-		
+
 		-- randomly spawn only 1 ammo type per found weapon
 		if (#ammo_class > 0) then
 			sec = ammo_class[math.random(1,#ammo_class)]
 			if (sec and item_count[sec]) then 
-				number = math.random(item_count[sec][1], item_count[sec][2])
+				number = math.random(item_count[sec][1], item_count[sec][2]) * (ammo_drop_mult[level.get_game_difficulty()] or 1)
+				number = math.ceil(number)
 				if (number > 0 and ini_sys:section_exist(sec)) then
 					alife_create_item(sec, npc, {ammo = number})
 				end
