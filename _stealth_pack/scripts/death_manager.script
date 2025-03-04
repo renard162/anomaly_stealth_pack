@@ -517,7 +517,7 @@ function try_spawn_ammo(npc)
 				if (sec) then 
 					if (item_count[sec]) then
 						number = math.random(item_count[sec][1], item_count[sec][2]) * (ammo_drop_mult[level.get_game_difficulty()] or 1)
-						number = math.ceil(number)
+						number = math.ceil(number * (IsPistol(nil,itm:clsid()) and 1.25 or 1))
 					else 
 						number = 0
 					end
@@ -584,9 +584,9 @@ function set_weapon_drop_condition(npc,itm)
 		-- randomly spawn only 1 ammo type per found weapon
 		if (#ammo_class > 0) then
 			sec = ammo_class[math.random(1,#ammo_class)]
-			if (sec and item_count[sec]) then 
+			if (sec and item_count[sec]) then
 				number = math.random(item_count[sec][1], item_count[sec][2]) * (ammo_drop_mult[level.get_game_difficulty()] or 1)
-				number = math.ceil(number)
+				number = math.ceil(number * (IsPistol(nil,itm:clsid()) and 1.25 or 1))
 				if (number > 0 and ini_sys:section_exist(sec)) then
 					alife_create_item(sec, npc, {ammo = number})
 				end
