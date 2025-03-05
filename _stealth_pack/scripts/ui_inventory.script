@@ -571,6 +571,9 @@ function UIInventory:ParseInventory(npc, all, id_list, ignore_kind)
 	local size_c = 0
 	local pkind = self.possible_kind
 	local sec, kind, w, h
+	if not npc then
+		return inv
+	end
 	local function iterate(owner,obj)
 		sec = obj:section()
 		kind = SYS_GetParam(0,sec,"kind") or "na"
