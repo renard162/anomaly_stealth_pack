@@ -109,7 +109,7 @@ function is_surge_danger_bar_active()
 	if not sec then
 		return false
 	end
-	return desired_icon_states[sec]["surge_danger_bar"] or false
+	return sec and desired_icon_states[sec]["surge_danger_bar"] or false
 end
 
 function pda_has_battery()
