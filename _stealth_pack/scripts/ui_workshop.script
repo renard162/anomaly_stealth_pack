@@ -891,7 +891,7 @@ function UIWorkshopUpgrade:__init(xml, owner, x, y) super(xml, owner, x, y)
 	self.upgr_idx = {}
 	self.upgr_tools = {}
 	self.upgr_tools_pick = {}
-	self.upgr_toolkit = nil
+	self.upgr_toolkit = 5
 	self.upgr_flags = {}
 	self.upgr_order = {}
 	
@@ -942,11 +942,11 @@ function UIWorkshopUpgrade:InitControls(x, y)
 	self.itm_ico_temp_r = xml:InitStatic("workshop:upgrade:pic_item_r" , self)
 	
 	-- Required tookit
-	self.itm_cap_rq = xml:InitStatic("workshop:upgrade:cap_toolkit" , self)
-	self.itm_b_rq = xml:InitStatic("workshop:upgrade:pic_item_rq_b" , self)
-	self.itm_ico_rq = xml:InitStatic("workshop:upgrade:pic_item_rq" , self)
-	self.itm_ico_temp_rq = xml:InitStatic("workshop:upgrade:pic_item_rq" , self)
-	self.itm_num_rq = xml:InitTextWnd("workshop:upgrade:text_item_rq_num" , self)
+	-- self.itm_cap_rq = xml:InitStatic("workshop:upgrade:cap_toolkit" , self)
+	-- self.itm_b_rq = xml:InitStatic("workshop:upgrade:pic_item_rq_b" , self)
+	-- self.itm_ico_rq = xml:InitStatic("workshop:upgrade:pic_item_rq" , self)
+	-- self.itm_ico_temp_rq = xml:InitStatic("workshop:upgrade:pic_item_rq" , self)
+	-- self.itm_num_rq = xml:InitTextWnd("workshop:upgrade:text_item_rq_num" , self)
 	
 	self.info_text = xml:InitTextWnd("workshop:text_info" , self)
 	
@@ -990,12 +990,12 @@ function UIWorkshopUpgrade:Update()
 	local upgr_box = self.owner.upgr_info
 	
 	-- Item upgrade toolkit
-	if self.itm_ico_rq:IsCursorOverWindow() and self.upgr_toolkit then
-		self.update_cache["type"] = 1 -- reset cache
-		upgr_box:Update()
-		info_box:Update(nil,self.upgr_toolkit)
-		return
-	end
+	-- if self.itm_ico_rq:IsCursorOverWindow() and self.upgr_toolkit then
+	-- 	self.update_cache["type"] = 1 -- reset cache
+	-- 	upgr_box:Update()
+	-- 	info_box:Update(nil,self.upgr_toolkit)
+	-- 	return
+	-- end
 	
 	-- Item cell containers
 	local found_cell = self.CC:Update(info_box)
@@ -1246,7 +1246,7 @@ function UIWorkshopUpgrade:EvaluateUpgrade(row, col, info)
 		
 		-- Flag 1: is workshop toolkit available
 		local main_tool = self.upgr_toolkit
-		flags[1] = main_tool and self.upgr_tools[main_tool] and is_not_empty(self.upgr_tools[main_tool]) and true or false
+		flags[1] = true
 		
 		-- Flag 2: is upgrade kit available
 		local tool = info.tool
@@ -1350,7 +1350,7 @@ function UIWorkshopUpgrade:SetkitInfo(sec, XML_txt, XML_ico, XML_ico_tmp)
 	if sec and ini_sys:section_exist(sec) then
 		utils_xml.set_icon(sec, (cnt == 0), XML_ico_tmp, XML_ico)
 	end
-	XML_txt:SetText( (cnt == 0 and clr_list["r"] or clr_list["g"]) .. tostring(cnt) )
+	-- XML_txt:SetText( (cnt == 0 and clr_list["r"] or clr_list["g"]) .. tostring(cnt) )
 end
 
 function UIWorkshopUpgrade:DischargeKit(sec)
