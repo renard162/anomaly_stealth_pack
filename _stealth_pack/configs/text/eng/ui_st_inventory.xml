@@ -1043,7 +1043,7 @@
 		<text>Equipment</text>
 	</string>
 	<string id="st_ui_craft_repair">
-		<text>Repair toolkits</text>
+		<text>Toolkits</text>
 	</string>
 	<string id="st_ui_craft_upgrades">
 		<text>Upgrade parts</text>
