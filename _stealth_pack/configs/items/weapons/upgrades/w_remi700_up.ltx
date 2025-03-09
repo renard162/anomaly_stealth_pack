@@ -31,12 +31,6 @@ bullet_speed                             = +200
 fire_dispersion_base                     = -0.016
 inv_weight                               = +0.162
 
-[up_sect_firstf_remi700]
-cost                                     = 4280
-value                                    = +25
-rpm                                      = +35
-inv_weight                               = +0.12
-
 [up_sect_secona_remi700]
 cost                                     = 5400
 value                                    = +15
@@ -112,15 +106,10 @@ PDM_disp_vel_factor                      = -1.25
 PDM_disp_accel_factor                    = -1.25
 inv_weight                               = -0.22
 
-[up_sect_fourte_remi700]
-cost                                     = 5890
-value                                    = +25
-rpm                                      = +15
-
 [up_sect_fourtf_remi700]
 cost                                     = 6210
 value                                    = +5
-bullet_speed                             = +40
+bullet_speed                             = +170
 fire_dispersion_base                     = -0.01
 inv_weight                               = +0.1
 
@@ -196,24 +185,6 @@ prereq_params                            =
 name                                     = st_up_auts_c1_name
 description                              = st_up_auts_c1_descr
 icon                                     = ui_inGame2_upgrade_SVDm2_4
-
-[up_firstf_remi700]
-scheme_index                             = 2, 1
-known                                    = 1
-effects                                  =
-section                                  = up_sect_firstf_remi700
-property                                 = prop_rpm
-precondition_functor                     = inventory_upgrades.precondition_functor_a
-precondition_parameter                   = a & b
-effect_functor                           = inventory_upgrades.effect_functor_a
-effect_parameter                         = something_here
-
-prereq_functor                           = inventory_upgrades.prereq_functor_a
-prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
-prereq_params                            =
-name                                     = st_up_auts_c2_name
-description                              = st_up_auts_c2_descr
-icon                                     = ui_inGame2_upgrade_SVDm2_5
 
 
 [up_secona_remi700]
@@ -307,7 +278,7 @@ description                              = st_up_pris_b1_descr
 icon                                     = ui_inGame2_upgrade_SVDm2_11
 
 [up_thirde_remi700]
-scheme_index                             = 2, 2
+scheme_index                             = 2, 1
 known                                    = 1
 effects                                  =
 section                                  = up_sect_thirde_remi700
@@ -360,26 +331,9 @@ name                                     = st_up_pris_b1_name
 description                              = st_up_pris_b1_descr
 icon                                     = ui_inGame2_upgrade_SVUmk2_11
 
-[up_fourte_remi700]
-scheme_index                             = 2, 3
-known                                    = 1
-effects                                  =
-section                                  = up_sect_fourte_remi700
-property                                 = prop_rpm
-precondition_functor                     = inventory_upgrades.precondition_functor_a
-precondition_parameter                   = a & b
-effect_functor                           = inventory_upgrades.effect_functor_a
-effect_parameter                         = something_here
-
-prereq_functor                           = inventory_upgrades.prereq_functor_a
-prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
-prereq_params                            =
-name                                     = st_up_stvs_c2_name
-description                              = st_up_stvs_c2_descr
-icon                                     = ui_inGame2_upgrade_SVUmk2_9
 
 [up_fourtf_remi700]
-scheme_index                             = 2, 4
+scheme_index                             = 2, 2
 known                                    = 1
 effects                                  =
 section                                  = up_sect_fourtf_remi700
@@ -405,7 +359,7 @@ elements                                 = up_firsta_remi700
 elements                                 = up_firstc_remi700, up_firstd_remi700
 
 [up_gr_firstef_remi700]
-elements                                 = up_firste_remi700, up_firstf_remi700
+elements                                 = up_firste_remi700
 
 [up_gr_seconab_remi700]
 elements                                 = up_secona_remi700
@@ -429,4 +383,4 @@ elements                                 = up_fourta_remi700
 elements                                 = up_fourtc_remi700
 
 [up_gr_fourtef_remi700]
-elements                                 = up_fourte_remi700, up_fourtf_remi700
+elements                                 = up_fourtf_remi700
