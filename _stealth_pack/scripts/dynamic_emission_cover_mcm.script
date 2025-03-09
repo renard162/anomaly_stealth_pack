@@ -6,6 +6,10 @@ function on_game_start()
     RegisterScriptCallback("on_game_load", init)
     RegisterScriptCallback("on_option_change", init)
 
+    RegisterScriptCallback("actor_item_to_slot", is_cover_bar_enabled)
+	RegisterScriptCallback("actor_item_to_ruck", is_cover_bar_enabled)
+	RegisterScriptCallback("actor_on_item_drop", is_cover_bar_enabled)
+
     -- Monkey patch for compatibiltiy with Coordinate Based Safe Zones
     if tb_coordinate_based_safe_zones then
         local base_tb_update = tb_coordinate_based_safe_zones.actor_on_update
@@ -72,6 +76,7 @@ local bar_update_tick = 0.05
 local bar_mult_tick = bar_update_tick / hud_delay
 local actual_bar_mult = 1
 local pda_has_battery = false
+local cover_bar_enabled = false
 danger_percentage = 0
 
 function init()
@@ -85,6 +90,8 @@ function init()
     protect_companions_range = get_config("protect_companions")
     grace_period = get_config("grace_period")
     hud_delay = get_config("hud_show_delay")
+
+    is_cover_bar_enabled()
 
     bar_mult_tick = bar_update_tick / hud_delay
 
@@ -132,7 +139,7 @@ local grace_period_start_time = 0
 
 function is_cover_bar_enabled()
     local pda_valid = z_better_pda_progression.is_surge_danger_bar_active()
-    return show_cover_bar and pda_valid
+    cover_bar_enabled = show_cover_bar and pda_valid
 end
 
 function actor_on_update()
@@ -161,7 +168,7 @@ function actor_on_update()
             end
         end
 
-        if is_cover_bar_enabled() then
+        if cover_bar_enabled then
             pda_has_battery = z_better_pda_progression.pda_has_battery()
             danger_percentage = 1 - get_total_points(points_table) / (size_table(ray_table) * cover_prcnt_needed)
             activate_hud()
