@@ -293,7 +293,7 @@
 	<string id="st_stim_military_descr">
 		<text>Military stims constitute a part of standard-issue soldier equipment for field operations in the Zone... in theory. In practice, most grunts never see these stims. Meanwhile, they're available with suspicious ease on the black market and can be acquired by most stalkers for a moderate price. Popular among experienced Zoners. They are significantly more potent and faster working than their improvised counterparts, which makes them perfect for use in life-threatening situations. Produced from raw agents of high density which can take their toll on the body. Side effects include extreme dizziness and increased hunger.\n \n
 		%c[ui_gray_3]HEALING:\n
-		%c[d_red] • %c[ui_gray_2] Restores 6%hp/s, total 90%\n
+		%c[d_red] • %c[ui_gray_2] Restores 8.4%hp/s, total 125%\n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] medicine\n
 		%c[d_blue] • %c[ui_gray_2] imported\n
@@ -463,7 +463,7 @@
 	<string id="st_rebirth_descr">
 		<text>Warning! Do not use in combination with any other drug as this may prove lethal. This powerful mixture contained in a small syringe will make you lose consciousness. But when you wake up (if you wake up), you will feel reborn. Inject the syringe into your thigh when sitting down.\n \n
 		%c[ui_gray_3]HEALING:\n
-		%c[d_red] • %c[ui_gray_2] Restores 22.5%hp/s, total 190%\n
+		%c[d_red] • %c[ui_gray_2] Restores 22.5%hp/s, total 205%\n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] medicine\n
 		%c[d_blue] • %c[ui_gray_2] fast usage (syringe)\n
