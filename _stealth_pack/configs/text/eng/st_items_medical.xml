@@ -491,7 +491,7 @@
 	<string id="st_antirad_kalium_descr">
 		<text>A pharmacological compound, used in the Zone as a cheap means of countering the effects of radiation on the body. Causes numerous side effects, notably gastrointestinal tract blistering, numbness to pain and dysfunction of the thyroid gland.\n \n
 		%c[ui_gray_3]HEALING:\n
-		%c[d_red] • %c[ui_gray_2] Depletes 8%hp on use\n
+		%c[d_red] • %c[ui_gray_2] Depletes 5%hp on use\n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] medicine\n
 		%c[d_blue] • %c[ui_gray_2] imported\n
