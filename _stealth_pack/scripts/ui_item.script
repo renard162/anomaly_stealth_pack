@@ -542,7 +542,7 @@ function build_desc_footer(obj, sec, str) -- one obj used
 		local eat_sleepiness = ini_sys:r_float_ex(sec,"eat_sleepiness")
 		if eat_sleepiness then
 			local num = math.abs(eat_sleepiness) * 1000
-			local amount = ((num > 1000) and str_tbl.stat_significant) or ((num > 200) and str_tbl.stat_moderate) or str_tbl.stat_slight
+			local amount = ((num > 800) and str_tbl.stat_significant) or ((num > 200) and str_tbl.stat_moderate) or str_tbl.stat_slight
 			local sign = (eat_sleepiness > 0 ) and str_tbl.stat_increase or str_tbl.stat_decrease
 			local clr = (eat_sleepiness > 0 ) and clr_r or clr_g
 			local str1_eat_sleepiness =  strformat(str_tbl.eat_sleepiness, amount, sign)
