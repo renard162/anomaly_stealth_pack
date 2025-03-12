@@ -176,7 +176,7 @@
 		<text>Non-steroidal anti-inflammatory drug from the group of phenylacetic acid derivatives. The effect of the drug dulls the user's nervous activity. Because of the huge number of side effects, such as headache, dizziness, drowsiness, and in some cases memory disorders, disorientation, irritability, it is not used for medicinal purposes in most countries. However, in the Zone it has become popular due to a side effect expressed in violation of the sensitivity of the central nervous system, which allows it to withstand severe injuries, such as gunshot and shrapnel wounds.\n \n
 		%c[ui_gray_3]HEALING:\n
 		%c[d_red] • %c[ui_gray_2] Restores 2%hp on use\n
-		%c[d_red] • %c[ui_gray_2] Restores 0.05%hp/s, total 50%\n
+		%c[d_red] • %c[ui_gray_2] Restores 0.1%hp/s, total 50%\n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] medicine\n
 		%c[d_blue] • %c[ui_gray_2] imported\n
