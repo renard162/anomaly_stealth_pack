@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="windows-1251"?>
-
 <string_table>
-
     <string id="st_wpn_duplet">
 		<text>Duplet</text>
 	</string>
@@ -12,4 +10,24 @@
 		%c[d_purple] • %c[ui_gray_2] Modified trigger mechanism to fire two rounds simultaneously\n \n</text>
 	</string>
 
+	<string id="st_up_add_slug_duplet_name">
+		<text>Reinforced High-Pressure Barrel</text>
+	</string>
+    <string id="st_up_add_slug_duplet_descr">
+		<text>A sturdier barrel built to endure higher pressures, enhancing reliability and allowing the use of Slug shell ammunition for greater range and stopping power.</text>
+	</string>
+
+	<string id="st_up_add_dart_duplet_name">
+		<text>Precision-Tuned Barrel</text>
+	</string>
+    <string id="st_up_add_dart_duplet_descr">
+		<text>A finely finished barrel with an enhanced bore surface, significantly improving accuracy and allowing the use of Dart shell ammunition for tighter shot grouping and extended effective range.</text>
+	</string>
+
+	<string id="st_up_add_bull_duplet_name">
+		<text>Bull-Caliber Barrel</text>
+	</string>
+    <string id="st_up_add_bull_duplet_descr">
+		<text>A heavily reinforced barrel with a modified chamber, engineered exclusively for Bull shell ammunition. This upgrade maximizes power and durability but renders the weapon incompatible with all other shell types.</text>
+	</string>
 </string_table>
