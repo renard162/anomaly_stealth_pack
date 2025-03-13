@@ -153,6 +153,15 @@ silencer_y                               = -13
 snd_silncer_shot                         = weapons\mp5\mp5_shot_sil
 inv_weight                               = +0.02
 
+[up_sect_fifthb_vz61]
+cost                                     = 2942
+value                                    = "7.62x25"
+ammo_class                               = ammo_7.62x25_p, ammo_7.62x25_p_bad, ammo_7.62x25_p_verybad, ammo_7.62x25_ps, ammo_7.62x25_ps_bad, ammo_7.62x25_ps_verybad
+ammo_mag_size                            = -3
+condition_shot_dec                       = +0.0001
+condition_queue_shot_dec                 = +0.0001
+misfire_start_prob                       = 0.0002
+misfire_end_prob                         = 0.002
 
 ;----------------------------------------------------------------------------------------------------------------------
 [up_firsta_vz61]
@@ -428,7 +437,7 @@ icon                                     = ui_inGame2_upgrade_Gadyuka_5_6
 [up_fiftha_vz61]
 scheme_index                             = 0, 4
 known                                    = 1
-effects                                  =
+effects                                  = 
 section                                  = up_sect_fiftha_vz61
 property                                 = prop_silencer
 precondition_functor                     = inventory_upgrades.precondition_functor_a
@@ -441,6 +450,24 @@ prereq_params                            =
 name                                     = st_up_add_a1_name
 description                              = st_up_add_a1_descr
 icon                                     = ui_inGame2_upgrade_IL86_16
+
+
+[up_fifthb_vz61]
+scheme_index                             = 0, 5
+known                                    = 1
+effects                                  =
+section                                  = up_sect_fifthb_vz61
+property                                 = prop_calibre
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = true
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_add_vz61cal_name
+description                              = st_up_add_customcal_descr
+icon                                     = ui_inGame2_upgrade_Marta_15
 
 
 ;----------------------------------------------------------------------------------------------------------------------
@@ -481,4 +508,4 @@ elements                                 = up_fourtc_vz61
 elements                                 = up_fourte_vz61
 
 [up_gr_fifthab_vz61]
-elements                                 = up_fiftha_vz61
+elements                                 = up_fiftha_vz61, up_fifthb_vz61

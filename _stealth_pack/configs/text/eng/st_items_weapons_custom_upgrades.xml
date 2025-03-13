@@ -3,7 +3,10 @@
     <string id="st_up_add_mp7cal_name">
 		<text>Change of calibre to 5.7x28</text>
 	</string>
-    <string id="st_up_add_mp7cal_descr">
+	<string id="st_up_add_vz61cal_name">
+		<text>Change of calibre to 7.62x25</text>
+	</string>
+    <string id="st_up_add_customcal_descr">
 		<text>A very complex, integrated alteration of the weapon's magazine, mechanical and automated parts, which allows its calibre to be changed at the cost of reliability and magazine size.</text>
 	</string>
 </string_table>
