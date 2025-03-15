@@ -34,7 +34,7 @@ cost                                     = 400
 value                                    = -0.5
 inv_weight                               = -0.5
 
-[up_sect_fourta_binoc]
+[up_sect_thirdc_binoc]
 cost                                     = 10000
 value                                    = 0
 scope_alive_detector                     = scope_detector
@@ -153,7 +153,7 @@ icon                                     = ui_inGame2_upgrade_binoc_2_3
 [up_thirda_binoc]
 scheme_index                             = 0, 2
 known                                    = 1
-effects                                  =
+effects                                  = up_gr_thirdcd_binoc
 section                                  = up_sect_thirda_binoc
 property                                 = prop_weight
 precondition_functor                     = inventory_upgrades.precondition_functor_a
@@ -168,11 +168,11 @@ description                              = st_up_binoc_c1_descr
 icon                                     = ui_inGame2_upgrade_binoc_3_1
 
 
-[up_fourta_binoc]
+[up_thirdc_binoc]
 scheme_index                             = 0, 3
 known                                    = 1
 effects                                  =
-section                                  = up_sect_fourta_binoc
+section                                  = up_sect_thirdc_binoc
 property                                 = prop_binoc_autolock
 precondition_functor                     = inventory_upgrades.precondition_functor_a
 precondition_parameter                   = true
@@ -209,5 +209,5 @@ elements                                 = up_secone_binoc
 [up_gr_thirdab_binoc]
 elements                                 = up_thirda_binoc
 
-[up_gr_fourtab_binoc]
-elements                                 = up_fourta_binoc
+[up_gr_thirdcd_binoc]
+elements                                 = up_thirdc_binoc
