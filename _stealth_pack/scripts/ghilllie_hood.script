@@ -57,6 +57,9 @@ end
 
 function mask_equip(ghil)
 	check_ghil()
+	if g_flag then
+		light_gem.activate_ghillie_icon()
+	end
 	if not mask_enabled then
 		return
 	end
@@ -67,6 +70,9 @@ end
 
 function mask_unequip(ghil)
 	check_ghil()
+	if not g_flag then
+		light_gem.deactivate_ghillie_icon()
+	end
 	if ghil and (ghil:section() == "ghillie_outfit") and ghood then
 		ghood:Show(false)
 	end

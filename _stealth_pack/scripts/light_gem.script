@@ -1,34 +1,61 @@
 local HUD = nil
+local ghillie_icon = nil
 local icon_mode = stealth_mcm.get_config("icon_type") or 1
+
+local function ghillie_equipped()
+	local outfit = db.actor:item_in_slot(7)
+	return outfit and (outfit:section() == "ghillie_outfit")
+end
 
 function reset_hud()
 	deactivate_hud()
-	activate_hud()
+	deactivate_ghillie_icon()
+	if stealth_mcm.get_config("icon") then
+		activate_hud()
+	end
+	if ghillie_equipped() then
+		activate_ghillie_icon()
+	end
 end
 
+
+function deactivate_ghillie_icon()
+	if ghillie_icon ~= nil then
+		get_hud():RemoveDialogToRender(ghillie_icon)
+		ghillie_icon = nil
+	end
+	UnregisterScriptCallback("actor_on_net_destroy", deactivate_ghillie_icon)
+	UnregisterScriptCallback("actor_on_before_death", deactivate_ghillie_icon)
+end
+
+function activate_ghillie_icon()
+	RegisterScriptCallback("actor_on_net_destroy", deactivate_ghillie_icon)
+	RegisterScriptCallback("actor_on_before_death", deactivate_ghillie_icon)
+	if ghillie_icon == nil then
+		ghillie_icon = GhillieIcon()
+		get_hud():AddDialogToRender(ghillie_icon)
+	end
+end
+
+
 function deactivate_hud()
-	
 	if HUD ~= nil then
 		get_hud():RemoveDialogToRender(HUD)
 		HUD = nil
 	end
-	
 	UnregisterScriptCallback("actor_on_net_destroy", deactivate_hud)
 	UnregisterScriptCallback("actor_on_before_death", deactivate_hud)
-	
 end
 
 function activate_hud()
-	
 	RegisterScriptCallback("actor_on_net_destroy", deactivate_hud)
 	RegisterScriptCallback("actor_on_before_death", deactivate_hud)
-	
 	if HUD == nil then
 		HUD = StealthIcon()
 		get_hud():AddDialogToRender(HUD)
 	end
-	
 end
+
 
 function upd_hud()
 	-- enable/disable icon
@@ -38,12 +65,17 @@ function upd_hud()
 		deactivate_hud()
 	end
 
-	-- if icon enabled then update its type
-	if HUD ~= nil then
+	if ghillie_equipped() then
+		activate_ghillie_icon()
+	else
+		deactivate_ghillie_icon()
+	end
+
+	-- if icon enabled then update its type and position
+	if (HUD ~= nil) or (ghillie_icon ~= nil) then
 		icon_mode = stealth_mcm.get_config("icon_type")
 		reset_hud()
 	end
-
 end
 
 function on_game_start()
@@ -51,29 +83,75 @@ function on_game_start()
 	RegisterScriptCallback("on_option_change", upd_hud)
 end
 
+------------------------------------ Ghillie HUD ---------------------------------------------------
+class "GhillieIcon" (CUIScriptWnd)
+
+function GhillieIcon:__init() super()
+	self.xml = CScriptXmlInit()
+	self.xml:ParseFile("ui_light_gem.xml")
+
+	self:InitControls()
+end
+
+function GhillieIcon:InitControls()
+	local xml = self.xml
+	self.gem = xml:InitStatic("ghilllie_icon", self)
+end
+
+function GhillieIcon:Update()
+	CUIScriptWnd.Update(self)
+
+	self.gem:Show(main_hud_shown())
+
+	local xx = stealth_mcm.get_config("icon_x") + 8
+	local yy = stealth_mcm.get_config("icon_y") + 12
+	self.gem:SetWndPos(vector2():set(xx, yy))
+
+	self:StatUpd()
+end
+
+function GhillieIcon:StatUpd()
+	local ghil_A = 180
+	local ghil_R = 50
+	local ghil_G = 50
+	local ghil_B = 50
+
+	if visual_memory_manager.ghil_camo_active() then
+		ghil_R = 70
+		ghil_G = 180
+		ghil_B = 70
+	else
+		ghil_R = 180
+		ghil_G = 70
+		ghil_B = 70
+	end
+
+	local gem_color = GetARGB(ghil_A, ghil_R, ghil_G, ghil_B)
+	self.gem:SetTextureColor(gem_color)
+end
+
+function GhillieIcon:__finalize()
+end
+
 ---------------------------------------- HUD -------------------------------------------------------
 
 class "StealthIcon" (CUIScriptWnd)
 
 function StealthIcon:__init() super()
-	
 	self.xml	= CScriptXmlInit()
 	self.xml:ParseFile("ui_light_gem.xml")
-	
+
 	self:InitControls()
-	
 end
 
 function StealthIcon:InitControls()
-	
 	local xml = self.xml
-	
+
 	if icon_mode == 1 then
 		self.gem = xml:InitStatic("gem", self)
 	elseif icon_mode == 2 then
 		self.gem = xml:InitProgressBar("gem_bar", self)
 	end
-	
 end
 
 function StealthIcon:Update()
@@ -81,16 +159,15 @@ function StealthIcon:Update()
 
 	self.gem:Show(main_hud_shown())
 
-	local xx = stealth_mcm.get_config("icon_x")
+	local xx = stealth_mcm.get_config("icon_x") + 30
 	local yy = stealth_mcm.get_config("icon_y")
 	self.gem:SetWndPos(vector2():set(xx, yy))
-	
+
 	if icon_mode == 1 then
 		self:StatUpd()
 	elseif icon_mode == 2 then
 		self:BarUpd()
 	end
-	
 end
 
 function StealthIcon:StatUpd()
@@ -132,7 +209,6 @@ function StealthIcon:StatUpd()
 
 	local gem_color = GetARGB(170+A_diff, 5+R_diff, 5+G_diff, 5+B_diff)
 	self.gem:SetTextureColor(gem_color)
-
 end
 
 function StealthIcon:BarUpd()
@@ -152,7 +228,6 @@ function StealthIcon:BarUpd()
 	else
 		self.gem:SetColor(gem_color_white)
 	end
-
 end
 
 function StealthIcon:__finalize()

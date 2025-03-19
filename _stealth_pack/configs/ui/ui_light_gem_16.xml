@@ -1,5 +1,9 @@
 <w>
 
+		<ghilllie_icon x="990" y="660" width="12" height="16" stretch="1">
+			<texture>ui\lightgem\leaf.dds</texture>
+		</ghilllie_icon>
+
 		<gem x="990" y="660" width="24" height="32" stretch="1">
 			<texture>ui\lightgem\circle.dds</texture>
 		</gem>

@@ -661,6 +661,10 @@ function check_ghil_camo()
 	end
 end
 
+function ghil_camo_active()
+	return active_ghil_camo
+end
+
 function on_option_change()
 	mcm_memory = stealth_mcm.get_config("memory")
 	mcm_velocity = stealth_mcm.get_config("velocity")
