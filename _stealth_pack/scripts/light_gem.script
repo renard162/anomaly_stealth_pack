@@ -117,9 +117,9 @@ function GhillieIcon:StatUpd()
 	local ghil_B = 50
 
 	if visual_memory_manager.ghil_camo_active() then
-		ghil_R = 70
-		ghil_G = 180
-		ghil_B = 70
+		ghil_R = 10
+		ghil_G = 60
+		ghil_B = 10
 	else
 		ghil_R = 180
 		ghil_G = 70
