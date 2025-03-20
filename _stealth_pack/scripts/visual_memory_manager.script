@@ -634,8 +634,9 @@ end
 
 --===================================
 -- Ghillie bonus
-local camo_surfaces = {"earth", "dirt", "grass", "bush"}
+local camo_surfaces = {"earth", "dirt", "grass", "bush", "creatures\\actor"}
 local function actor_on_footstep(mat)
+	-- printf("~ Footstep Material: "..tostring(mat))
     for n, material in ipairs(camo_surfaces) do
         if string.find(mat, material) then
 			in_camo_surface = true
