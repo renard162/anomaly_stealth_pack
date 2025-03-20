@@ -7,7 +7,7 @@ time_quant					= 0.5				;step increment to for sight calculations
 decrease_value				= 0.1 				;Decrease over time to overall threshold
 velocity_factor		     	= 0.45			;Higher value = greater bonus to detection speed when target is moving (depended on movement speed)
 luminocity_factor			= 0.8			;Low value = easier to see at night
-transparency_threshold	 	= 0.55 			    ;Low value = easier to see through objects
+transparency_threshold	 	= 0.95 			    ;Low value = easier to see through objects
 still_visible_time          = 0 				;The time (milliseconds) that the object is still considered visible , even if it is not in the frustum (u32)
 
 [stalker_zombied_vision_danger]
@@ -19,7 +19,7 @@ time_quant					= 1.0			;step increment to for sight calculations
 decrease_value				= 0.1				;Decrease over time to overall threshold
 velocity_factor		     	= 0.55				;Higher value = greater bonus to detection speed when target is moving (depended on movement speed)
 luminocity_factor			= 0.8				;Low value = easier to see at night
-transparency_threshold	 	= 0.35				;Low value = easier to see through objects (if greater then 1 then enemies are blind)
+transparency_threshold	 	= 0.90				;Low value = easier to see through objects (if greater then 1 then enemies are blind)
 still_visible_time          = 0					;The time (milliseconds) that the object is still considered visible , even if it is not in the frustum (u32)
 
 [stalker_zombied_condition]
@@ -112,7 +112,7 @@ immunities_sect					= stalker_zombied_immunities
 ;---VISIBILITY--------------------------------------------------------
 vision_danger_section			= stalker_zombied_vision_danger
 vision_free_section				= stalker_zombied_vision_free
-eye_fov							= 90
+eye_fov							= 75
 eye_range						= 200
 ;---ENEMY------------------------------------------------------------
 ignore_monster_threshold		= 0.8
