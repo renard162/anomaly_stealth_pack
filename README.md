@@ -184,6 +184,7 @@ A maioria dos addons extras inclusos no pacote foram muito alterados a fim de co
 1. [Display Quick Access Belt](https://www.moddb.com/mods/stalker-anomaly/addons/151-display-quick-access-belt)
 1. [Balanced Automatic Target Acquisition](https://www.moddb.com/mods/stalker-anomaly/addons/151-balanced-automatic-target-acquisition)
 1. [Restricted Fast Travel](https://www.moddb.com/mods/stalker-anomaly/addons/restricted-fast-travel)
+1. [Bulkier Military Nosorog](https://www.moddb.com/mods/stalker-anomaly/addons/bulkier-military-nosorog)
 
 
 
