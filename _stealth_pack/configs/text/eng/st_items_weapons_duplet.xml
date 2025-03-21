@@ -28,6 +28,6 @@
 		<text>Bull-Caliber Barrel</text>
 	</string>
     <string id="st_up_add_bull_duplet_descr">
-		<text>A heavily reinforced barrel with a modified chamber, engineered exclusively for Bull shell ammunition. This upgrade maximizes power and durability but renders the weapon incompatible with all other shell types.</text>
+		<text>A heavily reinforced barrel with a modified chamber, engineered exclusively for Bull shell ammunition. This upgrade maximizes power but significantly reduces durability due to the extreme pressure of Bull shells, while rendering the weapon incompatible with all other shell types.</text>
 	</string>
 </string_table>
