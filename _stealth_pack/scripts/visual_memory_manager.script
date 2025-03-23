@@ -634,7 +634,7 @@ end
 
 --===================================
 -- Ghillie bonus
-local camo_surfaces = {"earth", "dirt", "grass", "bush", "creatures\\actor"}
+local camo_surfaces = {"earth", "dirt", "grass", "bush", "tree_trunk", "creatures\\actor"}
 local function actor_on_footstep(mat)
 	if mcm_debugx then
 		printf("~ Footstep Material: "..tostring(mat))
