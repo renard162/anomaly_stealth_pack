@@ -132,7 +132,7 @@ function get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_fac
 	local memory_factor = get_memory_val(npc, who)
 
 --============== total =============================
-	local step_incr = luminocity_score * Velocity * eq_dist * camo_x * weight * crouch * danger_mult * scheme_mult + pewpewmult + memory_factor
+	local step_incr = (luminocity_score * Velocity * eq_dist * camo_x * weight * crouch * danger_mult * scheme_mult) + pewpewmult + memory_factor
 	step_incr = step_incr * final_mult()
 -------------------------------------------------------------------------
 
