@@ -394,6 +394,36 @@ function slot_in_out(obj)
 end
 
 function get_camo_mult(velocity, object_distance)
+	-- Camo mult is the base of mod stealth and follows a pipeline:
+	-- 1: Calculation of base camo mult:
+	-- 1.1: Min distance to enable camouflage
+	-- 1.2: Armors with npc_blindness_koeff will get this value as base; otherwise, npc_blindness_koeff = 50
+	-- 1.3: Subtract helmet bonus from npc_blindness_koeff
+	-- 1.4: npc_blindness_koeff locked between 18 and the calculated value
+	-- 1.5: Base camo mult is <calculated npc_blindness_koeff> / 20
+	-- Note 1: npc_blindness_koeff remains within the interval [20 (ghillie suit), 28] and helmet bonus within the interval [-2 (penalty), 4]
+	-- Note 2: If wearing a Ghillie suit, the helmet bonus is adjusted to maintain the original interval
+
+	-- 2: Determination of distance factor by <object distance> * <distance mult>
+
+	-- 3: Determination of camo terrain penalty if not using Ghillie suit
+	-- Note: If using Ghillie suit with improper terrain, the penalty is applied in total perception, not in camo mult
+
+	-- 4: If player is moving: determination of player velocity penalty
+
+	-- 5: Determination of alert penalty factor based on NPC alertness and factors like using silenced weapons (melee or with suppressor)
+
+	-- 6: Determination of minimum value to final camo mult (based on NPC alertness)
+
+	-- Final camo mult = clamp(
+	--     <base camo mult> * <distance factor> * <alert penalty> * <terrain penalty> * max(1.0, <velocity penalty>),
+	--     min = <min camo mult>,
+	--     max = 1.0
+	-- )
+
+	-- The final camo mult is never greater than 1 and never 0. This way, the camo never nullifies enemy perception and never gives
+	-- penalties to the player. Worst-case scenario, the camo is nullified, resulting in 1.0
+
 	local camo_mult = 1
 	local camo_min_distance = 20 - ((get_camo_k > 0) and 12 or 0)
 
@@ -403,7 +433,7 @@ function get_camo_mult(velocity, object_distance)
 
 	local camo_val =  50
 	if get_camo_k > 0 then
-		--Helmet camo bonus from ghillie applies only to luminosity bonus, not to camo factor
+		--Helmet camo bonus from ghillie applies only to luminosity bonus, not to camo factor, this line negates ghillie aditional +1 to helmet camo
 		camo_val = get_camo_k + (ghil_equipped and 1 or 0) - helmet_camo_factor
 	else
 		camo_val = camo_val - (helmet_camo_factor * 5)
