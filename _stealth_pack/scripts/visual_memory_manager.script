@@ -405,7 +405,7 @@ function get_camo_mult(velocity, object_distance)
 	-- Note 1: npc_blindness_koeff remains within the interval [20 (ghillie suit), 28] and helmet bonus within the interval [-2 (penalty), 4]
 	-- Note 2: If wearing a Ghillie suit, the helmet bonus is adjusted to maintain the original interval
 
-	-- 2: Determination of distance factor by <object distance> * <distance mult>
+	-- 2: Determination of distance factor by 1 - (<object distance> * <distance mult>)
 
 	-- 3: Determination of camo terrain penalty if not using Ghillie suit
 	-- Note: If using Ghillie suit with improper terrain, the penalty is applied in total perception, not in camo mult
