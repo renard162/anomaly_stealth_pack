@@ -390,6 +390,7 @@ function slot_in_out(obj)
 	end
 
 	bonus_weight = math.min(extra_weight_max, bonus_weight)
+	-- Calculation of backpack_camo_limit is exp(<actual weght>/<max weight>) / exp(<reference weght>/<max weight>)
 	backpack_camo_limit = math.exp(bonus_weight/extra_weight_max) / backpack_camo_reference
 end
 
