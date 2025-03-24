@@ -201,8 +201,7 @@ function IsBallisticMonsterHide(sec)
 end
 
 function IsArtefact(sec)
-	local kind = tostring(ini_sys:r_string_ex(sec,"kind")) or nil
-	return kind and (string.find(kind, "i_arty") or string.find(kind, "i_quest")) or false
+	return IsItem("artefact", sec) and (SYS_GetParam(0, sec, "kind", "na") ~= "i_attach")
 end
 
 function get_list_highlight()
