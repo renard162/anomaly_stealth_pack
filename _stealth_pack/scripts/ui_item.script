@@ -201,7 +201,7 @@ function IsBallisticMonsterHide(sec)
 end
 
 function IsArtefact(sec)
-	return IsItem("artefact", sec) and (SYS_GetParam(0, sec, "kind", "na") ~= "i_attach")
+	return sec and IsItem("artefact", sec) and (SYS_GetParam(0, sec, "kind", "na") ~= "i_attach") and (not IsBallisticMonsterHide(sec))
 end
 
 function get_list_highlight()
