@@ -187,7 +187,7 @@ function IsBackpack(sec)
 	return (sec and (ini_sys:r_string_ex(sec,"class") == "EQ_BAKPK")) or false
 end
 
-function is_outfit_and_has_backpack(obj)
+function IsOutfitAndHasBackpack(obj)
 	if not IsOutfit(obj) then return false end
 	return obj and (ini_sys:r_bool_ex(obj:section(),"backpack_avaliable") == false)
 end
@@ -585,7 +585,7 @@ function build_desc_footer(obj, sec, str) -- one obj used
 	end
 
 	--Extra weight camo factor
-	if is_outfit_and_has_backpack(obj) or IsBackpack(sec) then
+	if IsOutfitAndHasBackpack(obj) or IsBackpack(sec) then
 		local additional_inventory_weight = ini_sys:r_float_ex(sec,"additional_inventory_weight") or 0
 
 		if additional_inventory_weight < lvl_0_bck_camo_penalty then
