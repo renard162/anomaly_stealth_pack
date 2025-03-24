@@ -200,7 +200,7 @@ function IsBallisticMonsterHide(sec)
 	return sec and string.find(sec, "hide_")
 end
 
-function IsAstefact(sec)
+function IsArtefact(sec)
 	local kind = tostring(ini_sys:r_string_ex(sec,"kind")) or nil
 	return kind and (string.find(kind, "i_arty") or string.find(kind, "i_quest")) or false
 end
@@ -634,7 +634,7 @@ function build_desc_footer(obj, sec, str) -- one obj used
 		if not (is_quest_artifact or is_lead_box) then
             local immunities_sec = SYS_GetParam(0, sec, "hit_absorbation_sect", sec)
             local psi_bonus = SYS_GetParam(2, immunities_sec, "telepatic_immunity", 0)
-            if IsAstefact(sec) and (psi_bonus > 0) then
+            if IsArtefact(sec) and (psi_bonus > 0) then
                 _str = _str .. clr_g .. "  • " .. clr_1 .. " " .. str_tbl.arty_psi_recover .. " \\n"
             end
 		end
