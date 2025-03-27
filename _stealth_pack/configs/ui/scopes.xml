@@ -59,6 +59,12 @@
     </auto_static>
   </wpn_crosshair_g36s>
 
+  <wpn_crosshair_g36k x="0" y="0" width="2048" height="1536">
+    <auto_static x="0" y="0" width="1024" height="768" stretch="1">
+      <texture>wpn_crosshair_g36k</texture>
+    </auto_static>
+  </wpn_crosshair_g36k>
+
   <wpn_crosshair_rpg x="0" y="0" width="2048" height="1536">
     <auto_static x="0" y="0" width="1024" height="768" stretch="1">
       <texture>wpn_crosshair_rpg</texture>
@@ -70,6 +76,12 @@
       <texture>wpn_crosshair_acog</texture>
     </auto_static>
   </wpn_crosshair_acog>
+
+  <wpn_crosshair_acog_arrow x="0" y="0" width="2048" height="1536">
+    <auto_static x="0" y="0" width="1024" height="768" stretch="1">
+      <texture>wpn_crosshair_acog_arrow</texture>
+    </auto_static>
+  </wpn_crosshair_acog_arrow>
   
   <wpn_crosshair_trijicon x="0" y="0" width="2048" height="1536">
     <auto_static x="0" y="0" width="1024" height="768" stretch="1">
@@ -94,6 +106,12 @@
       <texture>wpn_crosshair_gauss</texture>
     </auto_static>
   </wpn_crosshair_gauss>
+
+  <wpn_crosshair_item62 x="0" y="0" width="2048" height="1536">
+    <auto_static x="0" y="0" width="1024" height="768" stretch="1">
+      <texture>wpn_crosshair_item62</texture>
+    </auto_static>
+  </wpn_crosshair_item62>
   
   <wpn_crosshair_pso1 x="0" y="0" width="2048" height="1536">
     <auto_static x="0" y="0" width="1024" height="768" stretch="1">

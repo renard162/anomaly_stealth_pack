@@ -38,17 +38,26 @@
    <file name="wpn\wpn_crosshair_g36s">
     <texture id="wpn_crosshair_g36s" x="0" y="0" width="1024" height="1024" />
    </file>
+   <file name="wpn\wpn_crosshair_g36_new">
+    <texture id="wpn_crosshair_g36k" x="0" y="0" width="1024" height="1024" />
+   </file>
    <file name="wpn\wpn_crosshair_rpg">
     <texture id="wpn_crosshair_rpg" x="0" y="0" width="1024" height="1024" />
    </file>
-   <file name="wpn\wpn_crosshair_acog">
+   <file name="wpn\wpn_crosshair_trijicon">
     <texture id="wpn_crosshair_acog" x="0" y="0" width="1024" height="1024" />
+   </file>
+   <file name="wpn\wpn_crosshair_acog">
+    <texture id="wpn_crosshair_acog_arrow" x="0" y="0" width="1024" height="1024" />
    </file>
    <file name="wpn\wpn_crosshair_mark4">
     <texture id="wpn_crosshair_mark4" x="0" y="0" width="1024" height="1024" />
    </file>
     <file name="wpn\wpn_crosshair_gauss">
     <texture id="wpn_crosshair_gauss" x="0" y="0" width="1024" height="1024" />
+   </file>
+    <file name="wpn\wpn_crosshair_gauss_">
+    <texture id="wpn_crosshair_item62" x="0" y="0" width="1024" height="1024" />
    </file>
    <file name="wpn\wpn_crosshair_pso1">
     <texture id="wpn_crosshair_pso1" x="0" y="0" width="1024" height="1024" />

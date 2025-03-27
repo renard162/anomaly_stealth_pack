@@ -11,6 +11,7 @@ scopeRadii = {
 	wpn_crosshair_m24 = 0.35,
 	wpn_crosshair_g3sg1 = 0.35,
 	wpn_crosshair_gauss = 0.3,
+	wpn_crosshair_item62 = 0.4,
 	wpn_crosshair_findot = 0.4,
 	wpn_crosshair_1pn93 = 0.35,
 	wpn_crosshair_fn2000 = 0.27,
@@ -26,9 +27,12 @@ scopeRadii = {
 	wpn_crosshair_pso1_ksvk = 0.35,
 	wpn_crosshair_vss = 0.38,
 	wpn_crosshair_acog = 0.40,
+	wpn_crosshair_acog_arrow = 0.40,
 	wpn_crosshair_trijicon = 0.40,
+	wpn_crosshair_l85 = 0.40,
 	wpn_crosshair_bino = 1.05,
     wpn_crosshair_g36s = 0.38,
+    wpn_crosshair_g36k = 0.38,
 }
 
 -- wpn_crosshair_class - unused
