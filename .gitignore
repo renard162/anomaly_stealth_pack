@@ -1,3 +1,5 @@
 *.db0
 _tools/**/
 _tools/engine.log
+launch.json
+**/venv/
