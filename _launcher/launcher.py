@@ -125,8 +125,8 @@ class WelcomeLauncher():
                         message='The game will crash, use DirectX 11!',
                         style=0+16,
                     )
-                return 0
-        return 1
+                return process.pid
+        return -1
 
 
 def main():
@@ -151,15 +151,15 @@ def main():
     )
     print('Waiting game process...\n')
 
-    game_launcher_open = True
-    waiting_game_process = 1
-    while game_launcher_open and (waiting_game_process == 1):
-        waiting_game_process = anomaly_affinity_setter.set_anomaly_affinity()
+    game_launcher_running = True
+    game_pid = -1
+    while game_launcher_running and (game_pid == -1):
+        game_pid = anomaly_affinity_setter.set_anomaly_affinity()
         sleep(3)
         if launcher_process is None:
             continue
-        game_launcher_open = launcher_process.poll() is None
-        if not game_launcher_open:
+        game_launcher_running = launcher_process.poll() is None
+        if not game_launcher_running:
             print('Game launcher finished\n')
 
 
