@@ -137,6 +137,11 @@ def main():
         try:
             launcher_process = subprocess.Popen([args.launcher])
         except FileNotFoundError:
+            message_box(
+                title='File not found',
+                message=f'Game launcher {args.launcher} not found!',
+                style=0+16,
+            )
             raise FileNotFoundError(f'Launcher not found: {args.launcher}')
     else:
         launcher_process = None
@@ -161,4 +166,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+    print('Script finished!')
     input('Press Enter to exit...')
