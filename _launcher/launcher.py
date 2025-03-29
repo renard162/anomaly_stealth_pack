@@ -207,9 +207,8 @@ def main():
             print('Game launcher finished\n')
 
     if not args.debug:
-        while (launcher_process is not None) and (launcher_process.poll() is None):
-            sleep(5)
-        print('Script finished!')
+        print('Script finished!\nExiting')
+        sleep(15)
         return
 
     debugger_print_lock(game_process)
