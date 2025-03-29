@@ -2,14 +2,13 @@ import argparse
 import ctypes
 import os.path as osp
 import subprocess
-from time import sleep, time
+from time import sleep
 
 import psutil
 
 
 #Default values
 MIN_FREE_PHYSICAL_CORES = 1
-TIMEOUT = 300#s
 ANOMALY_LAUNCHER_FILE = 'AnomalyLauncher.exe'
 
 
@@ -20,29 +19,18 @@ def arguments_parser():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         prog=f'{script_file}',
         description=(
-           'Executes Anomaly Launcher and removes the CPU affinity of N first cores from game when it launches.' \
-           'If reaches timeout, then ask if wait more time for game process or quit script.'
+           'Executes Anomaly Launcher and removes the CPU affinity of N first cores from game when it launches.'
         )
     )
 
     arg_parser.add_argument(
-        '-c', '--min-cpu-cores',
+        '-c', '--min-free-cpu-cores',
         type=int,
         dest='min_physical_cores',
         required=False,
         default=MIN_FREE_PHYSICAL_CORES,
         action='store',
         help=f'Sets the minimum amount of CPU physical cores reserved to system. (default: {MIN_FREE_PHYSICAL_CORES})'
-    )
-
-    arg_parser.add_argument(
-        '-t', '--timeout',
-        type=int,
-        dest='timeout',
-        required=False,
-        default=TIMEOUT,
-        action='store',
-        help=f'Sets the script timeout, in seconds, to find game process. (default: {TIMEOUT})'
     )
 
     arg_parser.add_argument(
@@ -131,46 +119,36 @@ class CPU_affinity_setter():
         return 1
 
 
-def wait_and_set_affinity(anomaly_affinity_setter:CPU_affinity_setter, timeout_seconds:int):
-    init_time = time()
-    execution_time = 0
-    while (execution_time <= timeout_seconds):
-        response = anomaly_affinity_setter.set_anomaly_affinity()
-        execution_time = time() - init_time
-        if response == 0:
-            return 0
-        sleep(3)
-    return 1
-
-
 def main():
     args = arguments_parser()
+
     print(f'\nGame Launcher: {args.launcher}\n')
     if args.launcher != 'None':
         try:
-            subprocess.Popen([args.launcher])
+            launcher_process = subprocess.Popen([args.launcher])
         except FileNotFoundError:
             raise FileNotFoundError(f'Launcher not found: {args.launcher}')
+    else:
+        launcher_process = None
+
     anomaly_affinity_setter = CPU_affinity_setter(
         min_free_physical_cores=args.min_physical_cores,
     )
-    print(f'Timeout: {args.timeout} seconds\n')
+    print('Waiting game process...\n')
 
-    retry_response = 4
+    game_launcher_open = True
     waiting_game_process = 1
-    while (waiting_game_process == 1) and (retry_response == 4):
-        waiting_game_process = wait_and_set_affinity(
-            anomaly_affinity_setter=anomaly_affinity_setter,
-            timeout_seconds=args.timeout)
-        if (waiting_game_process == 1):
-            retry_response = message_box(
-                title='Timeout',
-                message=f'STALKER process not found in {args.timeout} seconds to set CPU affinity, retry?',
-                style=5+16
-            )
+    while game_launcher_open and (waiting_game_process == 1):
+        waiting_game_process = anomaly_affinity_setter.set_anomaly_affinity()
+        sleep(3)
+        if launcher_process is None:
+            continue
+        game_launcher_open = launcher_process.poll() is None
+        if not game_launcher_open:
+            print('Game launcher finished\n')
+
 
 
 if __name__ == '__main__':
     main()
-    # print(arguments_parser())
-    print('Script finished')
+    input('Press Enter to exit...')
