@@ -17,7 +17,7 @@ def arguments_parser() -> argparse.Namespace:
     launcher_file = sys.argv[0]
     arg_parser = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        prog=f'{launcher_file}',
+        prog=str(launcher_file),
         description=(
            'Executes Anomaly Launcher and removes the CPU affinity of N first cores from game when it launches.'
         )
@@ -161,10 +161,11 @@ def main():
         game_launcher_running = launcher_process.poll() is None
         if not game_launcher_running:
             print('Game launcher finished\n')
+    
+    print('Script finished!\nClose the game before this window')
 
 
 
 if __name__ == '__main__':
     main()
-    print('Script finished!')
     input()
