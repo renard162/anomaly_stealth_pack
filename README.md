@@ -199,6 +199,7 @@ A maioria dos addons extras inclusos no pacote foram muito alterados a fim de co
 - st4nn
 - [Seu Sidoro](https://www.youtube.com/@isaias3423)
 - The Entire S.T.A.L.K.E.R. Brazilian Community
+- [Kebabisz](https://www.deviantart.com/kebabisz/art/S-T-A-L-K-E-R-Anomaly-GAMMA-HD-Icons-OUTDATED-1011676146) for the icon
 
 
 
