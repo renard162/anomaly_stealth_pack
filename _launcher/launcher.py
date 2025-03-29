@@ -1,6 +1,5 @@
 import argparse
 import ctypes
-import os.path as osp
 import subprocess
 from time import sleep
 
@@ -14,10 +13,9 @@ ANOMALY_LAUNCHER_FILE = 'AnomalyLauncher.exe'
 
 
 def arguments_parser():
-    script_file = osp.basename(__file__)
     arg_parser = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        prog=f'{script_file}',
+        prog='WelcomeLauncher.exe',
         description=(
            'Executes Anomaly Launcher and removes the CPU affinity of N first cores from game when it launches.'
         )
@@ -82,7 +80,7 @@ def message_box(title:str, message:str, style:int) -> int:
     return ctypes.windll.user32.MessageBoxW(0, message, title, style)
 
 
-class CPU_affinity_setter():
+class WelcomeLauncher():
     def __init__(self, min_free_physical_cores:int):
         self.game_exe = [
             "AnomalyDX11AVX.exe",
@@ -93,6 +91,10 @@ class CPU_affinity_setter():
             "AnomalyDX9.exe",
             "AnomalyDX8AVX.exe",
             "AnomalyDX8.exe"
+        ]
+        self.valid_game_exe = [
+            "AnomalyDX11AVX.exe",
+            "AnomalyDX11.exe",
         ]
 
         logical_cores = psutil.cpu_count(logical=True)
@@ -115,6 +117,12 @@ class CPU_affinity_setter():
             if process.name() in self.game_exe:
                 psutil.Process(process.pid).cpu_affinity(self.game_cores)
                 print(f'Found game process: {process.name()}\nPID: {process.pid}\n')
+                if process.name() not in self.valid_game_exe:
+                    message_box(
+                        title='Incorrect DirectX Version',
+                        message='The game will crash, use DirectX 11!',
+                        style=0+16,
+                    )
                 return 0
         return 1
 
@@ -131,7 +139,7 @@ def main():
     else:
         launcher_process = None
 
-    anomaly_affinity_setter = CPU_affinity_setter(
+    anomaly_affinity_setter = WelcomeLauncher(
         min_free_physical_cores=args.min_physical_cores,
     )
     print('Waiting game process...\n')
