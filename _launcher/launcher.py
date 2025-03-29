@@ -96,7 +96,7 @@ def debugger_print_lock(game_process:Process):
     except:
         return
     print('DEBUG: CPU usage (Actual | Max in last 5 minutes):')
-    iter_delay = 1 #s
+    iter_delay = 5 #s
     n_iter_max = ((5 * 60) // iter_delay) - 1 #iter 0 counts
     cpu_total_array = [0.0] * (n_iter_max + 1)
     per_cpu_average_array = [0.0] * (n_iter_max + 1)
