@@ -19,7 +19,8 @@ def arguments_parser() -> argparse.Namespace:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         prog=str(launcher_file),
         description=(
-           'Executes Anomaly Launcher and removes the CPU affinity of N first cores from game when it launches.'
+           'Executes Anomaly Launcher and removes the CPU affinity of N first cores from the game when it launches.\n' \
+           'Warns user if game launches without DirectX 11.'
         )
     )
 
