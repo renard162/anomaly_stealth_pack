@@ -207,7 +207,7 @@ def main():
             print('Game launcher finished\n')
 
     if not args.debug:
-        print('Script finished!\nExiting')
+        print('Script finished!\nExiting in 15 seconds')
         sleep(15)
         return
 
