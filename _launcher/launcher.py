@@ -100,11 +100,11 @@ class CPU_affinity_setter():
         min_free_physical_cores = min(min_free_physical_cores, physical_cores-1)
 
         if logical_cores == physical_cores:
-            self.available_cores = list(range(min_free_physical_cores, physical_cores))
+            self.game_cores = list(range(min_free_physical_cores, physical_cores))
         else:
-            self.available_cores = list(range(min_free_physical_cores*2, (logical_cores - physical_cores)*2))
+            self.game_cores = list(range(min_free_physical_cores*2, (logical_cores - physical_cores)*2))
 
-        print(f'{min_free_physical_cores=}\n{physical_cores=}\n{logical_cores=}\navailable_cores={self.available_cores}\n')
+        print(f'{min_free_physical_cores=}\n{physical_cores=}\n{logical_cores=}\ngame_cores={self.game_cores}\n')
 
 
     def set_anomaly_affinity(self) -> int:
@@ -113,8 +113,8 @@ class CPU_affinity_setter():
                 psutil.process_iter(['pid', 'name'])
             ):
             if process.name() in self.game_exe:
-                psutil.Process(process.pid).cpu_affinity(self.available_cores)
-                print(f'Found process: {process.name()}\nPID: {process.pid}\n')
+                psutil.Process(process.pid).cpu_affinity(self.game_cores)
+                print(f'Found game process: {process.name()}\nPID: {process.pid}\n')
                 return 0
         return 1
 
