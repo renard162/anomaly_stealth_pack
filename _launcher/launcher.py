@@ -40,6 +40,13 @@ def arguments_parser() -> argparse.Namespace:
         action='store',
         help=f'Set the ANOMALY launcher file. If passed None as launcher, do not execute the game launcher and just waits the game process. (default: {ANOMALY_LAUNCHER_FILE})'
     )
+    arg_parser.add_argument(
+        '-d', '--debug',
+        dest='debug',
+        required=False,
+        action='store_true',
+        help='Print game process details and keep console window open after game process termination.'
+    )
     return arg_parser.parse_args()
 
 
@@ -79,6 +86,38 @@ def message_box(title:str, message:str, style:int) -> int:
             # 11 : Continue
     """
     return ctypes.windll.user32.MessageBoxW(0, message, title, style)
+
+
+def debugger_print_lock(game_process:Process):
+    print('DEBUG: CPU usage (Actual | Max in 5 minutes):')
+    n_game_cores = len(game_process.cpu_affinity())
+    max_cpu_total = 0
+    max_per_cpu_average = 0
+    cpu_total = game_process.cpu_percent()
+    iter_count = 0
+    while game_process.is_running():
+        sleep(5)
+        try:
+            cpu_total = game_process.cpu_percent()
+        except:
+            break
+        per_cpu_average = cpu_total / n_game_cores
+        max_cpu_total = max(cpu_total, max_cpu_total)
+        max_per_cpu_average = max(per_cpu_average, max_per_cpu_average)
+        sys.stdout.write(
+            f'\rTotal: {cpu_total:.2f}% {" "*7}' \
+            f'Per Core: {per_cpu_average:.2f}% {" "*4}' \
+            f'|{" "*4}' \
+            f'Max total: {max_cpu_total:.2f}%{" "*7}' \
+            f'Max per Core: {max_per_cpu_average:.2f}%     '
+        )
+        sys.stdout.flush()
+        iter_count += 1
+        if (iter_count > 59):
+            iter_count = 0
+            max_cpu_total = 0
+            max_per_cpu_average = 0
+    print('\n')
 
 
 class WelcomeLauncher():
@@ -162,9 +201,15 @@ def main():
         if not game_launcher_running:
             print('Game launcher finished\n')
 
-    while (launcher_process is not None) and (launcher_process.poll() is None):
-        sleep(5)
-    print('Script finished!')
+    if not args.debug:
+        while (launcher_process is not None) and (launcher_process.poll() is None):
+            sleep(5)
+        print('Script finished!')
+        return
+
+    debugger_print_lock(game_process)
+    print('Script finished!\nClose the game before this window')
+    input()
 
 
 
