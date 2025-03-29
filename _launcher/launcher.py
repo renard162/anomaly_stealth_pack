@@ -89,21 +89,31 @@ def message_box(title:str, message:str, style:int) -> int:
 
 
 def debugger_print_lock(game_process:Process):
-    print('DEBUG: CPU usage (Actual | Max in 5 minutes):')
-    n_game_cores = len(game_process.cpu_affinity())
-    max_cpu_total = 0
-    max_per_cpu_average = 0
-    cpu_total = game_process.cpu_percent()
-    iter_count = 0
-    while game_process.is_running():
-        sleep(5)
+    try:
+        n_game_cores = len(game_process.cpu_affinity())
+        cpu_total = game_process.cpu_percent()
+        game_is_running = game_process.is_running()
+    except:
+        return
+    print('DEBUG: CPU usage (Actual | Max in last 5 minutes):')
+    iter_delay = 1 #s
+    n_iter_max = ((5 * 60) // iter_delay) - 1 #iter 0 counts
+    cpu_total_array = [0.0] * (n_iter_max + 1)
+    per_cpu_average_array = [0.0] * (n_iter_max + 1)
+    iter_idx = 0
+    while game_is_running:
+        sleep(iter_delay)
         try:
+            game_is_running = game_process.is_running()
             cpu_total = game_process.cpu_percent()
         except:
             break
         per_cpu_average = cpu_total / n_game_cores
-        max_cpu_total = max(cpu_total, max_cpu_total)
-        max_per_cpu_average = max(per_cpu_average, max_per_cpu_average)
+        cpu_total_array[iter_idx] = cpu_total
+        per_cpu_average_array[iter_idx] = per_cpu_average
+        max_cpu_total = max(cpu_total_array)
+        max_per_cpu_average = max(per_cpu_average_array)
+        iter_idx = 0 if (iter_idx >= n_iter_max) else (iter_idx + 1)
         sys.stdout.write(
             f'\rTotal: {cpu_total:.2f}% {" "*7}' \
             f'Per Core: {per_cpu_average:.2f}% {" "*4}' \
@@ -112,11 +122,6 @@ def debugger_print_lock(game_process:Process):
             f'Max per Core: {max_per_cpu_average:.2f}%     '
         )
         sys.stdout.flush()
-        iter_count += 1
-        if (iter_count > 59):
-            iter_count = 0
-            max_cpu_total = 0
-            max_per_cpu_average = 0
     print('\n')
 
 
