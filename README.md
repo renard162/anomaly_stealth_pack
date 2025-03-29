@@ -17,7 +17,7 @@ Don't expect this addon pack to introduce a new arsenal of weapons, radical grap
 ---------
 
 ### Updating
-To avoid losing your progress with achievements and your settings, when updating the package, extract only the `db` directory into the game's directory.
+To avoid losing your progress with achievements and your settings, when updating the package, extract only the `db` directory into the game's directory. If the `WelcomeLauncher.exe` file is not in the game's root directory, extract it as well.
 
 
 ### Installation
@@ -47,6 +47,7 @@ Extract the [S.T.A.L.K.E.R. Anomaly 1.5.1](https://www.moddb.com/mods/stalker-an
 ### Warning
 Most extra add-ons included in this package have been heavily modified to ensure compatibility with other add-ons, create new gameplay mechanics, or fix existing bugs. Due to the base game version used, several of these extra add-ons are no longer available in the version included in the package, as many have been updated to newer versions of Anomaly. For this reason, if you encounter any bugs, report them in this post rather than the original add-on, as it has likely been modified.
 
+If you prefer not to use the new Launcher, you can run the game normally through the original launcher.
 
 
 ## Português
@@ -65,7 +66,7 @@ Não espere que este pacote de addons introduza muitas novas armas, mudanças gr
 ---------
 
 ### Atualização
-Para não perder seu progresso com os achievements e suas configurações, para atualizar o pacote, descompacte apenas o diretório `db` no diretório do jogo.
+Para não perder seu progresso com os achievements e suas configurações, para atualizar o pacote, descompacte apenas o diretório `db` no diretório do jogo e, caso o arquivo `WelcomeLauncher.exe` não esteja no diretório raiz do jogo, extraia-o também.
 
 
 ### Instalação
@@ -94,6 +95,8 @@ Descompacte o jogo [S.T.A.L.K.E.R. Anomaly 1.5.1](https://www.moddb.com/mods/sta
 
 ### Aviso
 A maioria dos addons extras inclusos no pacote foram muito alterados a fim de compatibilizar com outros addons, criar novas mecânicas de jogo ou corrigir eventuais bugs existentes no jogo. Devido à versão do jogo base utilizada, vários dos addons extras também já não são encontrados na versão utilizada no pacote, já que vários foram atualizados para versões mais novas do Anomaly. Por este motivo, caso ocorra algum bug, relate o bug nessa postagem e não no addon original, já que provavelmente este foi modificado.
+
+Caso não deseje utilizar o novo Launcher para o jogo, pode-se rodar o jogo normalmente pelo launcher original.
 
 
 
@@ -204,6 +207,25 @@ A maioria dos addons extras inclusos no pacote foram muito alterados a fim de co
 
 
 ## Changelog
+*For more detailed log, see commits in github repository*
+
+1.3) The Great Revision
+
+- Complete revision of 2D scopes textures.
+- Revised Tourist economy mode initial loadouts.
+- Fixed many texture glitches.
+- Added more agressive visual to Nosorogs.
+- Fixed several bugs that caused the ghillie suit's camouflage to malfunction in certain situations.
+- Added camouflage effectiveness indicator to Ghillie suit.
+- Fixed many bugs that disable stealth in some situations and turns player invisible to NPC in others.
+- Cleaned and reorganized debug spawner to remove dummy/system/unused items.
+- Fixed many visual glitches and misspelled/false item descriptions.
+- Reorganized many itens in craft menu on workbenchs.
+- Created a new launcher (WelcomeLauncher.exe) that automaticaly remove the game process from Core 0 affinity to prevent more crashes.
+- Correction of many "crash to desktop" bugs.
+- Revision and bug correction in many armors, weapons, upgrades and attachments status.
+- Ammo drop changes with game mode.
+
 1.2) New Player Review
 
 - Renamed "Stealth" game mode to "Ghost".
