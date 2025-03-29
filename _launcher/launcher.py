@@ -208,14 +208,8 @@ def main():
 
     if not args.debug:
         print('Script finished!\n')
-        if game_process is None:
-            return
-        exit_delay = 15
-        for s in range(exit_delay):
-            sys.stdout.write(f'\rExiting in {exit_delay-(s+1):02d} seconds   ')
-            sys.stdout.flush()
-            sleep(1)
-        return
+        sleep(3)
+        sys.exit()
 
     debugger_print_lock(game_process)
     print('Script finished!\nClose the game before this window')
@@ -225,3 +219,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    sys.exit()
