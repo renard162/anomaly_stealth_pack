@@ -1,5 +1,14 @@
 *.db0
 _tools/**/
 _tools/engine.log
+
+#VSCode
 launch.json
+
+#Python
 **/venv/
+
+#PyInstaller
+**/_launcher/*.spec
+**/_launcher/build/
+**/_launcher/dist/
