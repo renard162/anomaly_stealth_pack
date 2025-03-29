@@ -1,6 +1,7 @@
 import argparse
 import ctypes
 import subprocess
+import sys
 from time import sleep
 
 import psutil
@@ -13,9 +14,10 @@ ANOMALY_LAUNCHER_FILE = 'AnomalyLauncher.exe'
 
 
 def arguments_parser():
+    launcher_file = sys.argv[0]
     arg_parser = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        prog='WelcomeLauncher.exe',
+        prog=f'{launcher_file}',
         description=(
            'Executes Anomaly Launcher and removes the CPU affinity of N first cores from game when it launches.'
         )
