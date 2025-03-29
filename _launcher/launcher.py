@@ -24,7 +24,7 @@ def arguments_parser() -> argparse.Namespace:
     )
 
     arg_parser.add_argument(
-        '-c', '--min-free-cpu-cores',
+        '-m', '--min-free-cpu-cores',
         type=int,
         dest='min_physical_cores',
         required=False,
