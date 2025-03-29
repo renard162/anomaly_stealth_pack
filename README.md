@@ -47,7 +47,7 @@ Extract the [S.T.A.L.K.E.R. Anomaly 1.5.1](https://www.moddb.com/mods/stalker-an
 ### Warning
 Most extra add-ons included in this package have been heavily modified to ensure compatibility with other add-ons, create new gameplay mechanics, or fix existing bugs. Due to the base game version used, several of these extra add-ons are no longer available in the version included in the package, as many have been updated to newer versions of Anomaly. For this reason, if you encounter any bugs, report them in this post rather than the original add-on, as it has likely been modified.
 
-If you prefer not to use the new Launcher, you can run the game normally through the original launcher.
+If you prefer not to use the new Launcher, you can run the game normally through the original launcher. You can read the WelcomeLauncher documentation with command `WelcomeLauncher.exe --help`.
 
 
 ## Português
@@ -96,7 +96,7 @@ Descompacte o jogo [S.T.A.L.K.E.R. Anomaly 1.5.1](https://www.moddb.com/mods/sta
 ### Aviso
 A maioria dos addons extras inclusos no pacote foram muito alterados a fim de compatibilizar com outros addons, criar novas mecânicas de jogo ou corrigir eventuais bugs existentes no jogo. Devido à versão do jogo base utilizada, vários dos addons extras também já não são encontrados na versão utilizada no pacote, já que vários foram atualizados para versões mais novas do Anomaly. Por este motivo, caso ocorra algum bug, relate o bug nessa postagem e não no addon original, já que provavelmente este foi modificado.
 
-Caso não deseje utilizar o novo Launcher para o jogo, pode-se rodar o jogo normalmente pelo launcher original.
+Caso não deseje utilizar o novo Launcher para o jogo, pode-se rodar o jogo normalmente pelo launcher original. Você pode consultar os argumentos para execução do WelcomeLauncher por meio do comando `WelcomeLauncher.exe --help`.
 
 
 
