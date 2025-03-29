@@ -1,10 +1,9 @@
 import argparse
 import ctypes
-import subprocess
 import sys
 from time import sleep
 
-import psutil
+from psutil import Process, Popen, process_iter, cpu_count
 
 
 #Default values
@@ -34,6 +33,7 @@ def arguments_parser() -> argparse.Namespace:
     )
     arg_parser.add_argument(
         '-l', '--launcher',
+        type=str,
         dest='launcher',
         required=False,
         default=ANOMALY_LAUNCHER_FILE,
@@ -83,7 +83,7 @@ def message_box(title:str, message:str, style:int) -> int:
 
 class WelcomeLauncher():
     def __init__(self, min_free_physical_cores:int):
-        self.game_exe = [
+        self.game_exe_list = [
             "AnomalyDX11AVX.exe",
             "AnomalyDX11.exe",
             "AnomalyDX10AVX.exe",
@@ -93,13 +93,13 @@ class WelcomeLauncher():
             "AnomalyDX8AVX.exe",
             "AnomalyDX8.exe"
         ]
-        self.dx11_game_exe = [
+        self.dx11_game_exe_list = [
             "AnomalyDX11AVX.exe",
             "AnomalyDX11.exe",
         ]
 
-        logical_cores = psutil.cpu_count(logical=True)
-        physical_cores = psutil.cpu_count(logical=False)
+        logical_cores = cpu_count(logical=True)
+        physical_cores = cpu_count(logical=False)
         min_free_physical_cores = min(min_free_physical_cores, physical_cores-1)
 
         if logical_cores == physical_cores:
@@ -110,22 +110,23 @@ class WelcomeLauncher():
         print(f'{min_free_physical_cores=}\n{physical_cores=}\n{logical_cores=}\ngame_cores={self.game_cores}\n')
 
 
-    def set_anomaly_affinity(self) -> int:
+    def set_anomaly_affinity(self) -> Process|None:
         for process in filter(
                 lambda p: p.name().startswith('Anomaly'),
-                psutil.process_iter(['pid', 'name'])
+                process_iter(['pid', 'name'])
             ):
-            if process.name() in self.game_exe:
-                psutil.Process(process.pid).cpu_affinity(self.game_cores)
+            if process.name() in self.game_exe_list:
+                game_process = Process(process.pid)
+                game_process.cpu_affinity(self.game_cores)
                 print(f'Found game process: {process.name()}\nPID: {process.pid}\n')
-                if process.name() not in self.dx11_game_exe:
+                if process.name() not in self.dx11_game_exe_list:
                     message_box(
                         title='Incorrect DirectX Version',
                         message='The game will crash, use DirectX 11!',
                         style=0+16,
                     )
-                return process.pid
-        return -1
+                return game_process
+        return None
 
 
 def main():
@@ -134,7 +135,7 @@ def main():
     print(f'\nGame Launcher: {args.launcher}\n')
     if args.launcher != 'None':
         try:
-            launcher_process = subprocess.Popen([args.launcher])
+            launcher_process = Popen([args.launcher])
         except FileNotFoundError:
             message_box(
                 title='File not found',
@@ -151,20 +152,21 @@ def main():
     print('Waiting game process...\n')
 
     game_launcher_running = True
-    game_pid = -1
-    while game_launcher_running and (game_pid == -1):
-        game_pid = anomaly_affinity_setter.set_anomaly_affinity()
+    game_process = None
+    while game_launcher_running and (game_process is None):
+        game_process = anomaly_affinity_setter.set_anomaly_affinity()
         sleep(3)
         if launcher_process is None:
             continue
         game_launcher_running = launcher_process.poll() is None
         if not game_launcher_running:
             print('Game launcher finished\n')
-    
-    print('Script finished!\nClose the game before this window')
+
+    while (launcher_process is not None) and (launcher_process.poll() is None):
+        sleep(5)
+    print('Script finished!')
 
 
 
 if __name__ == '__main__':
     main()
-    input()
