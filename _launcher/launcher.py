@@ -39,7 +39,7 @@ def arguments_parser() -> argparse.Namespace:
         required=False,
         default=ANOMALY_LAUNCHER_FILE,
         action='store',
-        help=f'Set the ANOMALY launcher file. If passed None as launcher, do not execute the game launcher. (default: {ANOMALY_LAUNCHER_FILE})'
+        help=f'Set the ANOMALY launcher file. If passed None as launcher, do not execute the game launcher and just waits the game process. (default: {ANOMALY_LAUNCHER_FILE})'
     )
     return arg_parser.parse_args()
 
