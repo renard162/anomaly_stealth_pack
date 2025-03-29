@@ -207,8 +207,14 @@ def main():
             print('Game launcher finished\n')
 
     if not args.debug:
-        print('Script finished!\nExiting in 15 seconds')
-        sleep(15)
+        print('Script finished!\n')
+        if game_process is None:
+            return
+        exit_delay = 15
+        for s in range(exit_delay):
+            sys.stdout.write(f'\rExiting in {exit_delay-(s+1):02d} seconds   ')
+            sys.stdout.flush()
+            sleep(1)
         return
 
     debugger_print_lock(game_process)
