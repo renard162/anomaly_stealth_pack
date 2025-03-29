@@ -13,7 +13,7 @@ ANOMALY_LAUNCHER_FILE = 'AnomalyLauncher.exe'
 
 
 
-def arguments_parser():
+def arguments_parser() -> argparse.Namespace:
     launcher_file = sys.argv[0]
     arg_parser = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
