@@ -23,7 +23,6 @@ def arguments_parser() -> argparse.Namespace:
            'Warns user if game launches without DirectX 11.'
         )
     )
-
     arg_parser.add_argument(
         '-m', '--min-free-cpu-cores',
         type=int,
@@ -33,7 +32,6 @@ def arguments_parser() -> argparse.Namespace:
         action='store',
         help=f'Sets the minimum amount of CPU physical cores reserved to system. (default: {MIN_FREE_PHYSICAL_CORES})'
     )
-
     arg_parser.add_argument(
         '-l', '--launcher',
         dest='launcher',
@@ -95,7 +93,7 @@ class WelcomeLauncher():
             "AnomalyDX8AVX.exe",
             "AnomalyDX8.exe"
         ]
-        self.valid_game_exe = [
+        self.dx11_game_exe = [
             "AnomalyDX11AVX.exe",
             "AnomalyDX11.exe",
         ]
@@ -120,7 +118,7 @@ class WelcomeLauncher():
             if process.name() in self.game_exe:
                 psutil.Process(process.pid).cpu_affinity(self.game_cores)
                 print(f'Found game process: {process.name()}\nPID: {process.pid}\n')
-                if process.name() not in self.valid_game_exe:
+                if process.name() not in self.dx11_game_exe:
                     message_box(
                         title='Incorrect DirectX Version',
                         message='The game will crash, use DirectX 11!',
