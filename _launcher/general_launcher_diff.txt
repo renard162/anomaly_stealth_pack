@@ -1,0 +1,118 @@
+# Imports:
+import ctypes
+
+
+# Argument Parser:
+def arguments_parser() -> argparse.Namespace:
+    arg_parser = argparse.ArgumentParser(
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        prog=str(launcher_file),
+        description=(
+            # This description:
+           'Executes Anomaly Launcher and removes the CPU affinity of N first cores from the game when it launches.\n' \
+           'Warns user if game launches without DirectX 11.'
+           # -----
+        )
+    )
+
+
+# Message box function:
+def message_box(title:str, message:str, style:int) -> int:
+    """Shows a message box (Windows only)
+
+    Args:
+        title (str): Window Title
+        message (str): Message
+        style (int): Type of message flag (sum the Button flag with Window icon flag):
+            Button flags:
+            # 0 : OK
+            # 1 : OK | Cancel
+            # 2 : Abort | Retry | Ignore
+            # 3 : Yes | No | Cancel
+            # 4 : Yes | No
+            # 5 : Retry | No
+            # 6 : Cancel | Try Again | Continue
+
+            Window icon flags:
+            # 0  : No icon
+            # 16 : Stop-sign icon
+            # 32 : Question-mark icon
+            # 48 : Exclamation-point icon
+            # 64 : Information-sign icon consisting of an 'i' in a circle
+
+    Returns:
+        int: Button clicked:
+            # 1  : Ok
+            # 2  : Cancel
+            # 3  : Abort
+            # 4  : Retry
+            # 5  : Ignore
+            # 6  : Yes
+            # 7  : No
+            # 10 : Try Again
+            # 11 : Continue
+    """
+    return ctypes.windll.user32.MessageBoxW(0, message, title, style)
+
+
+# Launcher class:
+class WelcomeLauncher():
+    def __init__(self, min_free_physical_cores:int, core_map:list[int]):
+        # This property
+        self.dx11_game_exe_list = [
+            "AnomalyDX11AVX.exe",
+            "AnomalyDX11.exe",
+        ]
+        # -----
+
+    def set_anomaly_affinity(self) -> Process|None:
+        for process in filter(
+                lambda p: p.name().startswith('Anomaly'),
+                process_iter(['pid', 'name'])
+            ):
+            if process.name() in self.game_exe_list:
+                game_process = Process(process.pid)
+                game_process.cpu_affinity(self.game_cores)
+                print(f'Found game process: {process.name()}\nPID: {process.pid}\n')
+                # This check
+                if process.name() not in self.dx11_game_exe_list:
+                    message_box(
+                        title='Incorrect DirectX Version',
+                        message='The game will crash, use DirectX 11!',
+                        style=0+16,
+                    )
+                # -----
+                return game_process
+        return None
+
+
+# Main function:
+def main():
+    if not anomaly_affinity_setter.game_cores:
+        # This error message box
+        message_box(
+            title='Empty core map',
+            message=(
+                'There no cores to run the game!\n' \
+                'Review the --core-map (-c) argument.'
+            ),
+            style=0+16,
+        )
+        # -----
+        sys.exit()
+
+    if args.launcher != 'None':
+        try:
+            launcher_process = Popen([args.launcher])
+        except FileNotFoundError:
+            # This error message box and the Raise instead a simple message and an input()
+            message_box(
+                title='File not found',
+                message=f'Game launcher {args.launcher} not found!',
+                style=0+16,
+            )
+            raise FileNotFoundError(f'Launcher not found: {args.launcher}')
+            # -----
+    else:
+        launcher_process = None
+
