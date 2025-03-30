@@ -39,7 +39,7 @@ def arguments_parser() -> argparse.Namespace:
         required=False,
         default=[],
         action='store',
-        help='Manually sets the cores used to run Anomaly. If passed disables the automatic core selection.'
+        help='Manually sets the cores used to run Anomaly. If passed disables the automatic core selection. (example: passing -c 1 2 3 grants to game to use cores 1, 2 and 3)'
     )
     arg_parser.add_argument(
         '-l', '--launcher',
