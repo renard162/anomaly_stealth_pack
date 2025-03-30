@@ -32,6 +32,16 @@ def arguments_parser() -> argparse.Namespace:
         help=f'Sets the minimum amount of CPU physical cores reserved to system. (default: {MIN_FREE_PHYSICAL_CORES})'
     )
     arg_parser.add_argument(
+        '-c', '--core-map',
+        type=int,
+        dest='core_map',
+        nargs='+',
+        required=False,
+        default=[],
+        action='store',
+        help='Manually sets the cores used to run Anomaly. If passed disables the automatic core selection.'
+    )
+    arg_parser.add_argument(
         '-l', '--launcher',
         type=str,
         dest='launcher',
@@ -126,7 +136,7 @@ def debugger_print_lock(game_process:Process):
 
 
 class WelcomeLauncher():
-    def __init__(self, min_free_physical_cores:int):
+    def __init__(self, min_free_physical_cores:int, core_map:list[int]):
         self.game_exe_list = [
             "AnomalyDX11AVX.exe",
             "AnomalyDX11.exe",
@@ -145,13 +155,41 @@ class WelcomeLauncher():
         logical_cores = cpu_count(logical=True)
         physical_cores = cpu_count(logical=False)
         min_free_physical_cores = min(min_free_physical_cores, physical_cores-1)
+        total_cores_info = f'{physical_cores=}\n{logical_cores=}\n'
 
         if logical_cores == physical_cores:
-            self.game_cores = list(range(min_free_physical_cores, physical_cores))
+            all_cores_set = set(range(physical_cores))
+            free_cores_set = set(range(min_free_physical_cores))
         else:
-            self.game_cores = list(range(min_free_physical_cores*2, (logical_cores - physical_cores)*2))
+            all_cores_set = set(range((logical_cores - physical_cores)*2))
+            free_cores_set = set(range(min_free_physical_cores*2))
 
-        print(f'{min_free_physical_cores=}\n{physical_cores=}\n{logical_cores=}\ngame_cores={self.game_cores}\n')
+        if core_map:
+            core_map_set = set(core_map)
+            game_cores_set = core_map_set & all_cores_set
+            unavailable_cores_set = core_map_set - game_cores_set
+            free_cores_info = 'Game cores given by user\n'
+        else:
+            game_cores_set = all_cores_set - free_cores_set
+            unavailable_cores_set = free_cores_set - all_cores_set
+            free_cores_info = f'{min_free_physical_cores=}\n'
+
+        self.game_cores = sorted(game_cores_set)
+        unavailable_cores = sorted(unavailable_cores_set)
+
+        error_info = ''
+        if unavailable_cores:
+            error_info += 'Given cores [' + ', '.join(str(c) for c in unavailable_cores) + '] not found!\n'
+        if self.game_cores:
+            game_cores_info = f'game_cores={self.game_cores}\n'
+        else:
+            game_cores_info = ''
+            error_info += 'Empty game cores map!\n'
+
+        separator_info = '--=x=' * 10 + '--'
+        error_info = '\n' + separator_info + '\nERROR:\n' + error_info + separator_info + '\n' if (error_info != '') else ''
+
+        print(free_cores_info + total_cores_info + game_cores_info + error_info)
 
 
     def set_anomaly_affinity(self) -> Process|None:
@@ -177,6 +215,23 @@ def main():
     args = arguments_parser()
 
     print(f'\nGame Launcher: {args.launcher}\n')
+
+    anomaly_affinity_setter = WelcomeLauncher(
+        min_free_physical_cores=args.min_physical_cores,
+        core_map=args.core_map,
+    )
+
+    if not anomaly_affinity_setter.game_cores:
+        message_box(
+            title='Empty core map',
+            message=(
+                'There no cores to run the game!\n' \
+                'Review the --core-map (-c) argument.'
+            ),
+            style=0+16,
+        )
+        sys.exit()
+    
     if args.launcher != 'None':
         try:
             launcher_process = Popen([args.launcher])
@@ -190,9 +245,6 @@ def main():
     else:
         launcher_process = None
 
-    anomaly_affinity_setter = WelcomeLauncher(
-        min_free_physical_cores=args.min_physical_cores,
-    )
     print('Waiting game process...\n')
 
     game_launcher_running = True
