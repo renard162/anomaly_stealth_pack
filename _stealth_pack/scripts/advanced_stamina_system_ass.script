@@ -478,18 +478,21 @@ end
 function do_patches()
 	medic_heal = dialogs.medic_magic_potion
 	dialogs.medic_magic_potion = function(first_speaker, second_speaker)
+		arszi_psy.set_psy_health(1.0)
 		remove_blood_loss()
 		medic_heal(first_speaker, second_speaker)
 	end
 
 	heal_actor_injury = dialogs.heal_actor_injury
 	dialogs.heal_actor_injury = function(first_speaker, second_speaker)
+		arszi_psy.set_psy_health(1.0)
 		remove_blood_loss()
 		heal_actor_injury(first_speaker, second_speaker)
 	end
 
 	heal_actor_injury_radiation = dialogs.heal_actor_injury_radiation
 	dialogs.heal_actor_injury_radiation = function(first_speaker, second_speaker)
+		arszi_psy.set_psy_health(1.0)
 		remove_blood_loss()
 		heal_actor_injury_radiation(first_speaker, second_speaker)
 	end
