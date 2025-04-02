@@ -56,4 +56,14 @@
 	<string id="st_camo_bonus_4">
 		<text>extreme effective camouflage in wild terrain</text>
 	</string>
+
+	<string id="st_armor_kind_light">
+		<text>light armor</text>
+	</string>
+	<string id="st_armor_kind_medium">
+		<text>medium armor</text>
+	</string>
+	<string id="st_armor_kind_heavy">
+		<text>heavy armor</text>
+	</string>
 </string_table>

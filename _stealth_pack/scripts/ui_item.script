@@ -476,6 +476,14 @@ function build_desc_footer(obj, sec, str) -- one obj used
 		local blindness = ini_sys:r_float_ex(sec,"npc_blindness_koeff") or 100
 		local camo_level = (blindness <= 20 and 4) or (blindness <= 22 and 3) or (blindness <= 24 and 2) or (blindness <= 26 and 1) or (blindness <= 28 and 0) or -1
 		local community = ini_sys:r_string_ex(sec,"community")
+		local outfit_kind = ini_sys:r_string_ex(sec,"kind") or 'o_medium'
+		local amor_type_text = {
+			["o_light"] = "st_armor_kind_light",
+			["o_medium"] = "st_armor_kind_medium",
+			["o_heavy"] = "st_armor_kind_heavy",
+			["o_sci"] = "st_armor_kind_medium",
+		}
+		local type_key = amor_type_text[outfit_kind] or "st_armor_kind_medium"
 
 		_str = _str .. clr_2 .. " " .. str_tbl.prop .. ":\\n"
 		_str = _str .. clr_y .. "  • " .. clr_1 .. " " .. str_tbl.out_comm .. ": " .. clr_2 .. (community and gc("st_dyn_news_comm_" .. community .. "_6") or str_tbl.stat_unknown) .. " \\n"
@@ -484,6 +492,7 @@ function build_desc_footer(obj, sec, str) -- one obj used
 --		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_slots .. ": " .. clr_2 .. tostring(artefact_count) .. " \\n"
 --		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_cw .. ": " .. clr_2 .. "+" .. tostring(additional_inventory_weight) .. " " .. gc("st_kg") .. " \\n"
 		_str = _str .. clr_p .. "  • " .. clr_1 .. " " .. str_tbl.out_run .. " " .. (sprint_allowed and str_tbl.stat_posble_y or str_tbl.stat_posble_n) .. " \\n"
+		_str = _str .. clr_b2 .. "  • " .. clr_1 .. " " .. gc(type_key) .. " \\n"
 		if camo_level > 3 then
 			_str = _str .. camo_g .. "  • " .. camo_gt .. " " .. gc("st_camo_bonus_" .. camo_level) .. " \\n"
 		elseif camo_level >= 0 then
