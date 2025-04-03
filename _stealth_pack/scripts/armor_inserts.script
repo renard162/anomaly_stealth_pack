@@ -46,11 +46,13 @@ plate_sections = {
 	["af_polymer"]				= { coeff / ini_sys:r_float_ex("af_polymer_absorbation","fire_wound_immunity")	 			, 0.10, 0.45 },	-- standard UHMWPE plates (III or BR4)
 	["af_polymer_up"]			= { coeff / ini_sys:r_float_ex("af_polymer_up_absorbation","fire_wound_immunity")			, 0.15, 1.10 },	-- next-gen UHMWPE/ceramic composite plates (IV or BR5)
 
+	-- +7 uSv
 	["af_medusa"]				= { (coeff * 0.85) / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")		, 0.00, 0.35 },	-- Jellyfish (IIIA or BR4)
 	["af_medusa_af_aac"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")			, 0.00, 0.14 },	-- Jellyfish AAC (II or BR3)
 	["af_medusa_af_aam"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")			, 0.00, 0.14 },	-- Jellyfish AAM (II or BR3)
 	["af_medusa_af_iam"]		= { af_coeff / ini_sys:r_float_ex("af_medusa_absorbation","fire_wound_immunity")			, 0.00, 0.14 },	-- Jellyfish IAM (II or BR3)
 
+	-- +12 uSv
 	["af_vyvert"]				= { (coeff * 0.75) / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")		, 0.00, 0.45 },	-- Wrenched (III or BR4)
 	["af_vyvert_af_aac"]		= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")			, 0.00, 0.24 },	-- Wrenched AAC (IIIA or BR4)
 	["af_vyvert_af_aam"]		= { af_coeff / ini_sys:r_float_ex("af_vyvert_absorbation","fire_wound_immunity")			, 0.00, 0.24 },	-- Wrenched AAM (IIIA or BR4)
@@ -61,6 +63,7 @@ plate_sections = {
 	["af_empty_af_aam"]			= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")				, 0.00, 0.40 },	-- Empty AAM (III or BR4)
 	["af_empty_af_iam"]			= { af_coeff / ini_sys:r_float_ex("af_empty_absorbation","fire_wound_immunity")				, 0.00, 0.40 },	-- Empty IAM (III or BR4)
 
+	-- +23 uSv
 	["af_full_empty"]			= { (coeff * 0.50) / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity")	, 0.00, 9.99 },	-- Full Empty (IV+ or BR7)
 	["af_full_empty_af_aac"]	= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity")		, 0.00, 0.50 },	-- Full Empty AAC (III+ or BR4)
 	["af_full_empty_af_aam"]	= { af_coeff / ini_sys:r_float_ex("af_full_empty_absorbation","fire_wound_immunity")		, 0.00, 0.50 },	-- Full Empty AAM (III+ or BR4)
