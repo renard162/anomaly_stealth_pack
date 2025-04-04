@@ -229,6 +229,7 @@ def main():
             ),
             style=0+16,
         )
+        input()
         sys.exit()
 
     if args.launcher != 'None':
