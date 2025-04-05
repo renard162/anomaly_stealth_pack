@@ -221,7 +221,6 @@ Caso não deseje utilizar o novo Launcher para o jogo, pode-se rodar o jogo norm
 - Cleaned and reorganized debug spawner to remove dummy/system/unused items.
 - Fixed many visual glitches and misspelled/false item descriptions.
 - Reorganized many itens in craft menu on workbenchs.
-- Created a new launcher (WelcomeLauncher.exe) that automaticaly remove the game process from Core 0 affinity to prevent more crashes.
 - Correction of many "crash to desktop" bugs.
 - Revision and bug correction in many armors, weapons, upgrades and attachments status.
 - Ammo drop changes with game mode.
