@@ -4,7 +4,7 @@
 [trader]
 buy_condition = trade_generic_buy 
 sell_condition = trade_generic_sell
-buy_supplies = {=toolkit_task_done(3) =recipe_trade_enabled()} supplies_5, {=toolkit_task_done(3)} supplies_4, {=toolkit_task_done(2)} supplies_3, {=toolkit_task_done(1)} supplies_2, supplies_1
+buy_supplies = {=toolkit_task_done(3) =recipe_trade_enabled()} supplies_recipes, {=toolkit_task_done(3)} supplies_4, {=toolkit_task_done(2)} supplies_3, {=toolkit_task_done(1)} supplies_2, supplies_1
 buy_item_condition_factor = 0.01
 buy_item_exponent = 1.75
 sell_item_exponent = 0.75
@@ -205,12 +205,12 @@ ramrod_tool             = 3, 1
 sewing_thread           = 5, 1
 heavy_sewing_thread     = 3, 1
 
+exobackpack_exo_outfit  = 1, 1
+
 af_polymer_up			= 1, 0.5
 af_ceramic_up			= 1, 0.5
 
-exobackpack_exo_outfit  = 1, 1
-
-[supplies_5]:supplies_4
+[supplies_recipes]:supplies_4
 recipe_basic_1          = 1, 1
 recipe_basic_2          = 1, 1
 recipe_basic_3          = 1, 1
