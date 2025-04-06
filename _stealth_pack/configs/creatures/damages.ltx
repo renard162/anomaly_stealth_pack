@@ -398,9 +398,33 @@ eye_left 			 		= 1, 0.011
 eye_right 			 		= 1, 0.011
 jaw_1 		 		 		= 1, 0.011
 
+[head_damage_m40]
+bip01_neck 			 		= 1, 0.05
+bip01_head 			 		= 1, 0.05
+eyelid_1 			 		= 1, 0.011
+eye_left 			 		= 1, 0.011
+eye_right 			 		= 1, 0.011
+jaw_1 		 		 		= 1, 0.05
+
+[head_damage_m50]
+bip01_neck 			 		= 1, 0.15
+bip01_head 			 		= 1, 0.15
+eyelid_1 			 		= 1, 0.011
+eye_left 			 		= 1, 0.011
+eye_right 			 		= 1, 0.011
+jaw_1 		 		 		= 1, 0.15
+
 [head_damage_015]; scientific ; CLASS II
 bip01_neck 			 		= 1, 0.15
 bip01_head 			 		= 1, 0.15
+eyelid_1 			 		= 1, 0.15
+eye_left 			 		= 1, 0.15
+eye_right 			 		= 1, 0.15
+jaw_1 		 		 		= 1, 0.15
+
+[head_damage_battle_respirator]
+bip01_neck 			 		= 1, 0.15
+bip01_head 			 		= 1, 0.17
 eyelid_1 			 		= 1, 0.15
 eye_left 			 		= 1, 0.15
 eye_right 			 		= 1, 0.15
@@ -413,6 +437,14 @@ eyelid_1 			 		= 1, 0.05
 eye_left 			 		= 1, 0.05
 eye_right 			 		= 1, 0.05
 jaw_1 		 		 		= 1, 0.01
+
+[head_damage_ach7ex]; CLASS IIIA
+bip01_neck 			 		= 1, 0.15
+bip01_head 			 		= 1, 0.25
+eyelid_1 			 		= 1, 0.15
+eye_left 			 		= 1, 0.15
+eye_right 			 		= 1, 0.15
+jaw_1 		 		 		= 1, 0.15
 
 [head_damage_030]; tactical ; CLASS III -
 bip01_neck 			 		= 1, 0.3
@@ -1044,6 +1076,7 @@ ap_scale						= 0.75
 [actor_armor_psz]:body_damage_040, head_damage_00
 ap_scale						= 0.75
 
+
 [actor_armor_radiation]:body_damage_040, head_damage_030
 ap_scale						= 0.75
 
@@ -1062,6 +1095,18 @@ ap_scale						= 0.7
 [actor_armor_military_exo]:body_damage_043, head_damage_035
 ap_scale						= 0.7
 
+
+[actor_armor_ecolog_exoseva]:body_damage_043, head_damage_m50
+ap_scale						= 0.7
+
+[actor_armor_exoseva]:body_damage_043, head_damage_015
+ap_scale						= 0.7
+
+[actor_armor_battle_exoseva]:body_damage_043, head_damage_battle_respirator
+ap_scale						= 0.7
+
+[actor_armor_military_exoseva]:body_damage_043, head_damage_ach7ex
+ap_scale						= 0.7		
 
 
 [actor_armor_class0]:body_damage_0011, head_damage_00
@@ -1085,7 +1130,7 @@ ap_scale						= 0.7
 [actor_armor_class5]:body_damage_045, head_damage_035
 ap_scale						= 0.7
 
-[actor_armor_class6]:body_damage_047, head_damage_040
+[actor_armor_class6]:body_damage_045, head_damage_040
 ap_scale						= 0.7
 
 ;***************************************************************
@@ -1097,13 +1142,19 @@ ap_scale						= 0.7
 [actor_helm_respirator]:body_damage_absent, head_damage_0011
 ap_scale						= 0.9
 
-[actor_helm_m40]:body_damage_absent, head_damage_0011
+[actor_helm_m40]:body_damage_absent, head_damage_m40
 ap_scale						= 0.9
+
+[actor_helm_m50]:body_damage_absent, head_damage_m50
+ap_scale						= 0.85
 
 [actor_helm_screen]:body_damage_absent, head_damage_015
 ap_scale						= 0.85
 
 [actor_helm_hardhat]:body_damage_absent, head_damage_hardhat
+ap_scale						= 0.8
+
+[actor_helm_ach7ex]:body_damage_absent, head_damage_ach7ex
 ap_scale						= 0.8
 
 [actor_helm_tactic]:body_damage_absent, head_damage_030
