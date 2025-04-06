@@ -481,7 +481,7 @@ end
 function get_weight_mult(object_distance)
 	local actor_weight = db.actor:get_total_weight()
 	local base_max_weight = db.actor:get_actor_max_weight()
-	local weight_factor = math.exp(math.max(0, actor_weight - base_max_weight) / 180)
+	local weight_factor = math.exp(math.max(0, actor_weight - base_max_weight) / 240)
 	local dist = 1.00 - (0.03 * object_distance)
 	local weight_mult = weight_factor * jacketmult * dist * mcm_weight
 	local min_weight_mult = backpack_camo_limit * (ghil_equipped and 0.9 or 1)
