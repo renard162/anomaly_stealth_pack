@@ -390,6 +390,14 @@ eye_left 			 		= 1, 0.001
 eye_right 			 		= 1, 0.001
 jaw_1 		 		 		= 1, 0.001
 
+[head_damage_hood]
+bip01_neck 			 		= 1, 0.011
+bip01_head 			 		= 1, 0.011
+eyelid_1 			 		= 1, 0.001
+eye_left 			 		= 1, 0.001
+eye_right 			 		= 1, 0.001
+jaw_1 		 		 		= 1, 0.011
+
 [head_damage_0011]; respirator
 bip01_neck 			 		= 1, 0.011
 bip01_head 			 		= 1, 0.011
@@ -1019,7 +1027,7 @@ jaw_1 		 		 		= 0.0, 0.0
 [actor_armor_novice]:body_damage_0075, head_damage_00
 ap_scale						= 0.9
 
-[actor_armor_trench]:body_damage_010, head_damage_00
+[actor_armor_trench]:body_damage_010, head_damage_hood
 ap_scale						= 0.9
 
 [actor_armor_ssp99]:body_damage_0011, head_damage_015
@@ -1064,10 +1072,16 @@ ap_scale						= 0.8
 [actor_armor_duty_suit]:body_damage_020, head_damage_00
 ap_scale						= 0.8
 
+[actor_armor_trench2]:body_damage_020, head_damage_hood
+ap_scale						= 0.8
+
 [actor_armor_berill]:body_damage_025, head_damage_00
 ap_scale						= 0.8
 
 [actor_armor_cs3]:body_damage_025, head_damage_00
+ap_scale						= 0.8
+
+[actor_nomad_suit]:body_damage_025, head_damage_hood
 ap_scale						= 0.8
 
 [actor_armor_cs_heavy]:body_damage_030, head_damage_00
@@ -1144,6 +1158,8 @@ ap_scale						= 0.7
 ;***************************************************************
 
 [actor_helm_absent]:body_damage_absent, head_damage_00
+
+[actor_helm_hood]:body_damage_absent, head_damage_hood
 
 [actor_helm_respirator]:body_damage_absent, head_damage_0011
 ap_scale						= 0.9
