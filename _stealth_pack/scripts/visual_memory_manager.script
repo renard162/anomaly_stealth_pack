@@ -6,10 +6,10 @@
 -- warning npc and who can be nil sometimes
 
 local jacket_t = {
-	["o_light"] = 1.00,
-	["o_medium"] = 1.75,
+	["o_light"] = 0.75,
+	["o_medium"] = 1.50,
 	["o_heavy"] = 4.50,
-	["o_sci"] = 2.00,
+	["o_sci"] = 1.75,
 }
 
 local helmet_t = {
