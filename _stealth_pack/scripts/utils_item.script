@@ -549,6 +549,52 @@ local outfit_prop_by_type = {
 	["satiety_restore_speed"]        = {2,"m_fSatietyRestoreSpeed"},
 }
 
+function get_bone_armor(obj, sec)
+	local head_bone = {
+		["bip01_neck"] = true,
+		["bip01_head"] = true,
+		["eyelid_1"] = true,
+		["eye_left"] = true,
+		["eye_right"] = true,
+		["jaw_1"] = true
+	}
+	local bone_value = 0
+	local helm_armor_sum = 0
+	local n_helm = 0
+    local outfit_armor_sum = 0
+	local n_outfit = 0
+
+	if sec then
+		local bones_koeff_protection = nil
+		local bone_values = {}
+	end
+
+	for bone_name, bone_id in pairs(BoneID) do
+		if obj then
+			bone_value = obj:GetBoneArmor(bone_id) or 0
+		elseif sec then
+			bones_koeff_protection = SYS_GetParam(0,sec,"bones_koeff_protection")
+			bone_values = parse_list(ini_sys, bones_koeff_protection, bone_name)
+			bone_value = tonumber(bone_values[2]) or 0
+		end
+
+		if head_bone[bone_name] then
+			helm_armor_sum = helm_armor_sum + bone_value
+			n_helm = n_helm + 1
+		else
+			outfit_armor_sum = outfit_armor_sum + bone_value
+			n_outfit = n_outfit + 1
+		end
+	end
+
+	helm_armor_sum = math.max(0, helm_armor_sum)
+	n_helm = math.max(1, n_helm)
+	outfit_armor_sum = math.max(0, outfit_armor_sum)
+	n_outfit = math.max(1, n_outfit)
+	return (helm_armor_sum/n_helm) + (outfit_armor_sum/n_outfit)
+end
+
+
 function get_outfit_protection(obj, sec, name, def)
 	def = def or 0
 	
@@ -572,22 +618,8 @@ function get_outfit_protection(obj, sec, name, def)
 		
 		-- Special case for fire wound damage
 		if (name == "FireWound") then
-			local bone_value = 0
-			
-			-- Outfit
-			if outfit then
-				bone_value = cobj:GetBoneArmor( BoneID["bip01_spine"] ) or 0
-				if (not cobj.bIsHelmetAvaliable) then
-					bone_value = bone_value + cobj:GetBoneArmor( BoneID["bip01_head"] ) or 0
-				end
-				
-			-- Helmet
-			elseif helmet then
-				bone_value = cobj:GetBoneArmor( BoneID["bip01_head"] ) or 0
-			end
-		
-			return bone_value * obj:condition()
-			
+			return get_bone_armor(cobj, nil) * obj:condition()
+
 		-- Other types
 		else
 			return cobj:GetDefHitTypeProtection( HitTypeID[name] ) or def
@@ -598,24 +630,7 @@ function get_outfit_protection(obj, sec, name, def)
 		
 		-- Special case for fire wound damage
 		if (name == "FireWound") then
-			local bones_koeff_protection = SYS_GetParam(0,sec,"bones_koeff_protection")
-			
-			-- Outfit
-			if IsItem("outfit", sec) then
-				local bone_values = parse_list(ini_sys, bones_koeff_protection, "bip01_spine")
-				local bone_value = tonumber(bone_values[2]) or 0
-				
-				if (not SYS_GetParam(1,sec,"helmet_avaliable")) then
-					bone_values = parse_list(ini_sys, bones_koeff_protection, "bip01_head")
-					bone_value = bone_value + tonumber(bone_values[2])
-				end
-				return bone_value
-			
-			-- Helmet
-			elseif IsItem("helmet", sec) then
-				local bone_values = parse_list(ini_sys, bones_koeff_protection, "bip01_head")
-				return tonumber(bone_values[2])
-			end
+			return get_bone_armor(nil, sec)
 			
 		-- Other types
 		else
