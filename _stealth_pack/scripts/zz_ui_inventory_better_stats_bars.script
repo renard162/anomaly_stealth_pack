@@ -35,6 +35,37 @@ local function get_median(t)
 	return odd(#t) and t[(#t + 1) / 2] or (t[#t / 2] + t[#t / 2 + 1]) / 2
 end
 
+local function get_bone_armor(obj)
+	local head_bone = {
+		["bip01_neck"] = true,
+		["bip01_head"] = true,
+		["eyelid_1"] = true,
+		["eye_left"] = true,
+		["eye_right"] = true,
+		["jaw_1"] = true
+	}
+	local bone_armor = 0
+	local helm_armor_sum = 0
+	local n_helm = 0
+    local outfit_armor_sum = 0
+	local n_outfit = 0
+    for bone_name, bone_id in pairs(BoneID) do
+		bone_armor = obj:GetBoneArmor(bone_id) or 0
+		if head_bone[bone_name] then
+			helm_armor_sum = helm_armor_sum + bone_armor
+			n_helm = n_helm + 1
+		else
+			outfit_armor_sum = outfit_armor_sum + bone_armor
+			n_outfit = n_outfit + 1
+		end
+    end
+	helm_armor_sum = math.max(0, helm_armor_sum)
+	n_helm = math.max(1, n_helm)
+	outfit_armor_sum = math.max(0, outfit_armor_sum)
+	n_outfit = math.max(1, n_outfit)
+	return (helm_armor_sum/n_helm) + (outfit_armor_sum/n_outfit)
+end
+
 -- Load the defaults
 local function load_defaults()
 	local t = {}
@@ -659,10 +690,7 @@ function ui_inventory.UIInventory:UpdateStats(full_stats)
 
 		self.stat_outfit["power"] = (c_outfit.m_fPowerRestoreSpeed or 0) * (full_stats and 1 or cond)
 
-		local bone_value = c_outfit:GetBoneArmor( BoneID["bip01_spine"] ) or 0
-		if (not c_outfit.bIsHelmetAvaliable) then
-			bone_value = bone_value + c_outfit:GetBoneArmor( BoneID["bip01_head"] ) or 0
-		end
+		local bone_value = get_bone_armor(c_outfit)
 		self.stat_outfit["fire_wound"] = bone_value * (full_stats and 1 or cond)
 	end
 	
@@ -701,7 +729,7 @@ function ui_inventory.UIInventory:UpdateStats(full_stats)
 
 		self.stat_helm["power"] = (c_helm.m_fPowerRestoreSpeed or 0) * (full_stats and 1 or cond)
 
-		local bone_value = c_helm:GetBoneArmor( BoneID["bip01_head"] ) or 0
+		local bone_value = get_bone_armor(c_helm)
 		self.stat_helm["fire_wound"] = bone_value * (full_stats and 1 or cond)
 	end
 	
@@ -1106,16 +1134,8 @@ function ui_inventory.UIInventory:CalculateOutfitBoost(obj, outfit, full_stats)
 
 	self.bonus_stat["power"].value = (c_obj.m_fPowerRestoreSpeed or 0) * (full_stats and 1 or cond)
 
-	if outfit == "stat_helm" then
-		local bone_value = c_obj:GetBoneArmor( BoneID["bip01_head"] ) or 0
-		self.bonus_stat["fire_wound"].value = bone_value * (full_stats and 1 or cond)
-	else
-		local bone_value = c_obj:GetBoneArmor( BoneID["bip01_spine"] ) or 0
-		if (not c_obj.bIsHelmetAvaliable) then
-			bone_value = bone_value + c_obj:GetBoneArmor( BoneID["bip01_head"] ) or 0
-		end
-		self.bonus_stat["fire_wound"].value = bone_value * (full_stats and 1 or cond)
-	end
+	local bone_value = get_bone_armor(c_obj)
+	self.bonus_stat["fire_wound"].value = bone_value * (full_stats and 1 or cond)
 
 	if (outfit == "stat_outfit" and not c_obj.bIsHelmetAvaliable) then
 		self.bonus_stat["fire"].value = self.bonus_stat["fire"].value - self.stat_helm["fire"]
