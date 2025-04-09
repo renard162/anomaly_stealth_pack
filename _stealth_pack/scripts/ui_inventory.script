@@ -203,15 +203,15 @@ function UIInventory:__init() super()
 	self.stat_arty = {}
 	self.stat_boost = {}
 	self.stat_list = {
-		["health"]     = { min= 0 , max= 1                                                               , hint= "st_ui_health_sensor_inv"},
-		["radia"]      = { min= 0 , max= (SYS_GetParam(2,"actor_condition","radio_zone_max_power"))      , hint= "ui_inv_radiation_protection"},
-		["acid"]       = { min= 0 , max= (SYS_GetParam(2,"actor_condition","acid_zone_max_power"))       , hint= "ui_inv_chemical_burn_protection"},
-		["shock"]      = { min= 0 , max= (SYS_GetParam(2,"actor_condition","electra_zone_max_power"))    , hint= "ui_inv_shock_protection" },
-		["fire"]       = { min= 0 , max= (SYS_GetParam(2,"actor_condition","fire_zone_max_power"))       , hint= "ui_inv_burn_protection" },
-		["psi"]        = { min= 0 , max= (SYS_GetParam(2,"actor_condition","psi_zone_max_power"))        , hint= "ui_inv_telepatic_protection"},
-		["wound"]      = { min= 0 , max= (SYS_GetParam(2,"actor_condition","max_wound_protection"))      , hint= "ui_inv_wound_protection" },
-		["fire_wound"] = { min= 0 , max= (SYS_GetParam(2,"actor_condition","max_fire_wound_protection")) , hint= "ui_inv_fire_wound_protection" },
-		["power"]      = { min= 0 , max= (SYS_GetParam(2,"actor_condition","max_power_restore_speed"))   , hint= "ui_inv_power_restore"},
+		["health"]     = { min= 0 , max= 1                                                               	, hint= "st_ui_health_sensor_inv"},
+		["radia"]      = { min= 0 , max= (SYS_GetParam(2,"actor_condition","radio_zone_max_power"))      	, hint= "ui_inv_radiation_protection"},
+		["acid"]       = { min= 0 , max= (SYS_GetParam(2,"actor_condition","acid_zone_max_power"))       	, hint= "ui_inv_chemical_burn_protection"},
+		["shock"]      = { min= 0 , max= (SYS_GetParam(2,"actor_condition","electra_zone_max_power"))    	, hint= "ui_inv_shock_protection" },
+		["fire"]       = { min= 0 , max= (SYS_GetParam(2,"actor_condition","fire_zone_max_power"))       	, hint= "ui_inv_burn_protection" },
+		["psi"]        = { min= 0 , max= (SYS_GetParam(2,"actor_condition","psi_zone_max_power"))        	, hint= "ui_inv_telepatic_protection"},
+		["wound"]      = { min= 0 , max= (SYS_GetParam(2,"actor_condition","max_wound_protection"))      	, hint= "ui_inv_wound_protection" },
+		["fire_wound"] = { min= 0 , max= (SYS_GetParam(2,"actor_condition","max_fire_wound_protection")) 	, hint= "ui_inv_fire_wound_protection" },
+		["power"]      = { min= 0 , max= (SYS_GetParam(2,"actor_condition","max_power_restore_speed"))*0.66	, hint= "ui_inv_power_restore"},
 	}
 	self.boost_id = {
 		[ BoosterID["HpRestore"] ]              = "health_restore",
