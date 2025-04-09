@@ -455,7 +455,7 @@ function ui_inventory.UIInventory:set_max_values(reset)
 			self.stat_list[bar].max = self.og_max_stat_list[bar]
 		elseif settings.use_game_values == "max" then
 			if (v == "telepatic_immunity") then
-				self.stat_list[bar].max = max_damage[bar] * 0.5 --Adjust due psy health rework
+				self.stat_list[bar].max = max_damage[bar] * 0.4 --Adjust due psy health rework
 			else
 				self.stat_list[bar].max = max_damage[bar]
 			end
