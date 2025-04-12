@@ -212,6 +212,28 @@ function get_pda_network_range(sec)
 	return ui_pda_contacts_tab.pda_tier_range[sec] or false
 end
 
+function get_weapon_firemodes(obj)
+	local firemodes = utils_item.get_param(obj:section(), obj:id(), "fire_modes")
+	local firemode_table = (firemodes and str_explode(firemodes,",")) or {"1"}
+
+	function order_firemodes(firemodes_list)
+		table.sort(firemodes_list, function(a, b)
+			local num_a = tonumber(a)
+			local num_b = tonumber(b)
+			if num_a >= 0 and num_b < 0 then
+				return true
+			elseif num_a < 0 and num_b >= 0 then
+				return false
+			else
+				return num_a < num_b
+			end
+		end)
+		return firemodes_list
+	end
+
+	return order_firemodes(firemode_table)
+end
+
 function get_sec_name(sec)
 	if (sec == last_n_sec) then
 		return last_name_sec or ""
@@ -688,19 +710,11 @@ function build_desc_footer(obj, sec, str) -- one obj used
     -- Weapon fire modes
     local is_firearm = IsPistol(obj) or IsRifle(obj) or IsShotgun(obj) or IsSniper(obj)
     if is_firearm then
-        local firemodes = ini_sys:r_string_ex(sec,"fire_modes")
-        local firemode_table = (firemodes and str_explode(firemodes,",")) or {"1"}
-        local include_comma = false
+        local firemode_table = get_weapon_firemodes(obj)
 
         _str = _str .. clr_o .. "  • " .. clr_1 .. " " .. str_tbl.firemodes .. ": "
 
         for i=1, #firemode_table do
-
-            if include_comma then
-                _str = _str .. ", "
-            end
-            include_comma = true
-
             if firemode_table[i] == "-1" then
                 _str = _str .. str_tbl.fm_full_auto
             elseif firemode_table[i] == "1" then
@@ -713,6 +727,10 @@ function build_desc_footer(obj, sec, str) -- one obj used
                 end
             else
                 _str = _str .. str_tbl.fm_burst
+            end
+
+			if i < #firemode_table then
+                _str = _str .. ", "
             end
         end
         _str = _str .. " \\n"
