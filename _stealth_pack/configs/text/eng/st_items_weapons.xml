@@ -2395,4 +2395,7 @@ Grenades
 	<string id="st_prop_recoil_control">
 		<text>Recoil control</text>
 	</string>
+	<string id="st_prop_reliability_unit">
+		<text>rounds before failure</text>
+	</string>
 </string_table>
