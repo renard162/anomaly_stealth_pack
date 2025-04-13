@@ -255,9 +255,10 @@ function prepare_stats_table()
 	stats_table["weapon"] = {
 		["accuracy"]       			   = { index= 1, typ= "float",   name= "ui_inv_accuracy", 		icon_p= "ui_wp_prop_tochnost", 			icon_n= "", track= true, 	magnitude= 1,   	unit= "", compare= false, sign= false, show_always= true, value_functor= {"utils_ui","prop_accuracry"} },
 		["handling"]                   = { index= 2, typ= "float",   name= "ui_inv_handling", 		icon_p= "ui_wp_prop_ergonomics", 		icon_n= "", track= true, 	magnitude= 1,      	unit= "", compare= false, sign= true, show_always= true, value_functor= {"utils_ui","prop_handling"} },
-		["damage"]                     = { index= 3, typ= "float",   name= "ui_inv_damage", 		icon_p= "ui_wp_prop_damage", 			icon_n= "", track= true, 	magnitude= 1,      	unit= "", compare= false, sign= true, show_always= true , value_functor= {"utils_ui","prop_damage"} },
-		["fire_rate"]                  = { index= 4, typ= "float",   name= "ui_inv_rate_of_fire", 	icon_p= "ui_wp_prop_skorostrelnost", 	icon_n= "", track= true, 	magnitude= 1, 		unit= "", compare= false, sign= false, show_always= true, value_functor= {"utils_ui","prop_rpm"} },
-		["ammo_mag_size"]              = { index= 5, typ= "float",   name= "ui_ammo_count", 		icon_p= "ui_wp_propery_07", 			icon_n= "", track= false, 	magnitude= 1,      	unit= "", compare= false, sign= false ,show_always= true, value_functor= {"utils_ui","prop_mag_size"} },
+		["recoil"]                     = { index= 3, typ= "float",   name= "st_prop_recoil", 		icon_p= "ui_wp_prop_otdacha",   		icon_n= "", track= true, 	magnitude= 1,      	unit= "", compare= false, sign= true, show_always= true, value_functor= {"utils_ui","prop_recoil"} },
+		["damage"]                     = { index= 4, typ= "float",   name= "ui_inv_damage", 		icon_p= "ui_wp_prop_damage", 			icon_n= "", track= true, 	magnitude= 1,      	unit= "", compare= false, sign= true, show_always= true , value_functor= {"utils_ui","prop_damage"} },
+		["fire_rate"]                  = { index= 5, typ= "float",   name= "ui_inv_rate_of_fire", 	icon_p= "ui_wp_prop_skorostrelnost", 	icon_n= "", track= true, 	magnitude= 1, 		unit= "", compare= false, sign= false, show_always= true, value_functor= {"utils_ui","prop_rpm"} },
+		["ammo_mag_size"]              = { index= 6, typ= "float",   name= "ui_ammo_count", 		icon_p= "ui_wp_propery_07", 			icon_n= "", track= false, 	magnitude= 1,      	unit= "", compare= false, sign= false ,show_always= true, value_functor= {"utils_ui","prop_mag_size"} },
 	}
 	
 	stats_table["outfit"] = {
@@ -3438,14 +3439,42 @@ end
 
 function prop_accuracry(obj,sec)
 	local fire_dispersion_base = utils_item.get_wpn_param(obj, sec, "fire_dispersion_base", 0)
-	return normalize(fire_dispersion_base, 1.5, 0)
+	return log_scale_prop(normalize(fire_dispersion_base, 1.5, 0))
 end
 
 function prop_handling(obj,sec)
 	local id = obj and obj:id()
 	local PDM_disp_base = utils_item.get_wpn_param(obj, sec, "PDM_disp_base", 0)
 	local control_inertion_factor = utils_item.get_wpn_param(obj, sec, "control_inertion_factor", 0)
-	return (normalize(PDM_disp_base, 2.1, 0) + normalize(control_inertion_factor, 3, 1))/2
+	return log_scale_prop((normalize(PDM_disp_base, 2.1, 0) + normalize(control_inertion_factor, 3, 1))/2)
+end
+
+function prop_recoil(obj,sec)
+	-- Based on current weapons, tunned to simplify parameter comparison
+	local disp_max_table = {
+		["w_explosive"] = 50.0,
+		["w_pistol"] = 10.0,
+		["w_rifle"] = 5.5,
+		["w_shotgun"] = 10.2,
+		["w_smg"] = 3.0,
+		["w_sniper"] = 5.6,
+	}
+
+	local id = obj and obj:id()
+	local cam_disp = 0
+	local zoom_cam_disp = 0
+
+	if obj then
+		cam_disp = utils_item.get_param(sec, id, "cam_dispersion", "float", true) or -1
+		zoom_cam_disp = utils_item.get_param(sec, id, "zoom_cam_dispersion", "float", true) or -1
+	else
+		cam_disp = ini_sys:r_float_ex(sec, "cam_dispersion") or -1
+		zoom_cam_disp = ini_sys:r_float_ex(sec, "zoom_cam_dispersion") or -1
+	end
+
+	local disp_max = disp_max_table[ini_sys:r_string_ex(sec,"kind")] or 10
+	local recoil = (normalize(disp_max-cam_disp, 0, disp_max) + normalize(disp_max-zoom_cam_disp, 0, disp_max)) / 2
+	return log_scale_prop(math.max(0.01, recoil))
 end
 
 function prop_damage(obj,sec)
@@ -3457,12 +3486,12 @@ function prop_damage(obj,sec)
 		hit_power = (hit_power ~= 0) and (k_hit*hit_power) or k_hit
 	end
 	
-	return normalize(hit_power, 0, 1.5)
+	return log_scale_prop(normalize(hit_power, 0, 1.5))
 end
 
 function prop_rpm(obj,sec)
 	local rpm = utils_item.get_wpn_param(obj, sec, "rpm", 0)
-	return normalize(rpm, 0, 1000)
+	return log_scale_prop(normalize(rpm, 0, 1000))
 end
 
 function prop_mag_size(obj,sec)
@@ -3474,6 +3503,16 @@ end
 
 function prop_condition(obj,sec)
 	return obj and obj:condition() or 1
+end
+
+function log_scale_prop(val)
+	if val <= 0 then -- do not crash the log!
+		return val
+	end
+	if val < 0.8368 then -- (d/dx ln(x) = pi/4) -> where the tangent line becomes y=x
+		return math.log(1 + val) / math.log(2)
+	end
+	return val
 end
 
 function get_utils_xml()

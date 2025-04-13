@@ -2391,4 +2391,8 @@ Grenades
 	<string id="st_wpn_flamewerfer_descr">
 		<text>A home-made flamethrower, prone to jamming and having poor range. Its haphazard design suggests it was made in the zone by a disturbed stalker.\n \n</text>
 	</string>
+
+	<string id="st_prop_recoil_control">
+		<text>Recoil control</text>
+	</string>
 </string_table>
