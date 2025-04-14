@@ -3448,7 +3448,6 @@ function prop_accuracry(obj,sec)
 end
 
 function prop_handling(obj,sec)
-	local id = obj and obj:id()
 	local PDM_disp_base = utils_item.get_wpn_param(obj, sec, "PDM_disp_base", 0)
 	local control_inertion_factor = utils_item.get_wpn_param(obj, sec, "control_inertion_factor", 0)
 	return log_scale_prop((normalize(PDM_disp_base, 2.1, 0) + normalize(control_inertion_factor, 3, 1))/2)
