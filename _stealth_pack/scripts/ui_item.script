@@ -213,7 +213,7 @@ function get_pda_network_range(sec)
 end
 
 function get_weapon_firemodes(obj)
-	local firemodes = utils_item.get_param(obj:section(), obj:id(), "fire_modes")
+	local firemodes = utils_ui.get_non_listed_wpn_param(obj, nil, "fire_modes", "string")
 	local firemode_table = (firemodes and str_explode(firemodes,",")) or {"1"}
 
 	function order_firemodes(firemodes_list)
@@ -231,7 +231,11 @@ function get_weapon_firemodes(obj)
 		return firemodes_list
 	end
 
-	return order_firemodes(firemode_table)
+	local ordered_firemodes = order_firemodes(firemode_table)
+	local n = #ordered_firemodes
+	if n > 3 then
+		return {ordered_firemodes[1], ordered_firemodes[2], ordered_firemodes[n]}
+	return ordered_firemodes
 end
 
 function get_sec_name(sec)
