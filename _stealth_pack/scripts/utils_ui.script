@@ -3481,7 +3481,7 @@ function prop_damage(obj,sec)
 		local k_hit = ini_sys:r_float_ex(ammo_list[1], "k_hit") or 1
 		hit_power = (hit_power ~= 0) and (k_hit*hit_power) or k_hit
 	end
-	return log_scale_prop(normalize(hit_power, 0, 1.5))
+	return normalize(hit_power, 0, 1.5)
 end
 
 function prop_rpm(obj,sec)
