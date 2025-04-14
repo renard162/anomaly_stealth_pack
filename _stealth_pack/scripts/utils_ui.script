@@ -3498,10 +3498,7 @@ function prop_reliability(obj,sec)
 end
 
 function prop_mag_size(obj,sec)
-	if obj then
-		return utils_item.get_param(sec, obj:id(), "ammo_mag_size", "float", true)
-	end
-	return ini_sys:r_float_ex(sec, "ammo_mag_size")
+	return get_non_listed_wpn_param(obj, sec, "ammo_mag_size", "float", nil)
 end
 
 function prop_condition(obj,sec)
@@ -3522,7 +3519,7 @@ end
 
 function get_non_listed_wpn_param(obj, sec, param, typ, def)
 	if obj then
-		return utils_item.get_param(obj:section(), obj:id(), param, typ, true) or def
+		return utils_item.get_param(sec or obj:section(), obj:id(), param, typ, true, true) or def
 	elseif sec then
 		return ini_sys:r_float_ex(sec, param) or def
 	end

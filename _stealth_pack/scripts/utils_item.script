@@ -131,7 +131,7 @@ function get_ammo(section, id, by_key)
 	return ammo_list
 end
 
-function get_param(section, id, param, typ, add)
+function get_param(section, id, param, typ, add, no_cache)
 	print_dbg("get_param | section: %s - id: %s - param: %s - type: %s - add: %s - upgrades table passed: %s", section, id, param, typ, add)
 	
 	-- Validate
@@ -142,7 +142,7 @@ function get_param(section, id, param, typ, add)
 	end
 	
 	-- If item param is cached, no need for new calculations
-	if check_cache( (id or section), param) then 
+	if (not no_cache) and check_cache( (id or section), param) then 
 		return cache_param[ (id or section) ][param]
 	end
 	
