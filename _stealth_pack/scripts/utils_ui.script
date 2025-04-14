@@ -3462,17 +3462,8 @@ function prop_recoil(obj,sec)
 	}
 
 	local id = obj and obj:id()
-	local cam_disp = 0
-	local zoom_cam_disp = 0
-
-	if obj then
-		cam_disp = utils_item.get_param(sec, id, "cam_dispersion", "float", true) or -1
-		zoom_cam_disp = utils_item.get_param(sec, id, "zoom_cam_dispersion", "float", true) or -1
-	else
-		cam_disp = ini_sys:r_float_ex(sec, "cam_dispersion") or -1
-		zoom_cam_disp = ini_sys:r_float_ex(sec, "zoom_cam_dispersion") or -1
-	end
-
+	local cam_disp = get_non_listed_wpn_param(obj, sec, "cam_dispersion", "float", -1)
+	local zoom_cam_disp = get_non_listed_wpn_param(obj, sec, "zoom_cam_dispersion", "float", -1)
 	local disp_max = disp_max_table[ini_sys:r_string_ex(sec,"kind")] or 10
 	local recoil = (normalize(disp_max-cam_disp, 0, disp_max) + normalize(disp_max-zoom_cam_disp, 0, disp_max)) / 2
 	return log_scale_prop(math.max(0.01, recoil))
@@ -3496,18 +3487,9 @@ function prop_rpm(obj,sec)
 end
 
 function prop_reliability(obj,sec)
-	local id = obj and obj:id()
-	local condition_shot_dec = 1
-	local condition_queue_shot_dec = 1
 	local degradation_mult = (game_difficulties.get_eco_factor("weapon_degradation") or 1)
-
-	if obj then
-		condition_shot_dec = utils_item.get_param(sec, id, "condition_shot_dec", "float", true) or 1
-		condition_queue_shot_dec = utils_item.get_param(sec, id, "condition_queue_shot_dec", "float", true) or 1
-	else
-		condition_shot_dec = ini_sys:r_float_ex(sec, "condition_shot_dec") or 1
-		condition_queue_shot_dec = ini_sys:r_float_ex(sec, "condition_queue_shot_dec") or 1
-	end
+	local condition_shot_dec = get_non_listed_wpn_param(obj, sec, "condition_shot_dec", "float", 1)
+	local condition_queue_shot_dec = get_non_listed_wpn_param(obj, sec, "condition_queue_shot_dec", "float", 1)
 	condition_shot_dec = math.max(0.0003, condition_shot_dec) * degradation_mult
 	condition_queue_shot_dec = math.max(0.0003, condition_queue_shot_dec) * degradation_mult
 	local total_shots = ((1/condition_shot_dec) + (1/condition_queue_shot_dec))/2
@@ -3531,6 +3513,15 @@ function log_scale_prop(val)
 	end
 	local adj = 1
 	return normalize(math.log(val+adj), math.log(adj), math.log(1+adj))
+end
+
+function get_non_listed_wpn_param(obj, sec, param, typ, def)
+	if obj then
+		return utils_item.get_param(obj:section(), obj:id(), param, typ, true) or def
+	elseif sec then
+		return ini_sys:r_float_ex(sec, param) or def
+	end
+	return def
 end
 
 function get_utils_xml()
