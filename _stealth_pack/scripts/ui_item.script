@@ -213,7 +213,7 @@ function get_pda_network_range(sec)
 end
 
 function get_weapon_firemodes(obj)
-	local firemodes = utils_ui.get_non_listed_wpn_param(obj, nil, "fire_modes", "string")
+	local firemodes = utils_ui.get_any_wpn_param(obj, nil, "fire_modes", "string")
 	local firemode_table = (firemodes and str_explode(firemodes,",")) or {"1"}
 
 	function order_firemodes(firemodes_list)

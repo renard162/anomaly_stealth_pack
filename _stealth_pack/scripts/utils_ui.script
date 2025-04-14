@@ -3439,7 +3439,7 @@ end
 ------------------------------------------------------------
 
 function prop_accuracry(obj,sec)
-	local bullet_speed = get_non_listed_wpn_param(obj, sec, "bullet_speed", "float", 50)
+	local bullet_speed = get_any_wpn_param(obj, sec, "bullet_speed", "float", 50)
 	-- Remove outliers, like gauss, that have extreme bullet speed to simulate instant shot
 	bullet_speed = math.min(1000, bullet_speed)
 	local fire_dispersion_base = utils_item.get_wpn_param(obj, sec, "fire_dispersion_base", 0)
@@ -3463,8 +3463,8 @@ function prop_recoil(obj,sec)
 		["w_smg"] = 3.0,
 		["w_sniper"] = 5.6,
 	}
-	local cam_disp = get_non_listed_wpn_param(obj, sec, "cam_dispersion", "float", -1)
-	local zoom_cam_disp = get_non_listed_wpn_param(obj, sec, "zoom_cam_dispersion", "float", -1)
+	local cam_disp = get_any_wpn_param(obj, sec, "cam_dispersion", "float", -1)
+	local zoom_cam_disp = get_any_wpn_param(obj, sec, "zoom_cam_dispersion", "float", -1)
 	local disp_max = disp_max_table[ini_sys:r_string_ex(sec,"kind")] or 10
 	local recoil = (normalize(disp_max-cam_disp, 0, disp_max) + normalize(disp_max-zoom_cam_disp, 0, disp_max)) / 2
 	return log_scale_prop(math.max(0.01, recoil))
@@ -3488,8 +3488,8 @@ end
 
 function prop_reliability(obj,sec)
 	local degradation_mult = (game_difficulties.get_eco_factor("weapon_degradation") or 1)
-	local condition_shot_dec = get_non_listed_wpn_param(obj, sec, "condition_shot_dec", "float", 1)
-	local condition_queue_shot_dec = get_non_listed_wpn_param(obj, sec, "condition_queue_shot_dec", "float", 1)
+	local condition_shot_dec = get_any_wpn_param(obj, sec, "condition_shot_dec", "float", 1)
+	local condition_queue_shot_dec = get_any_wpn_param(obj, sec, "condition_queue_shot_dec", "float", 1)
 	condition_shot_dec = math.max(0.0003, condition_shot_dec) * degradation_mult
 	condition_queue_shot_dec = math.max(0.0003, condition_queue_shot_dec) * degradation_mult
 	local total_shots = ((1/condition_shot_dec) + (1/condition_queue_shot_dec))/2
@@ -3497,7 +3497,7 @@ function prop_reliability(obj,sec)
 end
 
 function prop_mag_size(obj,sec)
-	return get_non_listed_wpn_param(obj, sec, "ammo_mag_size", "float", nil)
+	return get_any_wpn_param(obj, sec, "ammo_mag_size", "float", nil)
 end
 
 function prop_condition(obj,sec)
@@ -3516,7 +3516,7 @@ function log_scale_prop(val)
 	return normalize(math.log(val+adj), math.log(adj), math.log(1+adj))
 end
 
-function get_non_listed_wpn_param(obj, sec, param, typ, def)
+function get_any_wpn_param(obj, sec, param, typ, def)
 	if obj then
 		return utils_item.get_param(sec or obj:section(), obj:id(), param, typ, true, true) or def
 	elseif sec then
