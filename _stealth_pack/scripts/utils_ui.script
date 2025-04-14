@@ -3439,8 +3439,12 @@ end
 ------------------------------------------------------------
 
 function prop_accuracry(obj,sec)
+	local bullet_speed = get_non_listed_wpn_param(obj, sec, "bullet_speed", "float", 50)
+	-- Remove outliers, like gauss, that have extreme bullet speed to simulate instant shot
+	bullet_speed = math.min(1000, bullet_speed)
 	local fire_dispersion_base = utils_item.get_wpn_param(obj, sec, "fire_dispersion_base", 0)
-	return log_scale_prop(normalize(fire_dispersion_base, 1.5, 0))
+	local accuracy = (normalize(fire_dispersion_base, 1.5, 0)*0.75) + (normalize(bullet_speed, 100, 1000)*0.25)
+	return log_scale_prop(accuracy)
 end
 
 function prop_handling(obj,sec)
@@ -3477,7 +3481,6 @@ function prop_damage(obj,sec)
 		local k_hit = ini_sys:r_float_ex(ammo_list[1], "k_hit") or 1
 		hit_power = (hit_power ~= 0) and (k_hit*hit_power) or k_hit
 	end
-	
 	return log_scale_prop(normalize(hit_power, 0, 1.5))
 end
 
@@ -3507,9 +3510,13 @@ function prop_condition(obj,sec)
 	return obj and obj:condition() or 1
 end
 
+-- Tools
+
 function log_scale_prop(val)
 	if val <= 0 then -- do not crash the log!
-		return val
+		return 0
+	elseif val >= 1 then
+		return 1
 	end
 	local adj = 1
 	return normalize(math.log(val+adj), math.log(adj), math.log(1+adj))
