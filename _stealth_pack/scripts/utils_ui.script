@@ -3529,10 +3529,8 @@ function log_scale_prop(val)
 	if val <= 0 then -- do not crash the log!
 		return val
 	end
-	if val < 0.8368 then -- (d/dx ln(x) = pi/4) -> where the tangent line becomes y=x
-		return math.log(1 + val) / math.log(2)
-	end
-	return val
+	local adj = 1
+	return normalize(math.log(val+adj), math.log(adj), math.log(1+adj))
 end
 
 function get_utils_xml()
