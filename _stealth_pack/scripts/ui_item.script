@@ -231,11 +231,7 @@ function get_weapon_firemodes(obj)
 		return firemodes_list
 	end
 
-	local ordered_firemodes = order_firemodes(firemode_table)
-	local n = #ordered_firemodes
-	if n > 3 then
-		return {ordered_firemodes[1], ordered_firemodes[2], ordered_firemodes[n]}
-	return ordered_firemodes
+	return order_firemodes(firemode_table)
 end
 
 function get_sec_name(sec)
