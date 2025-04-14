@@ -211,6 +211,7 @@ Caso não deseje utilizar o novo Launcher para o jogo, pode-se rodar o jogo norm
 
 1.3) The Great Revision
 
+- Multiple fixes to HUD, improving equipment stats comparison.
 - Changed armor view function to better display armor status.
 - Complete revision of 2D scopes textures.
 - Revised Tourist economy mode initial loadouts.
