@@ -279,7 +279,12 @@ function prepare_stats_table()
 	stats_table["backpack"] = {
 		["additional_inventory_weight"]= { index= 1, typ= "float",   name= "ui_inv_outfit_additional_weight",       icon_p= "ui_am_propery_08",   icon_n= "ui_am_prop_carry_weight_negative", track= false, magnitude= 1, unit= "st_kg", compare= false, sign= true, show_always= true},
 	}
-	
+
+	stats_table["ammo"] = {
+		["k_ap"]		= { index= 1, typ= "float",   name= "st_ammo_prop_k_ap",  icon_p= "ui_wp_propery_06",   icon_n= "", track= false , magnitude= 21.82, unit= "st_ammo_prop_k_ap_unit",  compare= false, sign= false, show_always= true },
+		["k_hit"]		= { index= 2, typ= "float",   name= "st_ammo_prop_k_hit", icon_p= "ui_wp_propery_15",   icon_n= "", track= false , magnitude= 1    , unit= "st_ammo_prop_k_hit_unit", compare= false, sign= false, show_always= true, value_functor= {"utils_ui","prop_ammo_khit"} },
+	}
+
 	stats_table["artefact"] = {
 		["condition"]                  = { index= 1,  typ= "float",   name= "ui_inv_af_condition",                    icon_p= "ui_am_condition",                  icon_n= "",                                 track= false, magnitude= 100,   unit= "st_perc",    compare= false, sign= true, show_always= true , value_functor= {"utils_ui","prop_condition"} },
 		["health_restore_speed"]       = { index= 2,  typ= "float",   name= "ui_inv_health",                          icon_p= "ui_am_propery_05",                 icon_n= "ui_am_prop_health_negative",       track= false, magnitude= 6600,  unit= "",           condition= true,	compare= false, sign= true, show_always= false },
@@ -342,6 +347,8 @@ function get_stats_table(sec)
 		return stats_table["booster"]
 	elseif IsItem("backpack", sec) then
 		return stats_table["backpack"]
+	elseif IsItem("ammo", sec) then
+		return stats_table["ammo"]
 	end
 	return nil
 end
@@ -2861,6 +2868,8 @@ function UIInfoItem:GetType(sec)
 		return "booster"
 	elseif IsItem("backpack", sec) then
 		return "backpack"
+	elseif IsItem("ammo", sec) then
+		return "ammo"
 	end
 	return "none"
 end
@@ -3502,6 +3511,39 @@ end
 
 function prop_condition(obj,sec)
 	return obj and obj:condition() or 1
+end
+
+function prop_ammo_khit(obj,sec)
+	local ref_weapon_table = {
+		-- Pistol
+		["9x18"] = 0.45, -- wpn_pm
+		["7.62x25"] = 0.45, -- wpn_tt33
+		["9x19"] = 0.46, -- wpn_walther
+		["5.7x28"] = 0.49, -- wpn_fn57
+		["11.43x23"] = 0.55, -- wpn_usp
+		["357"] = 0.60, -- wpn_desert_eagle
+		-- Shotgun
+		["12x70"] = 0.77, -- wpn_bm16
+		-- Rifle
+		["5.45x39"] = 0.50, -- wpn_ak74
+		["5.56x45"] = 0.50, -- wpn_g36
+		["7.62x39"] = 0.58, -- wpn_ak
+		["9x39"] = 0.62, -- wpn_val
+		["pkm"] = 0.77, -- wpn_pkm
+		-- Sniper
+		["7.62x51"] = 0.78, -- wpn_g3sg1
+		["7.62x54"] = 1.10, -- wpn_svd
+		["7.92x33"] = 1.15, -- wpn_k98
+		["12.7x55"] = 2.25, -- wpn_vssk
+		["magnum"] = 1.35, -- wpn_m98b
+		["gauss"] = 1.00, -- wpn_gauss
+	}
+	local s = obj and obj:section() or sec
+	local k_hit = ini_sys:r_float_ex(sec, "k_hit") or 1.0
+	local ammo_type = s:match("ammo_([^_]+)")
+	-- 450 is the factor to convert 5.56x45 FMJ hit to 225 SPI
+	local hit_spi = (ref_weapon_table[ammo_type] or 0.7) * k_hit * 450
+	return math.ceil(hit_spi)
 end
 
 -- Tools

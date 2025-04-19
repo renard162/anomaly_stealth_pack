@@ -237,6 +237,7 @@
     <texture id="ui_wp_propery_12" 	x="116" y="543" width="19" height="19" />
     <texture id="ui_wp_propery_13" 	x="116" y="562" width="19" height="19" />
     <texture id="ui_wp_propery_14" 	x="116" y="581" width="19" height="19" />
+    <texture id="ui_wp_propery_15" 	x="116" y="600" width="19" height="19" />
 
 <!-- armor - properties -->
     <texture id="ui_am_propery_01" 	x="135" y="524" width="19" height="19" />

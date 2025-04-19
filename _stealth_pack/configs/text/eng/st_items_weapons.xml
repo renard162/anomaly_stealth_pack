@@ -2398,4 +2398,17 @@ Grenades
 	<string id="st_prop_reliability_unit">
 		<text>MRBF</text>
 	</string>
+
+	<string id="st_ammo_prop_k_ap">
+		<text>Armor penetration</text>
+	</string>
+	<string id="st_ammo_prop_k_ap_unit">
+		<text>mm RHA</text>
+	</string>
+	<string id="st_ammo_prop_k_hit">
+		<text>Tissue damage</text>
+	</string>
+	<string id="st_ammo_prop_k_hit_unit">
+		<text>SPI</text>
+	</string>
 </string_table>
