@@ -3480,17 +3480,17 @@ function prop_recoil(obj,sec)
 end
 
 function prop_damage(obj,sec)
-	local s = obj and obj:section() or sec
 	local id = obj and obj:id()
 	local hit_power = utils_item.get_wpn_param(obj, sec, "hit_power", 0)
 	local ammo_list = utils_item.get_ammo(sec, id)
 	if ammo_list[1] then
+		local s = obj and obj:section() or sec
 		local k_hit = ini_sys:r_float_ex(ammo_list[1], "k_hit") or 1
 		hit_power = (hit_power ~= 0) and (k_hit*hit_power) or k_hit
-	end
-	if (ini_sys:r_string_ex(s,"kind") == "w_shotgun") and (ammo_list[1] and string.find(ammo_list[1], "_buck")) then
-		-- Correction to apply in buckshot damage card
-		hit_power = hit_power * 2.5
+		if (ini_sys:r_string_ex(s,"kind") == "w_shotgun") and string.find(ammo_list[1], "_buck") then
+			-- Correction applied to buckshot damage card
+			hit_power = hit_power * 2.5
+		end
 	end
 	return normalize(hit_power, 0, 1.5)
 end
