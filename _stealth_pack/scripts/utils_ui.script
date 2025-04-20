@@ -3528,7 +3528,7 @@ function prop_ammo_khit(obj,sec)
 		["11.43x23"] = 0.55, -- wpn_usp
 		["357"] = 0.60, -- wpn_desert_eagle
 		-- Shotgun
-		["12x70"] = 0.77 * 4.5, -- wpn_bm16
+		["12x70"] = 0.77, -- wpn_bm16
 		-- Rifle
 		["5.45x39"] = 0.50, -- wpn_ak74
 		["5.56x45"] = 0.50, -- wpn_g36
@@ -3548,6 +3548,9 @@ function prop_ammo_khit(obj,sec)
 	local ammo_type = s:match("ammo_([^_]+)")
 	-- 450 is the factor to convert 5.56x45 FMJ hit to 225 SPI
 	local hit_spi = (ref_weapon_table[ammo_type] or 0.7) * k_hit * 450
+	if (ammo_type == "12x70") and string.find(s, "_buck") then
+		hit_spi = hit_spi * 4.5
+	end
 	return math.ceil(hit_spi)
 end
 
