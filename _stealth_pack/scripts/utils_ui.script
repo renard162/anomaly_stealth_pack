@@ -3502,6 +3502,8 @@ function prop_rpm(obj,sec)
 end
 
 function prop_reliability(obj,sec)
+	-- Reliability gets the number of shots until misfire probability becomes fail_prob_ref or greater
+	local fail_prob_ref = 0.02
 	local degradation_mult = (game_difficulties.get_eco_factor("weapon_degradation") or 1)
 
 	local condition_shot_dec = get_any_wpn_param(obj, sec, "condition_shot_dec", "float", 1)
@@ -3510,10 +3512,16 @@ function prop_reliability(obj,sec)
 	condition_queue_shot_dec = math.max(0.0003, condition_queue_shot_dec) * degradation_mult
 	local total_shots = ((1/condition_shot_dec) + (1/condition_queue_shot_dec))/2
 
-	local misfire_start_cond = get_any_wpn_param(obj, sec, "misfire_start_condition", "float", 0.7)
-	local misfire_start_prob = get_any_wpn_param(obj, sec, "misfire_start_prob", "float", 0.007)
-	local prob_factor = math.max((1 - misfire_start_cond - misfire_start_prob*10), 0.05)
-	return math.ceil(total_shots * prob_factor)
+	local f_start_cond = get_any_wpn_param(obj, sec, "misfire_start_condition", "float", 0.7)
+	local f_start_prob = get_any_wpn_param(obj, sec, "misfire_start_prob", "float", 0.007)
+	if f_start_prob >= fail_prob_ref then
+		return math.ceil(total_shots * (1-f_start_cond))
+	end
+	local f_end_cond = get_any_wpn_param(obj, sec, "misfire_end_condition", "float", 0.05)
+	local f_end_prob = get_any_wpn_param(obj, sec, "misfire_end_prob", "float", 0.11)
+	local mean_fail_cond = f_start_cond - ((f_start_cond - f_end_cond) * (fail_prob_ref - f_start_prob)/(f_end_prob - f_start_prob))
+	mean_fail_cond = math.max(0.05, mean_fail_cond)
+	return math.ceil(total_shots * (1-mean_fail_cond))
 end
 
 function prop_mag_size(obj,sec)
