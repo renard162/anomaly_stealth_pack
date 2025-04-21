@@ -2411,4 +2411,7 @@ Grenades
 	<string id="st_ammo_prop_k_hit_unit">
 		<text>SPI</text>
 	</string>
+	<string id="st_ammo_prop_box_size">
+		<text>Box size</text>
+	</string>
 </string_table>

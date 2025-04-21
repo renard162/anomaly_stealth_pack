@@ -281,8 +281,9 @@ function prepare_stats_table()
 	}
 
 	stats_table["ammo"] = {
-		["k_ap"]		= { index= 1, typ= "float",   name= "st_ammo_prop_k_ap",  icon_p= "ui_wp_propery_06",   icon_n= "", track= false , magnitude= 21.82, unit= "st_ammo_prop_k_ap_unit",  compare= false, sign= false, show_always= true },
-		["k_hit"]		= { index= 2, typ= "float",   name= "st_ammo_prop_k_hit", icon_p= "ui_wp_propery_15",   icon_n= "", track= false , magnitude= 1    , unit= "st_ammo_prop_k_hit_unit", compare= false, sign= false, show_always= true, value_functor= {"utils_ui","prop_ammo_khit"} },
+		["k_ap"]		= { index= 1, typ= "float",   name= "st_ammo_prop_k_ap",     icon_p= "ui_wp_propery_06", icon_n= "", track= false , magnitude= 21.82, unit= "st_ammo_prop_k_ap_unit",  compare= false, sign= false, show_always= true },
+		["k_hit"]		= { index= 2, typ= "float",   name= "st_ammo_prop_k_hit",    icon_p= "ui_wp_propery_15", icon_n= "", track= false , magnitude= 1    , unit= "st_ammo_prop_k_hit_unit", compare= false, sign= false, show_always= true, value_functor= {"utils_ui","prop_ammo_khit"} },
+		["box_size"]	= { index= 2, typ= "float",   name= "st_ammo_prop_box_size", icon_p= "ui_wp_propery_07", icon_n= "", track= false , magnitude= 1    , unit= "",                        compare= false, sign= false, show_always= true },
 	}
 
 	stats_table["artefact"] = {
