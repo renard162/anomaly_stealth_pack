@@ -3503,12 +3503,17 @@ end
 
 function prop_reliability(obj,sec)
 	local degradation_mult = (game_difficulties.get_eco_factor("weapon_degradation") or 1)
+
 	local condition_shot_dec = get_any_wpn_param(obj, sec, "condition_shot_dec", "float", 1)
 	local condition_queue_shot_dec = get_any_wpn_param(obj, sec, "condition_queue_shot_dec", "float", 1)
 	condition_shot_dec = math.max(0.0003, condition_shot_dec) * degradation_mult
 	condition_queue_shot_dec = math.max(0.0003, condition_queue_shot_dec) * degradation_mult
 	local total_shots = ((1/condition_shot_dec) + (1/condition_queue_shot_dec))/2
-	return math.ceil(total_shots * 0.7)
+
+	local misfire_start_cond = get_any_wpn_param(obj, sec, "misfire_start_condition", "float", 0.7)
+	local misfire_start_prob = get_any_wpn_param(obj, sec, "misfire_start_prob", "float", 0.007)
+	local prob_factor = math.max(1 - (misfire_start_cond - misfire_start_prob*10), 0.05)
+	return math.ceil(total_shots * prob_factor)
 end
 
 function prop_mag_size(obj,sec)
