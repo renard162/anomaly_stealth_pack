@@ -3572,9 +3572,9 @@ function get_any_wpn_param(obj, sec, param, typ, def)
 		return utils_item.get_param(obj:section(), obj:id(), param, typ, true, true) or def
 	elseif sec then
 		local sec_ini_read = {
-			["float"] = function(sec, param) return ini_sys:r_float_ex(sec, param) end,
-			["string"] = function(sec, param) return ini_sys:r_string_ex(sec, param) end,
-			["bool"] = function(sec, param) return ini_sys:r_bool_ex(sec, param) end,
+			["float"] = function(s,p) return ini_sys:r_float_ex(s,p) end,
+			["string"] = function(s,p) return ini_sys:r_string_ex(s,p) end,
+			["bool"] = function(s,p) return ini_sys:r_bool_ex(s,p) end,
 		}
 		return sec_ini_read[typ](sec, param) or def
 	end
