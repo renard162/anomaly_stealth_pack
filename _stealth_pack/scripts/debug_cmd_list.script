@@ -3511,14 +3511,11 @@ function cmd.set_goodwill(me,txt,owner,p)
 		["monolith"] = true,
 		["zombied"] = true,
 	}
-	function print_valid_factions()
+	if wrd and wrd:find("factions",1,true) then
 		owner:SendOutput("Valid factions:")
 		for faction, _ in pairs(valid_factions) do
 			owner:SendOutput("%s",faction)
 		end
-	end
-	if wrd and wrd:find("factions",1,true) then
-		print_valid_factions()
 	elseif wrd and valid_factions[wrd] then
 		if not rest then
 			return "Inform a new goodwill value"
