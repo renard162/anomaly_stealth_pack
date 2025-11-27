@@ -40,6 +40,7 @@ function prepare()
 		{ 	name = "Can see me?" 					, functor = {can_see_actor} 					     , hide_ui = 0 								},
 		{ 	name = "Change faction" 				, functor = {start_faction_changer,true} 			 , hide_ui = 1 								},
 		{ 	name = "List items" 					, functor = {list_npc_items}                         , hide_ui = 0 								},
+		{ 	name = "List player-faction relation"	, cmd = "relations"                 		     	 , hide_ui = 0 								},
 		{ 	name = "Be friend (relation)" 			, functor = {set_relation,game_object.friend} 		 , hide_ui = 0 								, target_color = true			},
 		{ 	name = "Be neutral (relation)" 			, functor = {set_relation,game_object.neutral} 		 , hide_ui = 0 								, target_color = true			},
 		{ 	name = "Be enemy (relation)" 			, functor = {set_relation,game_object.enemy} 		 , hide_ui = 0 								, target_color = true			},

@@ -241,18 +241,29 @@ end
 
 -- Relations
 function cmd.relations(me,txt,owner,p)
-	owner:SendOutput("Stalker = %s",relation_registry.community_goodwill("stalker", 0))
-	owner:SendOutput("Bandit = %s",relation_registry.community_goodwill("bandit", 0))
-	owner:SendOutput("Mercenary = %s",relation_registry.community_goodwill("killer", 0))
-	owner:SendOutput("CSky = %s",relation_registry.community_goodwill("csky", 0))
-	owner:SendOutput("Freedom = %s",relation_registry.community_goodwill("freedom", 0))
-	owner:SendOutput("Duty = %s",relation_registry.community_goodwill("dolg", 0))
-	owner:SendOutput("Army = %s",relation_registry.community_goodwill("army", 0))
-	owner:SendOutput("Monolith = %s",relation_registry.community_goodwill("monolith", 0))
-	owner:SendOutput("Ecolog = %s",relation_registry.community_goodwill("ecolog", 0))
-	owner:SendOutput("Renegade = %s",relation_registry.community_goodwill("renegade", 0))
-	owner:SendOutput("Sin = %s",relation_registry.community_goodwill("greh", 0))
-	owner:SendOutput("ISG = %s",relation_registry.community_goodwill("isg", 0))
+		local factions_list = {
+		"stalker",
+		"dolg",
+		"freedom",
+		"csky",
+		"ecolog",
+		"killer",
+		"army",
+		"bandit",
+		"renegade",
+		"isg",
+		"greh",
+		"monolith",
+		"zombied",
+	}
+	local comm = nil
+	local r_val = nil
+	owner:SendOutput("Player goodwill:")
+	for i=1, #factions_list do
+		comm = factions_list[i]
+		r_val = relation_registry.community_goodwill(comm, 0)
+		owner:SendOutput("%s = %s",comm, tostring(r_val))
+	end
 	return "relations:= command finished"
 end 
 
@@ -3481,4 +3492,46 @@ end
 function cmd.clear_corpses(_,__,___)
 	release_body_manager.get_release_body_manager():clear(true, 1)
 	return "Executed body removal algorithm!"
+end
+
+function cmd.set_goodwill(me,txt,owner,p)
+	local wrd,rest = check_and_set_help(me,txt,owner,"[<faction> <value> | factions]")
+	local valid_factions = {
+		["stalker"] = true,
+		["dolg"] = true,
+		["freedom"] = true,
+		["csky"] = true,
+		["ecolog"] = true,
+		["killer"] = true,
+		["army"] = true,
+		["bandit"] = true,
+		["renegade"] = true,
+		["isg"] = true,
+		["greh"] = true,
+		["monolith"] = true,
+		["zombied"] = true,
+	}
+	function print_valid_factions()
+		owner:SendOutput("Valid factions:")
+		for faction, _ in pairs(valid_factions) do
+			owner:SendOutput("%s",faction)
+		end
+	end
+	if wrd and wrd:find("factions",1,true) then
+		print_valid_factions()
+	elseif wrd and valid_factions[wrd] then
+		if not rest then
+			return "Inform a new goodwill value"
+		end
+		local new_goodwill = tonumber(rest)
+		if new_goodwill == nil then
+			return "Invalid value. Value must be numeric (positive or negative)"
+		end
+		new_goodwill = math.min(new_goodwill, 2000)
+		new_goodwill = math.max(new_goodwill, -2000)
+		relation_registry.set_community_goodwill(wrd, AC_ID, new_goodwill)
+		relation_registry.set_community_goodwill("actor_"..wrd, AC_ID, new_goodwill)
+		return "Goodwill to "..wrd.." setted to "..tostring(new_goodwill)
+	end
+	return "set_base_relation:= command finished"
 end
