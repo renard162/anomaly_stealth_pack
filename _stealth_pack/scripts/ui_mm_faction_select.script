@@ -334,10 +334,10 @@ local function on_game_load(binder)
 		-- Reset player goodwill
 		local communities = utils_obj.get_communities_list( )		
 		for i, community in pairs( communities ) do
-			relation_registry.set_community_goodwill( community, AC_ID, 0 )
+			relation_registry.set_community_goodwill( community, 0, 0 )
 		end
-		game_relations.set_initial_player_goodwill("actor_"..faction)
-		
+		game_relations.set_initial_player_goodwill(faction)
+
 		-- Money
 		local money = config:r_value("character_creation","new_game_money",2)
 		if (IS_BLACKROAD_MODE) then

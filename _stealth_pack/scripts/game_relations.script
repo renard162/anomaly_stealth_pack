@@ -154,17 +154,21 @@ function reset_goodwill (faction_1 , faction_2) -- Reset the goodwill for actors
 	end
 end
 
-function set_initial_player_goodwill(actor_faction)
+function set_initial_player_goodwill(faction)
 	local full_communities_list = {"actor","monster","trader","army_npc","greh_npc","bandit","dolg","ecolog","freedom","killer","army","monolith","greh","stalker","zombied","csky","isg","renegade","actor_stalker","actor_bandit","actor_dolg","actor_freedom","actor_csky","actor_ecolog","actor_killer","actor_army","actor_monolith","actor_zombied","actor_greh","actor_isg","actor_renegade","arena_enemy"}
+	local raw_values = nil
 	local goodwill_values = {}
+	local actor_faction = "actor_"..faction
 	for i, comunity in pairs(full_communities_list) do
 		if comunity == actor_faction then
-			local values = ini_g:r_string_ex("communities_relations" , full_communities_list[i])
-			goodwill_values = str_explode(values,",")
+			raw_values = ini_g:r_string_ex("communities_relations" , full_communities_list[i])
+			goodwill_values = str_explode(raw_values,",")
 		end
 	end
 	for i=1, #full_communities_list do
-		relation_registry.set_community_goodwill(full_communities_list[i], AC_ID, tonumber(goodwill_values[i]))
+		if full_communities_list[i]:find(faction, 1, true) then
+			relation_registry.set_community_goodwill(full_communities_list[i], AC_ID, tonumber(goodwill_values[i]))
+		end
 	end
 end
 
