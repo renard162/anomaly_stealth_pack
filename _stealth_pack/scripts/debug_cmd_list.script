@@ -3530,5 +3530,5 @@ function cmd.set_goodwill(me,txt,owner,p)
 		relation_registry.set_community_goodwill("actor_"..wrd, AC_ID, new_goodwill)
 		return "Goodwill to "..wrd.." setted to "..tostring(new_goodwill)
 	end
-	return "set_base_relation:= command finished"
+	return "set_goodwill:= command finished"
 end
