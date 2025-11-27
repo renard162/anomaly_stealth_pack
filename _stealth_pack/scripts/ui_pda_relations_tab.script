@@ -333,7 +333,8 @@ function pda_relations_tab:Reset()
 		for k=0, #self.list do
 			local comm = self.list[k] or db.actor:character_community()
 			local r_val = relation_registry.community_relation(comm, self.list[i])
-			
+			local default_r = game_relations.get_community_relation(comm, self.list[i])
+
 			--if first row then goodwill
 			if(k == 0) then
 				r_val = relation_registry.community_goodwill(self.list[i],AC_ID)
@@ -349,9 +350,17 @@ function pda_relations_tab:Reset()
 				elseif r_val < 1000 and r_val >= 500 then
 					self.relations[i][k]:SetTextColor(self.clr_yellow)
 					self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_2"))
-				elseif r_val >= 0 then
+				elseif r_val > 0 then
 					self.relations[i][k]:SetTextColor(self.clr_yellow)
 					self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_1"))
+				elseif r_val == 0 then
+					if default_r == "enemy" then
+						self.relations[i][k]:SetTextColor(self.clr_red)
+						self.relations[i][k]:SetText(game.translate_string("st_goodwill_enemy"))
+					else
+						self.relations[i][k]:SetTextColor(self.clr_yellow)
+						self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_1"))
+					end
 				else
 					self.relations[i][k]:SetTextColor(self.clr_red)
 					self.relations[i][k]:SetText(game.translate_string("st_goodwill_enemy"))

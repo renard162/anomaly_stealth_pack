@@ -112,8 +112,36 @@ local rank_table = {
 	["legend"] = 3
 }
 
+local communities_relations_tbl_keys = {"actor","monster","trader","army_npc","greh_npc","bandit","dolg","ecolog","freedom","killer","army","monolith","greh","stalker","zombied","csky","isg","renegade","actor_stalker","actor_bandit","actor_dolg","actor_freedom","actor_csky","actor_ecolog","actor_killer","actor_army","actor_monolith","actor_zombied","actor_greh","actor_isg","actor_renegade","arena_enemy"}
+local communities_relations_tbl = {}
+local tmp_tbl_raw_row = nil
+local tmp_tbl_row = {}
+for i, community in ipairs(communities_relations_tbl_keys) do
+	tmp_tbl_raw_row = ini_g:r_string_ex("communities_relations" , communities_relations_tbl_keys[i])
+	tmp_tbl_row[community] = str_explode(tmp_tbl_raw_row,",")
+end
+
+local tmp_key = nil
+for community, goodwill_list in pairs(tmp_tbl_row) do
+	for i, goodwill_val in ipairs(goodwill_list) do
+		tmp_key = tostring(community)..","..tostring(communities_relations_tbl_keys[i])
+		communities_relations_tbl[tmp_key] = tonumber(goodwill_val)
+	end
+end
 
 --========================================< Utility >========================================--
+function get_community_relation(fac1, fac2)
+	local fac_key = tostring(fac1)..","..tostring(fac2)
+	local facs_goodwill = communities_relations_tbl[fac_key]
+	if facs_goodwill >= FRIENDS then
+		return "friend"
+	elseif facs_goodwill <= ENEMIES then
+		return "enemy"
+	else
+		return "neutral"
+	end
+end
+
 function is_faction_unaffected(fac)
 	if blacklist[fac] then
 		return true
@@ -155,19 +183,18 @@ function reset_goodwill (faction_1 , faction_2) -- Reset the goodwill for actors
 end
 
 function set_initial_player_goodwill(faction)
-	local full_communities_list = {"actor","monster","trader","army_npc","greh_npc","bandit","dolg","ecolog","freedom","killer","army","monolith","greh","stalker","zombied","csky","isg","renegade","actor_stalker","actor_bandit","actor_dolg","actor_freedom","actor_csky","actor_ecolog","actor_killer","actor_army","actor_monolith","actor_zombied","actor_greh","actor_isg","actor_renegade","arena_enemy"}
 	local raw_values = nil
 	local goodwill_values = {}
 	local actor_faction = "actor_"..faction
-	for i, comunity in pairs(full_communities_list) do
+	for i, comunity in ipairs(communities_relations_tbl_keys) do
 		if comunity == actor_faction then
-			raw_values = ini_g:r_string_ex("communities_relations" , full_communities_list[i])
+			raw_values = ini_g:r_string_ex("communities_relations" , communities_relations_tbl_keys[i])
 			goodwill_values = str_explode(raw_values,",")
 		end
 	end
-	for i=1, #full_communities_list do
-		if full_communities_list[i]:find(faction, 1, true) then
-			relation_registry.set_community_goodwill(full_communities_list[i], AC_ID, tonumber(goodwill_values[i]))
+	for i=1, #communities_relations_tbl_keys do
+		if communities_relations_tbl_keys[i]:find(faction, 1, true) then
+			relation_registry.set_community_goodwill(communities_relations_tbl_keys[i], AC_ID, tonumber(goodwill_values[i]))
 		end
 	end
 end
