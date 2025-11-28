@@ -83,6 +83,7 @@ local factor = {
 	["distance_factor"]    = 5,		-- [meters] suspicion will raise when the distance between actor and npc goes below this value 
 	["stay_time"]          = true,
 	["stay_time_factor"]   = 20,	-- [real seconds] suspicion will raise after stay_time exceed this value
+	["debug_mode"]		   = false,
 }
 
 function update_feature_state(old_state, new_state)
@@ -136,6 +137,9 @@ function update_settings()
 	factor.distance_factor     = ui_options.get("gameplay/disguise/distance_factor")
 	factor.stay_time           = ui_options.get("gameplay/disguise/stay_time")
 	factor.stay_time_factor    = ui_options.get("gameplay/disguise/stay_time_factor")
+	factor.debug_mode		   = ui_options.get("gameplay/disguise/debug_mode")
+
+	enable_debug = factor.debug_mode
 end
 
 
