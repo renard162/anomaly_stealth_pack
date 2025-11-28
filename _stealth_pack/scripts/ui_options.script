@@ -388,7 +388,7 @@ options = {
 		{ id= "speed"    	 	 	    ,type= "check"    ,val= 1	,def= true	             	                    	},
 		{ id= "speed_factor"    	    ,type= "track"    ,val= 2	,def= 1	    ,min= 0.1     ,max= 2     ,step= 0.1  	},
 		{ id= "distance"    	 	 	,type= "check"    ,val= 1	,def= true	             	                    	},
-		{ id= "distance_factor"    	    ,type= "track"    ,val= 2	,def= 1	    ,min= 1       ,max= 100    ,step= 1  	},
+		{ id= "distance_factor"    	    ,type= "track"    ,val= 2	,def= 5	    ,min= 1       ,max= 100    ,step= 1  	},
 		{ id= "stay_time"    	 	 	,type= "check"    ,val= 1	,def= true	             	                    	},
 		{ id= "stay_time_factor"    	,type= "track"    ,val= 2	,def= 20	,min= 1       ,max= 100    ,step= 1  	},
 		{ id= "line"					,type= "line"	  },
