@@ -339,21 +339,37 @@ function pda_relations_tab:Reset()
 			if(k == 0) then
 				r_val = relation_registry.community_goodwill(self.list[i],AC_ID)
 				if r_val >= 2000 then
-					self.relations[i][k]:SetTextColor(self.clr_green)
+					if default_r == "enemy" then
+						self.relations[i][k]:SetTextColor(self.clr_yellow)
+					else
+						self.relations[i][k]:SetTextColor(self.clr_green)
+					end
 					self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_5"))
-				elseif r_val < 2000 and r_val >= 1500 then
-					self.relations[i][k]:SetTextColor(self.clr_yellow)
-					self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_4"))
-				elseif r_val < 1500 and r_val >= 1000 then
-					self.relations[i][k]:SetTextColor(self.clr_yellow)
-					self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_3"))
-				elseif r_val < 1000 and r_val >= 500 then
-					self.relations[i][k]:SetTextColor(self.clr_yellow)
-					self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_2"))
-				elseif r_val > 0 then
-					self.relations[i][k]:SetTextColor(self.clr_yellow)
-					self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_1"))
-				elseif r_val == 0 then
+				elseif r_val > 1500 then
+					if default_r == "enemy" then
+						self.relations[i][k]:SetTextColor(self.clr_yellow)
+						self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_1"))
+					else
+						self.relations[i][k]:SetTextColor(self.clr_yellow)
+						self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_4"))
+					end
+				elseif r_val > 1000 then
+					if default_r == "enemy" then
+						self.relations[i][k]:SetTextColor(self.clr_yellow)
+						self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_1"))
+					else
+						self.relations[i][k]:SetTextColor(self.clr_yellow)
+						self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_3"))
+					end
+				elseif r_val > 500 then
+					if default_r == "enemy" then
+						self.relations[i][k]:SetTextColor(self.clr_red)
+						self.relations[i][k]:SetText(game.translate_string("st_goodwill_enemy"))
+					else
+						self.relations[i][k]:SetTextColor(self.clr_yellow)
+						self.relations[i][k]:SetText(game.translate_string("st_ui_goodwill_2"))
+					end
+				elseif r_val >= 0 then
 					if default_r == "enemy" then
 						self.relations[i][k]:SetTextColor(self.clr_red)
 						self.relations[i][k]:SetText(game.translate_string("st_goodwill_enemy"))
