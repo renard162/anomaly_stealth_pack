@@ -14,6 +14,10 @@ local markermessage = false
 local notime = false
 local tsmarts = nil
 
+local save_timer = nil
+local teleport_target = nil
+local teleport_level_name = nil
+
 -- Any non-listed map is a weight 1 map
 local map_weight = {
     ["l10_red_forest"] = 2,
@@ -104,6 +108,46 @@ local function teleport_actor(se_obj)
 	end
 end
 
+local function after_save_teleport_actor()
+    -- forward time when traveling
+    if not (notime) then
+        local actal_map_weight = map_weight[level.name()] or 1
+        local destination_map_weight = map_weight[teleport_level_name] or 1
+        local min_map_weight = math.min(actal_map_weight, destination_map_weight)
+        local max_map_weight = math.max(actal_map_weight, destination_map_weight)
+        local between_map_code = tostring(min_map_weight).."-"..tostring(max_map_weight)
+        local min_hours = 0
+        local max_hours = 1
+
+        if (level.name() == teleport_level_name) then
+            min_hours = in_map_travel_times_by_weight[max_map_weight][1]
+            max_hours = in_map_travel_times_by_weight[max_map_weight][2]
+        else
+            min_hours = between_map_travel_times_by_weight[between_map_code][1]
+            max_hours = between_map_travel_times_by_weight[between_map_code][2]
+        end
+
+        if actor_status.get_overweight(true) > 0 then
+            min_hours = math.floor((min_hours + max_hours) / 2)
+        end
+
+        local time_division_factor = 10 + ((spatial_anomalies.compass_on_belt_status > 0) and 5 or 0)
+        local travel_hours = math.ceil(math.random(min_hours, max_hours) / time_division_factor)
+        local travel_minutes = math.random(1,59)
+
+        level.change_game_time(0, travel_hours, travel_minutes)
+        surge_manager.get_surge_manager().time_forwarded = true
+        psi_storm_manager.get_psi_storm_manager().time_forwarded = true
+        level_weathers.get_weather_manager():forced_weather_change()
+    end
+
+    teleport_actor(teleport_target)
+
+	save_timer = nil
+	teleport_target = nil
+	teleport_level_name = nil
+end
+
 local function map_spot_menu_property_clicked(property_ui,id,level_name,prop)
 	local se_obj = alife_object(id)
 	if not (se_obj) then
@@ -183,38 +227,16 @@ local function map_spot_menu_property_clicked(property_ui,id,level_name,prop)
 	-- Backup auto save
 	exec_console_cmd("save " .. user_name() .. " - autosave")
 
-	-- forward time when traveling
-	if not (notime) then
-        local actal_map_weight = map_weight[level.name()] or 1
-        local destination_map_weight = map_weight[level_name] or 1
-        local min_map_weight = math.min(actal_map_weight, destination_map_weight)
-        local max_map_weight = math.max(actal_map_weight, destination_map_weight)
-        local between_map_code = tostring(min_map_weight).."-"..tostring(max_map_weight)
-        local min_hours = 0
-        local max_hours = 1
+	-- Teleport and, if enabled, time pass
+	save_timer = time_global() + 200
+	teleport_target = se_obj
+	teleport_level_name = level_name
 
-        if (level.name() == level_name) then
-            min_hours = in_map_travel_times_by_weight[max_map_weight][1]
-            max_hours = in_map_travel_times_by_weight[max_map_weight][2]
-        else
-            min_hours = between_map_travel_times_by_weight[between_map_code][1]
-            max_hours = between_map_travel_times_by_weight[between_map_code][2]
-        end
+	local function check_timer()
+		return time_global() > save_timer
+    end
 
-		if actor_status.get_overweight(true) > 0 then
-			min_hours = math.floor((min_hours + max_hours) / 2)
-		end
-
-		local time_division_factor = 10 + ((spatial_anomalies.compass_on_belt_status > 0) and 5 or 0)
-        local travel_hours = math.ceil(math.random(min_hours, max_hours) / time_division_factor)
-        local travel_minutes = math.random(1,59)
-		level.change_game_time(0, travel_hours, travel_minutes)
-		surge_manager.get_surge_manager().time_forwarded = true
-		psi_storm_manager.get_psi_storm_manager().time_forwarded = true
-		level_weathers.get_weather_manager():forced_weather_change()
-	end
-
-	teleport_actor(se_obj)
+	level.add_call(check_timer, after_save_teleport_actor)
 end
 
 -- Used for Visit_Only mode, catches the player near the marker and updates things.
