@@ -228,7 +228,7 @@ local function map_spot_menu_property_clicked(property_ui,id,level_name,prop)
 	exec_console_cmd("save " .. user_name() .. " - autosave")
 
 	-- Teleport and, if enabled, time pass
-	save_timer = time_global() + 200
+	save_timer = time_global() + 1000
 	teleport_target = se_obj
 	teleport_level_name = level_name
 
