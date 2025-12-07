@@ -13,6 +13,7 @@ local longnames = false
 local markermessage = false
 local notime = false
 local tsmarts = nil
+local level_change_save_enabled = false
 
 local save_timer = nil
 local teleport_target = nil
@@ -225,7 +226,6 @@ local function map_spot_menu_property_clicked(property_ui,id,level_name,prop)
 	end
 
 	-- Backup auto save
-	local level_change_save_enabled = ui_options.get("other/important_save")
 	if level_change_save_enabled then
 		exec_console_cmd("save " .. user_name() .. " - before travel autosave")
 	end
@@ -284,6 +284,7 @@ function update_settings()
 	longnames = ui_options.get("gameplay/fast_travel/long_names")
 	markermessage = ui_options.get("gameplay/fast_travel/visit_message")
 	notime = ui_options.get("gameplay/fast_travel/time")
+	level_change_save_enabled = ui_options.get("other/important_save")
 
 	local faction = character_community(db.actor):sub(7)
 	local pini = ini_file("plugins\\faction_quick_travel.ltx")
