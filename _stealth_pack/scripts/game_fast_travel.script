@@ -225,7 +225,10 @@ local function map_spot_menu_property_clicked(property_ui,id,level_name,prop)
 	end
 
 	-- Backup auto save
-	exec_console_cmd("save " .. user_name() .. " - before travel autosave")
+	local level_change_save_enabled = ui_options.get("other/important_save")
+	if level_change_save_enabled then
+		exec_console_cmd("save " .. user_name() .. " - before travel autosave")
+	end
 
 	-- Teleport and, if enabled, time pass
 	save_timer = time_global() + 1000
