@@ -675,6 +675,9 @@
 	<string id="st_body_useless">
 		<text>The body has nothing useful</text>
 	</string>
+	<string id="st_body_crow_beak">
+		<text>Harvested a mutated crow beak</text>
+	</string>
 	<string id="st_body_knife_needed">
 		<text>Need a knife</text>
 	</string>

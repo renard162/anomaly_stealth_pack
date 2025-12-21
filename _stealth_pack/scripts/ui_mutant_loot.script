@@ -202,6 +202,10 @@ local function monster_on_actor_use_callback(obj,who) -- Open mutant loot UI
 
 	-- This is important so NPCs don't try to loot the corpse the player is looting
 	if (obj:clsid() == clsid.crow) then
+		if type(who) == "userdata" and db.actor and (who:id() == db.actor:id()) then
+			actor_menu.set_msg(1, "st_body_crow_beak",3)
+			alife_create_item("mutant_part_crow_beak", who)
+		end
 		save_var(obj, "looted", true)
 	else
 		se_save_var(obj:id(),obj:name(),"looted",true)
@@ -486,7 +490,7 @@ function UIMutantLoot:FillList()
 		self:ShowDialog(true)
 		self.CC:Reinit(inv)
 		return true
-	else
+	elseif self.section ~= "m_crow" then
 		actor_menu.set_msg(1, "st_body_useless",3)
 	end
 end
