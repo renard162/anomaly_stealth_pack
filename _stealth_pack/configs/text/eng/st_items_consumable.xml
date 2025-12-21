@@ -110,7 +110,7 @@
 		<text>Beard's tea</text>
 	</string>
 	<string id="st_tea_descr">
-		<text>Beard's popular hot tea made from a mixture of sugar, edible dried mushrooms and boiled water that is said to be radiation-free. Stalkers who can afford to buy the drink often take it for long trips in the Zone. It's a good and healthy way to stay on your toes when you're getting tired or when you're out exploring on cold nights.\n \n
+		<text>Beard's popular hot tea made from a mixture of sugar, edible dried mushrooms and boiled water that is said to be radiation-free. Stalkers who can afford to buy the drink often take it for long trips in the Zone. It's a good and healthy way to stay on your toes when you're getting tired or when you're out exploring on cold nights. Rumors say this tea is made from mutant organs, but Beard keeps it quiet.\n \n
 		%c[ui_gray_3]PROPERTIES:\n
 		%c[d_blue] • %c[ui_gray_2] drink\n
 		%c[d_blue] • %c[ui_gray_2] potent alcohol sobering effect\n
