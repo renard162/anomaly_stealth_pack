@@ -627,7 +627,6 @@ end
 
 function UICook:UpdateSelectedMeal()
     local idx = self.CC.selected
-    printf("~ self.CC.selected = "..tostring(idx))
     if not idx then
         return
     end
@@ -638,7 +637,6 @@ function UICook:UpdateSelectedMeal()
     end
 
     local sec = ci.section
-    printf("~ self.CC.cell = "..tostring(sec))
     local meal = self:GetSelectedMeal()
     if not meal then
         return
