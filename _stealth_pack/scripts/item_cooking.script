@@ -93,7 +93,19 @@ function UICook:InitControls()
     self.dialog = xml:InitStatic("cook", self)
     xml:InitStatic("cook:background", self.dialog)
     self.cap_menu = xml:InitTextWnd("cook:cap_tab", self.dialog)
-    
+
+    -- Amount
+    self.text_amount_mult = xml:InitTextWnd("cook:text_amount_mult", self.dialog)
+    self.list_amount = xml:InitComboBox("cook:list_amount", self.dialog)
+    self.list_amount:SetAutoDelete(true)
+    self:Register(self.list_amount, "list_amount_cb")
+    self.list_amount:ClearList()
+    for i = 1, 20 do
+        self.list_amount:AddItem(tostring(i), i)
+    end
+    self.list_amount:SetText("1")
+    self.cook_amount = 1
+
     -- Meals
     self.cap = xml:InitStatic("cook:cap_cook", self.dialog)
     self.b_inv = xml:InitStatic("cook:back_inv", self.dialog)
@@ -146,6 +158,7 @@ end
 function UICook:InitCallBacks()
     self:AddCallback("btn_cook", ui_events.BUTTON_CLICKED, self.OnCook, self)
     self:AddCallback("btn_cancel", ui_events.BUTTON_CLICKED, self.Close, self)
+    self:AddCallback("list_amount_cb", ui_events.LIST_ITEM_SELECT, self.OnSelectAmount, self)
 end
 
 function UICook:Reset(obj, section)
@@ -271,20 +284,29 @@ end
 -- Utility
 function UICook:Load_MealList()
     local inv, info = {}, {}
-    
+
+    local amount = self.cook_amount or 1
+
     for i = 1, #self.meals do
-        inv[i] = self.meals[i].sec
-        info[i] = {state = self:CheckAvail_main(self.meals[i]), distinct = self.meals[i].distinct}
+        local meal = self.meals[i]
+
+        meal.amount = amount
+
+        inv[i] = meal.sec
+        info[i] = {
+            state = self:CheckAvail_main(meal),
+            distinct = meal.distinct,
+            custom_text = ui_item.get_sec_name(meal.sec) .. " x" .. tostring(amount)
+        }
     end
-    
+
     self.CC:Reinit(inv, info)
-    
+
     for i, ci in pairs(self.CC.cell) do
         if ci:IsShown() and (not ci.flags.info.state) then
             ci:Colorize("hide")
         end
     end
-
 end
 
 function UICook:Load_MealRecipes()
@@ -309,11 +331,7 @@ function UICook:Load_MealRecipes()
                 local recipe = t[2] and (t[2] == "false" or ui_pda_encyclopedia_tab.is_unlocked_note(t[2])) or false
                 if recipe and ((#t == 4) or (#t == 6)) then
                     local fuel_tier = tonumber(t[1]) or 1
-                    
-                    table.insert(self.meals, self:NewMeal(id, fuel_tier, t, 1))
-                    table.insert(self.meals, self:NewMeal(id, fuel_tier, t, 2))
-                    table.insert(self.meals, self:NewMeal(id, fuel_tier, t, 5))
-                    table.insert(self.meals, self:NewMeal(id, fuel_tier, t, 10))
+                    table.insert(self.meals, self:NewMeal(id, fuel_tier, t))
                 end
             end
         end
@@ -486,12 +504,13 @@ end
 function UICook:GetSelectedMeal()
     local idx = self.CC.selected
     local ci = idx and self.CC.cell[idx]
-    
+
     local distinct = ci and ci.flags.info.distinct
-    
-    for ind, v in ipairs(self.meals) do
-        if (v.distinct == distinct) then
-            return v
+
+    for _, meal in ipairs(self.meals) do
+        if meal.distinct == distinct then
+            meal.amount = self.cook_amount or 1
+            return meal
         end
     end
 end
@@ -500,69 +519,13 @@ end
 function UICook:On_CC_Mouse1(cont, idx)
     -- printf('UICook:On_CC_Mouse1(%s, %s)', cont, idx)
     local ci = self.CC.cell[idx]
-    if (not ci) then
+    if not ci then
         return
     end
-    
-    -- Get meal props
-    local sec = ci.section
-    local meal = self:GetSelectedMeal()
-    
-    if (not meal) then
-        return
-    end
-    
-    local amount = meal.amount or 1
-    
-    -- Item box
-    local name = ui_item.get_sec_name(sec)
-    self.text_item:SetText(name .. ' x' .. tostring(amount))
-    self.ci_cook:Set(sec)
-    
-    -- Enable/Disable cook btn
-    -- local btn_state = ci.flags.state and true or false
-    local btn_state = ci.flags.info.state and true or false
-    
-    -- printf('ci -> %s (%s)', ci, type(ci))
-    -- printf('ci.flags -> %s (%s)', ci.flags, type(ci.flags))
-    -- printf('ci.flags.state -> %s (%s)', ci.flags.state, type(ci.flags.state))
-    -- printf('ci.flags.info -> %s (%s)', ci.flags.info, type(ci.flags.info))
-    -- for k,v in pairs(ci.flags) do
-    -- printf('%s -> %s', k, v)
-    -- end
-    self.btn_cook:Enable(btn_state)
-    
-    -- Elements handeling
-    self.box_campfire:Show(false)
-    
-    for i = 1, (_size + 1) do
-        local to_show = false
-        if (i == 1) then
-            local fuel_tier = meal.fuel_tier
-            local fuel_type = self:GetAvailFuel(fuel_tier, nil, amount)
-            local ingre_clr = self:CheckAvailFuel(fuel_tier, amount) and self.clr["g"] or self.clr["r"]
-            
-            self.ingre_name[i]:SetText(ui_item.get_sec_name(fuel_type))
-            utils_xml.set_icon(fuel_type, ingre_clr == self.clr["r"], self.ingre_ico_temp[i], self.ingre_ico[i])
-            
-            to_show = true
-        elseif (meal[i - 1]) then
-            local ingre_sec = meal[i - 1].sec
-            local ingre_amt = meal[i - 1].amt * amount
-            local ingre_clr = self:CheckAvail(ingre_sec, ingre_amt) and self.clr["g"] or self.clr["r"]
-            
-            self.ingre_name[i]:SetText(ui_item.get_sec_name(ingre_sec))
-            self.ingre_num[i]:SetText(ingre_clr .. self:GetAvail(ingre_sec, ingre_amt) .. "/" .. ingre_amt)
-            utils_xml.set_icon(ingre_sec, ingre_clr == self.clr["r"], self.ingre_ico_temp[i], self.ingre_ico[i])
-            
-            to_show = true
-        end
-        self.ingre_b[i]:Show(to_show)
-        self.ingre_name[i]:Show(to_show)
-        self.ingre_num[i]:Show(to_show)
-        self.ingre_ico[i]:Show(to_show)
-        self.ingre_ico_temp[i]:Show(to_show)
-    end
+
+    self.CC.selected = idx
+
+    self:UpdateSelectedMeal()
 end
 
 function UICook:OnCook()
@@ -660,4 +623,104 @@ function UICook:Discharge(sect, amt)
         if (discharged_amt >= amt) then return end
     end
 
+end
+
+function UICook:UpdateSelectedMeal()
+    local idx = self.CC.selected
+    printf("~ self.CC.selected = "..tostring(idx))
+    if not idx then
+        return
+    end
+
+    local ci = self.CC.cell[idx]
+    if not ci then
+        return
+    end
+
+    local sec = ci.section
+    printf("~ self.CC.cell = "..tostring(sec))
+    local meal = self:GetSelectedMeal()
+    if not meal then
+        return
+    end
+
+    local amount = self.cook_amount or meal.amount or 1
+
+    -- Item box
+    local name = ui_item.get_sec_name(sec)
+    self.text_item:SetText(name .. ' x' .. tostring(amount))
+    self.ci_cook:Set(sec)
+
+    -- Enable/Disable cook btn
+    local btn_state = ci.flags.info.state and true or false
+    self.btn_cook:Enable(btn_state)
+
+    -- Elements handling
+    self.box_campfire:Show(false)
+
+    for i = 1, (_size + 1) do
+        local to_show = false
+
+        if (i == 1) then
+            local fuel_tier = meal.fuel_tier
+            local fuel_type = self:GetAvailFuel(fuel_tier, nil, amount)
+            local ingre_clr = self:CheckAvailFuel(fuel_tier, amount)
+                and self.clr["g"]
+                or self.clr["r"]
+
+            self.ingre_name[i]:SetText(ui_item.get_sec_name(fuel_type))
+            utils_xml.set_icon(
+                fuel_type,
+                ingre_clr == self.clr["r"],
+                self.ingre_ico_temp[i],
+                self.ingre_ico[i]
+            )
+
+            to_show = true
+
+        elseif (meal[i - 1]) then
+            local ingre_sec = meal[i - 1].sec
+            local ingre_amt = meal[i - 1].amt * amount
+            local ingre_clr = self:CheckAvail(ingre_sec, ingre_amt)
+                and self.clr["g"]
+                or self.clr["r"]
+
+            self.ingre_name[i]:SetText(ui_item.get_sec_name(ingre_sec))
+            self.ingre_num[i]:SetText(
+                ingre_clr .. self:GetAvail(ingre_sec, ingre_amt) .. "/" .. ingre_amt
+            )
+
+            utils_xml.set_icon(
+                ingre_sec,
+                ingre_clr == self.clr["r"],
+                self.ingre_ico_temp[i],
+                self.ingre_ico[i]
+            )
+
+            to_show = true
+        end
+
+        self.ingre_b[i]:Show(to_show)
+        self.ingre_name[i]:Show(to_show)
+        self.ingre_num[i]:Show(to_show)
+        self.ingre_ico[i]:Show(to_show)
+        self.ingre_ico_temp[i]:Show(to_show)
+    end
+end
+
+function UICook:OnSelectAmount()
+    local text = self.list_amount:GetText()
+    self.cook_amount = tonumber(text) or 1
+
+    local prev_selected = self.CC.selected
+
+    self:Load_MealList()
+
+    if prev_selected and self.CC.cell[prev_selected] then
+        self.CC.selected = prev_selected
+        self:UpdateSelectedMeal()
+    else
+        self.text_item:SetText("")
+        self.btn_cook:Enable(false)
+    end
 end
