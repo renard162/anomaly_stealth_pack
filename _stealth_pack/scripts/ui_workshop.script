@@ -1515,6 +1515,18 @@ function UIWorkshopCraft:InitControls(x, y)
 	self.btn_back = xml:Init3tButton("workshop:craft:btn_back", self)
 	self:Register(self.btn_back, "button_cancel")
 	
+	-- Amount
+	self.text_amount_mult = xml:InitTextWnd("workshop:craft:text_amount_mult", self)
+    self.list_amount = xml:InitComboBox("workshop:craft:list_amount", self)
+	self.list_amount:SetAutoDelete(true)
+    self:Register(self.list_amount, "list_amount_cb")
+    self.list_amount:ClearList()
+    for i = 1, 20 do
+        self.list_amount:AddItem(tostring(i), i)
+    end
+    self.list_amount:SetText("1")
+    self.craft_amount = 1
+
 	self.btn_craft = xml:Init3tButton("workshop:craft:btn_craft", self)
 	self:Register(self.btn_craft, "button_craft")
 	
@@ -1583,7 +1595,8 @@ end
 function UIWorkshopCraft:InitCallBacks()
 	self:AddCallback("button_cancel",		ui_events.BUTTON_CLICKED,         self.Close,			self)
 	self:AddCallback("button_craft",		ui_events.BUTTON_CLICKED,         self.Craft,			self)
-	self:AddCallback("list_menu", 			ui_events.LIST_ITEM_CLICKED, 	  self.ListItems, 			self)
+	self:AddCallback("list_menu", 			ui_events.LIST_ITEM_CLICKED, 	  self.ListItems, 		self)
+	self:AddCallback("list_amount_cb", 		ui_events.LIST_ITEM_SELECT, 	  self.OnSelectAmount, 	self)
 end
 
 
@@ -1780,36 +1793,30 @@ function UIWorkshopCraft:On_CC_Mouse1(cont, idx)
 	if cont ~= "list" then
 		return
 	end
-	
+
 	local ci = self.CC["list"].cell[idx]
 	if (not ci) then
 		return
 	end
-	
+
 	self.last_index = ci.flags.info
 	if (not self.last_index) then
 		return
 	end
-	
+
 	local item = self.last_type and self.last_index and self.recipes[self.last_type] and self.recipes[self.last_type][self.last_index]
 	if (not item) then
 		return
 	end
-	
+
 	if (not self.recipes_items[item.rsp]) then
 		SetTip(nil, "craft_warning_2", "craft_solution_2", item.sec, false, self.info_text)
 		self:ShowComponents(false)
 		return
 	end
-	
+
 	utils_obj.play_sound("interface\\items\\inv_items_cloth_" .. tostring(math.random(2,3)))
-	
-	-- Reset
-	self.craft_item = {}
-	self.craft_item_remain = {}
-	self.craft_allow = {}
-	self.craft_item_r = nil
-	self.craft_allow_r = nil
+
 	self.selected_index = self.last_index
 
 	for i=1,4 do
@@ -1825,29 +1832,25 @@ function UIWorkshopCraft:On_CC_Mouse1(cont, idx)
 		if i > 1 then
 			self.itm_line_c[i]:Show(sh)
 		end
-		
-		if item[i] then
-			self:UpdateItem(i, item[i][1], item[i][2], false, nil, nil)
-		end
 	end
-	
+
 	self.cap_components:Show(true)
 	self.itm_line_r1:Show(true)
 	--self.itm_line_r2:Show(true)
 	self.itm_line_r3:Show(true)
-	
+
 	self.itm_b_r:Show(true)
 	self.itm_name_r:Show(true)
 	self.itm_num_r:Show(true)
 	self.itm_ico_r:Show(true)
 	self.cap_r:Show(true)
-	
+
 	self.itm_name_t:Show(true)
 	self.itm_b_t:Show(true)
 	self.itm_ico_t:Show(true)
 	self.itm_ico_temp_t:Show(true)
-	
-	self:UpdateItem(nil, item.sec, 1, true, item.tool, workshop_toolkits[item.tool])
+
+	self:UpdateSelectedRecipe()
 end
 
 function UIWorkshopCraft:UpdateItem (n, sec, amount, result, toolkit_idx, toolkit_sec)
@@ -2093,6 +2096,39 @@ function UIWorkshopCraft:OnKeyboard(dik, keyboard_action)
 	return res
 end
 
+function UIWorkshopCraft:UpdateSelectedRecipe()
+	if (not self.last_type) or (not self.selected_index) then
+		return
+	end
+	
+	local item = self.recipes[self.last_type] and self.recipes[self.last_type][self.selected_index]
+	if (not item) then
+		return
+	end
+	
+	-- Reset
+	self.craft_item = {}
+	self.craft_item_remain = {}
+	self.craft_allow = {}
+	self.craft_item_r = nil
+	self.craft_allow_r = nil
+	
+	for i=1,4 do
+		if item[i] then
+			self:UpdateItem(i, item[i][1], item[i][2] * self.craft_amount, false, nil, nil)
+		end
+	end
+	
+	self:UpdateItem( nil, item.sec, self.craft_amount, true, item.tool, workshop_toolkits[item.tool])
+end
+
+
+function UIWorkshopCraft:OnSelectAmount()
+    local text = self.list_amount:GetText()
+    self.craft_amount = tonumber(text) or 1
+
+    self:UpdateSelectedRecipe()
+end
 
 
 -------------------------------------------------------------------
