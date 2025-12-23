@@ -174,7 +174,7 @@ function UICook:Reset(obj, section)
     self.cooking_fuel = parse_list(ini_sys, section, "cooking_fuel", true)
     self.cooking_use_actor_effects = ini_sys:r_bool_ex(section, "cooking_use_actor_effects") or true
     
-    local nearby_camp = bind_campfire.get_nearby_campfire(1.5, true)
+    local nearby_camp = bind_campfire.get_nearby_campfire(2.0, true)
     self.is_campfire = self.cooking_campfire and nearby_camp and nearby_camp:is_on()
     self.active_wep = db.actor:active_item() or false
     
