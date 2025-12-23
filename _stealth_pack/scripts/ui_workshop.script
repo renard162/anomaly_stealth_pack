@@ -1979,7 +1979,7 @@ function UIWorkshopCraft:UpdateItem (n, sec, amount, result, toolkit_idx, toolki
 		end
 		
 		if IsItem("ammo",sec) then
-			amount = box
+			amount = box * amount
 		end
 		self.craft_item_r = {sec , amount}
 		
