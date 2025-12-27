@@ -214,7 +214,7 @@ Caso não deseje utilizar o novo Launcher para o jogo, pode-se rodar o jogo norm
 - Fixed some icons.
 - Fixed recipes costs (some items are more expensive to craft than to buy).
 - Fixed a bug that completely disable the disguise system (needs new game or manual fix with debug mode).
-- Fixed .337 caliber pierce capability.
+- Fixed .357 caliber pierce capability.
 - Fixed some upgrade trees that have upgrades with no functional effects.
 - Implemented autosave before fast travel to mitigate crashes during advanced game's fast travel.
 - Fixed some weapons that have no parts.
