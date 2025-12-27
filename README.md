@@ -209,6 +209,22 @@ Caso não deseje utilizar o novo Launcher para o jogo, pode-se rodar o jogo norm
 ## Changelog
 *For more detailed log, see commits in github repository*
 
+1.4) The Great Fix
+- Fixed many crafting recipes progression.
+- Fixed some icons.
+- Fixed recipes costs (some items are more expensive to craft than to buy).
+- Fixed a bug that completely disable the disguise system (needs new game or manual fix with debug mode).
+- Fixed .337 caliber pierce capability.
+- Fixed some upgrade trees that have upgrades with no functional effects.
+- Implemented autosave before fast travel to mitigate crashes during advanced game's fast travel.
+- Fixed some weapons that have no parts.
+- Implemented craft convertion recipes of some common used ammo caliber.
+- Implemented advanced recipes to convert some grenade types.
+- Implemented recipe to some less used items.
+- Implemented batch crafting to workbench.
+- Improved batch cooking to not duplicate recipes.
+
+
 1.3) The Great Revision
 
 - Multiple fixes to HUD, improving equipment stats comparison including implementation of extra info into item cards.
@@ -227,10 +243,12 @@ Caso não deseje utilizar o novo Launcher para o jogo, pode-se rodar o jogo norm
 - Revision and bug correction in many armors, weapons, upgrades and attachments status.
 - Ammo drop changes with game mode.
 
+
 1.2) New Player Review
 
 - Renamed "Stealth" game mode to "Ghost".
 - Reduced the crafting difficulty curve for starting equipment, focusing on new players.
+
 
 1.1) Unlockable review
 
