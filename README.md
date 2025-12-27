@@ -110,6 +110,7 @@ Caso não deseje utilizar o novo Launcher para o jogo, pode-se rodar o jogo norm
 1. [Advanced Stamina System (ASS)](https://www.moddb.com/mods/stalker-anomaly/addons/advanced-stamina-system-40link-in-description41)
 1. [Weapon Cover Tilt (WCT)](https://www.moddb.com/mods/stalker-anomaly/addons/weapon-cover-tilt-inertia)
 1. [Dynamic Emission Cover](https://www.moddb.com/mods/stalker-anomaly/addons/dynamic-emission-cover)
+1. [Batch cooking (x1, x2, x5, x10)](https://www.moddb.com/mods/stalker-anomaly/addons/151-batch-cooking-x1-x2-x5-x10)
 1. [Arszi's Burer Overhaul 1.0 for Anomaly 1.5.1](https://www.moddb.com/mods/stalker-anomaly/addons/arszis-burer-overhaul)
 1. [Arszi's Mutant Bleeding 2.0.1 for Anomaly 1.5.1](https://www.moddb.com/mods/stalker-anomaly/addons/arszis-mutant-bleeding)
 1. [Artifact signature locator](https://www.moddb.com/mods/stalker-anomaly/addons/atrifact-signature-locator)
