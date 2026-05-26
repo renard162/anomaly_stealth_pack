@@ -1121,6 +1121,7 @@ local upg_prop_tool = {
 	["prop_scope_attach"]	    =	"upgr_w_^d_scope_mount",	--Mount for optics
 	["prop_scope"]	            =	"upgr_w_^d_scope",	        --Adjustable range finder sight
 	["prop_contrast"]	        =	"upgr_w_^d_scope",	        --Increase the contrast of sight
+	["prop_bright"]	   		    =	"upgr_w_^d_scope",	        --Increase the bright of sight
 	["prop_autofire"]	        =	"upgr_w_^d_firemode",	    --Fully automatic firemode
 	["prop_3xfire"]	            =	"upgr_w_^d_firemode",	    --Three shots automatic shooting mode
 	["prop_nightvision"]	    =	"upgr_w_^d_scope",	        --Installing NVD
