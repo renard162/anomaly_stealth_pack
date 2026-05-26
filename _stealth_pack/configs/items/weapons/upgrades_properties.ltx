@@ -26,6 +26,7 @@ prop_autofire  				;; Fully automatic fire mode
 prop_3xfire  				;; Three shots automatic shooting mode
 prop_nightvision  			;; Installing NVD
 prop_no_buck  				;; Do not shoot a fraction.
+prop_bright                ;; Increase scope bright
 
 prop_armor 					;; armor
 prop_damage 				;; Damage
@@ -219,6 +220,12 @@ params   = fire_wound_immunity, cost
 
 [prop_contrast]
 name     = st_prop_contrast
+icon     = ui_wp_prop_contrast
+functor  = inventory_upgrades.property_functor_b
+params   = fire_wound_immunity, cost
+
+[prop_bright]
+name     = st_prop_bright
 icon     = ui_wp_prop_contrast
 functor  = inventory_upgrades.property_functor_b
 params   = fire_wound_immunity, cost

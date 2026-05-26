@@ -76,8 +76,19 @@ inv_weight                               = +0.15
 [up_sect_fifthc_sig550_sniper]
 cost                                     = 6920
 scope_dynamic_zoom                       = on
+inv_weight                               = +0.05
+
+
+[up_sect_fifthe_sig550_sniper]
+cost                                     = 3459
 scope_nightvision                        = scope_brighten
 inv_weight                               = +0.05
+
+
+[up_sect_fifthf_sig550_sniper]
+cost                                     = 3530
+scope_nightvision                        = scope_contrast
+inv_weight                               = +0.03
 
 
 ;----------------------------------------------------------------------------------------------------------------------
@@ -383,7 +394,7 @@ icon                                     = ui_inGame2_upgrade_GP37_6
 [up_fifthc_sig550_sniper]
 scheme_index                             = 1, 6
 known                                    = 1
-effects                                  =
+effects                                  = up_gr_fifthef_sig550_sniper
 section                                  = up_sect_fifthc_sig550_sniper
 property                                 = prop_scope
 precondition_functor                     = inventory_upgrades.precondition_functor_a
@@ -397,6 +408,41 @@ name                                     = st_up_opt_c3_name
 description                              = st_up_opt_c3_descr
 icon                                     = ui_inGame2_upgrade_IL86_15
 
+[up_fifthe_sig550_sniper]
+scheme_index                             = 2, 6
+known                                    = 1
+effects                                  =
+section                                  = up_sect_fifthe_sig550_sniper
+property                                 = prop_bright
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_opt_bright_name
+description                              = st_up_opt_bright_descr
+icon                                     = ui_inGame2_upgrade_IL86_14
+
+[up_fifthf_sig550_sniper]
+scheme_index                             = 2, 7
+known                                    = 1
+effects                                  =
+section                                  = up_sect_fifthf_sig550_sniper
+property                                 = prop_contrast
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_opt_b1_name
+description                              = st_up_opt_b1_descr
+icon                                     = ui_inGame2_upgrade_SVDm2_14
 
 ;----------------------------------------------------------------------------------------------------------------------
 [up_gr_firstab_sig550_sniper]
@@ -440,3 +486,6 @@ elements                                 = up_fiftha_sig550_sniper
 
 [up_gr_fifthcd_sig550_sniper]
 elements                                 = up_fifthc_sig550_sniper
+
+[up_gr_fifthef_sig550_sniper]
+elements                                 = up_fifthe_sig550_sniper, up_fifthf_sig550_sniper
