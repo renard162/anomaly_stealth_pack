@@ -3553,7 +3553,7 @@ function prop_ammo_khit(obj,sec)
 		["7.62x51"] = 0.78, -- wpn_g3sg1
 		["7.62x54"] = 1.10, -- wpn_svd
 		["7.92x33"] = 1.15, -- wpn_k98
-		["12.7x55"] = 2.25, -- wpn_vssk
+		["12.7x55"] = 2.25, -- wpn_vssk (antiga, nova = 1.80)
 		["magnum"] = 1.35, -- wpn_m98b
 		["gauss"] = 1.00, -- wpn_gauss
 	}
