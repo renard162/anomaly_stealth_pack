@@ -87,7 +87,6 @@ inv_weight                               = +0.2
 [up_sect_thirdd_protecta]
 cost                                     = 4490
 value                                    = +15
-
 rpm                                      = +25
 fire_modes                               = 1, -1
 inv_weight                               = +0.1
@@ -116,6 +115,10 @@ value                                    = +15
 rpm                                      = +25
 inv_weight                               = +0.1
 
+[up_sect_fourte_protecta]
+cost                                     = 2750
+inv_weight                               = +0.1
+ammo_mag_size                            = +12
 
 ;----------------------------------------------------------------------------------------------------------------------
 [up_firsta_protecta]
@@ -362,7 +365,7 @@ icon                                     = ui_inGame2_upgrade_Protecta_13
 [up_fourtc_protecta]
 scheme_index                             = 1, 6
 known                                    = 1
-effects                                  =
+effects                                  = up_gr_fourtef_protecta
 section                                  = up_sect_fourtc_protecta
 property                                 = prop_rpm
 precondition_functor                     = inventory_upgrades.precondition_functor_a
@@ -376,6 +379,25 @@ prereq_params                            =
 name                                     = st_up_roun_a2_name
 description                              = st_up_roun_a2_descr
 icon                                     = ui_inGame2_upgrade_Protecta_14
+
+
+[up_fourte_protecta]
+scheme_index                             = 2, 3
+known                                    = 1
+effects                                  =
+section                                  = up_sect_fourte_protecta
+property                                 = prop_ammo_size
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = on_weapon_upgrade_something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_upgr_w_magazine
+description                              = st_up_protecta_mag_up_descr
+icon                                     = ui_upgrade_Protecta_mag_up
 
 
 ;----------------------------------------------------------------------------------------------------------------------
@@ -408,3 +430,6 @@ elements                                 = up_fourta_protecta
 
 [up_gr_fourtcd_protecta]
 elements                                 = up_fourtc_protecta
+
+[up_gr_fourtef_protecta]
+elements                                 = up_fourte_protecta

@@ -18,4 +18,7 @@
 	<string id="st_up_opt_bright_descr">
 		<text>A modification made to assault weapon optics through changes to the sight objective lens, improving light capture efficiency. Useful for target acquisition in poorly lit interiors and nighttime environments with limited ambient light, though ineffective in complete darkness.</text>
 	</string>
+	<string id="st_up_protecta_mag_up_descr">
+		<text>A set of upgraded components that increases magazine capacity by modifying the magazine disc and adjusting spring tension, allowing more shells to be loaded.</text>
+	</string>
 </string_table>
