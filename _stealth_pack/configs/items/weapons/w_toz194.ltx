@@ -76,7 +76,7 @@
         grenade_launcher_status     = 0
         
         hit_impulse                 = 40
-        hit_power                   = 0.55, 0.55, 0.55, 0.55
+        hit_power                   = 0.67, 0.67, 0.67, 0.67
         hit_type                    = fire_wound
         fire_distance               = 300
         bullet_speed                = 340
@@ -140,6 +140,11 @@ control_inertion_factor = 1.0f
 ;------------------------------------------------------------------------------------------------
 [wpn_wincheaster1300_trapper]:wpn_wincheaster1300
         $spawn                      = "weapons\wpn_wincheaster1300_trapper"
+
+        rpm                         = 75
+
+        condition_queue_shot_dec    = 0.0018
+        condition_shot_dec          = 0.0018
  
 [wpn_toz194_hud]:hud_base
         item_visual                 = anomaly_weapons\wpn_winchester1300\wpn_winchester1300_hud.ogf
