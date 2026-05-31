@@ -121,6 +121,11 @@ cam_dispersion_inc                       = 0.0 ;-0.073
 cam_step_angle_horz                      = -0.086 
 inv_weight                               = +0.04
 
+[up_sect_fifthc_sig220]
+cost                                     = 1650
+inv_weight                               = +0.05
+ammo_mag_size                            = +7
+
 
 ;----------------------------------------------------------------------------------------------------------------------
 [up_firsta_sig220]
@@ -375,7 +380,7 @@ icon                                     = ui_inGame2_upgrade_SIP_t_M200_14
 [up_fiftha_sig220]
 scheme_index                             = 0, 4
 known                                    = 1
-effects                                  =
+effects                                  = up_gr_fifthcd_sig220
 section                                  = up_sect_fiftha_sig220
 property                                 = prop_recoil
 precondition_functor                     = inventory_upgrades.precondition_functor_a
@@ -388,6 +393,25 @@ prereq_params                            =
 name                                     = st_up_zatp_b2_name
 description                              = st_up_zatp_b2_descr
 icon                                     = ui_inGame2_upgrade_HPSS_1m_3
+
+
+[up_fifthc_sig220]
+scheme_index                             = 1, 6
+known                                    = 1
+effects                                  =
+section                                  = up_sect_fifthc_sig220
+property                                 = prop_ammo_size
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_add_a4_name
+description                              = st_up_add_a4_descr
+icon                                     = ui_inGame2_upgrade_UDP_compact_16
 
 
 ;----------------------------------------------------------------------------------------------------------------------
@@ -426,3 +450,6 @@ elements                                 = up_fourte_sig220
 
 [up_gr_fifthab_sig220]
 elements                                 = up_fiftha_sig220
+
+[up_gr_fifthcd_sig220]
+elements                                 = up_fifthc_sig220

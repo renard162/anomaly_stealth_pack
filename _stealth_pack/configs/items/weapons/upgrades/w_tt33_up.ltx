@@ -86,13 +86,18 @@ PDM_disp_accel_factor                    = -0.35
 inv_weight                               = -0.09
 
 [up_sect_fiftha_tt33]
-cost                                     = 1510 
+cost                                     = 1650
+inv_weight                               = +0.05
+ammo_mag_size                            = +8
+
+[up_sect_fifthc_tt33]
+cost                                     = 686
 value                                    = +10
 rpm                                      = +28
 inv_weight                               = +0.03
 
-[up_sect_fifthc_tt33]
-cost                                     = 2280
+[up_sect_fifthe_tt33]
+cost                                     = 1672
 value                                    = +15
 
 condition_shot_dec                       = -0.0002
@@ -298,12 +303,29 @@ name                                     = st_up_stvp_b2_name
 description                              = st_up_stvp_b2_descr
 icon                                     = ui_inGame2_upgrade_Kora_919_10
 
-
 [up_fiftha_tt33]
 scheme_index                             = 0, 4
 known                                    = 1
 effects                                  = up_gr_fifthcd_tt33
 section                                  = up_sect_fiftha_tt33
+property                                 = prop_ammo_size
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_add_a4_name
+description                              = st_up_add_a4_descr
+icon                                     = ui_inGame2_upgrade_SIP_t_M200_15
+
+[up_fifthc_tt33]
+scheme_index                             = 1, 6
+known                                    = 1
+effects                                  = up_gr_fifthef_tt33
+section                                  = up_sect_fifthc_tt33
 property                                 = prop_rpm
 precondition_functor                     = inventory_upgrades.precondition_functor_a
 precondition_parameter                   = a & b
@@ -317,11 +339,11 @@ name                                     = st_up_zatp_c1_name
 description                              = st_up_zatp_c1_descr
 icon                                     = ui_inGame2_upgrade_PMm_4
 
-[up_fifthc_tt33]
-scheme_index                             = 1, 6
+[up_fifthe_tt33]
+scheme_index                             = 2, 1
 known                                    = 1
 effects                                  =
-section                                  = up_sect_fifthc_tt33
+section                                  = up_sect_fifthe_tt33
 property                                 = prop_reliability
 precondition_functor                     = inventory_upgrades.precondition_functor_a
 precondition_parameter                   = a & b
@@ -369,3 +391,6 @@ elements                                 = up_fiftha_tt33
 
 [up_gr_fifthcd_tt33]
 elements                                 = up_fifthc_tt33
+
+[up_gr_fifthef_tt33]
+elements                                 = up_fifthe_tt33
