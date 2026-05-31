@@ -1111,7 +1111,7 @@ local upg_prop_tool = {
 	["prop_calibre"]	        =	"upgr_w_^d_calibre",	    --caliber(9x18,5x45)
 	["prop_dispersion"]	        =	"upgr_w_^d_dispersion",	    --Accuracy
 	["prop_inertion"]	        =	"upgr_w_^d_inertion",	    --Convenience
-	["prop_autolockscope"]	    =	"upgr_w_^d_scope",	        --Auto Capture Targets in Optics
+	["prop_autolockscope"]	    =	"upgr_w_^d_scope_mount",    --Auto Capture Targets in Optics
 	["prop_scope_1.5x"]	        =	"upgr_w_^d_scope",	        --Reflex Sight 1.5x
 	["prop_scope_5x"]	        =	"upgr_w_^d_scope",	        --Sight 5x
 	["prop_scope_6x"]	        =	"upgr_w_^d_scope",	        --Sight 6x
@@ -1147,7 +1147,7 @@ local upg_prop_tool = {
 	
 	["prop_binoc_zoom"]	        =	"upgr_w_^d_scope",	        --Sight
 	["prop_binoc_nightvision"]	=	"upgr_w_^d_scope",	        --Installing NVD
-	["prop_binoc_autolock"]	    =	"upgr_w_^d_scope",	        --Sight
+	["prop_binoc_autolock"]	    =	"upgr_w_^d_scope_mount",    --Sight
 }
 
 function extract_upgrade(tree, group, not_first)
