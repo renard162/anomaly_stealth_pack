@@ -13,19 +13,19 @@ scope_zoom_factor                        = -7
 scope_nightvision                        = scope_brighten
 
 [up_sect_fourtc_vintorez_nimble]
-cost                                     = 5390
-scope_dynamic_zoom                       = on
-inv_weight                               = +0.01
-
-[up_sect_fourte_vintorez_nimble]
 cost                                     = 3990
 scope_nightvision                        = scope_nightvision_2gen
 inv_weight                               = +0.27
 
-[up_sect_fourtf_vintorez_nimble]
+[up_sect_fourtd_vintorez_nimble]
 cost                                     = 1720
 scope_nightvision                        = scope_contrast
 inv_weight                               = +0.05
+
+[up_sect_fourte_vintorez_nimble]
+cost                                     = 5390
+scope_dynamic_zoom                       = on
+inv_weight                               = +0.01
 
 
 ;----------------------------------------------------------------------------------------------------------------------
@@ -284,29 +284,12 @@ name                                     = st_up_opt_a3_name
 description                              = st_up_opt_a3_descr
 icon                                     = ui_inGame2_upgrade_Vintar_VS_14
 
+
 [up_fourtc_vintorez_nimble]
 scheme_index                             = 1, 5
 known                                    = 1
 effects                                  = up_gr_fourtef_vintorez_nimble
 section                                  = up_sect_fourtc_vintorez_nimble
-property                                 = prop_scope
-precondition_functor                     = inventory_upgrades.precondition_functor_a
-precondition_parameter                   = a & b
-effect_functor                           = inventory_upgrades.effect_functor_a
-effect_parameter                         = something_here
-
-prereq_functor                           = inventory_upgrades.prereq_functor_a
-prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
-prereq_params                            =
-name                                     = st_up_opt_c3_name
-description                              = st_up_opt_c3_descr
-icon                                     = ui_inGame2_upgrade_Vintar_VS_17
-
-[up_fourte_vintorez_nimble]
-scheme_index                             = 2, 5
-known                                    = 1
-effects                                  =
-section                                  = up_sect_fourte_vintorez_nimble
 property                                 = prop_nightvision
 precondition_functor                     = inventory_upgrades.precondition_functor_a
 precondition_parameter                   = a & b
@@ -320,11 +303,12 @@ name                                     = st_up_opt_c2_name
 description                              = st_up_opt_c2_descr
 icon                                     = ui_inGame2_upgrade_Vintar_VS_16
 
-[up_fourtf_vintorez_nimble]
-scheme_index                             = 2, 6
+
+[up_fourtd_vintorez_nimble]
+scheme_index                             = 1, 6
 known                                    = 1
-effects                                  =
-section                                  = up_sect_fourtf_vintorez_nimble
+effects                                  = up_gr_fourtef_vintorez_nimble
+section                                  = up_sect_fourtd_vintorez_nimble
 property                                 = prop_contrast
 precondition_functor                     = inventory_upgrades.precondition_functor_a
 precondition_parameter                   = a & b
@@ -337,6 +321,25 @@ prereq_params                            =
 name                                     = st_up_opt_b1_name
 description                              = st_up_opt_b1_descr
 icon                                     = ui_inGame2_upgrade_Vintar_VS_15
+
+
+[up_fourte_vintorez_nimble]
+scheme_index                             = 2, 5
+known                                    = 1
+effects                                  =
+section                                  = up_sect_fourte_vintorez_nimble
+property                                 = prop_scope
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_opt_c3_name
+description                              = st_up_opt_c3_descr
+icon                                     = ui_inGame2_upgrade_SVUmk2_15
 
 
 ;----------------------------------------------------------------------------------------------------------------------
@@ -371,7 +374,7 @@ elements                                 = up_thirde_vintorez_nimble, up_thirdf_
 elements                                 = up_fourta_vintorez_nimble
 
 [up_gr_fourtcd_vintorez_nimble]
-elements                                 = up_fourtc_vintorez_nimble
+elements                                 = up_fourtc_vintorez_nimble, up_fourtd_vintorez_nimble
 
 [up_gr_fourtef_vintorez_nimble]
-elements                                 = up_fourte_vintorez_nimble, up_fourtf_vintorez_nimble
+elements                                 = up_fourte_vintorez_nimble

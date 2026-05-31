@@ -8,6 +8,13 @@ condition_queue_shot_dec                 = -0.0007
 misfire_start_prob                       = -0.0007
 misfire_end_prob                         = -0.007
 
+
+[up_sect_fiftha_m82]
+cost                                     = 25084
+scope_alive_detector                     = scope_detector
+inv_weight                               = +0.25
+
+
 ;----------------------------------------------------------------------------------------------------------------------
 [up_firsta_m82]
 scheme_index                             = 0, 0
@@ -280,6 +287,25 @@ description                              = st_up_auts_c1_descr
 icon                                     = ui_inGame2_upgrade_SVUmk2_3
 
 
+[up_fiftha_m82]
+scheme_index                             = 0, 4
+known                                    = 1
+effects                                  =
+section                                  = up_sect_fiftha_m82
+property                                 = prop_autolockscope
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b 
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_opt_c1_name
+description                              = st_up_opt_c1_descr
+icon                                     = ui_inGame2_upgrade_SVDm2_16
+
+
 ;----------------------------------------------------------------------------------------------------------------------
 [up_gr_firstab_m82]
 elements                                 = up_firsta_m82
@@ -313,3 +339,6 @@ elements                                 = up_fourtc_m82
 
 [up_gr_fourtef_m82]
 elements                                 = up_fourte_m82, up_fourtf_m82
+
+[up_gr_fifthab_m82]
+elements                                 = up_fiftha_m82

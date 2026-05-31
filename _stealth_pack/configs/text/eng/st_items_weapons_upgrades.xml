@@ -573,7 +573,7 @@
 		<text>Improvement of sight contrast</text>
 	</string>
 	<string id="st_up_opt_c1_descr">
-		<text>A heat visor allows the wearer to detect and identify matching heat sources.</text>
+		<text>A directional detector that identifies trace concentrations of microscopic artifact fragments accumulated within humans and wildlife through prolonged exposure and the consumption of contaminated food and water.</text>
 	</string>
 	<string id="st_up_opt_c1_name">
 		<text>Automatic optical target acquisition</text>
@@ -2217,7 +2217,7 @@
 		<text>Detect targets</text>
 	</string>
 	<string id="st_up_binoc_d1_descr">
-		<text>Replacements to the housing style in order to reduce the overall weight by implementing an open-bridge and chassis made of an aluminium alloy.</text>
+		<text>The Zone continuously produces microscopic artifact fragments that spread throughout the environment. This device detects trace concentrations accumulated within humans and wildlife through prolonged exposure and the consumption of contaminated food and water.</text>
 	</string>
 	
 <!-- Dynamo -->

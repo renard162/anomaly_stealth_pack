@@ -5,18 +5,18 @@ scope_zoom_factor                        = -6
 scope_nightvision                        = scope_brighten
 
 [up_sect_fourtc_svd_nimble]
-cost                                     = 7835
-scope_alive_detector                     = scope_detector
+cost                                     = 5680
+scope_nightvision                        = scope_nightvision_2gen
+inv_weight                               = +0.27
+
+[up_sect_fourtd_svd_nimble]
+cost                                     = 3980
+scope_nightvision                        = scope_contrast
 inv_weight                               = +0.05
 
 [up_sect_fourte_svd_nimble]
-cost                                     = 5680
-scope_nightvision                        = scope_nightvision
-inv_weight                               = +0.27
-
-[up_sect_fourtf_svd_nimble]
-cost                                     = 3980
-scope_nightvision                        = scope_contrast
+cost                                     = 7835
+scope_alive_detector                     = scope_detector
 inv_weight                               = +0.05
 
 
@@ -238,29 +238,12 @@ name                                     = st_up_opt_a6_name
 description                              = st_up_opt_a6_descr
 icon                                     = ui_inGame2_upgrade_SVUmk2_12
 
+
 [up_fourtc_svd_nimble]
 scheme_index                             = 1, 5
 known                                    = 1
 effects                                  = up_gr_fourtef_svd_nimble
 section                                  = up_sect_fourtc_svd_nimble
-property                                 = prop_autolockscope
-precondition_functor                     = inventory_upgrades.precondition_functor_a
-precondition_parameter                   = a & b 
-effect_functor                           = inventory_upgrades.effect_functor_a
-effect_parameter                         = something_here
-
-prereq_functor                           = inventory_upgrades.prereq_functor_a
-prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
-prereq_params                            =
-name                                     = st_up_opt_c1_name
-description                              = st_up_opt_c1_descr
-icon                                     = ui_inGame2_upgrade_SVDm2_16
-
-[up_fourte_svd_nimble]
-scheme_index                             = 2, 3
-known                                    = 1
-effects                                  =
-section                                  = up_sect_fourte_svd_nimble
 property                                 = prop_nightvision
 precondition_functor                     = inventory_upgrades.precondition_functor_a
 precondition_parameter                   = a & b
@@ -274,11 +257,12 @@ name                                     = st_up_opt_c2_name
 description                              = st_up_opt_c2_descr
 icon                                     = ui_inGame2_upgrade_SVDm2_15
 
-[up_fourtf_svd_nimble]
-scheme_index                             = 2, 4
+
+[up_fourtd_svd_nimble]
+scheme_index                             = 1, 6
 known                                    = 1
-effects                                  =
-section                                  = up_sect_fourtf_svd_nimble
+effects                                  = up_gr_fourtef_svd_nimble
+section                                  = up_sect_fourtd_svd_nimble
 property                                 = prop_contrast
 precondition_functor                     = inventory_upgrades.precondition_functor_a
 precondition_parameter                   = a & b
@@ -291,6 +275,25 @@ prereq_params                            =
 name                                     = st_up_opt_b1_name
 description                              = st_up_opt_b1_descr
 icon                                     = ui_inGame2_upgrade_SVDm2_14
+
+
+[up_fourte_svd_nimble]
+scheme_index                             = 2, 3
+known                                    = 1
+effects                                  =
+section                                  = up_sect_fourte_svd_nimble
+property                                 = prop_autolockscope
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b 
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_opt_c1_name
+description                              = st_up_opt_c1_descr
+icon                                     = ui_inGame2_upgrade_SVDm2_16
 
 
 ;----------------------------------------------------------------------------------------------------------------------
@@ -322,7 +325,7 @@ elements                                 = up_thirde_svd_nimble
 elements                                 = up_fourta_svd_nimble
 
 [up_gr_fourtcd_svd_nimble]
-elements                                 = up_fourtc_svd_nimble
+elements                                 = up_fourtc_svd_nimble, up_fourtd_svd_nimble
 
 [up_gr_fourtef_svd_nimble]
-elements                                 = up_fourte_svd_nimble, up_fourtf_svd_nimble
+elements                                 = up_fourte_svd_nimble
