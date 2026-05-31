@@ -2399,6 +2399,13 @@ Grenades
 		<text>MRBF</text>
 	</string>
 
+	<string id="st_prop_muzzle_velocity">
+		<text>Muzzle Velocity</text>
+	</string>
+	<string id="st_prop_muzzle_velocity_unit">
+		<text>m/s</text>
+	</string>
+
 	<string id="st_ammo_prop_k_ap">
 		<text>Armor penetration</text>
 	</string>
