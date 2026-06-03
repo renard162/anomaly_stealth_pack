@@ -85,7 +85,7 @@ end
 
 function manage_burer_blinding()
   local obj = level.get_target_obj()
-  if (obj and obj:alive() and is_burer(obj)) then
+  if (obj and obj.alive and obj:alive() and is_burer(obj)) then
 
     local torch = targeted_by_torch()
     if (torch and should_burer_be_blinded(obj:position())) then
@@ -113,7 +113,7 @@ function manage_burers()
     local obj = level.object_by_id(k)
     
     --Weapon jamming for actor and NPCs
-    if (obj and obj:alive()) then
+    if (obj and obj.alive and obj:alive()) then
       handle_weapon_jamming(obj)
     end
 

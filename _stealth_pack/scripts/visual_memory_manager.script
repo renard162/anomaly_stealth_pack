@@ -607,7 +607,7 @@ function stealth_dbg(npc, who, step_incr, luminocity_score, luminocity_mult, lum
 	local weight_dist = 1.00 - (0.05 * object_distance)
 	local icon_lum_val = icon_lum()
 
-	if (obj and (obj:alive()) and (who and (who:id() == db.actor:id() or who:id() == obj:id() ) and npc and (npc:id() == db.actor:id() or npc:id() == obj:id() ))) and (not obj:see(db.actor)) then
+	if (obj and obj.alive and obj:alive() and (who and (who:id() == db.actor:id() or who:id() == obj:id() ) and npc and (npc:id() == db.actor:id() or npc:id() == obj:id() ))) and (not obj:see(db.actor)) then
 		summ = summ + step_incr
 	elseif obj and obj:see(db.actor) then
 		summ = 0
@@ -624,7 +624,7 @@ function stealth_dbg(npc, who, step_incr, luminocity_score, luminocity_mult, lum
 		end
 	end
 
-	if obj and (obj:alive()) and (who and (who:id() == db.actor:id() or who:id() == obj:id() ) and npc and (npc:id() == db.actor:id() or npc:id() == obj:id() )) then
+	if obj and obj.alive and obj:alive() and (who and (who:id() == db.actor:id() or who:id() == obj:id() ) and npc and (npc:id() == db.actor:id() or npc:id() == obj:id() )) then
 		printf('---------------------------------------------------------------')
 		printf("Weather is: " .. (wthrs))
 		printf("1. luminocity_score  ---------- %s", luminocity_score)
