@@ -163,7 +163,6 @@ function actor_on_update()
 		alife_storage_manager.get_state().mine_kill = true
 		mine_killer()
 	end
-	generic_on_update(db.actor)
 	manage_timer_explosives()
 	periodic_clean()
 end
@@ -181,6 +180,7 @@ function generic_on_update(npc)
 	local npcpos = npc:position()
 	local now = tss()
 	
+	if npc:id() == db.actor:id() then return end
 	if not npc:alive() then return end
 	for mine_id, data in pairs(_mines) do
 		local mine = level.object_by_id(mine_id) 
