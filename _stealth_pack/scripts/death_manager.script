@@ -40,6 +40,19 @@ local ammo_drop_mult = {
 
 local pistol_ammo_bonus = 1 / ammo_drop_mult[3]
 
+local function get_ammo_sec(ammo_class)
+	local sec = nil
+	local retries = math.floor((level.get_game_difficulty() or 0) * 0.8)
+	-- prefer bad ammo
+	for i=0, retries do
+		sec = ammo_class[math.random(1,#ammo_class)]
+		if string.find(sec, "_bad") or string.find(sec, "_verybad") then
+			return sec
+		end
+	end
+	return sec
+end
+
 function SetDiffModifications()
 	local diff = game_difficulties.get_eco_factor("loots") or 1
 	diff_multi =  diff --(diff - 0.2) or 0.8
@@ -514,7 +527,7 @@ function try_spawn_ammo(npc)
 			
 			-- randomly spawn only 1 ammo type per found weapon
 			if (#ammo_class > 0) then
-				sec = ammo_class[math.random(1,#ammo_class)]
+				sec = get_ammo_sec(ammo_class)
 				if (sec) then 
 					if (item_count[sec]) then
 						number = math.random(item_count[sec][1], item_count[sec][2]) * (ammo_drop_mult[level.get_game_difficulty()] or 1)
@@ -584,7 +597,7 @@ function set_weapon_drop_condition(npc,itm)
 
 		-- randomly spawn only 1 ammo type per found weapon
 		if (#ammo_class > 0) then
-			sec = ammo_class[math.random(1,#ammo_class)]
+			sec = get_ammo_sec(ammo_class)
 			if (sec and item_count[sec]) then
 				number = math.random(item_count[sec][1], item_count[sec][2]) * (ammo_drop_mult[level.get_game_difficulty()] or 1)
 				number = math.ceil(number * (IsPistol(nil,itm:clsid()) and pistol_ammo_bonus or 1))
