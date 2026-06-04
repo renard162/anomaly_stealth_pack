@@ -68,8 +68,7 @@
 			\n%c[pda_green]Information%c[ui_gray_1]
 			\nArtefact detection requires a detector, which are sold by most traders.\nBy using them near an anomaly, there is a chance you may detect an artefact.\n
 			\n%c[pda_blue]Rewards%c[ui_gray_1]
-			\n • Respawn rates for artefacts found in anomalies will be slightly increased.
-			\n • Scientists will trade their experimental equipment with their friends.\n
+			\n • Respawn rates for artefacts found in anomalies will be increased.\n
 			\n%c[d_orange]Replay Mode Unlock%c[ui_gray_1]
 			\n • Svarog detector
 		</text>
