@@ -32,6 +32,14 @@
 [up_sect_fourtc_lcs_1]:up_sect_prop_health_1
 
 
+[up_sect_fiftha_lcs_1]:up_sect_prop_armor_15
+
+[up_sect_fifthc_lcs_1]:up_sect_prop_arty_2
+
+[up_sect_fifthe_lcs_1]:up_sect_prop_weight_7
+
+[up_sect_fifthf_lcs_1]:up_sect_prop_durability_2
+
 
 [up_firsta_lcs_1]
 scheme_index            = 0, 0
@@ -327,6 +335,89 @@ description             = st_up_health_1_descr
 icon                    = ui_inGame2_upgrade_outfit_health_1
 
 
+[up_fiftha_lcs_1]
+scheme_index            = 0, 4
+known                   = 1
+effects                 = up_gr_fifthcd_lcs_1
+section                 = up_sect_fiftha_lcs_1
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           =
+
+property                = prop_armor
+
+name                    = st_up_armor_3_name
+description             = st_up_armor_3_descr
+icon                    = ui_inGame2_upgrade_outfit_armour_4
+
+
+[up_fifthc_lcs_1]
+scheme_index            = 1, 6
+known                   = 1
+effects                 = up_gr_fifthef_lcs_1
+section                 = up_sect_fifthc_lcs_1
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           =
+
+property                = prop_artefact
+
+name                    = st_up_arty_3_name
+description             = st_up_arty_3_descr
+icon                    = ui_inGame2_upgrade_outfit_arty_2
+
+
+[up_fifthe_lcs_1]
+scheme_index            = 2, 4
+known                   = 1
+effects                 =
+section                 = up_sect_fifthe_lcs_1
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           =
+
+property                = prop_weightoutfit
+
+name                    = st_up_weight_4_name
+description             = st_up_weight_4_descr
+icon                    = ui_inGame2_upgrade_outfit_weight_2
+
+
+[up_fifthf_lcs_1]
+scheme_index            = 2, 5
+known                   = 1
+effects                 =
+section                 = up_sect_fifthf_lcs_1
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           =
+
+property                = prop_durability
+
+name                    = st_up_durability_3_name
+description             = st_up_durability_3_descr
+icon                    = ui_inGame2_upgrade_outfit_durability_2
+
 
 [up_gr_firstab_lcs_1]
 elements                = up_firsta_lcs_1
@@ -361,3 +452,11 @@ elements                = up_fourta_lcs_1
 [up_gr_fourtcd_lcs_1]
 elements                = up_fourtc_lcs_1
 
+[up_gr_fifthab_lcs_1]
+elements                = up_fiftha_lcs_1
+
+[up_gr_fifthcd_lcs_1]
+elements                = up_fifthc_lcs_1
+
+[up_gr_fifthef_lcs_1]
+elements                = up_fifthe_lcs_1, up_fifthf_lcs_1

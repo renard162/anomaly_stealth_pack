@@ -4,6 +4,7 @@
 		<texture id="ui_inGame2_upgrade_outfit_armour_1" x="0" y="0" width="90" height="44" />
 		<texture id="ui_inGame2_upgrade_outfit_armour_2" x="180" y="0" width="90" height="44" />
 		<texture id="ui_inGame2_upgrade_outfit_armour_3" x="720" y="44" width="90" height="44" />
+		<texture id="ui_inGame2_upgrade_outfit_armour_4" x="450" y="0" width="90" height="44" />
 		
 		<texture id="ui_inGame2_upgrade_outfit_wound_1" x="450" y="528" width="90" height="44" />
 		<texture id="ui_inGame2_upgrade_outfit_wound_2" x="270" y="484" width="90" height="44" />
@@ -22,6 +23,7 @@
 		<texture id="ui_inGame2_upgrade_outfit_rad_2" x="630" y="792" width="90" height="44" />
 		
 		<texture id="ui_inGame2_upgrade_outfit_weight_1" x="360" y="0" width="90" height="44" />
+		<texture id="ui_inGame2_upgrade_outfit_weight_2" x="360" y="484" width="90" height="44" />
 		
 		<texture id="ui_inGame2_upgrade_outfit_carry_1" x="0" y="132" width="90" height="44" />
 		
