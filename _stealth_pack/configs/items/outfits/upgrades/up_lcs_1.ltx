@@ -31,8 +31,12 @@
 
 [up_sect_fourtc_lcs_1]:up_sect_prop_health_1
 
+[up_sect_fourte_lcs_1]:up_sect_prop_armor_10
 
-[up_sect_fiftha_lcs_1]:up_sect_prop_armor_15
+[up_sect_fourtf_lcs_1]:up_sect_prop_wound_10
+
+
+[up_sect_fiftha_lcs_1]:up_sect_prop_armor_20
 
 [up_sect_fifthc_lcs_1]:up_sect_prop_arty_2
 
@@ -317,7 +321,7 @@ icon                    = ui_inGame2_upgrade_outfit_rad_1
 [up_fourtc_lcs_1]
 scheme_index            = 1, 5
 known                   = 1
-effects                 = 
+effects                 = up_gr_fourtef_lcs_1
 section                 = up_sect_fourtc_lcs_1
 
 precondition_functor    = inventory_upgrades.precondition_functor_a
@@ -333,6 +337,48 @@ property                = prop_restore_health
 name                    = st_up_health_1_name
 description             = st_up_health_1_descr
 icon                    = ui_inGame2_upgrade_outfit_health_1
+
+
+[up_fourte_lcs_1]
+scheme_index            = 2, 4
+known                   = 1
+effects                 = 
+section                 = up_sect_fourte_lcs_1
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           =
+
+property                = prop_armor
+
+name                    = st_up_armor_1_name
+description             = st_up_armor_1_descr
+icon                    = ui_inGame2_upgrade_outfit_armour_1
+
+
+[up_fourtf_lcs_1]
+scheme_index            = 2, 5
+known                   = 1
+effects                 = 
+section                 = up_sect_fourtf_lcs_1
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           =
+
+property                = prop_damage
+
+name                    = st_up_damage_3_name
+description             = st_up_damage_3_descr
+icon                    = ui_inGame2_upgrade_outfit_wound_3
 
 
 [up_fiftha_lcs_1]
@@ -378,7 +424,7 @@ icon                    = ui_inGame2_upgrade_outfit_arty_2
 
 
 [up_fifthe_lcs_1]
-scheme_index            = 2, 4
+scheme_index            = 2, 6
 known                   = 1
 effects                 =
 section                 = up_sect_fifthe_lcs_1
@@ -399,7 +445,7 @@ icon                    = ui_inGame2_upgrade_outfit_weight_2
 
 
 [up_fifthf_lcs_1]
-scheme_index            = 2, 5
+scheme_index            = 2, 7
 known                   = 1
 effects                 =
 section                 = up_sect_fifthf_lcs_1
@@ -451,6 +497,9 @@ elements                = up_fourta_lcs_1
 
 [up_gr_fourtcd_lcs_1]
 elements                = up_fourtc_lcs_1
+
+[up_gr_fourtef_lcs_1]
+elements                = up_fourte_lcs_1, up_fourtf_lcs_1
 
 [up_gr_fifthab_lcs_1]
 elements                = up_fiftha_lcs_1

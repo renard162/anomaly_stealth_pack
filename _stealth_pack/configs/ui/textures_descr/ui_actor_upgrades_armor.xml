@@ -8,6 +8,7 @@
 		
 		<texture id="ui_inGame2_upgrade_outfit_wound_1" x="450" y="528" width="90" height="44" />
 		<texture id="ui_inGame2_upgrade_outfit_wound_2" x="270" y="484" width="90" height="44" />
+		<texture id="ui_inGame2_upgrade_outfit_wound_3" x="720" y="0" width="90" height="44" />
 		
 		<texture id="ui_inGame2_upgrade_outfit_durability_1" x="630" y="0" width="90" height="44" />
 		<texture id="ui_inGame2_upgrade_outfit_durability_2" x="360" y="44" width="90" height="44" />
