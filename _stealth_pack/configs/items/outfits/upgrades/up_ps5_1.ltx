@@ -34,6 +34,12 @@
 
 [up_sect_fourtc_ps5_proto_1]:up_sect_prop_run_1
 
+[up_sect_fiftha_ps5_proto_1]:up_sect_prop_armor_15
+
+[up_sect_fifthc_ps5_proto_1]:up_sect_prop_carryweight_12
+
+[up_sect_fifthe_ps5_proto_1]:up_sect_prop_arty_1
+
 
 
 
@@ -350,6 +356,69 @@ description             = st_up_run_1_descr
 icon                    = ui_inGame2_upgrade_outfit_run_1
 
 
+[up_fiftha_ps5_proto_1]
+scheme_index            = 0, 4
+known                   = 1
+effects                 = up_gr_fifthcd_ps5_proto_1
+section                 = up_sect_fiftha_ps5_proto_1
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           =
+
+property                = prop_armor
+
+name                    = st_up_armor_3_name
+description             = st_up_armor_3_descr
+icon                    = ui_inGame2_upgrade_outfit_armour_4
+
+
+[up_fifthc_ps5_proto_1]
+scheme_index            = 1, 7
+known                   = 1
+effects                 = up_gr_fifthef_ps5_proto_1
+section                 = up_sect_fifthc_ps5_proto_1
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           =
+
+property                = prop_tonnage
+
+name                    = st_up_carry_2_name	
+description             = st_up_carry_2_descr
+icon                    = ui_inGame2_upgrade_outfit_carry_1
+
+
+[up_fifthe_ps5_proto_1]
+scheme_index            = 2, 4
+known                   = 1
+effects                 =
+section                 = up_sect_fifthe_ps5_proto_1
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           =
+
+property                = prop_artefact
+
+name                    = st_up_arty_2_name
+description             = st_up_arty_2_descr
+icon                    = ui_inGame2_upgrade_outfit_arty_1
+
+
 [up_gr_firstab_ps5_1]
 elements                = up_firsta_ps5_1
 
@@ -390,3 +459,12 @@ elements                = up_fourta_ps5_proto_1
 
 [up_gr_fourtcd_ps5_proto_1]
 elements                = up_fourtc_ps5_proto_1
+
+[up_gr_fifthab_ps5_proto_1]
+elements                = up_fiftha_ps5_proto_1
+
+[up_gr_fifthcd_ps5_proto_1]
+elements                = up_fifthc_ps5_proto_1
+
+[up_gr_fifthef_ps5_proto_1]
+elements                = up_fifthe_ps5_proto_1

@@ -35,6 +35,14 @@
 
 [up_sect_fourtc_sunrise_proto_1]:up_sect_prop_run_1
 
+[up_sect_fiftha_sunrise_proto_1]:up_sect_prop_armor_15
+
+[up_sect_fifthc_sunrise_proto_1]:up_sect_prop_weight_7
+
+[up_sect_fifthd_sunrise_proto_1]:up_sect_prop_durability_2
+
+[up_sect_fifthe_sunrise_proto_1]:up_sect_prop_armor_20
+
 
 [up_firsta_sunrise_1]
 scheme_index            = 0, 0
@@ -379,6 +387,90 @@ description             = st_up_run_1_descr
 icon                    = ui_inGame2_upgrade_outfit_run_1
 
 
+[up_fiftha_sunrise_proto_1]
+scheme_index            = 0, 4
+known                   = 1
+effects                 = up_gr_fifthcd_sunrise_proto_1
+section                 = up_sect_fiftha_sunrise_proto_1
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           =
+
+property                = prop_armor
+
+name                    = st_up_armor_3_name
+description             = st_up_armor_3_descr
+icon                    = ui_inGame2_upgrade_outfit_armour_4
+
+
+[up_fifthc_sunrise_proto_1]
+scheme_index            = 1, 7
+known                   = 1
+effects                 = up_gr_fifthef_sunrise_proto_1
+section                 = up_sect_fifthc_sunrise_proto_1
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           =
+
+property                = prop_weightoutfit
+
+name                    = st_up_weight_4_name
+description             = st_up_weight_4_descr
+icon                    = ui_inGame2_upgrade_outfit_weight_2
+
+
+[up_fifthd_sunrise_proto_1]
+scheme_index            = 1, 8
+known                   = 1
+effects                 = up_gr_fifthef_sunrise_proto_1
+section                 = up_sect_fifthd_sunrise_proto_1
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           =
+
+property                = prop_durability
+
+name                    = st_up_durability_3_name
+description             = st_up_durability_3_descr
+icon                    = ui_inGame2_upgrade_outfit_durability_2
+
+
+[up_fifthe_sunrise_proto_1]
+scheme_index            = 2, 4
+known                   = 1
+effects                 =
+section                 = up_sect_fifthe_sunrise_proto_1
+
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = a & b
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           =
+
+property                = prop_armor
+
+name                    = st_up_armor_2_name
+description             = st_up_armor_2_descr
+icon                    = ui_inGame2_upgrade_outfit_armour_3
+
+
 [up_gr_firstab_sunrise_1]
 elements                = up_firsta_sunrise_1
 
@@ -419,3 +511,12 @@ elements                = up_fourta_sunrise_proto_1
 
 [up_gr_fourtcd_sunrise_proto_1]
 elements                = up_fourtc_sunrise_proto_1
+
+[up_gr_fifthab_sunrise_proto_1]
+elements                = up_fiftha_sunrise_proto_1
+
+[up_gr_fifthcd_sunrise_proto_1]
+elements                = up_fifthc_sunrise_proto_1, up_fifthd_sunrise_proto_1
+
+[up_gr_fifthef_sunrise_proto_1]
+elements                = up_fifthe_sunrise_proto_1
